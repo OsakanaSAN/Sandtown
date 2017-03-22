@@ -4,6 +4,7 @@
 #include "Fade.h"
 #include "Player.h"
 #include "Camera.h"
+#include "Map.h"
 
 
 #define   Y_UP 150
@@ -14,11 +15,13 @@ extern Fade* g_fade;
 GameScene* g_gameScene = NULL;
 Player* g_player;
 Camera* g_gameCamera;
+Map* g_Map;
 
 GameScene::GameScene()
 {
 	g_player = NewGO<Player>(0);
 	g_gameCamera = NewGO<Camera>(0);
+	g_Map = NewGO<Map>(0);
 
 	
 }

@@ -52,8 +52,23 @@ void Player::Update()
 	
 	//アニメーションの更新
 	Animation.Update(1.0f / 60.0f);
+	movespeed.z = 0.2f;
+	movespeed.x = 0.2f;
+	
+	if (GetAsyncKeyState('W') & 0x8000) {
+		position.z += movespeed.z;
+	}
+	if (GetAsyncKeyState('S') & 0x8000) {
+		position.z -= movespeed.z;
+	}
+	if (GetAsyncKeyState('D') & 0x8000) {
+		position.x += movespeed.x;
+	}
+	if (GetAsyncKeyState('A') & 0x8000) {
+		position.x -= movespeed.x;
+	}
 
-
+	
 	//ワールド行列の更新。
 	skinModel.Update(position, m_rotion, CVector3::One);
 }

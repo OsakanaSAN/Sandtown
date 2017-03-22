@@ -10,7 +10,7 @@ namespace tkEngine{
 	class CKeyInput{
 		
 	public:
-		static const int NUM_PAD = 4;	//パッドの数。
+		static const int NUM_PAD = 10;	//パッドの数。
 		enum EnKey {
 			enKeyUp,
 			enKeyDown,
