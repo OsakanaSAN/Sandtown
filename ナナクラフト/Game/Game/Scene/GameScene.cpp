@@ -15,19 +15,21 @@ extern Fade* g_fade;
 GameScene* g_gameScene = NULL;
 Player* g_player;
 Camera* g_gameCamera;
-Map* g_Map;
+Map*    g_map;
 
 GameScene::GameScene()
 {
+	g_map = NewGO<Map>(0);
 	g_player = NewGO<Player>(0);
 	g_gameCamera = NewGO<Camera>(0);
-	g_Map = NewGO<Map>(0);
+	
 
 	
 }
 GameScene::~GameScene()
 {
 	DeleteGO(g_player);
+	DeleteGO(g_map);
 	//DeleteGO(g_gameCamera);
 	NewGO<TitleScene>(0);
 	
@@ -36,21 +38,6 @@ GameScene::~GameScene()
 bool GameScene::Start()
 {
 	
-	/*
-	//背景表示
-	Gametex.Load("Assets/sprite/Title.png");
-	GameSprite.Init(&Gametex);
-	GameSprite.SetSize({ 1920,1080 });
-	
-
-		//ライトを初期化。
-		light.SetAmbinetLight(CVector3::One);
-		//カメラを初期化。
-		camera.SetPosition({ 0.0f, 0.0f, -700.0f });
-		camera.SetNear(400.0f);
-		camera.SetFar(1000.0f);
-		camera.Update();
-		*/
 
 	
 	if (g_player != nullptr && g_gameCamera != nullptr) {
@@ -88,11 +75,7 @@ void GameScene::Update()
 */
 void GameScene::Render(CRenderContext& renderContext)
 {
-	/*
-	renderContext.SetRenderState(RS_ZWRITEENABLE, FALSE);
-	GameSprite.Draw(renderContext);
-	renderContext.SetRenderState(RS_ZWRITEENABLE, TRUE);
-	*/
+
 }
 
 

@@ -166,7 +166,7 @@
     <ClCompile Include="Fade.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Map.cpp" />
-    <ClCompile Include="MapChip.cpp" />
+    <ClCompile Include="Mapchip.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Scene\GameScene.cpp" />
     <ClCompile Include="Scene\TitleScene.cpp" />
@@ -181,7 +181,7 @@
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Fade.h" />
     <ClInclude Include="Map.h" />
-    <ClInclude Include="MapChip.h" />
+    <ClInclude Include="Mapchip.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Scene\GameScene.h" />
     <ClInclude Include="Scene\TitleScene.h" />

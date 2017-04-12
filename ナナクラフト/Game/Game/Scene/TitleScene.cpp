@@ -26,10 +26,11 @@ bool TitleScene::Start()
 	m_titleBGSprite.Init(&m_titleBGTexture);
 	m_titleBGSprite.SetSize({ 1920,1080 });
 
-	m_titleBGTexture2.Load("Assets/sprite/yoko.png");
+	m_titleBGTexture2.Load("Assets/sprite/END2.png");
 	m_titleBGSprite2.Init(&m_titleBGTexture2);
+	
 
-	m_titleBGTexture3.Load("Assets/sprite/apple.png");
+	m_titleBGTexture3.Load("Assets/sprite/START.png");
 	m_titleBGSprite3.Init(&m_titleBGTexture3);
 	m_titleBGSprite3.SetPosition({ 10,-100 });
 	
@@ -43,21 +44,21 @@ void TitleScene::Update()
 
 	if (GetAsyncKeyState(VK_DOWN) & 0x8000)
 	{
-		m_titleBGTexture3.Load("Assets/sprite/hidari2.png");
+		m_titleBGTexture3.Load("Assets/sprite/START2.png");
 		m_titleBGSprite3.Init(&m_titleBGTexture3);
-		m_titleBGTexture2.Load("Assets/sprite/crab.png");
+		m_titleBGTexture2.Load("Assets/sprite/END.png");
 		m_titleBGSprite2.Init(&m_titleBGTexture2);
-		m_titleBGSprite2.SetSize({ 100,100 });
+		//m_titleBGSprite2.SetPosition({ 10,-100 });
 
 		GAME = START;
 	}
 
 	if (GetAsyncKeyState(VK_UP) & 0x8000)
 	{
-		m_titleBGTexture2.Load("Assets/sprite/yoko.png");
+		m_titleBGTexture2.Load("Assets/sprite/END2.png");
 		m_titleBGSprite2.Init(&m_titleBGTexture2);
 
-		m_titleBGTexture3.Load("Assets/sprite/hidari.png");
+		m_titleBGTexture3.Load("Assets/sprite/START.png");
 		m_titleBGSprite3.Init(&m_titleBGTexture3);
 		m_titleBGSprite3.SetPosition({ 10,-100 });
 

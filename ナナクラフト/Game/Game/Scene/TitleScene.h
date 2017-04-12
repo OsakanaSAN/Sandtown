@@ -44,7 +44,7 @@ private:
 	CSprite		m_titleBGSprite;		//!<タイトル画面の背景のスプライト。
 	CTexture	m_titleBGTexture;		//!<タイトル画面の背景のテクスチャ。
 
-	//おさかなソーセージ
+	
 	CSprite		m_titleBGSprite2;		//!<タイトル画面の背景のスプライト。
 	CTexture	m_titleBGTexture2;		//!<タイトル画面の背景のテクスチャ。
 

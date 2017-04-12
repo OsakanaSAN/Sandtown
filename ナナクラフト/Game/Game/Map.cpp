@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "Map.h"
-#include "MapChip.h"
+#include "Mapchip.h"
 
 struct SMapInfo {
 	const char* modelName;
@@ -10,10 +10,9 @@ struct SMapInfo {
 
 //マップの配置情報。
 SMapInfo mapLocInfo[] = {
-
-#include "Map/danmati.h"//右クリックドキュメントーーを開く
-
+#include "locationinfo.h"
 };
+
 
 Map::Map()
 {
@@ -30,12 +29,16 @@ bool Map::Start()
 	int numObject = sizeof(mapLocInfo) / sizeof(mapLocInfo[0]);
 	//置かれているオブジェクトの数だけマップチップを生成する。
 	for (int i = 0; i < numObject; i++) {
-		MapChip* mapChip = NewGO<MapChip>(0);
+		Mapchip* mapChip = NewGO<Mapchip>(0);
 		//モデル名、座標、回転を与えてマップチップを初期化する。
 		mapChip->Init(mapLocInfo[i].modelName, mapLocInfo[i].position, mapLocInfo[i].rotation);
 	}
-	return true;
+
+	return true; //一回だけ呼ばれる
+
+
 }
+
 void Map::Update()
 {
 

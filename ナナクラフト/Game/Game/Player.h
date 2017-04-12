@@ -24,6 +24,9 @@ public:
 
 	}
 
+	void AngleSet();
+	void AnimetionSet();
+
 	void OVERset(int a)
 	{
 		OVER = a;
@@ -31,12 +34,19 @@ public:
 
 
 private:
+	enum ANIME {
+		RUN,
+		STAND,
+	};
+
+
+
 	//ここからメンバ変数。
 	CSkinModel				skinModel;					//スキンモデル。
 	CSkinModelData			skinModelData;				//スキンモデルデータ。
 	CAnimation              Animation;
 	CCharacterController	characterController;		//キャラクタ―コントローラー。
-	CVector3				position = { 0.0f,0.0f,0.0f };	//座標。
+	CVector3				position = { 0.0f,1.0f,0.0f };	//座標。
 	CVector3                Qpos;
 
 	int                     OVER = -100;
@@ -45,7 +55,7 @@ private:
 	CVector3                Rposition = { 3.0f,-3.0,1.0f };
 	CLight                  All;        //プレイヤのライト
 	float					angle = 90;
-	CVector3				movespeed;
+
 	int						currentAnimSetNo;
 	bool					Isrun;
 	bool					Ismove;
