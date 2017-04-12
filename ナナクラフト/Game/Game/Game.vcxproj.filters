@@ -12,6 +12,9 @@
     <Filter Include="Source Files\Scene">
       <UniqueIdentifier>{32c313bd-07db-494a-af8e-de395cbec093}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\MAP">
+      <UniqueIdentifier>{29dd3b94-9361-44be-a4e2-74e78d17e07a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -35,11 +38,11 @@
     <ClCompile Include="Player.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Map.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="Mapchip.cpp">
+      <Filter>Source Files\MAP</Filter>
     </ClCompile>
-    <ClCompile Include="MapChip.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="Map.cpp">
+      <Filter>Source Files\MAP</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -61,11 +64,11 @@
     <ClInclude Include="Player.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="Map.h">
-      <Filter>Source Files</Filter>
+    <ClInclude Include="Mapchip.h">
+      <Filter>Source Files\MAP</Filter>
     </ClInclude>
-    <ClInclude Include="MapChip.h">
-      <Filter>Source Files</Filter>
+    <ClInclude Include="Map.h">
+      <Filter>Source Files\MAP</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

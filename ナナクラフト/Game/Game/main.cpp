@@ -4,7 +4,7 @@
 #include "Fade.h"
 #include "Camera.h"
 #include "Player.h"
-#include "Map.h"
+
 
 Fade*   g_fade = nullptr;
 CRandom g_random;
@@ -52,8 +52,6 @@ void InitTkEngine( HINSTANCE hInst )
 	initParam.graphicsConfig.aaConfig.isEnable = false;
 	//—”‰Šú‰»B
 	g_random.Init((unsigned long)time(NULL));
-
-
 
 	Engine().Init(initParam);	//‰Šú‰»B
 	

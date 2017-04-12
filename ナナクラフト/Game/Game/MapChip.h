@@ -1,24 +1,24 @@
 #pragma once
-
 #include "tkEngine/Physics/tkMeshCollider.h"
 #include "tkEngine/Physics/tkRigidBody.h"
 
-class MapChip :
-	public IGameObject
+class Mapchip : public IGameObject
 {
 public:
-	MapChip();
-	~MapChip();
-
+	Mapchip();
+	~Mapchip();
 	void Init(const char* modelName, CVector3 position, CQuaternion rotation);
 	void Update();
 	void Render(CRenderContext& renderContext);
 
-	//ここからメンバ変数
-	CSkinModel			skinModel;		//スキンモデル
-	CSkinModelData		skinModelData;	//スキンモデルデータ
-	CLight                  All;
+private:
+	CLight              Maplight;
+	CSkinModel			skinModel;		//スキンモデル。
+	CSkinModelData		skinModelData;	//スキンモデルデータ。
 	CMeshCollider		meshCollider;	//メッシュコライダー。
 	CRigidBody			rigidBody;		//剛体。
+	
+
+
 };
 

@@ -1,20 +1,23 @@
 #include "stdafx.h"
-#include "MapChip.h"
+#include "Mapchip.h"
 #include "Camera.h"
 
 extern Camera* g_gameCamera;
 
-MapChip::MapChip()
+Mapchip::Mapchip()
 {
-	All.SetAmbinetLight({ 1.0,1.0,1.0 });
+	//Maplight.SetAmbinetLight({ 0.01f, 0.01f, 0.01f }); //ライトの設定
+	//Maplight.SetDiffuseLightColor(0, { 0.9f, 0.9f, 0.9f, 1.0f });
+	Maplight.SetAmbinetLight(CVector3::One);
+	Maplight.SetEmissionLightColor({ 1.0f,1.0f,1.0f });
 }
 
 
-MapChip::~MapChip()
+Mapchip::~Mapchip()
 {
 }
 
-void MapChip::Init(const char* modelName, CVector3 position, CQuaternion rotation)
+void Mapchip::Init(const char* modelName, CVector3 position, CQuaternion rotation)
 {
 	//ファイルパスを作成する。
 	char filePath[256];
@@ -24,7 +27,9 @@ void MapChip::Init(const char* modelName, CVector3 position, CQuaternion rotatio
 	//CSkinModelを初期化。
 	skinModel.Init(&skinModelData);
 	//デフォルトライトを設定して。
-	skinModel.SetLight(&All);
+	skinModel.SetLight(&Maplight);
+	//skinModel.SetShadowCasterFlag(true);
+	//skinModel.SetShadowReceiverFlag(true);
 	//ワールド行列を更新する。
 	//このオブジェクトは動かないので、初期化で一回だけワールド行列を作成すればおｋ。
 	skinModel.Update(position, rotation, CVector3::One);
@@ -45,11 +50,12 @@ void MapChip::Init(const char* modelName, CVector3 position, CQuaternion rotatio
 	PhysicsWorld().AddRigidBody(&rigidBody);
 }
 
-void MapChip::Update()
+void Mapchip::Update()
 {
 	//初期化の時に作成しているので何もしない。
 }
-void MapChip::Render(CRenderContext& renderContext)
+void Mapchip::Render(CRenderContext& renderContext)
 {
 	skinModel.Draw(renderContext, g_gameCamera->GetViewMatrix(), g_gameCamera->GetProjectionMatrix());
 }
+
