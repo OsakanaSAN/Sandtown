@@ -1,5 +1,16 @@
+<<<<<<< HEAD
 ﻿  Map.cpp
 LINK : warning LNK4075: /INCREMENTAL は /LTCG の指定によって無視されます。
   LINK : /LTCG が指定されましたが、コードの生成は必要ありません。リンク コマンド ラインから /LTCG を削除し、リンカーの性能を改善してください。
   Game.vcxproj -> C:\Users\kbc16b15\Desktop\github\Sandtown\ナナクラフト\Game\x64\Release\Game.exe
   Game.vcxproj -> C:\Users\kbc16b15\Desktop\github\Sandtown\ナナクラフト\Game\x64\Release\Game.pdb (Full PDB)
+=======
+﻿  Player.cpp
+Player.cpp(164): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
+Player.cpp(165): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
+Player.cpp(189): warning C4305: '引数': 'double' から 'float' へ切り詰めます。
+LINK : warning LNK4075: /INCREMENTAL は /LTCG の指定によって無視されます。
+  LINK : /LTCG が指定されましたが、コードの生成は必要ありません。リンク コマンド ラインから /LTCG を削除し、リンカーの性能を改善してください。
+  Game.vcxproj -> C:\Users\kbc16b03\Desktop\Sandtown\ナナクラフト\Game\x64\Release\Game.exe
+  Game.vcxproj -> C:\Users\kbc16b03\Desktop\Sandtown\ナナクラフト\Game\x64\Release\Game.pdb (Full PDB)
+>>>>>>> 33a61ce08c577508330d4f0fcd0e19131d058003

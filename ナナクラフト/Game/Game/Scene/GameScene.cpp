@@ -17,8 +17,11 @@ Player* g_player;
 Camera* g_gameCamera;
 Map*    g_map;
 
+
 GameScene::GameScene()
 {
+
+
 	g_map = NewGO<Map>(0);
 	g_player = NewGO<Player>(0);
 	g_gameCamera = NewGO<Camera>(0);

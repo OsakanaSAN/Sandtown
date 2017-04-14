@@ -22,8 +22,7 @@ enum {
 Player::Player()
 {
 	//ファイルの読み込み
-	All.SetAmbinetLight({ 1.0f,1.0f,1.0f });
-	All.SetEmissionLightColor({ 1.0f,1.0f,1.0f });
+	//All.SetAmbinetLight({ 1.0f,1.0f,1.0f });
 
 	ifstream fin("Assets/DATA/tst.txt");
 	if (!fin)
@@ -53,19 +52,28 @@ Player::~Player()
 	fout << position.x << endl;
 	fout << position.y << endl;
 	fout << position.z << endl;
-
 	fout.close();
 
 }
 
 bool Player::Start()
 {
+	All.SetPointLightColor({ 1.0f,1.0f,1.5f,4.0f });
 	
+<<<<<<< HEAD
 
 	skinModelData.LoadModelData("Assets/modelData/cabetu.X", &Animation);
 	skinModel.Init(&skinModelData);
 	skinModel.SetLight(&All);//デフォルトライトを設定。
 	m_rotion.SetRotation(CVector3(0.0f, 1.0f, 0.0f), CMath::DegToRad(0.0f));
+=======
+\
+
+	skinModelData.LoadModelData("Assets/modelData/Unity.X", &Animation);
+	skinModel.Init(&skinModelData);
+	skinModel.SetLight(&All);	//デフォルトライトを設定。
+	
+>>>>>>> 33a61ce08c577508330d4f0fcd0e19131d058003
 
 
 
@@ -86,6 +94,8 @@ bool Player::Start()
 
 void Player::Update()
 {
+	All.SetPointLightPosition(Getpos());
+
 	AngleSet();  //キャラクターの向きを変更する
 	Move();      //キャラの移動
 	AnimetionSet();
@@ -160,6 +170,7 @@ void Player::AngleSet()
 
 	moveSpeed.x = moveDir.x * MOVESPEED;
 	moveSpeed.z = moveDir.z * MOVESPEED;
+
 
 	if (moveDir.LengthSq() > 0.0001f) {
 
