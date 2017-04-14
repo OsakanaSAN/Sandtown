@@ -46,7 +46,7 @@ private:
 	CSkinModelData			skinModelData;				//スキンモデルデータ。
 	CAnimation              Animation;
 	CCharacterController	characterController;		//キャラクタ―コントローラー。
-	CVector3				position = { 0.0f,1.0f,0.0f };	//座標。
+	CVector3				position = { 0.0f,0.0f,0.0f };	//座標。
 	CVector3                Qpos;
 
 	int                     OVER = -100;

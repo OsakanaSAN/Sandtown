@@ -10,7 +10,7 @@ struct SMapInfo {
 
 //マップの配置情報。
 SMapInfo mapLocInfo[] = {
-#include "locationinfo.h"
+#include "Map/danmati.h"
 };
 
 

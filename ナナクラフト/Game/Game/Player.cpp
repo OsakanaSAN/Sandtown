@@ -62,10 +62,9 @@ bool Player::Start()
 {
 	
 
-
-	skinModelData.LoadModelData("Assets/modelData/Unity.X", &Animation);
+	skinModelData.LoadModelData("Assets/modelData/cabetu.X", &Animation);
 	skinModel.Init(&skinModelData);
-	skinModel.SetLight(&All);	//デフォルトライトを設定。
+	skinModel.SetLight(&All);//デフォルトライトを設定。
 	m_rotion.SetRotation(CVector3(0.0f, 1.0f, 0.0f), CMath::DegToRad(0.0f));
 
 
@@ -129,7 +128,6 @@ void Player::Move()
 		Isjump = true;
 
 	}
-
 
 }
 
