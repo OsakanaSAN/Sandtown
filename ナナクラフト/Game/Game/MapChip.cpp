@@ -1,15 +1,17 @@
 #include "stdafx.h"
 #include "Mapchip.h"
 #include "Camera.h"
+#include "Scene/GameScene.h"
 
 extern Camera* g_gameCamera;
+extern Player* g_player;
 
 Mapchip::Mapchip()
 {
-	//Maplight.SetAmbinetLight({ 0.01f, 0.01f, 0.01f }); //ライトの設定
-	//Maplight.SetDiffuseLightColor(0, { 0.9f, 0.9f, 0.9f, 1.0f });
-	Maplight.SetAmbinetLight(CVector3::One);
-	Maplight.SetEmissionLightColor({ 1.0f,1.0f,1.0f });
+	Maplight.SetAmbinetLight({ 0.1f, 0.1f, 0.1f }); //ライトの設定
+	Maplight.SetPointLightPosition(g_player->Getpos());
+	Maplight.SetPointLightColor({ 1.0f,1.0f,1.0f,5.0f });
+	
 }
 
 
@@ -53,6 +55,11 @@ void Mapchip::Init(const char* modelName, CVector3 position, CQuaternion rotatio
 void Mapchip::Update()
 {
 	//初期化の時に作成しているので何もしない。
+	if (g_player != NULL)
+	{
+		Maplight.SetPointLightPosition(g_player->Getpos());
+	}
+
 }
 void Mapchip::Render(CRenderContext& renderContext)
 {

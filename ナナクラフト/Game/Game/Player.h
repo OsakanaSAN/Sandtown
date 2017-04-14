@@ -54,7 +54,8 @@ private:
 
 	CVector3                Rposition = { 3.0f,-3.0,1.0f };
 	CLight                  All;        //プレイヤのライト
-	float					angle = 90;
+	CLight                  PLight;
+	
 
 	int						currentAnimSetNo;
 	bool					Isrun;

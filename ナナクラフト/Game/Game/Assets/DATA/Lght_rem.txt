@@ -1,0 +1,3 @@
+Ambient_Light  ‘S‘Ì(Œü‚«‚ªŠÖŒW‚È‚¢)‚ğŒõ‚ç‚¹‚éB
+Diffuse_Light  ŠgU”½ËŒõ
+Point_Light    “_ŒõŒ¹

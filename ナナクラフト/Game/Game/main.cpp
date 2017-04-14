@@ -46,6 +46,9 @@ void InitTkEngine( HINSTANCE hInst )
 	initParam.graphicsConfig.reflectionMapConfig.isEnable = false;
 	initParam.graphicsConfig.reflectionMapConfig.reflectionMapWidth = 512;
 	initParam.graphicsConfig.reflectionMapConfig.reflectionMapHeight = 512;
+
+	
+
 	//DOF
 	//initParam.graphicsConfig.dofConfig.isEnable = false;
 	//AA
@@ -70,7 +73,7 @@ int WINAPI wWinMain(
 	//tkEngineの初期化。
 	InitTkEngine( hInst );
 	
-
+	
 	g_fade = NewGO<Fade>(1);
 
 	//タイトルシーンの作成。
