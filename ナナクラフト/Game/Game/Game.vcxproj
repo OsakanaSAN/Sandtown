@@ -162,6 +162,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BattleCamera.cpp" />
+    <ClCompile Include="BattleEnemy.cpp" />
+    <ClCompile Include="BattlePlayer.cpp" />
+    <ClCompile Include="BattleScene.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Fade.cpp" />
     <ClCompile Include="main.cpp" />
@@ -178,6 +182,10 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BattleCamera.h" />
+    <ClInclude Include="BattleEnemy.h" />
+    <ClInclude Include="BattlePlayer.h" />
+    <ClInclude Include="BattleScene.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Fade.h" />
     <ClInclude Include="Map.h" />

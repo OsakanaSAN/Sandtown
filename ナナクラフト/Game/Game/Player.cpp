@@ -22,8 +22,9 @@ enum {
 Player::Player()
 {
 	//ファイルの読み込み
-	//All.SetAmbinetLight({ 1.0f,1.0f,1.0f });
+	All.SetAmbinetLight({ 1.0f,1.0f,1.0f });
 
+	/*
 	ifstream fin("Assets/DATA/tst.txt");
 	if (!fin)
 	{
@@ -33,7 +34,7 @@ Player::Player()
 	fin.precision(3);
 	fin >> position.x >> position.y >> position.z;
 	fin.close();
-	
+	*/
 	
 }
 
@@ -60,20 +61,13 @@ bool Player::Start()
 {
 	All.SetPointLightColor({ 1.0f,1.0f,1.5f,4.0f });
 	
-<<<<<<< HEAD
 
-	skinModelData.LoadModelData("Assets/modelData/cabetu.X", &Animation);
-	skinModel.Init(&skinModelData);
-	skinModel.SetLight(&All);//デフォルトライトを設定。
-	m_rotion.SetRotation(CVector3(0.0f, 1.0f, 0.0f), CMath::DegToRad(0.0f));
-=======
-\
 
 	skinModelData.LoadModelData("Assets/modelData/Unity.X", &Animation);
 	skinModel.Init(&skinModelData);
-	skinModel.SetLight(&All);	//デフォルトライトを設定。
-	
->>>>>>> 33a61ce08c577508330d4f0fcd0e19131d058003
+	skinModel.SetLight(&All);//デフォルトライトを設定。
+	m_rotion.SetRotation(CVector3(0.0f, 1.0f, 0.0f), CMath::DegToRad(0.0f));
+
 
 
 

@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "TitleScene.h"
 #include "GameScene.h"
+#include "BattleScene.h"
 #include "Fade.h"
 
 
@@ -15,7 +16,7 @@ TitleScene::TitleScene()
 TitleScene::~TitleScene()
 {
 	
-	NewGO<GameScene>(0);
+	NewGO<BattleScene>(0);
 	
 }
 

@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "GameScene.h"
 #include "TitleScene.h"
+#include "BattleScene.h"
 #include "Fade.h"
 #include "Player.h"
 #include "Camera.h"
@@ -33,7 +34,7 @@ GameScene::~GameScene()
 {
 	DeleteGO(g_player);
 	DeleteGO(g_map);
-	//DeleteGO(g_gameCamera);
+	DeleteGO(g_gameCamera);
 	NewGO<TitleScene>(0);
 	
 }
