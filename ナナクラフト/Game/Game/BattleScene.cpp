@@ -3,16 +3,16 @@
 #include "Scene/GameScene.h"
 #include "Scene/TitleScene.h"
 #include "BattlePlayer.h"
-//#include "Camera.h"
-
 #include "Fade.h"
 #include "BattleEnemy.h"
 #include "BattleCamera.h"
+#include "Map.h"
 
 extern Fade* g_fade;
 BattlePlayer* g_battleplayer;
 BattleCamera* g_battleCamera;
 BattleEnemy* g_battleenemy;
+//extern Map* g_map;
 
 
 BattleScene* g_battleScene = NULL;
@@ -24,6 +24,7 @@ BattleScene::BattleScene()
 	g_battleplayer = NewGO<BattlePlayer>(0);
 	g_battleCamera = NewGO<BattleCamera>(0);
 	g_battleenemy = NewGO<BattleEnemy>(0);
+	/*g_map = NewGO<Map>(0);*/
 
 }
 
@@ -31,10 +32,9 @@ BattleScene::BattleScene()
 BattleScene::~BattleScene()
 {
 	DeleteGO(g_battleplayer);
-
+	/*DeleteGO(g_map);*/
 	DeleteGO(g_battleenemy);
 	DeleteGO(g_battleCamera);
-	DeleteGO(this);
 	NewGO<GameScene>(0);
 
 }

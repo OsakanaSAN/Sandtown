@@ -22,7 +22,7 @@ enum {
 Player::Player()
 {
 	//ƒtƒ@ƒCƒ‹‚Ì“Ç‚İ‚İ
-	All.SetAmbinetLight({ 1.0f,1.0f,1.0f });
+	All.SetAmbinetLight({ 0.5f,0.5f,0.5f });
 
 	/*
 	ifstream fin("Assets/DATA/tst.txt");

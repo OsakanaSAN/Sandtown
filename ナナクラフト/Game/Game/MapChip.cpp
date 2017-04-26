@@ -2,15 +2,26 @@
 #include "Mapchip.h"
 #include "Camera.h"
 #include "Scene/GameScene.h"
+//#include "Player.h"
+
+//#include "BattleCamera.h"
+//#include "BattlePlayer.h"
 
 extern Camera* g_gameCamera;
 extern Player* g_player;
+//extern BattlePlayer* g_battleplayer;
+//extern BattleCamera* g_battleCamera;
 
 Mapchip::Mapchip()
 {
-	Maplight.SetAmbinetLight({ 0.1f, 0.1f, 0.1f }); //ライトの設定
-	Maplight.SetPointLightPosition(g_player->Getpos());
-	Maplight.SetPointLightColor({ 1.0f,1.0f,1.0f,5.0f });
+	Maplight.SetAmbinetLight({ 0.3f, 0.3f, 0.3f }); //ライトの設定
+	
+	if (g_player != NULL) {
+		Maplight.SetPointLightPosition(g_player->Getpos());
+	}
+		//Maplight.SetPointLightPosition(g_battleplayer->Getpos());
+
+
 	
 }
 
@@ -63,6 +74,7 @@ void Mapchip::Update()
 }
 void Mapchip::Render(CRenderContext& renderContext)
 {
-	skinModel.Draw(renderContext, g_gameCamera->GetViewMatrix(), g_gameCamera->GetProjectionMatrix());
+		skinModel.Draw(renderContext, g_gameCamera->GetViewMatrix(), g_gameCamera->GetProjectionMatrix());
+
 }
 
