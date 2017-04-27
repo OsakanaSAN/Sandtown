@@ -37,7 +37,8 @@ public:
 	*/
 	void Render(CRenderContext& renderContext);
 
-	
+	void DeteScene();
+
 	CLight& GetLite()
 	{
 		return light;
@@ -59,18 +60,17 @@ private:
 	CLight  light;								//!<ライト。
 	CSoundSource* bgmSource;					//!<BGMソース。
 
+	enum  MapScene
+	{
+		STOP,
+		MACHI,
+		DOUKUTU,
 
-	
-	CTexture* 				texture[52];			//!<テクスチャ。
-	enum EnCardType {
-		enCardType_Heart,		//!<ハート。
-		enCardType_Dia,			//!<ダイヤ。
-		enCardType_Spade,		//!<スペード。
-		enCardType_Clover,		//!<クローバー。
-		enCardType_Joker,		//!<ジョーカー。
 	};
-	int                     no = 10;
-	EnCardType				type = enCardType_Clover;				//!<カードの種類。
+	
+
+	MapScene      mapscene;
+	MapScene         scenes;
 
 
 	CSkinModel testModel[52];	//!<テストモデル。
