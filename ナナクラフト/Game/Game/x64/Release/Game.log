@@ -1,0 +1,57 @@
+﻿  GameScene.cpp
+LINK : warning LNK4075: /INCREMENTAL は /LTCG の指定によって無視されます。
+  LINK : /LTCG が指定されましたが、コードの生成は必要ありません。リンク コマンド ラインから /LTCG を削除し、リンカーの性能を改善してください。
+tkEngine.lib(tkCharacterController.obj) : warning LNK4099: PDB 'tkEngine.pdb' が 'tkEngine.lib(tkCharacterController.obj)' で、または 'C:\Users\kbc16b03\Desktop\ナナクラフト\Game\x64\Release\tkEngine.pdb' に見つかりません。デバッグ情報がないものとして、オブジェクトにリンクします。
+tkEngine.lib(tkgameobjectmanager.obj) : warning LNK4099: PDB 'tkEngine.pdb' が 'tkEngine.lib(tkgameobjectmanager.obj)' で、または 'C:\Users\kbc16b03\Desktop\ナナクラフト\Game\x64\Release\tkEngine.pdb' に見つかりません。デバッグ情報がないものとして、オブジェクトにリンクします。
+tkEngine.lib(tkBloomRender.obj) : warning LNK4099: PDB 'tkEngine.pdb' が 'tkEngine.lib(tkBloomRender.obj)' で、または 'C:\Users\kbc16b03\Desktop\ナナクラフト\Game\x64\Release\tkEngine.pdb' に見つかりません。デバッグ情報がないものとして、オブジェクトにリンクします。
+tkEngine.lib(tkDOF.obj) : warning LNK4099: PDB 'tkEngine.pdb' が 'tkEngine.lib(tkDOF.obj)' で、または 'C:\Users\kbc16b03\Desktop\ナナクラフト\Game\x64\Release\tkEngine.pdb' に見つかりません。デバッグ情報がないものとして、オブジェクトにリンクします。
+tkEngine.lib(tkEdgeRender.obj) : warning LNK4099: PDB 'tkEngine.pdb' が 'tkEngine.lib(tkEdgeRender.obj)' で、または 'C:\Users\kbc16b03\Desktop\ナナクラフト\Game\x64\Release\tkEngine.pdb' に見つかりません。デバッグ情報がないものとして、オブジェクトにリンクします。
+tkEngine.lib(tkFxaa.obj) : warning LNK4099: PDB 'tkEngine.pdb' が 'tkEngine.lib(tkFxaa.obj)' で、または 'C:\Users\kbc16b03\Desktop\ナナクラフト\Game\x64\Release\tkEngine.pdb' に見つかりません。デバッグ情報がないものとして、オブジェクトにリンクします。
+tkEngine.lib(tkMonochromeFilter.obj) : warning LNK4099: PDB 'tkEngine.pdb' が 'tkEngine.lib(tkMonochromeFilter.obj)' で、または 'C:\Users\kbc16b03\Desktop\ナナクラフト\Game\x64\Release\tkEngine.pdb' に見つかりません。デバッグ情報がないものとして、オブジェクトにリンクします。
+tkEngine.lib(tkMotionBlur.obj) : warning LNK4099: PDB 'tkEngine.pdb' が 'tkEngine.lib(tkMotionBlur.obj)' で、または 'C:\Users\kbc16b03\Desktop\ナナクラフト\Game\x64\Release\tkEngine.pdb' に見つかりません。デバッグ情報がないものとして、オブジェクトにリンクします。
+tkEngine.lib(tkPostEffect.obj) : warning LNK4099: PDB 'tkEngine.pdb' が 'tkEngine.lib(tkPostEffect.obj)' で、または 'C:\Users\kbc16b03\Desktop\ナナクラフト\Game\x64\Release\tkEngine.pdb' に見つかりません。デバッグ情報がないものとして、オブジェクトにリンクします。
+tkEngine.lib(tkSepiaFilter.obj) : warning LNK4099: PDB 'tkEngine.pdb' が 'tkEngine.lib(tkSepiaFilter.obj)' で、または 'C:\Users\kbc16b03\Desktop\ナナクラフト\Game\x64\Release\tkEngine.pdb' に見つかりません。デバッグ情報がないものとして、オブジェクトにリンクします。
+tkEngine.lib(tkIDMap.obj) : warning LNK4099: PDB 'tkEngine.pdb' が 'tkEngine.lib(tkIDMap.obj)' で、または 'C:\Users\kbc16b03\Desktop\ナナクラフト\Game\x64\Release\tkEngine.pdb' に見つかりません。デバッグ情報がないものとして、オブジェクトにリンクします。
+tkEngine.lib(tkPreRender.obj) : warning LNK4099: PDB 'tkEngine.pdb' が 'tkEngine.lib(tkPreRender.obj)' で、または 'C:\Users\kbc16b03\Desktop\ナナクラフト\Game\x64\Release\tkEngine.pdb' に見つかりません。デバッグ情報がないものとして、オブジェクトにリンクします。
+tkEngine.lib(tkReflectionMap.obj) : warning LNK4099: PDB 'tkEngine.pdb' が 'tkEngine.lib(tkReflectionMap.obj)' で、または 'C:\Users\kbc16b03\Desktop\ナナクラフト\Game\x64\Release\tkEngine.pdb' に見つかりません。デバッグ情報がないものとして、オブジェクトにリンクします。
+tkEngine.lib(tkShadowCaster.obj) : warning LNK4099: PDB 'tkEngine.pdb' が 'tkEngine.lib(tkShadowCaster.obj)' で、または 'C:\Users\kbc16b03\Desktop\ナナクラフト\Game\x64\Release\tkEngine.pdb' に見つかりません。デバッグ情報がないものとして、オブジェクトにリンクします。
+tkEngine.lib(tkShadowMap.obj) : warning LNK4099: PDB 'tkEngine.pdb' が 'tkEngine.lib(tkShadowMap.obj)' で、または 'C:\Users\kbc16b03\Desktop\ナナクラフト\Game\x64\Release\tkEngine.pdb' に見つかりません。デバッグ情報がないものとして、オブジェクトにリンクします。
+tkEngine.lib(tkSprite.obj) : warning LNK4099: PDB 'tkEngine.pdb' が 'tkEngine.lib(tkSprite.obj)' で、または 'C:\Users\kbc16b03\Desktop\ナナクラフト\Game\x64\Release\tkEngine.pdb' に見つかりません。デバッグ情報がないものとして、オブジェクトにリンクします。
+tkEngine.lib(tkAnimation.obj) : warning LNK4099: PDB 'tkEngine.pdb' が 'tkEngine.lib(tkAnimation.obj)' で、または 'C:\Users\kbc16b03\Desktop\ナナクラフト\Game\x64\Release\tkEngine.pdb' に見つかりません。デバッグ情報がないものとして、オブジェクトにリンクします。
+tkEngine.lib(tkBlur.obj) : warning LNK4099: PDB 'tkEngine.pdb' が 'tkEngine.lib(tkBlur.obj)' で、または 'C:\Users\kbc16b03\Desktop\ナナクラフト\Game\x64\Release\tkEngine.pdb' に見つかりません。デバッグ情報がないものとして、オブジェクトにリンクします。
+tkEngine.lib(tkCamera.obj) : warning LNK4099: PDB 'tkEngine.pdb' が 'tkEngine.lib(tkCamera.obj)' で、または 'C:\Users\kbc16b03\Desktop\ナナクラフト\Game\x64\Release\tkEngine.pdb' に見つかりません。デバッグ情報がないものとして、オブジェクトにリンクします。
+tkEngine.lib(tkEffect.obj) : warning LNK4099: PDB 'tkEngine.pdb' が 'tkEngine.lib(tkEffect.obj)' で、または 'C:\Users\kbc16b03\Desktop\ナナクラフト\Game\x64\Release\tkEngine.pdb' に見つかりません。デバッグ情報がないものとして、オブジェクトにリンクします。
+tkEngine.lib(tkEffectManager.obj) : warning LNK4099: PDB 'tkEngine.pdb' が 'tkEngine.lib(tkEffectManager.obj)' で、または 'C:\Users\kbc16b03\Desktop\ナナクラフト\Game\x64\Release\tkEngine.pdb' に見つかりません。デバッグ情報がないものとして、オブジェクトにリンクします。
+tkEngine.lib(tkFont.obj) : warning LNK4099: PDB 'tkEngine.pdb' が 'tkEngine.lib(tkFont.obj)' で、または 'C:\Users\kbc16b03\Desktop\ナナクラフト\Game\x64\Release\tkEngine.pdb' に見つかりません。デバッグ情報がないものとして、オブジェクトにリンクします。
+tkEngine.lib(tkGaussianBlur.obj) : warning LNK4099: PDB 'tkEngine.pdb' が 'tkEngine.lib(tkGaussianBlur.obj)' で、または 'C:\Users\kbc16b03\Desktop\ナナクラフト\Game\x64\Release\tkEngine.pdb' に見つかりません。デバッグ情報がないものとして、オブジェクトにリンクします。
+tkEngine.lib(tkIndexBuffer.obj) : warning LNK4099: PDB 'tkEngine.pdb' が 'tkEngine.lib(tkIndexBuffer.obj)' で、または 'C:\Users\kbc16b03\Desktop\ナナクラフト\Game\x64\Release\tkEngine.pdb' に見つかりません。デバッグ情報がないものとして、オブジェクトにリンクします。
+tkEngine.lib(tkPrimitive.obj) : warning LNK4099: PDB 'tkEngine.pdb' が 'tkEngine.lib(tkPrimitive.obj)' で、または 'C:\Users\kbc16b03\Desktop\ナナクラフト\Game\x64\Release\tkEngine.pdb' に見つかりません。デバッグ情報がないものとして、オブジェクトにリンクします。
+tkEngine.lib(tkRenderCommandBuffer.obj) : warning LNK4099: PDB 'tkEngine.pdb' が 'tkEngine.lib(tkRenderCommandBuffer.obj)' で、または 'C:\Users\kbc16b03\Desktop\ナナクラフト\Game\x64\Release\tkEngine.pdb' に見つかりません。デバッグ情報がないものとして、オブジェクトにリンクします。
+tkEngine.lib(tkRenderContext.obj) : warning LNK4099: PDB 'tkEngine.pdb' が 'tkEngine.lib(tkRenderContext.obj)' で、または 'C:\Users\kbc16b03\Desktop\ナナクラフト\Game\x64\Release\tkEngine.pdb' に見つかりません。デバッグ情報がないものとして、オブジェクトにリンクします。
+tkEngine.lib(tkRenderTarget.obj) : warning LNK4099: PDB 'tkEngine.pdb' が 'tkEngine.lib(tkRenderTarget.obj)' で、または 'C:\Users\kbc16b03\Desktop\ナナクラフト\Game\x64\Release\tkEngine.pdb' に見つかりません。デバッグ情報がないものとして、オブジェクトにリンクします。
+tkEngine.lib(tkSkinModel.obj) : warning LNK4099: PDB 'tkEngine.pdb' が 'tkEngine.lib(tkSkinModel.obj)' で、または 'C:\Users\kbc16b03\Desktop\ナナクラフト\Game\x64\Release\tkEngine.pdb' に見つかりません。デバッグ情報がないものとして、オブジェクトにリンクします。
+tkEngine.lib(tkSkinModelData.obj) : warning LNK4099: PDB 'tkEngine.pdb' が 'tkEngine.lib(tkSkinModelData.obj)' で、または 'C:\Users\kbc16b03\Desktop\ナナクラフト\Game\x64\Release\tkEngine.pdb' に見つかりません。デバッグ情報がないものとして、オブジェクトにリンクします。
+tkEngine.lib(tkSkinModelMaterial.obj) : warning LNK4099: PDB 'tkEngine.pdb' が 'tkEngine.lib(tkSkinModelMaterial.obj)' で、または 'C:\Users\kbc16b03\Desktop\ナナクラフト\Game\x64\Release\tkEngine.pdb' に見つかりません。デバッグ情報がないものとして、オブジェクトにリンクします。
+tkEngine.lib(tkTexture.obj) : warning LNK4099: PDB 'tkEngine.pdb' が 'tkEngine.lib(tkTexture.obj)' で、または 'C:\Users\kbc16b03\Desktop\ナナクラフト\Game\x64\Release\tkEngine.pdb' に見つかりません。デバッグ情報がないものとして、オブジェクトにリンクします。
+tkEngine.lib(tkVertexBuffer.obj) : warning LNK4099: PDB 'tkEngine.pdb' が 'tkEngine.lib(tkVertexBuffer.obj)' で、または 'C:\Users\kbc16b03\Desktop\ナナクラフト\Game\x64\Release\tkEngine.pdb' に見つかりません。デバッグ情報がないものとして、オブジェクトにリンクします。
+tkEngine.lib(tkKeyInput.obj) : warning LNK4099: PDB 'tkEngine.pdb' が 'tkEngine.lib(tkKeyInput.obj)' で、または 'C:\Users\kbc16b03\Desktop\ナナクラフト\Game\x64\Release\tkEngine.pdb' に見つかりません。デバッグ情報がないものとして、オブジェクトにリンクします。
+tkEngine.lib(tkPad.obj) : warning LNK4099: PDB 'tkEngine.pdb' が 'tkEngine.lib(tkPad.obj)' で、または 'C:\Users\kbc16b03\Desktop\ナナクラフト\Game\x64\Release\tkEngine.pdb' に見つかりません。デバッグ情報がないものとして、オブジェクトにリンクします。
+tkEngine.lib(tkMath.obj) : warning LNK4099: PDB 'tkEngine.pdb' が 'tkEngine.lib(tkMath.obj)' で、または 'C:\Users\kbc16b03\Desktop\ナナクラフト\Game\x64\Release\tkEngine.pdb' に見つかりません。デバッグ情報がないものとして、オブジェクトにリンクします。
+tkEngine.lib(tkMatrix.obj) : warning LNK4099: PDB 'tkEngine.pdb' が 'tkEngine.lib(tkMatrix.obj)' で、または 'C:\Users\kbc16b03\Desktop\ナナクラフト\Game\x64\Release\tkEngine.pdb' に見つかりません。デバッグ情報がないものとして、オブジェクトにリンクします。
+tkEngine.lib(tkVector.obj) : warning LNK4099: PDB 'tkEngine.pdb' が 'tkEngine.lib(tkVector.obj)' で、または 'C:\Users\kbc16b03\Desktop\ナナクラフト\Game\x64\Release\tkEngine.pdb' に見つかりません。デバッグ情報がないものとして、オブジェクトにリンクします。
+tkEngine.lib(tkParticleResources.obj) : warning LNK4099: PDB 'tkEngine.pdb' が 'tkEngine.lib(tkParticleResources.obj)' で、または 'C:\Users\kbc16b03\Desktop\ナナクラフト\Game\x64\Release\tkEngine.pdb' に見つかりません。デバッグ情報がないものとして、オブジェクトにリンクします。
+tkEngine.lib(tkCapsuleCollider.obj) : warning LNK4099: PDB 'tkEngine.pdb' が 'tkEngine.lib(tkCapsuleCollider.obj)' で、または 'C:\Users\kbc16b03\Desktop\ナナクラフト\Game\x64\Release\tkEngine.pdb' に見つかりません。デバッグ情報がないものとして、オブジェクトにリンクします。
+tkEngine.lib(tkMeshCollider.obj) : warning LNK4099: PDB 'tkEngine.pdb' が 'tkEngine.lib(tkMeshCollider.obj)' で、または 'C:\Users\kbc16b03\Desktop\ナナクラフト\Game\x64\Release\tkEngine.pdb' に見つかりません。デバッグ情報がないものとして、オブジェクトにリンクします。
+tkEngine.lib(tkPhysics.obj) : warning LNK4099: PDB 'tkEngine.pdb' が 'tkEngine.lib(tkPhysics.obj)' で、または 'C:\Users\kbc16b03\Desktop\ナナクラフト\Game\x64\Release\tkEngine.pdb' に見つかりません。デバッグ情報がないものとして、オブジェクトにリンクします。
+tkEngine.lib(tkRigidBody.obj) : warning LNK4099: PDB 'tkEngine.pdb' が 'tkEngine.lib(tkRigidBody.obj)' で、または 'C:\Users\kbc16b03\Desktop\ナナクラフト\Game\x64\Release\tkEngine.pdb' に見つかりません。デバッグ情報がないものとして、オブジェクトにリンクします。
+tkEngine.lib(tkRandom.obj) : warning LNK4099: PDB 'tkEngine.pdb' が 'tkEngine.lib(tkRandom.obj)' で、または 'C:\Users\kbc16b03\Desktop\ナナクラフト\Game\x64\Release\tkEngine.pdb' に見つかりません。デバッグ情報がないものとして、オブジェクトにリンクします。
+tkEngine.lib(tkSkinModelDataHandle.obj) : warning LNK4099: PDB 'tkEngine.pdb' が 'tkEngine.lib(tkSkinModelDataHandle.obj)' で、または 'C:\Users\kbc16b03\Desktop\ナナクラフト\Game\x64\Release\tkEngine.pdb' に見つかりません。デバッグ情報がないものとして、オブジェクトにリンクします。
+tkEngine.lib(tkSkinModelDataResources.obj) : warning LNK4099: PDB 'tkEngine.pdb' が 'tkEngine.lib(tkSkinModelDataResources.obj)' で、または 'C:\Users\kbc16b03\Desktop\ナナクラフト\Game\x64\Release\tkEngine.pdb' に見つかりません。デバッグ情報がないものとして、オブジェクトにリンクします。
+tkEngine.lib(tkTextureResources.obj) : warning LNK4099: PDB 'tkEngine.pdb' が 'tkEngine.lib(tkTextureResources.obj)' で、または 'C:\Users\kbc16b03\Desktop\ナナクラフト\Game\x64\Release\tkEngine.pdb' に見つかりません。デバッグ情報がないものとして、オブジェクトにリンクします。
+tkEngine.lib(tkSoundEngine.obj) : warning LNK4099: PDB 'tkEngine.pdb' が 'tkEngine.lib(tkSoundEngine.obj)' で、または 'C:\Users\kbc16b03\Desktop\ナナクラフト\Game\x64\Release\tkEngine.pdb' に見つかりません。デバッグ情報がないものとして、オブジェクトにリンクします。
+tkEngine.lib(tkWaveFile.obj) : warning LNK4099: PDB 'tkEngine.pdb' が 'tkEngine.lib(tkWaveFile.obj)' で、または 'C:\Users\kbc16b03\Desktop\ナナクラフト\Game\x64\Release\tkEngine.pdb' に見つかりません。デバッグ情報がないものとして、オブジェクトにリンクします。
+tkEngine.lib(tkWaveFileBank.obj) : warning LNK4099: PDB 'tkEngine.pdb' が 'tkEngine.lib(tkWaveFileBank.obj)' で、または 'C:\Users\kbc16b03\Desktop\ナナクラフト\Game\x64\Release\tkEngine.pdb' に見つかりません。デバッグ情報がないものとして、オブジェクトにリンクします。
+tkEngine.lib(tkEngine.obj) : warning LNK4099: PDB 'tkEngine.pdb' が 'tkEngine.lib(tkEngine.obj)' で、または 'C:\Users\kbc16b03\Desktop\ナナクラフト\Game\x64\Release\tkEngine.pdb' に見つかりません。デバッグ情報がないものとして、オブジェクトにリンクします。
+tkEngine.lib(tkEnginePreCompile.obj) : warning LNK4099: PDB 'tkEngine.pdb' が 'tkEngine.lib(tkEnginePreCompile.obj)' で、または 'C:\Users\kbc16b03\Desktop\ナナクラフト\Game\x64\Release\tkEngine.pdb' に見つかりません。デバッグ情報がないものとして、オブジェクトにリンクします。
+  Game.vcxproj -> C:\Users\kbc16b03\Desktop\ナナクラフト\Game\x64\Release\Game.exe
+  Game.vcxproj -> C:\Users\kbc16b03\Desktop\ナナクラフト\Game\x64\Release\Game.pdb (Full PDB)

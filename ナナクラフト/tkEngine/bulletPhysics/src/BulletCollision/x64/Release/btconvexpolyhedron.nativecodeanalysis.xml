@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DEFECTS>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\kbc16b03\desktop\ナナクラフト\tkengine\bulletphysics\src\bulletcollision\collisionshapes\</FILEPATH>
+      <FILENAME>btconvexpolyhedron.cpp</FILENAME>
+      <LINE>255</LINE>
+      <COLUMN>18</COLUMN>
+    </SFA>
+    <DEFECTCODE>6246</DEFECTCODE>
+    <DESCRIPTION>'Step' のローカル宣言は、外部スコープの同じ名前の宣言を隠します。追加情報については、行 '234' ('c:\users\kbc16b03\desktop\ナナクラフト\tkengine\bulletphysics\src\bulletcollision\collisionshapes\btconvexpolyhedron.cpp') の以前の宣言を参照してください。</DESCRIPTION>
+    <FUNCTION>btConvexPolyhedron::initialize</FUNCTION>
+    <DECORATED>?initialize@btConvexPolyhedron@@QEAAXXZ</DECORATED>
+    <FUNCLINE>102</FUNCLINE>
+    <PATH>
+      <SFA>
+        <FILEPATH>c:\users\kbc16b03\desktop\ナナクラフト\tkengine\bulletphysics\src\bulletcollision\collisionshapes\</FILEPATH>
+        <FILENAME>btconvexpolyhedron.cpp</FILENAME>
+        <LINE>234</LINE>
+        <COLUMN>22</COLUMN>
+      </SFA>
+    </PATH>
+  </DEFECT>
+</DEFECTS>
