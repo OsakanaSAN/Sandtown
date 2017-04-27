@@ -19,18 +19,17 @@
 
 extern Fade* g_fade;
 GameScene* g_gameScene = NULL;
-<<<<<<< HEAD
-Player* g_player;
-Camera* g_gameCamera;
-Map*    g_map;
-Enemy* g_enemy;
-=======
+//<<<<<<< HEAD
+//Player* g_player;
+//Camera* g_gameCamera;
+//Map*    g_map;
+//Enemy* g_enemy;
+//=======
 Player* g_player = nullptr;
 Camera* g_gameCamera = nullptr;
 Map*    g_map = nullptr;
 Map2*   g_map2 = nullptr;
 
->>>>>>> 37efabf4920d3dd5dbc6a183ed3176a552758702
 
 GameScene::GameScene()
 {
