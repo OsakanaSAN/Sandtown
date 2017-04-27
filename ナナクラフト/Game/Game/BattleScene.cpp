@@ -66,6 +66,12 @@ bool BattleScene::Start()
 	m_ComandBGSprite3.Init(&m_ComandBGTexture3);
 	m_ComandBGSprite3.SetPosition({ -300,-300 });
 
+
+	m_LevelBGTexture4.Load("Assets/sprite/1.png");
+	m_LevelBGSprite4.Init(&m_LevelBGTexture4);
+	m_LevelBGSprite4.SetPosition({ 0,0 });
+	m_LevelBGSprite4.SetSize({ 500,500 });
+
 	return true;
 }
 
@@ -113,6 +119,7 @@ void BattleScene::Update()
 		m_ComandBGTexture2.Load("Assets/sprite/co1.png");
 		m_ComandBGSprite2.Init(&m_ComandBGTexture2);
 		m_ComandBGSprite2.SetPosition({ -400,-200 });
+		/*m_ComandBGSprite2.SetSize({ 500,500 });*/
 		if (!SelectQ) {
 			Comand = Escape;
 		}
@@ -146,7 +153,7 @@ void BattleScene::Render(CRenderContext&renderContext)
 
 	m_ComandBGSprite2.Draw(renderContext);
 	m_ComandBGSprite3.Draw(renderContext);
-
+	m_LevelBGSprite4.Draw(renderContext);
 }
 
 
