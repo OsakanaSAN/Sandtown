@@ -1,5 +1,28 @@
-<<<<<<< HEAD
-﻿  LinearMath.vcxproj -> C:\Users\kbc16b03\Desktop\Sandtown-master\Sandtown-master\ナナクラフト\Game\x64\Release\LinearMath.lib
-=======
-﻿  LinearMath.vcxproj -> C:\Users\kbc16b15\Desktop\github\Sandtown\ナナクラフト\Game\x64\Release\LinearMath.lib
->>>>>>> b2ffdba97f1ca503f7f06291be882f07dd912c9c
+﻿cl : コマンド ライン warning D9002: 不明なオプション '/arch:SSE' を無視します
+  btAlignedAllocator.cpp
+  btConvexHull.cpp
+  btConvexHullComputer.cpp
+  btGeometryUtil.cpp
+  btPolarDecomposition.cpp
+  btQuickprof.cpp
+  btSerializer.cpp
+  btVector3.cpp
+btVector3.cpp(179): warning C4267: '=': 'size_t' から 'long' に変換しました。データが失われているかもしれません。
+btVector3.cpp(184): warning C4267: '-=': 'size_t' から 'unsigned long' に変換しました。データが失われているかもしれません。
+btVector3.cpp(427): warning C4267: '=': 'size_t' から 'long' に変換しました。データが失われているかもしれません。
+btVector3.cpp(564): warning C4267: '=': 'size_t' から 'long' に変換しました。データが失われているかもしれません。
+btVector3.cpp(569): warning C4267: '-=': 'size_t' から 'unsigned long' に変換しました。データが失われているかもしれません。
+btVector3.cpp(815): warning C4267: '=': 'size_t' から 'long' に変換しました。データが失われているかもしれません。
+  C/C++ のコード分析を実行しています...
+  コードを生成中...
+  LinearMath.vcxproj -> C:\Users\kbc16b03\Desktop\ナナクラフト\Game\x64\Release\LinearMath.lib
+c:\users\kbc16b03\desktop\ナナクラフト\tkengine\bulletphysics\src\linearmath\btconvexhull.cpp(476): warning C6011: NULL ポインター 't' を逆参照しています。
+c:\users\kbc16b03\desktop\ナナクラフト\tkengine\bulletphysics\src\linearmath\btconvexhullcomputer.cpp(1470): warning C6011: NULL ポインター 'start0?start0:start1' を逆参照しています。
+c:\users\kbc16b03\desktop\ナナクラフト\tkengine\bulletphysics\src\linearmath\btconvexhullcomputer.cpp(1786): warning C28182: NULL ポインターを逆参照しています。'e' には、'pendingTail0' と同じ NULL 値が含まれます。
+c:\users\kbc16b03\desktop\ナナクラフト\tkengine\bulletphysics\src\linearmath\btconvexhullcomputer.cpp(2542): warning C28182: NULL ポインターを逆参照しています。'faceEdge' には、'prevFaceEdge' と同じ NULL 値が含まれます。これが行われる可能性のある以前の行 2512 を参照してください
+c:\users\kbc16b03\desktop\ナナクラフト\tkengine\bulletphysics\src\linearmath\btvector3.cpp(402): warning C6001: 初期化されていないメモリ 'x' を使用しています。
+c:\users\kbc16b03\desktop\ナナクラフト\tkengine\bulletphysics\src\linearmath\btvector3.cpp(403): warning C6001: 初期化されていないメモリ 'z' を使用しています。
+c:\users\kbc16b03\desktop\ナナクラフト\tkengine\bulletphysics\src\linearmath\btvector3.cpp(425): warning C6001: 初期化されていないメモリ 'stack_array' を使用しています。
+c:\users\kbc16b03\desktop\ナナクラフト\tkengine\bulletphysics\src\linearmath\btvector3.cpp(813): warning C6001: 初期化されていないメモリ 'stack_array' を使用しています。
+c:\users\kbc16b03\desktop\ナナクラフト\tkengine\bulletphysics\src\linearmath\btvector3.cpp(790): warning C6001: 初期化されていないメモリ 'x' を使用しています。
+c:\users\kbc16b03\desktop\ナナクラフト\tkengine\bulletphysics\src\linearmath\btvector3.cpp(791): warning C6001: 初期化されていないメモリ 'z' を使用しています。

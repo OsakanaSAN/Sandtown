@@ -6,6 +6,7 @@
 
 
 extern Fade* g_fade;
+GameScene* g_gamescene;
 
 TitleScene::TitleScene()
 {
@@ -16,7 +17,8 @@ TitleScene::TitleScene()
 TitleScene::~TitleScene()
 {
 	
-	NewGO<BattleScene>(0);
+	//NewGO<BattleScene>(0);
+	g_gameScene = NewGO<GameScene>(0);
 	
 }
 

@@ -2,7 +2,7 @@
 #include "Player.h"
 #include <iostream>
 #include <fstream>
-#define  MOVESPEED  5.0
+#define  MOVESPEED  8.0
 using  namespace std;
 
 

@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "Map.h"
-#include "Mapchip.h"
+
 
 struct SMapInfo {
 	const char* modelName;
@@ -8,9 +8,11 @@ struct SMapInfo {
 	CQuaternion	rotation;
 };
 
+Mapchip* mapchip[3];
+
 //マップの配置情報。
 SMapInfo mapLocInfo[] = {
-#include "Map/danmati.h"
+#include "Map/mati.h"
 };
 
 
@@ -21,6 +23,11 @@ Map::Map()
 
 Map::~Map()
 {
+	for (int i = 0;i < 3;i++)
+	{
+		DeleteGO(mapchip[i]);
+	}
+
 }
 
 bool Map::Start()
@@ -29,9 +36,9 @@ bool Map::Start()
 	int numObject = sizeof(mapLocInfo) / sizeof(mapLocInfo[0]);
 	//置かれているオブジェクトの数だけマップチップを生成する。
 	for (int i = 0; i < numObject; i++) {
-		Mapchip* mapChip = NewGO<Mapchip>(0);
+		 mapchip[i] = NewGO<Mapchip>(0);
 		//モデル名、座標、回転を与えてマップチップを初期化する。
-		mapChip->Init(mapLocInfo[i].modelName, mapLocInfo[i].position, mapLocInfo[i].rotation);
+		mapchip[i]->Init(mapLocInfo[i].modelName, mapLocInfo[i].position, mapLocInfo[i].rotation);
 	}
 
 	return true; //一回だけ呼ばれる

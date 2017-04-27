@@ -8,7 +8,7 @@ extern Player* g_player;
 
 Mapchip::Mapchip()
 {
-	Maplight.SetAmbinetLight({ 0.1f, 0.1f, 0.1f }); //ライトの設定
+	Maplight.SetAmbinetLight({ 0.5f, 0.5f, 0.5f }); //ライトの設定
 	Maplight.SetPointLightPosition(g_player->Getpos());
 	Maplight.SetPointLightColor({ 1.0f,1.0f,1.0f,5.0f });
 	
@@ -17,6 +17,8 @@ Mapchip::Mapchip()
 
 Mapchip::~Mapchip()
 {
+	PhysicsWorld().RemoveRigidBody(&rigidBody);
+
 }
 
 void Mapchip::Init(const char* modelName, CVector3 position, CQuaternion rotation)

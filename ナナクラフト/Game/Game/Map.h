@@ -1,4 +1,7 @@
 #pragma once
+#include "Mapchip.h"
+
+
 class Map : public IGameObject
 {
 public:
@@ -8,4 +11,6 @@ public:
 	void Update();
 
 };
+
+
 

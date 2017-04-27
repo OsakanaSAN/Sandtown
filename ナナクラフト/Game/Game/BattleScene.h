@@ -18,6 +18,9 @@ public:
 
 	void Render(CRenderContext&renderContext);
 
+
+	
+
 	void PlayerTurn();
 	void EnemyTurn();
 	bool Winresult()//ゲームシーンに渡すやつ？

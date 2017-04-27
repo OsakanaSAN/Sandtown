@@ -6,6 +6,7 @@
 #include "Player.h"
 #include "Camera.h"
 #include "Map.h"
+#include "Map2.h"
 
 
 #define   Y_UP 150
@@ -14,9 +15,10 @@
 
 extern Fade* g_fade;
 GameScene* g_gameScene = NULL;
-Player* g_player;
-Camera* g_gameCamera;
-Map*    g_map;
+Player* g_player = nullptr;
+Camera* g_gameCamera = nullptr;
+Map*    g_map = nullptr;
+Map2*   g_map2 = nullptr;
 
 
 GameScene::GameScene()
@@ -26,16 +28,16 @@ GameScene::GameScene()
 	g_map = NewGO<Map>(0);
 	g_player = NewGO<Player>(0);
 	g_gameCamera = NewGO<Camera>(0);
+	mapscene = MACHI;
+	scenes = STOP;
+
 	
 
 	
 }
 GameScene::~GameScene()
 {
-	DeleteGO(g_player);
-	DeleteGO(g_map);
-	DeleteGO(g_gameCamera);
-	NewGO<TitleScene>(0);
+	
 	
 }
 
@@ -53,7 +55,65 @@ bool GameScene::Start()
 
 void GameScene::Update()
 {
-	
+	switch (scenes)
+	{
+	case STOP:
+		break;
+
+
+		//“´ŒA‚É‘JˆÚ
+	case DOUKUTU:
+
+		while (scenes != STOP)
+		{
+
+			if (g_map2 == nullptr)
+			{
+				g_map2 = NewGO<Map2>(0);
+				g_player = NewGO<Player>(0);
+			}
+
+			else
+			{
+				g_fade->StartFadeIn();
+				scenes = STOP;
+				mapscene = DOUKUTU;
+				break;
+				
+			}
+
+			
+
+		}
+
+		
+	case MACHI:
+
+		//’¬‚É‘JˆÚ
+		while (scenes != STOP)
+		{
+			if (g_map == nullptr)
+			{
+				g_map = NewGO<Map>(0);
+				g_player = NewGO<Player>(0);
+			}
+
+			else
+			{
+				g_fade->StartFadeIn();
+				scenes = STOP;
+				mapscene = MACHI;
+				break;
+
+			}
+
+
+
+		}
+
+
+
+	}
 	 
 		//ƒ^ƒCƒgƒ‹‰æ–Ê‚É‘JˆÚ‚·‚éB
 		switch (sets)
@@ -66,7 +126,8 @@ void GameScene::Update()
 			break;
 		case out:
 			if (!g_fade->IsExecute()) {
-				DeleteGO(this);
+				DeteScene();
+				sets = in;
 			}
 			break;
 
@@ -82,6 +143,31 @@ void GameScene::Render(CRenderContext& renderContext)
 
 }
 
+void GameScene::DeteScene()
+{
 
+
+	if(mapscene == MACHI)
+	{
+		DeleteGO(g_map);
+		DeleteGO(g_player);
+		scenes = DOUKUTU;
+		g_map = nullptr;
+
+
+
+	}
+
+	else if (mapscene == DOUKUTU)
+	{
+		DeleteGO(g_map2);
+		DeleteGO(g_player);
+		scenes = MACHI;
+		g_map2 = nullptr;
+	}
+
+	g_player = nullptr;
+
+}
 
 
