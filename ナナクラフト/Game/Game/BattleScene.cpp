@@ -66,6 +66,21 @@ bool BattleScene::Start()
 	m_ComandBGSprite3.Init(&m_ComandBGTexture3);
 	m_ComandBGSprite3.SetPosition({ -300,-300 });
 
+	m_HPberTexture.Load("Assets/sprite/HP.png");
+	m_HPberSprite.Init(&m_HPberTexture);
+	m_HPberSprite.SetPosition({ -500,400 });
+	m_HPberSprite.SetSize({ 750,400 });
+
+	m_stateTexture.Load("Assets/sprite/1.png");
+	m_stateSprite.Init(&m_stateTexture);
+	m_stateSprite.SetPosition({ -900,500 });
+	m_stateSprite.SetSize({ 100,100 });
+
+	m_LevelTexture.Load("Assets/sprite/Lv.png");
+	m_LevelSprite.Init(&m_LevelTexture);
+	m_LevelSprite.SetPosition({ -800,500 });
+	m_LevelSprite.SetSize({ 100,100 });
+
 	return true;
 }
 
@@ -146,7 +161,9 @@ void BattleScene::Render(CRenderContext&renderContext)
 
 	m_ComandBGSprite2.Draw(renderContext);
 	m_ComandBGSprite3.Draw(renderContext);
-
+	m_HPberSprite.Draw(renderContext);
+	m_LevelSprite.Draw(renderContext);
+	m_stateSprite.Draw(renderContext);
 }
 
 
