@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DEFECTS>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\kbc16b03\desktop\ナナクラフト\tkengine\bulletphysics\src\bulletdynamics\mlcpsolvers\</FILEPATH>
+      <FILENAME>btdantziglcp.cpp</FILENAME>
+      <LINE>1256</LINE>
+      <COLUMN>8</COLUMN>
+    </SFA>
+    <DEFECTCODE>6246</DEFECTCODE>
+    <DESCRIPTION>'p' のローカル宣言は、外部スコープの同じ名前の宣言を隠します。追加情報については、行 '1230' ('c:\users\kbc16b03\desktop\ナナクラフト\tkengine\bulletphysics\src\bulletdynamics\mlcpsolvers\btdantziglcp.cpp') の以前の宣言を参照してください。</DESCRIPTION>
+    <FUNCTION>btLCP::{ctor}</FUNCTION>
+    <DECORATED>??0btLCP@@QEAA@HHHPEAM0000000000PEA_NPEAH22PEAPEAM@Z</DECORATED>
+    <FUNCLINE>1227</FUNCLINE>
+    <PATH>
+      <SFA>
+        <FILEPATH>c:\users\kbc16b03\desktop\ナナクラフト\tkengine\bulletphysics\src\bulletdynamics\mlcpsolvers\</FILEPATH>
+        <FILENAME>btdantziglcp.cpp</FILENAME>
+        <LINE>1230</LINE>
+        <COLUMN>46</COLUMN>
+      </SFA>
+    </PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\kbc16b03\desktop\ナナクラフト\tkengine\bulletphysics\src\bulletdynamics\mlcpsolvers\</FILEPATH>
+      <FILENAME>btdantziglcp.cpp</FILENAME>
+      <LINE>1742</LINE>
+      <COLUMN>17</COLUMN>
+    </SFA>
+    <DEFECTCODE>6246</DEFECTCODE>
+    <DESCRIPTION>'tmp' のローカル宣言は、外部スコープの同じ名前の宣言を隠します。追加情報については、行 '1734' ('c:\users\kbc16b03\desktop\ナナクラフト\tkengine\bulletphysics\src\bulletdynamics\mlcpsolvers\btdantziglcp.cpp') の以前の宣言を参照してください。</DESCRIPTION>
+    <FUNCTION>btLCP::solve1</FUNCTION>
+    <DECORATED>?solve1@btLCP@@QEAAXPEAMHHH@Z</DECORATED>
+    <FUNCLINE>1701</FUNCLINE>
+    <PATH>
+      <SFA>
+        <FILEPATH>c:\users\kbc16b03\desktop\ナナクラフト\tkengine\bulletphysics\src\bulletdynamics\mlcpsolvers\</FILEPATH>
+        <FILENAME>btdantziglcp.cpp</FILENAME>
+        <LINE>1734</LINE>
+        <COLUMN>20</COLUMN>
+      </SFA>
+    </PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\kbc16b03\desktop\ナナクラフト\tkengine\bulletphysics\src\bulletdynamics\mlcpsolvers\</FILEPATH>
+      <FILENAME>btdantziglcp.cpp</FILENAME>
+      <LINE>1747</LINE>
+      <COLUMN>17</COLUMN>
+    </SFA>
+    <DEFECTCODE>6246</DEFECTCODE>
+    <DESCRIPTION>'tmp' のローカル宣言は、外部スコープの同じ名前の宣言を隠します。追加情報については、行 '1734' ('c:\users\kbc16b03\desktop\ナナクラフト\tkengine\bulletphysics\src\bulletdynamics\mlcpsolvers\btdantziglcp.cpp') の以前の宣言を参照してください。</DESCRIPTION>
+    <FUNCTION>btLCP::solve1</FUNCTION>
+    <DECORATED>?solve1@btLCP@@QEAAXPEAMHHH@Z</DECORATED>
+    <FUNCLINE>1701</FUNCLINE>
+    <PATH>
+      <SFA>
+        <FILEPATH>c:\users\kbc16b03\desktop\ナナクラフト\tkengine\bulletphysics\src\bulletdynamics\mlcpsolvers\</FILEPATH>
+        <FILENAME>btdantziglcp.cpp</FILENAME>
+        <LINE>1734</LINE>
+        <COLUMN>20</COLUMN>
+      </SFA>
+    </PATH>
+  </DEFECT>
+</DEFECTS>

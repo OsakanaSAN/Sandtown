@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DEFECTS>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\kbc16b03\desktop\ナナクラフト\tkengine\bulletphysics\src\linearmath\</FILEPATH>
+      <FILENAME>btquickprof.cpp</FILENAME>
+      <LINE>541</LINE>
+      <COLUMN>7</COLUMN>
+    </SFA>
+    <DEFECTCODE>6246</DEFECTCODE>
+    <DESCRIPTION>'i' のローカル宣言は、外部スコープの同じ名前の宣言を隠します。追加情報については、行 '523' ('c:\users\kbc16b03\desktop\ナナクラフト\tkengine\bulletphysics\src\linearmath\btquickprof.cpp') の以前の宣言を参照してください。</DESCRIPTION>
+    <FUNCTION>CProfileManager::dumpRecursive</FUNCTION>
+    <DECORATED>?dumpRecursive@CProfileManager@@SAXPEAVCProfileIterator@@H@Z</DECORATED>
+    <FUNCLINE>516</FUNCLINE>
+    <PATH>
+      <SFA>
+        <FILEPATH>c:\users\kbc16b03\desktop\ナナクラフト\tkengine\bulletphysics\src\linearmath\</FILEPATH>
+        <FILENAME>btquickprof.cpp</FILENAME>
+        <LINE>523</LINE>
+        <COLUMN>6</COLUMN>
+      </SFA>
+    </PATH>
+  </DEFECT>
+</DEFECTS>
