@@ -65,8 +65,19 @@ private:
 	CSprite		m_ComandBGSprite3;		//!<戦闘画面の選択のスプライト。
 	CTexture	m_ComandBGTexture3;		//!<戦闘画面の選択のテクスチャ。
 
-	CSprite		m_LevelBGSprite4;		//!<戦闘画面の選択のスプライト。
-	CTexture	m_LevelBGTexture4;		//!<戦闘画面の選択のテクスチャ。
+//<<<<<<< HEAD
+//	CSprite		m_LevelBGSprite4;		//!<戦闘画面の選択のスプライト。
+//	CTexture	m_LevelBGTexture4;		//!<戦闘画面の選択のテクスチャ。
+//
+//=======
+	CSprite		m_HPberSprite;
+	CTexture	m_HPberTexture;
+
+	CSprite		m_LevelSprite;
+	CTexture	m_LevelTexture;
+
+	CSprite		m_stateSprite;
+	CTexture	m_stateTexture;
 
 
 	bool		Winflg;
