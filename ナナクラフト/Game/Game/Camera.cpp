@@ -27,9 +27,16 @@ bool Camera::Start()
 
 void Camera::Update()
 {
-	
-	TpsCamera();
-	camera.Update();
+	switch (scene)
+	{
+	case START:
+		TpsCamera();
+		camera.Update();
+		break;
+	case STOP:
+		camera.Update();
+		break;
+	}
 
 
 }
@@ -83,3 +90,10 @@ void Camera::TpsCamera()
 
 }
 
+void Camera::BattleCamera()
+{
+	camera.SetPosition(Battlepos); //プレイヤーの真上らへん
+	camera.SetTarget(Battletag);   //プレイヤーの座標
+
+
+}

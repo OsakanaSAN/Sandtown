@@ -3,26 +3,29 @@
 #include "Scene/GameScene.h"
 #include "Scene/TitleScene.h"
 #include "BattlePlayer.h"
+#include "Player.h"
+#include "Camera.h"
 #include "Fade.h"
 #include "BattleEnemy.h"
 #include "BattleCamera.h"
 #include "Map.h"
 
 extern Fade* g_fade;
-BattlePlayer* g_battleplayer;
-BattleCamera* g_battleCamera;
-BattleEnemy* g_battleenemy;
+extern Player* g_player;
+extern Camera* g_gameCamera;
 
+BattlePlayer* g_battleplayer = nullptr;
+BattleEnemy* g_battleenemy = nullptr;
 
 
 BattleScene* g_battleScene = NULL;
+
 
 
 BattleScene::BattleScene()
 {
 
 	g_battleplayer = NewGO<BattlePlayer>(0);
-	g_battleCamera = NewGO<BattleCamera>(0);
 	g_battleenemy = NewGO<BattleEnemy>(0);
 
 
@@ -33,8 +36,17 @@ BattleScene::~BattleScene()
 {
 	DeleteGO(g_battleplayer);
 	DeleteGO(g_battleenemy);
-	DeleteGO(g_battleCamera);
+
+	/*DeleteGO(g_battleCamera);*/
 	NewGO<GameScene>(0);
+
+	//DeleteGO(this);
+	g_player = NewGO<Player>(0);
+	g_player->Loadpos();           //座標を読み込む
+	g_gameCamera->ChangeStart();   //カメラの更新を再開するを
+	//NewGO<GameScene>(0);
+	
+
 
 	m_sound_bgm_battle2->Stop();
 }
@@ -42,9 +54,7 @@ BattleScene::~BattleScene()
 
 bool BattleScene::Start()
 {
-	if (g_battleplayer != nullptr && g_battleCamera != nullptr) {
-		g_fade->StartFadeIn();
-	}
+	
 
 	
 
@@ -73,6 +83,7 @@ bool BattleScene::Start()
 	m_ComandBGSprite3.SetPosition({ -300,-300 });
 
 
+
 	m_HPberTexture.Load("Assets/sprite/HP.png");
 	m_HPberSprite.Init(&m_HPberTexture);
 	m_HPberSprite.SetPosition({ -500,400 });
@@ -87,6 +98,7 @@ bool BattleScene::Start()
 	m_LevelSprite.Init(&m_LevelTexture);
 	m_LevelSprite.SetPosition({ -800,500 });
 	m_LevelSprite.SetSize({ 100,100 });
+
 
 	CVector3 lightPos, lightTarget;
 	lightTarget.Add(g_battleplayer->Getpos(), g_battleenemy->Getpos());
@@ -104,22 +116,6 @@ bool BattleScene::Start()
 void BattleScene::Update()
 {
 
-	//タイトル画面に遷移する。
-	switch (sets)
-	{
-	case in:
-		if (Pad(0).IsTrigger(enButtonStart)) {
-			g_fade->StartFadeOut();
-			sets = out;
-		}
-		break;
-	case out:
-		if (!g_fade->IsExecute()) {
-			DeleteGO(this);
-		}
-		break;
-
-	}
 
 
 	if (GetAsyncKeyState(VK_UP) & 0x8000)
@@ -166,8 +162,6 @@ void BattleScene::Update()
 		}
 	}
 
-	
-
 	switch (Turn) {
 	case Pturn://プレイヤーのターン
 		PlayerTurn();
@@ -194,6 +188,7 @@ void BattleScene::Render(CRenderContext&renderContext)
 	m_HPberSprite.Draw(renderContext);
 	m_LevelSprite.Draw(renderContext);
 	m_stateSprite.Draw(renderContext);
+
 
 }
 

@@ -15,6 +15,15 @@
     <Filter Include="Source Files\MAP">
       <UniqueIdentifier>{29dd3b94-9361-44be-a4e2-74e78d17e07a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Camera">
+      <UniqueIdentifier>{3e2f290b-22ae-4ed8-bf05-370856728cd1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\UI">
+      <UniqueIdentifier>{62966944-c6c8-4068-b680-d1a5a3c5b68a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\player">
+      <UniqueIdentifier>{725b549e-50a6-42a1-98c8-bb85b9613262}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -32,12 +41,6 @@
     <ClCompile Include="Fade.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Camera.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Player.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Mapchip.cpp">
       <Filter>Source Files\MAP</Filter>
     </ClCompile>
@@ -47,13 +50,7 @@
     <ClCompile Include="BattleScene.cpp">
       <Filter>Source Files\Scene</Filter>
     </ClCompile>
-    <ClCompile Include="BattlePlayer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="BattleEnemy.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="BattleCamera.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Map2.cpp">
@@ -61,6 +58,21 @@
     </ClCompile>
     <ClCompile Include="Torch.cpp">
       <Filter>Source Files\MAP</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>Source Files\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="HUD.cpp">
+      <Filter>Source Files\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="BattleCamera.cpp">
+      <Filter>Source Files\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="BattlePlayer.cpp">
+      <Filter>Source Files\player</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Source Files\player</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -76,12 +88,6 @@
     <ClInclude Include="Fade.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="Camera.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Player.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
     <ClInclude Include="Mapchip.h">
       <Filter>Source Files\MAP</Filter>
     </ClInclude>
@@ -91,13 +97,7 @@
     <ClInclude Include="BattleScene.h">
       <Filter>Source Files\Scene</Filter>
     </ClInclude>
-    <ClInclude Include="BattlePlayer.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
     <ClInclude Include="BattleEnemy.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="BattleCamera.h">
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="Map2.h">
@@ -105,6 +105,21 @@
     </ClInclude>
     <ClInclude Include="Torch.h">
       <Filter>Source Files\MAP</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>Source Files\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="HUD.h">
+      <Filter>Source Files\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="BattleCamera.h">
+      <Filter>Source Files\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="BattlePlayer.h">
+      <Filter>Source Files\player</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Source Files\player</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

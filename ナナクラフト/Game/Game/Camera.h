@@ -15,6 +15,7 @@ public:
 	void Update();
 	
 	void TpsCamera();
+	void BattleCamera();
 
 	const CMatrix& GetViewMatrix() const
 	{
@@ -28,7 +29,14 @@ public:
 	{
 		return camera;
 	}
-
+	void ChangeStop()
+	{
+		scene = STOP;
+	}
+	void ChangeStart()
+	{
+		scene = START;
+	}
 
 
 private:
@@ -36,6 +44,11 @@ private:
 
 	CVector3 pos = { 1.0f,  2.0f,  3.0f };
 	CVector3 tag = { 1.0,1.0,1.0 };
+
+	CVector3	Battlepos = { -5.0f,1.9f,-47.0f };
+	CVector3	Battletag = { 2.0f,-2.0f,-35.0f };
+
+
 	CVector3 Gamepos;
 	CVector3 V;
 
@@ -45,9 +58,14 @@ private:
 	float angl = 0.0f;
 	float angl2 = 0.0f;
 
+	enum SECNE
+	{
+		START,
+		STOP,
 
+	};
 	
-
+	SECNE   scene = START;
 
 };
 

@@ -1,7 +1,9 @@
 #include "stdafx.h"
 #include "BattleEnemy.h"
+#include "Camera.h"
 
-extern BattleCamera* g_battleCamera;
+
+extern Camera*       g_gameCamera;
 
 enum {
 
@@ -81,7 +83,7 @@ void BattleEnemy::Update()
 
 void BattleEnemy::Render(CRenderContext&renderContext)
 {
-	skinModel.Draw(renderContext, g_battleCamera->GetViewMatrix(), g_battleCamera->GetProjectionMatrix());
+	skinModel.Draw(renderContext, g_gameCamera->GetViewMatrix(), g_gameCamera->GetProjectionMatrix());
 }
 
 

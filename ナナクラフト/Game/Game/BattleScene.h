@@ -80,6 +80,7 @@ private:
 	CTexture	m_stateTexture;
 
 
+
 	bool		Winflg;
 	bool		Loseflg;
 	bool		PAttack;

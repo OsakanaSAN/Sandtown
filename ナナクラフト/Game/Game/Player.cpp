@@ -82,6 +82,7 @@ bool Player::Start()
 	Animation.SetAnimationLoopFlag(Jump_anim, false);
 	Animation.SetAnimationEndTime(Run_anim, 0.8);
 
+
 	return true;
 
 }
@@ -210,4 +211,18 @@ void Player::Render(CRenderContext& renderContext)
 
 
 	skinModel.Draw(renderContext, g_gameCamera->GetViewMatrix(), g_gameCamera->GetProjectionMatrix());
+	
+}
+
+void Player::Loadpos()
+{
+	ifstream fin("Assets/DATA/tst.txt");
+	if (!fin)
+	{
+		exit(0);
+	}
+
+	fin.precision(3);
+	fin >> position.x >> position.y >> position.z;
+	fin.close();
 }
