@@ -56,16 +56,11 @@
     <ClCompile Include="BattleCamera.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-<<<<<<< HEAD
-    <ClCompile Include="Enemy.cpp">
-      <Filter>Source Files</Filter>
-=======
     <ClCompile Include="Map2.cpp">
       <Filter>Source Files\MAP</Filter>
     </ClCompile>
     <ClCompile Include="Torch.cpp">
       <Filter>Source Files\MAP</Filter>
->>>>>>> 37efabf4920d3dd5dbc6a183ed3176a552758702
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -105,16 +100,11 @@
     <ClInclude Include="BattleCamera.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-<<<<<<< HEAD
-    <ClInclude Include="Enemy.h">
-      <Filter>Source Files</Filter>
-=======
     <ClInclude Include="Map2.h">
       <Filter>Source Files\MAP</Filter>
     </ClInclude>
     <ClInclude Include="Torch.h">
       <Filter>Source Files\MAP</Filter>
->>>>>>> 37efabf4920d3dd5dbc6a183ed3176a552758702
     </ClInclude>
   </ItemGroup>
 </Project>

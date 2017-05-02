@@ -1,7 +1,8 @@
 #include "stdafx.h"
 #include "BattlePlayer.h"
+#include "BattleEnemy.h"
 
-
+extern BattleEnemy* g_battleenemy;
 extern BattleCamera* g_battleCamera;
 
 enum {
@@ -14,7 +15,18 @@ enum {
 
 BattlePlayer::BattlePlayer()
 {
-	All.SetAmbinetLight({ 1.0f,1.0f,1.0f });
+	
+
+	All.SetAmbinetLight({ 0.2f,0.2f,0.2f });
+	All.SetDiffuseLightDirection(0, { 0.0f, -0.707f, 0.707f });
+	All.SetDiffuseLightColor(0, { 0.3f, 0.3f, 0.3f, 1.0f });
+	All.SetDiffuseLightDirection(1, { 0.0f, 0.707f, 0.707f });
+	All.SetDiffuseLightColor(1, { 0.1f, 0.1f, 0.1f, 1.0f });
+	All.SetDiffuseLightDirection(2, { 0.0f, -0.707f, -0.707f });
+	All.SetDiffuseLightColor(2, { 0.3f, 0.3f, 0.3f, 1.0f });
+	All.SetDiffuseLightDirection(3, { 0.0f, 0.707f, -0.707f });
+	All.SetDiffuseLightColor(3, { 0.1f, 0.1f, 0.1f, 1.0f });
+
 	IsDamage = false;
 	IsAttack = false;
 	IsStand = true;
@@ -47,6 +59,8 @@ bool BattlePlayer::Start()
 	Animation.SetAnimationEndTime(Damage_anim, 0.5);
 	Animation.SetAnimationLoopFlag(Damage_anim, false);
 
+	skinModel.SetShadowCasterFlag(true);
+	skinModel.SetShadowReceiverFlag(true);
 
 	return true;
 }
@@ -109,5 +123,56 @@ void BattlePlayer::AnimationSet()
 
 	//アニメーションの更新
 	Animation.Update(1.0f / 60.0f);
+
+}
+
+void BattlePlayer::Particle()
+{
+	/*if (m_particle == nullptr)
+	{
+	return;
+	}*/
+
+	//パーティクルの生成
+	m_particle = NewGO<CParticleEmitter>(0);
+	m_particle->Init(m_random, g_battleCamera->GetCamera(),
+	{
+		"Assets/burn.png",		//!<テクスチャのファイルパス。
+		{ 0.0f, 0.0f, 0.0f },							//!<初速度。
+		0.3f,											//!<寿命。単位は秒。
+		0.5f,											//!<発生時間。単位は秒。
+		3.5f,											//!<パーティクルの幅。
+		3.5f,											//!<パーティクルの高さ。
+		{ 0.0f, 0.0f, 0.0f },							//!<初期位置のランダム幅。
+		{ 0.0f, 0.0f,0.0f },							//!<初速度のランダム幅。
+		{ 1.0f, 1.0f, 1.0f },							//!<速度の積分のときのランダム幅。
+		{
+			{ 0.0f, 0.0f,0.25f, 0.25f },//0.25,0.5,0.75,1UとVの位置
+			{ 0.0f, 0.0f, 0.0f, 0.0f }, //X,Y,X,Y
+			{ 0.0f, 0.0f, 0.0f, 0.0f },
+			{ 0.0f, 0.0f, 0.0f, 0.0f }
+		},//!<UVテーブル。最大4まで保持できる。xが左上のu、yが左上のv、zが右下のu、wが右下のvになる。
+		1,												//!<UVテーブルのサイズ。
+		{ 0.0f, 0.0f, 0.0f },							//!<重力。
+		true,											//!<死ぬときにフェードアウトする？
+		0.3f,											//!<フェードする時間。
+		2.0f,											//!<初期アルファ値。
+		true,											//!<ビルボード？
+		3.0f,											//!<輝度。ブルームが有効になっているとこれを強くすると光が溢れます。
+		1,												//!<0半透明合成、1加算合成。
+		{ 1.0f, 1.0f, 1.0f },							//!<乗算カラー。
+	},
+		g_battleenemy->Getpos());
+
+
+
+}
+
+
+void BattlePlayer::ParticleDelete()
+{
+	DeleteGO(m_particle);
+	m_particle = nullptr;
+
 
 }

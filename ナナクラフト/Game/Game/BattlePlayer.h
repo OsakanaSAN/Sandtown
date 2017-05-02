@@ -11,6 +11,8 @@ public:
 	void Update();
 	void Render(CRenderContext&renderContext);
 	void AnimationSet();
+	void Particle();
+	void ParticleDelete();
 
 	CVector3 Getpos()
 	{
@@ -59,6 +61,8 @@ private:
 	CCharacterController	characterController;
 
 	CAnimation				Animation;
+	CParticleEmitter*		m_particle;
+	CRandom					m_random;
 
 	CVector3				position = { -3.0f,-0.0f,-45.0f };
 	CQuaternion				m_rotation;

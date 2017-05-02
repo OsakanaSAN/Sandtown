@@ -34,6 +34,10 @@ public:
 	}
 private:
 
+	CSoundSource*	m_sound_bgm_battle;
+	CSoundSource*	m_sound_bgm_battle2;
+	CSoundSource*	m_sound_Attack;
+
 	enum set
 	{
 		in,
@@ -65,11 +69,7 @@ private:
 	CSprite		m_ComandBGSprite3;		//!<戦闘画面の選択のスプライト。
 	CTexture	m_ComandBGTexture3;		//!<戦闘画面の選択のテクスチャ。
 
-//<<<<<<< HEAD
-//	CSprite		m_LevelBGSprite4;		//!<戦闘画面の選択のスプライト。
-//	CTexture	m_LevelBGTexture4;		//!<戦闘画面の選択のテクスチャ。
-//
-//=======
+
 	CSprite		m_HPberSprite;
 	CTexture	m_HPberTexture;
 

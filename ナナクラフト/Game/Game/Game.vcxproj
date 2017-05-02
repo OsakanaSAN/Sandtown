@@ -167,7 +167,6 @@
     <ClCompile Include="BattlePlayer.cpp" />
     <ClCompile Include="BattleScene.cpp" />
     <ClCompile Include="Camera.cpp" />
-    <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Fade.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Map.cpp" />
@@ -190,7 +189,6 @@
     <ClInclude Include="BattlePlayer.h" />
     <ClInclude Include="BattleScene.h" />
     <ClInclude Include="Camera.h" />
-    <ClInclude Include="Enemy.h" />
     <ClInclude Include="Fade.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="Map2.h" />

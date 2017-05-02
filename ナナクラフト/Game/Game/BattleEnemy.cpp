@@ -13,7 +13,15 @@ enum {
 
 BattleEnemy::BattleEnemy()
 {
-	All.SetAmbinetLight({ 1.0f,1.0f,1.0f });
+	All.SetAmbinetLight({ 0.2f,0.2f,0.2f });
+	All.SetDiffuseLightDirection(0, { 0.0f, -0.707f, 0.707f });
+	All.SetDiffuseLightColor(0, { 0.3f, 0.3f, 0.3f, 1.0f });
+	All.SetDiffuseLightDirection(1, { 0.0f, 0.707f, 0.707f });
+	All.SetDiffuseLightColor(1, { 0.1f, 0.1f, 0.1f, 1.0f });
+	All.SetDiffuseLightDirection(2, { 0.0f, -0.707f, -0.707f });
+	All.SetDiffuseLightColor(2, { 0.3f, 0.3f, 0.3f, 1.0f });
+	All.SetDiffuseLightDirection(3, { 0.0f, 0.707f, -0.707f });
+	All.SetDiffuseLightColor(3, { 0.1f, 0.1f, 0.1f, 1.0f });
 
 	IsAttack = false;
 	IsDamage = false;
@@ -51,6 +59,8 @@ bool BattleEnemy::Start()
 
 	m_rotation.SetRotation(CVector3(0.0f, -1.0f, 0.0f), CMath::DegToRad(170.0f));
 
+	skinModel.SetShadowCasterFlag(true);
+	skinModel.SetShadowReceiverFlag(true);
 
 	return true;
 }

@@ -15,6 +15,10 @@ public:
 
 	void Delete();
 
+	CVector3 Getpos()
+	{
+		return position;
+	}
 	void SetAttack(bool Acs)
 	{
 		IsAttack = Acs;
