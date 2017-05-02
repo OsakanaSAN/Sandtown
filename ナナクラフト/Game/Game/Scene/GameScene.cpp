@@ -7,6 +7,8 @@
 #include "Camera.h"
 #include "Map.h"
 #include "Map2.h"
+#include "HUD.h"
+
 
 
 #define   Y_UP 150
@@ -19,15 +21,17 @@ Player* g_player = nullptr;
 Camera* g_gameCamera = nullptr;
 Map*    g_map = nullptr;
 Map2*   g_map2 = nullptr;
-
+BattleScene* g_battleScene = nullptr;
+HUD*    g_Hud = nullptr;
 
 GameScene::GameScene()
 {
 
-
+	//g_Hud = NewGO<HUD>(0);
 	g_map = NewGO<Map>(0);
 	g_player = NewGO<Player>(0);
 	g_gameCamera = NewGO<Camera>(0);
+	
 	mapscene = MACHI;
 	scenes = STOP;
 
@@ -58,6 +62,52 @@ void GameScene::Update()
 	switch (scenes)
 	{
 	case STOP:
+		//タイトル画面に遷移する。
+
+		
+			if (GetAsyncKeyState('R') & 0x8000)
+			{
+				//g_fade->StartFadeOut();
+				DeleteGO(g_player);
+				
+				g_battleScene = NewGO<BattleScene>(0);
+				g_gameCamera->BattleCamera();
+				g_gameCamera->ChangeStop();    //カメラの更新を止める
+			}
+		if (mapscene == Battle)
+		{
+			if (g_battleScene != nullptr  )
+			{
+
+				g_player = nullptr;
+				//g_fade->StartFadeIn();
+				mapscene = DOUKUTU;
+			}
+
+		}
+
+		switch (sets)
+		{
+		case in:
+			if (Pad(0).IsTrigger(enButtonStart)) {
+				g_fade->StartFadeOut();
+				sets = out;
+				
+			}
+
+
+
+			break;
+		case out:
+			if (!g_fade->IsExecute()) {
+				DeteScene();
+				sets = in;
+			}
+			break;
+
+		}
+
+
 		break;
 
 
@@ -79,14 +129,14 @@ void GameScene::Update()
 				scenes = STOP;
 				mapscene = DOUKUTU;
 				break;
-				
+
 			}
 
-			
+
 
 		}
 
-		
+
 	case MACHI:
 
 		//町に遷移
@@ -114,25 +164,6 @@ void GameScene::Update()
 
 
 	}
-	 
-		//タイトル画面に遷移する。
-		switch (sets)
-		{
-		case in:
-			if (Pad(0).IsTrigger(enButtonStart)) {
-				g_fade->StartFadeOut();
-				sets = out;
-			}
-			break;
-		case out:
-			if (!g_fade->IsExecute()) {
-				DeteScene();
-				sets = in;
-			}
-			break;
-
-		}
-	
 	
 }
 /*!
@@ -165,6 +196,8 @@ void GameScene::DeteScene()
 		scenes = MACHI;
 		g_map2 = nullptr;
 	}
+
+	
 
 	g_player = nullptr;
 

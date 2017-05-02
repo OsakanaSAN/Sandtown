@@ -2,6 +2,7 @@
 #include "tkEngine/character/tkCharacterController.h"
 #include "Camera.h"
 
+
 class Player : public IGameObject
 {
 public:
@@ -24,6 +25,7 @@ public:
 
 	}
 
+
 	void AngleSet();
 	void AnimetionSet();
 
@@ -31,6 +33,7 @@ public:
 	{
 		OVER = a;
 	}
+	void Loadpos();
 
 
 private:
@@ -56,6 +59,8 @@ private:
 	CLight                  All;        //プレイヤのライト
 	CLight                  PLight;
 	
+	
+
 
 	int						currentAnimSetNo;
 	bool					Isrun;

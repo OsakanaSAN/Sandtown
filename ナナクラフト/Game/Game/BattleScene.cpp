@@ -3,6 +3,8 @@
 #include "Scene/GameScene.h"
 #include "Scene/TitleScene.h"
 #include "BattlePlayer.h"
+#include "Player.h"
+#include "Camera.h"
 //#include "Camera.h"
 
 #include "Fade.h"
@@ -10,19 +12,20 @@
 #include "BattleCamera.h"
 
 extern Fade* g_fade;
-BattlePlayer* g_battleplayer;
-BattleCamera* g_battleCamera;
-BattleEnemy* g_battleenemy;
+extern Player* g_player;
+extern Camera* g_gameCamera;
+
+BattlePlayer* g_battleplayer = nullptr;
+BattleEnemy* g_battleenemy = nullptr;
 
 
-BattleScene* g_battleScene = NULL;
+//BattleScene* g_battleScene = NULL;
 
 
 BattleScene::BattleScene()
 {
 
 	g_battleplayer = NewGO<BattlePlayer>(0);
-	g_battleCamera = NewGO<BattleCamera>(0);
 	g_battleenemy = NewGO<BattleEnemy>(0);
 
 }
@@ -33,18 +36,19 @@ BattleScene::~BattleScene()
 	DeleteGO(g_battleplayer);
 
 	DeleteGO(g_battleenemy);
-	DeleteGO(g_battleCamera);
-	DeleteGO(this);
-	NewGO<GameScene>(0);
+	//DeleteGO(this);
+	g_player = NewGO<Player>(0);
+	g_player->Loadpos();           //座標を読み込む
+	g_gameCamera->ChangeStart();   //カメラの更新を再開するを
+	//NewGO<GameScene>(0);
+	
 
 }
 
 
 bool BattleScene::Start()
 {
-	if (g_battleplayer != nullptr && g_battleCamera != nullptr) {
-		g_fade->StartFadeIn();
-	}
+	
 
 	Winflg = false;
 	Loseflg = false;
@@ -66,20 +70,6 @@ bool BattleScene::Start()
 	m_ComandBGSprite3.Init(&m_ComandBGTexture3);
 	m_ComandBGSprite3.SetPosition({ -300,-300 });
 
-	m_HPberTexture.Load("Assets/sprite/HP.png");
-	m_HPberSprite.Init(&m_HPberTexture);
-	m_HPberSprite.SetPosition({ -500,400 });
-	m_HPberSprite.SetSize({ 750,400 });
-
-	m_stateTexture.Load("Assets/sprite/1.png");
-	m_stateSprite.Init(&m_stateTexture);
-	m_stateSprite.SetPosition({ -900,500 });
-	m_stateSprite.SetSize({ 100,100 });
-
-	m_LevelTexture.Load("Assets/sprite/Lv.png");
-	m_LevelSprite.Init(&m_LevelTexture);
-	m_LevelSprite.SetPosition({ -800,500 });
-	m_LevelSprite.SetSize({ 100,100 });
 
 	return true;
 }
@@ -88,22 +78,6 @@ bool BattleScene::Start()
 void BattleScene::Update()
 {
 
-	//タイトル画面に遷移する。
-	switch (sets)
-	{
-	case in:
-		if (Pad(0).IsTrigger(enButtonStart)) {
-			g_fade->StartFadeOut();
-			sets = out;
-		}
-		break;
-	case out:
-		if (!g_fade->IsExecute()) {
-			DeleteGO(this);
-		}
-		break;
-
-	}
 
 
 	if (GetAsyncKeyState(VK_UP) & 0x8000)
@@ -133,12 +107,7 @@ void BattleScene::Update()
 		}
 	}
 
-	/*PAttack = g_battleplayer->GetAttack();
-	EAttack = g_battleenemy->GetAttack();
-	PDamage = g_battleplayer->GetDamage();
-	EDamage = g_battleenemy->GetDamage();
-	PAnimEnd = g_battleplayer->GetAnimend();
-	EAnimEnd = g_battleenemy->GetAnimend();*/
+
 
 	switch (Turn) {
 	case Pturn://プレイヤーのターン
@@ -161,9 +130,7 @@ void BattleScene::Render(CRenderContext&renderContext)
 
 	m_ComandBGSprite2.Draw(renderContext);
 	m_ComandBGSprite3.Draw(renderContext);
-	m_HPberSprite.Draw(renderContext);
-	m_LevelSprite.Draw(renderContext);
-	m_stateSprite.Draw(renderContext);
+
 }
 
 

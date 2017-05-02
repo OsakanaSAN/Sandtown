@@ -65,6 +65,7 @@ private:
 		STOP,
 		MACHI,
 		DOUKUTU,
+		Battle,
 
 	};
 	

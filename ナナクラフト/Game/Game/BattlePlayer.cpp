@@ -1,14 +1,17 @@
 #include "stdafx.h"
 #include "BattlePlayer.h"
+#include "Camera.h"
 
 
-extern BattleCamera* g_battleCamera;
+
+extern Camera*       g_gameCamera;
 
 enum {
 
 	Stand_anim,
-	Attack_anim,
 	Damage_anim,
+	Attack_anim,
+	
 
 };
 
@@ -34,7 +37,7 @@ BattlePlayer::~BattlePlayer()
 
 bool BattlePlayer::Start()
 {
-	skinModelData.LoadModelData("Assets/modelData/cabetu2.X", &Animation);
+	skinModelData.LoadModelData("Assets/modelData/Unity.X", &Animation);
 	skinModel.Init(&skinModelData);
 	skinModel.SetLight(&All);
 
@@ -42,11 +45,12 @@ bool BattlePlayer::Start()
 
 
 	Animation.PlayAnimation(Stand_anim, 0.1f);
+	Animation.SetAnimationEndTime(Attack_anim, 0.8);
 
-	Animation.SetAnimationEndTime(Attack_anim, 0.5);
+	/*Animation.SetAnimationEndTime(Attack_anim, 0.5);
 	Animation.SetAnimationLoopFlag(Attack_anim, false);
 	Animation.SetAnimationEndTime(Damage_anim, 0.5);
-	Animation.SetAnimationLoopFlag(Damage_anim, false);
+	Animation.SetAnimationLoopFlag(Damage_anim, false);*/
 
 
 	return true;
@@ -67,7 +71,7 @@ void BattlePlayer::Update()
 void BattlePlayer::Render(CRenderContext&renderContext)
 {
 
-	skinModel.Draw(renderContext, g_battleCamera->GetViewMatrix(), g_battleCamera->GetProjectionMatrix());
+	skinModel.Draw(renderContext, g_gameCamera->GetViewMatrix(), g_gameCamera->GetProjectionMatrix());
 
 }
 
@@ -78,7 +82,7 @@ void BattlePlayer::AnimationSet()
 	if (!IsStand) {
 		if (IsAttack) {
 			IsAnimend = false;
-			Animation.PlayAnimation(Attack_anim, 0.5);
+			Animation.PlayAnimation(Attack_anim, 0.05);
 
 			IsStand = true;
 
@@ -106,7 +110,7 @@ void BattlePlayer::AnimationSet()
 		IsDamage = false;
 		IsAnimend = true;
 	}
-
+	characterController.Execute(0.03f);
 
 	//アニメーションの更新
 	Animation.Update(1.0f / 60.0f);
