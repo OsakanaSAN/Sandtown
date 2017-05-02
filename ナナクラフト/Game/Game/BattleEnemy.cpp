@@ -28,7 +28,7 @@ BattleEnemy::BattleEnemy()
 
 BattleEnemy::~BattleEnemy()
 {
-	/*DeleteGO(this);*/
+	
 }
 
 bool BattleEnemy::Start()

@@ -6,9 +6,6 @@
 #define  MOVESPEED  4.0
 using  namespace std;
 
-
-
-
 extern Camera* g_gameCamera;
 
 enum {
@@ -39,9 +36,8 @@ bool Enemy::Start()
 	skinModel.SetLight(&All);	//デフォルトライトを設定。
 
 
-
-								//キャラクタコントローラの初期化。
-								/*characterController.Init(0.5f, 1.0f, position);*/
+//キャラクタコントローラの初期化。
+//*characterController.Init(0.5f, 1.0f, position);*/
 
 	Isrun = false;
 	Ismove = false;

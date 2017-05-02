@@ -6,12 +6,8 @@
 #include "Player.h"
 #include "Camera.h"
 #include "Map.h"
-<<<<<<< HEAD
-#include "Enemy.h"
-=======
 #include "Map2.h"
 
->>>>>>> 37efabf4920d3dd5dbc6a183ed3176a552758702
 
 #define   Y_UP 150
 #define   X_POS -650
@@ -19,12 +15,7 @@
 
 extern Fade* g_fade;
 GameScene* g_gameScene = NULL;
-//<<<<<<< HEAD
-//Player* g_player;
-//Camera* g_gameCamera;
-//Map*    g_map;
-//Enemy* g_enemy;
-//=======
+
 Player* g_player = nullptr;
 Camera* g_gameCamera = nullptr;
 Map*    g_map = nullptr;
@@ -38,28 +29,18 @@ GameScene::GameScene()
 	g_map = NewGO<Map>(0);
 	g_player = NewGO<Player>(0);
 	g_gameCamera = NewGO<Camera>(0);
-<<<<<<< HEAD
-	g_enemy = NewGO<Enemy>(0);
-=======
 	mapscene = MACHI;
 	scenes = STOP;
-
-	
->>>>>>> 37efabf4920d3dd5dbc6a183ed3176a552758702
 
 	
 }
 GameScene::~GameScene()
 {
-<<<<<<< HEAD
+
 	DeleteGO(g_player);
 	DeleteGO(g_map);
 	DeleteGO(g_gameCamera);
-	DeleteGO(g_enemy);
 	NewGO<BattleScene>(0);
-=======
-	
->>>>>>> 37efabf4920d3dd5dbc6a183ed3176a552758702
 	
 }
 
@@ -77,16 +58,7 @@ bool GameScene::Start()
 
 void GameScene::Update()
 {
-<<<<<<< HEAD
-	/*CVector3 p_pos = g_player->Getpos();
-	CVector3 e_pos = g_enemy->Getpos();
-	CVector3 diff=
-	diff.Subtract(p_pos);*/
-	/*if (p_pos.Length()<1.0f)
-	{
-		DeleteGO(this);
-	}*/
-=======
+
 	switch (scenes)
 	{
 	case STOP:
@@ -142,12 +114,8 @@ void GameScene::Update()
 
 
 		}
-
-
-
 	}
->>>>>>> 37efabf4920d3dd5dbc6a183ed3176a552758702
-	 
+
 		//タイトル画面に遷移する。
 		switch (sets)
 		{
@@ -165,7 +133,6 @@ void GameScene::Update()
 			break;
 
 		}
-	
 	
 }
 /*!

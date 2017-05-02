@@ -26,7 +26,7 @@ BattlePlayer::BattlePlayer()
 BattlePlayer::~BattlePlayer()
 {
 
-	/*DeleteGO(this);*/
+	
 
 }
 

@@ -23,7 +23,6 @@ public:
 		position.y = pos.y;
 		position.z = pos.z;
 
-
 	}
 	void AnimetionSet();
 
@@ -32,8 +31,6 @@ private:
 		RUN,
 		STAND,
 	};
-
-
 
 	//ここからメンバ変数。
 	CSkinModel				skinModel;					//スキンモデル。

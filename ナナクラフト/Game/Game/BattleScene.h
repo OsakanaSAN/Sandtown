@@ -75,9 +75,7 @@ private:
 	bool		EAttack;
 	bool		PDamage;
 	bool		EDamage;
-	/*bool		PAnimEnd;
-	bool		EAnimEnd;*/
-	bool		SelectQ;//
+	bool		SelectQ;
 };
 
 extern BattleScene* g_battleScene;

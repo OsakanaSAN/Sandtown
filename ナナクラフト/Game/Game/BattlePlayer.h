@@ -44,15 +44,7 @@ public:
 		return IsAnimend;
 	}
 
-	/*bool GetAttack()
-	{
-	return IsAttack;
-	}
-
-	bool GetDamage()
-	{
-	return IsDamage;
-	}*/
+	
 
 private:
 

@@ -12,7 +12,7 @@ extern Fade* g_fade;
 BattlePlayer* g_battleplayer;
 BattleCamera* g_battleCamera;
 BattleEnemy* g_battleenemy;
-//extern Map* g_map;
+
 
 
 BattleScene* g_battleScene = NULL;
@@ -24,7 +24,7 @@ BattleScene::BattleScene()
 	g_battleplayer = NewGO<BattlePlayer>(0);
 	g_battleCamera = NewGO<BattleCamera>(0);
 	g_battleenemy = NewGO<BattleEnemy>(0);
-	/*g_map = NewGO<Map>(0);*/
+
 
 }
 
@@ -32,7 +32,7 @@ BattleScene::BattleScene()
 BattleScene::~BattleScene()
 {
 	DeleteGO(g_battleplayer);
-	/*DeleteGO(g_map);*/
+	
 	DeleteGO(g_battleenemy);
 	DeleteGO(g_battleCamera);
 	NewGO<GameScene>(0);
@@ -54,8 +54,7 @@ bool BattleScene::Start()
 	EAttack = false;
 	PDamage = false;
 	EDamage = false;
-	/*PAnimEnd = false;
-	EAnimEnd = false;*/
+	
 
 	SelectQ = false;
 	m_ComandBGTexture2.Load("Assets/sprite/co1.png");
@@ -119,18 +118,13 @@ void BattleScene::Update()
 		m_ComandBGTexture2.Load("Assets/sprite/co1.png");
 		m_ComandBGSprite2.Init(&m_ComandBGTexture2);
 		m_ComandBGSprite2.SetPosition({ -400,-200 });
-		/*m_ComandBGSprite2.SetSize({ 500,500 });*/
+		
 		if (!SelectQ) {
 			Comand = Escape;
 		}
 	}
 
-	/*PAttack = g_battleplayer->GetAttack();
-	EAttack = g_battleenemy->GetAttack();
-	PDamage = g_battleplayer->GetDamage();
-	EDamage = g_battleenemy->GetDamage();
-	PAnimEnd = g_battleplayer->GetAnimend();
-	EAnimEnd = g_battleenemy->GetAnimend();*/
+	
 
 	switch (Turn) {
 	case Pturn://プレイヤーのターン
