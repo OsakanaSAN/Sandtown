@@ -50,7 +50,7 @@ BattlePlayer::~BattlePlayer()
 
 bool BattlePlayer::Start()
 {
-	skinModelData.LoadModelData("Assets/modelData/Unity.X", &Animation);
+	skinModelData.LoadModelData("Assets/modelData/cabetu2.X", &Animation);
 	skinModel.Init(&skinModelData);
 	skinModel.SetLight(&All);
 
@@ -60,10 +60,10 @@ bool BattlePlayer::Start()
 	Animation.PlayAnimation(Stand_anim, 0.1f);
 	Animation.SetAnimationEndTime(Attack_anim, 0.8);
 
-	/*Animation.SetAnimationEndTime(Attack_anim, 0.5);
+	Animation.SetAnimationEndTime(Attack_anim, 0.5);
 	Animation.SetAnimationLoopFlag(Attack_anim, false);
 	Animation.SetAnimationEndTime(Damage_anim, 0.5);
-	Animation.SetAnimationLoopFlag(Damage_anim, false);*/
+	Animation.SetAnimationLoopFlag(Damage_anim, false);
 
 	skinModel.SetShadowCasterFlag(true);
 	skinModel.SetShadowReceiverFlag(true);
@@ -143,7 +143,7 @@ void BattlePlayer::Particle()
 	m_particle = NewGO<CParticleEmitter>(0);
 	m_particle->Init(m_random, g_gameCamera->GetCamera(),
 	{
-		"Assets/burn.png",		//!<テクスチャのファイルパス。
+		"Assets/Particle/burn.png",		//!<テクスチャのファイルパス。
 		{ 0.0f, 0.0f, 0.0f },							//!<初速度。
 		0.3f,											//!<寿命。単位は秒。
 		0.5f,											//!<発生時間。単位は秒。

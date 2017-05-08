@@ -79,7 +79,8 @@ private:
 	CSprite		m_stateSprite;
 	CTexture	m_stateTexture;
 
-
+	CSprite		m_DamageBGSprite4;
+	CTexture	m_DamageBGTexture4;
 
 	bool		Winflg;
 	bool		Loseflg;

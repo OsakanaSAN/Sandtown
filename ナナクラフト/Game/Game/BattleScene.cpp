@@ -42,7 +42,7 @@ BattleScene::~BattleScene()
 	
 
 
-	m_sound_bgm_battle2->Stop();
+	/*m_sound_bgm_battle2->Stop();*/
 }
 
 
@@ -52,10 +52,10 @@ bool BattleScene::Start()
 
 	
 
-	m_sound_bgm_battle2 = NewGO<CSoundSource>(0);
+	/*m_sound_bgm_battle2 = NewGO<CSoundSource>(0);
 	m_sound_bgm_battle2->Init("Assets/sound/bgm_maoudamashii_fantasy11.wav");
 	m_sound_bgm_battle2->Play(true);
-	m_sound_bgm_battle2->SetVolume(0.7f);
+	m_sound_bgm_battle2->SetVolume(0.7f);*/
 
 	Winflg = false;
 	Loseflg = false;
@@ -76,7 +76,9 @@ bool BattleScene::Start()
 	m_ComandBGSprite3.Init(&m_ComandBGTexture3);
 	m_ComandBGSprite3.SetPosition({ -300,-300 });
 
-
+	m_DamageBGTexture4.Load("Assets/sprite/damage.tga");
+	m_DamageBGSprite4.Init(&m_DamageBGTexture4);
+	m_DamageBGSprite4.SetPosition({ -200,300 });
 
 	m_HPberTexture.Load("Assets/sprite/HP.png");
 	m_HPberSprite.Init(&m_HPberTexture);
@@ -183,7 +185,9 @@ void BattleScene::Render(CRenderContext&renderContext)
 	m_LevelSprite.Draw(renderContext);
 	m_stateSprite.Draw(renderContext);
 
-
+	if (EDamage || PDamage) {//ダメージの表示
+		m_DamageBGSprite4.Draw(renderContext);
+	}
 }
 
 
@@ -216,6 +220,12 @@ void BattleScene::PlayerTurn()
 		}
 		else if (PAttack && !EDamage&&g_battleenemy->GetAnimend() && g_battleplayer->GetAnimend())
 		{
+
+			m_DamageBGTexture4.Load("Assets/sprite/damage.tga");
+			m_DamageBGSprite4.Init(&m_DamageBGTexture4);
+			m_DamageBGSprite4.SetPosition({ -200,300 });
+			m_DamageBGSprite4.SetSize({ 200,80 });
+
 			g_battleplayer->Particle();
 			g_battleenemy->SetDamage(g_battleplayer->GetATK(), true);//ダメージ処理
 			EDamage = true;
@@ -285,6 +295,13 @@ void BattleScene::EnemyTurn()
 	}
 	else if (EAttack && !PDamage && g_battleplayer->GetAnimend() && g_battleenemy->GetAnimend())
 	{
+
+		m_DamageBGTexture4.Load("Assets/sprite/damage.tga");
+		m_DamageBGSprite4.Init(&m_DamageBGTexture4);
+		m_DamageBGSprite4.SetPosition({ 250,200 });
+		m_DamageBGSprite4.SetSize({ 200,80 });
+
+
 		g_battleplayer->SetDamage(g_battleenemy->GetATK(), true);//ダメージ計算とダメージアニメーション再生
 
 		PDamage = true;
