@@ -59,6 +59,8 @@ bool BattleEnemy::Start()
 	Animation.SetAnimationEndTime(Damage_anim, 0.5);
 	Animation.SetAnimationLoopFlag(Damage_anim, false);
 
+	skinModel.SetShadowCasterFlag(true);
+
 	m_rotation.SetRotation(CVector3(0.0f, -1.0f, 0.0f), CMath::DegToRad(170.0f));
 
 

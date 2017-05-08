@@ -52,10 +52,10 @@ bool GameScene::Start()
 	
 
 	
-	if (g_player != nullptr && g_gameCamera != nullptr) {
+	/*if (g_player != nullptr && g_gameCamera != nullptr) {
 		g_fade->StartFadeIn();
 		g_sound->MachiSound();
-	}
+	}*/
 		return true;
 
 }

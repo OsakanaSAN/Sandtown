@@ -50,6 +50,7 @@ bool BattlePlayer::Start()
 
 	characterController.Init(0.5f, 1.0f, position);
 
+	m_random.Init((unsigned int)time(NULL));
 
 	//Animation.PlayAnimation(Stand_anim, 0.1f);
 	//Animation.SetAnimationEndTime(Run_anim, 0.8);
@@ -62,6 +63,9 @@ bool BattlePlayer::Start()
 	Animation.SetAnimationLoopFlag(Attack_anim, false);
 	Animation.SetAnimationEndTime(Damage_anim, 0.5);
 	Animation.SetAnimationLoopFlag(Damage_anim, false);
+
+	skinModel.SetShadowCasterFlag(true);
+	skinModel.SetShadowReceiverFlag(true);
 
 
 	return true;

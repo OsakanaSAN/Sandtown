@@ -12,6 +12,11 @@ Mapchip::Mapchip()
 	Maplight.SetPointLightPosition(g_player->Getpos());
 	Maplight.SetPointLightColor({ 1.0f,1.0f,1.0f,5.0f });
 	
+	skinModel.SetShadowReceiverFlag(true);//レシーバーが影が落とされるほう
+	skinModel.SetShadowCasterFlag(true);
+	Maplight.SetDiffuseLightDirection(0, { -1.0f,-1.0f,-1.0f });//ディフューズのカラーとディレクションを設定影が落とされるほう
+	Maplight.SetDiffuseLightColor(0, { 0.3f, 0.3f, 0.3f, 0.5f });//ディフューズのカラー
+
 }
 
 
