@@ -7,7 +7,8 @@
 #include "Camera.h"
 #include "Map.h"
 #include "Map2.h"
-//#include "HUD.h"
+#include "HUD.h"
+#include "GameSound.h"
 
 
 
@@ -17,18 +18,18 @@
 
 extern Fade* g_fade;
 GameScene* g_gameScene = NULL;
-
 Player* g_player = nullptr;
 Camera* g_gameCamera = nullptr;
 Map*    g_map = nullptr;
 Map2*   g_map2 = nullptr;
 BattleScene* g_battleScene = nullptr;
-//HUD*    g_Hud = nullptr;
+HUD*    g_Hud = nullptr;
+extern GameSound*   g_sound;
 
 GameScene::GameScene()
 {
 
-	//g_Hud = NewGO<HUD>(0);
+	g_Hud = NewGO<HUD>(0);
 	g_map = NewGO<Map>(0);
 	g_player = NewGO<Player>(0);
 	g_gameCamera = NewGO<Camera>(0);
@@ -37,14 +38,12 @@ GameScene::GameScene()
 	scenes = STOP;
 
 	
+
+	
 }
 GameScene::~GameScene()
 {
-
-	DeleteGO(g_player);
-	DeleteGO(g_map);
-	DeleteGO(g_gameCamera);
-	NewGO<BattleScene>(0);
+	
 	
 }
 
@@ -55,6 +54,7 @@ bool GameScene::Start()
 	
 	if (g_player != nullptr && g_gameCamera != nullptr) {
 		g_fade->StartFadeIn();
+		g_sound->MachiSound();
 	}
 		return true;
 
@@ -62,7 +62,6 @@ bool GameScene::Start()
 
 void GameScene::Update()
 {
-
 	switch (scenes)
 	{
 	case STOP:
@@ -71,6 +70,7 @@ void GameScene::Update()
 		
 			if (GetAsyncKeyState('R') & 0x8000)
 			{
+				
 				//g_fade->StartFadeOut();
 				DeleteGO(g_player);
 				
@@ -164,8 +164,11 @@ void GameScene::Update()
 
 
 		}
-	}
 
+
+
+	}
+	
 }
 /*!
 *@brief	ï`âÊä÷êîÅB

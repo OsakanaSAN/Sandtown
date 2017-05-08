@@ -5,10 +5,11 @@
 #include "BattlePlayer.h"
 #include "Player.h"
 #include "Camera.h"
+//#include "Camera.h"
+
 #include "Fade.h"
 #include "BattleEnemy.h"
 #include "BattleCamera.h"
-#include "Map.h"
 
 extern Fade* g_fade;
 extern Player* g_player;
@@ -18,6 +19,8 @@ BattlePlayer* g_battleplayer = nullptr;
 BattleEnemy* g_battleenemy = nullptr;
 
 
+//BattleScene* g_battleScene = NULL;
+
 
 BattleScene::BattleScene()
 {
@@ -25,37 +28,27 @@ BattleScene::BattleScene()
 	g_battleplayer = NewGO<BattlePlayer>(0);
 	g_battleenemy = NewGO<BattleEnemy>(0);
 
-
 }
 
 
 BattleScene::~BattleScene()
 {
 	DeleteGO(g_battleplayer);
+
 	DeleteGO(g_battleenemy);
-
-
+	//DeleteGO(this);
 	g_player = NewGO<Player>(0);
 	g_player->Loadpos();           //座標を読み込む
 	g_gameCamera->ChangeStart();   //カメラの更新を再開するを
 	//NewGO<GameScene>(0);
 	
 
-
-	m_sound_bgm_battle2->Stop();
 }
 
 
 bool BattleScene::Start()
 {
 	
-
-	
-
-	m_sound_bgm_battle2 = NewGO<CSoundSource>(0);
-	m_sound_bgm_battle2->Init("Assets/sound/bgm_maoudamashii_fantasy11.wav");
-	m_sound_bgm_battle2->Play(true);
-	m_sound_bgm_battle2->SetVolume(0.7f);
 
 	Winflg = false;
 	Loseflg = false;
@@ -65,7 +58,8 @@ bool BattleScene::Start()
 	EAttack = false;
 	PDamage = false;
 	EDamage = false;
-	
+	/*PAnimEnd = false;
+	EAnimEnd = false;*/
 
 	SelectQ = false;
 	m_ComandBGTexture2.Load("Assets/sprite/co1.png");
@@ -75,32 +69,6 @@ bool BattleScene::Start()
 	m_ComandBGTexture3.Load("Assets/sprite/co4.png");
 	m_ComandBGSprite3.Init(&m_ComandBGTexture3);
 	m_ComandBGSprite3.SetPosition({ -300,-300 });
-
-
-
-	m_HPberTexture.Load("Assets/sprite/HP.png");
-	m_HPberSprite.Init(&m_HPberTexture);
-	m_HPberSprite.SetPosition({ -500,400 });
-	m_HPberSprite.SetSize({ 750,400 });
-
-	m_stateTexture.Load("Assets/sprite/1.png");
-	m_stateSprite.Init(&m_stateTexture);
-	m_stateSprite.SetPosition({ -900,500 });
-	m_stateSprite.SetSize({ 100,100 });
-
-	m_LevelTexture.Load("Assets/sprite/Lv.png");
-	m_LevelSprite.Init(&m_LevelTexture);
-	m_LevelSprite.SetPosition({ -800,500 });
-	m_LevelSprite.SetSize({ 100,100 });
-
-
-	CVector3 lightPos, lightTarget;
-	lightTarget.Add(g_battleplayer->Getpos(), g_battleenemy->Getpos());
-	lightTarget.Scale(0.5f);
-	lightPos = g_battleplayer->Getpos();
-	lightPos.y += 5.0f;
-	ShadowMap().SetLightPosition(lightPos);
-	ShadowMap().SetLightTarget(lightTarget);
 
 
 	return true;
@@ -114,14 +82,6 @@ void BattleScene::Update()
 
 	if (GetAsyncKeyState(VK_UP) & 0x8000)
 	{
-		if (Comand != Attack)
-		{
-			m_sound_bgm_battle = NewGO<CSoundSource>(0);
-			m_sound_bgm_battle->Init("Assets/sound/select.wav");
-			m_sound_bgm_battle->Play(false);
-			m_sound_bgm_battle->SetVolume(7.0f);
-		}
-
 		m_ComandBGTexture2.Load("Assets/sprite/co2.png");
 		m_ComandBGSprite2.Init(&m_ComandBGTexture2);
 		m_ComandBGSprite3.SetPosition({ -400,-200 });
@@ -136,25 +96,18 @@ void BattleScene::Update()
 
 	if (GetAsyncKeyState(VK_DOWN) & 0x8000 && !SelectQ)
 	{
-		if (Comand != Escape)
-		{
-			m_sound_bgm_battle = NewGO<CSoundSource>(0);
-			m_sound_bgm_battle->Init("Assets/sound/select.wav");
-			m_sound_bgm_battle->Play(false);
-			m_sound_bgm_battle->SetVolume(7.0f);
-		}
-
 		m_ComandBGTexture3.Load("Assets/sprite/co3.png");
 		m_ComandBGSprite3.Init(&m_ComandBGTexture3);
 		m_ComandBGSprite3.SetPosition({ -300,-300 });
 		m_ComandBGTexture2.Load("Assets/sprite/co1.png");
 		m_ComandBGSprite2.Init(&m_ComandBGTexture2);
 		m_ComandBGSprite2.SetPosition({ -400,-200 });
-		
 		if (!SelectQ) {
 			Comand = Escape;
 		}
 	}
+
+
 
 	switch (Turn) {
 	case Pturn://プレイヤーのターン
@@ -178,12 +131,6 @@ void BattleScene::Render(CRenderContext&renderContext)
 	m_ComandBGSprite2.Draw(renderContext);
 	m_ComandBGSprite3.Draw(renderContext);
 
-
-	m_HPberSprite.Draw(renderContext);
-	m_LevelSprite.Draw(renderContext);
-	m_stateSprite.Draw(renderContext);
-
-
 }
 
 
@@ -199,16 +146,6 @@ void BattleScene::PlayerTurn()
 
 		if (!PAttack&&GetAsyncKeyState('Q') & 0x8000 && g_battleenemy->GetAnimend() && g_battleplayer->GetAnimend())
 		{
-
-			if (!SelectQ)
-			{
-				m_sound_bgm_battle = NewGO<CSoundSource>(0);
-				m_sound_bgm_battle->Init("Assets/sound/select3.wav");
-				m_sound_bgm_battle->Play(false);
-				m_sound_bgm_battle->SetVolume(5.0f);
-
-			}
-
 			g_battleplayer->SetAttack(true);//攻撃モーション
 			SelectQ = true;
 			PAttack = true;
@@ -216,13 +153,12 @@ void BattleScene::PlayerTurn()
 		}
 		else if (PAttack && !EDamage&&g_battleenemy->GetAnimend() && g_battleplayer->GetAnimend())
 		{
-			g_battleplayer->Particle();
 			g_battleenemy->SetDamage(g_battleplayer->GetATK(), true);//ダメージ処理
 			EDamage = true;
 		}
 		else if (PAttack &&EDamage&& g_battleenemy->GetAnimend() && g_battleplayer->GetAnimend())
 		{
-			g_battleplayer->ParticleDelete();
+
 			PAttack = false;
 			EDamage = false;
 			if (g_battleenemy->GetHP() <= 0)
@@ -230,7 +166,7 @@ void BattleScene::PlayerTurn()
 				Winflg = true;//バトルに勝利した
 				DeleteGO(this);
 				return;
-				
+				/*g_battleenemy->Delete();*/
 				//レベルアップ判定
 				//リザルト画面を出す処理その後シーン遷移？
 			}
@@ -248,15 +184,6 @@ void BattleScene::PlayerTurn()
 		if (SelectQ)return;
 		if (GetAsyncKeyState('Q') & 0x8000 && !PAttack)
 		{
-			if (!SelectQ)
-			{
-				m_sound_bgm_battle = NewGO<CSoundSource>(0);
-				m_sound_bgm_battle->Init("Assets/sound/select3.wav");
-				m_sound_bgm_battle->Play(false);
-				m_sound_bgm_battle->SetVolume(5.0f);
-
-			}
-
 			//確率で逃げれるようにする？乱数とかで？
 			DeleteGO(this);
 			return;

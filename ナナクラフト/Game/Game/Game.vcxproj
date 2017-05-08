@@ -168,6 +168,8 @@
     <ClCompile Include="BattleScene.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Fade.cpp" />
+    <ClCompile Include="GameSound.cpp" />
+    <ClCompile Include="HUD.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="Map2.cpp" />
@@ -181,7 +183,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="Torch.cpp" />
+    <ClCompile Include="Mining.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BattleCamera.h" />
@@ -190,6 +192,8 @@
     <ClInclude Include="BattleScene.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Fade.h" />
+    <ClInclude Include="GameSound.h" />
+    <ClInclude Include="HUD.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="Map2.h" />
     <ClInclude Include="Mapchip.h" />
@@ -197,7 +201,7 @@
     <ClInclude Include="Scene\GameScene.h" />
     <ClInclude Include="Scene\TitleScene.h" />
     <ClInclude Include="stdafx.h" />
-    <ClInclude Include="Torch.h" />
+    <ClInclude Include="Mining.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -24,6 +24,12 @@
     <Filter Include="Source Files\player">
       <UniqueIdentifier>{725b549e-50a6-42a1-98c8-bb85b9613262}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Sound">
+      <UniqueIdentifier>{2637c09d-5e1a-445f-a0a3-c5fee5eba0b0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Enemy">
+      <UniqueIdentifier>{9c935ca3-090c-4e7f-818f-a7c17644fb83}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -50,17 +56,14 @@
     <ClCompile Include="BattleScene.cpp">
       <Filter>Source Files\Scene</Filter>
     </ClCompile>
-    <ClCompile Include="BattleEnemy.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Map2.cpp">
-      <Filter>Source Files\MAP</Filter>
-    </ClCompile>
-    <ClCompile Include="Torch.cpp">
       <Filter>Source Files\MAP</Filter>
     </ClCompile>
     <ClCompile Include="Camera.cpp">
       <Filter>Source Files\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="HUD.cpp">
+      <Filter>Source Files\UI</Filter>
     </ClCompile>
     <ClCompile Include="BattleCamera.cpp">
       <Filter>Source Files\Camera</Filter>
@@ -70,6 +73,15 @@
     </ClCompile>
     <ClCompile Include="Player.cpp">
       <Filter>Source Files\player</Filter>
+    </ClCompile>
+    <ClCompile Include="Mining.cpp">
+      <Filter>Source Files\MAP</Filter>
+    </ClCompile>
+    <ClCompile Include="GameSound.cpp">
+      <Filter>Source Files\Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="BattleEnemy.cpp">
+      <Filter>Source Files\Enemy</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -94,17 +106,14 @@
     <ClInclude Include="BattleScene.h">
       <Filter>Source Files\Scene</Filter>
     </ClInclude>
-    <ClInclude Include="BattleEnemy.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
     <ClInclude Include="Map2.h">
-      <Filter>Source Files\MAP</Filter>
-    </ClInclude>
-    <ClInclude Include="Torch.h">
       <Filter>Source Files\MAP</Filter>
     </ClInclude>
     <ClInclude Include="Camera.h">
       <Filter>Source Files\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="HUD.h">
+      <Filter>Source Files\UI</Filter>
     </ClInclude>
     <ClInclude Include="BattleCamera.h">
       <Filter>Source Files\Camera</Filter>
@@ -114,6 +123,15 @@
     </ClInclude>
     <ClInclude Include="Player.h">
       <Filter>Source Files\player</Filter>
+    </ClInclude>
+    <ClInclude Include="Mining.h">
+      <Filter>Source Files\MAP</Filter>
+    </ClInclude>
+    <ClInclude Include="GameSound.h">
+      <Filter>Source Files\Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="BattleEnemy.h">
+      <Filter>Source Files\Enemy</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
