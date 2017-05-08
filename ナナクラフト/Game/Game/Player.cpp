@@ -22,10 +22,10 @@ enum {
 Player::Player()
 {
 	//ƒtƒ@ƒCƒ‹‚Ì“Ç‚Ýž‚Ý
-	All.SetAmbinetLight({ 0.5f,0.5f,0.5f });
+	/*All.SetAmbinetLight({ 0.5f,0.5f,0.5f });*/
 
 	
-	ifstream fin("Assets/DATA/tst.txt");
+	/*ifstream fin("Assets/DATA/tst.txt");
 	if (!fin)
 	{
 		exit(0);
@@ -33,7 +33,7 @@ Player::Player()
 
 	fin.precision(3);
 	fin >> position.x >> position.y >> position.z;
-	fin.close();
+	fin.close();*/
 	
 	
 }

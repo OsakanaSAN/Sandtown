@@ -3,7 +3,7 @@
 #include "BattleEnemy.h"
 
 extern BattleEnemy* g_battleenemy;
-extern BattleCamera* g_battleCamera;
+//extern BattleCamera* g_battleCamera;
 
 #include "Camera.h"
 
@@ -141,7 +141,7 @@ void BattlePlayer::Particle()
 
 	//パーティクルの生成
 	m_particle = NewGO<CParticleEmitter>(0);
-	m_particle->Init(m_random, g_battleCamera->GetCamera(),
+	m_particle->Init(m_random, g_gameCamera->GetCamera(),
 	{
 		"Assets/burn.png",		//!<テクスチャのファイルパス。
 		{ 0.0f, 0.0f, 0.0f },							//!<初速度。

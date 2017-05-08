@@ -18,9 +18,6 @@ BattlePlayer* g_battleplayer = nullptr;
 BattleEnemy* g_battleenemy = nullptr;
 
 
-BattleScene* g_battleScene = NULL;
-
-
 
 BattleScene::BattleScene()
 {
@@ -37,10 +34,7 @@ BattleScene::~BattleScene()
 	DeleteGO(g_battleplayer);
 	DeleteGO(g_battleenemy);
 
-	/*DeleteGO(g_battleCamera);*/
-	NewGO<GameScene>(0);
 
-	//DeleteGO(this);
 	g_player = NewGO<Player>(0);
 	g_player->Loadpos();           //座標を読み込む
 	g_gameCamera->ChangeStart();   //カメラの更新を再開するを
