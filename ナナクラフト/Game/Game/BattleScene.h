@@ -34,6 +34,12 @@ public:
 	}
 private:
 
+
+	CSoundSource*	m_sound_bgm_battle;
+	CSoundSource*	m_sound_bgm_battle2;
+	CSoundSource*	m_sound_Attack;
+
+
 	enum set
 	{
 		in,
