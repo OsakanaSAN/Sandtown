@@ -38,7 +38,7 @@ BattleEnemy::BattleEnemy()
 
 BattleEnemy::~BattleEnemy()
 {
-	
+
 }
 
 bool BattleEnemy::Start()
@@ -61,8 +61,6 @@ bool BattleEnemy::Start()
 
 	m_rotation.SetRotation(CVector3(0.0f, -1.0f, 0.0f), CMath::DegToRad(170.0f));
 
-	skinModel.SetShadowCasterFlag(true);
-	skinModel.SetShadowReceiverFlag(true);
 
 	return true;
 }

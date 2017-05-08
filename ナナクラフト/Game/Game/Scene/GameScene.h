@@ -83,6 +83,9 @@ private:
 
 	int        I, J;
 
+
+
+
 };
 
 extern GameScene* g_gameScene;

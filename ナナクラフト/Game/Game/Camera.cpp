@@ -14,7 +14,6 @@ Camera::Camera()
 Camera::~Camera()
 {
 }
-
 bool Camera::Start()
 {
 	

@@ -34,10 +34,6 @@ public:
 	}
 private:
 
-	CSoundSource*	m_sound_bgm_battle;
-	CSoundSource*	m_sound_bgm_battle2;
-	CSoundSource*	m_sound_Attack;
-
 	enum set
 	{
 		in,
@@ -70,6 +66,7 @@ private:
 	CTexture	m_ComandBGTexture3;		//!<戦闘画面の選択のテクスチャ。
 
 
+
 	CSprite		m_HPberSprite;
 	CTexture	m_HPberTexture;
 
@@ -88,7 +85,9 @@ private:
 	bool		EAttack;
 	bool		PDamage;
 	bool		EDamage;
-	bool		SelectQ;
+	/*bool		PAnimEnd;
+	bool		EAnimEnd;*/
+	bool		SelectQ;//
 };
 
 extern BattleScene* g_battleScene;

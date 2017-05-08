@@ -15,10 +15,6 @@ public:
 
 	void Delete();
 
-	CVector3 Getpos()
-	{
-		return position;
-	}
 	void SetAttack(bool Acs)
 	{
 		IsAttack = Acs;
@@ -43,6 +39,11 @@ public:
 	bool GetAnimend()
 	{
 		return IsAnimend;
+	}
+
+	CVector3 Getpos()
+	{
+		return position;
 	}
 
 	/*bool GetAttack()

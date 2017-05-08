@@ -59,6 +59,7 @@ private:
 	CLight                  All;        //プレイヤのライト
 	CLight                  PLight;
 	
+	CSoundSource*          runsound;
 	
 
 

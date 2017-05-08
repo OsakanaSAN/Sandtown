@@ -8,7 +8,7 @@ struct SMapInfo {
 	CQuaternion	rotation;
 };
 
-Mapchip* mapchip[3];
+Mapchip* mapchip[5];
 
 //マップの配置情報。
 SMapInfo mapLocInfo[] = {
@@ -23,7 +23,7 @@ Map::Map()
 
 Map::~Map()
 {
-	for (int i = 0;i < 3;i++)
+	for (int i = 0;i < 5;i++)
 	{
 		DeleteGO(mapchip[i]);
 	}

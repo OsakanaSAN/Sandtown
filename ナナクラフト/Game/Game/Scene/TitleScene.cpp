@@ -3,14 +3,17 @@
 #include "GameScene.h"
 #include "BattleScene.h"
 #include "Fade.h"
+#include "GameSound.h"
 
 
 extern Fade* g_fade;
 GameScene* g_gamescene;
+GameSound* g_sound;
 
 TitleScene::TitleScene()
 {
-	
+	g_sound = NewGO<GameSound>(0);
+
 }
 
 
@@ -19,6 +22,8 @@ TitleScene::~TitleScene()
 	
 	//NewGO<BattleScene>(0);
 	g_gameScene = NewGO<GameScene>(0);
+	
+	
 	
 }
 
@@ -38,6 +43,8 @@ bool TitleScene::Start()
 	m_titleBGSprite3.SetPosition({ 10,-100 });
 	
 	g_fade->StartFadeIn();
+	//タイトルの音楽再生
+	g_sound->TitleSound();
 
 	return true;
 }
@@ -88,6 +95,7 @@ void TitleScene::Update()
 			if (GetAsyncKeyState('Q') & 0x8000) {
 				g_fade->StartFadeOut();
 				m_state = eStateWaitFadeOut;
+				g_sound->StopSound();
 			}
 			break;
 

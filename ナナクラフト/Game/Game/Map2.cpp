@@ -23,7 +23,16 @@ Map2::Map2()
 
 Map2::~Map2()
 {
-	DeleteGO(mapChip);
+	for (int i = 0;i < 6;i++) {
+		DeleteGO(mapChip[i]);
+	}
+	for (int j = 0;j < 4;j++)
+	{
+		if (mining[j] != nullptr) {
+			DeleteGO(mining[j]);
+		}
+	}
+
 }
 
 bool Map2::Start()
@@ -32,17 +41,20 @@ bool Map2::Start()
 	numObject = sizeof(mapLocInfo2) / sizeof(mapLocInfo2[0]);
 	//置かれているオブジェクトの数だけマップチップを生成する。
 
-
+	int J = 0;
 	for (int i = 0; i < numObject; i++) {
-		if (strcmp(mapLocInfo2[i].modelName, "cube") == 0)
+		if (strcmp(mapLocInfo2[i].modelName, "stone") == 0)
 		{
-			torch = NewGO<Torch>(0);
-			torch->Init(mapLocInfo2[i].modelName, mapLocInfo2[i].position, mapLocInfo2[i].rotation);
+			
+			mining[J] = NewGO<Mining>(0);
+			mining[J]->Init(mapLocInfo2[i].modelName, mapLocInfo2[i].position, mapLocInfo2[i].rotation);
+			mining[J]->setas(J);
+			J++;
 		}
 		else {
-			mapChip = NewGO<Mapchip>(0);
+			mapChip[i] = NewGO<Mapchip>(0);
 			//モデル名、座標、回転を与えてマップチップを初期化する。
-			mapChip->Init(mapLocInfo2[i].modelName, mapLocInfo2[i].position, mapLocInfo2[i].rotation);
+			mapChip[i]->Init(mapLocInfo2[i].modelName, mapLocInfo2[i].position, mapLocInfo2[i].rotation);
 		}
 	}
 
@@ -54,4 +66,9 @@ bool Map2::Start()
 void Map2::Update()
 {
 
+}
+void Map2::AsDete(int Dete)
+{
+	DeleteGO(mining[Dete]);
+	mining[Dete] = nullptr;
 }

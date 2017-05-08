@@ -22,10 +22,14 @@ enum {
 Player::Player()
 {
 	//ファイルの読み込み
-	/*All.SetAmbinetLight({ 0.5f,0.5f,0.5f });*/
+	All.SetAmbinetLight({ 1.0f,1.0f,1.0f });
 
-	
-	/*ifstream fin("Assets/DATA/tst.txt");
+	runsound = NewGO<CSoundSource>(0);
+	runsound->Init("Assets/sound/Runsound.wav");
+	runsound->SetVolume(0.3);
+
+	/*
+	ifstream fin("Assets/DATA/tst.txt");
 	if (!fin)
 	{
 		exit(0);
@@ -33,8 +37,8 @@ Player::Player()
 
 	fin.precision(3);
 	fin >> position.x >> position.y >> position.z;
-	fin.close();*/
-	
+	fin.close();
+	*/
 	
 }
 
@@ -119,7 +123,10 @@ void Player::Move()
 	if (move.x != 0.0f || move.z != 0.0f)
 	{
 		Ismove = true;
+		
+		
 	}
+
 	else
 	{
 		Ismove = false;
@@ -191,15 +198,21 @@ void Player::AnimetionSet()
 			Animation.PlayAnimation(Run_anim,0.05);
 			Isrun = true;
 
+			
+			runsound->SetPosition(Getpos());
+			runsound->Play(true);
+
 		}
 	}
 	else if (!Ismove)
 	{
 		Animation.PlayAnimation(Stand_anim, 0.3f);
 		Isrun = false;
+		runsound->Stop();
 
 	}
 
+	
 	//アニメーションの更新
 	Animation.Update(1.0f / 60.0f);
 

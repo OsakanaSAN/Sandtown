@@ -18,9 +18,9 @@
 #include "tkEngine/resource/tkSkinModelDataHandle.h"
 #include "tkEngine/graphics/tkSkinModelMaterial.h"
 #include "tkEngine/Physics/tkPhysics.h"
+#include "tkEngine/particle/tkParticleEmitter.h"
 using namespace tkEngine;
 #include "tkEngine/random/tkRandom.h"
-#include "tkEngine/particle/tkParticleEmitter.h"
 
 #include "tkEngine/Sound/tkSoundSource.h"
 

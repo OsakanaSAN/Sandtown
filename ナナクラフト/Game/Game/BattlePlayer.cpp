@@ -1,27 +1,24 @@
 #include "stdafx.h"
 #include "BattlePlayer.h"
 #include "BattleEnemy.h"
-
-extern BattleEnemy* g_battleenemy;
-//extern BattleCamera* g_battleCamera;
-
 #include "Camera.h"
 
+
+extern BattleEnemy*		g_battleenemy;
 extern Camera*       g_gameCamera;
 
 enum {
 
 	Stand_anim,
-	Damage_anim,
-	Attack_anim,
+	Walk_anim,  //歩く
+	Run_anim,  //走る
 	
 
 };
 
+
 BattlePlayer::BattlePlayer()
 {
-	
-
 	All.SetAmbinetLight({ 0.2f,0.2f,0.2f });
 	All.SetDiffuseLightDirection(0, { 0.0f, -0.707f, 0.707f });
 	All.SetDiffuseLightColor(0, { 0.3f, 0.3f, 0.3f, 1.0f });
@@ -31,7 +28,6 @@ BattlePlayer::BattlePlayer()
 	All.SetDiffuseLightColor(2, { 0.3f, 0.3f, 0.3f, 1.0f });
 	All.SetDiffuseLightDirection(3, { 0.0f, 0.707f, -0.707f });
 	All.SetDiffuseLightColor(3, { 0.1f, 0.1f, 0.1f, 1.0f });
-
 	IsDamage = false;
 	IsAttack = false;
 	IsStand = true;
@@ -42,8 +38,6 @@ BattlePlayer::BattlePlayer()
 
 BattlePlayer::~BattlePlayer()
 {
-
-	
 
 }
 
@@ -57,16 +51,18 @@ bool BattlePlayer::Start()
 	characterController.Init(0.5f, 1.0f, position);
 
 
-	Animation.PlayAnimation(Stand_anim, 0.1f);
-	Animation.SetAnimationEndTime(Attack_anim, 0.8);
+	//Animation.PlayAnimation(Stand_anim, 0.1f);
+	//Animation.SetAnimationEndTime(Run_anim, 0.8);
+
+	//Animation.PlayAnimation(Stand_anim, 0.1f);
+	//Animation.SetAnimationEndTime(Run_anim, 0.8);
+
 
 	Animation.SetAnimationEndTime(Attack_anim, 0.5);
 	Animation.SetAnimationLoopFlag(Attack_anim, false);
 	Animation.SetAnimationEndTime(Damage_anim, 0.5);
 	Animation.SetAnimationLoopFlag(Damage_anim, false);
 
-	skinModel.SetShadowCasterFlag(true);
-	skinModel.SetShadowReceiverFlag(true);
 
 	return true;
 }
@@ -74,7 +70,8 @@ bool BattlePlayer::Start()
 
 void BattlePlayer::Update()
 {
-	All.SetPointLightColor({ 1.0f,1.0f,1.5f,4.0f });
+	//All.SetPointLightColor({ 1.0f,1.0f,1.5f,4.0f });
+	characterController.Execute(0.03f);
 
 	AnimationSet();
 
@@ -97,7 +94,7 @@ void BattlePlayer::AnimationSet()
 	if (!IsStand) {
 		if (IsAttack) {
 			IsAnimend = false;
-			Animation.PlayAnimation(Attack_anim, 0.05);
+			Animation.PlayAnimation(Run_anim, 0.05f);
 
 			IsStand = true;
 
@@ -105,7 +102,7 @@ void BattlePlayer::AnimationSet()
 		else if (IsDamage)
 		{
 			IsAnimend = false;
-			Animation.PlayAnimation(Damage_anim, 0.5);
+			Animation.PlayAnimation(Stand_anim, 0.3f);
 
 			IsStand = true;
 		}
@@ -125,12 +122,13 @@ void BattlePlayer::AnimationSet()
 		IsDamage = false;
 		IsAnimend = true;
 	}
-	characterController.Execute(0.03f);
+	
 
 	//アニメーションの更新
 	Animation.Update(1.0f / 60.0f);
 
 }
+
 
 void BattlePlayer::Particle()
 {
