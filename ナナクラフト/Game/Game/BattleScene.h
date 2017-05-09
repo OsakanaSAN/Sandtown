@@ -91,9 +91,10 @@ private:
 	bool		EAttack;
 	bool		PDamage;
 	bool		EDamage;
-	/*bool		PAnimEnd;
-	bool		EAnimEnd;*/
 	bool		SelectQ;//
+
+	bool Upflg = false;
+	bool Downflg = false;
 };
 
 extern BattleScene* g_battleScene;

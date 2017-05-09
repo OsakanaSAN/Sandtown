@@ -23,7 +23,7 @@ Map::Map()
 
 Map::~Map()
 {
-	for (int i = 0;i < 5;i++)
+	for (int i = 0;i < 4;i++)
 	{
 		DeleteGO(mapchip[i]);
 	}

@@ -117,10 +117,13 @@ void BattleScene::Update()
 	{
 		if (Comand != Attack)
 		{
+			
 			m_sound_bgm_battle = NewGO<CSoundSource>(0);
 			m_sound_bgm_battle->Init("Assets/sound/select.wav");
+			m_sound_bgm_battle->Stop();
 			m_sound_bgm_battle->Play(false);
 			m_sound_bgm_battle->SetVolume(7.0f);
+		
 		}
 		m_ComandBGTexture2.Load("Assets/sprite/co2.png");
 		m_ComandBGSprite2.Init(&m_ComandBGTexture2);
@@ -133,15 +136,17 @@ void BattleScene::Update()
 		Comand = Attack;
 
 	}
-
-	if (GetAsyncKeyState(VK_DOWN) & 0x8000 && !SelectQ)
+	else if (GetAsyncKeyState(VK_DOWN) & 0x8000 && !SelectQ)
 	{
 		if (Comand != Escape)
 		{
+			
 			m_sound_bgm_battle = NewGO<CSoundSource>(0);
 			m_sound_bgm_battle->Init("Assets/sound/select.wav");
+			m_sound_bgm_battle->Stop();
 			m_sound_bgm_battle->Play(false);
 			m_sound_bgm_battle->SetVolume(7.0f);
+		
 		}
 
 		m_ComandBGTexture3.Load("Assets/sprite/co3.png");

@@ -19,14 +19,14 @@ namespace tkEngine{
 		Release();
 	}
 	void CPrimitive::Create( 
-		EType 					primitiveType,
-		int 					numVertex,
-		int 					vertexStride,
-		const SVertexElement*	vertexLayout,
-		void*					pSrcVertexBuffer,
-		int 					numIndex,
-		EIndexFormat			indexFormat,
-		void*					pSrcIndexbuffer
+		EType 						primitiveType,
+		int 						numVertex,
+		int 						vertexStride,
+		const D3DVERTEXELEMENT9*	vertexLayout,
+		void*						pSrcVertexBuffer,
+		int 						numIndex,
+		EIndexFormat				indexFormat,
+		void*						pSrcIndexbuffer
 	)
 	{
 		TK_ASSERT( primitiveType < eTypeNum, "primitiveType is invalid" );
@@ -37,7 +37,7 @@ namespace tkEngine{
 		m_numVertex = numVertex;
 		m_vertexStride = vertexStride;
 		m_numIndex = numIndex;
-		Release();
+		//Release();
 		m_vertexBuffer.Create( numVertex, vertexStride, vertexLayout, pSrcVertexBuffer );
 		m_indexBuffer.Create( numIndex, indexFormat, pSrcIndexbuffer );
 		if(primitiveType == eTriangleList){
