@@ -1,6 +1,8 @@
 #include "stdafx.h"
 #include "Map.h"
+#include "Player.h"
 
+extern Player* g_player;
 
 struct SMapInfo {
 	const char* modelName;
@@ -18,12 +20,16 @@ SMapInfo mapLocInfo[] = {
 
 Map::Map()
 {
+	ChangeObject = 0;
+	numObject = 0;
 }
 
 
 Map::~Map()
 {
-	for (int i = 0;i < 5;i++)
+
+	//@todo for debug
+	for (int i = 0;i < numObject - ChangeObject;i++)
 	{
 		DeleteGO(mapchip[i]);
 	}
@@ -32,21 +38,43 @@ Map::~Map()
 
 bool Map::Start()
 {
+	//@todo for debug
 	//マップにいくつのオブジェクトが配置されているか調べる。
-	int numObject = sizeof(mapLocInfo) / sizeof(mapLocInfo[0]);
+	numObject= sizeof(mapLocInfo) / sizeof(mapLocInfo[0]);
 	//置かれているオブジェクトの数だけマップチップを生成する。
 	for (int i = 0; i < numObject; i++) {
-		 mapchip[i] = NewGO<Mapchip>(0);
-		//モデル名、座標、回転を与えてマップチップを初期化する。
-		mapchip[i]->Init(mapLocInfo[i].modelName, mapLocInfo[i].position, mapLocInfo[i].rotation);
-	}
+		
 
+		if (strcmp(mapLocInfo[i].modelName, "unity") == 0  )
+		{
+			pos = mapLocInfo[i].position;
+			rot = mapLocInfo[i].rotation;
+
+			g_player->Setpos2(pos);
+			g_player->SetRot(rot);
+			
+			ChangeObject++;
+
+		}
+
+		else
+		{
+			mapchip[i] = NewGO<Mapchip>(0);
+			//モデル名、座標、回転を与えてマップチップを初期化する。
+			mapchip[i]->Init(mapLocInfo[i].modelName, mapLocInfo[i].position, mapLocInfo[i].rotation);
+		}
+
+	}
+	
+
+	mapchip[0]->SoundOnMachi();
 	return true; //一回だけ呼ばれる
 
 
 }
 
 void Map::Update()
-{
+{	
+
 
 }

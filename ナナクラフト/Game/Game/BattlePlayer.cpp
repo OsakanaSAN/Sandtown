@@ -45,16 +45,12 @@ bool BattlePlayer::Start()
 
 
 	//Animation.PlayAnimation(Stand_anim, 0.1f);
-	//Animation.SetAnimationEndTime(Run_anim, 0.8);
+	Animation.SetAnimationEndTime(Run_anim, 0.8);
 
-	//Animation.PlayAnimation(Stand_anim, 0.1f);
-	//Animation.SetAnimationEndTime(Run_anim, 0.8);
-
-
-	/*Animation.SetAnimationEndTime(Attack_anim, 0.5);
-	Animation.SetAnimationLoopFlag(Attack_anim, false);
-	Animation.SetAnimationEndTime(Damage_anim, 0.5);
-	Animation.SetAnimationLoopFlag(Damage_anim, false);*/
+	//Animation.SetAnimationEndTime(Attack_anim, 0.5);
+	Animation.SetAnimationLoopFlag(Run_anim, false);
+	Animation.SetAnimationEndTime(Stand_anim, 0.1f);
+	Animation.SetAnimationLoopFlag(Stand_anim, false);
 
 
 	return true;

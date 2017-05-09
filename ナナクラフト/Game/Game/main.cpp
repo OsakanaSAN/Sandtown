@@ -62,6 +62,21 @@ void InitTkEngine( HINSTANCE hInst )
 	ShadowMap().SetFar(40.0f);
 	
 }
+//class CMemoryLeakTest : public IGameObject{
+//public:
+//	bool Start()
+//	{
+//		return true;
+//	}
+//	void Update() {
+//		CSkinModelDataHandle modelData;
+//		CSkinModel model;
+//		modelData.LoadModelData("Assets/modelData/Unity.X", NULL);
+//		model.Init(modelData.GetBody());
+//		SkinModelDataResources().Release();
+//	}
+//	
+//};
 
 int WINAPI wWinMain(
 	HINSTANCE hInst,
@@ -73,12 +88,11 @@ int WINAPI wWinMain(
 	//tkEngineの初期化。
 	InitTkEngine( hInst );
 	
-	
 	g_fade = NewGO<Fade>(1);
 
 	//タイトルシーンの作成。
 	NewGO<TitleScene>(0);
-	//NewGO<GameScene>(0);
+	
 	
 	
 	Engine().RunGameLoop();		//ゲームループを実行。

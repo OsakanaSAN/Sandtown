@@ -34,6 +34,10 @@ public:
 	}
 private:
 
+	CSoundSource*	m_sound_bgm_battle;
+	CSoundSource*	m_sound_bgm_battle2;
+	CSoundSource*	m_sound_Attack;
+
 	enum set
 	{
 		in,
@@ -72,9 +76,10 @@ private:
 	bool		EAttack;
 	bool		PDamage;
 	bool		EDamage;
-	/*bool		PAnimEnd;
-	bool		EAnimEnd;*/
 	bool		SelectQ;//
+
+	bool Upflg = false;
+	bool Downflg = false;
 };
 
 extern BattleScene* g_battleScene;

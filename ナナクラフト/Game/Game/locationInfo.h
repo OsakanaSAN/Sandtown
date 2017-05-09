@@ -43,18 +43,24 @@
 //stone
 {
 	"stone",
-	CVector3(26.88f, -0.38f, -8.18f),             //平行移動
-	CQuaternion(-0.71f, -0.01f, -0.01f, 0.71f ),  //回転
-},
-//stone
-{
-	"stone",
 	CVector3(21.61f, -0.38f, -20.48f),             //平行移動
 	CQuaternion(-0.49f, -0.51f, -0.51f, 0.49f ),  //回転
 },
 //stone
 {
 	"stone",
+	CVector3(24.44f, 0.00f, -6.48f),             //平行移動
+	CQuaternion(-0.50f, 0.50f, 0.50f, 0.50f ),  //回転
+},
+//stone
+{
+	"stone",
 	CVector3(1.49f, -0.54f, -45.68f),             //平行移動
 	CQuaternion(-0.53f, 0.47f, 0.47f, 0.53f ),  //回転
+},
+//unity
+{
+	"unity",
+	CVector3(-3.53f, 0.00f, 0.00f),             //平行移動
+	CQuaternion(0.00f, 1.00f, 0.00f, 0.00f ),  //回転
 },

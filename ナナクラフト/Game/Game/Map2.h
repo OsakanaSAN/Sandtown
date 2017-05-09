@@ -13,6 +13,7 @@ public:
 	void AsDete(int G);
 private:
 	int numObject;
+	int ChangeObject;
 	Mining* mining[4];
 	Mapchip* mapChip[6];
 };

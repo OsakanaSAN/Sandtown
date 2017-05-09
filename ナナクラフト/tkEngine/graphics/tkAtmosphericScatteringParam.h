@@ -10,7 +10,7 @@ namespace tkEngine{
 	 */
 	#pragma pack (4)
 	struct SAtmosphericScatteringParam{
-		SAtmosphericScatteringParam()
+		SAtmosphericScatteringParam ()
 		{
 			fScaleDepth = 0.25;
 			const float fInvScaleDepth = 4;
@@ -43,7 +43,7 @@ namespace tkEngine{
 			fWavelength4[1] = powf(fWavelength[1], 4.0f);
 			fWavelength4[2] = powf(fWavelength[2], 4.0f);
 			v3InvWavelength.Set(1 / fWavelength4[0], 1 / fWavelength4[1], 1 / fWavelength4[2]);
-		}
+		};
 		CVector3 v3LightPos;
 		CVector3 v3LightDirection;
 		CVector3 v3InvWavelength;	// 1 / pow(wavelength, 4) for the red, green, and blue channels

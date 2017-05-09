@@ -1,9 +1,11 @@
 #include "stdafx.h"
 #include "BattleEnemy.h"
 #include "Camera.h"
+#include "HUD.h"
 
 
 extern Camera*       g_gameCamera;
+extern HUD*          g_Hud;
 
 enum {
 
@@ -85,6 +87,7 @@ void BattleEnemy::AnimationSet()
 		if (IsAttack) {
 			IsAnimend = false;
 			Animation.PlayAnimation(Attack_anim, 0.5);
+			g_Hud->Damage(50);
 
 			IsStand = true;
 

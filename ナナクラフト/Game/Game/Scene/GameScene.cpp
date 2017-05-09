@@ -24,15 +24,19 @@ Map*    g_map = nullptr;
 Map2*   g_map2 = nullptr;
 BattleScene* g_battleScene = nullptr;
 HUD*    g_Hud = nullptr;
-extern GameSound*   g_sound;
+extern GameSound* g_sound;
 
 GameScene::GameScene()
 {
 
 	g_Hud = NewGO<HUD>(0);
-	g_map = NewGO<Map>(0);
-	g_player = NewGO<Player>(0);
 	g_gameCamera = NewGO<Camera>(0);
+	g_player = NewGO<Player>(0);
+	g_map = NewGO<Map>(0);
+	
+
+	
+	
 	
 	mapscene = MACHI;
 	scenes = STOP;
@@ -52,10 +56,6 @@ bool GameScene::Start()
 	
 
 	
-	if (g_player != nullptr && g_gameCamera != nullptr) {
-		g_fade->StartFadeIn();
-		g_sound->MachiSound();
-	}
 		return true;
 
 }
@@ -71,7 +71,6 @@ void GameScene::Update()
 			if (GetAsyncKeyState('R') & 0x8000)
 			{
 				
-				//g_fade->StartFadeOut();
 				DeleteGO(g_player);
 				
 				g_battleScene = NewGO<BattleScene>(0);
@@ -84,7 +83,6 @@ void GameScene::Update()
 			{
 
 				g_player = nullptr;
-				//g_fade->StartFadeIn();
 				mapscene = DOUKUTU;
 			}
 
@@ -96,6 +94,8 @@ void GameScene::Update()
 			if (Pad(0).IsTrigger(enButtonStart)) {
 				g_fade->StartFadeOut();
 				sets = out;
+				g_sound->StopSound();
+				
 				
 			}
 
@@ -123,13 +123,14 @@ void GameScene::Update()
 
 			if (g_map2 == nullptr)
 			{
-				g_map2 = NewGO<Map2>(0);
 				g_player = NewGO<Player>(0);
+				g_map2 = NewGO<Map2>(0);
+				
 			}
 
 			else
 			{
-				g_fade->StartFadeIn();
+				
 				scenes = STOP;
 				mapscene = DOUKUTU;
 				break;
@@ -148,13 +149,13 @@ void GameScene::Update()
 		{
 			if (g_map == nullptr)
 			{
-				g_map = NewGO<Map>(0);
 				g_player = NewGO<Player>(0);
+				g_map = NewGO<Map>(0);
+				
 			}
 
 			else
 			{
-				g_fade->StartFadeIn();
 				scenes = STOP;
 				mapscene = MACHI;
 				break;

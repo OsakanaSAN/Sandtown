@@ -10,6 +10,11 @@ public:
 	void Render(CRenderContext& renderContext);
 	void ReeseTex();
 	void SetTex();
+	void Damage(int Attak)
+	{
+		HP -= Attak;
+
+	}
 
 private:
 
