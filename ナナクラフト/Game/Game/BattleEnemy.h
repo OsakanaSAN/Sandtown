@@ -51,6 +51,11 @@ public:
 	return IsDamage;
 	}*/
 
+	CVector3 Getpos()
+	{
+		return position;
+	}
+
 private:
 
 	enum ANIME {
@@ -60,7 +65,7 @@ private:
 	};
 
 
-	CSkinModel		skinModel;
+	CSkinModel		        skinModel;
 	CSkinModelData	skinModelData;
 
 	CAnimation		Animation;

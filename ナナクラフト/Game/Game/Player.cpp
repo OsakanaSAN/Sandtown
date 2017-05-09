@@ -74,8 +74,6 @@ bool Player::Start()
 	m_rotion.SetRotation(CVector3(0.0f, 1.0f, 0.0f), CMath::DegToRad(0.0f));
 
 
-
-
 	//キャラクタコントローラの初期化。
 	characterController.Init(0.5f, 1.0f, position);
 
