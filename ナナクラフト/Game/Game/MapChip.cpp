@@ -2,9 +2,11 @@
 #include "Mapchip.h"
 #include "Camera.h"
 #include "Scene/GameScene.h"
+#include "Fade.h"
 
 extern Camera* g_gameCamera;
 extern Player* g_player;
+extern Fade*   g_fade;
 
 Mapchip::Mapchip()
 {
@@ -12,11 +14,6 @@ Mapchip::Mapchip()
 	Maplight.SetPointLightPosition(g_player->Getpos());
 	Maplight.SetPointLightColor({ 1.0f,1.0f,1.0f,5.0f });
 	
-	skinModel.SetShadowReceiverFlag(true);//レシーバーが影が落とされるほう
-	skinModel.SetShadowCasterFlag(true);
-	Maplight.SetDiffuseLightDirection(0, { -1.0f,-1.0f,-1.0f });//ディフューズのカラーとディレクションを設定影が落とされるほう
-	Maplight.SetDiffuseLightColor(0, { 0.3f, 0.3f, 0.3f, 0.5f });//ディフューズのカラー
-
 }
 
 
@@ -35,7 +32,7 @@ void Mapchip::Init(const char* modelName, CVector3 position, CQuaternion rotatio
 	//モデルデータをロード。
 	skinModelData.LoadModelData(filePath, NULL);
 	//CSkinModelを初期化。
-	skinModel.Init(&skinModelData);
+	skinModel.Init(skinModelData.GetBody());
 	//デフォルトライトを設定して。
 	skinModel.SetLight(&Maplight);
 	//skinModel.SetShadowCasterFlag(true);
@@ -45,7 +42,7 @@ void Mapchip::Init(const char* modelName, CVector3 position, CQuaternion rotatio
 	skinModel.Update(position, rotation, CVector3::One);
 
 	//メッシュコライダーの作成。
-	meshCollider.CreateFromSkinModel(&skinModel, skinModelData.GetRootBoneWorldMatrix());
+	meshCollider.CreateFromSkinModel(&skinModel, skinModelData.GetBody()->GetRootBoneWorldMatrix());
 
 	//剛体の作成。
 	RigidBodyInfo rbInfo;
@@ -58,6 +55,8 @@ void Mapchip::Init(const char* modelName, CVector3 position, CQuaternion rotatio
 	rigidBody.Create(rbInfo);
 	//作成した剛体を物理ワールドに追加する。
 	PhysicsWorld().AddRigidBody(&rigidBody);
+
+	g_fade->StartFadeIn();
 }
 
 void Mapchip::Update()

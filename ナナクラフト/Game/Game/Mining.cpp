@@ -17,8 +17,9 @@ extern Map2*   g_map2;
 Mining::Mining()
 {
 
-	Maplight.SetPointLightColor({ 20.0f,10.0f,1.0f,1.0f });
+	//Maplight.SetPointLightColor({ 20.0f,10.0f,1.0f,1.0f });
 	Maplight.SetAmbinetLight({ 1.0f,1.0f,1.0f });
+	
 }
 
 
@@ -34,13 +35,15 @@ void Mining::Init(const char* modelName, CVector3 position, CQuaternion rotation
 	Pointpos = position;
 	Maplight.SetPointLightPosition(LightPos2);
 
+
+
 	//ファイルパスを作成する。
 	char filePath[256];
 	sprintf(filePath, "Assets/modelData/%s.x", modelName);
 	//モデルデータをロード。
 	skinModelData.LoadModelData(filePath, NULL);
 	//CSkinModelを初期化。
-	skinModel.Init(&skinModelData);
+	skinModel.Init(skinModelData.GetBody());
 	//デフォルトライトを設定して。
 	skinModel.SetLight(&Maplight);
 	//skinModel.SetShadowCasterFlag(true);
@@ -50,7 +53,7 @@ void Mining::Init(const char* modelName, CVector3 position, CQuaternion rotation
 	skinModel.Update(position, rotation, CVector3::One);
 
 	//メッシュコライダーの作成。
-	meshCollider.CreateFromSkinModel(&skinModel, skinModelData.GetRootBoneWorldMatrix());
+	meshCollider.CreateFromSkinModel(&skinModel, skinModelData.GetBody()->GetRootBoneWorldMatrix());
 
 	//剛体の作成。
 	RigidBodyInfo rbInfo;
@@ -76,7 +79,7 @@ void Mining::Update()
 		Vpos.y = Ppos.y - Pointpos.y;
 		Vpos.z = Ppos.z - Pointpos.z;
 		float L = Vpos.Length();
-		if (L < 2.0f && GetAsyncKeyState('E'))
+		if (L < 2.0f && GetAsyncKeyState('E')&0x8000)
 		{
 			g_Hud->SetTex();
 			//DeleteGO(this);

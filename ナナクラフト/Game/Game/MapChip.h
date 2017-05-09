@@ -14,9 +14,10 @@ public:
 private:
 	CLight              Maplight;
 	CSkinModel			skinModel;		//スキンモデル。
-	CSkinModelData		skinModelData;	//スキンモデルデータ
+	CSkinModelDataHandle		skinModelData;	//スキンモデルデータ
 	CMeshCollider		meshCollider;	//メッシュコライダー。
 	CRigidBody			rigidBody;		//剛体。
+	
 	
 
 

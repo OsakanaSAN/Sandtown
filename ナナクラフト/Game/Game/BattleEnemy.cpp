@@ -1,9 +1,11 @@
 #include "stdafx.h"
 #include "BattleEnemy.h"
 #include "Camera.h"
+#include "HUD.h"
 
 
 extern Camera*       g_gameCamera;
+extern HUD*          g_Hud;
 
 enum {
 
@@ -15,15 +17,7 @@ enum {
 
 BattleEnemy::BattleEnemy()
 {
-	All.SetAmbinetLight({ 0.2f,0.2f,0.2f });
-	All.SetDiffuseLightDirection(0, { 0.0f, -0.707f, 0.707f });
-	All.SetDiffuseLightColor(0, { 0.3f, 0.3f, 0.3f, 1.0f });
-	All.SetDiffuseLightDirection(1, { 0.0f, 0.707f, 0.707f });
-	All.SetDiffuseLightColor(1, { 0.1f, 0.1f, 0.1f, 1.0f });
-	All.SetDiffuseLightDirection(2, { 0.0f, -0.707f, -0.707f });
-	All.SetDiffuseLightColor(2, { 0.3f, 0.3f, 0.3f, 1.0f });
-	All.SetDiffuseLightDirection(3, { 0.0f, 0.707f, -0.707f });
-	All.SetDiffuseLightColor(3, { 0.1f, 0.1f, 0.1f, 1.0f });
+	All.SetAmbinetLight({ 1.0f,1.0f,1.0f });
 
 	IsAttack = false;
 	IsDamage = false;
@@ -38,7 +32,7 @@ BattleEnemy::BattleEnemy()
 
 BattleEnemy::~BattleEnemy()
 {
-
+	/*DeleteGO(this);*/
 }
 
 bool BattleEnemy::Start()
@@ -58,8 +52,6 @@ bool BattleEnemy::Start()
 	Animation.SetAnimationLoopFlag(Attack_anim, false);
 	Animation.SetAnimationEndTime(Damage_anim, 0.5);
 	Animation.SetAnimationLoopFlag(Damage_anim, false);
-
-	skinModel.SetShadowCasterFlag(true);
 
 	m_rotation.SetRotation(CVector3(0.0f, -1.0f, 0.0f), CMath::DegToRad(170.0f));
 
@@ -95,6 +87,7 @@ void BattleEnemy::AnimationSet()
 		if (IsAttack) {
 			IsAnimend = false;
 			Animation.PlayAnimation(Attack_anim, 0.5);
+			g_Hud->Damage(50);
 
 			IsStand = true;
 

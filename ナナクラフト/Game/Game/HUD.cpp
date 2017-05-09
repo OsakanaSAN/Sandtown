@@ -43,6 +43,8 @@ bool HUD::Start()
 
 void HUD::Update()
 {
+	
+
 	if (GetAsyncKeyState('Y') && HP > 0)
 	{
 		HP -= 10;

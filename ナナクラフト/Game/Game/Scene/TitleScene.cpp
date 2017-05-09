@@ -52,6 +52,8 @@ bool TitleScene::Start()
 void TitleScene::Update()
 {
 
+	float rStick_y = Pad(0).GetRStickYF();
+
 	if (GetAsyncKeyState(VK_DOWN) & 0x8000)
 	{
 		m_titleBGTexture3.Release();
@@ -92,7 +94,7 @@ void TitleScene::Update()
 
 
 		case eStateRun:
-			if (GetAsyncKeyState('Q') & 0x8000) {
+			if (Pad(0).IsTrigger(enButtonStart)) {
 				g_fade->StartFadeOut();
 				m_state = eStateWaitFadeOut;
 				g_sound->StopSound();
@@ -101,10 +103,6 @@ void TitleScene::Update()
 
 		case eStateWaitFadeOut:
 			if (!g_fade->IsExecute()) {
-				//フェード終わった。
-				//ゲームシーンに遷移。
-				//DeleteGO(bgmSource);
-				//自分を削除。
 				DeleteGO(this);
 				return;
 			}
@@ -113,7 +111,7 @@ void TitleScene::Update()
 		}
 		break;
 	case NO:
-		if (GetAsyncKeyState('Q') & 0x8000)
+		if (Pad(0).IsTrigger(enButtonStart))
 		{
 			exit(0);
 		}

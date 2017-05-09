@@ -1,7 +1,8 @@
 #include "stdafx.h"
 #include "Map2.h"
+#include "Player.h"
 
-
+extern Player* g_player;
 
 struct SMapInfo {
 	const char* modelName;
@@ -18,15 +19,16 @@ SMapInfo mapLocInfo2[] = {
 
 Map2::Map2()
 {
+	ChangeObject = 0;
 }
 
 
 Map2::~Map2()
 {
-	for (int i = 0;i < 6;i++) {
+	for (int i = 0;i < numObject - ChangeObject;i++) {
 		DeleteGO(mapChip[i]);
 	}
-	for (int j = 0;j < 4;j++)
+	for (int j = 0;j < ChangeObject;j++)
 	{
 		if (mining[j] != nullptr) {
 			DeleteGO(mining[j]);
@@ -37,27 +39,39 @@ Map2::~Map2()
 
 bool Map2::Start()
 {
+	
 	//マップにいくつのオブジェクトが配置されているか調べる。
 	numObject = sizeof(mapLocInfo2) / sizeof(mapLocInfo2[0]);
 	//置かれているオブジェクトの数だけマップチップを生成する。
 
-	int J = 0;
+	
 	for (int i = 0; i < numObject; i++) {
 		if (strcmp(mapLocInfo2[i].modelName, "stone") == 0)
 		{
 			
-			mining[J] = NewGO<Mining>(0);
-			mining[J]->Init(mapLocInfo2[i].modelName, mapLocInfo2[i].position, mapLocInfo2[i].rotation);
-			mining[J]->setas(J);
-			J++;
+			mining[ChangeObject] = NewGO<Mining>(0);
+			mining[ChangeObject]->Init(mapLocInfo2[i].modelName, mapLocInfo2[i].position, mapLocInfo2[i].rotation);
+			mining[ChangeObject]->setas(ChangeObject);
+			ChangeObject++;
 		}
+		else if (strcmp(mapLocInfo2[i].modelName, "unity") == 0)
+		{
+			CVector3 pos = mapLocInfo2[i].position;
+			CQuaternion prot = mapLocInfo2[i].rotation;
+
+			g_player->Setpos2(pos);
+			g_player->SetRot(prot);
+			ChangeObject++;
+
+		}
+
 		else {
 			mapChip[i] = NewGO<Mapchip>(0);
 			//モデル名、座標、回転を与えてマップチップを初期化する。
 			mapChip[i]->Init(mapLocInfo2[i].modelName, mapLocInfo2[i].position, mapLocInfo2[i].rotation);
 		}
 	}
-
+	
 	return true; //一回だけ呼ばれる
 
 
