@@ -23,6 +23,7 @@ Player::Player()
 {
 	//ファイルの読み込み
 	All.SetAmbinetLight({ 1.0f,1.0f,1.0f });
+	position = { -5.0f,0.0f,0.0f };
 
 	runsound = NewGO<CSoundSource>(0);
 	runsound->Init("Assets/sound/Runsound.wav");
@@ -67,7 +68,7 @@ bool Player::Start()
 	
 
 
-	skinModelData.LoadModelData("Assets/modelData/cube.X", &Animation);
+	skinModelData.LoadModelData("Assets/modelData/Unity.X", &Animation);
 	skinModel.Init(&skinModelData);
 	skinModel.SetLight(&All);//デフォルトライトを設定。
 	m_rotion.SetRotation(CVector3(0.0f, 1.0f, 0.0f), CMath::DegToRad(0.0f));
@@ -93,7 +94,9 @@ bool Player::Start()
 
 void Player::Update()
 {
+
 	All.SetPointLightPosition(Getpos());
+	characterController.SetPosition(position);
 
 	AngleSet();  //キャラクターの向きを変更する
 	Move();      //キャラの移動

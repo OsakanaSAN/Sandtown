@@ -5,6 +5,8 @@
 #include "BattlePlayer.h"
 #include "Player.h"
 #include "Camera.h"
+//#include "Camera.h"
+
 #include "Fade.h"
 #include "BattleEnemy.h"
 #include "BattleCamera.h"
@@ -34,26 +36,19 @@ BattleScene::~BattleScene()
 	DeleteGO(g_battleplayer);
 
 	DeleteGO(g_battleenemy);
+	//DeleteGO(this);
 	g_player = NewGO<Player>(0);
 	g_player->Loadpos();           //座標を読み込む
 	g_gameCamera->ChangeStart();   //カメラの更新を再開するを
+	//NewGO<GameScene>(0);
 	
-	
-
-	/*m_sound_bgm_battle2->Stop();*/
 
 }
 
 
 bool BattleScene::Start()
 {
-
-
-	/*m_sound_bgm_battle2 = NewGO<CSoundSource>(0);
-	m_sound_bgm_battle2->Init("Assets/sound/bgm_maoudamashii_fantasy11.wav");
-	m_sound_bgm_battle2->Play(true);
-	m_sound_bgm_battle2->SetVolume(0.7f);*/
-
+	
 
 	Winflg = false;
 	Loseflg = false;
@@ -75,34 +70,6 @@ bool BattleScene::Start()
 	m_ComandBGSprite3.Init(&m_ComandBGTexture3);
 	m_ComandBGSprite3.SetPosition({ -300,-300 });
 
-	m_DamageBGTexture4.Load("Assets/sprite/damage.tga");
-	m_DamageBGSprite4.Init(&m_DamageBGTexture4);
-	m_DamageBGSprite4.SetPosition({ -200,300 });
-
-	m_HPberTexture.Load("Assets/sprite/HP.png");
-	m_HPberSprite.Init(&m_HPberTexture);
-	m_HPberSprite.SetPosition({ -500,400 });
-	m_HPberSprite.SetSize({ 750,400 });
-
-	m_stateTexture.Load("Assets/sprite/1.png");
-	m_stateSprite.Init(&m_stateTexture);
-	m_stateSprite.SetPosition({ -900,500 });
-	m_stateSprite.SetSize({ 100,100 });
-
-	m_LevelTexture.Load("Assets/sprite/Lv.png");
-	m_LevelSprite.Init(&m_LevelTexture);
-	m_LevelSprite.SetPosition({ -800,500 });
-	m_LevelSprite.SetSize({ 100,100 });
-
-
-	CVector3 lightPos, lightTarget;
-	lightTarget.Add(g_battleplayer->Getpos(), g_battleenemy->Getpos());
-	lightTarget.Scale(0.5f);
-	lightPos = g_battleplayer->Getpos();
-	lightPos.y += 5.0f;
-	ShadowMap().SetLightPosition(lightPos);
-	ShadowMap().SetLightTarget(lightTarget);
-
 
 	return true;
 }
@@ -115,6 +82,7 @@ void BattleScene::Update()
 
 	if (GetAsyncKeyState(VK_UP) & 0x8000)
 	{
+
 		if (Comand != Attack)
 		{
 			
@@ -125,6 +93,7 @@ void BattleScene::Update()
 			m_sound_bgm_battle->SetVolume(7.0f);
 		
 		}
+
 		m_ComandBGTexture2.Load("Assets/sprite/co2.png");
 		m_ComandBGSprite2.Init(&m_ComandBGTexture2);
 		m_ComandBGSprite3.SetPosition({ -400,-200 });
@@ -184,14 +153,6 @@ void BattleScene::Render(CRenderContext&renderContext)
 	m_ComandBGSprite2.Draw(renderContext);
 	m_ComandBGSprite3.Draw(renderContext);
 
-
-	m_HPberSprite.Draw(renderContext);
-	m_LevelSprite.Draw(renderContext);
-	m_stateSprite.Draw(renderContext);
-
-	if (EDamage || PDamage) {//ダメージの表示
-		m_DamageBGSprite4.Draw(renderContext);
-	}
 }
 
 
@@ -214,21 +175,12 @@ void BattleScene::PlayerTurn()
 		}
 		else if (PAttack && !EDamage&&g_battleenemy->GetAnimend() && g_battleplayer->GetAnimend())
 		{
-
-
-			m_DamageBGTexture4.Load("Assets/sprite/damage.tga");
-			m_DamageBGSprite4.Init(&m_DamageBGTexture4);
-			m_DamageBGSprite4.SetPosition({ -200,300 });
-			m_DamageBGSprite4.SetSize({ 200,80 });
-
-			g_battleplayer->Particle();
-
 			g_battleenemy->SetDamage(g_battleplayer->GetATK(), true);//ダメージ処理
 			EDamage = true;
 		}
 		else if (PAttack &&EDamage&& g_battleenemy->GetAnimend() && g_battleplayer->GetAnimend())
 		{
-			g_battleplayer->ParticleDelete();//パーティクル消去
+
 			PAttack = false;
 			EDamage = false;
 			if (g_battleenemy->GetHP() <= 0)
@@ -282,13 +234,6 @@ void BattleScene::EnemyTurn()
 	}
 	else if (EAttack && !PDamage && g_battleplayer->GetAnimend() && g_battleenemy->GetAnimend())
 	{
-
-		m_DamageBGTexture4.Load("Assets/sprite/damage.tga");
-		m_DamageBGSprite4.Init(&m_DamageBGTexture4);
-		m_DamageBGSprite4.SetPosition({ 250,200 });
-		m_DamageBGSprite4.SetSize({ 200,80 });
-
-
 		g_battleplayer->SetDamage(g_battleenemy->GetATK(), true);//ダメージ計算とダメージアニメーション再生
 
 		PDamage = true;

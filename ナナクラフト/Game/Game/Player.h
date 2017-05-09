@@ -18,11 +18,25 @@ public:
 	{
 		return position;
 	}
+	void Setpos2(CVector3 pos)
+	{
+		position = pos;
+		//ワールド行列の更新。
+		skinModel.Update(position, m_rotion, CVector3::One);
+		
+	}
 
 	void Setpos()
 	{
 		characterController.SetPosition(Qpos);
 
+	}
+
+
+	void SetRot(CQuaternion PRot)
+	{
+		m_rotion = PRot;
+		
 	}
 
 
@@ -49,7 +63,7 @@ private:
 	CSkinModelData			skinModelData;				//スキンモデルデータ。
 	CAnimation              Animation;
 	CCharacterController	characterController;		//キャラクタ―コントローラー。
-	CVector3				position = { -5.0f,0.0f,0.0f };	//座標。
+	CVector3				position;	//座標。
 	CVector3                Qpos;
 
 	int                     OVER = -100;

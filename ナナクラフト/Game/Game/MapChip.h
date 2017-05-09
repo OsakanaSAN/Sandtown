@@ -10,13 +10,16 @@ public:
 	void Init(const char* modelName, CVector3 position, CQuaternion rotation);
 	void Update();
 	void Render(CRenderContext& renderContext);
+	void SoundOnMachi();
+	void SoundOnDoukutu();
 
 private:
 	CLight              Maplight;
 	CSkinModel			skinModel;		//スキンモデル。
-	CSkinModelData		skinModelData;	//スキンモデルデータ
+	CSkinModelDataHandle		skinModelData;	//スキンモデルデータ
 	CMeshCollider		meshCollider;	//メッシュコライダー。
 	CRigidBody			rigidBody;		//剛体。
+	
 	
 
 

@@ -41,11 +41,6 @@ public:
 		return IsAnimend;
 	}
 
-	CVector3 Getpos()
-	{
-		return position;
-	}
-
 	/*bool GetAttack()
 	{
 	return IsAttack;

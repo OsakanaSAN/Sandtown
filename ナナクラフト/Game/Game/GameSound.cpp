@@ -53,3 +53,11 @@ void GameSound::MachiSound()
 	bgmsound->Play(0);
 
 }
+void GameSound::DoukutuSound()
+{
+	bgmsound = NewGO<CSoundSource>(0);
+	bgmsound->Init("Assets/sound/cave.wav");
+	bgmsound->SetVolume(0.5);
+	bgmsound->Play(0);
+
+}

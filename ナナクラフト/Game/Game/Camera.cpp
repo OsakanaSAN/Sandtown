@@ -75,17 +75,17 @@ void Camera::TpsCamera()
 		}
 	}
 
-	else
-	{
-		if (g_player != nullptr) {
-			V = g_player->Getpos();
-			V.y += 1.0f;
-			camera.SetTarget(V);
-			V.Add(pos);
-			camera.SetPosition(V);
-		}
-
+	
+	
+	if (g_player != nullptr) {
+		V = g_player->Getpos();
+		V.y += 1.0f;
+		camera.SetTarget(V);
+		V.Add(pos);
+		camera.SetPosition(V);
 	}
+
+
 
 }
 
