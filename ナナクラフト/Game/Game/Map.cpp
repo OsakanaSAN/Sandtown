@@ -65,6 +65,8 @@ bool Map::Start()
 
 	}
 	
+
+	mapchip[0]->SoundOnMachi();
 	return true; //ˆê‰ñ‚¾‚¯ŒÄ‚Î‚ê‚é
 
 

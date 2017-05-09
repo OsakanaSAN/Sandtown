@@ -72,6 +72,7 @@ bool Map2::Start()
 		}
 	}
 	
+	mapChip[0]->SoundOnDoukutu();
 	return true; //ˆê‰ñ‚¾‚¯ŒÄ‚Î‚ê‚é
 
 

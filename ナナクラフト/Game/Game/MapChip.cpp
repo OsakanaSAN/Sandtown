@@ -3,10 +3,12 @@
 #include "Camera.h"
 #include "Scene/GameScene.h"
 #include "Fade.h"
+#include "GameSound.h"
 
 extern Camera* g_gameCamera;
 extern Player* g_player;
 extern Fade*   g_fade;
+extern GameSound*   g_sound;
 
 Mapchip::Mapchip()
 {
@@ -57,6 +59,7 @@ void Mapchip::Init(const char* modelName, CVector3 position, CQuaternion rotatio
 	PhysicsWorld().AddRigidBody(&rigidBody);
 
 	g_fade->StartFadeIn();
+	
 }
 
 void Mapchip::Update()
@@ -71,5 +74,13 @@ void Mapchip::Update()
 void Mapchip::Render(CRenderContext& renderContext)
 {
 	skinModel.Draw(renderContext, g_gameCamera->GetViewMatrix(), g_gameCamera->GetProjectionMatrix());
+}
+void Mapchip::SoundOnMachi()
+{
+	g_sound->MachiSound();
+}
+void Mapchip::SoundOnDoukutu()
+{
+	g_sound->DoukutuSound();
 }
 

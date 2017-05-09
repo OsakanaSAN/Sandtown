@@ -24,7 +24,7 @@ Map*    g_map = nullptr;
 Map2*   g_map2 = nullptr;
 BattleScene* g_battleScene = nullptr;
 HUD*    g_Hud = nullptr;
-extern GameSound*   g_sound;
+extern GameSound* g_sound;
 
 GameScene::GameScene()
 {
@@ -94,6 +94,8 @@ void GameScene::Update()
 			if (Pad(0).IsTrigger(enButtonStart)) {
 				g_fade->StartFadeOut();
 				sets = out;
+				g_sound->StopSound();
+				
 				
 			}
 
