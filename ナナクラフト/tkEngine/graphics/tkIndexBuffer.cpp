@@ -18,7 +18,7 @@ namespace tkEngine {
 	}
 	void CIndexBuffer::Create(int numIndex, EIndexFormat format, const void* pSrcIndexBuffer)
 	{
-		//Release();
+		Release();
 		int size = 0;
 		D3DFORMAT d3dFormat;
 		if (format == eIndexFormat16) {

@@ -62,6 +62,18 @@ bool GameScene::Start()
 
 void GameScene::Update()
 {
+
+	//CVector3 Pintpos = g_player->Getpos();
+
+	//CVector3 Cpos = g_gameCamera->GetPos();
+
+	//Pintpos.Subtract(Cpos);
+
+
+
+	//Dof().SetPint(Pintpos.Length() * 1000.0f);
+	//Dof().SetFocalLength(36.0f);
+
 	switch (scenes)
 	{
 	case STOP:

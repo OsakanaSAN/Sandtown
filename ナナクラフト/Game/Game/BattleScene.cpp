@@ -16,7 +16,6 @@ extern Camera* g_gameCamera;
 BattlePlayer* g_battleplayer = nullptr;
 BattleEnemy* g_battleenemy = nullptr;
 
-
 //BattleScene* g_battleScene = NULL;
 
 
@@ -25,7 +24,6 @@ BattleScene::BattleScene()
 
 	g_battleplayer = NewGO<BattlePlayer>(0);
 	g_battleenemy = NewGO<BattleEnemy>(0);
-
 
 }
 
@@ -78,9 +76,9 @@ bool BattleScene::Start()
 	lightPos = g_battleplayer->Getpos();
 	lightPos.y += 5.0f;
 	ShadowMap().SetLightPosition(lightPos);
-	ShadowMap().SetLightTarget(lightTarget);
+	ShadowMap().SetLightTarget(g_battleplayer->Getpos());
 
-
+	
 	return true;
 }
 
@@ -88,6 +86,15 @@ bool BattleScene::Start()
 void BattleScene::Update()
 {
 
+	CVector3 Pintpos = g_battleplayer->Getpos();
+
+	CVector3 Cpos = g_gameCamera->BGetPos();
+
+	Pintpos.Subtract(Cpos);
+
+
+	Dof().SetPint(Pintpos.Length() * 1000.0f);
+	Dof().SetFocalLength(36.0f);
 
 
 	if (GetAsyncKeyState(VK_UP) & 0x8000)
@@ -157,9 +164,9 @@ void BattleScene::Update()
 
 }
 
-void BattleScene::Render(CRenderContext&renderContext)
+void BattleScene::PostRender(CRenderContext&renderContext)
 {
-
+	
 	m_ComandBGSprite2.Draw(renderContext);
 	m_ComandBGSprite3.Draw(renderContext);
 
@@ -213,7 +220,6 @@ void BattleScene::PlayerTurn()
 
 			g_battleplayer->Particle();//パーティクル呼び出し
 			g_battleenemy->SetDamage(g_battleplayer->GetATK(), true);//ダメージ処理
-
 
 
 
