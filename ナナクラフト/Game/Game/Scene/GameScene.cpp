@@ -79,25 +79,16 @@ void GameScene::Update()
 	case STOP:
 		//タイトル画面に遷移する。
 
-		
-			if (GetAsyncKeyState('R') & 0x8000)
-			{
+		if (GetAsyncKeyState('R') & 0x8000 && mapscene == DOUKUTU)
+		{
 				
 				DeleteGO(g_player);
+				g_player = nullptr;
 				
 				g_battleScene = NewGO<BattleScene>(0);
 				g_gameCamera->BattleCamera();
 				g_gameCamera->ChangeStop();    //カメラの更新を止める
-			}
-		if (mapscene == Battle)
-		{
-			if (g_battleScene != nullptr  )
-			{
-
-				g_player = nullptr;
-				mapscene = DOUKUTU;
-			}
-
+				scenes = Battle;
 		}
 
 		switch (sets)
@@ -177,6 +168,11 @@ void GameScene::Update()
 
 
 		}
+
+	case Battle:
+
+
+		break;
 
 
 

@@ -43,7 +43,10 @@ public:
 	{
 		return light;
 	}
-	
+	void SceneStop()
+	{
+		scenes = STOP;
+	}
 	
 
 	
