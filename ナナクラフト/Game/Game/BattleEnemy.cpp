@@ -17,8 +17,15 @@ enum {
 
 BattleEnemy::BattleEnemy()
 {
-	All.SetAmbinetLight({ 1.0f,1.0f,1.0f });
-
+	All.SetAmbinetLight({ 0.2f,0.2f,0.2f });
+	All.SetDiffuseLightDirection(0, { 0.0f, -0.707f, 0.707f });
+	All.SetDiffuseLightColor(0, { 0.3f, 0.3f, 0.3f, 1.0f });
+	All.SetDiffuseLightDirection(1, { 0.0f, 0.707f, 0.707f });
+	All.SetDiffuseLightColor(1, { 0.1f, 0.1f, 0.1f, 1.0f });
+	All.SetDiffuseLightDirection(2, { 0.0f, -0.707f, -0.707f });
+	All.SetDiffuseLightColor(2, { 0.3f, 0.3f, 0.3f, 1.0f });
+	All.SetDiffuseLightDirection(3, { 0.0f, 0.707f, -0.707f });
+	All.SetDiffuseLightColor(3, { 0.1f, 0.1f, 0.1f, 1.0f });
 	IsAttack = false;
 	IsDamage = false;
 	IsStand = true;
@@ -32,7 +39,7 @@ BattleEnemy::BattleEnemy()
 
 BattleEnemy::~BattleEnemy()
 {
-	/*DeleteGO(this);*/
+	
 }
 
 bool BattleEnemy::Start()
@@ -40,7 +47,7 @@ bool BattleEnemy::Start()
 	All.SetPointLightColor({ 1.0f,1.0f,1.5f,4.0f });
 
 
-	skinModelData.LoadModelData("Assets/modelData/cabetu2.X", &Animation);
+	skinModelData.LoadModelData("Assets/modelData/cabetu2.X",&Animation);
 	skinModel.Init(&skinModelData);
 	skinModel.SetLight(&All);	//デフォルトライトを設定。
 
@@ -54,6 +61,9 @@ bool BattleEnemy::Start()
 	Animation.SetAnimationLoopFlag(Damage_anim, false);
 
 	m_rotation.SetRotation(CVector3(0.0f, -1.0f, 0.0f), CMath::DegToRad(170.0f));
+
+	skinModel.SetShadowCasterFlag(true);
+	skinModel.SetShadowReceiverFlag(true);
 
 
 	return true;

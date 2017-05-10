@@ -5,8 +5,6 @@
 #include "BattlePlayer.h"
 #include "Player.h"
 #include "Camera.h"
-//#include "Camera.h"
-
 #include "Fade.h"
 #include "BattleEnemy.h"
 #include "BattleCamera.h"
@@ -28,6 +26,7 @@ BattleScene::BattleScene()
 	g_battleplayer = NewGO<BattlePlayer>(0);
 	g_battleenemy = NewGO<BattleEnemy>(0);
 
+
 }
 
 
@@ -36,7 +35,6 @@ BattleScene::~BattleScene()
 	DeleteGO(g_battleplayer);
 
 	DeleteGO(g_battleenemy);
-	//DeleteGO(this);
 	g_player = NewGO<Player>(0);
 	g_player->Loadpos();           //座標を読み込む
 	g_gameCamera->ChangeStart();   //カメラの更新を再開するを
@@ -69,6 +67,18 @@ bool BattleScene::Start()
 	m_ComandBGTexture3.Load("Assets/sprite/co4.png");
 	m_ComandBGSprite3.Init(&m_ComandBGTexture3);
 	m_ComandBGSprite3.SetPosition({ -300,-300 });
+
+	m_DamageBGTexture4.Load("Assets/sprite/damage.tga");
+	m_DamageBGSprite4.Init(&m_DamageBGTexture4);
+	m_DamageBGSprite4.SetPosition({ -200,300 });
+
+	CVector3 lightPos, lightTarget;
+	lightTarget.Add(g_battleplayer->Getpos(), g_battleenemy->Getpos());
+	lightTarget.Scale(0.5f);
+	lightPos = g_battleplayer->Getpos();
+	lightPos.y += 5.0f;
+	ShadowMap().SetLightPosition(lightPos);
+	ShadowMap().SetLightTarget(lightTarget);
 
 
 	return true;
@@ -153,6 +163,9 @@ void BattleScene::Render(CRenderContext&renderContext)
 	m_ComandBGSprite2.Draw(renderContext);
 	m_ComandBGSprite3.Draw(renderContext);
 
+	if (EDamage || PDamage) {//ダメージの表示
+		m_DamageBGSprite4.Draw(renderContext);
+	}
 }
 
 
@@ -168,6 +181,15 @@ void BattleScene::PlayerTurn()
 
 		if (!PAttack&&GetAsyncKeyState('Q') & 0x8000 && g_battleenemy->GetAnimend() && g_battleplayer->GetAnimend())
 		{
+			if (!SelectQ)
+			{
+				m_sound_bgm_battle = NewGO<CSoundSource>(0);
+				m_sound_bgm_battle->Init("Assets/sound/select3.wav");
+				m_sound_bgm_battle->Play(false);
+				m_sound_bgm_battle->SetVolume(4.0f);
+
+			}
+
 			g_battleplayer->SetAttack(true);//攻撃モーション
 			SelectQ = true;
 			PAttack = true;
@@ -175,19 +197,41 @@ void BattleScene::PlayerTurn()
 		}
 		else if (PAttack && !EDamage&&g_battleenemy->GetAnimend() && g_battleplayer->GetAnimend())
 		{
+
+
+			m_sound_Attack = NewGO<CSoundSource>(0);
+			m_sound_Attack->Init("Assets/sound/Attack.wav");
+			m_sound_Attack->Play(false);
+			m_sound_Attack->SetVolume(4.0f);
+
+
+
+			m_DamageBGTexture4.Load("Assets/sprite/damage.tga");
+			m_DamageBGSprite4.Init(&m_DamageBGTexture4);
+			m_DamageBGSprite4.SetPosition({ -200,300 });
+			m_DamageBGSprite4.SetSize({ 200,80 });
+
+			g_battleplayer->Particle();//パーティクル呼び出し
 			g_battleenemy->SetDamage(g_battleplayer->GetATK(), true);//ダメージ処理
+
+
+
+
 			EDamage = true;
+
+
 		}
 		else if (PAttack &&EDamage&& g_battleenemy->GetAnimend() && g_battleplayer->GetAnimend())
 		{
-
+			g_battleplayer->ParticleDelete();//パーティクル消去
 			PAttack = false;
 			EDamage = false;
+			m_sound_Attack->Stop();
 			if (g_battleenemy->GetHP() <= 0)
 			{
 				Winflg = true;//バトルに勝利した
 				DeleteGO(this);
-				return;
+
 				/*g_battleenemy->Delete();*/
 				//レベルアップ判定
 				//リザルト画面を出す処理その後シーン遷移？
@@ -196,19 +240,18 @@ void BattleScene::PlayerTurn()
 
 		}
 
-
-
-
-
 		break;
 
 	case Escape://逃げる
 		if (SelectQ)return;
 		if (GetAsyncKeyState('Q') & 0x8000 && !PAttack)
 		{
+			m_sound_bgm_battle = NewGO<CSoundSource>(0);
+			m_sound_bgm_battle->Init("Assets/sound/select.wav");
+			m_sound_bgm_battle->Play(false);
 			//確率で逃げれるようにする？乱数とかで？
 			DeleteGO(this);
-			return;
+
 		}
 
 		break;
@@ -234,13 +277,28 @@ void BattleScene::EnemyTurn()
 	}
 	else if (EAttack && !PDamage && g_battleplayer->GetAnimend() && g_battleenemy->GetAnimend())
 	{
+		m_sound_Attack = NewGO<CSoundSource>(0);
+		m_sound_Attack->Init("Assets/sound/Attack.wav");
+		m_sound_Attack->Play(false);
+		m_sound_Attack->SetVolume(4.0f);
+
+		m_DamageBGTexture4.Load("Assets/sprite/damage.tga");
+		m_DamageBGSprite4.Init(&m_DamageBGTexture4);
+		m_DamageBGSprite4.SetPosition({ 250,200 });
+		m_DamageBGSprite4.SetSize({ 200,80 });
+
 		g_battleplayer->SetDamage(g_battleenemy->GetATK(), true);//ダメージ計算とダメージアニメーション再生
 
 		PDamage = true;
+
+
+
+
 	}
 	else if (EAttack &&PDamage&& g_battleenemy->GetAnimend() && g_battleplayer->GetAnimend())
 	{
 
+		m_sound_Attack->Stop();
 		EAttack = false;
 		PDamage = false;
 
@@ -254,5 +312,4 @@ void BattleScene::EnemyTurn()
 		Turn = Pturn;//プレイヤーのターン
 
 	}
-
 }
