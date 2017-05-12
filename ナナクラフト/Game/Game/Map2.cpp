@@ -46,9 +46,9 @@ bool Map2::Start()
 
 	
 	for (int i = 0; i < numObject; i++) {
+
 		if (strcmp(mapLocInfo2[i].modelName, "stone") == 0)
 		{
-			
 			mining[ChangeObject] = NewGO<Mining>(0);
 			mining[ChangeObject]->Init(mapLocInfo2[i].modelName, mapLocInfo2[i].position, mapLocInfo2[i].rotation);
 			mining[ChangeObject]->setas(ChangeObject);
@@ -82,6 +82,7 @@ void Map2::Update()
 {
 
 }
+
 void Map2::AsDete(int Dete)
 {
 	DeleteGO(mining[Dete]);

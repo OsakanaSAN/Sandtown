@@ -63,7 +63,6 @@ bool BattlePlayer::Start()
 	skinModel.SetShadowCasterFlag(true);
 	skinModel.SetShadowReceiverFlag(true);
 
-
 	return true;
 }
 

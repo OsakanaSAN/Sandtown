@@ -58,9 +58,15 @@ bool BattleScene::Start()
 	EAnimEnd = false;*/
 
 	SelectQ = false;
+
+	m_ComandBGTexture1.Load("Assets/UI/HP.png");
+	m_ComandBGSprite1.Init(&m_ComandBGTexture1);
+	m_ComandBGSprite1.SetPosition({ -400,-250 });
+	m_ComandBGSprite1.SetSize({ 500,300 });
+
 	m_ComandBGTexture2.Load("Assets/sprite/co1.png");
 	m_ComandBGSprite2.Init(&m_ComandBGTexture2);
-	m_ComandBGSprite2.SetPosition({ -400,-200 });
+	m_ComandBGSprite2.SetPosition({ -300,-200 });
 
 	m_ComandBGTexture3.Load("Assets/sprite/co4.png");
 	m_ComandBGSprite3.Init(&m_ComandBGTexture3);
@@ -69,6 +75,11 @@ bool BattleScene::Start()
 	m_DamageBGTexture4.Load("Assets/sprite/damage.tga");
 	m_DamageBGSprite4.Init(&m_DamageBGTexture4);
 	m_DamageBGSprite4.SetPosition({ -200,300 });
+
+	m_CasolBGTexture5.Load("Assets/sprite/Casol.png");
+	m_CasolBGSprite5.Init(&m_CasolBGTexture5);
+	m_CasolBGSprite5.SetPosition({ -500,-200 });
+	m_CasolBGSprite5.SetSize({ 200,200 });
 
 	CVector3 lightPos, lightTarget;
 	lightTarget.Add(g_battleplayer->Getpos(), g_battleenemy->Getpos());
@@ -113,11 +124,16 @@ void BattleScene::Update()
 
 		m_ComandBGTexture2.Load("Assets/sprite/co2.png");
 		m_ComandBGSprite2.Init(&m_ComandBGTexture2);
-		m_ComandBGSprite3.SetPosition({ -400,-200 });
+		m_ComandBGSprite3.SetPosition({ -300,-200 });
 
 		m_ComandBGTexture3.Load("Assets/sprite/co4.png");
 		m_ComandBGSprite3.Init(&m_ComandBGTexture3);
 		m_ComandBGSprite3.SetPosition({ -300,-300 });
+
+		m_CasolBGTexture5.Load("Assets/sprite/Casol.png");
+		m_CasolBGSprite5.Init(&m_CasolBGTexture5);
+		m_CasolBGSprite5.SetPosition({ -500,-200 });
+		m_CasolBGSprite5.SetSize({ 200,200 });
 
 		Comand = Attack;
 
@@ -138,9 +154,16 @@ void BattleScene::Update()
 		m_ComandBGTexture3.Load("Assets/sprite/co3.png");
 		m_ComandBGSprite3.Init(&m_ComandBGTexture3);
 		m_ComandBGSprite3.SetPosition({ -300,-300 });
+
 		m_ComandBGTexture2.Load("Assets/sprite/co1.png");
 		m_ComandBGSprite2.Init(&m_ComandBGTexture2);
-		m_ComandBGSprite2.SetPosition({ -400,-200 });
+		m_ComandBGSprite2.SetPosition({ -300,-200 });
+
+		m_CasolBGTexture5.Load("Assets/sprite/Casol.png");
+		m_CasolBGSprite5.Init(&m_CasolBGTexture5);
+		m_CasolBGSprite5.SetPosition({ -500,-300 });
+		m_CasolBGSprite5.SetSize({ 200,200 });
+
 		if (!SelectQ) {
 			Comand = Escape;
 		}
@@ -166,10 +189,10 @@ void BattleScene::Update()
 
 void BattleScene::PostRender(CRenderContext&renderContext)
 {
-	
+	m_ComandBGSprite1.Draw(renderContext);
 	m_ComandBGSprite2.Draw(renderContext);
 	m_ComandBGSprite3.Draw(renderContext);
-
+	m_CasolBGSprite5.Draw(renderContext);
 	if (EDamage || PDamage) {//ダメージの表示
 		m_DamageBGSprite4.Draw(renderContext);
 	}
@@ -230,9 +253,10 @@ void BattleScene::PlayerTurn()
 		else if (PAttack &&EDamage&& g_battleenemy->GetAnimend() && g_battleplayer->GetAnimend())
 		{
 			g_battleplayer->ParticleDelete();//パーティクル消去
+			m_sound_Attack->Stop();
 			PAttack = false;
 			EDamage = false;
-			m_sound_Attack->Stop();
+			
 			if (g_battleenemy->GetHP() <= 0)
 			{
 				Winflg = true;//バトルに勝利した
@@ -307,7 +331,7 @@ void BattleScene::EnemyTurn()
 		m_sound_Attack->Stop();
 		EAttack = false;
 		PDamage = false;
-
+		
 		if (g_battleplayer->GetHP() <= 0)
 		{
 			Loseflg = true;//戦闘に負けた

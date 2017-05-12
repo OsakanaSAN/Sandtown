@@ -61,6 +61,8 @@ private:
 	};
 	TURN Turn = Pturn;
 
+	CSprite		m_ComandBGSprite1;		//!<戦闘画面の選択のスプライト。
+	CTexture	m_ComandBGTexture1;		//!<戦闘画面の選択のテクスチャ。
 
 	CSprite		m_ComandBGSprite2;		//!<戦闘画面の選択のスプライト。
 	CTexture	m_ComandBGTexture2;		//!<戦闘画面の選択のテクスチャ。
@@ -72,6 +74,9 @@ private:
 
 	CSprite		m_DamageBGSprite4;		//!<戦闘画面の選択のスプライト。
 	CTexture	m_DamageBGTexture4;		//!<戦闘画面の選択のテクスチャ。
+
+	CSprite		m_CasolBGSprite5;		//!<戦闘画面の選択のスプライト。
+	CTexture	m_CasolBGTexture5;		//!<戦闘画面の選択のテクスチャ。
 
 	bool		Winflg;
 	bool		Loseflg;
