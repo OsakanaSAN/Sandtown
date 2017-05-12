@@ -85,7 +85,8 @@ bool Player::Start()
 	Animation.SetAnimationLoopFlag(Jump_anim, false);
 	Animation.SetAnimationEndTime(Run_anim, 0.8);
 
-
+	skinModel.SetShadowCasterFlag(true);
+	skinModel.SetShadowReceiverFlag(true);
 	return true;
 
 }
