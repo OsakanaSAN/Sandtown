@@ -37,7 +37,7 @@ namespace tkEngine{
 		m_numVertex = numVertex;
 		m_vertexStride = vertexStride;
 		m_numIndex = numIndex;
-		//Release();
+		Release();
 		m_vertexBuffer.Create( numVertex, vertexStride, vertexLayout, pSrcVertexBuffer );
 		m_indexBuffer.Create( numIndex, indexFormat, pSrcIndexbuffer );
 		if(primitiveType == eTriangleList){

@@ -62,6 +62,8 @@ bool GameScene::Start()
 
 void GameScene::Update()
 {
+
+
 	switch (scenes)
 	{
 	case STOP:

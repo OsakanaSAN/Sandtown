@@ -67,7 +67,7 @@ void HUD::Update()
 
 	HudspriteHP.SetSize({ HP,20.0f });
 }
-void HUD::Render(CRenderContext& renderContext)
+void HUD::PostRender(CRenderContext& renderContext)
 {
 	Hudsprite.Draw(renderContext);
 	HudspriteNumber.Draw(renderContext);

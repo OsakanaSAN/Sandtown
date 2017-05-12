@@ -7,7 +7,7 @@ public:
 	~HUD();
 	bool Start()override;
 	void Update();
-	void Render(CRenderContext& renderContext);
+	void PostRender(CRenderContext& renderContext);
 	void ReeseTex();
 	void SetTex();
 	void Damage(int Attak)

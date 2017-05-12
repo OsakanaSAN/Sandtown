@@ -26,13 +26,14 @@ Mapchip::Mapchip()
 
 Mapchip::~Mapchip()
 {
+
 	PhysicsWorld().RemoveRigidBody(&rigidBody);
 
 }
 
 void Mapchip::Init(const char* modelName, CVector3 position, CQuaternion rotation)
 {
-	
+
 	//ファイルパスを作成する。
 	char filePath[256];
 	sprintf(filePath, "Assets/modelData/%s.x", modelName);

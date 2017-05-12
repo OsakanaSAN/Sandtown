@@ -16,7 +16,7 @@ public:
 
 	void Update() override;
 
-	void Render(CRenderContext&renderContext);
+	void PostRender(CRenderContext&renderContext);
 
 
 	
