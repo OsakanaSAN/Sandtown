@@ -8,6 +8,7 @@
 #include "Fade.h"
 #include "BattleEnemy.h"
 #include "BattleCamera.h"
+#include "EnemyHUD.h"
 
 extern Fade* g_fade;
 extern Player* g_player;
@@ -15,6 +16,7 @@ extern Camera* g_gameCamera;
 
 BattlePlayer* g_battleplayer = nullptr;
 BattleEnemy* g_battleenemy = nullptr;
+EnemyHUD*    e_Hud = nullptr;
 
 
 //BattleScene* g_battleScene = NULL;
@@ -25,6 +27,7 @@ BattleScene::BattleScene()
 
 	g_battleplayer = NewGO<BattlePlayer>(0);
 	g_battleenemy = NewGO<BattleEnemy>(0);
+	e_Hud = NewGO<EnemyHUD>(0);
 
 
 }
@@ -35,6 +38,7 @@ BattleScene::~BattleScene()
 	DeleteGO(g_battleplayer);
 
 	DeleteGO(g_battleenemy);
+	DeleteGO(e_Hud);
 	g_player = NewGO<Player>(0);
 	g_player->Loadpos();           //座標を読み込む
 	g_gameCamera->ChangeStart();   //カメラの更新を再開するを
