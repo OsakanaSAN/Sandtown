@@ -7,13 +7,6 @@
 #include "Map2.h"
 
 
-extern Camera* g_gameCamera;
-extern HUD*    g_Hud;
-extern Player* g_player;
-extern Map2*   g_map2;
-
-
-
 Mining::Mining()
 {
 
@@ -79,10 +72,11 @@ void Mining::Update()
 		Vpos.y = Ppos.y - Pointpos.y;
 		Vpos.z = Ppos.z - Pointpos.z;
 		float L = Vpos.Length();
-		if (L < 2.0f && GetAsyncKeyState('E')&0x8000)
+
+		int LV = g_Hud->GetLV();
+		if (L < 2.0f && Pad(0).IsPress(enButtonA) && LV < 10)
 		{
-			g_Hud->SetTex();
-			//DeleteGO(this);
+			g_Hud->SetExp(minigexp);
 			g_map2->AsDete(asnumber);
 		}
 	}

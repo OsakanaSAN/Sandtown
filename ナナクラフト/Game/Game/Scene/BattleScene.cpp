@@ -20,9 +20,9 @@ BattleScene* g_battleScene = NULL;
 
 BattleScene::BattleScene()
 {
-	//g_battlemap = NewGO<BattleMap>(0);
+	g_battlemap = NewGO<BattleMap>(0);
 	g_battleplayer = NewGO<BattlePlayer>(0);
-	//g_battleCamera = NewGO<BattleCamera>(0);
+	g_battleCamera = NewGO<BattleCamera>(0);
 	g_battleenemy = NewGO<BattleEnemy>(0);
 
 }
@@ -31,13 +31,11 @@ BattleScene::BattleScene()
 BattleScene::~BattleScene()
 {
 	DeleteGO(g_battleplayer);
-	//DeleteGO(g_battlemap);
+	DeleteGO(g_battlemap);
 	DeleteGO(g_battleenemy);
-	//DeleteGO(g_battleCamera);
-	g_gameScene->SceneStop();
-	g_player->Loadpos();           //座標を読み込む
-	g_gameCamera->ChangeStart();   //カメラの更新を再開するを
-	//NewGO<GameScene>(0);
+	DeleteGO(g_battleCamera);
+	DeleteGO(this);
+	NewGO<GameScene>(0);
 
 }
 

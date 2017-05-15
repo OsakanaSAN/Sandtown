@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "Camera.h"
 
-extern Player* g_player;
+//extern Player* g_player;
 
 
 Camera::Camera()
@@ -44,8 +44,8 @@ void Camera::TpsCamera()
 {
 
 	//‰ñ“]
-	float rStick_x = Pad(0).GetRStickXF();
-	float rStick_y = Pad(0).GetRStickYF();
+	float rStick_x = Pad(0).GetRStickXF() * 2.0f;
+	float rStick_y = Pad(0).GetRStickYF() * 2.0f;
 
 	if (fabs(rStick_x) > 0.0f)
 	{
@@ -65,7 +65,7 @@ void Camera::TpsCamera()
 		mRot.Mul(pos);
 		CVector3 toPosDir = pos;
 		toPosDir.Normalize();
-		if (toPosDir.y < -0.5f) {
+		if (toPosDir.y < -0.2f) {
 			//ƒJƒƒ‰‚ªãŒü‚«‚·‚¬B
 			pos = toPositionOld;
 		}

@@ -38,15 +38,6 @@ public:
 		scene = START;
 	}
 
-	CVector3 BGetPos()
-	{
-		return Battlepos;
-	}
-
-	CVector3 GetPos()
-	{
-		return pos;
-	}
 
 private:
 	CCamera camera;	//ƒJƒƒ‰B
@@ -77,5 +68,5 @@ private:
 	SECNE   scene = START;
 
 };
-
+extern Camera* g_gameCamera;
 

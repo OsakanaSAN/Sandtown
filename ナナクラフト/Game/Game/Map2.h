@@ -14,7 +14,9 @@ public:
 private:
 	int numObject;
 	int ChangeObject;
-	Mining* mining[4];
-	Mapchip* mapChip[6];
+	int NoRenderObjct;
+
+	
 };
+extern Map2*   g_map2;
 

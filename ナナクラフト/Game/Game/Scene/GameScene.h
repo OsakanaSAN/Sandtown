@@ -47,6 +47,8 @@ public:
 	{
 		scenes = STOP;
 	}
+	void MapChange();
+	void BattleDate(); //ƒoƒgƒ‹‰æ–ÊI—¹
 	
 
 	
@@ -69,6 +71,7 @@ private:
 		MACHI,
 		DOUKUTU,
 		Battle,
+		MENU,
 
 	};
 	
@@ -85,6 +88,7 @@ private:
 	
 
 	int        I, J;
+	bool       Chang = true;
 
 
 
