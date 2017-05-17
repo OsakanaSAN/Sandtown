@@ -106,7 +106,10 @@ bool Player::Start()
 	Animation.SetAnimationLoopFlag(Jump_anim, false);
 	Animation.SetAnimationEndTime(Run_anim, 0.8);
 
-
+	radius = 0.6f;
+	height = 0.3f;
+	characterController.Init(radius, height, position);
+	characterController.SetGravity(-18.8f);
 
 	return true;
 

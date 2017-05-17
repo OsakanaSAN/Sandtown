@@ -4,6 +4,9 @@
 #include "Scene/GameScene.h"
 #include "Player.h"
 #include "GameSound.h"
+#include "HUD.h"
+
+extern CRandom g_random;
 
 Menu::Menu()
 {
@@ -86,15 +89,16 @@ Menu::Menu()
 		GoldSeatpos.x += 50;
 	}
 
+
+	
+
+
 }
 
 
 Menu::~Menu()
 {
-	g_gameCamera->ChangeStart();
-	g_gameScene->SceneStop();
-	g_player->IsMoveSTART();
-	g_sound->VolumeNormal();
+	
 	
 
 }
@@ -107,41 +111,102 @@ bool Menu::Start()
 	BackSeatSprite.Init(&BackSeatTexture);
 	BackSeatSprite.SetSize({ 1920.0f,1080.0f });
 
+	//ƒCƒ“ƒxƒ“ƒgƒŠ
+
+	InventorySeatTexture[0][0].Load("Assets/UI/ui1.png");
+
+	for (int J = 0;J < 5;J++)
+	{
+		for (int I = 0;I < 6;I++)
+		{
+
+			InventorySeatSprite[J][I].SetPosition(InventoryPos);
+			InventorySeatSprite[J][I].Init(&InventorySeatTexture[0][0]);
+			InventorySeatSprite[J][I].SetSize({ 100.0f,100.0f });
+			InventoryPos.x += 100;
+		}
+
+		InventoryPos.y -= 100;
+		InventoryPos.x -= 600;
+
+	}
+
 	
-
-
-
+	
 
 	return true;
 }
 
 void Menu::Update()
 {
+
 	HpChangTex();
 	MaxHpChangTex();
 	GoldChangTex();
+	InventoryChangTex();
 
+	/*if (Pad(0).IsPress(enButtonY))
+	{
+		setMenu = MENU;
+	}
+*/
 	if (Pad(0).IsPress(enButtonA))
 	{
-		DeleteGO(this);
+		//DeleteGO(this);
+		MenuSceneStop();
+	}
+
+	else if (Pad(0).IsPress(enButtonDown) && setMenu == MENU)
+	{
+		setMenu = INVENTORY;
+	}
+	else if (Pad(0).IsPress(enButtonUp) && setMenu == INVENTORY)
+	{
+		setMenu = MENU;
 	}
 
 }
 
 void Menu::Render(CRenderContext& renderContext)
 {
+	
+	switch (setMenu) {
 
-	BackSeatSprite.Draw(renderContext);
-	BackSeatSprite2.Draw(renderContext);
-	IconSeatSprite.Draw(renderContext);
-	LvSeatSprite.Draw(renderContext);
-	LvSeatSprite2.Draw(renderContext);
+	case STOP:
+		break;
 
-	for (int i = 0;i < 4;i++)
-	{
-		HpSeatSprite[i].Draw(renderContext);
-		MaxHpSeatSprite[i].Draw(renderContext);
-		GoldSeatSprite[i].Draw(renderContext);
+
+	case MENU:
+		BackSeatSprite.Draw(renderContext);
+
+		BackSeatSprite2.Draw(renderContext);
+		IconSeatSprite.Draw(renderContext);
+		LvSeatSprite.Draw(renderContext);
+		LvSeatSprite2.Draw(renderContext);
+
+		for (int i = 0;i < 4;i++)
+		{
+			HpSeatSprite[i].Draw(renderContext);
+			MaxHpSeatSprite[i].Draw(renderContext);
+			GoldSeatSprite[i].Draw(renderContext);
+		}
+		break;
+	case INVENTORY:
+
+		BackSeatSprite.Draw(renderContext);
+		for (int J = 0;J < 5;J++)
+		{
+			for (int I = 0;I < 6;I++)
+			{
+				InventorySeatSprite[J][I].Draw(renderContext);
+
+
+			}
+
+		}
+
+		break;
+
 	}
 }
 
@@ -223,5 +288,35 @@ void Menu::GoldChangTex()
 	sprintf(GoldName, "Assets/UI/%d.png", NextGold[2]);
 	GoldSeatTexture[3].Load(GoldName);
 
+
+}
+void Menu::InventoryChangTex()
+{
+	if (InventoryY < 5) {
+		sprintf(InvebtoryName, "Assets/Item/Item%d.png", g_random.GetRandInt() % 4 + 1);
+		InventorySeatTexture[InventoryY][InventoryX].Load(InvebtoryName);
+		InventorySeatSprite[InventoryY][InventoryX].Init(&InventorySeatTexture[InventoryY][InventoryX]);
+		InventorySeatSprite[InventoryY][InventoryX].SetSize({ 100.0f, 100.0f });
+
+		InventoryX++;
+		if (InventoryX >= 6)
+		{
+			InventoryX = 0;
+			InventoryY++;
+		}
+	}
+
+
+
+}
+void Menu::MenuSceneStop()
+{
+
+	g_gameCamera->ChangeStart();
+	g_gameScene->SceneStop();
+	g_player->IsMoveSTART();
+	g_sound->VolumeNormal();
+
+	setMenu = STOP;
 
 }

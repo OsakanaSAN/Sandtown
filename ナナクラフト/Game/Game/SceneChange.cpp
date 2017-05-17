@@ -58,7 +58,7 @@ void SceneChange::Init(const char* modelName, CVector3 position, CQuaternion rot
 	//ì¬‚µ‚½„‘Ì‚ð•¨—ƒ[ƒ‹ƒh‚É’Ç‰Á‚·‚éB
 	PhysicsWorld().AddRigidBody(&rigidBody);
 
-	g_fade->StartFadeIn();
+	//g_fade->StartFadeIn();
 
 }
 
@@ -72,7 +72,8 @@ void SceneChange::Update()
 		Vpos.y = Ppos.y - SCpos.y;
 		Vpos.z = Ppos.z - SCpos.z;
 		float L = Vpos.Length();
-		if (L < 3.0f)
+
+		if (L < 3.0f && Pad(0).IsPress(enButtonA))
 		{
 			g_fade->StartFadeOut();
 			g_gameScene->MapChange();

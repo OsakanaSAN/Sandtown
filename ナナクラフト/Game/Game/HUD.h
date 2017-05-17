@@ -60,6 +60,7 @@ public:
 		return Gold;
 	}
 
+
 	void LVUp();
 
 
@@ -75,6 +76,7 @@ private:
 	int           NextExp = 20; 
 	
 	int           Gold = 0;
+	
 
 };
 extern HUD*    g_Hud;

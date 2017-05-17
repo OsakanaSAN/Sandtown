@@ -37,7 +37,7 @@ GameScene::GameScene()
 	g_player = NewGO<Player>(0);
 	g_Hud = NewGO<HUD>(0);
 	g_map = NewGO<Map>(0);
-
+	g_menu = NewGO<Menu>(0);
 	mapscene = MACHI;
 	scenes = STOP;
 	
@@ -52,8 +52,12 @@ bool GameScene::Start()
 {
 	
 	
-
+	if (g_gameCamera->IsStart() && g_player->IsStart() && g_Hud->IsStart() && g_map->IsStart()) {
+		g_fade->StartFadeIn();
 		return true;
+
+	}
+
 
 }
 
@@ -81,7 +85,7 @@ void GameScene::Update()
 
 		else if (Pad(0).IsPress(enButtonY))
 		{
-			g_menu = NewGO<Menu>(0);
+			g_menu->MenuScene();
 			g_menu->setHP(g_Hud->GetHP());
 			g_menu->setLV(g_Hud->GetLV());
 			g_menu->SetGold(g_Hud->GetGold());
@@ -117,9 +121,9 @@ void GameScene::Update()
 				
 			}
 
-			else
+			else 
 			{
-				
+				g_fade->StartFadeIn();
 				scenes = STOP;
 				mapscene = DOUKUTU;
 				break;
@@ -145,6 +149,7 @@ void GameScene::Update()
 
 			else
 			{
+				g_fade->StartFadeIn();
 				scenes = STOP;
 				mapscene = MACHI;
 				break;

@@ -27,7 +27,7 @@ void InitTkEngine( HINSTANCE hInst )
 	initParam.numRenderContext = 1;	//レンダリングコンテキストは一本
 	initParam.commandBufferSizeTbl = commandBufferSizeTbl;
 	initParam.screenHeight = 720;
-	initParam.screenWidth = 1020;
+	initParam.screenWidth = 1280;
 	initParam.frameBufferHeight = 1080;
 	initParam.frameBufferWidth = 1920;
 

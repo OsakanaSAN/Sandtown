@@ -11,6 +11,7 @@ public:
 	void MaxHpChangTex();
 	void LvChangTex();
 	void GoldChangTex();
+	void InventoryChangTex();
 
 	void setHP(int setHp)
 	{
@@ -27,7 +28,16 @@ public:
 		GoldChang = SetGold;
 	}
 
-
+	void SetItem(int SetItem)
+	{
+		ItemNuber[Number] = SetItem;
+		Number++;
+	}
+	void MenuScene()
+	{
+		setMenu = MENU;
+	}
+	void MenuSceneStop();
 
 private:
 	CSprite     BackSeatSprite;  //2”ÔŒã‚ë
@@ -87,8 +97,23 @@ private:
 
 	//////////////////////////////////////////////////
 
+	//ƒCƒ“ƒxƒ“ƒgƒŠ
+	enum MENUCHANG {
+		STOP,
+		MENU,
+		INVENTORY,
+
+	};
 	
-	
+	MENUCHANG        setMenu = STOP;
+	CSprite          InventorySeatSprite[5][6];
+	CTexture         InventorySeatTexture[5][6];
+	CVector2         InventoryPos = { -300.0f,250.0f };
+	char             InvebtoryName[255];
+	int              InventoryX = 0;
+	int              InventoryY = 0;
+	int              ItemNuber[30];
+	int              Number = 0;
 
 };
 

@@ -6,6 +6,7 @@
 #include "Player.h"
 #include "Map2.h"
 
+extern CRandom g_random;
 
 Mining::Mining()
 {
@@ -76,7 +77,7 @@ void Mining::Update()
 		int LV = g_Hud->GetLV();
 		if (L < 2.0f && Pad(0).IsPress(enButtonA) && LV < 10)
 		{
-			g_Hud->SetExp(minigexp);
+			int num = g_random.GetRandInt() % 4 + 1;
 			g_map2->AsDete(asnumber);
 		}
 	}

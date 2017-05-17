@@ -20,6 +20,8 @@ bool Camera::Start()
 	camera.SetPosition(pos); //プレイヤーの真上らへん
 	camera.SetTarget(g_player->Getpos());   //プレイヤーの座標
 
+
+
 	return true;
 
 }
@@ -31,6 +33,8 @@ void Camera::Update()
 	case START:
 		TpsCamera();
 		camera.Update();
+	
+
 		break;
 	case STOP:
 		camera.Update();

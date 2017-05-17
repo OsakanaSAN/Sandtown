@@ -115,6 +115,8 @@ private:
 	bool					Isrun;
 	bool					Ismove;
 	bool					Isjump;
+	float					radius = 0.0f;
+	float					height = 0.0f;
 
 };
 extern Player* g_player;
