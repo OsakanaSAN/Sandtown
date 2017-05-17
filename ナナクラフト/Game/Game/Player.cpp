@@ -8,8 +8,6 @@ using  namespace std;
 
 
 
-extern Camera* g_gameCamera;
-
 enum {
 
 	Stand_anim,
@@ -21,8 +19,18 @@ enum {
 
 Player::Player()
 {
-	//ファイルの読み込み
-	All.SetAmbinetLight({ 1.0f,1.0f,1.0f });
+	
+	All.SetAmbinetLight({ 0.8f,0.8f,0.8f });
+	All.SetDiffuseLightDirection(0, { 0.0f, -0.707f, 0.707f });
+	All.SetDiffuseLightColor(0, { 0.3f, 0.3f, 0.3f, 1.0f });
+	All.SetDiffuseLightDirection(1, { 0.0f, 0.707f, 0.707f });
+	All.SetDiffuseLightColor(1, { 0.1f, 0.1f, 0.1f, 1.0f });
+	All.SetDiffuseLightDirection(2, { 0.0f, -0.707f, -0.707f });
+	All.SetDiffuseLightColor(2, { 0.3f, 0.3f, 0.3f, 1.0f });
+	All.SetDiffuseLightDirection(3, { 0.0f, 0.707f, -0.707f });
+	All.SetDiffuseLightColor(3, { 0.1f, 0.1f, 0.1f, 1.0f });
+	
+
 	position = { -5.0f,0.0f,0.0f };
 
 	runsound = NewGO<CSoundSource>(0);
@@ -46,6 +54,7 @@ Player::Player()
 
 Player::~Player()
 {
+	runsound->Release();
 	//ファイルの書き込み
 	ofstream fout("Assets/DATA/tst.txt");
 	if (!fout)
@@ -64,18 +73,30 @@ Player::~Player()
 
 bool Player::Start()
 {
-	All.SetPointLightColor({ 1.0f,1.0f,1.5f,4.0f });
+	//All.SetPointLightColor({ 1.0f,1.0f,1.5f,4.0f });
 	
 
-
 	skinModelData.LoadModelData("Assets/modelData/Unity.X", &Animation);
-	skinModel.Init(&skinModelData);
+	skinModel.Init(skinModelData.GetBody());
 	skinModel.SetLight(&All);//デフォルトライトを設定。
+	/*skinModel.SetHasNormalMap(true);
+	skinModel.SetHasSpeculerMap(true)*/;
+	skinModel.SetShadowCasterFlag(true);
+	skinModel.SetShadowReceiverFlag(true);
+	/*skinModel.SetFresnelFlag(true);
+	skinModel.SetReflectionCasterFlag(true);
+	skinModel.SetWriteVelocityMap(false);*/
+
+
+
+
 	m_rotion.SetRotation(CVector3(0.0f, 1.0f, 0.0f), CMath::DegToRad(0.0f));
 
 
+
+
 	//キャラクタコントローラの初期化。
-	characterController.Init(0.5f, 1.0f, position);
+	//characterController.Init(0.5f, 1.0f, position);
 
 	Isrun = false;
 	Ismove = false;
@@ -85,6 +106,10 @@ bool Player::Start()
 	Animation.SetAnimationLoopFlag(Jump_anim, false);
 	Animation.SetAnimationEndTime(Run_anim, 0.8);
 
+	radius = 0.6f;
+	height = 0.3f;
+	characterController.Init(radius, height, position);
+	characterController.SetGravity(-18.8f);
 
 	return true;
 
@@ -92,18 +117,27 @@ bool Player::Start()
 
 void Player::Update()
 {
+	switch (IsMove)
+	{
 
-	All.SetPointLightPosition(Getpos());
-	characterController.SetPosition(position);
+	case START:
+		All.SetPointLightPosition(Getpos());
+		characterController.SetPosition(position);
 
-	AngleSet();  //キャラクターの向きを変更する
-	Move();      //キャラの移動
-	AnimetionSet();
-	
-	//ワールド行列の更新。
-	skinModel.Update(position, m_rotion, CVector3::One);
+		AngleSet();  //キャラクターの向きを変更する
+		Move();      //キャラの移動
+		AnimetionSet();
 
+		//ワールド行列の更新。
+		skinModel.Update(position, m_rotion, CVector3::One);
 
+		break;
+
+	case STOP:
+
+		break;
+
+	}
 }
 
 void Player::Move()
@@ -112,6 +146,7 @@ void Player::Move()
 	move.x = -Pad(0).GetLStickXF() * 5.0f;
 	move.z = -Pad(0).GetLStickYF() * 5.0f;
 
+	
 
 	CVector3 old_move = move;
 
@@ -134,13 +169,6 @@ void Player::Move()
 	}
 
 
-	if (GetAsyncKeyState(VK_SPACE) & 0x8000)
-	{
-		characterController.Jump();
-		move.y = 6.0f;
-		Isjump = true;
-
-	}
 
 }
 
@@ -180,6 +208,9 @@ void Player::AngleSet()
 		m_rotion.SetRotation(CVector3::Up, atan2f(moveDir.x, moveDir.z));
 		
 	}
+
+	
+
 	characterController.SetMoveSpeed(moveSpeed);
 
 	characterController.Execute(0.03f);
@@ -240,3 +271,5 @@ void Player::Loadpos()
 	fin >> position.x >> position.y >> position.z;
 	fin.close();
 }
+
+

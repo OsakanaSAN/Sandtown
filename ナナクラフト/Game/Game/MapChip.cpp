@@ -4,36 +4,35 @@
 #include "Scene/GameScene.h"
 #include "Fade.h"
 #include "GameSound.h"
-
-extern Camera* g_gameCamera;
-extern Player* g_player;
-extern Fade*   g_fade;
-extern GameSound*   g_sound;
+#include "Player.h"
 
 Mapchip::Mapchip()
 {
-	Maplight.SetAmbinetLight({ 0.3f, 0.3f, 0.3f }); //ライトの設定
-	Maplight.SetPointLightPosition(g_player->Getpos());
-	Maplight.SetPointLightColor({ 1.0f,1.0f,1.0f,5.0f });
+	Maplight.SetAmbinetLight({ 0.5f, 0.5f, 0.5f }); //ライトの設定
+	Lightpos = g_player->Getpos();
+	Maplight.SetPointLightPosition(Lightpos);
+	Maplight.SetPointLightColor({ 1.0f,1.0f,1.0f,1.0f });
 
 
 	skinModel.SetShadowReceiverFlag(true);//レシーバーが影が落とされるほう
 	skinModel.SetShadowCasterFlag(true);
+
+
 	Maplight.SetDiffuseLightDirection(0, { -1.0f,-1.0f,-1.0f });//ディフューズのカラーとディレクションを設定影が落とされるほう
 	Maplight.SetDiffuseLightColor(0, { 0.3f, 0.3f, 0.3f, 0.5f });//ディフューズのカラー
+	
 }
 
 
 Mapchip::~Mapchip()
 {
-
 	PhysicsWorld().RemoveRigidBody(&rigidBody);
 
 }
 
 void Mapchip::Init(const char* modelName, CVector3 position, CQuaternion rotation)
 {
-
+	
 	//ファイルパスを作成する。
 	char filePath[256];
 	sprintf(filePath, "Assets/modelData/%s.x", modelName);
@@ -43,8 +42,8 @@ void Mapchip::Init(const char* modelName, CVector3 position, CQuaternion rotatio
 	skinModel.Init(skinModelData.GetBody());
 	//デフォルトライトを設定して。
 	skinModel.SetLight(&Maplight);
-	//skinModel.SetShadowCasterFlag(true);
-	//skinModel.SetShadowReceiverFlag(true);
+	skinModel.SetShadowCasterFlag(true);
+	skinModel.SetShadowReceiverFlag(true);
 	//ワールド行列を更新する。
 	//このオブジェクトは動かないので、初期化で一回だけワールド行列を作成すればおｋ。
 	skinModel.Update(position, rotation, CVector3::One);
@@ -64,7 +63,7 @@ void Mapchip::Init(const char* modelName, CVector3 position, CQuaternion rotatio
 	//作成した剛体を物理ワールドに追加する。
 	PhysicsWorld().AddRigidBody(&rigidBody);
 
-	g_fade->StartFadeIn();
+	
 	
 }
 
@@ -75,6 +74,8 @@ void Mapchip::Update()
 	{
 		Maplight.SetPointLightPosition(g_player->Getpos());
 	}
+
+	
 
 }
 void Mapchip::Render(CRenderContext& renderContext)

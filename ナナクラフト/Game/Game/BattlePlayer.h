@@ -1,6 +1,5 @@
 #pragma once
 #include "tkEngine/character/tkCharacterController.h"
-#include "tkEngine/particle/tkParticleEmitter.h"
 #include "BattleCamera.h"
 class BattlePlayer :
 	public IGameObject
@@ -66,13 +65,12 @@ private:
 	};
 
 	CSkinModel				skinModel;
-	CSkinModelData			skinModelData;
+	CSkinModelDataHandle			skinModelData;
 	CCharacterController	characterController;
 
 	CAnimation				Animation;
 	CParticleEmitter		*m_particle;
 	CRandom					m_random;
-
 
 	CVector3				position = { -3.0f,-0.0f,-45.0f };
 	CQuaternion				m_rotation;
@@ -86,7 +84,7 @@ private:
 	bool					IsAnimend;
 
 	//ゲームシーンから持ってくるステータス？
-	int						ATK = 10;//武器ごとに変化？
+	int						ATK = 20;//武器ごとに変化？
 	int						HP = 30;//ゲームシーンと同じ値に後々する
 	int						EXP = 0;//経験値
 };

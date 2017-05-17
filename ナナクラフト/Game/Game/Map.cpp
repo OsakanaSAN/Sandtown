@@ -1,8 +1,10 @@
 #include "stdafx.h"
 #include "Map.h"
 #include "Player.h"
+#include "SceneChange.h"
+#include "HUD.h"
 
-extern Player* g_player;
+
 
 struct SMapInfo {
 	const char* modelName;
@@ -10,7 +12,8 @@ struct SMapInfo {
 	CQuaternion	rotation;
 };
 
-Mapchip* mapchip[5];
+Mapchip* mapchip[10];
+SceneChange* g_SC;
 
 //マップの配置情報。
 SMapInfo mapLocInfo[] = {
@@ -22,18 +25,19 @@ Map::Map()
 {
 	ChangeObject = 0;
 	numObject = 0;
+	
 }
 
 
 Map::~Map()
 {
-
 	//@todo for debug
 	for (int i = 0;i < numObject - ChangeObject;i++)
 	{
 		DeleteGO(mapchip[i]);
 	}
 
+	DeleteGO(g_SC);
 }
 
 bool Map::Start()
@@ -45,7 +49,7 @@ bool Map::Start()
 	for (int i = 0; i < numObject; i++) {
 		
 
-		if (strcmp(mapLocInfo[i].modelName, "unity") == 0  )
+		if (strcmp(mapLocInfo[i].modelName, "Unity") == 0  )
 		{
 			pos = mapLocInfo[i].position;
 			rot = mapLocInfo[i].rotation;
@@ -54,6 +58,16 @@ bool Map::Start()
 			g_player->SetRot(rot);
 			
 			ChangeObject++;
+
+		}
+		else if (strcmp(mapLocInfo[i].modelName, "doa") == 0)
+		{
+
+			g_SC = NewGO<SceneChange>(0);
+			g_SC->Init(mapLocInfo[i].modelName, mapLocInfo[i].position, mapLocInfo[i].rotation);
+			g_SC->setpos(mapLocInfo[i].position);
+			ChangeObject++;
+
 
 		}
 
@@ -73,9 +87,7 @@ bool Map::Start()
 
 }
 
-
 void Map::Update()
 {	
-
 
 }

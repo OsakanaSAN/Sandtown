@@ -50,4 +50,4 @@ private:
 	bool		m_isExecute = false;	//!<フェードを実行中？
 	float		m_timer = 1.0f;			//!<タイマ(単位：秒)
 };
-
+extern Fade*   g_fade;

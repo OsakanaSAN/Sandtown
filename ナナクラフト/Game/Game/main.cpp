@@ -4,6 +4,7 @@
 #include "Fade.h"
 #include "Camera.h"
 #include "Player.h"
+#include "Menu.h"
 
 
 Fade*   g_fade = nullptr;
@@ -25,8 +26,8 @@ void InitTkEngine( HINSTANCE hInst )
 	initParam.gameObjectPrioMax = 255;
 	initParam.numRenderContext = 1;	//レンダリングコンテキストは一本
 	initParam.commandBufferSizeTbl = commandBufferSizeTbl;
-	initParam.screenHeight = 1080;
-	initParam.screenWidth = 1920;
+	initParam.screenHeight = 720;
+	initParam.screenWidth = 1280;
 	initParam.frameBufferHeight = 1080;
 	initParam.frameBufferWidth = 1920;
 
@@ -50,11 +51,12 @@ void InitTkEngine( HINSTANCE hInst )
 	
 
 	//DOF
-	initParam.graphicsConfig.dofConfig.isEnable = true;
+	//initParam.graphicsConfig.dofConfig.isEnable = false;
 	//AA
 	initParam.graphicsConfig.aaConfig.isEnable = false;
 	//乱数初期化。
 	g_random.Init((unsigned long)time(NULL));
+
 
 	Engine().Init(initParam);	//初期化。
 	
@@ -90,10 +92,10 @@ int WINAPI wWinMain(
 	
 	g_fade = NewGO<Fade>(1);
 
-	//タイトルシーンの作成。
+	////タイトルシーンの作成。
 	NewGO<TitleScene>(0);
 	
-	
+	//NewGO<Menu>(0);
 	
 	Engine().RunGameLoop();		//ゲームループを実行。
 

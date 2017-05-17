@@ -6,7 +6,6 @@
 #include "GameSound.h"
 
 
-extern Fade* g_fade;
 GameScene* g_gamescene;
 GameSound* g_sound;
 
@@ -54,7 +53,7 @@ void TitleScene::Update()
 
 	float rStick_y = Pad(0).GetRStickYF();
 
-	if (GetAsyncKeyState(VK_DOWN) & 0x8000)
+	if (Pad(0).IsPress(enButtonDown) && GAME == NO)
 	{
 		m_titleBGTexture3.Release();
 		m_titleBGTexture3.Load("Assets/sprite/START2.png");
@@ -67,7 +66,7 @@ void TitleScene::Update()
 		GAME = START;
 	}
 
-	if (GetAsyncKeyState(VK_UP) & 0x8000)
+	if (Pad(0).IsPress(enButtonUp) && GAME == START)
 	{
 		m_titleBGTexture2.Release();
 		m_titleBGTexture2.Load("Assets/sprite/END2.png");

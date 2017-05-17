@@ -37,15 +37,9 @@ public:
 	{
 		scene = START;
 	}
-
-	CVector3 BGetPos()
+	void BGetPos()
 	{
-		return Battlepos;
-	}
-
-	CVector3 GetPos()
-	{
-		return pos;
+		CVector3 Battlepos;
 	}
 
 private:
@@ -56,7 +50,6 @@ private:
 
 	CVector3	Battlepos = { -5.0f,1.9f,-47.0f };
 	CVector3	Battletag = { 2.0f,-2.0f,-35.0f };
-
 
 	CVector3 Gamepos;
 	CVector3 V;
@@ -77,5 +70,5 @@ private:
 	SECNE   scene = START;
 
 };
-
+extern Camera* g_gameCamera;
 
