@@ -260,7 +260,7 @@ void BattleScene::PlayerTurn()
 			if (g_battleenemy->GetHP() <= 0)
 			{
 				Winflg = true;//バトルに勝利した
-				DeleteGO(this);
+				/*DeleteGO(this);*/
 
 				/*g_battleenemy->Delete();*/
 				//レベルアップ判定
@@ -335,7 +335,7 @@ void BattleScene::EnemyTurn()
 		if (g_battleplayer->GetHP() <= 0)
 		{
 			Loseflg = true;//戦闘に負けた
-			DeleteGO(this);
+			/*DeleteGO(this);*/
 			//リザルト画面を出す処理かシーン遷移？
 		}
 		SelectQ = false;
