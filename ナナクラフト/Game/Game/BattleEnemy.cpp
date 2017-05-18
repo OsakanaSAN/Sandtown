@@ -4,8 +4,9 @@
 #include "HUD.h"
 
 
-extern Camera*       g_gameCamera;
-extern HUD*          g_Hud;
+
+
+
 
 enum {
 
@@ -26,6 +27,7 @@ BattleEnemy::BattleEnemy()
 	All.SetDiffuseLightColor(2, { 0.3f, 0.3f, 0.3f, 1.0f });
 	All.SetDiffuseLightDirection(3, { 0.0f, 0.707f, -0.707f });
 	All.SetDiffuseLightColor(3, { 0.1f, 0.1f, 0.1f, 1.0f });
+
 	IsAttack = false;
 	IsDamage = false;
 	IsStand = true;
@@ -39,6 +41,7 @@ BattleEnemy::BattleEnemy()
 
 BattleEnemy::~BattleEnemy()
 {
+	/*DeleteGO(this);*/
 	
 }
 
@@ -47,8 +50,8 @@ bool BattleEnemy::Start()
 	All.SetPointLightColor({ 1.0f,1.0f,1.5f,4.0f });
 
 
-	skinModelData.LoadModelData("Assets/modelData/cabetu2.X",&Animation);
-	skinModel.Init(&skinModelData);
+	skinModelData.LoadModelData("Assets/modelData/cabetu2.X", &Animation);
+	skinModel.Init(skinModelData.GetBody());
 	skinModel.SetLight(&All);	//デフォルトライトを設定。
 
 
@@ -64,8 +67,6 @@ bool BattleEnemy::Start()
 
 	skinModel.SetShadowCasterFlag(true);
 	skinModel.SetShadowReceiverFlag(true);
-
-
 	return true;
 }
 
@@ -97,9 +98,9 @@ void BattleEnemy::AnimationSet()
 		if (IsAttack) {
 			IsAnimend = false;
 			Animation.PlayAnimation(Attack_anim, 0.5);
-			g_Hud->Damage(50);
 
 			IsStand = true;
+			g_Hud->Damage(50);
 
 		}
 		else if (IsDamage)

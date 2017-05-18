@@ -29,6 +29,8 @@ private:
 	CMeshCollider		meshCollider;	//メッシュコライダー。
 	CRigidBody			rigidBody;		//剛体。
 	int                 asnumber;
+	int                 minigexp = 5;
+
 
 };
 

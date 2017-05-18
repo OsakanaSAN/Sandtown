@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "Camera.h"
 
-extern Player* g_player;
+//extern Player* g_player;
 
 
 Camera::Camera()
@@ -20,6 +20,8 @@ bool Camera::Start()
 	camera.SetPosition(pos); //プレイヤーの真上らへん
 	camera.SetTarget(g_player->Getpos());   //プレイヤーの座標
 
+
+
 	return true;
 
 }
@@ -31,6 +33,8 @@ void Camera::Update()
 	case START:
 		TpsCamera();
 		camera.Update();
+	
+
 		break;
 	case STOP:
 		camera.Update();
@@ -44,8 +48,8 @@ void Camera::TpsCamera()
 {
 
 	//回転
-	float rStick_x = Pad(0).GetRStickXF();
-	float rStick_y = Pad(0).GetRStickYF();
+	float rStick_x = Pad(0).GetRStickXF() * 2.0f;
+	float rStick_y = Pad(0).GetRStickYF() * 2.0f;
 
 	if (fabs(rStick_x) > 0.0f)
 	{
@@ -65,7 +69,7 @@ void Camera::TpsCamera()
 		mRot.Mul(pos);
 		CVector3 toPosDir = pos;
 		toPosDir.Normalize();
-		if (toPosDir.y < -0.5f) {
+		if (toPosDir.y < -0.2f) {
 			//カメラが上向きすぎ。
 			pos = toPositionOld;
 		}

@@ -15,6 +15,11 @@ public:
 
 	void Delete();
 
+	CVector3 Getpos()
+	{
+		return position;
+	}
+
 	void SetAttack(bool Acs)
 	{
 		IsAttack = Acs;
@@ -50,10 +55,13 @@ public:
 	{
 	return IsDamage;
 	}*/
-
-	CVector3 Getpos()
+	int GetEGold()const
 	{
-		return position;
+		return EGold;
+	}
+	int GetExp()const
+	{
+		return Exp;
 	}
 
 private:
@@ -65,8 +73,8 @@ private:
 	};
 
 
-	CSkinModel		        skinModel;
-	CSkinModelData	skinModelData;
+	CSkinModel		skinModel;
+	CSkinModelDataHandle	skinModelData;
 
 	CAnimation		Animation;
 	CVector3		position = { -2.0f,0.0f,-38.0f };
@@ -83,8 +91,11 @@ private:
 
 	////エネミーごとのステータス?
 	int				ATK = 10;
-	int				HP = 50;
-	int				Exp = 10;
+	int				HP = 30;
+	int				Exp = 15;
+
+	int             EGold = 50;
+
 	int				EnemyID;//ゲームシーンから何のエネミーかの情報を格納
 
 };

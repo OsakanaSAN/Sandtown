@@ -31,25 +31,19 @@
 //saku
 {
 	"saku",
-	CVector3(21.56f, 0.00f, -8.80f),             //平行移動
-	CQuaternion(-0.71f, 0.00f, 0.00f, 0.71f ),  //回転
-},
-//doa
-{
-	"doa",
-	CVector3(-2.45f, 0.00f, 22.42f),             //平行移動
+	CVector3(21.37f, 0.00f, -8.80f),             //平行移動
 	CQuaternion(-0.71f, 0.00f, 0.00f, 0.71f ),  //回転
 },
 //saku
 {
 	"saku",
-	CVector3(12.74f, 0.00f, -8.80f),             //平行移動
+	CVector3(11.38f, 0.00f, -8.80f),             //平行移動
 	CQuaternion(-0.71f, 0.00f, 0.00f, 0.71f ),  //回転
 },
 //saku
 {
 	"saku",
-	CVector3(17.22f, 0.00f, -8.80f),             //平行移動
+	CVector3(16.37f, 0.00f, -8.80f),             //平行移動
 	CQuaternion(-0.71f, 0.00f, 0.00f, 0.71f ),  //回転
 },
 //ie
@@ -63,4 +57,16 @@
 	"iedoa",
 	CVector3(16.01f, 0.19f, 14.82f),             //平行移動
 	CQuaternion(-0.68f, 0.18f, 0.18f, 0.68f ),  //回転
+},
+//Unity
+{
+	"Unity",
+	CVector3(-4.79f, 0.01f, 12.68f),             //平行移動
+	CQuaternion(0.00f, 1.00f, 0.00f, 0.00f ),  //回転
+},
+//doa
+{
+	"doa",
+	CVector3(-2.45f, 0.00f, 22.42f),             //平行移動
+	CQuaternion(-0.71f, 0.00f, 0.00f, 0.71f),  //回転
 },

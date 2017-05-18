@@ -14,10 +14,13 @@ public:
 	void Update();
 	void Render(CRenderContext& renderContext);
 	void Move();
+	//ポジションを渡す
 	CVector3 Getpos()
 	{
 		return position;
 	}
+
+	//ポジションをセットする
 	void Setpos2(CVector3 pos)
 	{
 		position = pos;
@@ -32,13 +35,12 @@ public:
 
 	}
 
-
+	//向きをセット
 	void SetRot(CQuaternion PRot)
 	{
 		m_rotion = PRot;
 		
 	}
-
 
 	void AngleSet();
 	void AnimetionSet();
@@ -47,7 +49,32 @@ public:
 	{
 		OVER = a;
 	}
+
 	void Loadpos();
+	
+	void IsMoveSTOP()
+	{
+		IsMove = STOP;
+	}
+	void IsMoveSTART()
+	{
+		IsMove = START;
+	}
+
+
+	int GetMaxHp()const
+	{
+		return MaxHp;
+	}
+
+	int GetPHp()const
+	{
+		return PHp;
+	}
+	void StopSound()
+	{
+		runsound->Stop();
+	}
 
 
 private:
@@ -56,16 +83,20 @@ private:
 		STAND,
 	};
 
+	enum IS {
+		START,
+		STOP,
 
+	};
 
+	IS         IsMove;
 	//ここからメンバ変数。
 	CSkinModel				skinModel;					//スキンモデル。
-	CSkinModelData			skinModelData;				//スキンモデルデータ。
+	CSkinModelDataHandle	skinModelData;				//スキンモデルデータ。
 	CAnimation              Animation;
 	CCharacterController	characterController;		//キャラクタ―コントローラー。
 	CVector3				position;	//座標。
 	CVector3                Qpos;
-
 	int                     OVER = -100;
 	CQuaternion				m_rotion;
 
@@ -73,12 +104,19 @@ private:
 	CLight                  All;        //プレイヤのライト
 	CLight                  PLight;
 	
-	CSoundSource*          runsound;
-	
+	int                    MaxHp = 100; //最大HP
+	int                    PHp = 100;   //今のHP
+
+
+	CSoundSource*          runsound; //足音
 
 
 	int						currentAnimSetNo;
 	bool					Isrun;
 	bool					Ismove;
 	bool					Isjump;
+	float					radius = 0.0f;
+	float					height = 0.0f;
+
 };
+extern Player* g_player;

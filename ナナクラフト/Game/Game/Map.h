@@ -18,6 +18,13 @@ private:
 	
 	bool One = false;
 
+
+	int         RecvGold = 50;
+	float       RecvHP = 100;
+
+	int         RecvGoldJ = 0;
+	float       RecvHPJ = 0;
+
 };
 
 

@@ -3,9 +3,7 @@
 #include "BattleEnemy.h"
 #include "Camera.h"
 
-
 extern BattleEnemy* g_battleenemy;
-extern Camera*       g_gameCamera;
 
 enum {
 
@@ -38,18 +36,17 @@ BattlePlayer::BattlePlayer()
 
 BattlePlayer::~BattlePlayer()
 {
+
 }
 
 
 bool BattlePlayer::Start()
 {
 	skinModelData.LoadModelData("Assets/modelData/Unity.X", &Animation);
-	skinModel.Init(&skinModelData);
+	skinModel.Init(skinModelData.GetBody());
 	skinModel.SetLight(&All);
 
 	characterController.Init(0.5f, 1.0f, position);
-
-	m_random.Init((unsigned int)time(NULL));
 
 
 	//Animation.PlayAnimation(Stand_anim, 0.1f);
@@ -127,7 +124,6 @@ void BattlePlayer::AnimationSet()
 	Animation.Update(1.0f / 60.0f);
 
 }
-
 
 void BattlePlayer::Particle()
 {

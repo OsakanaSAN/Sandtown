@@ -16,7 +16,7 @@ public:
 
 	void Update() override;
 
-	void PostRender(CRenderContext&renderContext);
+	void Render(CRenderContext&renderContext);
 
 
 	
@@ -32,6 +32,9 @@ public:
 	{
 		return Loseflg;
 	}
+
+	void Result();
+
 private:
 
 	CSoundSource*	m_sound_bgm_battle;
@@ -60,9 +63,8 @@ private:
 		Eturn,
 	};
 	TURN Turn = Pturn;
+	bool turnCheng = true;
 
-	CSprite		m_ComandBGSprite1;		//!<戦闘画面の選択のスプライト。
-	CTexture	m_ComandBGTexture1;		//!<戦闘画面の選択のテクスチャ。
 
 	CSprite		m_ComandBGSprite2;		//!<戦闘画面の選択のスプライト。
 	CTexture	m_ComandBGTexture2;		//!<戦闘画面の選択のテクスチャ。
@@ -71,12 +73,12 @@ private:
 	CSprite		m_ComandBGSprite3;		//!<戦闘画面の選択のスプライト。
 	CTexture	m_ComandBGTexture3;		//!<戦闘画面の選択のテクスチャ。
 
-
 	CSprite		m_DamageBGSprite4;		//!<戦闘画面の選択のスプライト。
 	CTexture	m_DamageBGTexture4;		//!<戦闘画面の選択のテクスチャ。
 
 	CSprite		m_CasolBGSprite5;		//!<戦闘画面の選択のスプライト。
 	CTexture	m_CasolBGTexture5;		//!<戦闘画面の選択のテクスチャ。
+
 
 	bool		Winflg;
 	bool		Loseflg;
@@ -84,10 +86,14 @@ private:
 	bool		EAttack;
 	bool		PDamage;
 	bool		EDamage;
+	/*bool		PAnimEnd;
+	bool		EAnimEnd;*/
 	bool		SelectQ;//
 
-	bool Upflg = false;
-	bool Downflg = false;
+	int         BattlGold = 0;
+
+	bool        result = false;
+	bool        Victory = true;
 };
 
 extern BattleScene* g_battleScene;

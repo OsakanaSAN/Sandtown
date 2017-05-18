@@ -14,11 +14,12 @@ public:
 	void SoundOnDoukutu();
 
 private:
-	CLight              Maplight;
-	CSkinModel			skinModel;		//スキンモデル。
-	CSkinModelDataHandle		skinModelData;	//スキンモデルデータ
-	CMeshCollider		meshCollider;	//メッシュコライダー。
-	CRigidBody			rigidBody;		//剛体。
+	CLight               Maplight;
+	CSkinModel			 skinModel;		//スキンモデル。
+	CSkinModelDataHandle skinModelData;	//スキンモデルデータ
+	CMeshCollider		 meshCollider;	//メッシュコライダー。
+	CRigidBody			 rigidBody;		//剛体。
+	CVector3             Lightpos;
 	
 	
 

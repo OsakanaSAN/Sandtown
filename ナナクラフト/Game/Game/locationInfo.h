@@ -49,18 +49,18 @@
 //stone
 {
 	"stone",
-	CVector3(24.44f, 0.00f, -6.48f),             //平行移動
-	CQuaternion(-0.50f, 0.50f, 0.50f, 0.50f ),  //回転
-},
-//stone
-{
-	"stone",
 	CVector3(1.49f, -0.54f, -45.68f),             //平行移動
 	CQuaternion(-0.53f, 0.47f, 0.47f, 0.53f ),  //回転
 },
-//unity
+//doa
 {
-	"unity",
-	CVector3(-3.53f, 0.00f, 0.00f),             //平行移動
+	"doa",
+	CVector3(-3.00f, 0.10f, 2.28f),             //平行移動
+	CQuaternion(-0.71f, 0.00f, 0.00f, 0.71f ),  //回転
+},
+//Unity
+{
+	"Unity",
+	CVector3(-3.00f, 0.00f, -5.45f),             //平行移動
 	CQuaternion(0.00f, 1.00f, 0.00f, 0.00f ),  //回転
 },

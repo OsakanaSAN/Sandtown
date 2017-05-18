@@ -41,7 +41,7 @@ void GameSound::TitleSound()
 {
 	bgmsound = NewGO<CSoundSource>(0);
 	bgmsound->Init("Assets/sound/Title.wav");
-	bgmsound->Play(0);
+	bgmsound->Play(1);
 
 }
 void GameSound::MachiSound()
@@ -49,8 +49,8 @@ void GameSound::MachiSound()
 	
 	bgmsound = NewGO<CSoundSource>(0);
 	bgmsound->Init("Assets/sound/Machi.wav");
-	bgmsound->SetVolume(0.5);
-	bgmsound->Play(0);
+	bgmsound->SetVolume(1.0);
+	bgmsound->Play(1);
 
 }
 void GameSound::DoukutuSound()
@@ -58,6 +58,22 @@ void GameSound::DoukutuSound()
 	bgmsound = NewGO<CSoundSource>(0);
 	bgmsound->Init("Assets/sound/cave.wav");
 	bgmsound->SetVolume(0.5);
-	bgmsound->Play(0);
+	bgmsound->Play(1);
 
+}
+void GameSound::BattleSound()
+{
+	bgmsound = NewGO<CSoundSource>(0);
+	bgmsound->Init("Assets/sound/battle.wav");
+	bgmsound->SetVolume(1.0);
+	bgmsound->Play(1);
+
+}
+void GameSound::VolumeDown()
+{
+	bgmsound->SetVolume(0.5f);
+}
+void GameSound::VolumeNormal()
+{
+	bgmsound->SetVolume(1.0f);
 }
