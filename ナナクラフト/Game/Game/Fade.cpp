@@ -14,8 +14,8 @@ bool Fade::Start()
 	m_texture.Load("Assets/sprite/asd.png");
 	m_sprite.Init(&m_texture);
 	m_sprite.SetSize({
-		static_cast<float>(Engine().GetFrameBufferWidth()),
-		static_cast<float>(Engine().GetFrameBufferHeight()) });
+	static_cast<float>(Engine().GetFrameBufferWidth()),
+	static_cast<float>(Engine().GetFrameBufferHeight()) });
 	SetActiveFlag(false);
 	return true;
 }

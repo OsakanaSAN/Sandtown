@@ -31,18 +31,26 @@ Map::Map()
 
 Map::~Map()
 {
-	//@todo for debug
+	
 	for (int i = 0;i < numObject - ChangeObject;i++)
 	{
 		DeleteGO(mapchip[i]);
 	}
 
 	DeleteGO(g_SC);
+
+	while (!mapchip[numObject-ChangeObject-1]->IsDead())
+	{
+
+
+	}
+
+
 }
 
 bool Map::Start()
 {
-	//@todo for debug
+
 	//マップにいくつのオブジェクトが配置されているか調べる。
 	numObject= sizeof(mapLocInfo) / sizeof(mapLocInfo[0]);
 	//置かれているオブジェクトの数だけマップチップを生成する。

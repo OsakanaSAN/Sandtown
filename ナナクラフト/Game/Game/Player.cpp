@@ -108,8 +108,8 @@ bool Player::Start()
 
 	radius = 0.6f;
 	height = 0.3f;
-	characterController.Init(radius, height, position);
-	characterController.SetGravity(-18.8f);
+	//characterController.Init(radius, height, position);
+	//characterController.SetGravity(-18.8f);
 
 	return true;
 

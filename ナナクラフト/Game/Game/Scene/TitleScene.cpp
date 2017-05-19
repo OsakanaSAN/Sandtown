@@ -12,15 +12,17 @@ GameSound* g_sound;
 TitleScene::TitleScene()
 {
 	g_sound = NewGO<GameSound>(0);
-
+	PushSE = NewGO<CSoundSource>(0);
+	PushSE->Init("Assets/sound/Push.wav");
 }
 
 
 TitleScene::~TitleScene()
 {
 	
-	//NewGO<BattleScene>(0);
+	
 	g_gameScene = NewGO<GameScene>(0);
+	DeleteGO(PushSE);
 	
 	
 	
@@ -94,6 +96,7 @@ void TitleScene::Update()
 
 		case eStateRun:
 			if (Pad(0).IsTrigger(enButtonStart)) {
+				PushSE->Play(0);
 				g_fade->StartFadeOut();
 				m_state = eStateWaitFadeOut;
 				g_sound->StopSound();

@@ -42,6 +42,9 @@ GameScene::GameScene()
 	scenes = STOP;
 	
 }
+
+
+
 GameScene::~GameScene()
 {
 	
@@ -85,6 +88,7 @@ void GameScene::Update()
 
 		else if (Pad(0).IsPress(enButtonY))
 		{
+			//g_menu->InventoryChangTex();
 			g_menu->MenuScene();
 			g_menu->setHP(g_Hud->GetHP());
 			g_menu->setLV(g_Hud->GetLV());
@@ -194,7 +198,6 @@ void GameScene::DeteScene()
 		g_map = nullptr;
 
 
-
 	}
 
 	else if (mapscene == DOUKUTU)
@@ -243,6 +246,7 @@ void GameScene::MapChange()
 
 	Chang = true;
 }
+
 void GameScene::BattleDate()
 {
 

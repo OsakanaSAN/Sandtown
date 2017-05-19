@@ -5,13 +5,13 @@
 #include "HUD.h"
 #include "Player.h"
 #include "Map2.h"
+#include "Menu.h"
 
 extern CRandom g_random;
 
 Mining::Mining()
 {
 
-	//Maplight.SetPointLightColor({ 20.0f,10.0f,1.0f,1.0f });
 	Maplight.SetAmbinetLight({ 1.0f,1.0f,1.0f });
 	
 }
@@ -19,7 +19,9 @@ Mining::Mining()
 
 Mining::~Mining()
 {
+	
 	PhysicsWorld().RemoveRigidBody(&rigidBody);
+	rigidBody.Release();
 
 }
 
@@ -34,6 +36,7 @@ void Mining::Init(const char* modelName, CVector3 position, CQuaternion rotation
 	//ファイルパスを作成する。
 	char filePath[256];
 	sprintf(filePath, "Assets/modelData/%s.x", modelName);
+
 	//モデルデータをロード。
 	skinModelData.LoadModelData(filePath, NULL);
 	//CSkinModelを初期化。
@@ -66,6 +69,7 @@ void Mining::Init(const char* modelName, CVector3 position, CQuaternion rotation
 void Mining::Update()
 {
 	if (g_player != nullptr) {
+
 		CVector3 Ppos = g_player->Getpos();
 		CVector3 Vpos;
 
@@ -77,7 +81,9 @@ void Mining::Update()
 		int LV = g_Hud->GetLV();
 		if (L < 2.0f && Pad(0).IsPress(enButtonA) && LV < 10)
 		{
-			int num = g_random.GetRandInt() % 4 + 1;
+
+			//int num = g_random.GetRandInt() % 4 + 1;
+			g_menu->InventoryChangTex(5);
 			g_map2->AsDete(asnumber);
 		}
 	}

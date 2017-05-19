@@ -11,7 +11,7 @@ public:
 	void MaxHpChangTex();
 	void LvChangTex();
 	void GoldChangTex();
-	void InventoryChangTex();
+	void InventoryChangTex(int Item);
 
 	void setHP(int setHp)
 	{
@@ -117,3 +117,4 @@ private:
 
 };
 
+extern Menu* g_menu;

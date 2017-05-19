@@ -1,15 +1,10 @@
-﻿  stdafx.cpp
-  TitleScene.cpp
-  GameScene.cpp
-  Player.cpp
-c:\users\kbc16b03\desktop\sandtown\ナナクラフト\game\game\player.cpp(162): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
-c:\users\kbc16b03\desktop\sandtown\ナナクラフト\game\game\player.cpp(163): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
-c:\users\kbc16b03\desktop\sandtown\ナナクラフト\game\game\player.cpp(187): warning C4305: '引数': 'double' から 'float' へ切り詰めます。
-  Mapchip.cpp
-  Map.cpp
-  main.cpp
-  Fade.cpp
-  Camera.cpp
+﻿  Mining.cpp
+c:\users\kbc16b03\desktop\ゲーム大賞用\ナナクラフト\game\game\hud.h(16): warning C4244: 'return': 'float' から 'int' への変換です。データが失われる可能性があります。
+  Menu.cpp
+c:\users\kbc16b03\desktop\ゲーム大賞用\ナナクラフト\game\game\hud.h(16): warning C4244: 'return': 'float' から 'int' への変換です。データが失われる可能性があります。
   コードを生成中...
-  Game.vcxproj -> C:\Users\kbc16b03\Desktop\Sandtown\ナナクラフト\Game\x64\Debug\Game.exe
-  Game.vcxproj -> C:\Users\kbc16b03\Desktop\Sandtown\ナナクラフト\Game\x64\Debug\Game.pdb (Full PDB)
+  スキップ中... (関連する変更は検出されませんでした)
+  main.cpp
+  GameScene.cpp
+  Game.vcxproj -> C:\Users\kbc16b03\Desktop\ゲーム大賞用\ナナクラフト\Game\x64\Debug\Game.exe
+  Game.vcxproj -> C:\Users\kbc16b03\Desktop\ゲーム大賞用\ナナクラフト\Game\x64\Debug\Game.pdb (Full PDB)

@@ -15,7 +15,10 @@ SceneChange::SceneChange()
 
 SceneChange::~SceneChange()
 {
+	
 	PhysicsWorld().RemoveRigidBody(&rigidBody);
+	rigidBody.Release();
+	
 }
 
 bool SceneChange::Start()
@@ -37,8 +40,8 @@ void SceneChange::Init(const char* modelName, CVector3 position, CQuaternion rot
 	skinModel.Init(skinModelData.GetBody());
 	//デフォルトライトを設定して。
 	skinModel.SetLight(&Maplight);
-	//skinModel.SetShadowCasterFlag(true);
-	//skinModel.SetShadowReceiverFlag(true);
+	skinModel.SetShadowCasterFlag(true);
+	skinModel.SetShadowReceiverFlag(true);
 	//ワールド行列を更新する。
 	//このオブジェクトは動かないので、初期化で一回だけワールド行列を作成すればおｋ。
 	skinModel.Update(position, rotation, CVector3::One);
@@ -58,7 +61,6 @@ void SceneChange::Init(const char* modelName, CVector3 position, CQuaternion rot
 	//作成した剛体を物理ワールドに追加する。
 	PhysicsWorld().AddRigidBody(&rigidBody);
 
-	//g_fade->StartFadeIn();
 
 }
 
