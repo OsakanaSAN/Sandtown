@@ -111,9 +111,9 @@ void BattleScene::Update()
 	CVector3 Cpos = g_gameCamera->BGetPos();
 
 	Pintpos.Subtract(Cpos);
-
+	
 	Dof().SetPint(Pintpos.Length()*1000);
-
+	Dof().SetFocalLength(36.0f);
 
 	if (Victory == true) {
 

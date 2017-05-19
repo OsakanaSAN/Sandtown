@@ -11,7 +11,7 @@
 #include "GameSound.h"
 #include "Menu.h"
 #include "Enemy.h"
-#include "Npc.h"
+//#include "Npc.h"
 
 
 
@@ -68,8 +68,16 @@ bool GameScene::Start()
 
 void GameScene::Update()
 {
+	if (g_player != nullptr) {
+		CVector3 Pintpos = g_player->Getpos();
 
+		CVector3 Cpos = g_gameCamera->GetPos();
 
+		Pintpos.Subtract(Cpos);
+
+		Dof().SetPint(Pintpos.Length() * 1000);
+		Dof().SetFocalLength(24.0f);
+	}
 	switch (scenes)
 	{
 

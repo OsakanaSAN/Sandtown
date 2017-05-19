@@ -95,9 +95,6 @@
     <ClCompile Include="Enemy.cpp">
       <Filter>Source Files\Enemy</Filter>
     </ClCompile>
-    <ClCompile Include="Npc.cpp">
-      <Filter>Source Files\NPC</Filter>
-    </ClCompile>
     <ClCompile Include="EnemyHUD.cpp">
       <Filter>Source Files\UI</Filter>
     </ClCompile>
@@ -159,9 +156,6 @@
     </ClInclude>
     <ClInclude Include="Enemy.h">
       <Filter>Source Files\Enemy</Filter>
-    </ClInclude>
-    <ClInclude Include="Npc.h">
-      <Filter>Source Files\NPC</Filter>
     </ClInclude>
     <ClInclude Include="EnemyHUD.h">
       <Filter>Source Files\UI</Filter>

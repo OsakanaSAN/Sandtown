@@ -52,7 +52,7 @@ void InitTkEngine( HINSTANCE hInst )
 	
 
 	//DOF
-	initParam.graphicsConfig.dofConfig.isEnable = false;
+	initParam.graphicsConfig.dofConfig.isEnable = true;
 	//AA
 	initParam.graphicsConfig.aaConfig.isEnable = false;
 	//—”‰Šú‰»B
