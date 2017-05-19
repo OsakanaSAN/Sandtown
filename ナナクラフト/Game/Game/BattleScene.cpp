@@ -120,6 +120,20 @@ bool BattleScene::Start()
 
 void BattleScene::Update()
 {
+
+	CVector3 Pintpos;
+	CVector3 Epos = g_battleenemy->Getpos();
+	CVector3 Ppos = g_battleplayer->Getpos();
+
+	Pintpos.Add(Ppos, Epos);
+	Pintpos.Scale(0.5f);
+
+	CVector3 Cpos = g_gameCamera->BGetPos();
+
+	Pintpos.Subtract(Cpos);
+
+	Dof().SetPint(Pintpos.Length()*1000);
+
 	if (Victory == true) {
 
 

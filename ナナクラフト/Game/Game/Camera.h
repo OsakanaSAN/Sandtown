@@ -37,9 +37,14 @@ public:
 	{
 		scene = START;
 	}
-	void BGetPos()
+	CVector3 BGetPos()
 	{
-		CVector3 Battlepos;
+		 return Battlepos;
+	}
+
+	CVector3 GetPos()
+	{
+		return pos;
 	}
 
 private:

@@ -51,7 +51,7 @@ void InitTkEngine( HINSTANCE hInst )
 	
 
 	//DOF
-	//initParam.graphicsConfig.dofConfig.isEnable = false;
+	initParam.graphicsConfig.dofConfig.isEnable = false;
 	//AA
 	initParam.graphicsConfig.aaConfig.isEnable = false;
 	//乱数初期化。
@@ -94,7 +94,6 @@ int WINAPI wWinMain(
 
 	////タイトルシーンの作成。
 	NewGO<TitleScene>(0);
-	
 	//NewGO<Menu>(0);
 	
 	Engine().RunGameLoop();		//ゲームループを実行。
