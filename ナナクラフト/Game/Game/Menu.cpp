@@ -301,6 +301,9 @@ void Menu::GoldChangTex()
 }
 void Menu::InventoryChangTex(int Item)
 {
+	InventoryPack[InventoryPackNumber] = Item;
+	InventoryPackNumber++;
+
 	if (InventoryY < 5) {
 		sprintf(InvebtoryName, "Assets/Item/Item%d.png", Item);
 		InventorySeatTexture[InventoryY][InventoryX].Load(InvebtoryName);

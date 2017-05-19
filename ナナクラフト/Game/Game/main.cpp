@@ -7,6 +7,7 @@
 #include "Menu.h"
 
 
+
 Fade*   g_fade = nullptr;
 CRandom g_random;
 
@@ -94,8 +95,6 @@ int WINAPI wWinMain(
 
 	////タイトルシーンの作成。
 	NewGO<TitleScene>(0);
-	
-	//NewGO<Menu>(0);
 	
 	Engine().RunGameLoop();		//ゲームループを実行。
 

@@ -11,6 +11,7 @@
 #include "GameSound.h"
 #include "Menu.h"
 #include "Enemy.h"
+#include "Npc.h"
 
 
 
@@ -38,6 +39,7 @@ GameScene::GameScene()
 	g_Hud = NewGO<HUD>(0);
 	g_map = NewGO<Map>(0);
 	g_menu = NewGO<Menu>(0);
+	//NewGO<Npc>(0);
 	mapscene = MACHI;
 	scenes = STOP;
 	
@@ -77,7 +79,9 @@ void GameScene::Update()
 		{
 				
 				DeleteGO(g_player);
+				DeleteGO(g_Enemy);
 				g_player = nullptr;
+				g_Enemy = nullptr;
 				g_sound->StopSound();
 				g_battleScene = NewGO<BattleScene>(0);
 				g_gameCamera->BattleCamera();
@@ -101,7 +105,7 @@ void GameScene::Update()
 
 		}
 
-		else if (Pad(0).IsPress(enButtonStart))
+		else if (Pad(0).IsPress(enButtonStart)&&Pad(0).IsPress(enButtonSelect))
 		{
 			exit(0);
 		}
@@ -120,7 +124,7 @@ void GameScene::Update()
 			if (g_map2 == nullptr)
 			{
 				g_player = NewGO<Player>(0);
-				//g_Enemy = NewGO<Enemy>(0);
+				g_Enemy = NewGO<Enemy>(0);
 				g_map2 = NewGO<Map2>(0);
 				
 			}
@@ -157,10 +161,7 @@ void GameScene::Update()
 				scenes = STOP;
 				mapscene = MACHI;
 				break;
-
 			}
-
-
 
 		}
 
@@ -204,6 +205,7 @@ void GameScene::DeteScene()
 	{
 		
 			DeleteGO(g_map2);
+			DeleteGO(g_Enemy);
 			if (g_player != nullptr) {
 				DeleteGO(g_player);
 			}
@@ -247,10 +249,4 @@ void GameScene::MapChange()
 	Chang = true;
 }
 
-void GameScene::BattleDate()
-{
-
-	DeleteGO(g_battleScene);
-
-}
 

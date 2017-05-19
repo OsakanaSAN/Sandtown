@@ -30,6 +30,9 @@
     <Filter Include="Source Files\Enemy">
       <UniqueIdentifier>{9c935ca3-090c-4e7f-818f-a7c17644fb83}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\NPC">
+      <UniqueIdentifier>{44c48f01-90f3-4e8a-a8d3-daaf0e8ccd5e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -92,6 +95,9 @@
     <ClCompile Include="Enemy.cpp">
       <Filter>Source Files\Enemy</Filter>
     </ClCompile>
+    <ClCompile Include="Npc.cpp">
+      <Filter>Source Files\NPC</Filter>
+    </ClCompile>
     <ClCompile Include="EnemyHUD.cpp">
       <Filter>Source Files\UI</Filter>
     </ClCompile>
@@ -153,6 +159,9 @@
     </ClInclude>
     <ClInclude Include="Enemy.h">
       <Filter>Source Files\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="Npc.h">
+      <Filter>Source Files\NPC</Filter>
     </ClInclude>
     <ClInclude Include="EnemyHUD.h">
       <Filter>Source Files\UI</Filter>

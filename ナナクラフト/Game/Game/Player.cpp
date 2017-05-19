@@ -21,6 +21,7 @@ Player::Player()
 {
 	
 	All.SetAmbinetLight({ 0.8f,0.8f,0.8f });
+
 	All.SetDiffuseLightDirection(0, { 0.0f, -0.707f, 0.707f });
 	All.SetDiffuseLightColor(0, { 0.3f, 0.3f, 0.3f, 1.0f });
 	All.SetDiffuseLightDirection(1, { 0.0f, 0.707f, 0.707f });
@@ -96,7 +97,7 @@ bool Player::Start()
 
 
 	//キャラクタコントローラの初期化。
-	//characterController.Init(0.5f, 1.0f, position);
+	characterController.Init(0.5f, 1.0f, position);
 
 	Isrun = false;
 	Ismove = false;

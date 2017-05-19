@@ -48,7 +48,7 @@ public:
 		scenes = STOP;
 	}
 	void MapChange();
-	void BattleDate(); //バトル画面終了
+	//void BattleDate(); //バトル画面終了
 	
 
 	

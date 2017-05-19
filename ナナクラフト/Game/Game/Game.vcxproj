@@ -177,6 +177,7 @@
     <ClCompile Include="Map2.cpp" />
     <ClCompile Include="Mapchip.cpp" />
     <ClCompile Include="Menu.cpp" />
+    <ClCompile Include="Npc.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="SceneChange.cpp" />
     <ClCompile Include="Scene\GameScene.cpp" />
@@ -204,6 +205,7 @@
     <ClInclude Include="Map2.h" />
     <ClInclude Include="Mapchip.h" />
     <ClInclude Include="Menu.h" />
+    <ClInclude Include="Npc.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="SceneChange.h" />
     <ClInclude Include="Scene\GameScene.h" />

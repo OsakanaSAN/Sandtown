@@ -114,6 +114,10 @@ private:
 	int              InventoryY = 0;
 	int              ItemNuber[30];
 	int              Number = 0;
+	int              InventoryPack[30];
+    int              InventoryPackNumber = 0;
+
+	/////////////////////////////////////////////////////
 
 };
 
