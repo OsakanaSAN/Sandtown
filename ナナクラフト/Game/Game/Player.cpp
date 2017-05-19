@@ -96,7 +96,7 @@ bool Player::Start()
 
 
 	//キャラクタコントローラの初期化。
-	characterController.Init(0.5f, 1.0f, position);
+	//characterController.Init(0.5f, 1.0f, position);
 
 	Isrun = false;
 	Ismove = false;
