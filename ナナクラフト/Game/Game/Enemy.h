@@ -24,15 +24,17 @@ private:
 
 	CCharacterController	characterController;		//キャラクタ―コントローラー。
 
+	float           SearchRaeng = 8.0f;
+	bool            over = false;
 
 	CSkinModel		skinModel;
 	CSkinModelData	skinModelData;
 
 	CAnimation		Animation;
-	CVector3		position = { -20.0f,0.0f,0.0f };
+	CVector3		position = { -3.0f,1.0f,-30.0f };
 	CQuaternion		m_rotation;
 
-	CLight			All;
+	CLight			Enemylight;
 };
 extern Enemy* g_Enemy;
 

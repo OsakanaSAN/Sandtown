@@ -41,6 +41,7 @@ private:
 	Select GAME = NO;
 
 	CSoundSource* bgmSource = NULL;
+
 	CSprite		m_titleBGSprite;		//!<タイトル画面の背景のスプライト。
 	CTexture	m_titleBGTexture;		//!<タイトル画面の背景のテクスチャ。
 
@@ -53,6 +54,9 @@ private:
 	CTexture	m_titleBGTexture3;		//!<タイトル画面の背景のテクスチャ。
 
 	EState      m_state = eStateRun;
+
+	CSoundSource* PushSE = NULL;
+;
 
 	
 	

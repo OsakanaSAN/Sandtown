@@ -111,17 +111,18 @@ bool Menu::Start()
 	BackSeatSprite.Init(&BackSeatTexture);
 	BackSeatSprite.SetSize({ 1920.0f,1080.0f });
 
-	//インベントリ
-
-	InventorySeatTexture[0][0].Load("Assets/UI/ui1.png");
+	
 
 	for (int J = 0;J < 5;J++)
 	{
 		for (int I = 0;I < 6;I++)
 		{
+			//インベントリ
+
+			InventorySeatTexture[J][I].Load("Assets/UI/ui1.png");
 
 			InventorySeatSprite[J][I].SetPosition(InventoryPos);
-			InventorySeatSprite[J][I].Init(&InventorySeatTexture[0][0]);
+			InventorySeatSprite[J][I].Init(&InventorySeatTexture[J][I]);
 			InventorySeatSprite[J][I].SetSize({ 100.0f,100.0f });
 			InventoryPos.x += 100;
 		}
@@ -131,6 +132,9 @@ bool Menu::Start()
 
 	}
 
+	HpChangTex();
+	MaxHpChangTex();
+	GoldChangTex();
 	
 	
 
@@ -139,30 +143,35 @@ bool Menu::Start()
 
 void Menu::Update()
 {
+	switch (setMenu) {
+	case STOP:
+		break;
 
-	HpChangTex();
-	MaxHpChangTex();
-	GoldChangTex();
-	InventoryChangTex();
+	case MENU:
+		HpChangTex();
+		MaxHpChangTex();
+		GoldChangTex();
 
-	/*if (Pad(0).IsPress(enButtonY))
-	{
-		setMenu = MENU;
-	}
-*/
-	if (Pad(0).IsPress(enButtonA))
-	{
-		//DeleteGO(this);
-		MenuSceneStop();
-	}
+		if (Pad(0).IsPress(enButtonA))
+		{
 
-	else if (Pad(0).IsPress(enButtonDown) && setMenu == MENU)
-	{
-		setMenu = INVENTORY;
-	}
-	else if (Pad(0).IsPress(enButtonUp) && setMenu == INVENTORY)
-	{
-		setMenu = MENU;
+			MenuSceneStop();
+		}
+
+		else if (Pad(0).IsPress(enButtonDown) && setMenu == MENU)
+		{
+			setMenu = INVENTORY;
+		}
+		break;
+
+	case INVENTORY:
+
+		if (Pad(0).IsPress(enButtonUp) && setMenu == INVENTORY)
+		{
+			setMenu = MENU;
+		}
+
+		break;
 	}
 
 }
@@ -290,10 +299,13 @@ void Menu::GoldChangTex()
 
 
 }
-void Menu::InventoryChangTex()
+void Menu::InventoryChangTex(int Item)
 {
+	InventoryPack[InventoryPackNumber] = Item;
+	InventoryPackNumber++;
+
 	if (InventoryY < 5) {
-		sprintf(InvebtoryName, "Assets/Item/Item%d.png", g_random.GetRandInt() % 4 + 1);
+		sprintf(InvebtoryName, "Assets/Item/Item%d.png", Item);
 		InventorySeatTexture[InventoryY][InventoryX].Load(InvebtoryName);
 		InventorySeatSprite[InventoryY][InventoryX].Init(&InventorySeatTexture[InventoryY][InventoryX]);
 		InventorySeatSprite[InventoryY][InventoryX].SetSize({ 100.0f, 100.0f });

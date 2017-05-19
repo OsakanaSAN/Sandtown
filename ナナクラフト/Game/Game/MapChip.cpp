@@ -27,6 +27,7 @@ Mapchip::Mapchip()
 Mapchip::~Mapchip()
 {
 	PhysicsWorld().RemoveRigidBody(&rigidBody);
+	rigidBody.Release();
 
 }
 

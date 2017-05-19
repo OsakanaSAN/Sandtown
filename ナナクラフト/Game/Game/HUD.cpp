@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "HUD.h"
 #include "Player.h"
-#include "Scene/BattleScene.h"
+#include "BattleScene.h"
 #include "Scene/GameScene.h"
 #include "Fade.h"
 

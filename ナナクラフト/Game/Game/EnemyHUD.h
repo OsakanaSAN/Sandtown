@@ -8,7 +8,7 @@ public:
 	void Update();
 	void Render(CRenderContext& renderContext);
 	void ReeseTex();
-	void SetTex();
+	//void SetTex();
 	void Damage(int Attak)
 	{
 		HP -= Attak;

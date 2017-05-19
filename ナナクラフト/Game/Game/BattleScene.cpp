@@ -8,63 +8,42 @@
 #include "HUD.h"
 #include "Fade.h"
 #include "BattleEnemy.h"
-#include "BattleCamera.h"
-#include "EnemyHUD.h"
 #include "GameSound.h"
-
-extern Fade* g_fade;
-extern Player* g_player;
-extern Camera* g_gameCamera;
-
 
 BattlePlayer* g_battleplayer = nullptr;
 BattleEnemy* g_battleenemy = nullptr;
-EnemyHUD*    e_Hud = nullptr;
 
 BattleScene::BattleScene()
 {
 
 	g_battleplayer = NewGO<BattlePlayer>(0);
 	g_battleenemy = NewGO<BattleEnemy>(0);
-	e_Hud = NewGO<EnemyHUD>(0);
-
+	
 }
 
 
 BattleScene::~BattleScene()
 {
+	
 	if (Victory == true) {
 		g_sound->StopSound();
 		DeleteGO(g_battleplayer);
 		DeleteGO(g_battleenemy);
-		g_gameScene->SceneStop();
 		g_player = NewGO<Player>(0);
-		g_player->Loadpos();//座標を読み込む
+		g_player->Loadpos();           //座標を読み込む
+		g_gameScene->SceneStop();
 		g_gameCamera->ChangeStart();   //カメラの更新を再開するを
 		g_sound->DoukutuSound();
 	}
+
 	else
 	{
 		g_Hud->SetMaxHP(500.0f);
 		DeleteGO(g_battleenemy);
 		g_gameScene->SceneStop();
-		//g_player = NewGO<Player>(0);
 		g_gameCamera->ChangeStart();   //カメラの更新を再開するを
 		g_gameScene->MapChange();
-
-
-	DeleteGO(g_battleenemy);
-	DeleteGO(e_Hud);
-	g_player = NewGO<Player>(0);
-	g_player->Loadpos();           //座標を読み込む
-	g_gameCamera->ChangeStart();   //カメラの更新を再開するを
-	//NewGO<GameScene>(0);
-
-
-
 	}
-
-	
 
 }
 
@@ -121,6 +100,7 @@ bool BattleScene::Start()
 void BattleScene::Update()
 {
 
+
 	CVector3 Pintpos;
 	CVector3 Epos = g_battleenemy->Getpos();
 	CVector3 Ppos = g_battleplayer->Getpos();
@@ -134,6 +114,7 @@ void BattleScene::Update()
 
 	Dof().SetPint(Pintpos.Length()*1000);
 
+
 	if (Victory == true) {
 
 
@@ -145,7 +126,7 @@ void BattleScene::Update()
 
 			if (Pad(0).IsPress(enButtonUp))
 			{
-
+				
 				if (Comand != Attack)
 				{
 					m_sound_bgm_battle = NewGO<CSoundSource>(0);
@@ -223,11 +204,10 @@ void BattleScene::Update()
 
 		if (Pad(0).IsPress(enButtonRB1))
 		{
-			g_gameScene->BattleDate();
+			DeleteGO(g_battleScene);
 		}
 
 	}
-
 
 
 }
@@ -304,7 +284,9 @@ void BattleScene::PlayerTurn()
 				g_Hud->SetExp(g_battleenemy->GetExp());
 				Winflg = true;//バトルに勝利した
 
-				g_gameScene->BattleDate();
+				/*g_gameScene->BattleDate();*/
+				DeleteGO(this);
+
 				return;
 
 				/*g_battleenemy->Delete();*/
@@ -328,14 +310,13 @@ void BattleScene::PlayerTurn()
 		if (Pad(0).IsPress(enButtonA))
 		{
 			//確率で逃げれるようにする？乱数とかで？
-			g_gameScene->BattleDate();
+			DeleteGO(this);
+			//Result();
 			return;
 		}
 
 		break;
 	}
-
-
 
 
 }
@@ -358,9 +339,7 @@ void BattleScene::EnemyTurn()
 	else if (EAttack && !PDamage && g_battleplayer->GetAnimend() && g_battleenemy->GetAnimend())
 	{
 
-		/*m_sound_Attack = NewGO<CSoundSource>(0);
-		m_sound_Attack->Init("Assets/sound/Attack.wav");
-		*/
+		
 		
 
 		m_DamageBGTexture4.Load("Assets/sprite/damage.tga");
@@ -385,6 +364,7 @@ void BattleScene::EnemyTurn()
 			Loseflg = true;//戦闘に負けた
 
 			//g_gameScene->BattleDate();
+
 			Victory = false;
 			Result();
 
@@ -396,7 +376,6 @@ void BattleScene::EnemyTurn()
 		turnCheng = true;
 
 	}
-
 }
 
 void BattleScene::Result()
