@@ -11,7 +11,7 @@
 #include "GameSound.h"
 #include "Menu.h"
 #include "Enemy.h"
-//#include "Npc.h"
+#include "Npc.h"
 
 
 
@@ -31,7 +31,6 @@ Enemy*  g_Enemy = nullptr;
 
 
 
-
 GameScene::GameScene()
 {
 	g_gameCamera = NewGO<Camera>(0);
@@ -39,7 +38,7 @@ GameScene::GameScene()
 	g_Hud = NewGO<HUD>(0);
 	g_map = NewGO<Map>(0);
 	g_menu = NewGO<Menu>(0);
-	//NewGO<Npc>(0);
+	NewGO<Npc>(0);
 	mapscene = MACHI;
 	scenes = STOP;
 	
@@ -62,8 +61,10 @@ bool GameScene::Start()
 		return true;
 
 	}
-
-
+	
+	ShadowMap().SetLightPosition(g_gameCamera->GetPos());
+	ShadowMap().SetLightTarget(g_player->Getpos());
+	
 }
 
 void GameScene::Update()
@@ -224,8 +225,6 @@ void GameScene::DeteScene()
 		
 	}
 
-
-	
 
 	g_player = nullptr;
 

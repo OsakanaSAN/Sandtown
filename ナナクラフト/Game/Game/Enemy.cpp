@@ -7,7 +7,15 @@
 
 Enemy::Enemy()
 {
-
+	Enemylight.SetAmbinetLight({ 0.2f,0.2f,0.2f });
+	Enemylight.SetDiffuseLightDirection(0, { 0.0f, -0.707f, 0.707f });
+	Enemylight.SetDiffuseLightColor(0, { 0.3f, 0.3f, 0.3f, 1.0f });
+	Enemylight.SetDiffuseLightDirection(1, { 0.0f, 0.707f, 0.707f });
+	Enemylight.SetDiffuseLightColor(1, { 0.1f, 0.1f, 0.1f, 1.0f });
+	Enemylight.SetDiffuseLightDirection(2, { 0.0f, -0.707f, -0.707f });
+	Enemylight.SetDiffuseLightColor(2, { 0.3f, 0.3f, 0.3f, 1.0f });
+	Enemylight.SetDiffuseLightDirection(3, { 0.0f, 0.707f, -0.707f });
+	Enemylight.SetDiffuseLightColor(3, { 0.1f, 0.1f, 0.1f, 1.0f });
 }
 
 
@@ -17,7 +25,7 @@ Enemy::~Enemy()
 
 bool Enemy::Start() {
 	
-	Enemylight.SetAmbinetLight({ 1.0f,1.0f,1.0f});
+	/*Enemylight.SetAmbinetLight({ 1.0f,1.0f,1.0f});*/
 
 	skinModelData.LoadModelData("Assets/modelData/cabetu2.X", &Animation);
 	skinModel.Init(&skinModelData);
@@ -29,6 +37,8 @@ bool Enemy::Start() {
 	//move.x = -Pad(0).GetLStickXF() * 5.0f;
 	//move.z = -Pad(0).GetLStickYF() * 5.0f;
 
+	skinModel.SetShadowCasterFlag(true);
+	/*skinModel.SetShadowReceiverFlag(true);*/
 	return true;
 
 }

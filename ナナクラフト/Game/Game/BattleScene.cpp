@@ -82,7 +82,7 @@ bool BattleScene::Start()
 	m_CasolBGSprite5.SetPosition({ -500,-200 });
 	m_CasolBGSprite5.SetSize({ 200,200 });
 
-	g_sound->BattleSound();
+	//g_sound->BattleSound();
 
 	CVector3 lightPos, lightTarget;
 	lightTarget.Add(g_battleplayer->Getpos(), g_battleenemy->Getpos());
@@ -363,7 +363,7 @@ void BattleScene::EnemyTurn()
 
 			Loseflg = true;//í“¬‚É•‰‚¯‚½
 
-			//g_gameScene->BattleDate();
+			/*g_gameScene->BattleDate();*/
 
 			Victory = false;
 			Result();

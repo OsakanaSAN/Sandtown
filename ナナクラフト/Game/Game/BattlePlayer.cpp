@@ -42,7 +42,7 @@ BattlePlayer::~BattlePlayer()
 
 bool BattlePlayer::Start()
 {
-	skinModelData.LoadModelData("Assets/modelData/Unity.X", &Animation);
+	skinModelData.LoadModelData("Assets/modelData/kano.X", &Animation);
 	skinModel.Init(skinModelData.GetBody());
 	skinModel.SetLight(&All);
 

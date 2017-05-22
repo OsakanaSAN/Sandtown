@@ -43,6 +43,7 @@ void InitTkEngine( HINSTANCE hInst )
 	initParam.graphicsConfig.shadowRenderConfig.shadowMapWidth = 1024;
 	initParam.graphicsConfig.shadowRenderConfig.shadowMapHeight = 1024;
 	initParam.graphicsConfig.shadowRenderConfig.numShadowMap = 3;
+	initParam.graphicsConfig.shadowRenderConfig.isDisableSoftShadow = true;
 	
 	//reflection
 	initParam.graphicsConfig.reflectionMapConfig.isEnable = false;
