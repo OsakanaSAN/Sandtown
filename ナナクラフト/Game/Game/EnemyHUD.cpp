@@ -12,7 +12,7 @@ EnemyHUD::~EnemyHUD()
 }
 
 bool EnemyHUD::Start() {
-	HudtextureHP.Load("Assets/UI/HP.png");
+	HudtextureHP.Load("Assets/UI/HP1.png");
 	HudspriteHP.SetPosition({ 300.0f,530 });
 	HudspriteHP.SetPivot({ 0.0f,1.0f });
 	HudspriteHP.Init(&HudtextureHP);

@@ -12,12 +12,12 @@ struct SMapInfo {
 };
 
 SceneChange* SC2;
-Mining* mining[3];
-Mapchip* mapChip[6];
+Mining* mining[255];
+Mapchip* mapChip[255];
 
 //マップの配置情報。
 SMapInfo mapLocInfo2[] = {
-#include "locationInfo.h"
+#include "Map/DOUKUTU.h"
 };
 
 Map2::Map2()
@@ -25,16 +25,18 @@ Map2::Map2()
 
 	ChangeObject = 0;
 	NoRenderObjct = 0;
+	NoMoveObject = 0;
 
 }
 
 
 Map2::~Map2()
 {
-	for (int i = 0;i < numObject - ChangeObject;i++) {
+	for (int i = 0;i < NoMoveObject;i++) {
 		DeleteGO(mapChip[i]);
 	}
-	for (int j = 0;j < ChangeObject-NoRenderObjct;j++)
+
+	for (int j = 0;j < ChangeObject;j++)
 	{
 		if (mining[j] != nullptr) {
 			DeleteGO(mining[j]);
@@ -68,7 +70,7 @@ bool Map2::Start()
 
 			g_player->Setpos2(pos);
 			g_player->SetRot(prot);
-			ChangeObject++;
+			//ChangeObject++;
 			NoRenderObjct++;
 		}
 		else if (strcmp(mapLocInfo2[i].modelName, "doa") == 0)
@@ -77,16 +79,17 @@ bool Map2::Start()
 			SC2 = NewGO<SceneChange>(0);
 			SC2->Init(mapLocInfo2[i].modelName, mapLocInfo2[i].position, mapLocInfo2[i].rotation);
 			SC2->setpos(mapLocInfo2[i].position);
-			ChangeObject++;
+			//ChangeObject++;
 			NoRenderObjct++;
 
 
 		}
 
 		else {
-			mapChip[i] = NewGO<Mapchip>(0);
+			mapChip[NoMoveObject] = NewGO<Mapchip>(0);
 			//モデル名、座標、回転を与えてマップチップを初期化する。
-			mapChip[i]->Init(mapLocInfo2[i].modelName, mapLocInfo2[i].position, mapLocInfo2[i].rotation);
+			mapChip[NoMoveObject]->Init(mapLocInfo2[i].modelName, mapLocInfo2[i].position, mapLocInfo2[i].rotation);
+			NoMoveObject++;
 		}
 	}
 	

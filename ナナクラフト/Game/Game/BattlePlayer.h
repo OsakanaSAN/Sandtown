@@ -88,3 +88,4 @@ private:
 	int						HP = 30;//ゲームシーンと同じ値に後々する
 	int						EXP = 0;//経験値
 };
+extern BattlePlayer* g_battleplayer;

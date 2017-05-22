@@ -5,6 +5,8 @@
 
 
 
+
+
 Enemy::Enemy()
 {
 	Enemylight.SetAmbinetLight({ 0.2f,0.2f,0.2f });
@@ -21,6 +23,8 @@ Enemy::Enemy()
 
 Enemy::~Enemy()
 {
+
+	
 }
 
 bool Enemy::Start() {

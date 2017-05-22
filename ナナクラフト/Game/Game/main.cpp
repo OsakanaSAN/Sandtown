@@ -5,11 +5,13 @@
 #include "Camera.h"
 #include "Player.h"
 #include "Menu.h"
+#include "BattleMenu.h"
 
 
 
 Fade*   g_fade = nullptr;
 CRandom g_random;
+
 
 
 /*!
@@ -92,12 +94,16 @@ int WINAPI wWinMain(
 	//tkEngineの初期化。
 	InitTkEngine( hInst );
 	
+
 	g_fade = NewGO<Fade>(1);
 
 	////タイトルシーンの作成。
 	NewGO<TitleScene>(0);
 
+
 	//NewGO<Menu>(0);
+
+	//NewGO<BattleMenu>(0);
 
 	
 	Engine().RunGameLoop();		//ゲームループを実行。

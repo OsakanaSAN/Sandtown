@@ -1,13 +1,12 @@
 #include "stdafx.h"
 #include "Camera.h"
-
-//extern Player* g_player;
+#include "BattlePlayer.h"
 
 
 Camera::Camera()
 {
 
-	//tag = g_player->Getpos();
+	
 }
 
 
@@ -98,5 +97,36 @@ void Camera::BattleCamera()
 	camera.SetPosition(Battlepos); //プレイヤーの真上らへん
 	camera.SetTarget(Battletag);   //プレイヤーの座標
 
+}
+
+void Camera::PlayerBatlleCamera(CVector3 trget)
+{
+	CVector3 TG = trget;
+	
+
+	camera.SetTarget(TG);   //プレイヤーの座標
+	//回転
+	float rStick_x = 0.1f;
+
+
+	if (fabs(rStick_x) > 0.0f)
+	{
+		CMatrix mRot;
+		mRot.MakeRotationY(0.05f * rStick_x);
+		mRot.Mul(BattlePlayerCameraPos);
+
+
+	}
+
+
+	if (g_battleplayer != nullptr) {
+		V = g_battleplayer->Getpos();
+		V.y += 1.0f;
+		camera.SetTarget(V);
+		V.Add(BattlePlayerCameraPos);
+		camera.SetPosition(V);
+	}
+
+	camera.Update();
 
 }

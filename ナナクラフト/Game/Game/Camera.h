@@ -16,6 +16,7 @@ public:
 	
 	void TpsCamera();
 	void BattleCamera();
+	void PlayerBatlleCamera(CVector3 ta);
 
 	const CMatrix& GetViewMatrix() const
 	{
@@ -52,6 +53,7 @@ private:
 
 	CVector3 pos = { 1.0f,  2.0f,  3.0f };
 	CVector3 tag = { 1.0,1.0,1.0 };
+	CVector3 BattlePlayerCameraPos = { 1.0f,0.0f,1.0f };
 
 	CVector3	Battlepos = { -5.0f,1.9f,-47.0f };
 	CVector3	Battletag = { 2.0f,-2.0f,-35.0f };

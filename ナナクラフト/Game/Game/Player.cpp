@@ -2,7 +2,7 @@
 #include "Player.h"
 #include <iostream>
 #include <fstream>
-#define  MOVESPEED  8.0
+#define  MOVESPEED  7.0
 using  namespace std;
 
 
@@ -233,12 +233,11 @@ void Player::AnimetionSet()
 		if (Ismove) {
 
 			Animation.PlayAnimation(Run_anim,0.05);
-			Isrun = true;
-
-			
+			Isrun = true;		
 			runsound->SetPosition(Getpos());
 			runsound->Play(true);
-			Animation.SetAnimationSpeedRate(1);
+
+			Animation.SetAnimationSpeedRate(2);
 
 		}
 	}
@@ -247,9 +246,11 @@ void Player::AnimetionSet()
 		Animation.PlayAnimation(Stand_anim, 0.3f);
 		Isrun = false;
 		runsound->Stop();
+		Animation.SetAnimationSpeedRate(1);
 
 	}
 
+	
 	
 	//アニメーションの更新
 	Animation.Update(2.0f / 60.0f);

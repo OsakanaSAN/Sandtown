@@ -79,12 +79,17 @@ void GameScene::Update()
 		Dof().SetPint(Pintpos.Length() * 1000);
 		Dof().SetFocalLength(24.0f);
 	}
+
+	//タイトル画面に遷移する。
+
+
+
 	switch (scenes)
 	{
 
 	case STOP:
 
-		//タイトル画面に遷移する。
+		
 
 		if (Pad(0).IsPress(enButtonX) && mapscene == DOUKUTU)
 		{

@@ -9,15 +9,20 @@
 #include "Fade.h"
 #include "BattleEnemy.h"
 #include "GameSound.h"
+#include "Menu.h"
+#include "BattleMenu.h"
 
 BattlePlayer* g_battleplayer = nullptr;
 BattleEnemy* g_battleenemy = nullptr;
+BattleMenu* g_battlemenu;
 
 BattleScene::BattleScene()
 {
 
 	g_battleplayer = NewGO<BattlePlayer>(0);
 	g_battleenemy = NewGO<BattleEnemy>(0);
+	g_battlemenu = NewGO<BattleMenu>(0);
+	g_battlemenu->SetHp(g_Hud->GetHP());
 	
 }
 
@@ -27,6 +32,7 @@ BattleScene::~BattleScene()
 	
 	if (Victory == true) {
 		g_sound->StopSound();
+		DeleteGO(g_battlemenu);
 		DeleteGO(g_battleplayer);
 		DeleteGO(g_battleenemy);
 		g_player = NewGO<Player>(0);
@@ -34,6 +40,13 @@ BattleScene::~BattleScene()
 		g_gameScene->SceneStop();
 		g_gameCamera->ChangeStart();   //カメラの更新を再開するを
 		g_sound->DoukutuSound();
+		g_menu->GoldChangTex();
+		g_menu->HpChangTex();
+		g_menu->LvChangTex();
+		
+	
+
+
 	}
 
 	else
@@ -51,6 +64,7 @@ BattleScene::~BattleScene()
 bool BattleScene::Start()
 {
 	BattlGold = g_battleenemy->GetEGold();
+	
 
 	Winflg = false;
 	Loseflg = false;
@@ -71,7 +85,7 @@ bool BattleScene::Start()
 
 	m_ComandBGTexture2.Load("Assets/sprite/co2.png");
 	m_ComandBGSprite2.Init(&m_ComandBGTexture2);
-	m_ComandBGSprite2.SetPosition({ -400,-200 });
+	m_ComandBGSprite2.SetPosition({ -300,-200 });
 
 	m_ComandBGTexture3.Load("Assets/sprite/co4.png");
 	m_ComandBGSprite3.Init(&m_ComandBGTexture3);
@@ -99,7 +113,7 @@ bool BattleScene::Start()
 
 void BattleScene::Update()
 {
-
+	
 
 	CVector3 Pintpos;
 	CVector3 Epos = g_battleenemy->Getpos();
@@ -119,10 +133,10 @@ void BattleScene::Update()
 
 
 		switch (result) {
-
+			
 		case false:
 
-
+			g_gameCamera->PlayerBatlleCamera(g_battleplayer->Getpos());
 
 			if (Pad(0).IsPress(enButtonUp))
 			{
@@ -138,7 +152,7 @@ void BattleScene::Update()
 
 				m_ComandBGTexture2.Load("Assets/sprite/co2.png");
 				m_ComandBGSprite2.Init(&m_ComandBGTexture2);
-				m_ComandBGSprite3.SetPosition({ -400,-200 });
+				m_ComandBGSprite3.SetPosition({ -300,-200 });
 
 				m_ComandBGTexture3.Load("Assets/sprite/co4.png");
 				m_ComandBGSprite3.Init(&m_ComandBGTexture3);
@@ -167,7 +181,7 @@ void BattleScene::Update()
 				m_ComandBGSprite3.SetPosition({ -300,-300 });
 				m_ComandBGTexture2.Load("Assets/sprite/co1.png");
 				m_ComandBGSprite2.Init(&m_ComandBGTexture2);
-				m_ComandBGSprite2.SetPosition({ -400,-200 });
+				m_ComandBGSprite2.SetPosition({ -300,-200 });
 
 				m_CasolBGTexture5.Load("Assets/sprite/Casol.png");
 				m_CasolBGSprite5.Init(&m_CasolBGTexture5);
@@ -237,6 +251,7 @@ void BattleScene::PlayerTurn()
 
 		if (Pad(0).IsPress(enButtonA) && g_battleenemy->GetAnimend() && g_battleplayer->GetAnimend())
 		{
+			g_gameCamera->BattleCamera();
 			if (!SelectQ)
 			{
 				m_sound_bgm_battle = NewGO<CSoundSource>(0);
@@ -286,6 +301,8 @@ void BattleScene::PlayerTurn()
 
 				/*g_gameScene->BattleDate();*/
 				DeleteGO(this);
+
+				g_menu->InventoryChangTex(3);
 
 				return;
 
@@ -349,6 +366,7 @@ void BattleScene::EnemyTurn()
 
 		g_battleplayer->SetDamage(g_battleenemy->GetATK(), true);//ダメージ計算とダメージアニメーション再生
 		
+		g_battlemenu->SetHp(g_Hud->GetHP());
 
 		PDamage = true;
 	}

@@ -17,7 +17,7 @@ enum {
 
 BattlePlayer::BattlePlayer()
 {
-	All.SetAmbinetLight({ 0.2f,0.2f,0.2f });
+	All.SetAmbinetLight({ 0.8f,0.8f,0.8f });
 	All.SetDiffuseLightDirection(0, { 0.0f, -0.707f, 0.707f });
 	All.SetDiffuseLightColor(0, { 0.3f, 0.3f, 0.3f, 1.0f });
 	All.SetDiffuseLightDirection(1, { 0.0f, 0.707f, 0.707f });
@@ -91,6 +91,7 @@ void BattlePlayer::AnimationSet()
 		if (IsAttack) {
 			IsAnimend = false;
 			Animation.PlayAnimation(Run_anim, 0.05f);
+			Animation.SetAnimationSpeedRate(2);
 
 			IsStand = true;
 
