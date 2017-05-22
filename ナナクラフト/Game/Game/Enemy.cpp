@@ -5,6 +5,8 @@
 
 
 
+
+
 Enemy::Enemy()
 {
 
@@ -13,6 +15,8 @@ Enemy::Enemy()
 
 Enemy::~Enemy()
 {
+
+	
 }
 
 bool Enemy::Start() {

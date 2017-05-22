@@ -68,9 +68,6 @@
     <ClCompile Include="HUD.cpp">
       <Filter>Source Files\UI</Filter>
     </ClCompile>
-    <ClCompile Include="BattleCamera.cpp">
-      <Filter>Source Files\Camera</Filter>
-    </ClCompile>
     <ClCompile Include="BattlePlayer.cpp">
       <Filter>Source Files\player</Filter>
     </ClCompile>
@@ -99,6 +96,9 @@
       <Filter>Source Files\NPC</Filter>
     </ClCompile>
     <ClCompile Include="EnemyHUD.cpp">
+      <Filter>Source Files\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="BattleMenu.cpp">
       <Filter>Source Files\UI</Filter>
     </ClCompile>
   </ItemGroup>
@@ -133,9 +133,6 @@
     <ClInclude Include="HUD.h">
       <Filter>Source Files\UI</Filter>
     </ClInclude>
-    <ClInclude Include="BattleCamera.h">
-      <Filter>Source Files\Camera</Filter>
-    </ClInclude>
     <ClInclude Include="BattlePlayer.h">
       <Filter>Source Files\player</Filter>
     </ClInclude>
@@ -164,6 +161,9 @@
       <Filter>Source Files\NPC</Filter>
     </ClInclude>
     <ClInclude Include="EnemyHUD.h">
+      <Filter>Source Files\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="BattleMenu.h">
       <Filter>Source Files\UI</Filter>
     </ClInclude>
   </ItemGroup>

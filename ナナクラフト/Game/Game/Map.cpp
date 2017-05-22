@@ -12,12 +12,12 @@ struct SMapInfo {
 	CQuaternion	rotation;
 };
 
-Mapchip* mapchip[10];
+Mapchip* mapchip[255];
 SceneChange* g_SC;
 
 //マップの配置情報。
 SMapInfo mapLocInfo[] = {
-#include "Map/mati.h"
+#include "Map/MACHI.h"
 };
 
 
@@ -25,25 +25,25 @@ Map::Map()
 {
 	ChangeObject = 0;
 	numObject = 0;
-	
+	NoMoveObject = 0;
 }
 
 
 Map::~Map()
 {
 	
-	for (int i = 0;i < numObject - ChangeObject;i++)
+	for (int i = 0;i < NoMoveObject;i++)
 	{
 		DeleteGO(mapchip[i]);
 	}
 
 	DeleteGO(g_SC);
 
-	while (!mapchip[numObject-ChangeObject-1]->IsDead())
+	/*while (!mapchip[numObject-ChangeObject-1]->IsDead())
 	{
 
 
-	}
+	}*/
 
 
 }
@@ -81,9 +81,10 @@ bool Map::Start()
 
 		else
 		{
-			mapchip[i] = NewGO<Mapchip>(0);
+			mapchip[NoMoveObject] = NewGO<Mapchip>(0);
 			//モデル名、座標、回転を与えてマップチップを初期化する。
-			mapchip[i]->Init(mapLocInfo[i].modelName, mapLocInfo[i].position, mapLocInfo[i].rotation);
+			mapchip[NoMoveObject]->Init(mapLocInfo[i].modelName, mapLocInfo[i].position, mapLocInfo[i].rotation);
+			NoMoveObject++;
 		}
 
 	}

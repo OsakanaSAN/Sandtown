@@ -162,8 +162,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="BattleCamera.cpp" />
     <ClCompile Include="BattleEnemy.cpp" />
+    <ClCompile Include="BattleMenu.cpp" />
     <ClCompile Include="BattlePlayer.cpp" />
     <ClCompile Include="BattleScene.cpp" />
     <ClCompile Include="Camera.cpp" />
@@ -191,8 +191,8 @@
     <ClCompile Include="Mining.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="BattleCamera.h" />
     <ClInclude Include="BattleEnemy.h" />
+    <ClInclude Include="BattleMenu.h" />
     <ClInclude Include="BattlePlayer.h" />
     <ClInclude Include="BattleScene.h" />
     <ClInclude Include="Camera.h" />

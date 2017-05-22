@@ -15,6 +15,7 @@ private:
 	int numObject;
 	int ChangeObject;
 	int NoRenderObjct;
+	int NoMoveObject;
 
 	
 };

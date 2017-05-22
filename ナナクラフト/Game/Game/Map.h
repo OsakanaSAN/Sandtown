@@ -15,6 +15,7 @@ public:
 private:
 	int numObject;
 	int ChangeObject;
+	int NoMoveObject;
 	
 	bool One = false;
 

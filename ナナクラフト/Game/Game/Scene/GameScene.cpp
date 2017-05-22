@@ -39,7 +39,7 @@ GameScene::GameScene()
 	g_Hud = NewGO<HUD>(0);
 	g_map = NewGO<Map>(0);
 	g_menu = NewGO<Menu>(0);
-	//NewGO<Npc>(0);
+	NewGO<Npc>(0);
 	mapscene = MACHI;
 	scenes = STOP;
 	
@@ -68,12 +68,15 @@ bool GameScene::Start()
 
 void GameScene::Update()
 {
+	//タイトル画面に遷移する。
+
+
 	switch (scenes)
 	{
 
 	case STOP:
 
-		//タイトル画面に遷移する。
+		
 
 		if (Pad(0).IsPress(enButtonX) && mapscene == DOUKUTU)
 		{
