@@ -42,7 +42,7 @@ BattlePlayer::~BattlePlayer()
 
 bool BattlePlayer::Start()
 {
-	skinModelData.LoadModelData("Assets/modelData/kano.X", &Animation);
+	skinModelData.LoadModelData("Assets/modelData/Unity.X", &Animation);
 	skinModel.Init(skinModelData.GetBody());
 	skinModel.SetLight(&All);
 
@@ -66,7 +66,9 @@ bool BattlePlayer::Start()
 
 void BattlePlayer::Update()
 {
-	//All.SetPointLightColor({ 1.0f,1.0f,1.5f,4.0f });
+	/*CVector3 scale = CVector3::One;
+	scale.Scale(0.4);*/
+	All.SetPointLightColor({ 1.0f,1.0f,1.5f,4.0f });
 	characterController.Execute(0.03f);
 
 	AnimationSet();
@@ -128,10 +130,7 @@ void BattlePlayer::AnimationSet()
 
 void BattlePlayer::Particle()
 {
-	/*if (m_particle == nullptr)
-	{
-	return;
-	}*/
+	if (m_particle != nullptr){return;}
 
 	//パーティクルの生成
 	m_particle = NewGO<CParticleEmitter>(0);

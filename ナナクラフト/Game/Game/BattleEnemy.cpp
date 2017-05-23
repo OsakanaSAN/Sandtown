@@ -53,7 +53,7 @@ bool BattleEnemy::Start()
 	All.SetPointLightColor({ 1.0f,1.0f,1.5f,4.0f });
 
 
-	skinModelData.LoadModelData("Assets/modelData/cabetu2.X", &Animation);
+	skinModelData.LoadModelData("Assets/modelData/ghost.X", &Animation);
 	skinModel.Init(skinModelData.GetBody());
 	skinModel.SetLight(&All);	//デフォルトライトを設定。
 

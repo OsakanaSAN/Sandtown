@@ -31,7 +31,7 @@ bool Enemy::Start() {
 	
 	/*Enemylight.SetAmbinetLight({ 1.0f,1.0f,1.0f});*/
 
-	skinModelData.LoadModelData("Assets/modelData/cabetu2.X", &Animation);
+	skinModelData.LoadModelData("Assets/modelData/ghost.X", &Animation);
 	skinModel.Init(&skinModelData);
 	skinModel.SetLight(&Enemylight);	//デフォルトライトを設定。
 

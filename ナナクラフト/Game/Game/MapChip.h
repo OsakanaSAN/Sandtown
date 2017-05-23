@@ -21,6 +21,8 @@ private:
 	CRigidBody			 rigidBody;		//„‘ÌB
 	CVector3             Lightpos;
 	
+	CVector3 li;
+	
 	
 
 
