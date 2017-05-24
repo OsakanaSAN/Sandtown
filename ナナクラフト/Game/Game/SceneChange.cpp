@@ -87,6 +87,8 @@ void SceneChange::Update()
 }
 void SceneChange::Render(CRenderContext& renderContext)
 {
-	skinModel.Draw(renderContext, g_gameCamera->GetViewMatrix(), g_gameCamera->GetProjectionMatrix());
+	if (Norend == false) {
+		skinModel.Draw(renderContext, g_gameCamera->GetViewMatrix(), g_gameCamera->GetProjectionMatrix());
+	}
 }
 

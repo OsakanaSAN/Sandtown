@@ -74,7 +74,7 @@ Player::~Player()
 
 bool Player::Start()
 {
-	All.SetPointLightColor({ 1.0f,1.0f,1.5f,4.0f });
+	//All.SetPointLightColor({ 1.0f,1.0f,1.5f,4.0f });
 	
 
 	skinModelData.LoadModelData("Assets/modelData/kano2.X", &Animation);
@@ -124,13 +124,14 @@ void Player::Update()
 	{
 
 	case START:
-		All.SetPointLightPosition(Getpos());
+		//All.SetPointLightPosition(Getpos());
 		characterController.SetPosition(position);
 
 		AngleSet();  //キャラクターの向きを変更する
 		Move();      //キャラの移動
 		AnimetionSet();
 		
+		//skinModel.EntryShadowMap();
 		//ワールド行列の更新。
 		skinModel.Update(position, m_rotion,scale/*CVector3::One*/);
 

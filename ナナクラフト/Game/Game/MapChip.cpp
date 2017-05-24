@@ -14,7 +14,7 @@ Mapchip::Mapchip()
 	Maplight.SetPointLightColor({ 1.0f,1.0f,1.0f,1.0f });
 
 	li = g_player->Getpos();
-	li.y += 10.0f;
+	li.y += 30.0f;
 	ShadowMap().SetLightPosition(li);
 
 	
@@ -30,6 +30,7 @@ Mapchip::~Mapchip()
 	rigidBody.Release();
 
 }
+
 
 void Mapchip::Init(const char* modelName, CVector3 position, CQuaternion rotation)
 {
@@ -63,13 +64,14 @@ void Mapchip::Init(const char* modelName, CVector3 position, CQuaternion rotatio
 	rigidBody.Create(rbInfo);
 	//作成した剛体を物理ワールドに追加する。
 	PhysicsWorld().AddRigidBody(&rigidBody);
-
+	skinModel.EntryShadowMap();
 	
 	
 }
 
 void Mapchip::Update()
 {
+	
 	
 		
 	//初期化の時に作成しているので何もしない。

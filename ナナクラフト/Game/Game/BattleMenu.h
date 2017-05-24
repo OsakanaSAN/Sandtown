@@ -41,12 +41,27 @@ private:
 	CTexture    MaxHpSeatTexture[4];
 	CVector2    MaxHpseatpos = { 700.0f,-450.0f };
 
+	//現在のエネミーHP
+	CSprite     EnemyHpSeatSprite[4];
+	CTexture    EnemyHpSeatTexture[4];
+	CVector2    EnemyHpseatpos = { 600.0f,450.0f };
+	int         EnemyHP = 100;
+	char        EnemyHpTexName[255];
+
+	//最大エネミーHP
+	CSprite     EnemyMaxHpSeatSprite[4];
+	CTexture    EnemyMaxHpSeatTexture[4];
+	CVector2    EnemyMaxHpseatpos = { 700.0f,450.0f };
 
 	//バックシート
 	CSprite    BakeTexSprite;
 	CTexture   BakeTexTexture;
 	CVector2   Bakepos = { 600.0f,-450.0f };
 
+	//バックシート
+	CSprite    EnemyBakeTexSprite;
+	CTexture   EnemyBakeTexTexture;
+	CVector2   EnemyBakepos = { 600.0f,450.0f };
 
 	////////////////////////////////////////////
 	

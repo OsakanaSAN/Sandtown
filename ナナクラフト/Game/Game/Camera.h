@@ -1,5 +1,7 @@
 #pragma once
 #include "Player.h"
+#include "tkEngine/camera/tkSpringCamera.h"
+#include "tkEngine/camera/tkCameraCollisionSolver.h"
 
 class Camera : public IGameObject
 {
@@ -50,6 +52,8 @@ public:
 
 private:
 	CCamera camera;	//ÉJÉÅÉâÅB
+	CCameraCollisionSolver  cameraCollisionSolver;
+
 
 	CVector3 pos = { 1.0f,  2.0f,  3.0f };
 	CVector3 tag = { 1.0,1.0,1.0 };

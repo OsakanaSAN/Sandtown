@@ -24,7 +24,7 @@ private:
 
 	CCharacterController	characterController;		//キャラクタ―コントローラー。
 
-	float           SearchRaeng = 8.0f;
+	float           SearchRaeng = 10.0f;
 	bool            over = false;
 
 	CSkinModel		skinModel;
@@ -33,6 +33,9 @@ private:
 	CAnimation		Animation;
 	CVector3		position = { -3.0f,1.0f,-30.0f };
 	CQuaternion		m_rotation;
+
+	CVector3        subvec;
+	float           angle;
 
 	CLight			Enemylight;
 };

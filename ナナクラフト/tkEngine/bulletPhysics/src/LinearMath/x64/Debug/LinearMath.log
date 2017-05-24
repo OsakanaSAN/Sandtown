@@ -1,3 +1,6 @@
+<<<<<<< HEAD
+﻿  LinearMath.vcxproj -> C:\Users\kbc16\Documents\Sandtown\ナナクラフト\Game\x64\Debug\LinearMath_Debug.lib
+=======
 ﻿cl : コマンド ライン warning D9002: 不明なオプション '/arch:SSE' を無視します
   btAlignedAllocator.cpp
   btConvexHull.cpp
@@ -19,3 +22,4 @@ btVector3.cpp(815): warning C4267: '=': 'size_t' から 'long' に変換しま�
 =======
   LinearMath.vcxproj -> C:\Users\kbc16b03\Desktop\Sandtown\ナナクラフト\Game\x64\Debug\LinearMath_Debug.lib
 >>>>>>> d2dbfc563ae2a825831932bc6250927f2c5a17ee
+>>>>>>> fadd7248f88f0050449c7869125b926c8436632e

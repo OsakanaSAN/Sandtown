@@ -102,7 +102,7 @@ bool BattleScene::Start()
 	m_CasolBGSprite5.SetPosition({ -620,-200 });
 	m_CasolBGSprite5.SetSize({ 160,200 });
 
-	//g_sound->BattleSound();
+	g_sound->BattleSound();
 
 	CVector3 lightPos, lightTarget;
 	lightTarget.Add(g_battleplayer->Getpos(), g_battleenemy->Getpos());

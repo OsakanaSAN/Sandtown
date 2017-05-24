@@ -2,6 +2,8 @@
 #include "Enemy.h"
 #include "Camera.h"
 #include "Player.h"
+#include "Scene/GameScene.h"
+
 
 
 
@@ -23,7 +25,7 @@ Enemy::Enemy()
 
 Enemy::~Enemy()
 {
-
+	//g_Enemy = nullptr;
 	
 }
 
@@ -41,6 +43,8 @@ bool Enemy::Start() {
 	//move.x = -Pad(0).GetLStickXF() * 5.0f;
 	//move.z = -Pad(0).GetLStickYF() * 5.0f;
 
+	Animation.PlayAnimation(3, 0.2f);
+	Animation.SetAnimationSpeedRate(1.5);
 	skinModel.SetShadowCasterFlag(true);
 	/*skinModel.SetShadowReceiverFlag(true);*/
 	return true;
@@ -52,6 +56,10 @@ void Enemy::Update() {
 	
 
 	Tracking();
+	
+	
+	// アニメーションの更新a
+	Animation.Update(1.0f / 60.0f);
 	skinModel.Update(position, m_rotation, CVector3::One);
 }
 
@@ -63,6 +71,8 @@ void Enemy::Render(CRenderContext&renderContext) {
 
 void Enemy::Tracking()
 {
+
+	if (g_player == nullptr) { return; }
 	CVector3 pPos = g_player->Getpos();
 
 	CVector3 diff = pPos;
@@ -71,12 +81,30 @@ void Enemy::Tracking()
 
 	if (diff.Length() < SearchRaeng&& diff.Length() > 1.5f)
 	{
-		if (over == true) {
+		if (diff.Length() < 2)
+		{
+			g_gameScene->Batoset(true);
+			DeleteGO(this);
+		}
+
+
+		else if (over == true) {
 			diff.Div(diff.Length());
 
 			position.x += diff.x*0.1f;
 			position.y += diff.y*0.1;
 			position.z += diff.z*0.1;
+			CVector3 paly = g_player->Getpos();
+
+
+			CVector3 Def;
+			Def.Subtract(position, g_player->Getpos());
+
+			m_rotation.SetRotation(CVector3::Up, atan2f(-Def.x, -Def.z)); //前が背中なんで　マイナスする
+
+
+			
+
 		}
 		else
 		{

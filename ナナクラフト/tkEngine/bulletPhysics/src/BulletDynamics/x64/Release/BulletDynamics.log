@@ -6,7 +6,11 @@ ConstraintSolver\btConeTwistConstraint.cpp(913): warning C4244: '=': 'double' �
 ConstraintSolver\btConeTwistConstraint.cpp(973): warning C4244: '=': 'double' から 'btScalar' への変換です。データが失われる可能性があります。
 ConstraintSolver\btConeTwistConstraint.cpp(975): warning C4244: '=': 'double' から 'btScalar' への変換です。データが失われる可能性があります。
   btContactConstraint.cpp
+<<<<<<< HEAD
 c:\users\kbc16b15\desktop\github\sandtown\ナナクラフト\tkengine\bulletphysics\src\bulletdynamics\constraintsolver\btContactConstraint.h(25): warning C4359: 'btContactConstraint': アライメント指定子は実際のアラインメント (128) より小さいため、無視されます。
+=======
+c:\users\kbc16b03\desktop\sandtown\ナナクラフト\tkengine\bulletphysics\src\bulletdynamics\constraintsolver\btContactConstraint.h(25): warning C4359: 'btContactConstraint': アライメント指定子は実際のアラインメント (128) より小さいため、無視されます。
+>>>>>>> b0426e457f70dfbdf295feab55151d54768554c4
   btFixedConstraint.cpp
   btGearConstraint.cpp
   btGeneric6DofConstraint.cpp
@@ -23,7 +27,11 @@ ConstraintSolver\btGeneric6DofSpring2Constraint.cpp(786): warning C4244: '初期
   btTypedConstraint.cpp
   btUniversalConstraint.cpp
   btDiscreteDynamicsWorld.cpp
+<<<<<<< HEAD
 C:\Users\kbc16b15\Desktop\github\Sandtown\ナナクラフト\tkEngine\bulletPhysics\src\BulletDynamics\../BulletDynamics/ConstraintSolver/btContactConstraint.h(25): warning C4359: 'btContactConstraint': アライメント指定子は実際のアラインメント (128) より小さいため、無視されます。
+=======
+C:\Users\kbc16b03\Desktop\Sandtown\ナナクラフト\tkEngine\bulletPhysics\src\BulletDynamics\../BulletDynamics/ConstraintSolver/btContactConstraint.h(25): warning C4359: 'btContactConstraint': アライメント指定子は実際のアラインメント (128) より小さいため、無視されます。
+>>>>>>> b0426e457f70dfbdf295feab55151d54768554c4
   btRigidBody.cpp
   btSimpleDynamicsWorld.cpp
   コードを生成中...
@@ -40,7 +48,14 @@ Featherstone\btMultiBodyJointLimitConstraint.cpp(114): warning C4244: '初期化
   btLemkeAlgorithm.cpp
   btMLCPSolver.cpp
   btRaycastVehicle.cpp
+<<<<<<< HEAD
 C:\Users\kbc16b15\Desktop\github\Sandtown\ナナクラフト\tkEngine\bulletPhysics\src\BulletDynamics\../BulletDynamics/ConstraintSolver/btContactConstraint.h(25): warning C4359: 'btContactConstraint': アライメント指定子は実際のアラインメント (128) より小さいため、無視されます。
   btWheelInfo.cpp
   コードを生成中...
   BulletDynamics.vcxproj -> C:\Users\kbc16b15\Desktop\github\Sandtown\ナナクラフト\Game\x64\Release\BulletDynamics.lib
+=======
+C:\Users\kbc16b03\Desktop\Sandtown\ナナクラフト\tkEngine\bulletPhysics\src\BulletDynamics\../BulletDynamics/ConstraintSolver/btContactConstraint.h(25): warning C4359: 'btContactConstraint': アライメント指定子は実際のアラインメント (128) より小さいため、無視されます。
+  btWheelInfo.cpp
+  コードを生成中...
+  BulletDynamics.vcxproj -> C:\Users\kbc16b03\Desktop\Sandtown\ナナクラフト\Game\x64\Release\BulletDynamics.lib
+>>>>>>> b0426e457f70dfbdf295feab55151d54768554c4

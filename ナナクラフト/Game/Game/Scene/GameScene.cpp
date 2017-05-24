@@ -89,14 +89,15 @@ void GameScene::Update()
 	{
 
 	case STOP:
+	
 
 		
 
-		if (Pad(0).IsPress(enButtonX) && mapscene == DOUKUTU)
+		if (/*Pad(0).IsPress(enButtonX) && mapscene == DOUKUTU*/ Bato == true)
 		{
 				
 				DeleteGO(g_player);
-				DeleteGO(g_Enemy);
+				//DeleteGO(g_Enemy);
 				g_player = nullptr;
 				g_Enemy = nullptr;
 				g_sound->StopSound();
@@ -104,9 +105,10 @@ void GameScene::Update()
 				g_gameCamera->BattleCamera();
 				g_gameCamera->ChangeStop();    //ƒJƒƒ‰‚ÌXV‚ðŽ~‚ß‚é
 				scenes = Battle;
+				Bato = false;
 
 		}
-
+		
 		else if (Pad(0).IsPress(enButtonY))
 		{
 			//g_menu->InventoryChangTex();
