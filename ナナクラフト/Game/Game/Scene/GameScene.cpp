@@ -71,7 +71,16 @@ bool GameScene::Start()
 void GameScene::Update()
 {
 	
+	if (g_player != nullptr) {
+		CVector3 Pintpos = g_player->Getpos();
 
+		CVector3 Cpos = g_gameCamera->GetPos();
+
+		Pintpos.Subtract(Cpos);
+
+		Dof().SetPint(Pintpos.Length() * 1000);
+		/*Dof().SetFocalLength(36.0f);*/
+	}
 	//タイトル画面に遷移する。
 
 

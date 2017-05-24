@@ -77,7 +77,7 @@ bool Player::Start()
 	All.SetPointLightColor({ 1.0f,1.0f,1.5f,4.0f });
 	
 
-	skinModelData.LoadModelData("Assets/modelData/Unity.X", &Animation);
+	skinModelData.LoadModelData("Assets/modelData/kano2.X", &Animation);
 	skinModel.Init(skinModelData.GetBody());
 	skinModel.SetLight(&All);//デフォルトライトを設定。
 	/*skinModel.SetHasNormalMap(true);
@@ -104,7 +104,7 @@ bool Player::Start()
 	currentAnimSetNo = Stand_anim;
 	Animation.PlayAnimation(Stand_anim, 0.1f);
 	Animation.SetAnimationLoopFlag(Jump_anim, false);
-	Animation.SetAnimationEndTime(Run_anim, 0.8);
+	Animation.SetAnimationEndTime(Run_anim, 2.8);
 
 	
 	radius = 0.6f;
@@ -118,6 +118,8 @@ bool Player::Start()
 
 void Player::Update()
 {
+	CVector3 scale = CVector3::One;
+	scale.Scale(0.4);
 	switch (IsMove)
 	{
 
@@ -130,7 +132,7 @@ void Player::Update()
 		AnimetionSet();
 		
 		//ワールド行列の更新。
-		skinModel.Update(position, m_rotion,CVector3::One);
+		skinModel.Update(position, m_rotion,scale/*CVector3::One*/);
 
 		break;
 

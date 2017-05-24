@@ -55,7 +55,7 @@
 //ie
 {
 	"ie",
-	CVector3(-14.94f, 0.00f, -16.36f),             //平行移動
+	CVector3(-14.94f, -0.10f, -16.36f),             //平行移動
 	CQuaternion(-0.71f, 0.00f, 0.00f, 0.71f ),  //回転
 },
 //iedoa
@@ -63,4 +63,70 @@
 	"iedoa",
 	CVector3(16.01f, 0.19f, 14.82f),             //平行移動
 	CQuaternion(-0.68f, 0.18f, 0.18f, 0.68f ),  //回転
+},
+//Barrel
+{
+	"Barrel",
+	CVector3(-6.74f, -0.10f, -20.00f),             //平行移動
+	CQuaternion(-0.71f, 0.00f, 0.00f, 0.71f ),  //回転
+},
+//Barrel
+{
+	"Barrel",
+	CVector3(-6.74f, -0.10f, -15.00f),             //平行移動
+	CQuaternion(-0.71f, 0.00f, 0.00f, 0.71f ),  //回転
+},
+//Barrel
+{
+	"Barrel",
+	CVector3(20.00f, -0.10f, -20.00f),             //平行移動
+	CQuaternion(-0.71f, 0.00f, 0.00f, 0.71f ),  //回転
+},
+//Barrel
+{
+	"Barrel",
+	CVector3(15.00f, -0.10f, -16.00f),             //平行移動
+	CQuaternion(-0.71f, 0.00f, 0.00f, 0.71f ),  //回転
+},
+//Barrel
+{
+	"Barrel",
+	CVector3(15.00f, -0.10f, -20.00f),             //平行移動
+	CQuaternion(-0.71f, 0.00f, 0.00f, 0.71f ),  //回転
+},
+//Barrel
+{
+	"Barrel",
+	CVector3(10.00f, -0.10f, -20.00f),             //平行移動
+	CQuaternion(-0.71f, 0.00f, 0.00f, 0.71f ),  //回転
+},
+//Barrel
+{
+	"Barrel",
+	CVector3(20.00f, -0.10f, -16.00f),             //平行移動
+	CQuaternion(-0.71f, 0.00f, 0.00f, 0.71f ),  //回転
+},
+//Barrel
+{
+	"Barrel",
+	CVector3(-20.00f, -0.10f, 6.00f),             //平行移動
+	CQuaternion(-0.71f, 0.00f, 0.00f, 0.71f ),  //回転
+},
+//Barrel
+{
+	"Barrel",
+	CVector3(-16.02f, -0.10f, 6.00f),             //平行移動
+	CQuaternion(-0.71f, 0.00f, 0.00f, 0.71f ),  //回転
+},
+//Barrel
+{
+	"Barrel",
+	CVector3(10.00f, -0.01f, 18.63f),             //平行移動
+	CQuaternion(-0.71f, 0.00f, 0.00f, 0.71f ),  //回転
+},
+//Barrel
+{
+	"Barrel",
+	CVector3(10.00f, -0.01f, 14.63f),             //平行移動
+	CQuaternion(-0.71f, 0.00f, 0.00f, 0.71f ),  //回転
 },

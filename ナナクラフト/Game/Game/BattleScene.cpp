@@ -79,22 +79,28 @@ bool BattleScene::Start()
 
 	SelectQ = false;
 
+	m_ComandBGTexture1.Load("Assets/sprite/comand.png");
+	m_ComandBGSprite1.Init(&m_ComandBGTexture1);
+	m_ComandBGSprite1.SetPosition({ -500,-250 });
+	m_ComandBGSprite1.SetSize({ 500,300 });
+
 	m_DamageBGTexture4.Load("Assets/sprite/damage.tga");
 	m_DamageBGSprite4.Init(&m_DamageBGTexture4);
-	m_DamageBGSprite4.SetPosition({ -200,300 });
+	m_DamageBGSprite4.SetPosition({ -300,300 });
 
-	m_ComandBGTexture2.Load("Assets/sprite/co2.png");
+	m_ComandBGTexture2.Load("Assets/sprite/kougeki.png");
 	m_ComandBGSprite2.Init(&m_ComandBGTexture2);
-	m_ComandBGSprite2.SetPosition({ -300,-200 });
+	m_ComandBGSprite2.SetPosition({ -400,-200 });
 
-	m_ComandBGTexture3.Load("Assets/sprite/co4.png");
+	m_ComandBGTexture3.Load("Assets/sprite/nigeru.png");
 	m_ComandBGSprite3.Init(&m_ComandBGTexture3);
-	m_ComandBGSprite3.SetPosition({ -300,-300 });
+	m_ComandBGSprite3.SetPosition({ -410,-320 });
+	m_ComandBGSprite3.SetSize({ 320,120 });
 
 	m_CasolBGTexture5.Load("Assets/sprite/Casol.png");
 	m_CasolBGSprite5.Init(&m_CasolBGTexture5);
-	m_CasolBGSprite5.SetPosition({ -500,-200 });
-	m_CasolBGSprite5.SetSize({ 200,200 });
+	m_CasolBGSprite5.SetPosition({ -620,-200 });
+	m_CasolBGSprite5.SetSize({ 160,200 });
 
 	//g_sound->BattleSound();
 
@@ -114,7 +120,7 @@ bool BattleScene::Start()
 void BattleScene::Update()
 {
 	
-	/*CVector3 Pintpos;
+	CVector3 Pintpos;
 	CVector3 Epos = g_battleenemy->Getpos();
 	CVector3 Ppos = g_battleplayer->Getpos();
 
@@ -125,7 +131,7 @@ void BattleScene::Update()
 
 	Pintpos.Subtract(Cpos);
 	
-	Dof().SetPint(Pintpos.Length()*1000);*/
+	Dof().SetPint(Pintpos.Length()*1000);
 	/*Dof().SetFocalLength(36.0f);*/
 
 	if (Victory == true) {
@@ -148,19 +154,10 @@ void BattleScene::Update()
 					m_sound_bgm_battle->SetVolume(7.0f);
 				}
 
-
-				m_ComandBGTexture2.Load("Assets/sprite/co2.png");
-				m_ComandBGSprite2.Init(&m_ComandBGTexture2);
-				m_ComandBGSprite3.SetPosition({ -300,-200 });
-
-				m_ComandBGTexture3.Load("Assets/sprite/co4.png");
-				m_ComandBGSprite3.Init(&m_ComandBGTexture3);
-				m_ComandBGSprite3.SetPosition({ -300,-300 });
-
 				m_CasolBGTexture5.Load("Assets/sprite/Casol.png");
 				m_CasolBGSprite5.Init(&m_CasolBGTexture5);
-				m_CasolBGSprite5.SetPosition({ -500,-200 });
-				m_CasolBGSprite5.SetSize({ 200,200 });
+				m_CasolBGSprite5.SetPosition({ -620,-200 });
+				m_CasolBGSprite5.SetSize({ 160,200 });
 
 				Comand = Attack;
 
@@ -175,17 +172,10 @@ void BattleScene::Update()
 					m_sound_bgm_battle->SetVolume(7.0f);
 				}
 
-				m_ComandBGTexture3.Load("Assets/sprite/co3.png");
-				m_ComandBGSprite3.Init(&m_ComandBGTexture3);
-				m_ComandBGSprite3.SetPosition({ -300,-300 });
-				m_ComandBGTexture2.Load("Assets/sprite/co1.png");
-				m_ComandBGSprite2.Init(&m_ComandBGTexture2);
-				m_ComandBGSprite2.SetPosition({ -300,-200 });
-
 				m_CasolBGTexture5.Load("Assets/sprite/Casol.png");
 				m_CasolBGSprite5.Init(&m_CasolBGTexture5);
-				m_CasolBGSprite5.SetPosition({ -500,-300 });
-				m_CasolBGSprite5.SetSize({ 200,200 });
+				m_CasolBGSprite5.SetPosition({ -620,-300 });
+				m_CasolBGSprite5.SetSize({ 160,200 });
 
 				Comand = Escape;
 			}
@@ -227,7 +217,7 @@ void BattleScene::Update()
 
 void BattleScene::Render(CRenderContext&renderContext)
 {
-
+	m_ComandBGSprite1.Draw(renderContext);
 	m_ComandBGSprite2.Draw(renderContext);
 	m_ComandBGSprite3.Draw(renderContext);
 	m_CasolBGSprite5.Draw(renderContext);

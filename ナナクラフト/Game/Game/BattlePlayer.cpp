@@ -10,6 +10,7 @@ enum {
 	Stand_anim,
 	Walk_anim,  //•à‚­
 	Run_anim,  //‘–‚é
+
 	
 
 };
@@ -42,7 +43,7 @@ BattlePlayer::~BattlePlayer()
 
 bool BattlePlayer::Start()
 {
-	skinModelData.LoadModelData("Assets/modelData/Unity.X", &Animation);
+	skinModelData.LoadModelData("Assets/modelData/kano2.X", &Animation);
 	skinModel.Init(skinModelData.GetBody());
 	skinModel.SetLight(&All);
 
@@ -52,7 +53,7 @@ bool BattlePlayer::Start()
 	//Animation.PlayAnimation(Stand_anim, 0.1f);
 	Animation.SetAnimationEndTime(Run_anim, 0.8);
 
-	//Animation.SetAnimationEndTime(Attack_anim, 0.5);
+	Animation.SetAnimationEndTime(Attack_anim, 0.5);
 	Animation.SetAnimationLoopFlag(Run_anim, false);
 	Animation.SetAnimationEndTime(Stand_anim, 0.1f);
 	Animation.SetAnimationLoopFlag(Stand_anim, false);
@@ -66,14 +67,14 @@ bool BattlePlayer::Start()
 
 void BattlePlayer::Update()
 {
-	/*CVector3 scale = CVector3::One;
-	scale.Scale(0.4);*/
+	CVector3 scale = CVector3::One;
+	scale.Scale(0.4);
 	All.SetPointLightColor({ 1.0f,1.0f,1.5f,4.0f });
 	characterController.Execute(0.03f);
 
 	AnimationSet();
 
-	skinModel.Update(position, m_rotation, CVector3::One);
+	skinModel.Update(position, m_rotation, scale/*CVector3::One*/);
 
 }
 
@@ -101,7 +102,7 @@ void BattlePlayer::AnimationSet()
 		else if (IsDamage)
 		{
 			IsAnimend = false;
-			Animation.PlayAnimation(Stand_anim, 0.3f);
+			Animation.PlayAnimation(Walk_anim, 0.3f);
 
 			IsStand = true;
 		}
