@@ -43,7 +43,7 @@ void Npc::Update()
 	//ワールド行列の更新。
 	skinModel.Update(position, m_rotion, CVector3::One);
 
-	Animation.PlayAnimation(0, 0.3f);
+	Animation.PlayAnimation(0, 0.1f);
 	//アニメーションの更新
 	Animation.Update(1.0f / 60.0f);
 

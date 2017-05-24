@@ -99,7 +99,7 @@ void GameScene::Update()
 				Bato = false;
 
 		}
-
+		
 		else if (Pad(0).IsPress(enButtonY))
 		{
 			//g_menu->InventoryChangTex();

@@ -1,5 +1,11 @@
-﻿  Mapchip.cpp
+﻿  Npc.cpp
+  Player.cpp
+Player.cpp(39): warning C4305: '引数': 'double' から 'float' へ切り詰めます。
+Player.cpp(204): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
+Player.cpp(205): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
+Player.cpp(232): warning C4305: '引数': 'double' から 'float' へ切り詰めます。
+  コードを生成中...
 LINK : warning LNK4075: /INCREMENTAL は /LTCG の指定によって無視されます。
   LINK : /LTCG が指定されましたが、コードの生成は必要ありません。リンク コマンド ラインから /LTCG を削除し、リンカーの性能を改善してください。
-  Game.vcxproj -> C:\Users\kbc16b03\Desktop\開発\ナナクラフト\Game\x64\Release\Game.exe
-  Game.vcxproj -> C:\Users\kbc16b03\Desktop\開発\ナナクラフト\Game\x64\Release\Game.pdb (Full PDB)
+  Game.vcxproj -> C:\Users\kbc16b03\Desktop\Sandtown\ナナクラフト\Game\x64\Release\Game.exe
+  Game.vcxproj -> C:\Users\kbc16b03\Desktop\Sandtown\ナナクラフト\Game\x64\Release\Game.pdb (Full PDB)

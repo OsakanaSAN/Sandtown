@@ -25,7 +25,7 @@ Enemy::Enemy()
 
 Enemy::~Enemy()
 {
-
+	//g_Enemy = nullptr;
 	
 }
 

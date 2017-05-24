@@ -74,7 +74,7 @@ Player::~Player()
 
 bool Player::Start()
 {
-	All.SetPointLightColor({ 1.0f,1.0f,1.5f,4.0f });
+	//All.SetPointLightColor({ 1.0f,1.0f,1.5f,4.0f });
 	
 
 	skinModelData.LoadModelData("Assets/modelData/Unity.X", &Animation);
@@ -122,7 +122,7 @@ void Player::Update()
 	{
 
 	case START:
-		All.SetPointLightPosition(Getpos());
+		//All.SetPointLightPosition(Getpos());
 		characterController.SetPosition(position);
 
 		AngleSet();  //キャラクターの向きを変更する
