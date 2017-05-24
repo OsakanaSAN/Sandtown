@@ -80,6 +80,7 @@ void GameScene::Update()
 	{
 
 	case STOP:
+	
 
 		
 

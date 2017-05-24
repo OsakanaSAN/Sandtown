@@ -64,13 +64,14 @@ void Mapchip::Init(const char* modelName, CVector3 position, CQuaternion rotatio
 	rigidBody.Create(rbInfo);
 	//作成した剛体を物理ワールドに追加する。
 	PhysicsWorld().AddRigidBody(&rigidBody);
-
+	skinModel.EntryShadowMap();
 	
 	
 }
 
 void Mapchip::Update()
 {
+	
 	
 		
 	//初期化の時に作成しているので何もしない。
