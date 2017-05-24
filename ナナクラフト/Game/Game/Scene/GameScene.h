@@ -50,7 +50,10 @@ public:
 	void MapChange();
 	//void BattleDate(); //バトル画面終了
 	
-
+	void Batoset(bool setBato)
+	{
+		Bato = setBato;
+	}
 	
 private:
 	
@@ -89,6 +92,10 @@ private:
 
 	int        I, J;
 	bool       Chang = true;
+
+
+
+	bool Bato = false; //バトル画面遷移判定
 
 
 

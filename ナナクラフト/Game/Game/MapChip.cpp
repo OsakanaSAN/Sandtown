@@ -13,11 +13,11 @@ Mapchip::Mapchip()
 	Maplight.SetPointLightPosition(Lightpos);
 	Maplight.SetPointLightColor({ 1.0f,1.0f,1.0f,1.0f });
 
+	li = g_player->Getpos();
+	li.y += 30.0f;
+	ShadowMap().SetLightPosition(li);
 
-	skinModel.SetShadowReceiverFlag(true);//レシーバーが影が落とされるほう
-	skinModel.SetShadowCasterFlag(true);
-
-
+	
 	Maplight.SetDiffuseLightDirection(0, { -1.0f,-1.0f,-1.0f });//ディフューズのカラーとディレクションを設定影が落とされるほう
 	Maplight.SetDiffuseLightColor(0, { 0.3f, 0.3f, 0.3f, 0.5f });//ディフューズのカラー
 	
@@ -30,6 +30,7 @@ Mapchip::~Mapchip()
 	rigidBody.Release();
 
 }
+
 
 void Mapchip::Init(const char* modelName, CVector3 position, CQuaternion rotation)
 {
@@ -63,16 +64,21 @@ void Mapchip::Init(const char* modelName, CVector3 position, CQuaternion rotatio
 	rigidBody.Create(rbInfo);
 	//作成した剛体を物理ワールドに追加する。
 	PhysicsWorld().AddRigidBody(&rigidBody);
-
+	skinModel.EntryShadowMap();
 	
 	
 }
 
 void Mapchip::Update()
 {
+	
+	
+		
 	//初期化の時に作成しているので何もしない。
 	if (g_player != NULL)
 	{
+		ShadowMap().SetLightTarget(g_player->Getpos());
+
 		Maplight.SetPointLightPosition(g_player->Getpos());
 	}
 

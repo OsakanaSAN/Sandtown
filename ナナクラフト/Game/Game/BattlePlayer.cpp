@@ -66,7 +66,9 @@ bool BattlePlayer::Start()
 
 void BattlePlayer::Update()
 {
-	//All.SetPointLightColor({ 1.0f,1.0f,1.5f,4.0f });
+	/*CVector3 scale = CVector3::One;
+	scale.Scale(0.4);*/
+	All.SetPointLightColor({ 1.0f,1.0f,1.5f,4.0f });
 	characterController.Execute(0.03f);
 
 	AnimationSet();
@@ -128,10 +130,7 @@ void BattlePlayer::AnimationSet()
 
 void BattlePlayer::Particle()
 {
-	/*if (m_particle == nullptr)
-	{
-	return;
-	}*/
+	if (m_particle != nullptr){return;}
 
 	//パーティクルの生成
 	m_particle = NewGO<CParticleEmitter>(0);
@@ -162,7 +161,7 @@ void BattlePlayer::Particle()
 		1,												//!<0半透明合成、1加算合成。
 		{ 1.0f, 1.0f, 1.0f },							//!<乗算カラー。
 	},
-		g_battleenemy->Getpos());
+		g_battleenemy->Getpos());//パーティクルを生成する座標　CVector3型？
 
 
 

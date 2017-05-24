@@ -3,7 +3,6 @@
 #include "Scene\GameScene.h"
 #include "Fade.h"
 #include "Camera.h"
-////////////////////
 #include "Player.h"
 #include "Menu.h"
 #include "BattleMenu.h"
@@ -46,6 +45,7 @@ void InitTkEngine( HINSTANCE hInst )
 	initParam.graphicsConfig.shadowRenderConfig.shadowMapWidth = 1024;
 	initParam.graphicsConfig.shadowRenderConfig.shadowMapHeight = 1024;
 	initParam.graphicsConfig.shadowRenderConfig.numShadowMap = 3;
+	initParam.graphicsConfig.shadowRenderConfig.isDisableSoftShadow = true;
 	
 	//reflection
 	initParam.graphicsConfig.reflectionMapConfig.isEnable = false;
@@ -55,9 +55,9 @@ void InitTkEngine( HINSTANCE hInst )
 	
 
 	//DOF
-	//initParam.graphicsConfig.dofConfig.isEnable = false;
+	initParam.graphicsConfig.dofConfig.isEnable = false;
 	//AA
-	initParam.graphicsConfig.aaConfig.isEnable = false;
+	initParam.graphicsConfig.aaConfig.isEnable = true;
 	//乱数初期化。
 	g_random.Init((unsigned long)time(NULL));
 
@@ -98,8 +98,18 @@ int WINAPI wWinMain(
 	g_fade = NewGO<Fade>(1);
 
 	////タイトルシーンの作成。
+
+	NewGO<TitleScene>(0);
+	//NewGO<BattleMenu>(0);
+
 	//NewGO<TitleScene>(0);
-	NewGO<BattleMenu>(0);
+
+
+	//NewGO<Menu>(0);
+
+	//NewGO<BattleMenu>(0);
+
+
 	
 	Engine().RunGameLoop();		//ゲームループを実行。
 

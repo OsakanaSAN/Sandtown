@@ -79,6 +79,7 @@ bool Map2::Start()
 			SC2 = NewGO<SceneChange>(0);
 			SC2->Init(mapLocInfo2[i].modelName, mapLocInfo2[i].position, mapLocInfo2[i].rotation);
 			SC2->setpos(mapLocInfo2[i].position);
+			SC2->Norender();
 			//ChangeObject++;
 			NoRenderObjct++;
 

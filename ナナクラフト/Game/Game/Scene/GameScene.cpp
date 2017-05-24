@@ -31,7 +31,6 @@ Enemy*  g_Enemy = nullptr;
 
 
 
-
 GameScene::GameScene()
 {
 	g_gameCamera = NewGO<Camera>(0);
@@ -62,27 +61,34 @@ bool GameScene::Start()
 		return true;
 
 	}
-
-
+	
+	ShadowMap().SetLightPosition(g_gameCamera->GetPos());
+	
+	ShadowMap().SetLightTarget(g_player->Getpos());
+	
 }
 
 void GameScene::Update()
 {
+	
+
 	//タイトル画面に遷移する。
+
 
 
 	switch (scenes)
 	{
 
 	case STOP:
+	
 
 		
 
-		if (Pad(0).IsPress(enButtonX) && mapscene == DOUKUTU)
+		if (/*Pad(0).IsPress(enButtonX) && mapscene == DOUKUTU*/ Bato == true)
 		{
 				
 				DeleteGO(g_player);
-				DeleteGO(g_Enemy);
+				//DeleteGO(g_Enemy);
 				g_player = nullptr;
 				g_Enemy = nullptr;
 				g_sound->StopSound();
@@ -90,9 +96,10 @@ void GameScene::Update()
 				g_gameCamera->BattleCamera();
 				g_gameCamera->ChangeStop();    //カメラの更新を止める
 				scenes = Battle;
+				Bato = false;
 
 		}
-
+		
 		else if (Pad(0).IsPress(enButtonY))
 		{
 			//g_menu->InventoryChangTex();
@@ -217,8 +224,6 @@ void GameScene::DeteScene()
 		
 	}
 
-
-	
 
 	g_player = nullptr;
 

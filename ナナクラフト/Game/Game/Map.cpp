@@ -3,6 +3,7 @@
 #include "Player.h"
 #include "SceneChange.h"
 #include "HUD.h"
+#include "GameSky.h"
 
 
 
@@ -14,6 +15,7 @@ struct SMapInfo {
 
 Mapchip* mapchip[255];
 SceneChange* g_SC;
+GameSky*     g_Sky;
 
 //マップの配置情報。
 SMapInfo mapLocInfo[] = {
@@ -38,12 +40,7 @@ Map::~Map()
 	}
 
 	DeleteGO(g_SC);
-
-	/*while (!mapchip[numObject-ChangeObject-1]->IsDead())
-	{
-
-
-	}*/
+	DeleteGO(g_Sky);
 
 
 }
@@ -74,6 +71,15 @@ bool Map::Start()
 			g_SC = NewGO<SceneChange>(0);
 			g_SC->Init(mapLocInfo[i].modelName, mapLocInfo[i].position, mapLocInfo[i].rotation);
 			g_SC->setpos(mapLocInfo[i].position);
+			ChangeObject++;
+
+
+		}
+		else if (strcmp(mapLocInfo[i].modelName, "maru") == 0)
+		{
+
+			g_Sky = NewGO<GameSky>(0);
+			g_Sky->Init(mapLocInfo[i].modelName, mapLocInfo[i].position, mapLocInfo[i].rotation);
 			ChangeObject++;
 
 

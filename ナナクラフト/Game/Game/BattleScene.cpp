@@ -114,6 +114,19 @@ bool BattleScene::Start()
 void BattleScene::Update()
 {
 	
+	/*CVector3 Pintpos;
+	CVector3 Epos = g_battleenemy->Getpos();
+	CVector3 Ppos = g_battleplayer->Getpos();
+
+	Pintpos.Add(Ppos, Epos);
+	Pintpos.Scale(0.5f);
+
+	CVector3 Cpos = g_gameCamera->BGetPos();
+
+	Pintpos.Subtract(Cpos);
+	
+	Dof().SetPint(Pintpos.Length()*1000);*/
+	/*Dof().SetFocalLength(36.0f);*/
 
 	if (Victory == true) {
 
@@ -284,9 +297,14 @@ void BattleScene::PlayerTurn()
 				g_Hud->SetGold(g_battleenemy->GetEGold());
 				g_Hud->SetExp(g_battleenemy->GetExp());
 				Winflg = true;//バトルに勝利した
+
+				/*g_gameScene->BattleDate();*/
 				DeleteGO(this);
+
 				g_menu->InventoryChangTex(3);
+
 				return;
+
 				/*g_battleenemy->Delete();*/
 				//レベルアップ判定
 				//リザルト画面を出す処理その後シーン遷移？
@@ -361,8 +379,12 @@ void BattleScene::EnemyTurn()
 		{
 
 			Loseflg = true;//戦闘に負けた
+
+			/*g_gameScene->BattleDate();*/
+
 			Victory = false;
 			Result();
+
 			//リザルト画面を出す処理かシーン遷移？
 		}
 		SelectQ = false;

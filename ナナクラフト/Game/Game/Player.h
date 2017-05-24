@@ -41,6 +41,10 @@ public:
 		m_rotion = PRot;
 		
 	}
+	CQuaternion GetRot()const
+	{
+		return m_rotion;
+	}
 
 	void AngleSet();
 	void AnimetionSet();

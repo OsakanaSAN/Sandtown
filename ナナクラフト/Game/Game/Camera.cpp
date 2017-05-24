@@ -3,6 +3,7 @@
 #include "BattlePlayer.h"
 
 
+
 Camera::Camera()
 {
 
@@ -19,8 +20,7 @@ bool Camera::Start()
 	camera.SetPosition(pos); //プレイヤーの真上らへん
 	camera.SetTarget(g_player->Getpos());   //プレイヤーの座標
 
-
-
+	cameraCollisionSolver.Init(0.2f);
 	return true;
 
 }
@@ -88,6 +88,13 @@ void Camera::TpsCamera()
 		camera.SetPosition(V);
 	}
 
+	CVector3 newPos;
+	if (cameraCollisionSolver.Execute(newPos, camera.GetPosition(), camera.GetTarget()))
+	{
+		camera.SetPosition(newPos);
+		//camera.ClearSpringParame();
+
+	}
 
 
 }

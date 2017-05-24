@@ -83,17 +83,16 @@ bool Player::Start()
 	/*skinModel.SetHasNormalMap(true);
 	skinModel.SetHasSpeculerMap(true)*/;
 	skinModel.SetShadowCasterFlag(true);
-	skinModel.SetShadowReceiverFlag(true);
+	/*skinModel.SetShadowReceiverFlag(true);*/
 	/*skinModel.SetFresnelFlag(true);
 	skinModel.SetReflectionCasterFlag(true);
 	skinModel.SetWriteVelocityMap(false);*/
-
+	/*skinModel.SetFresnelFlag(true);*/
 
 
 
 	m_rotion.SetRotation(CVector3(0.0f, 1.0f, 0.0f), CMath::DegToRad(0.0f));
-
-
+	
 
 
 	//キャラクタコントローラの初期化。
@@ -107,6 +106,7 @@ bool Player::Start()
 	Animation.SetAnimationLoopFlag(Jump_anim, false);
 	Animation.SetAnimationEndTime(Run_anim, 0.8);
 
+	
 	radius = 0.6f;
 	height = 0.3f;
 	//characterController.Init(radius, height, position);
@@ -122,15 +122,16 @@ void Player::Update()
 	{
 
 	case START:
-		All.SetPointLightPosition(Getpos());
+		//All.SetPointLightPosition(Getpos());
 		characterController.SetPosition(position);
 
 		AngleSet();  //キャラクターの向きを変更する
 		Move();      //キャラの移動
 		AnimetionSet();
-
+		
+		//skinModel.EntryShadowMap();
 		//ワールド行列の更新。
-		skinModel.Update(position, m_rotion, CVector3::One);
+		skinModel.Update(position, m_rotion,CVector3::One);
 
 		break;
 
@@ -232,6 +233,7 @@ void Player::AnimetionSet()
 			Isrun = true;		
 			runsound->SetPosition(Getpos());
 			runsound->Play(true);
+
 			Animation.SetAnimationSpeedRate(2);
 
 		}
@@ -247,7 +249,7 @@ void Player::AnimetionSet()
 
 	
 	
-	//アニメーションの更新
+	//アニメーションの更新aa
 	Animation.Update(1.0f / 60.0f);
 
 }
