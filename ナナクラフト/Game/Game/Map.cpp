@@ -17,7 +17,7 @@ SceneChange* g_SC;
 
 //マップの配置情報。
 SMapInfo mapLocInfo[] = {
-#include "Map/MACHI.h"
+#include "Map/mati.h"
 };
 
 

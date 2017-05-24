@@ -62,9 +62,9 @@ bool GameScene::Start()
 
 	}
 	
-	ShadowMap().SetLightPosition(g_gameCamera->GetPos());
+	/*ShadowMap().SetLightPosition(g_gameCamera->GetPos());
 	
-	ShadowMap().SetLightTarget(g_player->Getpos());
+	ShadowMap().SetLightTarget(g_player->Getpos());*/
 	
 }
 
