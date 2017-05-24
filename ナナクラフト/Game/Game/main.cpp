@@ -98,8 +98,8 @@ int WINAPI wWinMain(
 	g_fade = NewGO<Fade>(1);
 
 	////タイトルシーンの作成。
-	NewGO<TitleScene>(0);
-	//NewGO<BattleMenu>(0);
+	//NewGO<TitleScene>(0);
+	NewGO<BattleMenu>(0);
 	
 	Engine().RunGameLoop();		//ゲームループを実行。
 
