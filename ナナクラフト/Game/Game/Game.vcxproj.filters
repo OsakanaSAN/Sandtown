@@ -1,174 +1,141 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="Resource Files">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
-    <Filter Include="Source Files\Scene">
-      <UniqueIdentifier>{32c313bd-07db-494a-af8e-de395cbec093}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\MAP">
-      <UniqueIdentifier>{29dd3b94-9361-44be-a4e2-74e78d17e07a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Camera">
-      <UniqueIdentifier>{3e2f290b-22ae-4ed8-bf05-370856728cd1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\UI">
-      <UniqueIdentifier>{62966944-c6c8-4068-b680-d1a5a3c5b68a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\player">
-      <UniqueIdentifier>{725b549e-50a6-42a1-98c8-bb85b9613262}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Sound">
-      <UniqueIdentifier>{2637c09d-5e1a-445f-a0a3-c5fee5eba0b0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Enemy">
-      <UniqueIdentifier>{9c935ca3-090c-4e7f-818f-a7c17644fb83}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\NPC">
-      <UniqueIdentifier>{44c48f01-90f3-4e8a-a8d3-daaf0e8ccd5e}</UniqueIdentifier>
-    </Filter>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="stdafx.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Scene\TitleScene.cpp">
-      <Filter>Source Files\Scene</Filter>
-    </ClCompile>
-    <ClCompile Include="Scene\GameScene.cpp">
-      <Filter>Source Files\Scene</Filter>
-    </ClCompile>
-    <ClCompile Include="Fade.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Mapchip.cpp">
-      <Filter>Source Files\MAP</Filter>
-    </ClCompile>
+    <ClCompile Include="BattleEnemy.cpp" />
+    <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="GameSound.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="stdafx.cpp" />
     <ClCompile Include="Map.cpp">
-      <Filter>Source Files\MAP</Filter>
-    </ClCompile>
-    <ClCompile Include="BattleScene.cpp">
-      <Filter>Source Files\Scene</Filter>
+      <Filter>Map</Filter>
     </ClCompile>
     <ClCompile Include="Map2.cpp">
-      <Filter>Source Files\MAP</Filter>
+      <Filter>Map</Filter>
     </ClCompile>
-    <ClCompile Include="Camera.cpp">
-      <Filter>Source Files\Camera</Filter>
-    </ClCompile>
-    <ClCompile Include="HUD.cpp">
-      <Filter>Source Files\UI</Filter>
+    <ClCompile Include="Mapchip.cpp">
+      <Filter>Map</Filter>
     </ClCompile>
     <ClCompile Include="BattlePlayer.cpp">
-      <Filter>Source Files\player</Filter>
+      <Filter>Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Npc.cpp">
+      <Filter>Player</Filter>
     </ClCompile>
     <ClCompile Include="Player.cpp">
-      <Filter>Source Files\player</Filter>
+      <Filter>Player</Filter>
     </ClCompile>
-    <ClCompile Include="Mining.cpp">
-      <Filter>Source Files\MAP</Filter>
+    <ClCompile Include="HUD.cpp">
+      <Filter>HUD</Filter>
     </ClCompile>
-    <ClCompile Include="GameSound.cpp">
-      <Filter>Source Files\Sound</Filter>
-    </ClCompile>
-    <ClCompile Include="BattleEnemy.cpp">
-      <Filter>Source Files\Enemy</Filter>
-    </ClCompile>
-    <ClCompile Include="SceneChange.cpp">
-      <Filter>Source Files\MAP</Filter>
+    <ClCompile Include="BattleMenu.cpp">
+      <Filter>HUD</Filter>
     </ClCompile>
     <ClCompile Include="Menu.cpp">
-      <Filter>Source Files\UI</Filter>
+      <Filter>HUD</Filter>
+    </ClCompile>
+    <ClCompile Include="Mining.cpp">
+      <Filter>Map</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneChange.cpp">
+      <Filter>Map</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene\GameScene.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene\TitleScene.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="BattleScene.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Fade.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="GameSky.cpp">
+      <Filter>Map</Filter>
     </ClCompile>
     <ClCompile Include="Enemy.cpp">
-      <Filter>Source Files\Enemy</Filter>
+      <Filter>Enemy</Filter>
     </ClCompile>
     <ClCompile Include="EnemyHUD.cpp">
-      <Filter>Source Files\UI</Filter>
-    </ClCompile>
-<<<<<<< HEAD
-    <ClCompile Include="Npc.cpp">
-      <Filter>Source Files\NPC</Filter>
-=======
-    <ClCompile Include="BattleMenu.cpp">
-      <Filter>Source Files\UI</Filter>
->>>>>>> d2dbfc563ae2a825831932bc6250927f2c5a17ee
+      <Filter>Enemy</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="stdafx.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Scene\TitleScene.h">
-      <Filter>Source Files\Scene</Filter>
-    </ClInclude>
-    <ClInclude Include="Scene\GameScene.h">
-      <Filter>Source Files\Scene</Filter>
-    </ClInclude>
-    <ClInclude Include="Fade.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Mapchip.h">
-      <Filter>Source Files\MAP</Filter>
-    </ClInclude>
+    <ClInclude Include="BattleEnemy.h" />
+    <ClInclude Include="Camera.h" />
+    <ClInclude Include="GameSound.h" />
+    <ClInclude Include="stdafx.h" />
     <ClInclude Include="Map.h">
-      <Filter>Source Files\MAP</Filter>
-    </ClInclude>
-    <ClInclude Include="BattleScene.h">
-      <Filter>Source Files\Scene</Filter>
+      <Filter>Map</Filter>
     </ClInclude>
     <ClInclude Include="Map2.h">
-      <Filter>Source Files\MAP</Filter>
+      <Filter>Map</Filter>
     </ClInclude>
-    <ClInclude Include="Camera.h">
-      <Filter>Source Files\Camera</Filter>
-    </ClInclude>
-    <ClInclude Include="HUD.h">
-      <Filter>Source Files\UI</Filter>
+    <ClInclude Include="Mapchip.h">
+      <Filter>Map</Filter>
     </ClInclude>
     <ClInclude Include="BattlePlayer.h">
-      <Filter>Source Files\player</Filter>
+      <Filter>Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Npc.h">
+      <Filter>Player</Filter>
     </ClInclude>
     <ClInclude Include="Player.h">
-      <Filter>Source Files\player</Filter>
+      <Filter>Player</Filter>
     </ClInclude>
-    <ClInclude Include="Mining.h">
-      <Filter>Source Files\MAP</Filter>
+    <ClInclude Include="HUD.h">
+      <Filter>HUD</Filter>
     </ClInclude>
-    <ClInclude Include="GameSound.h">
-      <Filter>Source Files\Sound</Filter>
-    </ClInclude>
-    <ClInclude Include="BattleEnemy.h">
-      <Filter>Source Files\Enemy</Filter>
-    </ClInclude>
-    <ClInclude Include="SceneChange.h">
-      <Filter>Source Files\MAP</Filter>
+    <ClInclude Include="BattleMenu.h">
+      <Filter>HUD</Filter>
     </ClInclude>
     <ClInclude Include="Menu.h">
-      <Filter>Source Files\UI</Filter>
+      <Filter>HUD</Filter>
+    </ClInclude>
+    <ClInclude Include="Mining.h">
+      <Filter>Map</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneChange.h">
+      <Filter>Map</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene\GameScene.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene\TitleScene.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="BattleScene.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Fade.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="GameSky.h">
+      <Filter>Map</Filter>
     </ClInclude>
     <ClInclude Include="Enemy.h">
-      <Filter>Source Files\Enemy</Filter>
+      <Filter>Enemy</Filter>
     </ClInclude>
     <ClInclude Include="EnemyHUD.h">
-      <Filter>Source Files\UI</Filter>
+      <Filter>Enemy</Filter>
     </ClInclude>
-<<<<<<< HEAD
-    <ClInclude Include="Npc.h">
-      <Filter>Source Files\NPC</Filter>
-=======
-    <ClInclude Include="BattleMenu.h">
-      <Filter>Source Files\UI</Filter>
->>>>>>> d2dbfc563ae2a825831932bc6250927f2c5a17ee
-    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Map">
+      <UniqueIdentifier>{5e798d6a-29d1-4e7e-a5f1-226b3af8ca7a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Player">
+      <UniqueIdentifier>{ddfdf7e2-6739-4226-91b3-24ddf2948c75}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HUD">
+      <UniqueIdentifier>{e2201492-f72e-440d-80a5-2b0385534201}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene">
+      <UniqueIdentifier>{63a8208b-02c9-4ceb-b9e8-3185684d2ff7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Enemy">
+      <UniqueIdentifier>{3b94df71-8176-4c32-9f4c-82f2c1fa20e6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
 </Project>

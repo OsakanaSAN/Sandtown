@@ -34,6 +34,9 @@ private:
 	CVector3		position = { -3.0f,1.0f,-30.0f };
 	CQuaternion		m_rotation;
 
+	CVector3        subvec;
+	float           angle;
+
 	CLight			Enemylight;
 };
 extern Enemy* g_Enemy;

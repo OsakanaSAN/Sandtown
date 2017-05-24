@@ -17,6 +17,10 @@ public:
 	{
 		SCpos = pos;
 	}
+	void Norender()
+	{
+		Norend = true;
+	}
 	
 private:
 
@@ -27,7 +31,7 @@ private:
 	CSkinModelDataHandle skinModelData;	//スキンモデルデータ
 	CMeshCollider		 meshCollider;	//メッシュコライダー。
 	CRigidBody			 rigidBody;		//剛体。
-
+	bool                 Norend = false;
 
 };
 

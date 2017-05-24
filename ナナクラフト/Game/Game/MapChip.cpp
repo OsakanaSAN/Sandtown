@@ -14,7 +14,7 @@ Mapchip::Mapchip()
 	Maplight.SetPointLightColor({ 1.0f,1.0f,1.0f,1.0f });
 
 	li = g_player->Getpos();
-	li.y += 10.0f;
+	li.y += 30.0f;
 	ShadowMap().SetLightPosition(li);
 
 	
@@ -30,6 +30,7 @@ Mapchip::~Mapchip()
 	rigidBody.Release();
 
 }
+
 
 void Mapchip::Init(const char* modelName, CVector3 position, CQuaternion rotation)
 {
