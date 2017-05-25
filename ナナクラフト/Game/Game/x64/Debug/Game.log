@@ -1,3 +1,46 @@
-﻿  BattleMenu.cpp
-  Game.vcxproj -> C:\Users\kbc16\Documents\Sandtown\ナナクラフト\Game\x64\Debug\Game.exe
-  Game.vcxproj -> C:\Users\kbc16\Documents\Sandtown\ナナクラフト\Game\x64\Debug\Game.pdb (Full PDB)
+﻿  stdafx.cpp
+  Mining.cpp
+c:\users\kbc16b03\desktop\sandtown\ナナクラフト\game\game\hud.h(16): warning C4244: 'return': 'float' から 'int' への変換です。データが失われる可能性があります。
+  GameSky.cpp
+  TitleScene.cpp
+  GameScene.cpp
+c:\users\kbc16b03\desktop\sandtown\ナナクラフト\game\game\hud.h(16): warning C4244: 'return': 'float' から 'int' への変換です。データが失われる可能性があります。
+c:\users\kbc16b03\desktop\sandtown\ナナクラフト\game\game\scene\gamescene.cpp(107): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+  SceneChange.cpp
+  Player.cpp
+c:\users\kbc16b03\desktop\sandtown\ナナクラフト\game\game\player.cpp(39): warning C4305: '引数': 'double' から 'float' へ切り詰めます。
+c:\users\kbc16b03\desktop\sandtown\ナナクラフト\game\game\player.cpp(204): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
+c:\users\kbc16b03\desktop\sandtown\ナナクラフト\game\game\player.cpp(205): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
+c:\users\kbc16b03\desktop\sandtown\ナナクラフト\game\game\player.cpp(232): warning C4305: '引数': 'double' から 'float' へ切り詰めます。
+  Npc.cpp
+  Menu.cpp
+c:\users\kbc16b03\desktop\sandtown\ナナクラフト\game\game\hud.h(16): warning C4244: 'return': 'float' から 'int' への変換です。データが失われる可能性があります。
+  Mapchip.cpp
+  Map2.cpp
+  Map.cpp
+c:\users\kbc16b03\desktop\sandtown\ナナクラフト\game\game\hud.h(16): warning C4244: 'return': 'float' から 'int' への変換です。データが失われる可能性があります。
+  main.cpp
+  HUD.cpp
+c:\users\kbc16b03\desktop\sandtown\ナナクラフト\game\game\hud.h(16): warning C4244: 'return': 'float' から 'int' への変換です。データが失われる可能性があります。
+  GameSound.cpp
+  Fade.cpp
+  EnemyHUD.cpp
+  Enemy.cpp
+c:\users\kbc16b03\desktop\sandtown\ナナクラフト\game\game\enemy.cpp(95): warning C4244: '+=': 'double' から 'float' への変換です。データが失われる可能性があります。
+c:\users\kbc16b03\desktop\sandtown\ナナクラフト\game\game\enemy.cpp(96): warning C4244: '+=': 'double' から 'float' への変換です。データが失われる可能性があります。
+  Camera.cpp
+  BattleScene.cpp
+c:\users\kbc16b03\desktop\sandtown\ナナクラフト\game\game\hud.h(16): warning C4244: 'return': 'float' から 'int' への変換です。データが失われる可能性があります。
+c:\users\kbc16b03\desktop\sandtown\ナナクラフト\game\game\battlescene.cpp(25): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+c:\users\kbc16b03\desktop\sandtown\ナナクラフト\game\game\battlescene.cpp(368): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+  BattlePlayer.cpp
+  コードを生成中...
+c:\users\kbc16b03\desktop\sandtown\ナナクラフト\game\game\scene\gamescene.cpp(69): warning C4715: 'GameScene::Start': 値を返さないコントロール パスがあります。
+  コンパイル中...
+  BattleMenu.cpp
+  BattleEnemy.cpp
+c:\users\kbc16b03\desktop\sandtown\ナナクラフト\game\game\hud.h(16): warning C4244: 'return': 'float' から 'int' への変換です。データが失われる可能性があります。
+  コードを生成中...
+  LINK : 前回のインクリメンタル リンクで C:\Users\kbc16b03\Desktop\Sandtown\ナナクラフト\Game\x64\Debug\Game.exe が見つからなかったか、ビルドされませんでした。フル リンクを行います。
+  Game.vcxproj -> C:\Users\kbc16b03\Desktop\Sandtown\ナナクラフト\Game\x64\Debug\Game.exe
+  Game.vcxproj -> C:\Users\kbc16b03\Desktop\Sandtown\ナナクラフト\Game\x64\Debug\Game.pdb (Full PDB)

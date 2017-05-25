@@ -21,6 +21,18 @@ public:
 	void MaxEnemyHp();
 	void EnemyHp();
 
+	void SetEnemyHp(int setenemyHp)
+	{
+		EnemyHP = setenemyHp;
+		EnemyHp();
+
+	}
+	void SetEnemyMexHp(int setMax)
+	{
+		EnemyMaxHP = setMax;
+		MaxEnemyHp();
+	}
+
 private:
 
 	////////////////////////////////////////////
@@ -52,6 +64,7 @@ private:
 	CSprite     EnemyMaxHpSeatSprite[4];
 	CTexture    EnemyMaxHpSeatTexture[4];
 	CVector2    EnemyMaxHpseatpos = { 700.0f,450.0f };
+	int         EnemyMaxHP;
 
 	//バックシート
 	CSprite    BakeTexSprite;

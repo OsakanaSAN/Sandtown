@@ -129,6 +129,11 @@ void BattleMenu::PlayerHp()
 	int NextHP[3];
 	int ChangHP = HP;
 
+	if (HP <= 0)
+	{
+		ChangHP = 0;
+	}
+
 
 	NextHP[0] = ChangHP / 100;
 	sprintf(HpTexName, "Assets/UI/%d.png", NextHP[0]);
@@ -147,9 +152,10 @@ void BattleMenu::PlayerHp()
 
 }
 
+////////////////////////////////////////////////////////
 void BattleMenu::MaxPlayerHp()
 {
-	int MaxHP = 500;
+	int MaxHP = 500 ;
 	int MaxNextHP[3];
 	int MaxChangHP = MaxHP;
 	char HpTexName[255];
@@ -173,9 +179,18 @@ void BattleMenu::MaxPlayerHp()
 
 }
 
+
+
+/////////////////////////////////////////////////////////////////////////
+//エネミーの体力表示
 void BattleMenu::EnemyHp() {
 	int NextHP[3];
-	int ChangHP = HP;
+	int ChangHP = EnemyHP;
+
+	if (EnemyHP <= 0)
+	{
+		ChangHP = 0;
+	}
 
 
 	NextHP[0] = ChangHP / 100;
@@ -195,11 +210,12 @@ void BattleMenu::EnemyHp() {
 
 }
 
+///////////////////////////////////////////////////////////////////////////
 void BattleMenu::MaxEnemyHp()
 {
-	int MaxHP = 500;
+	
 	int MaxNextHP[3];
-	int MaxChangHP = MaxHP;
+	int MaxChangHP = EnemyHP;
 	char EnemyHpTexName[255];
 
 

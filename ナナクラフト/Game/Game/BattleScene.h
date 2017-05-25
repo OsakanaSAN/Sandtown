@@ -32,6 +32,11 @@ public:
 	{
 		return Loseflg;
 	}
+	void IsBattleStrat()
+	{
+		IsBattleStart = true;
+	}
+
 
 	void Result();
 
@@ -92,8 +97,11 @@ private:
 
 	int         BattlGold = 0;
 
-	bool        result = false;
-	bool        Victory = true;
+
+	bool        IsBattle = false; //コマンド画面を表示するかの判定
+	bool        IsBattleStart = false; //プレイヤーが配置についたかの判定
+	bool        result = false; //result画面遷移用
+	bool        Victory = true; //勝敗判定用
 };
 
 extern BattleScene* g_battleScene;

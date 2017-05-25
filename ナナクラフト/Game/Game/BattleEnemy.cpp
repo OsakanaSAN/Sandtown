@@ -5,7 +5,6 @@
 #include "EnemyHUD.h"
 
 
-EnemyHUD* Enemyhud;
 
 
 enum {
@@ -18,7 +17,7 @@ enum {
 
 BattleEnemy::BattleEnemy()
 {
-	Enemyhud = NewGO<EnemyHUD>(0);
+	
 
 	All.SetAmbinetLight({ 0.2f,0.2f,0.2f });
 	All.SetDiffuseLightDirection(0, { 0.0f, -0.707f, 0.707f });
@@ -44,7 +43,7 @@ BattleEnemy::BattleEnemy()
 BattleEnemy::~BattleEnemy()
 {
 	/*DeleteGO(this);*/
-	DeleteGO(Enemyhud);
+	
 	
 }
 
