@@ -1,10 +1,4 @@
-﻿//danmati
-{
-	"danmati",
-	CVector3(0.00f, 0.00f, 0.00f),             //平行移動
-	CQuaternion(-0.71f, 0.00f, 0.00f, 0.71f ),  //回転
-},
-//torch
+﻿//torch
 {
 	"torch",
 	CVector3(0.07f, 1.80f, -0.53f),             //平行移動
@@ -51,4 +45,28 @@
 	"stone",
 	CVector3(1.49f, -0.54f, -45.68f),             //平行移動
 	CQuaternion(-0.53f, 0.47f, 0.47f, 0.53f ),  //回転
+},
+//isi
+{
+	"isi",
+	CVector3(24.99f, -0.10f, -9.60f),             //平行移動
+	CQuaternion(-0.70f, 0.10f, 0.10f, 0.70f ),  //回転
+},
+//isi
+{
+	"isi",
+	CVector3(1.10f, -0.05f, -37.21f),             //平行移動
+	CQuaternion(-0.70f, 0.10f, 0.10f, 0.70f ),  //回転
+},
+//isi
+{
+	"isi",
+	CVector3(-7.78f, -0.10f, -37.76f),             //平行移動
+	CQuaternion(-0.23f, 0.67f, 0.67f, 0.23f ),  //回転
+},
+//danmati
+{
+	"danmati",
+	CVector3(0.00f, 0.00f, 0.00f),             //平行移動
+	CQuaternion(-0.71f, 0.00f, 0.00f, 0.71f ),  //回転
 },

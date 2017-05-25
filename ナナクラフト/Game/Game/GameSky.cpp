@@ -25,7 +25,7 @@ void GameSky::Init(const char* modelName, CVector3 position, CQuaternion rotatio
 	//ファイルパスを作成する。
 	char filePath[256];
 	sprintf(filePath, "Assets/modelData/%s.x", modelName);
-	//モデルデータをロード。
+	//モデルデータをロード。ww
 	skinModelData.LoadModelData(filePath, NULL);
 	//CSkinModelを初期化。
 	skinModel.Init(skinModelData.GetBody());

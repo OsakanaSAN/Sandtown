@@ -103,7 +103,7 @@ bool BattleScene::Start()
 	m_CasolBGSprite5.SetSize({ 160,200 });
 
 	g_sound->BattleSound();
-
+	ShadowMap().SetCalcLightViewFunc(CShadowMap::enCalcLightViewFunc_PositionTarget);
 	CVector3 lightPos, lightTarget;
 	lightTarget.Add(g_battleplayer->Getpos(), g_battleenemy->Getpos());
 	lightTarget.Scale(0.5f);
@@ -120,18 +120,18 @@ bool BattleScene::Start()
 void BattleScene::Update()
 {
 	
-	CVector3 Pintpos;
-	CVector3 Epos = g_battleenemy->Getpos();
-	CVector3 Ppos = g_battleplayer->Getpos();
+	//CVector3 Pintpos;
+	//CVector3 Epos = g_battleenemy->Getpos();
+	//CVector3 Ppos = g_battleplayer->Getpos();
 
-	Pintpos.Add(Ppos, Epos);
-	Pintpos.Scale(0.5f);
+	//Pintpos.Add(Ppos, Epos);
+	//Pintpos.Scale(0.5f);
 
-	CVector3 Cpos = g_gameCamera->BGetPos();
+	//CVector3 Cpos = g_gameCamera->BGetPos();
 
-	Pintpos.Subtract(Cpos);
-	
-	Dof().SetPint(Pintpos.Length()*1000);
+	//Pintpos.Subtract(Cpos);
+	//
+	//Dof().SetPint(Pintpos.Length()*1000);
 	/*Dof().SetFocalLength(36.0f);*/
 
 	if (Victory == true) {
@@ -344,9 +344,6 @@ void BattleScene::EnemyTurn()
 	}
 	else if (EAttack && !PDamage && g_battleplayer->GetAnimend() && g_battleenemy->GetAnimend())
 	{
-
-		
-		
 
 		m_DamageBGTexture4.Load("Assets/sprite/damage.tga");
 		m_DamageBGSprite4.Init(&m_DamageBGTexture4);
