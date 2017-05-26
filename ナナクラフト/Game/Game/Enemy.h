@@ -24,7 +24,9 @@ private:
 
 	CCharacterController	characterController;		//キャラクタ―コントローラー。
 
-	float           SearchRaeng = 10.0f;
+	float           SearchRaeng = 8.0f;
+	float           OutSearch = 8.0f;
+
 	bool            over = false;
 
 	CSkinModel		skinModel;

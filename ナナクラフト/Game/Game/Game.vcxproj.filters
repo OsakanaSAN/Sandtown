@@ -1,7 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="BattleEnemy.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="GameSound.cpp" />
     <ClCompile Include="main.cpp" />
@@ -60,9 +59,11 @@
     <ClCompile Include="EnemyHUD.cpp">
       <Filter>Enemy</Filter>
     </ClCompile>
+    <ClCompile Include="BattleEnemy.cpp">
+      <Filter>Enemy</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="BattleEnemy.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="GameSound.h" />
     <ClInclude Include="stdafx.h" />
@@ -118,6 +119,9 @@
       <Filter>Enemy</Filter>
     </ClInclude>
     <ClInclude Include="EnemyHUD.h">
+      <Filter>Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="BattleEnemy.h">
       <Filter>Enemy</Filter>
     </ClInclude>
   </ItemGroup>

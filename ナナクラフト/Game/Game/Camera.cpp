@@ -106,6 +106,7 @@ void Camera::BattleCamera()
 
 }
 
+
 void Camera::PlayerBatlleCamera(CVector3 trget)
 {
 	CVector3 TG = trget;
@@ -127,7 +128,7 @@ void Camera::PlayerBatlleCamera(CVector3 trget)
 
 
 	if (g_battleplayer != nullptr) {
-		V = g_battleplayer->Getpos();
+		V = g_battleplayer->Getpos2();
 		V.y += 1.0f;
 		camera.SetTarget(V);
 		V.Add(BattlePlayerCameraPos);

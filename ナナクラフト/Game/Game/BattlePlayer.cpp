@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "BattlePlayer.h"
 #include "BattleEnemy.h"
+#include "BattleScene.h"
 #include "Camera.h"
 
 extern BattleEnemy* g_battleenemy;
@@ -43,20 +44,25 @@ BattlePlayer::~BattlePlayer()
 
 bool BattlePlayer::Start()
 {
-	skinModelData.LoadModelData("Assets/modelData/kano2.X", &Animation);
+	skinModelData.LoadModelData("Assets/modelData/Unity.X", &Animation);
 	skinModel.Init(skinModelData.GetBody());
 	skinModel.SetLight(&All);
 
 	characterController.Init(0.5f, 1.0f, position);
 
 
-	//Animation.PlayAnimation(Stand_anim, 0.1f);
+
+	Animation.PlayAnimation(Run_anim, 0.1f);
+
 	Animation.SetAnimationEndTime(Run_anim, 0.8);
 
 	Animation.SetAnimationEndTime(Attack_anim, 0.5);
 	Animation.SetAnimationLoopFlag(Run_anim, false);
 	Animation.SetAnimationEndTime(Stand_anim, 0.1f);
-	Animation.SetAnimationLoopFlag(Stand_anim, false);
+
+	Animation.SetAnimationLoopFlag(Run_anim, true);
+	Animation.SetAnimationLoopFlag(Stand_anim, true); //スタンドアニメーションをループさせる
+
 
 	skinModel.SetShadowCasterFlag(true);
 	skinModel.SetShadowReceiverFlag(true);
@@ -67,15 +73,59 @@ bool BattlePlayer::Start()
 
 void BattlePlayer::Update()
 {
-	CVector3 scale = CVector3::One;
-	scale.Scale(0.4);
+
 	All.SetPointLightColor({ 1.0f,1.0f,1.5f,4.0f });
 	characterController.Execute(0.03f);
 
-	AnimationSet();
 
-	skinModel.Update(position, m_rotation, scale/*CVector3::One*/);
+	if (IsSetPoint == false)
+	{
+		CVector3 diff = BakPositon;
 
+
+		diff.Subtract(position);
+
+
+		if (diff.Length() > 1)
+		{
+
+
+	skinModel.Update(position, m_rotation,CVector3::One);
+
+			BakPositon.z += 0.1f;
+			Animation.SetAnimationSpeedRate(2);
+			
+
+		}
+
+		else if (diff.Length() < 1.1)
+		{
+			IsSetPoint = true;
+			Animation.SetAnimationLoopFlag(Run_anim, false);
+			Animation.PlayAnimation(Stand_anim, 0.1f);
+			Animation.SetAnimationLoopFlag(Stand_anim, true); //スタンドアニメーションをループさせる
+			g_battleScene->IsBattleStrat();
+			
+		}
+
+		skinModel.Update(BakPositon, m_rotation, CVector3::One);
+
+		//アニメーションの更新
+		Animation.Update(1.0f / 60.0f);
+
+	}
+
+	else
+	{
+		//All.SetPointLightColor({ 1.0f,1.0f,1.5f,4.0f });
+
+		characterController.Execute(0.03f);
+		AnimationSet();
+		skinModel.Update(BakPositon, m_rotation, CVector3::One);
+	}
+
+		
+	
 }
 
 
@@ -91,6 +141,8 @@ void BattlePlayer::AnimationSet()
 {
 	//ターン制のアニメーション
 	if (!IsStand) {
+
+		//攻撃時
 		if (IsAttack) {
 			IsAnimend = false;
 			Animation.PlayAnimation(Run_anim, 0.05f);
@@ -99,18 +151,24 @@ void BattlePlayer::AnimationSet()
 			IsStand = true;
 
 		}
+		//ダメージを食らった時
 		else if (IsDamage)
 		{
 			IsAnimend = false;
+
 			Animation.PlayAnimation(Walk_anim, 0.3f);
+
+//			Animation.PlayAnimation(Stand_anim, 0.1f);
+//			Animation.SetAnimationLoopFlag(Stand_anim, false);
+
 
 			IsStand = true;
 		}
 
 	}
+
 	else if (!IsAttack && !IsDamage)
 	{
-		Animation.PlayAnimation(Stand_anim, 0.3f);
 
 		IsStand = false;
 
@@ -118,6 +176,9 @@ void BattlePlayer::AnimationSet()
 
 	if (!Animation.IsPlay())
 	{
+		Animation.PlayAnimation(Stand_anim, 0.1f);
+		Animation.SetAnimationLoopFlag(Stand_anim, true);
+
 		IsAttack = false;
 		IsDamage = false;
 		IsAnimend = true;

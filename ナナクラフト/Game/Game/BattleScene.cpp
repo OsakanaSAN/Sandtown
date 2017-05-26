@@ -23,6 +23,8 @@ BattleScene::BattleScene()
 	g_battleenemy = NewGO<BattleEnemy>(0);
 	g_battlemenu = NewGO<BattleMenu>(0);
 	g_battlemenu->SetHp(g_Hud->GetHP());
+	g_battlemenu->SetEnemyHp(g_battleenemy->GetHP());
+	g_battlemenu->SetEnemyMexHp(g_battleenemy->GetHP());
 	
 }
 
@@ -64,7 +66,7 @@ BattleScene::~BattleScene()
 bool BattleScene::Start()
 {
 	BattlGold = g_battleenemy->GetEGold();
-	
+	g_gameCamera->BattleCamera();
 
 	Winflg = false;
 	Loseflg = false;
@@ -91,6 +93,7 @@ bool BattleScene::Start()
 	m_ComandBGTexture2.Load("Assets/sprite/kougeki.png");
 	m_ComandBGSprite2.Init(&m_ComandBGTexture2);
 	m_ComandBGSprite2.SetPosition({ -400,-200 });
+	m_ComandBGSprite2.SetSize({ 220,120 });
 
 	m_ComandBGTexture3.Load("Assets/sprite/nigeru.png");
 	m_ComandBGSprite3.Init(&m_ComandBGTexture3);
@@ -134,6 +137,10 @@ void BattleScene::Update()
 	//Dof().SetPint(Pintpos.Length()*1000);
 	/*Dof().SetFocalLength(36.0f);*/
 
+	
+	if (!IsBattleStart) { return; }
+
+
 	if (Victory == true) {
 
 
@@ -141,7 +148,8 @@ void BattleScene::Update()
 			
 		case false:
 
-			g_gameCamera->PlayerBatlleCamera(g_battleplayer->Getpos());
+			g_gameCamera->PlayerBatlleCamera(g_battleplayer->Getpos2());
+			IsBattle = false;
 
 			if (Pad(0).IsPress(enButtonUp))
 			{
@@ -217,14 +225,20 @@ void BattleScene::Update()
 
 void BattleScene::Render(CRenderContext&renderContext)
 {
-	m_ComandBGSprite1.Draw(renderContext);
-	m_ComandBGSprite2.Draw(renderContext);
-	m_ComandBGSprite3.Draw(renderContext);
-	m_CasolBGSprite5.Draw(renderContext);
+
+
 
 	if (EDamage || PDamage) {//ダメージの表示
 		m_DamageBGSprite4.Draw(renderContext);
 	}
+
+	if (IsBattle) { return; }
+	m_ComandBGSprite1.Draw(renderContext);
+	m_ComandBGSprite2.Draw(renderContext);
+	m_ComandBGSprite3.Draw(renderContext);
+	m_CasolBGSprite5.Draw(renderContext);
+	
+
 }
 
 
@@ -241,6 +255,7 @@ void BattleScene::PlayerTurn()
 		if (Pad(0).IsPress(enButtonA) && g_battleenemy->GetAnimend() && g_battleplayer->GetAnimend())
 		{
 			g_gameCamera->BattleCamera();
+			IsBattle = true; //コマンド不可視化
 			if (!SelectQ)
 			{
 				m_sound_bgm_battle = NewGO<CSoundSource>(0);
@@ -254,6 +269,7 @@ void BattleScene::PlayerTurn()
 			g_battleplayer->SetAttack(true);//攻撃モーション
 			SelectQ = true;
 			PAttack = true;
+			
 			
 
 		}
@@ -273,6 +289,7 @@ void BattleScene::PlayerTurn()
 
 			g_battleplayer->Particle();//パーティクル呼び出し
 			g_battleenemy->SetDamage(g_battleplayer->GetATK(), true);//ダメージ処理
+			g_battlemenu->SetEnemyHp(g_battleenemy->GetHP());//敵の体力DOWN
 			EDamage = true;
 		}
 		else if (PAttack &&EDamage&& g_battleenemy->GetAnimend() && g_battleplayer->GetAnimend())

@@ -1,1 +1,6 @@
-﻿
+﻿  BattleScene.cpp
+c:\users\kbc16b15\desktop\github\sandtown\ナナクラフト\game\game\hud.h(16): warning C4244: 'return': 'float' から 'int' への変換です。データが失われる可能性があります。
+c:\users\kbc16b15\desktop\github\sandtown\ナナクラフト\game\game\battlescene.cpp(25): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+c:\users\kbc16b15\desktop\github\sandtown\ナナクラフト\game\game\battlescene.cpp(371): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+  Game.vcxproj -> C:\Users\kbc16b15\Desktop\github\Sandtown\ナナクラフト\Game\x64\Debug\Game.exe
+  Game.vcxproj -> C:\Users\kbc16b15\Desktop\github\Sandtown\ナナクラフト\Game\x64\Debug\Game.pdb (Full PDB)
