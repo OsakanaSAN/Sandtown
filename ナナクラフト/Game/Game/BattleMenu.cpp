@@ -40,14 +40,14 @@ BattleMenu::BattleMenu()
 	EnemyHpSeatTexture[0].Load("Assets/UI/HP.png");
 	EnemyHpSeatSprite[0].SetPivot({ 0.0f,0.5f });
 	EnemyHpSeatSprite[0].Init(&EnemyHpSeatTexture[0]);
-	EnemyHpSeatSprite[0].SetPosition({ 500.0f,450.0f });
+	EnemyHpSeatSprite[0].SetPosition({ 500.0f,-450.0f });
 	EnemyHpSeatSprite[0].SetSize({ 80.0f,50.0f });
 
 	//エネミー斜線
 	EnemyMaxHpSeatTexture[0].Load("Assets/UI/syasen.png");
 	EnemyMaxHpSeatSprite[0].SetPivot({ 0.0f,0.5f });
 	EnemyMaxHpSeatSprite[0].Init(&EnemyMaxHpSeatTexture[0]);
-	EnemyMaxHpSeatSprite[0].SetPosition({ 670.0f,450.0f });
+	EnemyMaxHpSeatSprite[0].SetPosition({ 670.0f,-450.0f });
 	EnemyMaxHpSeatSprite[0].SetSize({ 30.0f,30.0f });
 
 	for (int i = 1;i < 4;i++)
@@ -88,6 +88,22 @@ BattleMenu::BattleMenu()
 
 BattleMenu::~BattleMenu()
 {
+
+	BakeTexTexture.Release();
+	PlayerIconTex.Release();
+	EnemyBakeTexTexture.Release();
+	
+
+	for (int i = 0;i < 4;i++)
+	{
+		MaxHpSeatTexture[i].Release();
+		HpSeatTexture[i].Release();
+		
+		EnemyMaxHpSeatTexture[i].Release();
+		EnemyHpSeatTexture[i].Release();
+		
+	}
+
 }
 
 
@@ -107,23 +123,35 @@ void BattleMenu::Update()
 
 void BattleMenu::Render(CRenderContext& renderContext)
 {
-	BakeTexSprite.Draw(renderContext);
-	PlayerIconSprite.Draw(renderContext);
+	//if (!IsBattle) { return; }
+	if (!EnemyZoom)
+	{
+		BakeTexSprite.Draw(renderContext);
+		PlayerIconSprite.Draw(renderContext);
+	}
 
-	EnemyBakeTexSprite.Draw(renderContext);
-	
+	if (!PlayerZoom) {
+		EnemyBakeTexSprite.Draw(renderContext);
+	}
 
 	for (int i = 0;i < 4;i++)
 	{
-		MaxHpSeatSprite[i].Draw(renderContext);
-		HpSeatSprite[i].Draw(renderContext);
+		if (!EnemyZoom)
+		{
+			MaxHpSeatSprite[i].Draw(renderContext);
+			HpSeatSprite[i].Draw(renderContext);
+		}
 
-		EnemyMaxHpSeatSprite[i].Draw(renderContext);
-		EnemyHpSeatSprite[i].Draw(renderContext);
+		if (!PlayerZoom)
+		{
+			EnemyMaxHpSeatSprite[i].Draw(renderContext);
+			EnemyHpSeatSprite[i].Draw(renderContext);
+		}
 	}
 
 }
 
+//////////////////////////////////////////////
 void BattleMenu::PlayerHp()
 {
 	int NextHP[3];

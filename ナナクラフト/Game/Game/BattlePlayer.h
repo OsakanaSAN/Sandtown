@@ -68,8 +68,8 @@ private:
 	CParticleEmitter		*m_particle;
 	CRandom					m_random;
 
-	CVector3				position = { -3.0f,-0.0f,-44.0f };
-	CVector3                BakPositon = { -3.0f,0.0f,-48.0f };
+	CVector3				position = { -3.0f,0.0f,-44.0f };
+	CVector3                BakPositon = { -3.0f,0.0f,-46.0f };
 
 
 	CQuaternion				m_rotation;

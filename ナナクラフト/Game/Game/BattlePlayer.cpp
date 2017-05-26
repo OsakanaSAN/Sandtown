@@ -11,7 +11,6 @@ enum {
 	Stand_anim,
 	Walk_anim,  //歩く
 	Run_anim,  //走る
-
 	
 
 };
@@ -56,13 +55,9 @@ bool BattlePlayer::Start()
 
 	Animation.SetAnimationEndTime(Run_anim, 0.8);
 
-	Animation.SetAnimationEndTime(Attack_anim, 0.5);
-	Animation.SetAnimationLoopFlag(Run_anim, false);
-	Animation.SetAnimationEndTime(Stand_anim, 0.1f);
 
 	Animation.SetAnimationLoopFlag(Run_anim, true);
 	Animation.SetAnimationLoopFlag(Stand_anim, true); //スタンドアニメーションをループさせる
-
 
 	skinModel.SetShadowCasterFlag(true);
 	skinModel.SetShadowReceiverFlag(true);
@@ -73,15 +68,11 @@ bool BattlePlayer::Start()
 
 void BattlePlayer::Update()
 {
-
-	All.SetPointLightColor({ 1.0f,1.0f,1.5f,4.0f });
-	characterController.Execute(0.03f);
-
-
+	/*CVector3 scale = CVector3::One;
+	scale.Scale(0.4);*/
 	if (IsSetPoint == false)
 	{
 		CVector3 diff = BakPositon;
-
 
 		diff.Subtract(position);
 
@@ -89,12 +80,9 @@ void BattlePlayer::Update()
 		if (diff.Length() > 1)
 		{
 
-
-	skinModel.Update(position, m_rotation,CVector3::One);
-
 			BakPositon.z += 0.1f;
 			Animation.SetAnimationSpeedRate(2);
-			
+			g_gameCamera->BattleCamera();
 
 		}
 
@@ -155,12 +143,8 @@ void BattlePlayer::AnimationSet()
 		else if (IsDamage)
 		{
 			IsAnimend = false;
-
-			Animation.PlayAnimation(Walk_anim, 0.3f);
-
-//			Animation.PlayAnimation(Stand_anim, 0.1f);
-//			Animation.SetAnimationLoopFlag(Stand_anim, false);
-
+			Animation.PlayAnimation(Stand_anim, 0.1f);
+			Animation.SetAnimationLoopFlag(Stand_anim, false);
 
 			IsStand = true;
 		}

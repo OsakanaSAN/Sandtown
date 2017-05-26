@@ -60,13 +60,19 @@ BattleScene::~BattleScene()
 		g_gameScene->MapChange();
 	}
 
+	m_DamageBGTexture4.Release();
+	m_CasolBGTexture5.Release();
+	m_ComandBGTexture1.Release();
+	m_ComandBGTexture2.Release();
+	m_ComandBGTexture3.Release();
+
 }
 
 
 bool BattleScene::Start()
 {
 	BattlGold = g_battleenemy->GetEGold();
-	g_gameCamera->BattleCamera();
+	//g_gameCamera->BattleCamera();
 
 	Winflg = false;
 	Loseflg = false;
@@ -81,32 +87,34 @@ bool BattleScene::Start()
 
 	SelectQ = false;
 
-	m_ComandBGTexture1.Load("Assets/sprite/comand.png");
-	m_ComandBGSprite1.Init(&m_ComandBGTexture1);
-	m_ComandBGSprite1.SetPosition({ -500,-250 });
-	m_ComandBGSprite1.SetSize({ 500,300 });
-
 	m_DamageBGTexture4.Load("Assets/sprite/damage.tga");
 	m_DamageBGSprite4.Init(&m_DamageBGTexture4);
-	m_DamageBGSprite4.SetPosition({ -300,300 });
+	m_DamageBGSprite4.SetPosition({ -200,300 });
+
+	m_ComandBGTexture1.Load("Assets/sprite/comand.png");
+	m_ComandBGSprite1.Init(&m_ComandBGTexture1);
+	m_ComandBGSprite1.SetPosition({ -300,-250 });
+	m_ComandBGSprite1.SetSize({ 200.0f,200.0f });
 
 	m_ComandBGTexture2.Load("Assets/sprite/kougeki.png");
 	m_ComandBGSprite2.Init(&m_ComandBGTexture2);
-	m_ComandBGSprite2.SetPosition({ -400,-200 });
-	m_ComandBGSprite2.SetSize({ 220,120 });
+	m_ComandBGSprite2.SetPosition({ -300,-200 });
+	m_ComandBGSprite2.SetSize({ 150.0f,50 });
 
 	m_ComandBGTexture3.Load("Assets/sprite/nigeru.png");
 	m_ComandBGSprite3.Init(&m_ComandBGTexture3);
-	m_ComandBGSprite3.SetPosition({ -410,-320 });
-	m_ComandBGSprite3.SetSize({ 320,120 });
+	m_ComandBGSprite3.SetPosition({ -300,-300 });
+	m_ComandBGSprite3.SetSize({ 150.0f,50 });
 
 	m_CasolBGTexture5.Load("Assets/sprite/Casol.png");
 	m_CasolBGSprite5.Init(&m_CasolBGTexture5);
-	m_CasolBGSprite5.SetPosition({ -620,-200 });
-	m_CasolBGSprite5.SetSize({ 160,200 });
+	m_CasolBGSprite5.SetPosition({ -500,-200 });
+	m_CasolBGSprite5.SetSize({ 200,200 });
+
+	
 
 	g_sound->BattleSound();
-	ShadowMap().SetCalcLightViewFunc(CShadowMap::enCalcLightViewFunc_PositionTarget);
+
 	CVector3 lightPos, lightTarget;
 	lightTarget.Add(g_battleplayer->Getpos(), g_battleenemy->Getpos());
 	lightTarget.Scale(0.5f);
@@ -123,18 +131,18 @@ bool BattleScene::Start()
 void BattleScene::Update()
 {
 	
-	//CVector3 Pintpos;
-	//CVector3 Epos = g_battleenemy->Getpos();
-	//CVector3 Ppos = g_battleplayer->Getpos();
+	/*CVector3 Pintpos;
+	CVector3 Epos = g_battleenemy->Getpos();
+	CVector3 Ppos = g_battleplayer->Getpos();
 
-	//Pintpos.Add(Ppos, Epos);
-	//Pintpos.Scale(0.5f);
+	Pintpos.Add(Ppos, Epos);
+	Pintpos.Scale(0.5f);
 
-	//CVector3 Cpos = g_gameCamera->BGetPos();
+	CVector3 Cpos = g_gameCamera->BGetPos();
 
-	//Pintpos.Subtract(Cpos);
-	//
-	//Dof().SetPint(Pintpos.Length()*1000);
+	Pintpos.Subtract(Cpos);
+	
+	Dof().SetPint(Pintpos.Length()*1000);*/
 	/*Dof().SetFocalLength(36.0f);*/
 
 	
@@ -148,11 +156,18 @@ void BattleScene::Update()
 			
 		case false:
 
-			g_gameCamera->PlayerBatlleCamera(g_battleplayer->Getpos2());
-			IsBattle = false;
+			g_gameCamera->PlayerBatlleCamera();
+			//g_gameCamera->EnemyBattleCamera();
 
-			if (Pad(0).IsPress(enButtonUp))
+			IsBattle = false;
+			EnemyPointCamera = true;
+
+			if (Pad(0).IsPress(enButtonUp) && Comand != Keep)
 			{
+				g_battlemenu->EnemyZoomOut();
+				g_battlemenu->PlayerZoomSet();
+				EnemyZoom = false;
+
 				
 				if (Comand != Attack)
 				{
@@ -160,17 +175,18 @@ void BattleScene::Update()
 					m_sound_bgm_battle->Init("Assets/sound/select.wav");
 					m_sound_bgm_battle->Play(false);
 					m_sound_bgm_battle->SetVolume(7.0f);
+					
 				}
 
 				m_CasolBGTexture5.Load("Assets/sprite/Casol.png");
 				m_CasolBGSprite5.Init(&m_CasolBGTexture5);
-				m_CasolBGSprite5.SetPosition({ -620,-200 });
-				m_CasolBGSprite5.SetSize({ 160,200 });
+				m_CasolBGSprite5.SetPosition({ -500,-200 });
+				m_CasolBGSprite5.SetSize({ 200,200 });
 
-				Comand = Attack;
+				Comand = Keep;
 
 			}
-			else if (Pad(0).IsPress(enButtonDown) && Comand == Attack)
+			else if (Pad(0).IsPress(enButtonDown) && Comand == Keep)
 			{
 				if (Comand != Escape)
 				{
@@ -182,8 +198,8 @@ void BattleScene::Update()
 
 				m_CasolBGTexture5.Load("Assets/sprite/Casol.png");
 				m_CasolBGSprite5.Init(&m_CasolBGTexture5);
-				m_CasolBGSprite5.SetPosition({ -620,-300 });
-				m_CasolBGSprite5.SetSize({ 160,200 });
+				m_CasolBGSprite5.SetPosition({ -500,-300 });
+				m_CasolBGSprite5.SetSize({ 200,200 });
 
 				Comand = Escape;
 			}
@@ -226,18 +242,20 @@ void BattleScene::Update()
 void BattleScene::Render(CRenderContext&renderContext)
 {
 
-
+	
 
 	if (EDamage || PDamage) {//ダメージの表示
 		m_DamageBGSprite4.Draw(renderContext);
 	}
 
+	if (EnemyZoom) { return; }
 	if (IsBattle) { return; }
+	if (!IsBattleStart) { return; }
+	
 	m_ComandBGSprite1.Draw(renderContext);
 	m_ComandBGSprite2.Draw(renderContext);
 	m_ComandBGSprite3.Draw(renderContext);
 	m_CasolBGSprite5.Draw(renderContext);
-	
 
 }
 
@@ -250,15 +268,32 @@ void BattleScene::PlayerTurn()
 
 	switch (Comand)//選択肢
 	{
+	case Keep:
+
+		BattleKeep();
+		break;
+
 	case Attack://攻撃
 
-		if (Pad(0).IsPress(enButtonA) && g_battleenemy->GetAnimend() && g_battleplayer->GetAnimend())
+		if (!IsBattle)
 		{
-			g_gameCamera->BattleCamera();
+			g_gameCamera->EnemyBattleCamera();
+			
+		}
+
+
+		if (Pad(0).IsTrigger(enButtonA) && g_battleenemy->GetAnimend() && g_battleplayer->GetAnimend())
+		{
+			g_battlemenu->EnemyZoomOut();
+			g_battlemenu->PlayerZoomSet();
+
+			EnemyZoom = false;
 			IsBattle = true; //コマンド不可視化
+			g_gameCamera->BattleCamera();
+
 			if (!SelectQ)
 			{
-				m_sound_bgm_battle = NewGO<CSoundSource>(0);
+				//m_sound_bgm_battle = NewGO<CSoundSource>(0);
 				m_sound_bgm_battle->Init("Assets/sound/select3.wav");
 				m_sound_bgm_battle->Play(false);
 				m_sound_bgm_battle->SetVolume(4.0f);
@@ -291,6 +326,7 @@ void BattleScene::PlayerTurn()
 			g_battleenemy->SetDamage(g_battleplayer->GetATK(), true);//ダメージ処理
 			g_battlemenu->SetEnemyHp(g_battleenemy->GetHP());//敵の体力DOWN
 			EDamage = true;
+		
 		}
 		else if (PAttack &&EDamage&& g_battleenemy->GetAnimend() && g_battleplayer->GetAnimend())
 		{
@@ -318,6 +354,7 @@ void BattleScene::PlayerTurn()
 			}
 			//Turn = Eturn;//敵のターン
 			turnCheng = false;
+			Comand = Keep;
 
 		}
 
@@ -332,6 +369,7 @@ void BattleScene::PlayerTurn()
 		//if (SelectQ)return;
 		if (Pad(0).IsPress(enButtonA))
 		{
+			
 			//確率で逃げれるようにする？乱数とかで？
 			DeleteGO(this);
 			//Result();
@@ -361,6 +399,9 @@ void BattleScene::EnemyTurn()
 	}
 	else if (EAttack && !PDamage && g_battleplayer->GetAnimend() && g_battleenemy->GetAnimend())
 	{
+
+		
+		
 
 		m_DamageBGTexture4.Load("Assets/sprite/damage.tga");
 		m_DamageBGSprite4.Init(&m_DamageBGTexture4);
@@ -403,5 +444,24 @@ void BattleScene::Result()
 {
 
 	DeleteGO(g_battleplayer);
+
+}
+
+void BattleScene::BattleKeep()
+{
+	if (Pad(0).IsPress(enButtonA))
+	{
+
+		g_battlemenu->EnemyZoomSet();
+		g_battlemenu->PlayerZoomOut();
+		m_sound_bgm_battle = NewGO<CSoundSource>(0);
+		m_sound_bgm_battle->Init("Assets/sound/select3.wav");
+		m_sound_bgm_battle->Play(false);
+		m_sound_bgm_battle->SetVolume(4.0f);
+		EnemyZoom = true;
+
+		Comand = Attack;
+
+	}
 
 }

@@ -26,6 +26,7 @@ Enemy::Enemy()
 Enemy::~Enemy()
 {
 	//g_Enemy = nullptr;
+	//skinModelData.Release();
 	
 }
 
@@ -92,9 +93,9 @@ void Enemy::Tracking()
 		else if (over == true) {
 			diff.Div(diff.Length());
 
-			position.x += diff.x *0.05f;
-			position.y += diff.y *0.05f;
-			position.z += diff.z *0.05f;
+			position.x += diff.x *0.08f;
+			position.y += diff.y *0.08f;
+			position.z += diff.z *0.08f;
 			CVector3 paly = g_player->Getpos();
 
 			CVector3 Def;

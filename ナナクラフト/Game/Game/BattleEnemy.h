@@ -101,3 +101,4 @@ private:
 	int				EnemyID;//ゲームシーンから何のエネミーかの情報を格納
 
 };
+extern BattleEnemy* g_battleenemy;

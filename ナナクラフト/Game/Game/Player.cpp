@@ -104,7 +104,7 @@ bool Player::Start()
 	currentAnimSetNo = Stand_anim;
 	Animation.PlayAnimation(Stand_anim, 0.1f);
 	Animation.SetAnimationLoopFlag(Jump_anim, false);
-	Animation.SetAnimationEndTime(Run_anim, 2.8);
+	Animation.SetAnimationEndTime(Run_anim, 0.8);
 
 	
 	radius = 0.6f;
