@@ -33,6 +33,33 @@ public:
 		MaxEnemyHp();
 	}
 
+	///////////////////////////////////
+	//プレイヤーのHP表示するかの判定
+	void PlayerZoomSet()
+	{
+		if (PlayerZoom) { return; }
+		PlayerZoom = true;
+	}
+
+	void PlayerZoomOut()
+	{
+		if (!PlayerZoom) { return; }
+		PlayerZoom = false;
+	}
+
+	/////////////////////////////////////////
+	//敵のHP表示するかの判定
+	void EnemyZoomSet()
+	{
+		if (EnemyZoom) { return; }
+		EnemyZoom = true;
+	}
+	void EnemyZoomOut()
+	{
+		if (!EnemyZoom) { return; }
+		EnemyZoom = false;
+	}
+
 private:
 
 	////////////////////////////////////////////
@@ -56,14 +83,14 @@ private:
 	//現在のエネミーHP
 	CSprite     EnemyHpSeatSprite[4];
 	CTexture    EnemyHpSeatTexture[4];
-	CVector2    EnemyHpseatpos = { 600.0f,450.0f };
+	CVector2    EnemyHpseatpos = { 600.0f,-450.0f };
 	int         EnemyHP = 100;
 	char        EnemyHpTexName[255];
 
 	//最大エネミーHP
 	CSprite     EnemyMaxHpSeatSprite[4];
 	CTexture    EnemyMaxHpSeatTexture[4];
-	CVector2    EnemyMaxHpseatpos = { 700.0f,450.0f };
+	CVector2    EnemyMaxHpseatpos = { 700.0f,-450.0f };
 	int         EnemyMaxHP;
 
 	//バックシート
@@ -74,9 +101,11 @@ private:
 	//バックシート
 	CSprite    EnemyBakeTexSprite;
 	CTexture   EnemyBakeTexTexture;
-	CVector2   EnemyBakepos = { 600.0f,450.0f };
+	CVector2   EnemyBakepos = { 600.0f,-450.0f };
 
 	////////////////////////////////////////////
+	bool PlayerZoom = true;
+	bool EnemyZoom = false;
 	
 
 };

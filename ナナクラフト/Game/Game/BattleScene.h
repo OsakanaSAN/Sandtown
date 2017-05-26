@@ -36,6 +36,7 @@ public:
 	{
 		IsBattleStart = true;
 	}
+	void BattleKeep();
 
 
 	void Result();
@@ -56,10 +57,11 @@ private:
 
 	enum BattleComand
 	{
+		Keep,
 		Attack,
 		Escape,
 	};
-	BattleComand Comand = Attack;
+	BattleComand Comand = Keep;
 
 
 	enum TURN
@@ -88,14 +90,14 @@ private:
 	CTexture	m_CasolBGTexture5;		//!<戦闘画面の選択のテクスチャ。
 
 
+
+
 	bool		Winflg;
 	bool		Loseflg;
 	bool		PAttack;
 	bool		EAttack;
 	bool		PDamage;
 	bool		EDamage;
-	/*bool		PAnimEnd;
-	bool		EAnimEnd;*/
 	bool		SelectQ;//
 
 	int         BattlGold = 0;
@@ -105,6 +107,9 @@ private:
 	bool        IsBattleStart = false; //プレイヤーが配置についたかの判定
 	bool        result = false; //result画面遷移用
 	bool        Victory = true; //勝敗判定用
+	bool        EnemyPointCamera = true; //敵選択カメラの判定
+	bool        EnemyZoom = false;
+
 };
 
 extern BattleScene* g_battleScene;
