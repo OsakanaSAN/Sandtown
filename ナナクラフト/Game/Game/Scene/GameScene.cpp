@@ -57,6 +57,9 @@ bool GameScene::Start()
 	
 	
 	if (g_gameCamera->IsStart() && g_player->IsStart() && g_Hud->IsStart() && g_map->IsStart()) {
+
+		
+
 		g_fade->StartFadeIn();
 		return true;
 
@@ -130,11 +133,14 @@ void GameScene::Update()
 				g_player = NewGO<Player>(0);
 				g_Enemy = NewGO<Enemy>(0);
 				g_map2 = NewGO<Map2>(0);
+				g_fade->StartFadeIn();
 				
 			}
 
+			
 			else 
 			{
+				
 				g_fade->StartFadeIn();
 				scenes = STOP;
 				mapscene = DOUKUTU;
