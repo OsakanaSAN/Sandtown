@@ -57,8 +57,11 @@ private:
 
 	enum ANIME {
 		Stand_anim,
+		Walk_anim,
 		Attack_anim,
-		Damage_anim,
+		Jump_anim,
+		Dameg_anim,
+
 	};
 
 

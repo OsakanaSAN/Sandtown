@@ -69,18 +69,7 @@ bool GameScene::Start()
 void GameScene::Update()
 {
 	
-	//if (g_player != nullptr) {
-	//	CVector3 Pintpos = g_player->Getpos();
-
-	//	CVector3 Cpos = g_gameCamera->GetPos();
-
-	//	Pintpos.Subtract(Cpos);
-
-	//	Dof().SetPint(Pintpos.Length() * 1000);
-	//	/*Dof().SetFocalLength(36.0f);*/
-	//}
-	//タイトル画面に遷移する。
-
+	
 
 
 	switch (scenes)
@@ -95,7 +84,6 @@ void GameScene::Update()
 		{
 				
 				DeleteGO(g_player);
-				//DeleteGO(g_Enemy);
 				g_player = nullptr;
 				g_Enemy = nullptr;
 				g_sound->StopSound();
@@ -109,7 +97,6 @@ void GameScene::Update()
 		
 		else if (Pad(0).IsPress(enButtonY))
 		{
-			//g_menu->InventoryChangTex();
 			g_menu->MenuScene();
 			g_menu->setHP(g_Hud->GetHP());
 			g_menu->setLV(g_Hud->GetLV());

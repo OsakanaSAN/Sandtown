@@ -56,7 +56,7 @@ private:
 	CCameraCollisionSolver  cameraCollisionSolver;
 
 
-	CVector3 pos = { 1.0f,  2.0f,  3.0f };
+	CVector3 pos = { 0.0f,  2.0f,  3.0f };
 	CVector3 tag = { 1.0,1.0,1.0 };
 	CVector3 BattlePlayerCameraPos = { -1.5f,0.0f,-1.5f };
 	CVector3 BattleEnemyCameraPos = { -2.0f,0.0f,-2.0f };
