@@ -184,7 +184,6 @@ void Menu::Render(CRenderContext& renderContext)
 	case STOP:
 		break;
 
-
 	case MENU:
 		BackSeatSprite.Draw(renderContext);
 

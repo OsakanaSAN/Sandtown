@@ -26,6 +26,7 @@ Enemy::Enemy()
 Enemy::~Enemy()
 {
 	//g_Enemy = nullptr;
+	//skinModelData.Release();
 	
 }
 
@@ -60,6 +61,7 @@ void Enemy::Update() {
 	
 	// アニメーションの更新a
 	Animation.Update(1.0f / 60.0f);
+	characterController.Execute(0.03f);
 	skinModel.Update(position, m_rotation, CVector3::One);
 }
 
@@ -79,7 +81,7 @@ void Enemy::Tracking()
 
 	diff.Subtract(position);
 
-	if (diff.Length() < SearchRaeng&& diff.Length() > 1.5f)
+	if (diff.Length() < SearchRaeng && diff.Length() > 1.5f)
 	{
 		if (diff.Length() < 2)
 		{
@@ -91,19 +93,15 @@ void Enemy::Tracking()
 		else if (over == true) {
 			diff.Div(diff.Length());
 
-			position.x += diff.x*0.1f;
-			position.y += diff.y*0.1;
-			position.z += diff.z*0.1;
+			position.x += diff.x *0.08f;
+			position.y += diff.y *0.08f;
+			position.z += diff.z *0.08f;
 			CVector3 paly = g_player->Getpos();
-
 
 			CVector3 Def;
 			Def.Subtract(position, g_player->Getpos());
 
 			m_rotation.SetRotation(CVector3::Up, atan2f(-Def.x, -Def.z)); //前が背中なんで　マイナスする
-
-
-			
 
 		}
 		else
@@ -116,7 +114,7 @@ void Enemy::Tracking()
 
 	else if (diff.Length() > SearchRaeng)
 	{
-		SearchRaeng = 3.5f;
+		SearchRaeng = OutSearch;
 		over = false;
 	}
 

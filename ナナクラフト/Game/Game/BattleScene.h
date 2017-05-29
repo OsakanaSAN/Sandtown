@@ -32,8 +32,12 @@ public:
 	{
 		return Loseflg;
 	}
+	void IsBattleStrat()
+	{
+		IsBattleStart = true;
+	}
 
-	void Result();
+	void BattleKeep();
 
 private:
 
@@ -51,10 +55,11 @@ private:
 
 	enum BattleComand
 	{
+		Keep,
 		Attack,
 		Escape,
 	};
-	BattleComand Comand = Attack;
+	BattleComand Comand = Keep;
 
 
 	enum TURN
@@ -65,6 +70,9 @@ private:
 	TURN Turn = Pturn;
 	bool turnCheng = true;
 
+
+	CSprite		m_ComandBGSprite1;		//!<戦闘画面の選択のスプライト。
+	CTexture	m_ComandBGTexture1;		//!<戦闘画面の選択のテクスチャ。
 
 	CSprite		m_ComandBGSprite2;		//!<戦闘画面の選択のスプライト。
 	CTexture	m_ComandBGTexture2;		//!<戦闘画面の選択のテクスチャ。
@@ -80,20 +88,26 @@ private:
 	CTexture	m_CasolBGTexture5;		//!<戦闘画面の選択のテクスチャ。
 
 
+
+
 	bool		Winflg;
 	bool		Loseflg;
 	bool		PAttack;
 	bool		EAttack;
 	bool		PDamage;
 	bool		EDamage;
-	/*bool		PAnimEnd;
-	bool		EAnimEnd;*/
 	bool		SelectQ;//
 
 	int         BattlGold = 0;
 
-	bool        result = false;
-	bool        Victory = true;
+
+	bool        IsBattle = false; //コマンド画面を表示するかの判定
+	bool        IsBattleStart = false; //プレイヤーが配置についたかの判定
+	bool        result = false; //result画面遷移用
+	bool        Victory = true; //勝敗判定用
+	bool        EnemyPointCamera = true; //敵選択カメラの判定
+	bool        EnemyZoom = false;
+	
 };
 
 extern BattleScene* g_battleScene;

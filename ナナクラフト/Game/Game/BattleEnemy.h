@@ -31,7 +31,7 @@ public:
 		IsDamage = Damage;
 	}
 
-	int GetHP()
+	int GetHP() const
 	{
 		return HP;
 	}
@@ -55,6 +55,7 @@ public:
 	{
 	return IsDamage;
 	}*/
+
 	int GetEGold()const
 	{
 		return EGold;
@@ -75,6 +76,7 @@ private:
 
 	CSkinModel		skinModel;
 	CSkinModelDataHandle	skinModelData;
+	
 
 	CAnimation		Animation;
 	CVector3		position = { -2.0f,0.0f,-38.0f };
@@ -99,3 +101,4 @@ private:
 	int				EnemyID;//ゲームシーンから何のエネミーかの情報を格納
 
 };
+extern BattleEnemy* g_battleenemy;

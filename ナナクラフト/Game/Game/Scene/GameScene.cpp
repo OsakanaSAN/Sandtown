@@ -62,18 +62,14 @@ bool GameScene::Start()
 
 	}
 	
-	ShadowMap().SetLightPosition(g_gameCamera->GetPos());
 	
-	ShadowMap().SetLightTarget(g_player->Getpos());
 	
 }
 
 void GameScene::Update()
 {
 	
-
-	//タイトル画面に遷移する。
-
+	
 
 
 	switch (scenes)
@@ -88,7 +84,6 @@ void GameScene::Update()
 		{
 				
 				DeleteGO(g_player);
-				//DeleteGO(g_Enemy);
 				g_player = nullptr;
 				g_Enemy = nullptr;
 				g_sound->StopSound();
@@ -102,7 +97,6 @@ void GameScene::Update()
 		
 		else if (Pad(0).IsPress(enButtonY))
 		{
-			//g_menu->InventoryChangTex();
 			g_menu->MenuScene();
 			g_menu->setHP(g_Hud->GetHP());
 			g_menu->setLV(g_Hud->GetLV());

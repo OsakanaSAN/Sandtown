@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "BattlePlayer.h"
 #include "BattleEnemy.h"
+#include "BattleScene.h"
 #include "Camera.h"
 
 extern BattleEnemy* g_battleenemy;
@@ -10,7 +11,8 @@ enum {
 	Stand_anim,
 	Walk_anim,  //歩く
 	Run_anim,  //走る
-	
+	Jump,
+	Dameg,
 
 };
 
@@ -49,13 +51,14 @@ bool BattlePlayer::Start()
 	characterController.Init(0.5f, 1.0f, position);
 
 
-	//Animation.PlayAnimation(Stand_anim, 0.1f);
+
+	Animation.PlayAnimation(Run_anim, 0.1f);
+
 	Animation.SetAnimationEndTime(Run_anim, 0.8);
 
-	//Animation.SetAnimationEndTime(Attack_anim, 0.5);
-	Animation.SetAnimationLoopFlag(Run_anim, false);
-	Animation.SetAnimationEndTime(Stand_anim, 0.1f);
-	Animation.SetAnimationLoopFlag(Stand_anim, false);
+
+	Animation.SetAnimationLoopFlag(Run_anim, true);
+	Animation.SetAnimationLoopFlag(Stand_anim, true); //スタンドアニメーションをループさせる
 
 	skinModel.SetShadowCasterFlag(true);
 	skinModel.SetShadowReceiverFlag(true);
@@ -68,13 +71,76 @@ void BattlePlayer::Update()
 {
 	/*CVector3 scale = CVector3::One;
 	scale.Scale(0.4);*/
-	All.SetPointLightColor({ 1.0f,1.0f,1.5f,4.0f });
-	characterController.Execute(0.03f);
+	if (IsSetPoint == false)
+	{
+		CVector3 diff = BakPositon;
 
-	AnimationSet();
+		diff.Subtract(position);
 
-	skinModel.Update(position, m_rotation, CVector3::One);
 
+		if (diff.Length() > 1)
+		{
+
+			BakPositon.z += 0.1f;
+			Animation.SetAnimationSpeedRate(2);
+			g_gameCamera->BattleCamera();
+
+		}
+
+		else if (diff.Length() < 1.1)
+		{
+			IsSetPoint = true;
+			Animation.SetAnimationLoopFlag(Run_anim, false);
+
+			Animation.PlayAnimation(Stand_anim, 0.1f);
+			Animation.SetAnimationLoopFlag(Stand_anim, true); //スタンドアニメーションをループさせる
+
+
+			
+			
+		}
+
+		skinModel.Update(BakPositon, m_rotation, CVector3::One);
+
+		//アニメーションの更新
+		Animation.Update(1.0f / 60.0f);
+
+		
+		
+
+
+	}
+
+	else if (Time > 0.5 && IsStop == true)
+	{
+		IsStop = false;
+		g_battleScene->IsBattleStrat();
+		
+	}
+
+	else if(IsStop == false)
+	{
+		
+		//All.SetPointLightColor({ 1.0f,1.0f,1.5f,4.0f });
+
+		characterController.Execute(0.03f);
+		AnimationSet();
+		skinModel.Update(BakPositon, m_rotation, CVector3::One);
+		//アニメーションの更新
+		Animation.Update(1.0f / 60.0f);
+	}
+
+	else if (IsSetPoint == true)
+	{
+
+		Time += GameTime().GetFrameDeltaTime();
+		//アニメーションの更新
+		Animation.Update(1.0f / 60.0f);
+		skinModel.Update(BakPositon, m_rotation, CVector3::One);
+
+	}
+		
+	
 }
 
 
@@ -90,6 +156,8 @@ void BattlePlayer::AnimationSet()
 {
 	//ターン制のアニメーション
 	if (!IsStand) {
+
+		//攻撃時
 		if (IsAttack) {
 			IsAnimend = false;
 			Animation.PlayAnimation(Run_anim, 0.05f);
@@ -98,18 +166,21 @@ void BattlePlayer::AnimationSet()
 			IsStand = true;
 
 		}
+		//ダメージを食らった時
 		else if (IsDamage)
 		{
 			IsAnimend = false;
-			Animation.PlayAnimation(Stand_anim, 0.3f);
+			Animation.PlayAnimation(Dameg_anim, 0.1f);
+			Animation.SetAnimationLoopFlag(Dameg_anim, false);
+			Animation.SetAnimationSpeedRate(1);
 
 			IsStand = true;
 		}
 
 	}
+
 	else if (!IsAttack && !IsDamage)
 	{
-		Animation.PlayAnimation(Stand_anim, 0.3f);
 
 		IsStand = false;
 
@@ -117,6 +188,9 @@ void BattlePlayer::AnimationSet()
 
 	if (!Animation.IsPlay())
 	{
+		Animation.PlayAnimation(Stand_anim, 0.1f);
+		Animation.SetAnimationLoopFlag(Stand_anim, true);
+
 		IsAttack = false;
 		IsDamage = false;
 		IsAnimend = true;
@@ -134,6 +208,7 @@ void BattlePlayer::Particle()
 
 	//パーティクルの生成
 	m_particle = NewGO<CParticleEmitter>(0);
+	m_random.Init((unsigned long)time(NULL));
 	m_particle->Init(m_random, g_gameCamera->GetCamera(),
 	{
 		"Assets/Particle/burn.png",		//!<テクスチャのファイルパス。

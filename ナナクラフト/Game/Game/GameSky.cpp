@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "GameSky.h"
 #include "Camera.h"
+#include "Player.h"
 
 
 GameSky::GameSky()
@@ -25,7 +26,7 @@ void GameSky::Init(const char* modelName, CVector3 position, CQuaternion rotatio
 	//ファイルパスを作成する。
 	char filePath[256];
 	sprintf(filePath, "Assets/modelData/%s.x", modelName);
-	//モデルデータをロード。
+	//モデルデータをロード。ww
 	skinModelData.LoadModelData(filePath, NULL);
 	//CSkinModelを初期化。
 	skinModel.Init(skinModelData.GetBody());
@@ -46,6 +47,8 @@ void GameSky::Update()
 	{
 		rot_y = 0;
 	}
+	
+
 
 	SkyRot.SetRotation(CVector3(0.0f, 1.0f, 0.0f), CMath::DegToRad(rot_y));
 

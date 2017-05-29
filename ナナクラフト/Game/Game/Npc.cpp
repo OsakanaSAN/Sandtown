@@ -2,6 +2,17 @@
 #include "Npc.h"
 #include "Camera.h"
 
+
+enum {
+
+	Stand_anim,
+	Walk_anim,
+	Run_anim,
+	Jump_anim,
+
+};
+
+
 Npc::Npc()
 {
 	Npclight.SetAmbinetLight({ 1.5f,1.0f,1.0f });
@@ -24,8 +35,9 @@ bool Npc::Start()
 
 
 	m_rotion.SetRotation(CVector3(0.0f, 1.0f, 0.0f), CMath::DegToRad(0.0f));
-	Animation.PlayAnimation(0, 0.1f);
-
+	Animation.PlayAnimation(Stand_anim, 0.1f);
+	
+	
 
 
 	//キャラクタコントローラの初期化。
@@ -40,13 +52,24 @@ bool Npc::Start()
 void Npc::Update()
 {
 
-	//ワールド行列の更新。
-	skinModel.Update(position, m_rotion, CVector3::One);
+	
+	if (!IsStand)
+	{
+		
 
-	Animation.PlayAnimation(0, 0.1f);
+		Animation.PlayAnimation(Stand_anim, 0.05f);
+		Animation.SetAnimationSpeedRate(1);
+		IsStand = true;
+	}
+
+
+
+
 	//アニメーションの更新
 	Animation.Update(1.0f / 60.0f);
-
+	characterController.Execute(0.03f);
+	//ワールド行列の更新。
+	skinModel.Update(position, m_rotion, CVector3::One);
 	
 
 }

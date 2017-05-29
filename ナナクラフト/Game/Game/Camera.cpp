@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "Camera.h"
 #include "BattlePlayer.h"
+#include "BattleEnemy.h"
 
 
 
@@ -101,17 +102,36 @@ void Camera::TpsCamera()
 
 void Camera::BattleCamera()
 {
-	camera.SetPosition(Battlepos); //プレイヤーの真上らへん
-	camera.SetTarget(Battletag);   //プレイヤーの座標
+	CVector3 bpos;
+	bpos = g_battleplayer->Getpos2();
+	Battletag.z = bpos.z + 7;
+	camera.SetPosition(Battlepos); 
+	camera.SetTarget(Battletag);   
 
 }
 
-void Camera::PlayerBatlleCamera(CVector3 trget)
+void Camera::EnemyBattleCamera()
 {
-	CVector3 TG = trget;
-	
 
-	camera.SetTarget(TG);   //プレイヤーの座標
+
+	if (g_battleplayer != nullptr) {
+		V = g_battleenemy->Getpos();
+		V.y = 1.0f;
+		camera.SetTarget(V);
+		V.Add(BattleEnemyCameraPos);
+		camera.SetPosition(V);
+	}
+
+	camera.Update();
+
+
+}
+
+
+void Camera::PlayerBatlleCamera()
+{
+	
+	
 	//回転
 	float rStick_x = 0.1f;
 
@@ -127,7 +147,7 @@ void Camera::PlayerBatlleCamera(CVector3 trget)
 
 
 	if (g_battleplayer != nullptr) {
-		V = g_battleplayer->Getpos();
+		V = g_battleplayer->Getpos2();
 		V.y += 1.0f;
 		camera.SetTarget(V);
 		V.Add(BattlePlayerCameraPos);

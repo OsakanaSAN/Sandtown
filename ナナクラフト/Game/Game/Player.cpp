@@ -118,6 +118,7 @@ bool Player::Start()
 
 void Player::Update()
 {
+	
 	switch (IsMove)
 	{
 
@@ -129,7 +130,7 @@ void Player::Update()
 		Move();      //キャラの移動
 		AnimetionSet();
 		
-		//skinModel.EntryShadowMap();
+		skinModel.EntryShadowMap();
 		//ワールド行列の更新。
 		skinModel.Update(position, m_rotion,CVector3::One);
 
