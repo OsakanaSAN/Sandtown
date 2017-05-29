@@ -106,7 +106,7 @@ bool BattleScene::Start()
 	m_ComandBGSprite3.SetPosition({ -300,-300 });
 	m_ComandBGSprite3.SetSize({ 150.0f,50 });
 
-	m_CasolBGTexture5.Load("Assets/sprite/Casol.png");
+	m_CasolBGTexture5.Load("Assets/sprite/casol2.png");
 	m_CasolBGSprite5.Init(&m_CasolBGTexture5);
 	m_CasolBGSprite5.SetPosition({ -500,-200 });
 	m_CasolBGSprite5.SetSize({ 200,200 });
@@ -178,8 +178,7 @@ void BattleScene::Update()
 					
 				}
 
-				m_CasolBGTexture5.Load("Assets/sprite/Casol.png");
-				m_CasolBGSprite5.Init(&m_CasolBGTexture5);
+			
 				m_CasolBGSprite5.SetPosition({ -500,-200 });
 				m_CasolBGSprite5.SetSize({ 200,200 });
 
@@ -196,8 +195,6 @@ void BattleScene::Update()
 					m_sound_bgm_battle->SetVolume(7.0f);
 				}
 
-				m_CasolBGTexture5.Load("Assets/sprite/Casol.png");
-				m_CasolBGSprite5.Init(&m_CasolBGTexture5);
 				m_CasolBGSprite5.SetPosition({ -500,-300 });
 				m_CasolBGSprite5.SetSize({ 200,200 });
 
@@ -293,7 +290,7 @@ void BattleScene::PlayerTurn()
 
 			if (!SelectQ)
 			{
-				//m_sound_bgm_battle = NewGO<CSoundSource>(0);
+				m_sound_bgm_battle = NewGO<CSoundSource>(0);
 				m_sound_bgm_battle->Init("Assets/sound/select3.wav");
 				m_sound_bgm_battle->Play(false);
 				m_sound_bgm_battle->SetVolume(4.0f);
@@ -392,17 +389,17 @@ void BattleScene::EnemyTurn()
 	if (!EAttack&&g_battleenemy->GetAnimend() && g_battleplayer->GetAnimend()) {
 
 		g_battleenemy->SetAttack(true);//攻撃のアニメーション再生
-		m_sound_Attack->Play(0);
+
+		m_sound_Attack->Play(false);
 		m_sound_Attack->SetVolume(4.0f);
+		
 
 		EAttack = true;
 	}
 	else if (EAttack && !PDamage && g_battleplayer->GetAnimend() && g_battleenemy->GetAnimend())
 	{
-
 		
 		
-
 		m_DamageBGTexture4.Load("Assets/sprite/damage.tga");
 		m_DamageBGSprite4.Init(&m_DamageBGTexture4);
 		m_DamageBGSprite4.SetPosition({ 250,200 });
@@ -416,7 +413,7 @@ void BattleScene::EnemyTurn()
 	}
 	else if (EAttack &&PDamage&& g_battleenemy->GetAnimend() && g_battleplayer->GetAnimend())
 	{
-		m_sound_Attack->Stop();
+		
 		EAttack = false;
 		PDamage = false;
 
