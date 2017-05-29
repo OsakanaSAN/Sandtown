@@ -45,7 +45,7 @@ void InitTkEngine( HINSTANCE hInst )
 	initParam.graphicsConfig.shadowRenderConfig.shadowMapWidth = 1024;
 	initParam.graphicsConfig.shadowRenderConfig.shadowMapHeight = 1024;
 	initParam.graphicsConfig.shadowRenderConfig.numShadowMap = 3;
-	initParam.graphicsConfig.shadowRenderConfig.isDisableSoftShadow = true;
+	//initParam.graphicsConfig.shadowRenderConfig.isDisableSoftShadow = true;
 	
 	//reflection
 	initParam.graphicsConfig.reflectionMapConfig.isEnable = false;
@@ -58,6 +58,12 @@ void InitTkEngine( HINSTANCE hInst )
 	initParam.graphicsConfig.dofConfig.isEnable = false;
 	//AA
 	initParam.graphicsConfig.aaConfig.isEnable = true;
+	//MotionBlur
+	initParam.graphicsConfig.motionBlurConfig.isEnable = true;
+	//Tonemap
+	//initParam.graphicsConfig.tonemapConfig.isEnable = true;
+	
+
 	//óêêîèâä˙âªÅB
 	g_random.Init((unsigned long)time(NULL));
 

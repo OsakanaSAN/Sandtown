@@ -57,6 +57,9 @@ bool GameScene::Start()
 	
 	
 	if (g_gameCamera->IsStart() && g_player->IsStart() && g_Hud->IsStart() && g_map->IsStart()) {
+
+		
+
 		g_fade->StartFadeIn();
 		return true;
 
@@ -69,18 +72,7 @@ bool GameScene::Start()
 void GameScene::Update()
 {
 	
-	//if (g_player != nullptr) {
-	//	CVector3 Pintpos = g_player->Getpos();
-
-	//	CVector3 Cpos = g_gameCamera->GetPos();
-
-	//	Pintpos.Subtract(Cpos);
-
-	//	Dof().SetPint(Pintpos.Length() * 1000);
-	//	/*Dof().SetFocalLength(36.0f);*/
-	//}
-	//タイトル画面に遷移する。
-
+	
 
 
 	switch (scenes)
@@ -95,7 +87,6 @@ void GameScene::Update()
 		{
 				
 				DeleteGO(g_player);
-				//DeleteGO(g_Enemy);
 				g_player = nullptr;
 				g_Enemy = nullptr;
 				g_sound->StopSound();
@@ -109,7 +100,6 @@ void GameScene::Update()
 		
 		else if (Pad(0).IsPress(enButtonY))
 		{
-			//g_menu->InventoryChangTex();
 			g_menu->MenuScene();
 			g_menu->setHP(g_Hud->GetHP());
 			g_menu->setLV(g_Hud->GetLV());
@@ -143,11 +133,14 @@ void GameScene::Update()
 				g_player = NewGO<Player>(0);
 				g_Enemy = NewGO<Enemy>(0);
 				g_map2 = NewGO<Map2>(0);
+				g_fade->StartFadeIn();
 				
 			}
 
+			
 			else 
 			{
+				
 				g_fade->StartFadeIn();
 				scenes = STOP;
 				mapscene = DOUKUTU;

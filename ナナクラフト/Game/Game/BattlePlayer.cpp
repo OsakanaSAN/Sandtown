@@ -11,7 +11,8 @@ enum {
 	Stand_anim,
 	Walk_anim,  //歩く
 	Run_anim,  //走る
-	
+	Jump,
+	Dameg,
 
 };
 
@@ -90,9 +91,12 @@ void BattlePlayer::Update()
 		{
 			IsSetPoint = true;
 			Animation.SetAnimationLoopFlag(Run_anim, false);
+
 			Animation.PlayAnimation(Stand_anim, 0.1f);
 			Animation.SetAnimationLoopFlag(Stand_anim, true); //スタンドアニメーションをループさせる
-			g_battleScene->IsBattleStrat();
+
+
+			
 			
 		}
 
@@ -101,17 +105,40 @@ void BattlePlayer::Update()
 		//アニメーションの更新
 		Animation.Update(1.0f / 60.0f);
 
+		
+		
+
+
 	}
 
-	else
+	else if (Time > 0.5 && IsStop == true)
 	{
+		IsStop = false;
+		g_battleScene->IsBattleStrat();
+		
+	}
+
+	else if(IsStop == false)
+	{
+		
 		//All.SetPointLightColor({ 1.0f,1.0f,1.5f,4.0f });
 
 		characterController.Execute(0.03f);
 		AnimationSet();
 		skinModel.Update(BakPositon, m_rotation, CVector3::One);
+		//アニメーションの更新
+		Animation.Update(1.0f / 60.0f);
 	}
 
+	else if (IsSetPoint == true)
+	{
+
+		Time += GameTime().GetFrameDeltaTime();
+		//アニメーションの更新
+		Animation.Update(1.0f / 60.0f);
+		skinModel.Update(BakPositon, m_rotation, CVector3::One);
+
+	}
 		
 	
 }
@@ -143,8 +170,9 @@ void BattlePlayer::AnimationSet()
 		else if (IsDamage)
 		{
 			IsAnimend = false;
-			Animation.PlayAnimation(Stand_anim, 0.1f);
-			Animation.SetAnimationLoopFlag(Stand_anim, false);
+			Animation.PlayAnimation(Dameg_anim, 0.1f);
+			Animation.SetAnimationLoopFlag(Dameg_anim, false);
+			Animation.SetAnimationSpeedRate(1);
 
 			IsStand = true;
 		}
@@ -180,6 +208,7 @@ void BattlePlayer::Particle()
 
 	//パーティクルの生成
 	m_particle = NewGO<CParticleEmitter>(0);
+	m_random.Init((unsigned long)time(NULL));
 	m_particle->Init(m_random, g_gameCamera->GetCamera(),
 	{
 		"Assets/Particle/burn.png",		//!<テクスチャのファイルパス。

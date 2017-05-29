@@ -96,6 +96,7 @@ private:
 
 
 	bool Bato = false; //ƒoƒgƒ‹‰æ–Ê‘JˆÚ”»’è
+	float SceneTime = 0;
 
 
 

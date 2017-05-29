@@ -115,13 +115,13 @@ bool BattleScene::Start()
 
 	g_sound->BattleSound();
 
-	CVector3 lightPos, lightTarget;
+	/*CVector3 lightPos, lightTarget;
 	lightTarget.Add(g_battleplayer->Getpos(), g_battleenemy->Getpos());
 	lightTarget.Scale(0.5f);
 	lightPos = g_battleplayer->Getpos();
 	lightPos.y += 5.0f;
 	ShadowMap().SetLightPosition(lightPos);
-	ShadowMap().SetLightTarget(lightTarget);
+	ShadowMap().SetLightTarget(lightTarget);*/
 
 
 	return true;
@@ -425,7 +425,7 @@ void BattleScene::EnemyTurn()
 			/*g_gameScene->BattleDate();*/
 
 			Victory = false;
-			Result();
+			DeleteGO(g_battleScene);
 
 			//リザルト画面を出す処理かシーン遷移？
 		}
@@ -437,12 +437,7 @@ void BattleScene::EnemyTurn()
 	}
 }
 
-void BattleScene::Result()
-{
 
-	DeleteGO(g_battleplayer);
-
-}
 
 void BattleScene::BattleKeep()
 {

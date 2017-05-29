@@ -36,10 +36,8 @@ public:
 	{
 		IsBattleStart = true;
 	}
+
 	void BattleKeep();
-
-
-	void Result();
 
 private:
 
@@ -109,7 +107,7 @@ private:
 	bool        Victory = true; //Ÿ”s”»’è—p
 	bool        EnemyPointCamera = true; //“G‘I‘ğƒJƒƒ‰‚Ì”»’è
 	bool        EnemyZoom = false;
-
+	
 };
 
 extern BattleScene* g_battleScene;

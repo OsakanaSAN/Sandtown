@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "GameSky.h"
 #include "Camera.h"
+#include "Player.h"
 
 
 GameSky::GameSky()
@@ -46,6 +47,8 @@ void GameSky::Update()
 	{
 		rot_y = 0;
 	}
+	
+
 
 	SkyRot.SetRotation(CVector3(0.0f, 1.0f, 0.0f), CMath::DegToRad(rot_y));
 
