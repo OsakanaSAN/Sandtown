@@ -19,7 +19,7 @@ GameSky*     g_Sky;
 
 //マップの配置情報。
 SMapInfo mapLocInfo[] = {
-#include "Map/mati.h"
+#include "Map/MACHI.h"
 };
 
 

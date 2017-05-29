@@ -18,7 +18,8 @@ private:
 	CVector3				position = { -4.79f, 0.01f, 10.68f };                //ç¿ïWÅB
 	CLight                  Npclight;
 	CQuaternion				m_rotion;
-
+	bool                    IsStand = false;
+	bool                    IsWalk = false;
 
 };
 

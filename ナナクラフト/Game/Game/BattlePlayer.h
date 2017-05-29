@@ -1,6 +1,8 @@
 #pragma once
 #include "tkEngine/character/tkCharacterController.h"
 #include "BattleCamera.h"
+
+
 class BattlePlayer :
 	public IGameObject
 {
@@ -83,6 +85,7 @@ private:
 	bool					IsAnimend;
 
 	bool                    IsSetPoint = false;
+	float                     Time = 0;
 
 	//ゲームシーンから持ってくるステータス？
 	int						ATK = 20;//武器ごとに変化？

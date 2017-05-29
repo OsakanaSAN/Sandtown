@@ -91,7 +91,9 @@ void BattlePlayer::Update()
 			IsSetPoint = true;
 			Animation.SetAnimationLoopFlag(Run_anim, false);
 			Animation.PlayAnimation(Stand_anim, 0.1f);
-			Animation.SetAnimationLoopFlag(Stand_anim, true); //スタンドアニメーションをループさせる
+			Animation.SetAnimationLoopFlag(Stand_anim, false); //スタンドアニメーションをループさせる
+
+			
 			g_battleScene->IsBattleStrat();
 			
 		}
@@ -101,7 +103,11 @@ void BattlePlayer::Update()
 		//アニメーションの更新
 		Animation.Update(1.0f / 60.0f);
 
+		
+		
+
 	}
+
 
 	else
 	{

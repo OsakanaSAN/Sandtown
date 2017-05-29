@@ -15,6 +15,7 @@ Mapchip::Mapchip()
 
 	li = g_player->Getpos();
 	li.y += 30.0f;
+	//li.Scale(5);
 	ShadowMap().SetLightPosition(li);
 
 	
@@ -65,6 +66,7 @@ void Mapchip::Init(const char* modelName, CVector3 position, CQuaternion rotatio
 	//作成した剛体を物理ワールドに追加する。
 	PhysicsWorld().AddRigidBody(&rigidBody);
 	skinModel.EntryShadowMap();
+	skinModel.SetHasSpeculerMap(true);
 	
 	
 }
@@ -77,9 +79,10 @@ void Mapchip::Update()
 	//初期化の時に作成しているので何もしない。
 	if (g_player != NULL)
 	{
-		ShadowMap().SetLightTarget(g_player->Getpos());
+		//ShadowMap().SetLightTarget(g_player->Getpos());
+		skinModel.EntryShadowMap();
 
-		Maplight.SetPointLightPosition(g_player->Getpos());
+		//Maplight.SetPointLightPosition(g_player->Getpos());
 	}
 
 	
