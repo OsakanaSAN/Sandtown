@@ -87,7 +87,7 @@ bool BattleScene::Start()
 
 	SelectQ = false;
 
-	m_DamageBGTexture4.Load("Assets/sprite/damage.tga");
+	m_DamageBGTexture4.Load("Assets/sprite/damage1.png");
 	m_DamageBGSprite4.Init(&m_DamageBGTexture4);
 	m_DamageBGSprite4.SetPosition({ -200,300 });
 
@@ -278,7 +278,6 @@ void BattleScene::PlayerTurn()
 			
 		}
 
-
 		if (Pad(0).IsTrigger(enButtonA) && g_battleenemy->GetAnimend() && g_battleplayer->GetAnimend())
 		{
 			g_battlemenu->EnemyZoomOut();
@@ -314,7 +313,7 @@ void BattleScene::PlayerTurn()
 
 
 
-			m_DamageBGTexture4.Load("Assets/sprite/damage.tga");
+			m_DamageBGTexture4.Load("Assets/sprite/damage1.png");
 			m_DamageBGSprite4.Init(&m_DamageBGTexture4);
 			m_DamageBGSprite4.SetPosition({ -200,300 });
 			m_DamageBGSprite4.SetSize({ 200,80 });
@@ -390,17 +389,19 @@ void BattleScene::EnemyTurn()
 
 		g_battleenemy->SetAttack(true);//攻撃のアニメーション再生
 
-		m_sound_Attack->Play(false);
-		m_sound_Attack->SetVolume(4.0f);
+		
 		
 
 		EAttack = true;
 	}
 	else if (EAttack && !PDamage && g_battleplayer->GetAnimend() && g_battleenemy->GetAnimend())
 	{
+		m_sound_Attack = NewGO<CSoundSource>(0);
+		m_sound_Attack->Init("Assets/sound/Attack.wav");
+		m_sound_Attack->Play(false);
+		m_sound_Attack->SetVolume(4.0f);
 		
-		
-		m_DamageBGTexture4.Load("Assets/sprite/damage.tga");
+		m_DamageBGTexture4.Load("Assets/sprite/damage1.png");
 		m_DamageBGSprite4.Init(&m_DamageBGTexture4);
 		m_DamageBGSprite4.SetPosition({ 250,200 });
 		m_DamageBGSprite4.SetSize({ 200,80 });
@@ -413,7 +414,7 @@ void BattleScene::EnemyTurn()
 	}
 	else if (EAttack &&PDamage&& g_battleenemy->GetAnimend() && g_battleplayer->GetAnimend())
 	{
-		
+		m_sound_Attack->Stop();
 		EAttack = false;
 		PDamage = false;
 

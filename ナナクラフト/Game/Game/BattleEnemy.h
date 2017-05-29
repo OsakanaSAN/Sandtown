@@ -73,6 +73,10 @@ private:
 		Damage_anim,
 	};
 
+	enum State {
+		Alive,
+		Dead
+	};
 
 	CSkinModel		skinModel;
 	CSkinModelDataHandle	skinModelData;
@@ -98,7 +102,6 @@ private:
 
 	int             EGold = 50;
 
-	int				EnemyID;//ゲームシーンから何のエネミーかの情報を格納
 
 };
 extern BattleEnemy* g_battleenemy;

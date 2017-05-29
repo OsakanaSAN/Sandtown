@@ -121,3 +121,6 @@ int WINAPI wWinMain(
 
 	return 0;
 }
+
+//タイマーの使い方
+//GameTime().GetFrameDeltaTime();

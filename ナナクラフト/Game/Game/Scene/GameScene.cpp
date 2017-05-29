@@ -28,8 +28,8 @@ BattleScene* g_battleScene = nullptr;
 HUD*    g_Hud = nullptr;
 Menu*   g_menu = nullptr;
 Enemy*  g_Enemy = nullptr;
-
-
+Enemy*  g_Enemy2 = nullptr;
+Enemy*  g_Enemy3 = nullptr;
 
 GameScene::GameScene()
 {
@@ -88,7 +88,7 @@ void GameScene::Update()
 				
 				DeleteGO(g_player);
 				g_player = nullptr;
-				g_Enemy = nullptr;
+				//g_Enemy = nullptr;
 				g_sound->StopSound();
 				g_battleScene = NewGO<BattleScene>(0);
 				g_gameCamera->BattleCamera();
@@ -131,7 +131,21 @@ void GameScene::Update()
 			if (g_map2 == nullptr)
 			{
 				g_player = NewGO<Player>(0);
+				modelName = "Assets/modelData/usagi.X";
 				g_Enemy = NewGO<Enemy>(0);
+				g_Enemy->Init(modelName);
+				g_Enemy->setPos({ -3.0f, 0.0f, -20.0f });
+
+
+				modelName = "Assets/modelData/ghost.X";
+				g_Enemy2 = NewGO<Enemy>(0);
+				g_Enemy2->Init(modelName);
+				g_Enemy2->setPos({ -3.0f, 0.0f, -40.0f });
+
+				modelName = "Assets/modelData/cabetu.X";
+				g_Enemy3 = NewGO<Enemy>(0);
+				g_Enemy3->Init(modelName);
+				g_Enemy3->setPos({ 0.0f, 0.0f, -15.0f });
 				g_map2 = NewGO<Map2>(0);
 				g_fade->StartFadeIn();
 				
@@ -216,6 +230,8 @@ void GameScene::DeteScene()
 		
 			DeleteGO(g_map2);
 			DeleteGO(g_Enemy);
+			DeleteGO(g_Enemy2);
+			DeleteGO(g_Enemy3);
 			if (g_player != nullptr) {
 				DeleteGO(g_player);
 			}

@@ -3,8 +3,10 @@
 #include "Camera.h"
 #include "HUD.h"
 #include "EnemyHUD.h"
-
-
+#include "Enemy.h"
+extern Enemy* g_Enemy;
+extern Enemy* g_Enemy2;
+extern Enemy* g_Enemy3;
 
 
 enum {
@@ -42,8 +44,24 @@ BattleEnemy::BattleEnemy()
 
 BattleEnemy::~BattleEnemy()
 {
-	/*DeleteGO(this);*/
-	
+
+	if (g_Enemy->GetEnemyState() == Alive)
+	{
+
+		g_Enemy->SetActiveFlag(true);
+		
+
+	}
+	if (g_Enemy2->GetEnemyState() == Alive)
+	{
+		g_Enemy2->SetActiveFlag(true);
+
+	}
+
+	if (g_Enemy3->GetEnemyState() == Alive)
+	{
+		g_Enemy3->SetActiveFlag(true);
+	}
 	
 }
 
@@ -52,7 +70,26 @@ bool BattleEnemy::Start()
 	All.SetPointLightColor({ 1.0f,1.0f,1.5f,4.0f });
 
 
-	skinModelData.LoadModelData("Assets/modelData/ghost.X", &Animation);
+	if (g_Enemy->Getenemyhit() && g_Enemy->GetEnemyState() == Alive)
+	{
+		skinModelData.LoadModelData(g_Enemy->GetenemyName(), &Animation);
+		g_Enemy->SetEnemyState(Dead);
+	}
+	else if (g_Enemy2->Getenemyhit() && g_Enemy2->GetEnemyState() == Alive)
+	{
+		skinModelData.LoadModelData(g_Enemy2->GetenemyName(), &Animation);
+		g_Enemy2->SetEnemyState(Dead);
+	}
+	else if (g_Enemy3->Getenemyhit() && g_Enemy3->GetEnemyState() == Alive)
+	{
+		skinModelData.LoadModelData(g_Enemy3->GetenemyName(), &Animation);
+		g_Enemy3->SetEnemyState(Dead);
+	}
+
+
+	g_Enemy->SetActiveFlag(false);
+	g_Enemy2->SetActiveFlag(false);
+	g_Enemy3->SetActiveFlag(false);
 	skinModel.Init(skinModelData.GetBody());
 	skinModel.SetLight(&All);	//デフォルトライトを設定。
 

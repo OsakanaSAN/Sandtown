@@ -55,8 +55,15 @@ public:
 		Bato = setBato;
 	}
 	
+	char* GetEnemy()
+	{
+		return modelName;
+	}
+
 private:
 	
+
+	char* modelName;
 	enum set 
 	{in,
 	out,

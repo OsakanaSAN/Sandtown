@@ -32,26 +32,31 @@ Enemy::~Enemy()
 
 bool Enemy::Start() {
 	
-	/*Enemylight.SetAmbinetLight({ 1.0f,1.0f,1.0f});*/
+	
+	return true;
 
-	skinModelData.LoadModelData("Assets/modelData/ghost.X", &Animation);
+}
+
+void Enemy::Init(char* modelName)
+{
+	/*Enemylight.SetAmbinetLight({ 1.0f,1.0f,1.0f});*/
+	enemy = modelName;
+	skinModelData.LoadModelData(modelName, &Animation);
 	skinModel.Init(&skinModelData);
 	skinModel.SetLight(&Enemylight);	//デフォルトライトを設定。
 
-								//キャラクタコントローラの初期化。
+										//キャラクタコントローラの初期化。
 	characterController.Init(0.5f, 1.0f, position);
 	CVector3 move = characterController.GetMoveSpeed();
 	//move.x = -Pad(0).GetLStickXF() * 5.0f;
 	//move.z = -Pad(0).GetLStickYF() * 5.0f;
 
+	characterController.RemoveRigidBoby();
 	Animation.PlayAnimation(3, 0.2f);
 	Animation.SetAnimationSpeedRate(1.5);
 	skinModel.SetShadowCasterFlag(true);
 	/*skinModel.SetShadowReceiverFlag(true);*/
-	return true;
-
 }
-
 void Enemy::Update() {
 
 	
@@ -86,7 +91,8 @@ void Enemy::Tracking()
 		if (diff.Length() < 2)
 		{
 			g_gameScene->Batoset(true);
-			DeleteGO(this);
+			enemyHit = true;
+			/*DeleteGO(this);*/
 		}
 
 

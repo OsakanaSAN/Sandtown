@@ -6,13 +6,43 @@ public :
 	Enemy();
 	~Enemy();
 	bool Start()override;
+	void Init(char* );
 	void Update();
 	void Render(CRenderContext&renderContext);
 	CVector3 getPos() {
 		return position;
 	}
+
+	void setPos(CVector3 pos)
+	{
+		position = pos;
+	}
 	void Tracking();
 
+	char* GetenemyName()
+	{
+		return enemy;
+	}
+
+	bool Getenemyhit()
+	{
+		return enemyHit;
+	}
+
+	void Setenemyhit(bool flg)
+	{
+		enemyHit = flg;
+	}
+
+	int GetEnemyState()
+	{
+		return ste;
+	}
+
+	void SetEnemyState(int state)
+	{
+		ste = state;
+	}
 private:
 
 	enum ANIME {
@@ -20,6 +50,13 @@ private:
 		Attack_anim,
 		Damage_anim,
 	};
+
+	enum State {
+		Alive,
+		Dead
+	};
+
+	int ste = Alive;
 
 
 	CCharacterController	characterController;		//キャラクタ―コントローラー。
@@ -40,6 +77,9 @@ private:
 	float           angle;
 
 	CLight			Enemylight;
+
+	char* enemy;
+	bool enemyHit=false;
 };
 extern Enemy* g_Enemy;
 
