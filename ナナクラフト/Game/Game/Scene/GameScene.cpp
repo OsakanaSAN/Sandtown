@@ -131,7 +131,7 @@ void GameScene::Update()
 			if (g_map2 == nullptr)
 			{
 				g_player = NewGO<Player>(0);
-				modelName = "Assets/modelData/usagi.X";
+				modelName = "Assets/modelData/ghost.X";
 				g_Enemy = NewGO<Enemy>(0);
 				g_Enemy->Init(modelName);
 				g_Enemy->setPos({ -3.0f, 0.0f, -20.0f });
@@ -142,10 +142,10 @@ void GameScene::Update()
 				g_Enemy2->Init(modelName);
 				g_Enemy2->setPos({ -3.0f, 0.0f, -40.0f });
 
-				modelName = "Assets/modelData/cabetu.X";
+				modelName = "Assets/modelData/ghost.X";
 				g_Enemy3 = NewGO<Enemy>(0);
 				g_Enemy3->Init(modelName);
-				g_Enemy3->setPos({ 0.0f, 0.0f, -15.0f });
+				g_Enemy3->setPos({ 20.0f, 0.0f, -15.0f });
 				g_map2 = NewGO<Map2>(0);
 				g_fade->StartFadeIn();
 				

@@ -315,7 +315,7 @@ void BattleScene::PlayerTurn()
 
 			m_DamageBGTexture4.Load("Assets/sprite/damage1.png");
 			m_DamageBGSprite4.Init(&m_DamageBGTexture4);
-			m_DamageBGSprite4.SetPosition({ -200,300 });
+			m_DamageBGSprite4.SetPosition({ -240,250 });
 			m_DamageBGSprite4.SetSize({ 200,80 });
 
 			g_battleplayer->Particle();//パーティクル呼び出し
@@ -403,7 +403,7 @@ void BattleScene::EnemyTurn()
 		
 		m_DamageBGTexture4.Load("Assets/sprite/damage1.png");
 		m_DamageBGSprite4.Init(&m_DamageBGTexture4);
-		m_DamageBGSprite4.SetPosition({ 250,200 });
+		m_DamageBGSprite4.SetPosition({ 150,100 });
 		m_DamageBGSprite4.SetSize({ 200,80 });
 
 		g_battleplayer->SetDamage(g_battleenemy->GetATK(), true);//ダメージ計算とダメージアニメーション再生
