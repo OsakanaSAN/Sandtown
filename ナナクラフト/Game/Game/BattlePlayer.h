@@ -85,6 +85,7 @@ private:
 	bool					IsAnimend;
 
 	bool                    IsSetPoint = false;
+	bool                    IsStop = true;
 	float                     Time = 0;
 
 	//ゲームシーンから持ってくるステータス？

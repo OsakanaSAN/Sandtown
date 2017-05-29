@@ -90,11 +90,12 @@ void BattlePlayer::Update()
 		{
 			IsSetPoint = true;
 			Animation.SetAnimationLoopFlag(Run_anim, false);
+
 			Animation.PlayAnimation(Stand_anim, 0.1f);
-			Animation.SetAnimationLoopFlag(Stand_anim, false); //スタンドアニメーションをループさせる
+			Animation.SetAnimationLoopFlag(Stand_anim, true); //スタンドアニメーションをループさせる
+
 
 			
-			g_battleScene->IsBattleStrat();
 			
 		}
 
@@ -106,18 +107,37 @@ void BattlePlayer::Update()
 		
 		
 
+
 	}
 
-
-	else
+	else if (Time > 0.5 && IsStop == true)
 	{
+		IsStop = false;
+		g_battleScene->IsBattleStrat();
+		
+	}
+
+	else if(IsStop == false)
+	{
+		
 		//All.SetPointLightColor({ 1.0f,1.0f,1.5f,4.0f });
 
 		characterController.Execute(0.03f);
 		AnimationSet();
 		skinModel.Update(BakPositon, m_rotation, CVector3::One);
+		//アニメーションの更新
+		Animation.Update(1.0f / 60.0f);
 	}
 
+	else if (IsSetPoint == true)
+	{
+
+		Time += GameTime().GetFrameDeltaTime();
+		//アニメーションの更新
+		Animation.Update(1.0f / 60.0f);
+		skinModel.Update(BakPositon, m_rotation, CVector3::One);
+
+	}
 		
 	
 }
