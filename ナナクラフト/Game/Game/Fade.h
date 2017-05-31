@@ -49,5 +49,7 @@ private:
 	EnState		m_state = eFadeIn;		//!<状態。
 	bool		m_isExecute = false;	//!<フェードを実行中？
 	float		m_timer = 1.0f;			//!<タイマ(単位：秒)
+	float       OutTimer = 0.0f;
+
 };
 extern Fade*   g_fade;

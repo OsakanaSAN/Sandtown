@@ -93,13 +93,14 @@ void Camera::TpsCamera()
 	if (cameraCollisionSolver.Execute(newPos, camera.GetPosition(), camera.GetTarget()))
 	{
 		camera.SetPosition(newPos);
-		//camera.ClearSpringParame();
+		
 
 	}
 
 
 }
 
+//戦闘に入る前のカメラ
 void Camera::BattleCamera()
 {
 	CVector3 bpos;
@@ -110,6 +111,8 @@ void Camera::BattleCamera()
 
 }
 
+
+//敵に注目したカメラ
 void Camera::EnemyBattleCamera()
 {
 
@@ -128,6 +131,7 @@ void Camera::EnemyBattleCamera()
 }
 
 
+//プレイヤーの周りをまわるカメラ
 void Camera::PlayerBatlleCamera()
 {
 	

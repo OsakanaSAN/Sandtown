@@ -109,8 +109,7 @@ bool Player::Start()
 	
 	radius = 0.6f;
 	height = 0.3f;
-	//characterController.Init(radius, height, position);
-	//characterController.SetGravity(-18.8f);
+	
 
 	return true;
 
@@ -160,7 +159,7 @@ void Player::Move()
 	
 
 	
-	if (move.x != 0.0f || move.z != 0.0f)
+	if (move.x  !=  0.0f || move.z != 0.0f)
 	{
 		Ismove = true;
 		
@@ -206,6 +205,7 @@ void Player::AngleSet()
 	moveSpeed.x = moveDir.x * MOVESPEED;
 	moveSpeed.z = moveDir.z * MOVESPEED;
 
+	
 
 	if (moveDir.LengthSq() > 0.0001f) {
 

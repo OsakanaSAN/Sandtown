@@ -77,7 +77,7 @@ void SceneChange::Update()
 
 		if (L < 3.0f && Pad(0).IsPress(enButtonA))
 		{
-			g_fade->StartFadeOut();
+			
 			g_gameScene->MapChange();
 			
 		}

@@ -75,6 +75,8 @@ public:
 	{
 		return PHp;
 	}
+
+
 	void StopSound()
 	{
 		runsound->Stop();

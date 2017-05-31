@@ -6,16 +6,6 @@
 
 extern BattleEnemy* g_battleenemy;
 
-enum {
-
-	Stand_anim,
-	Walk_anim,  //•à‚­
-	Run_anim,  //‘–‚é
-	Jump,
-	Dameg,
-
-};
-
 
 BattlePlayer::BattlePlayer()
 {

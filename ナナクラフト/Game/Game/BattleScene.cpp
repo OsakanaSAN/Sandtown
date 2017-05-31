@@ -72,7 +72,6 @@ BattleScene::~BattleScene()
 bool BattleScene::Start()
 {
 	BattlGold = g_battleenemy->GetEGold();
-	//g_gameCamera->BattleCamera();
 
 	Winflg = false;
 	Loseflg = false;
@@ -82,8 +81,7 @@ bool BattleScene::Start()
 	EAttack = false;
 	PDamage = false;
 	EDamage = false;
-	/*PAnimEnd = false;
-	EAnimEnd = false;*/
+	
 
 	SelectQ = false;
 
@@ -157,7 +155,7 @@ void BattleScene::Update()
 		case false:
 
 			g_gameCamera->PlayerBatlleCamera();
-			//g_gameCamera->EnemyBattleCamera();
+			
 
 			IsBattle = false;
 			EnemyPointCamera = true;
@@ -259,7 +257,7 @@ void BattleScene::Render(CRenderContext&renderContext)
 
 void BattleScene::PlayerTurn()
 {
-	//if (Turn == Eturn)return;
+
 	if (EAttack)return;
 	if (PDamage)return;
 
@@ -380,7 +378,7 @@ void BattleScene::PlayerTurn()
 
 void BattleScene::EnemyTurn()
 {
-	//if (Turn == Pturn)return;
+
 	if (PAttack)return;
 	if (EDamage)return;
 

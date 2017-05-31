@@ -78,12 +78,13 @@ void GameScene::Update()
 	switch (scenes)
 	{
 
+
 	case STOP:
 	
 
 		
 
-		if (/*Pad(0).IsPress(enButtonX) && mapscene == DOUKUTU*/ Bato == true)
+		if (Bato == true)
 		{
 				
 				DeleteGO(g_player);
@@ -130,6 +131,8 @@ void GameScene::Update()
 
 			if (g_map2 == nullptr)
 			{
+				g_gameCamera->ChangeStart();
+
 				g_player = NewGO<Player>(0);
 				modelName = "Assets/modelData/ghost.X";
 				g_Enemy = NewGO<Enemy>(0);
@@ -174,6 +177,8 @@ void GameScene::Update()
 		{
 			if (g_map == nullptr)
 			{
+				g_gameCamera->ChangeStart();
+				if (g_fade->IsExecute() == true) { return; }
 				g_player = NewGO<Player>(0);
 				g_map = NewGO<Map>(0);
 				
@@ -182,6 +187,9 @@ void GameScene::Update()
 			else
 			{
 				g_fade->StartFadeIn();
+				
+
+
 				scenes = STOP;
 				mapscene = MACHI;
 				break;
@@ -199,6 +207,13 @@ void GameScene::Update()
 
 
 		break;
+
+	case Change:
+
+
+		DeteScene();
+		break;
+
 	}
 	
 }
@@ -213,6 +228,12 @@ void GameScene::Render(CRenderContext& renderContext)
 void GameScene::DeteScene()
 {
 
+	if (g_fade->IsExecute() == true)
+	{
+		g_player->IsMoveSTOP();
+		g_player->StopSound();
+		g_gameCamera->ChangeStop();
+		return; }
 
 	if(mapscene == MACHI)
 	{
@@ -246,31 +267,12 @@ void GameScene::DeteScene()
 }
 void GameScene::MapChange()
 {
-	while (Chang == true) {
+	g_fade->StartFadeOut();
+	g_sound->StopSound();
+	scenes = Change;
+	
+	
 
-		switch (sets)
-		{
-		case in:
-			
-				//g_fade->StartFadeOut();
-				sets = out;
-				g_sound->StopSound();
-
-			break;
-
-		case out:
-
-				DeteScene();
-				sets = in;
-				Chang = false;
-
-			
-			break;
-
-		}
-	}
-
-	Chang = true;
 }
 
 
