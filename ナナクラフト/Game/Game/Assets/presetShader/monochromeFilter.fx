@@ -44,7 +44,7 @@ float4 PSMain( VS_OUTPUT In ) : COLOR0
 {
 	float4 sceneColor = tex2D(SceneSampler, In.uv);
 	
-	return lerp(sceneColor, (float4)length(sceneColor), g_blendRate);
+	return float4(1.0f,0.0f,0.0f,1.0f);
 }
 
 technique Default

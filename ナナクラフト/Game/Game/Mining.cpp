@@ -12,7 +12,7 @@ extern CRandom g_random;
 Mining::Mining()
 {
 
-	Maplight.SetAmbinetLight({ 1.0f,1.0f,1.0f });
+	Maplight.SetAmbinetLight({ 0.4f,0.4f,0.4f });
 	
 }
 

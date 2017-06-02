@@ -40,10 +40,16 @@ namespace tkEngine{
 			}
 		}
 		{
-			//レンダリングステートの初期化。
-			renderContext[0].Clear(0, nullptr, D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER,
-				D3DCOLOR_RGBA(0, 0, 255, 0), 1.0f, 0
+			if (Engine().GetcrearEnable())
+			{
+				//レンダリングステートの初期化。
+				renderContext[0].Clear(0, nullptr, D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER,
+					D3DCOLOR_RGBA(0, 0, 255, 0), 1.0f, 0
 				);
+			}
+			
+			
+			
 			tkEngine::SViewport vp = {
 				0,
 				0,
@@ -52,6 +58,7 @@ namespace tkEngine{
 				0.0f,
 				1.0f
 			};
+			
 			renderContext[0].SetViewport(vp);
 			renderContext[0].SetRenderState(D3DRS_CULLMODE, D3DCULL_CCW);
 			renderContext[0].SetRenderState(D3DRS_ALPHABLENDENABLE, TRUE);

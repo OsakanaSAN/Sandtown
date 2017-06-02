@@ -6,7 +6,7 @@ public:
 	~BattleMenu();
 	bool Start()override;
 	void Update();
-	void Render(CRenderContext& renderContext);
+	void PostRender(CRenderContext& renderContext);
 	//プレイヤーバトル用のHP表示＆計算
 	void MaxPlayerHp();
 	void PlayerHp();

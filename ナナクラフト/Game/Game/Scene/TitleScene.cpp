@@ -31,7 +31,7 @@ TitleScene::~TitleScene()
 bool TitleScene::Start()
 {
 
-	m_titleBGTexture.Load("Assets/sprite/Title.png");
+	m_titleBGTexture.Load("Assets/sprite/title2.png");
 	m_titleBGSprite.Init(&m_titleBGTexture);
 	m_titleBGSprite.SetSize({ 1920,1080 });
 

@@ -12,6 +12,7 @@
 #include "Menu.h"
 #include "Enemy.h"
 #include "Npc.h"
+#include "tkEngine/graphics/tkCamera.h"
 
 
 
@@ -72,29 +73,34 @@ bool GameScene::Start()
 void GameScene::Update()
 {
 	
-	
-
 
 	switch (scenes)
 	{
-
+	case BattleWait:
+		
+		g_player->IsMoveSTOP();
+		m_timer += GameTime().GetFrameDeltaTime();
+		
+		if (m_timer > 3.0f)
+		{
+			CEngine::Instance().SetcrearEnable(true);
+			scenes = Battle;
+			m_timer = 0.0f;
+		}
+		break;
 	case STOP:
 	
 
+		
+		
 		
 
 		if (/*Pad(0).IsPress(enButtonX) && mapscene == DOUKUTU*/ Bato == true)
 		{
 				
-				DeleteGO(g_player);
-				g_player = nullptr;
-				//g_Enemy = nullptr;
-				g_sound->StopSound();
-				g_battleScene = NewGO<BattleScene>(0);
-				g_gameCamera->BattleCamera();
-				g_gameCamera->ChangeStop();    //カメラの更新を止める
-				scenes = Battle;
-				Bato = false;
+			CEngine::Instance().SetcrearEnable(false);
+			scenes = BattleWait;
+				
 
 		}
 		
@@ -137,12 +143,12 @@ void GameScene::Update()
 				g_Enemy->setPos({ -3.0f, 0.0f, -20.0f });
 
 
-				modelName = "Assets/modelData/ghost.X";
+				modelName = "Assets/modelData/cabetu.X";
 				g_Enemy2 = NewGO<Enemy>(0);
 				g_Enemy2->Init(modelName);
 				g_Enemy2->setPos({ -3.0f, 0.0f, -40.0f });
 
-				modelName = "Assets/modelData/ghost.X";
+				modelName = "Assets/modelData/usagi.X";
 				g_Enemy3 = NewGO<Enemy>(0);
 				g_Enemy3->Init(modelName);
 				g_Enemy3->setPos({ 20.0f, 0.0f, -15.0f });
@@ -165,7 +171,7 @@ void GameScene::Update()
 
 
 		}
-
+		break;
 
 	case MACHI:
 
@@ -188,10 +194,21 @@ void GameScene::Update()
 			}
 
 		}
-
+		break;
 	case Battle:
-
-
+		if (Bato == true)
+		{
+			
+			DeleteGO(g_player);
+			g_player = nullptr;
+			//g_Enemy = nullptr;
+			g_sound->StopSound();
+			g_battleScene = NewGO<BattleScene>(0);
+			g_gameCamera->BattleCamera();
+			g_gameCamera->ChangeStop();    //カメラの更新を止める
+			
+			Bato = false;
+		}
 		break;
 
 

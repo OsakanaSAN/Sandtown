@@ -80,6 +80,7 @@ public:
 		runsound->Stop();
 	}
 
+	
 
 private:
 	enum ANIME {
@@ -122,5 +123,7 @@ private:
 	float					radius = 0.0f;
 	float					height = 0.0f;
 
+
+	CVector3 scale = CVector3::One;
 };
 extern Player* g_player;

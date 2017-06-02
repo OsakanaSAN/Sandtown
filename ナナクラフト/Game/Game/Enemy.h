@@ -56,6 +56,12 @@ private:
 		Dead
 	};
 
+	enum HIT
+	{
+		HIT,
+		NO
+	};
+	int hit = NO;
 	int ste = Alive;
 
 
@@ -80,6 +86,7 @@ private:
 
 	char* enemy;
 	bool enemyHit=false;
+	
 };
 extern Enemy* g_Enemy;
 

@@ -77,7 +77,7 @@ bool Player::Start()
 	//All.SetPointLightColor({ 1.0f,1.0f,1.5f,4.0f });
 	
 
-	skinModelData.LoadModelData("Assets/modelData/Unity.X", &Animation);
+	skinModelData.LoadModelData("Assets/modelData/kano.X", &Animation);
 	skinModel.Init(skinModelData.GetBody());
 	skinModel.SetLight(&All);//デフォルトライトを設定。
 	/*skinModel.SetHasNormalMap(true);
@@ -104,14 +104,15 @@ bool Player::Start()
 	currentAnimSetNo = Stand_anim;
 	Animation.PlayAnimation(Stand_anim, 0.1f);
 	Animation.SetAnimationLoopFlag(Jump_anim, false);
-	Animation.SetAnimationEndTime(Run_anim, 0.8);
+	Animation.SetAnimationEndTime(Run_anim, 2);
 
 	
 	radius = 0.6f;
 	height = 0.3f;
 	//characterController.Init(radius, height, position);
 	//characterController.SetGravity(-18.8f);
-
+	
+	scale.Scale(0.4);
 	return true;
 
 }
@@ -133,7 +134,7 @@ void Player::Update()
 		
 		skinModel.EntryShadowMap();
 		//ワールド行列の更新。
-		skinModel.Update(position, m_rotion,CVector3::One);
+		skinModel.Update(position, m_rotion,scale);
 
 		break;
 
@@ -236,7 +237,7 @@ void Player::AnimetionSet()
 			runsound->SetPosition(Getpos());
 			runsound->Play(true);
 
-			Animation.SetAnimationSpeedRate(2);
+			Animation.SetAnimationSpeedRate(2.9);
 
 		}
 	}
