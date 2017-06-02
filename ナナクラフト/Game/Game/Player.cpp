@@ -161,7 +161,7 @@ void Player::Move()
 	
 
 	
-	if (move.x != 0.0f || move.z != 0.0f)
+	if (move.x  !=  0.0f || move.z != 0.0f)
 	{
 		Ismove = true;
 		
@@ -207,6 +207,7 @@ void Player::AngleSet()
 	moveSpeed.x = moveDir.x * MOVESPEED;
 	moveSpeed.z = moveDir.z * MOVESPEED;
 
+	
 
 	if (moveDir.LengthSq() > 0.0001f) {
 

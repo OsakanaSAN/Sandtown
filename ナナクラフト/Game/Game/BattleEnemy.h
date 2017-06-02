@@ -77,7 +77,6 @@ private:
 		Alive,
 		Dead
 	};
-
 	CSkinModel		skinModel;
 	CSkinModelDataHandle	skinModelData;
 	
