@@ -14,11 +14,6 @@
 #include "Npc.h"
 
 
-
-#define   Y_UP 150
-#define   X_POS -650
-#define   X2_POS -950
-
 GameScene* g_gameScene = NULL;
 Player* g_player = nullptr;
 Camera* g_gameCamera = nullptr;
