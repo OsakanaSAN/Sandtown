@@ -103,6 +103,7 @@ void Camera::TpsCamera()
 //í“¬‚É“ü‚é‘O‚ÌƒJƒƒ‰
 void Camera::BattleCamera()
 {
+
 	CVector3 bpos;
 	bpos = g_battleplayer->Getpos2();
 	Battletag.z = bpos.z + 7;
@@ -115,7 +116,7 @@ void Camera::BattleCamera()
 //“G‚É’–Ú‚µ‚½ƒJƒƒ‰
 void Camera::EnemyBattleCamera()
 {
-
+	BattlePlayerCameraPos = { -1.5f,0.0f,1.0f };
 
 	if (g_battleplayer != nullptr) {
 		V = g_battleenemy->Getpos();
@@ -137,7 +138,7 @@ void Camera::PlayerBatlleCamera()
 	
 	
 	//‰ñ“]
-	float rStick_x = 0.1f;
+	float rStick_x = 0.05f;
 
 
 	if (fabs(rStick_x) > 0.0f)
