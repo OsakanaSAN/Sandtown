@@ -52,16 +52,20 @@ BattleEnemy::~BattleEnemy()
 		
 
 	}
+
 	if (g_Enemy2->GetEnemyState() == Alive)
 	{
 		g_Enemy2->SetActiveFlag(true);
 
 	}
+	
 
 	if (g_Enemy3->GetEnemyState() == Alive)
 	{
 		g_Enemy3->SetActiveFlag(true);
 	}
+	
+	
 	
 }
 

@@ -57,6 +57,12 @@ private:
 		Dead
 	};
 
+	enum HIT
+	{
+		HIT,
+		NO
+	};
+	int hit = NO;
 	int ste = Alive;
 
 
@@ -83,7 +89,9 @@ private:
 
 	char* enemy;
 	bool enemyHit=false;
+
 	CVector3 direction = CVector3::AxisZ;
+
 };
 extern Enemy* g_Enemy;
 

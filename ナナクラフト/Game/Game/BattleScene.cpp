@@ -25,6 +25,7 @@ BattleScene::BattleScene()
 	g_battlemenu->SetHp(g_Hud->GetHP());
 	g_battlemenu->SetEnemyHp(g_battleenemy->GetHP());
 	g_battlemenu->SetEnemyMexHp(g_battleenemy->GetHP());
+	/*g_battleplayer->SetATK(g_Hud->GetATK());*/
 	
 }
 
@@ -113,13 +114,13 @@ bool BattleScene::Start()
 
 	g_sound->BattleSound();
 
-	/*CVector3 lightPos, lightTarget;
+	CVector3 lightPos, lightTarget;
 	lightTarget.Add(g_battleplayer->Getpos(), g_battleenemy->Getpos());
 	lightTarget.Scale(0.5f);
 	lightPos = g_battleplayer->Getpos();
 	lightPos.y += 5.0f;
 	ShadowMap().SetLightPosition(lightPos);
-	ShadowMap().SetLightTarget(lightTarget);*/
+	ShadowMap().SetLightTarget(lightTarget);
 
 
 	return true;
@@ -129,19 +130,19 @@ bool BattleScene::Start()
 void BattleScene::Update()
 {
 	
-	/*CVector3 Pintpos;
-	CVector3 Epos = g_battleenemy->Getpos();
+	CVector3 Pintpos = g_battleplayer->Getpos();
+	/*CVector3 Epos = g_battleenemy->Getpos();
 	CVector3 Ppos = g_battleplayer->Getpos();
 
 	Pintpos.Add(Ppos, Epos);
-	Pintpos.Scale(0.5f);
+	Pintpos.Scale(0.5f);*/
 
 	CVector3 Cpos = g_gameCamera->BGetPos();
 
 	Pintpos.Subtract(Cpos);
 	
-	Dof().SetPint(Pintpos.Length()*1000);*/
-	/*Dof().SetFocalLength(36.0f);*/
+	Dof().SetPint(Pintpos.Length()*1000);
+	Dof().SetFocalLength(40.0f);
 
 	
 	if (!IsBattleStart) { return; }
@@ -167,7 +168,7 @@ void BattleScene::Update()
 				EnemyZoom = false;
 
 				
-				if (Comand != Attack)
+				if (Comand != Keep)
 				{
 					m_sound_bgm_battle = NewGO<CSoundSource>(0);
 					m_sound_bgm_battle->Init("Assets/sound/select.wav");
@@ -181,6 +182,10 @@ void BattleScene::Update()
 				m_CasolBGSprite5.SetSize({ 200,200 });
 
 				Comand = Keep;
+
+			}
+			else if (Pad(0).IsPress(enButtonDown) && Pad(0).IsPress(enButtonUp))
+			{
 
 			}
 			else if (Pad(0).IsPress(enButtonDown) && Comand == Keep)
@@ -234,7 +239,7 @@ void BattleScene::Update()
 
 }
 
-void BattleScene::Render(CRenderContext&renderContext)
+void BattleScene::PostRender(CRenderContext&renderContext)
 {
 
 	
@@ -394,8 +399,8 @@ void BattleScene::EnemyTurn()
 	}
 	else if (EAttack && !PDamage && g_battleplayer->GetAnimend() && g_battleenemy->GetAnimend())
 	{
-		m_sound_Attack = NewGO<CSoundSource>(0);
-		m_sound_Attack->Init("Assets/sound/Attack.wav");
+		//m_sound_Attack = NewGO<CSoundSource>(0);
+		//m_sound_Attack->Init("Assets/sound/Attack.wav");
 		m_sound_Attack->Play(false);
 		m_sound_Attack->SetVolume(4.0f);
 		
@@ -412,7 +417,7 @@ void BattleScene::EnemyTurn()
 	}
 	else if (EAttack &&PDamage&& g_battleenemy->GetAnimend() && g_battleplayer->GetAnimend())
 	{
-		m_sound_Attack->Stop();
+		/*m_sound_Attack->Stop();*/
 		EAttack = false;
 		PDamage = false;
 

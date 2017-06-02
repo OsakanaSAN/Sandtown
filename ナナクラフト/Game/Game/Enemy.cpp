@@ -63,11 +63,12 @@ void Enemy::Init(char* modelName)
 void Enemy::Update() {
 
 	
+	
+	
 
 	Tracking();
 	
-	
-	// アニメーションの更新a
+	// アニメーションの更新
 	Animation.Update(1.0f / 60.0f);
 	characterController.Execute(0.03f);
 	skinModel.Update(position, m_rotation, CVector3::One);
@@ -94,8 +95,11 @@ void Enemy::Tracking()
 	{
 		if (diff.Length() < 2)
 		{
+			
+			
 			g_gameScene->Batoset(true);
 			enemyHit = true;
+			
 			/*DeleteGO(this);*/
 		}
 

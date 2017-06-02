@@ -68,6 +68,7 @@ private:
 		STOP,
 		MACHI,
 		DOUKUTU,
+		BattleWait,
 		Battle,
 		MENU,
 		Change,
@@ -86,8 +87,12 @@ private:
 	
 
 
-
-
+	float m_timer = 0.0f;
+	CVector3 up = CVector3::One;
+	CVector3 target = CVector3::One;
+	CVector3 work= CVector3::Zero;
+	CQuaternion rot;
+	CMatrix came;
 };
 
 extern GameScene* g_gameScene;

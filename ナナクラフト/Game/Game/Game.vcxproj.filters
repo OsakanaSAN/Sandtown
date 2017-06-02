@@ -60,11 +60,16 @@
     <ClCompile Include="BattleEnemy.cpp">
       <Filter>Enemy</Filter>
     </ClCompile>
+<<<<<<< HEAD
+    <ClCompile Include="shop.cpp">
+      <Filter>Map</Filter>
+=======
     <ClCompile Include="GameSound.cpp">
       <Filter>Sound</Filter>
     </ClCompile>
     <ClCompile Include="Camera.cpp">
       <Filter>Camera</Filter>
+>>>>>>> 2554a01594d2acdad3426d71558a94d60d9e2dd4
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -126,11 +131,16 @@
     <ClInclude Include="BattleEnemy.h">
       <Filter>Enemy</Filter>
     </ClInclude>
+<<<<<<< HEAD
+    <ClInclude Include="shop.h">
+      <Filter>Map</Filter>
+=======
     <ClInclude Include="GameSound.h">
       <Filter>Sound</Filter>
     </ClInclude>
     <ClInclude Include="Camera.h">
       <Filter>Camera</Filter>
+>>>>>>> 2554a01594d2acdad3426d71558a94d60d9e2dd4
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
