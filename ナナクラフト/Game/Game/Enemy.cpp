@@ -20,7 +20,11 @@ Enemy::Enemy()
 	Enemylight.SetDiffuseLightColor(2, { 0.3f, 0.3f, 0.3f, 1.0f });
 	Enemylight.SetDiffuseLightDirection(3, { 0.0f, 0.707f, -0.707f });
 	Enemylight.SetDiffuseLightColor(3, { 0.1f, 0.1f, 0.1f, 1.0f });
+	BakPosition = position;
+
+
 }
+
 
 
 Enemy::~Enemy()
@@ -48,14 +52,13 @@ void Enemy::Init(char* modelName)
 										//キャラクタコントローラの初期化。
 	characterController.Init(0.5f, 1.0f, position);
 	CVector3 move = characterController.GetMoveSpeed();
-	//move.x = -Pad(0).GetLStickXF() * 5.0f;
-	//move.z = -Pad(0).GetLStickYF() * 5.0f;
+	
 
 	characterController.RemoveRigidBoby();
 	Animation.PlayAnimation(3, 0.2f);
 	Animation.SetAnimationSpeedRate(1.5);
 	skinModel.SetShadowCasterFlag(true);
-	/*skinModel.SetShadowReceiverFlag(true);*/
+
 }
 void Enemy::Update() {
 
@@ -69,6 +72,7 @@ void Enemy::Update() {
 	Animation.Update(1.0f / 60.0f);
 	characterController.Execute(0.03f);
 	skinModel.Update(position, m_rotation, CVector3::One);
+	
 }
 
 void Enemy::Render(CRenderContext&renderContext) {
@@ -106,12 +110,12 @@ void Enemy::Tracking()
 			position.x += diff.x *0.08f;
 			position.y += diff.y *0.08f;
 			position.z += diff.z *0.08f;
-			CVector3 paly = g_player->Getpos();
 
 			CVector3 Def;
 			Def.Subtract(position, g_player->Getpos());
 
 			m_rotation.SetRotation(CVector3::Up, atan2f(-Def.x, -Def.z)); //前が背中なんで　マイナスする
+			
 
 		}
 		else
@@ -126,6 +130,25 @@ void Enemy::Tracking()
 	{
 		SearchRaeng = OutSearch;
 		over = false;
+		pPos = position;
+		pPos.Subtract(BakPosition);
+
+		float angle = atan2f(direction.x, direction.z);
+		m_rotation.SetRotation(CVector3::AxisY, angle);
+
+
+		//元の座標に戻る処理
+		if (pPos.Length() >= 1) {
+			pPos.Div(pPos.Length());
+			position.x -= pPos.x *0.08f;
+			position.y -= pPos.y *0.08f;
+			position.z -= pPos.z *0.08f;
+
+			CVector3 Def;
+			Def.Subtract(position, BakPosition);
+
+			m_rotation.SetRotation(CVector3::Up, atan2f(-Def.x, -Def.z)); //前が背中なんで　マイナスする
+		}
 	}
 
 	

@@ -194,7 +194,7 @@ void BattlePlayer::AnimationSet()
 	{
 		Animation.PlayAnimation(Stand_anim, 0.1f);
 		Animation.SetAnimationLoopFlag(Stand_anim, true);
-
+		Animation.SetAnimationSpeedRate(1);
 		IsAttack = false;
 		IsDamage = false;
 		IsAnimend = true;

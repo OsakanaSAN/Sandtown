@@ -32,7 +32,7 @@ private:
 	CMeshCollider		 meshCollider;	//メッシュコライダー。
 	CRigidBody			 rigidBody;		//剛体。
 	bool                 Norend = false;
-
+	bool                 Out = false;
 };
 
 extern SceneChange* g_SC;

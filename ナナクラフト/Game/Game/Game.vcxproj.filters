@@ -62,9 +62,6 @@
     <ClCompile Include="BattleEnemy.cpp">
       <Filter>Enemy</Filter>
     </ClCompile>
-    <ClCompile Include="shop.cpp">
-      <Filter>Map</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Camera.h" />
@@ -126,9 +123,6 @@
     </ClInclude>
     <ClInclude Include="BattleEnemy.h">
       <Filter>Enemy</Filter>
-    </ClInclude>
-    <ClInclude Include="shop.h">
-      <Filter>Map</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

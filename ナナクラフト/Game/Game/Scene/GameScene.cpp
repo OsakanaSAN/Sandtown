@@ -35,9 +35,12 @@ GameScene::GameScene()
 	g_map = NewGO<Map>(0);
 	g_menu = NewGO<Menu>(0);
 	NewGO<Npc>(0);
+
+
 	mapscene = MACHI;
 	scenes = STOP;
-	
+
+
 }
 
 
@@ -83,8 +86,9 @@ void GameScene::Update()
 			m_timer = 0.0f;
 		}
 		break;
+
 	case STOP:
-	
+
 
 		if (Bato == true)
 		{
@@ -227,7 +231,7 @@ void GameScene::Update()
 */
 void GameScene::Render(CRenderContext& renderContext)
 {
-
+	
 }
 
 void GameScene::DeteScene()
