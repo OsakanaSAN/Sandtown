@@ -1,8 +1,39 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
+    <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="Fade.cpp" />
+    <ClCompile Include="GameSound.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="shop.cpp" />
     <ClCompile Include="stdafx.cpp" />
+    <ClCompile Include="BattleEnemy.cpp">
+      <Filter>Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy.cpp">
+      <Filter>Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="BattleMenu.cpp">
+      <Filter>Hud</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyHUD.cpp">
+      <Filter>Hud</Filter>
+    </ClCompile>
+    <ClCompile Include="HUD.cpp">
+      <Filter>Hud</Filter>
+    </ClCompile>
+    <ClCompile Include="BattlePlayer.cpp">
+      <Filter>Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Npc.cpp">
+      <Filter>Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="GameSky.cpp">
+      <Filter>Map</Filter>
+    </ClCompile>
     <ClCompile Include="Map.cpp">
       <Filter>Map</Filter>
     </ClCompile>
@@ -12,23 +43,8 @@
     <ClCompile Include="Mapchip.cpp">
       <Filter>Map</Filter>
     </ClCompile>
-    <ClCompile Include="BattlePlayer.cpp">
-      <Filter>Player</Filter>
-    </ClCompile>
-    <ClCompile Include="Npc.cpp">
-      <Filter>Player</Filter>
-    </ClCompile>
-    <ClCompile Include="Player.cpp">
-      <Filter>Player</Filter>
-    </ClCompile>
-    <ClCompile Include="HUD.cpp">
-      <Filter>HUD</Filter>
-    </ClCompile>
-    <ClCompile Include="BattleMenu.cpp">
-      <Filter>HUD</Filter>
-    </ClCompile>
     <ClCompile Include="Menu.cpp">
-      <Filter>HUD</Filter>
+      <Filter>Hud</Filter>
     </ClCompile>
     <ClCompile Include="Mining.cpp">
       <Filter>Map</Filter>
@@ -36,44 +52,49 @@
     <ClCompile Include="SceneChange.cpp">
       <Filter>Map</Filter>
     </ClCompile>
+    <ClCompile Include="BattleScene.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
     <ClCompile Include="Scene\GameScene.cpp">
       <Filter>Scene</Filter>
     </ClCompile>
     <ClCompile Include="Scene\TitleScene.cpp">
       <Filter>Scene</Filter>
     </ClCompile>
-    <ClCompile Include="BattleScene.cpp">
-      <Filter>Scene</Filter>
-    </ClCompile>
-    <ClCompile Include="Fade.cpp">
-      <Filter>Scene</Filter>
-    </ClCompile>
-    <ClCompile Include="GameSky.cpp">
-      <Filter>Map</Filter>
-    </ClCompile>
-    <ClCompile Include="Enemy.cpp">
-      <Filter>Enemy</Filter>
-    </ClCompile>
-    <ClCompile Include="EnemyHUD.cpp">
-      <Filter>Enemy</Filter>
-    </ClCompile>
-    <ClCompile Include="BattleEnemy.cpp">
-      <Filter>Enemy</Filter>
-    </ClCompile>
-<<<<<<< HEAD
-    <ClCompile Include="shop.cpp">
-      <Filter>Map</Filter>
-=======
-    <ClCompile Include="GameSound.cpp">
-      <Filter>Sound</Filter>
-    </ClCompile>
-    <ClCompile Include="Camera.cpp">
-      <Filter>Camera</Filter>
->>>>>>> 2554a01594d2acdad3426d71558a94d60d9e2dd4
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Camera.h" />
+    <ClInclude Include="Fade.h" />
+    <ClInclude Include="GameSound.h" />
+    <ClInclude Include="shop.h" />
     <ClInclude Include="stdafx.h" />
+    <ClInclude Include="BattleEnemy.h">
+      <Filter>Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy.h">
+      <Filter>Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="BattleMenu.h">
+      <Filter>Hud</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyHUD.h">
+      <Filter>Hud</Filter>
+    </ClInclude>
+    <ClInclude Include="HUD.h">
+      <Filter>Hud</Filter>
+    </ClInclude>
+    <ClInclude Include="BattlePlayer.h">
+      <Filter>Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Npc.h">
+      <Filter>Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="GameSky.h">
+      <Filter>Map</Filter>
+    </ClInclude>
     <ClInclude Include="Map.h">
       <Filter>Map</Filter>
     </ClInclude>
@@ -83,23 +104,8 @@
     <ClInclude Include="Mapchip.h">
       <Filter>Map</Filter>
     </ClInclude>
-    <ClInclude Include="BattlePlayer.h">
-      <Filter>Player</Filter>
-    </ClInclude>
-    <ClInclude Include="Npc.h">
-      <Filter>Player</Filter>
-    </ClInclude>
-    <ClInclude Include="Player.h">
-      <Filter>Player</Filter>
-    </ClInclude>
-    <ClInclude Include="HUD.h">
-      <Filter>HUD</Filter>
-    </ClInclude>
-    <ClInclude Include="BattleMenu.h">
-      <Filter>HUD</Filter>
-    </ClInclude>
     <ClInclude Include="Menu.h">
-      <Filter>HUD</Filter>
+      <Filter>Hud</Filter>
     </ClInclude>
     <ClInclude Include="Mining.h">
       <Filter>Map</Filter>
@@ -107,63 +113,31 @@
     <ClInclude Include="SceneChange.h">
       <Filter>Map</Filter>
     </ClInclude>
+    <ClInclude Include="BattleScene.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
     <ClInclude Include="Scene\GameScene.h">
       <Filter>Scene</Filter>
     </ClInclude>
     <ClInclude Include="Scene\TitleScene.h">
       <Filter>Scene</Filter>
     </ClInclude>
-    <ClInclude Include="BattleScene.h">
-      <Filter>Scene</Filter>
-    </ClInclude>
-    <ClInclude Include="Fade.h">
-      <Filter>Scene</Filter>
-    </ClInclude>
-    <ClInclude Include="GameSky.h">
-      <Filter>Map</Filter>
-    </ClInclude>
-    <ClInclude Include="Enemy.h">
-      <Filter>Enemy</Filter>
-    </ClInclude>
-    <ClInclude Include="EnemyHUD.h">
-      <Filter>Enemy</Filter>
-    </ClInclude>
-    <ClInclude Include="BattleEnemy.h">
-      <Filter>Enemy</Filter>
-    </ClInclude>
-<<<<<<< HEAD
-    <ClInclude Include="shop.h">
-      <Filter>Map</Filter>
-=======
-    <ClInclude Include="GameSound.h">
-      <Filter>Sound</Filter>
-    </ClInclude>
-    <ClInclude Include="Camera.h">
-      <Filter>Camera</Filter>
->>>>>>> 2554a01594d2acdad3426d71558a94d60d9e2dd4
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Filter Include="Map">
-      <UniqueIdentifier>{5e798d6a-29d1-4e7e-a5f1-226b3af8ca7a}</UniqueIdentifier>
+    <Filter Include="Enemy">
+      <UniqueIdentifier>{b0bc9642-bb7b-4601-89c5-d5b2e91d4def}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Hud">
+      <UniqueIdentifier>{55e2a168-0da9-433f-8aa9-002751a4f6e1}</UniqueIdentifier>
     </Filter>
     <Filter Include="Player">
-      <UniqueIdentifier>{ddfdf7e2-6739-4226-91b3-24ddf2948c75}</UniqueIdentifier>
+      <UniqueIdentifier>{0632785b-4a68-415f-af45-5b71c23f21d7}</UniqueIdentifier>
     </Filter>
-    <Filter Include="HUD">
-      <UniqueIdentifier>{e2201492-f72e-440d-80a5-2b0385534201}</UniqueIdentifier>
+    <Filter Include="Map">
+      <UniqueIdentifier>{3ee1e330-065b-4dcd-af9c-0e99516d609d}</UniqueIdentifier>
     </Filter>
     <Filter Include="Scene">
-      <UniqueIdentifier>{63a8208b-02c9-4ceb-b9e8-3185684d2ff7}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Enemy">
-      <UniqueIdentifier>{3b94df71-8176-4c32-9f4c-82f2c1fa20e6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Sound">
-      <UniqueIdentifier>{9cff43de-3977-49e8-86e8-880a2a4bae83}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Camera">
-      <UniqueIdentifier>{a4520e65-ad47-4fbd-a8cc-f36eaddab89a}</UniqueIdentifier>
+      <UniqueIdentifier>{6b43288b-8224-4d14-af37-092943c70898}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

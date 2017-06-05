@@ -74,27 +74,15 @@ Player::~Player()
 
 bool Player::Start()
 {
-	//All.SetPointLightColor({ 1.0f,1.0f,1.5f,4.0f });
 	
 
 	skinModelData.LoadModelData("Assets/modelData/kano.X", &Animation);
 	skinModel.Init(skinModelData.GetBody());
 	skinModel.SetLight(&All);//デフォルトライトを設定。
-	/*skinModel.SetHasNormalMap(true);
-	skinModel.SetHasSpeculerMap(true)*/;
 	skinModel.SetShadowCasterFlag(true);
-	/*skinModel.SetShadowReceiverFlag(true);*/
-	/*skinModel.SetFresnelFlag(true);
-	skinModel.SetReflectionCasterFlag(true);
-	skinModel.SetWriteVelocityMap(false);*/
-	/*skinModel.SetFresnelFlag(true);*/
-
 
 
 	m_rotion.SetRotation(CVector3(0.0f, 1.0f, 0.0f), CMath::DegToRad(0.0f));
-	
-
-
 	//キャラクタコントローラの初期化。
 	characterController.Init(0.5f, 1.0f, position);
 
@@ -109,8 +97,6 @@ bool Player::Start()
 	
 	radius = 0.6f;
 	height = 0.3f;
-	//characterController.Init(radius, height, position);
-	//characterController.SetGravity(-18.8f);
 	
 	scale.Scale(0.4);
 	return true;
@@ -125,7 +111,6 @@ void Player::Update()
 
 	case START:
 
-		//All.SetPointLightPosition(Getpos());
 		characterController.SetPosition(position);
 
 		AngleSet();  //キャラクターの向きを変更する

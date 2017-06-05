@@ -56,15 +56,9 @@ void TitleScene::Update()
 
 	float rStick_y = Pad(0).GetRStickYF();
 
-	if (Pad(0).IsPress(enButtonDown) && GAME == NO)
+	if (Pad(0).IsPress(enButtonUp) && GAME == NO)
 	{
-	/*	m_titleBGTexture3.Release();
-		m_titleBGTexture3.Load("Assets/sprite/START2.png");
-		m_titleBGSprite3.Init(&m_titleBGTexture3);
-		m_titleBGTexture2.Release();
-		m_titleBGTexture2.Load("Assets/sprite/END.png");
-		m_titleBGSprite2.Init(&m_titleBGTexture2);*/
-		//m_titleBGSprite2.SetPosition({ 10,-100 });
+	
 		m_titleBGTexture2.Release();
 		m_titleBGTexture2.Load("Assets/sprite/casol2.png");
 		m_titleBGSprite2.Init(&m_titleBGTexture2);
@@ -73,16 +67,9 @@ void TitleScene::Update()
 		GAME = START;
 	}
 
-	if (Pad(0).IsPress(enButtonUp) && GAME == START)
+	if (Pad(0).IsPress(enButtonDown) && GAME == START)
 	{
-		/*m_titleBGTexture2.Release();
-		m_titleBGTexture2.Load("Assets/sprite/END2.png");
-		m_titleBGSprite2.Init(&m_titleBGTexture2);
-
-		m_titleBGTexture3.Release();
-		m_titleBGTexture3.Load("Assets/sprite/START.png");
-		m_titleBGSprite3.Init(&m_titleBGTexture3);
-		m_titleBGSprite3.SetPosition({ 10,-100 });*/
+		
 		m_titleBGTexture2.Release();
 		m_titleBGTexture2.Load("Assets/sprite/casol2.png");
 		m_titleBGSprite2.Init(&m_titleBGTexture2);
