@@ -22,7 +22,7 @@ TitleScene::~TitleScene()
 	
 	
 	g_gameScene = NewGO<GameScene>(0);
-	DeleteGO(PushSE);
+	//DeleteGO(PushSE);
 	
 	
 	

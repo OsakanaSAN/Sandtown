@@ -1,6 +1,18 @@
-﻿  BattlePlayer.cpp
+﻿  stdafx.cpp
+  BattleEnemy.cpp
+c:\users\kbc16b15\desktop\github\sandtown\ナナクラフト\game\game\HUD.h(16): warning C4244: 'return': 'float' から 'int' への変換です。データが失われる可能性があります。
+  BattleMenu.cpp
+  BattlePlayer.cpp
 c:\users\kbc16b15\desktop\github\sandtown\ナナクラフト\game\game\HUD.h(16): warning C4244: 'return': 'float' から 'int' への変換です。データが失われる可能性があります。
 BattlePlayer.cpp(68): warning C4305: '引数': 'double' から 'float' へ切り詰めます。
+  BattleScene.cpp
+c:\users\kbc16b15\desktop\github\sandtown\ナナクラフト\game\game\HUD.h(16): warning C4244: 'return': 'float' から 'int' への変換です。データが失われる可能性があります。
+BattleScene.cpp(25): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+BattleScene.cpp(410): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+  Camera.cpp
+  Enemy.cpp
+  EnemyHUD.cpp
+  Fade.cpp
   GameSky.cpp
   GameSound.cpp
   HUD.cpp
@@ -22,17 +34,18 @@ Player.cpp(194): warning C4244: '=': 'double' から 'float' への変換です�
 Player.cpp(201): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
 Player.cpp(202): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
 Player.cpp(230): warning C4305: '引数': 'double' から 'float' へ切り詰めます。
-Player.cpp(238): warning C4305: '引数': 'double' から 'float' へ切り詰めます。
   SceneChange.cpp
   GameScene.cpp
 C:\Users\kbc16b15\Desktop\github\Sandtown\ナナクラフト\Game\Game\HUD.h(16): warning C4244: 'return': 'float' から 'int' への変換です。データが失われる可能性があります。
 Scene\GameScene.cpp(105): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+  コードを生成中...
+c:\users\kbc16b15\desktop\github\sandtown\ナナクラフト\game\game\scene\gamescene.cpp(69): warning C4715: 'GameScene::Start': 値を返さないコントロール パスがあります。
+  コンパイル中...
   TitleScene.cpp
   main.cpp
   shop.cpp
 c:\users\kbc16b15\desktop\github\sandtown\ナナクラフト\game\game\HUD.h(16): warning C4244: 'return': 'float' から 'int' への変換です。データが失われる可能性があります。
   コードを生成中...
-c:\users\kbc16b15\desktop\github\sandtown\ナナクラフト\game\game\scene\gamescene.cpp(69): warning C4715: 'GameScene::Start': 値を返さないコントロール パスがあります。
 LINK : warning LNK4075: /INCREMENTAL は /LTCG の指定によって無視されます。
   LINK : /LTCG が指定されましたが、コードの生成は必要ありません。リンク コマンド ラインから /LTCG を削除し、リンカーの性能を改善してください。
   Game.vcxproj -> C:\Users\kbc16b15\Desktop\github\Sandtown\ナナクラフト\Game\x64\Release\Game.exe

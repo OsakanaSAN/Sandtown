@@ -5,6 +5,7 @@
 #ifndef _TKPOSTEFFECT_H_
 #define _TKPOSTEFFECT_H_
 
+
 #include "tkEngine/graphics/postEffect/tkEdgeRender.h"
 #include "tkEngine/graphics/postEffect/tkBloomRender.h"
 #include "tkEngine/graphics/postEffect/tkDOF.h"
@@ -13,6 +14,7 @@
 #include "tkEngine/graphics/postEffect/tkMonochromeFilter.h"
 #include "tkEngine/graphics/postEffect/tkSepiaFilter.h"
 #include "tkEngine/graphics/postEffect/tkTonemap.h"
+#include "tkEngine/graphics/postEffect/tkFeedbackblur.h"
 
 namespace tkEngine{
 	/*!
@@ -73,6 +75,10 @@ namespace tkEngine{
 		{
 			return m_sepiaFilter;
 		}
+		CFeedbackblur& GetFeedbackblur()
+		{
+			return m_feedbackblur;
+		}
 	private:
 		CEdgeRender			m_edgeRender;		//!<エッジ描画。
 		CBloomRender		m_bloomRender;		//!<Bloom。
@@ -82,8 +88,9 @@ namespace tkEngine{
 		CMonochromeFilter	m_monochromeFilter;	//!<モノクロフィルタ。
 		CSepiaFilter		m_sepiaFilter;		//!<セピアフィルタ。
 		CTonemap			m_tonemap;			//!<トーンマップ。
+		CFeedbackblur		m_feedbackblur;
 		CPrimitive		m_fullscreenRenderPrim;	//!<フルスクリーンをレンダリングするためのプリミティブ。
 	};
 }
 
-#endif // _TKPOSTEFFECT_H_
+#endif //_TKPOSTEFFECT_H_

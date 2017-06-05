@@ -235,7 +235,7 @@ void Player::AnimetionSet()
 
 			runsound->Play(true);
 
-			Animation.SetAnimationSpeedRate(2.9);
+			Animation.SetAnimationSpeedRate(2.0);
 
 		}
 	}

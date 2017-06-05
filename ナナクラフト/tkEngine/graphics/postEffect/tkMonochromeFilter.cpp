@@ -17,7 +17,7 @@ namespace tkEngine{
 	}
 	void CMonochromeFilter::Create(const SGraphicsConfig& config)
 	{
-		m_effect = EffectManager().LoadEffect("Assets/presetShader/monochromeFilter.fx");
+		/*m_effect = EffectManager().LoadEffect("Assets/presetShader/monochromeFilter.fx");*/
 	}
 
 }

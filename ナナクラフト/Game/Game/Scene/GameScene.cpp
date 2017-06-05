@@ -92,7 +92,7 @@ void GameScene::Update()
 
 		if (Bato == true)
 		{
-				
+
 			CEngine::Instance().SetcrearEnable(false);
 			scenes = BattleWait;
 				
