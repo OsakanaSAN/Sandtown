@@ -1,6 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
+    <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="GameSound.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="stdafx.cpp" />
     <ClCompile Include="Map.cpp">
@@ -60,19 +62,13 @@
     <ClCompile Include="BattleEnemy.cpp">
       <Filter>Enemy</Filter>
     </ClCompile>
-<<<<<<< HEAD
     <ClCompile Include="shop.cpp">
       <Filter>Map</Filter>
-=======
-    <ClCompile Include="GameSound.cpp">
-      <Filter>Sound</Filter>
-    </ClCompile>
-    <ClCompile Include="Camera.cpp">
-      <Filter>Camera</Filter>
->>>>>>> 2554a01594d2acdad3426d71558a94d60d9e2dd4
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Camera.h" />
+    <ClInclude Include="GameSound.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="Map.h">
       <Filter>Map</Filter>
@@ -131,16 +127,8 @@
     <ClInclude Include="BattleEnemy.h">
       <Filter>Enemy</Filter>
     </ClInclude>
-<<<<<<< HEAD
     <ClInclude Include="shop.h">
       <Filter>Map</Filter>
-=======
-    <ClInclude Include="GameSound.h">
-      <Filter>Sound</Filter>
-    </ClInclude>
-    <ClInclude Include="Camera.h">
-      <Filter>Camera</Filter>
->>>>>>> 2554a01594d2acdad3426d71558a94d60d9e2dd4
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -158,12 +146,6 @@
     </Filter>
     <Filter Include="Enemy">
       <UniqueIdentifier>{3b94df71-8176-4c32-9f4c-82f2c1fa20e6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Sound">
-      <UniqueIdentifier>{9cff43de-3977-49e8-86e8-880a2a4bae83}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Camera">
-      <UniqueIdentifier>{a4520e65-ad47-4fbd-a8cc-f36eaddab89a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

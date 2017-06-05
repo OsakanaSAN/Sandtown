@@ -20,6 +20,10 @@ shop::~shop()
 {
 	PhysicsWorld().RemoveRigidBody(&rigidBody);
 	rigidBody.Release();
+	m_ComandBGTexture1.Release();
+	m_ComandBGTexture2.Release();
+	m_ComandBGTexture3.Release();
+	m_CasolBGTexture5.Release();
 }
 
 
@@ -111,6 +115,7 @@ void shop::Update()
 	if (shopflg) {
 		if (Pad(0).IsPress(enButtonUp))
 		{
+			
 			m_CasolBGSprite5.SetPosition({ -800,200 });
 			m_CasolBGSprite5.SetSize({ 200,200 });
 			
@@ -118,6 +123,7 @@ void shop::Update()
 		}
 		else if (Pad(0).IsPress(enButtonDown))
 		{
+			
 			m_CasolBGSprite5.SetPosition({ -800,300 });
 			m_CasolBGSprite5.SetSize({ 200,200 });
 			
@@ -128,16 +134,20 @@ void shop::Update()
 		switch (state)
 		{
 		case C:
+			if (g_Hud->GetGold() < 100) { return; };
 			if (Pad(0).IsPress(enButtonA))
 			{
+				
 				g_Hud->SetATK(g_Hud->GetATK() + 20);
 				g_Hud->Shiharai(100);
 				g_menu->GoldChangTex();
 			}
 			break;
 		case D:
+			if (g_Hud->GetGold() < 300) { return; };
 			if (Pad(0).IsPress(enButtonA))
 			{
+				
 				g_Hud->SetATK(g_Hud->GetATK() + 50);
 				g_Hud->Shiharai(300);
 				g_menu->GoldChangTex();

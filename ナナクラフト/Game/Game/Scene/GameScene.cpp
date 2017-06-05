@@ -86,14 +86,10 @@ void GameScene::Update()
 	case STOP:
 	
 
-		
-		
-		
-
 		if (Bato == true)
 		{
 				
-			/*CEngine::Instance().SetcrearEnable(false);*/
+			CEngine::Instance().SetcrearEnable(false);
 			scenes = BattleWait;
 				
 
@@ -118,8 +114,6 @@ void GameScene::Update()
 			exit(0);
 		}
 
-
-
 		break;
 
 
@@ -140,12 +134,12 @@ void GameScene::Update()
 				g_Enemy->setPos({ -3.0f, 0.0f, -20.0f });
 
 
-				modelName = "Assets/modelData/cabetu.X";
+				modelName = "Assets/modelData/usagi.X";
 				g_Enemy2 = NewGO<Enemy>(0);
 				g_Enemy2->Init(modelName);
 				g_Enemy2->setPos({ -3.0f, 0.0f, -40.0f });
 
-				modelName = "Assets/modelData/usagi.X";
+				modelName = "Assets/modelData/Bossusagi.X";
 				g_Enemy3 = NewGO<Enemy>(0);
 				g_Enemy3->Init(modelName);
 				g_Enemy3->setPos({ 20.0f, 0.0f, -15.0f });

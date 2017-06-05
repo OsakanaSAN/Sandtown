@@ -79,8 +79,6 @@ private:
 	};
 	CSkinModel		skinModel;
 	CSkinModelDataHandle	skinModelData;
-	
-
 	CAnimation		Animation;
 	CVector3		position = { -2.0f,0.0f,-38.0f };
 	CQuaternion		m_rotation;
@@ -98,7 +96,6 @@ private:
 	int				ATK = 10;
 	int				HP = 30;
 	int				Exp = 15;
-
 	int             EGold = 50;
 
 

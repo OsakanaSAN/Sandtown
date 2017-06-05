@@ -252,7 +252,7 @@ namespace tkEngine{
 
 				CGameObjectManager& goMgr = CGameObjectManager::Instance();
 				goMgr.Execute(
-					m_renderContextArray.get(), 
+					m_renderContextArray.get(),
 					m_numRenderContext, 
 					m_renderContextMap.get(),
 					m_preRender,

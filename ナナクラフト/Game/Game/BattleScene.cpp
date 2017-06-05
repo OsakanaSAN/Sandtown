@@ -26,7 +26,6 @@ BattleScene::BattleScene()
 	g_battlemenu->SetEnemyHp(g_battleenemy->GetHP());
 	g_battlemenu->SetEnemyMexHp(g_battleenemy->GetHP());
 	/*g_battleplayer->SetATK(g_Hud->GetATK());*/
-	
 }
 
 
@@ -47,9 +46,6 @@ BattleScene::~BattleScene()
 		g_menu->HpChangTex();
 		g_menu->LvChangTex();
 		
-	
-
-
 	}
 
 	else
@@ -130,19 +126,19 @@ bool BattleScene::Start()
 void BattleScene::Update()
 {
 	
-	CVector3 Pintpos = g_battleplayer->Getpos();
-	/*CVector3 Epos = g_battleenemy->Getpos();
-	CVector3 Ppos = g_battleplayer->Getpos();
+	//CVector3 Pintpos = g_battleplayer->Getpos();
+	///*CVector3 Epos = g_battleenemy->Getpos();
+	//CVector3 Ppos = g_battleplayer->Getpos();
 
-	Pintpos.Add(Ppos, Epos);
-	Pintpos.Scale(0.5f);*/
+	//Pintpos.Add(Ppos, Epos);
+	//Pintpos.Scale(0.5f);*/
 
-	CVector3 Cpos = g_gameCamera->BGetPos();
+	//CVector3 Cpos = g_gameCamera->BGetPos();
 
-	Pintpos.Subtract(Cpos);
-	
-	Dof().SetPint(Pintpos.Length()*1000);
-	Dof().SetFocalLength(40.0f);
+	//Pintpos.Subtract(Cpos);
+	//
+	//Dof().SetPint(Pintpos.Length()*1000);
+	//Dof().SetFocalLength(40.0f);
 
 	
 	if (!IsBattleStart) { return; }

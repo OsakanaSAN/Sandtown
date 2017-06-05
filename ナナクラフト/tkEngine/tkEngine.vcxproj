@@ -349,6 +349,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Preview|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="tkFeedbackblur.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AI\tkPathFinding.h" />
@@ -437,6 +438,7 @@
     <ClInclude Include="timer\tkStopwatch.h" />
     <ClInclude Include="tkEngine.h" />
     <ClInclude Include="tkEnginePreCompile.h" />
+    <ClInclude Include="tkFeedbackblur.h" />
     <ClInclude Include="typedef.h" />
     <ClInclude Include="util\tkNameKey.h" />
     <ClInclude Include="util\tkUtil.h" />

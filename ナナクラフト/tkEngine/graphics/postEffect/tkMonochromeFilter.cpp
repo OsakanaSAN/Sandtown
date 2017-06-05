@@ -9,7 +9,8 @@
 namespace tkEngine{
 	CMonochromeFilter::CMonochromeFilter()
 	{
-		
+		/*m_isEnable = true;
+		m_blendRate = 1.0f;*/
 	}
 	CMonochromeFilter::~CMonochromeFilter()
 	{

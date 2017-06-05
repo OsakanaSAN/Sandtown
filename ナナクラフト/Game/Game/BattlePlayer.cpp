@@ -4,9 +4,9 @@
 #include "BattleScene.h"
 #include "Camera.h"
 #include "Player.h"
-
-extern BattleEnemy* g_battleenemy;
-extern Player* g_player;
+#include "HUD.h"
+//extern BattleEnemy* g_battleenemy;
+//extern Player* g_player;
 enum {
 
 	Stand_anim,
@@ -34,7 +34,7 @@ BattlePlayer::BattlePlayer()
 	IsStand = true;
 	IsAnimend = true;
 	currentAnimSetNo = Stand_anim;
-
+	ATK = g_Hud->GetATK();
 	
 }
 
