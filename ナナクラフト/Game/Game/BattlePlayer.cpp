@@ -85,7 +85,8 @@ void BattlePlayer::Update()
 		{
 
 			BakPositon.z += 0.1f;
-			Animation.SetAnimationSpeedRate(2);
+			Animation.SetAnimationSpeedRate(6.5);
+			Animation.SetAnimationEndTime(Run_anim, 2.0f);
 			g_gameCamera->BattleCamera();
 
 		}
@@ -94,6 +95,7 @@ void BattlePlayer::Update()
 		{
 			IsSetPoint = true;
 			Animation.SetAnimationLoopFlag(Run_anim, false);
+
 
 			Animation.PlayAnimation(Stand_anim, 0.1f);
 			Animation.SetAnimationLoopFlag(Stand_anim, true); //スタンドアニメーションをループさせる
@@ -241,9 +243,6 @@ void BattlePlayer::Particle()
 		{ 1.0f, 1.0f, 1.0f },							//!<乗算カラー。
 	},
 		g_battleenemy->Getpos());//パーティクルを生成する座標　CVector3型？
-
-
-
 
 }
 
