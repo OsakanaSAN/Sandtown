@@ -227,15 +227,16 @@ void Player::AnimetionSet()
 	if (!Isrun) {
 		if (Ismove) {
 
-			Animation.PlayAnimation(Run_anim,0.05);
+			Animation.PlayAnimation(Run_anim,0);
 			Isrun = true;		
-			runsound->SetPosition(Getpos());
+			//runsound->SetPosition(Getpos());
 
 			/*runsound->Play(true);*/
 
 			runsound->Play(true);
 
-			Animation.SetAnimationSpeedRate(2.9);
+			Animation.SetAnimationSpeedRate(6.5);
+			Animation.SetAnimationEndTime(Run_anim,2.0f);
 
 		}
 	}
