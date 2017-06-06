@@ -83,7 +83,7 @@ namespace tkEngine{
 		m_fxaa.Render(renderContext, this);
 		m_monochromeFilter.Render(renderContext, this);
 		m_sepiaFilter.Render(renderContext, this);
-		m_feedbackblur.Render(renderContext, this);
+		//m_feedbackblur.Render(renderContext, this);
 	}
 	/*!
 	* @brief	フルスクリーン描画。

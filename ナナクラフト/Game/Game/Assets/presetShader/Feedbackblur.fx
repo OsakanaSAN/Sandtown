@@ -45,7 +45,7 @@ float4 PSMain( VS_OUTPUT In ) : COLOR0
 	
 	float4 sceneColor = tex2D(SceneSampler, In.uv);
 
-	return texture g_scene;
+	return sceneColor;
 	
 }
 

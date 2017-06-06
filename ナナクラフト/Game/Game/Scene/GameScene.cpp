@@ -81,6 +81,7 @@ void GameScene::Update()
 		
 		if (m_timer > 3.0f)
 		{
+			feedbackblur.SetEnalbe(false);
 			CEngine::Instance().SetcrearEnable(true);
 			scenes = Battle;
 			m_timer = 0.0f;
@@ -92,7 +93,7 @@ void GameScene::Update()
 
 		if (Bato == true)
 		{
-
+			feedbackblur.SetEnalbe(true);
 			CEngine::Instance().SetcrearEnable(false);
 			scenes = BattleWait;
 				

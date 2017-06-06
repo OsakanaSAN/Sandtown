@@ -3,7 +3,7 @@
 #include "tkEngine/Sound/tkSoundSource.h"
 #include "tkEngine/character/tkCharacterController.h"
 
-
+#include "tkEngine/graphics/postEffect/tkFeedbackblur.h"
 
 /*!
  *@brief	ゲームシーン。
@@ -48,7 +48,7 @@ public:
 
 private:
 	
-
+	CFeedbackblur		feedbackblur;
 	char* modelName;
 
 	enum set 

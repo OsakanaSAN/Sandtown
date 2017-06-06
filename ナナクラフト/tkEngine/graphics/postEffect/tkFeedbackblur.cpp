@@ -7,7 +7,7 @@ namespace tkEngine {
 	CFeedbackblur::CFeedbackblur()
 	{
 		m_isEnable = true;
-		m_blendRate = 1.0f;
+		/*m_blendRate = 1.0f;*/
 	}
 
 	CFeedbackblur::~CFeedbackblur()
