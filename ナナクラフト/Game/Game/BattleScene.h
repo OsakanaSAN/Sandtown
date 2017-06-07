@@ -59,6 +59,8 @@ private:
 		Keep,
 		Attack,
 		Escape,
+		Item,
+		INVENTORY
 	};
 	BattleComand Comand = Keep;
 
@@ -82,11 +84,14 @@ private:
 	CSprite		m_ComandBGSprite3;		//!<戦闘画面の選択のスプライト。
 	CTexture	m_ComandBGTexture3;		//!<戦闘画面の選択のテクスチャ。
 
-	CSprite		m_DamageBGSprite4;		//!<戦闘画面の選択のスプライト。
-	CTexture	m_DamageBGTexture4;		//!<戦闘画面の選択のテクスチャ。
+	CSprite		m_ComandBGSprite4;		//!<戦闘画面の選択のスプライト。
+	CTexture	m_ComandBGTexture4;		//!<戦闘画面の選択のテクスチャ。
 
-	CSprite		m_CasolBGSprite5;		//!<戦闘画面の選択のスプライト。
-	CTexture	m_CasolBGTexture5;		//!<戦闘画面の選択のテクスチャ。
+	CSprite		m_DamageBGSprite;		//!<戦闘画面の選択のスプライト。
+	CTexture	m_DamageBGTexture;		//!<戦闘画面の選択のテクスチャ。
+
+	CSprite		m_CasolBGSprite;		//!<戦闘画面の選択のスプライト。
+	CTexture	m_CasolBGTexture;		//!<戦闘画面の選択のテクスチャ。
 
 
 	bool		Winflg;

@@ -2,7 +2,6 @@
 
 #include "tkEngine/Sound/tkSoundSource.h"
 #include "tkEngine/character/tkCharacterController.h"
-
 #include "tkEngine/graphics/postEffect/tkFeedbackblur.h"
 
 /*!
@@ -48,15 +47,15 @@ public:
 
 private:
 	
-	CFeedbackblur		feedbackblur;
+	
 	char* modelName;
 
 	enum set 
 	{
 		in,
 		out,
-
 	};
+
 	set sets = in;
 
 	CCamera camera;								//!<ƒJƒƒ‰B
