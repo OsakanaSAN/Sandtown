@@ -45,6 +45,7 @@ bool TitleScene::Start()
 	m_titleBGSprite3.SetPosition({ 10,-100 });*/
 	
 	g_fade->StartFadeIn();
+
 	//タイトルの音楽再生
 	g_sound->TitleSound();
 

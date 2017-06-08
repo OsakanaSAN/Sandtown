@@ -39,12 +39,17 @@ public:
 	void RecoveryHP(float RecvHP)
 	{
 		MaxpHP += RecvHP;
+		if (MaxpHP > 500)
+		{
+			MaxpHP = 500;
+		}
 	}
 
 	//最大HPをセット
 	void SetMaxHP(float SetHP)
 	{
 		MaxpHP = SetHP;
+		
 	}
 
 	//お金セット

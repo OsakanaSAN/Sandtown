@@ -103,4 +103,8 @@
   btSubSimplexConvexCast.cpp
   btVoronoiSimplexSolver.cpp
   コードを生成中...
+<<<<<<< HEAD
   BulletCollision.vcxproj -> C:\Users\kbc16b03\Desktop\Sandtown\ナナクラフト\Game\x64\Release\BulletCollision.lib
+=======
+  BulletCollision.vcxproj -> C:\Users\kbc16b15\Desktop\github\Sandtown\ナナクラフト\Game\x64\Release\BulletCollision.lib
+>>>>>>> cfdec859f73e2063921a28400b1ffcca74cd04d3

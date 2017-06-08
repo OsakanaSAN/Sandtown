@@ -22,10 +22,9 @@ BattleScene::BattleScene()
 	g_battleplayer = NewGO<BattlePlayer>(0);
 	g_battleenemy = NewGO<BattleEnemy>(0);
 	g_battlemenu = NewGO<BattleMenu>(0);
-	g_battlemenu->SetHp(g_Hud->GetHP());
-	g_battlemenu->SetEnemyHp(g_battleenemy->GetHP());
-	g_battlemenu->SetEnemyMexHp(g_battleenemy->GetHP());
-	/*g_battleplayer->SetATK(g_Hud->GetATK());*/
+
+	
+	
 }
 
 
@@ -57,11 +56,12 @@ BattleScene::~BattleScene()
 		g_gameScene->MapChange();
 	}
 
-	m_DamageBGTexture4.Release();
-	m_CasolBGTexture5.Release();
+	m_DamageBGTexture.Release();
+	m_CasolBGTexture.Release();
 	m_ComandBGTexture1.Release();
 	m_ComandBGTexture2.Release();
 	m_ComandBGTexture3.Release();
+	m_ComandBGTexture4.Release();
 
 }
 
@@ -72,39 +72,41 @@ bool BattleScene::Start()
 
 	Winflg = false;
 	Loseflg = false;
-
-
 	PAttack = false;
 	EAttack = false;
 	PDamage = false;
 	EDamage = false;
-	
-
 	SelectQ = false;
 
-	m_DamageBGTexture4.Load("Assets/sprite/damage1.png");
-	m_DamageBGSprite4.Init(&m_DamageBGTexture4);
-	m_DamageBGSprite4.SetPosition({ -200,300 });
 
 	m_ComandBGTexture1.Load("Assets/sprite/comand.png");
 	m_ComandBGSprite1.Init(&m_ComandBGTexture1);
-	m_ComandBGSprite1.SetPosition({ -300,-250 });
-	m_ComandBGSprite1.SetSize({ 200.0f,200.0f });
+	m_ComandBGSprite1.SetPosition({ -300,-350 });
+	m_ComandBGSprite1.SetSize({ 200.0f,300.0f });
 
 	m_ComandBGTexture2.Load("Assets/sprite/kougeki.png");
 	m_ComandBGSprite2.Init(&m_ComandBGTexture2);
-	m_ComandBGSprite2.SetPosition({ -300,-200 });
+	m_ComandBGSprite2.SetPosition({ -300,-250 });
 	m_ComandBGSprite2.SetSize({ 150.0f,50 });
 
 	m_ComandBGTexture3.Load("Assets/sprite/nigeru.png");
 	m_ComandBGSprite3.Init(&m_ComandBGTexture3);
-	m_ComandBGSprite3.SetPosition({ -300,-300 });
+	m_ComandBGSprite3.SetPosition({ -300,-450 });
 	m_ComandBGSprite3.SetSize({ 150.0f,50 });
 
-	m_CasolBGTexture5.Load("Assets/sprite/casol2.png");
-	m_CasolBGSprite5.Init(&m_CasolBGTexture5);
-	m_CasolBGSprite5.SetPosition({ -500,-200 });
-	m_CasolBGSprite5.SetSize({ 200,200 });
+	m_ComandBGTexture4.Load("Assets/sprite/Item.png");
+	m_ComandBGSprite4.Init(&m_ComandBGTexture4);
+	m_ComandBGSprite4.SetPosition({ -300,-350 });
+	m_ComandBGSprite4.SetSize({ 150.0f,50 });
+
+	m_DamageBGTexture.Load("Assets/sprite/damage1.png");
+	m_DamageBGSprite.Init(&m_DamageBGTexture);
+	m_DamageBGSprite.SetPosition({ -200,300 });
+
+	m_CasolBGTexture.Load("Assets/sprite/casol2.png");
+	m_CasolBGSprite.Init(&m_CasolBGTexture);
+	m_CasolBGSprite.SetPosition({ -500,-250 });
+	m_CasolBGSprite.SetSize({ 200,200 });
 
 	
 
@@ -118,7 +120,12 @@ bool BattleScene::Start()
 	ShadowMap().SetLightPosition(lightPos);
 	ShadowMap().SetLightTarget(lightTarget);
 
+	CEngine::Instance().GetFeedbackblur().SetEnalbe(false);
+	CEngine::Instance().SetcrearEnable(true);
 
+	g_battlemenu->SetHp(g_Hud->GetHP());
+	g_battlemenu->SetEnemyHp(g_battleenemy->GetHP());
+	g_battlemenu->SetEnemyMexHp(g_battleenemy->GetHP());
 	return true;
 }
 
@@ -145,19 +152,16 @@ void BattleScene::Update()
 
 
 	if (Victory == true) {
-
-
 		switch (result) {
 			
 		case false:
 
 			g_gameCamera->PlayerBatlleCamera();
 			
-
 			IsBattle = false;
 			EnemyPointCamera = true;
 
-			if (Pad(0).IsPress(enButtonUp) && Comand != Keep)
+			if (Pad(0).IsPress(enButtonUp) && Comand == Item)
 			{
 				g_battlemenu->EnemyZoomOut();
 				g_battlemenu->PlayerZoomSet();
@@ -173,9 +177,9 @@ void BattleScene::Update()
 					
 				}
 
-			
-				m_CasolBGSprite5.SetPosition({ -500,-200 });
-				m_CasolBGSprite5.SetSize({ 200,200 });
+
+				m_CasolBGSprite.SetPosition({ -500,-250 });
+				m_CasolBGSprite.SetSize({ 200,200 });
 
 				Comand = Keep;
 
@@ -184,18 +188,31 @@ void BattleScene::Update()
 			{
 
 			}
-			else if (Pad(0).IsPress(enButtonDown) && Comand == Keep)
+			else if (Pad(0).IsPress(enButtonDown) && Comand ==Keep|| Pad(0).IsPress(enButtonUp) && Comand == Escape)
 			{
-				if (Comand != Escape)
-				{
+				
 					m_sound_bgm_battle = NewGO<CSoundSource>(0);
 					m_sound_bgm_battle->Init("Assets/sound/select.wav");
 					m_sound_bgm_battle->Play(false);
 					m_sound_bgm_battle->SetVolume(7.0f);
-				}
+				
 
-				m_CasolBGSprite5.SetPosition({ -500,-300 });
-				m_CasolBGSprite5.SetSize({ 200,200 });
+				m_CasolBGSprite.SetPosition({ -500,-350 });
+				m_CasolBGSprite.SetSize({ 200,200 });
+
+				Comand = Item;
+			}
+			else if (Pad(0).IsPress(enButtonDown) && Comand == Item)
+			{
+				
+					m_sound_bgm_battle = NewGO<CSoundSource>(0);
+					m_sound_bgm_battle->Init("Assets/sound/select.wav");
+					m_sound_bgm_battle->Play(false);
+					m_sound_bgm_battle->SetVolume(7.0f);
+
+
+				m_CasolBGSprite.SetPosition({ -500,-450 });
+				m_CasolBGSprite.SetSize({ 200,200 });
 
 				Comand = Escape;
 			}
@@ -237,21 +254,21 @@ void BattleScene::Update()
 
 void BattleScene::PostRender(CRenderContext&renderContext)
 {
-
 	
-
 	if (EDamage || PDamage) {//ダメージの表示
-		m_DamageBGSprite4.Draw(renderContext);
+		m_DamageBGSprite.Draw(renderContext);
 	}
 
 	if (EnemyZoom) { return; }
 	if (IsBattle) { return; }
 	if (!IsBattleStart) { return; }
-	
+	if (Comand == INVENTORY) { return; }
+
 	m_ComandBGSprite1.Draw(renderContext);
 	m_ComandBGSprite2.Draw(renderContext);
 	m_ComandBGSprite3.Draw(renderContext);
-	m_CasolBGSprite5.Draw(renderContext);
+	m_ComandBGSprite4.Draw(renderContext);
+	m_CasolBGSprite.Draw(renderContext);
 
 }
 
@@ -311,13 +328,12 @@ void BattleScene::PlayerTurn()
 			m_sound_Attack->SetVolume(4.0f);
 
 
+			m_DamageBGTexture.Load("Assets/sprite/damage1.png");
+			m_DamageBGSprite.Init(&m_DamageBGTexture);
+			m_DamageBGSprite.SetPosition({ -240,250 });
+			m_DamageBGSprite.SetSize({ 200,80 });
 
-			m_DamageBGTexture4.Load("Assets/sprite/damage1.png");
-			m_DamageBGSprite4.Init(&m_DamageBGTexture4);
-			m_DamageBGSprite4.SetPosition({ -240,250 });
-			m_DamageBGSprite4.SetSize({ 200,80 });
-
-			g_battleplayer->Particle();//パーティクル呼び出し
+			g_battleplayer->Particle(g_battleenemy->Getpos());//攻撃パーティクル呼び出し
 			g_battleenemy->SetDamage(g_battleplayer->GetATK(), true);//ダメージ処理
 			g_battlemenu->SetEnemyHp(g_battleenemy->GetHP());//敵の体力DOWN
 			EDamage = true;
@@ -353,10 +369,6 @@ void BattleScene::PlayerTurn()
 
 		}
 
-
-
-
-
 		break;
 
 	case Escape://逃げる
@@ -372,8 +384,27 @@ void BattleScene::PlayerTurn()
 		}
 
 		break;
-	}
 
+	case Item:
+
+		if (Pad(0).IsPress(enButtonA))
+		{
+
+			Comand = INVENTORY;
+	
+		}
+		break;
+	case INVENTORY:
+
+		g_menu->MenuSceneItem();
+		if (Pad(0).IsPress(enButtonB))
+		{
+
+			g_menu->MenuSceneStop();
+			Comand = Item;
+		}
+		break;
+	}
 
 }
 
@@ -383,13 +414,9 @@ void BattleScene::EnemyTurn()
 	if (PAttack)return;
 	if (EDamage)return;
 
-
 	if (!EAttack&&g_battleenemy->GetAnimend() && g_battleplayer->GetAnimend()) {
 
 		g_battleenemy->SetAttack(true);//攻撃のアニメーション再生
-
-		
-		
 
 		EAttack = true;
 	}
@@ -400,20 +427,26 @@ void BattleScene::EnemyTurn()
 		m_sound_Attack->Play(false);
 		m_sound_Attack->SetVolume(4.0f);
 		
-		m_DamageBGTexture4.Load("Assets/sprite/damage1.png");
-		m_DamageBGSprite4.Init(&m_DamageBGTexture4);
-		m_DamageBGSprite4.SetPosition({ 150,100 });
-		m_DamageBGSprite4.SetSize({ 200,80 });
+		m_DamageBGTexture.Load("Assets/sprite/damage1.png");
+		m_DamageBGSprite.Init(&m_DamageBGTexture);
+		m_DamageBGSprite.SetPosition({ 150,100 });
+		m_DamageBGSprite.SetSize({ 200,80 });
+		
 
+		g_battleplayer->Particle(g_battleplayer->Getpos());//攻撃パーティクル呼び出し
+		
 		g_battleplayer->SetDamage(g_battleenemy->GetATK(), true);//ダメージ計算とダメージアニメーション再生
 		
 		g_battlemenu->SetHp(g_Hud->GetHP());
 
 		PDamage = true;
+
+		
 	}
 	else if (EAttack &&PDamage&& g_battleenemy->GetAnimend() && g_battleplayer->GetAnimend())
 	{
-		/*m_sound_Attack->Stop();*/
+		g_battleplayer->ParticleDelete();//パーティクル消去
+		m_sound_Attack->Stop();
 		EAttack = false;
 		PDamage = false;
 

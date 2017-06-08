@@ -110,3 +110,4 @@ private:
 
 };
 
+extern BattleMenu* g_battlemenu;

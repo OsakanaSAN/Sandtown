@@ -79,7 +79,7 @@ public:
 
 	void StopSound()
 	{
-		runsound->Stop();
+		//runsound->Stop();
 	}
 
 	

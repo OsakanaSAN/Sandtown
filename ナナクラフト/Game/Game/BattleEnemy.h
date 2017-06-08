@@ -77,7 +77,7 @@ private:
 		Alive,
 		Dead
 	};
-	CSkinModel		skinModel;
+	CSkinModel				skinModel;
 	CSkinModelDataHandle	skinModelData;
 	CAnimation		Animation;
 	CVector3		position = { -2.0f,0.0f,-38.0f };
@@ -87,16 +87,17 @@ private:
 
 	bool			IsAttack;
 	bool			IsStand;
+	
 	bool			IsDamage;
 	bool			IsAnimend;
 
 	int				currentAnimSetNo;
 
 	////エネミーごとのステータス?
-	int				ATK = 10;
-	int				HP = 30;
-	int				Exp = 15;
-	int             EGold = 50;
+	int				ATK;
+	int				HP;
+	int				Exp;
+	int             EGold;
 
 
 };

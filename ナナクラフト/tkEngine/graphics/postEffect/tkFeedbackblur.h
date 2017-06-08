@@ -31,10 +31,15 @@ namespace tkEngine {
 	void Create(const SGraphicsConfig& config);
 
 	private:
+		
 		CEffect*	m_effect = nullptr;
 		bool		m_isEnable = false;
 		float		m_blendRate = 0.0f;	//ブレンド率。1.0で完全にセピアになります。
+		float		angle=0.0f;
+		float		scale = 1.0f;
 		std::vector<DrawSkinModelMaskFunc>	maskModelsFunc;		//マスクモデル。
-		CRenderTarget m_clearRenderTarget;
+		int currentBuffer = 0;
+		float combineRate = 0.05f;
+		CRenderTarget m_lastFlameRenderTarget[2];
 	};
 }

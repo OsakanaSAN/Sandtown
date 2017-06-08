@@ -6,8 +6,8 @@
 namespace tkEngine {
 	CFeedbackblur::CFeedbackblur()
 	{
-		m_isEnable = true;
-		/*m_blendRate = 1.0f;*/
+		m_isEnable = false;
+		m_blendRate = 1.0f;
 	}
 
 	CFeedbackblur::~CFeedbackblur()
@@ -16,48 +16,95 @@ namespace tkEngine {
 
 	void CFeedbackblur::Render(CRenderContext& renderContext, CPostEffect* postEffect)
 	{
+		
+		if (!m_isEnable) {
+			angle = 0.0f;
+			combineRate = 1.0f;
+			scale = 1.0f;
+		}
 		if (m_isEnable)
 		{
+			CMatrix		Mat, ScaleMat;
+			angle += 0.3f * GameTime().GetFrameDeltaTime();
+			Mat.MakeRotationZ(angle);
+			ScaleMat.MakeScaling({ scale, scale, scale });
+			Mat.Mul(ScaleMat, Mat);
+			scale += 0.3f * GameTime().GetFrameDeltaTime();
 			//レンダリングターゲットを切り替え。
 			Engine().ToggleMainRenderTarget();
-			//Zバッファだけクリアするためのレンダリングターゲットを作成。
-			m_clearRenderTarget.SetSurfaceDX(nullptr);
-			m_clearRenderTarget.SetDepthSurfaceDX(Engine().GetMainRenderTarget().GetDepthSurfaceDx());
-			renderContext.SetRenderTarget(0, &m_clearRenderTarget);
-			//Zバッファをクリア。
-			renderContext.Clear(0, nullptr, D3DCLEAR_ZBUFFER, 0, 0.0f, 0);
-			renderContext.SetRenderState(D3DRS_ZWRITEENABLE, TRUE);
-			renderContext.SetRenderState(D3DRS_ZENABLE, TRUE);
-			renderContext.SetRenderState(D3DRS_ZFUNC, D3DCMP_GREATEREQUAL);
+	
+			renderContext.SetRenderState(D3DRS_ZENABLE, FALSE);
 
-			//Zマスクをレンダリング。
-			for (auto func : maskModelsFunc){
-				(*func)(renderContext);
-			}
-			maskModelsFunc.clear();
-
+			
 			//	CPIXPerfTag tag(renderContext, L"CSepiaFilter::Render");
 			float texSize[] = {
 				s_cast<float>(Engine().GetMainRenderTarget().GetWidth()),
 				s_cast<float>(Engine().GetMainRenderTarget().GetHeight())
 			};
-			m_effect->SetTechnique(renderContext, "Default");
-			m_effect->Begin(renderContext);
-			m_effect->BeginPass(renderContext, 0);
-			m_effect->SetTexture(renderContext, "g_scene", Engine().GetMainRenderTarget().GetTexture());
-			m_effect->SetValue(renderContext, "g_sceneTexSize", texSize, sizeof(texSize));
-			m_effect->SetValue(renderContext, "g_blendRate", &m_blendRate, sizeof(m_blendRate));
-			m_effect->CommitChanges(renderContext);
-			renderContext.SetRenderState(D3DRS_ZFUNC, D3DCMP_EQUAL);
-			renderContext.SetRenderTarget(0, &Engine().GetMainRenderTarget());
-			postEffect->RenderFullScreen(renderContext);
+			
+			//前のフレームの絵にこのフレームのシーンを回転させる。
+			{
+				m_effect->SetTechnique(renderContext, "Default");
+				m_effect->Begin(renderContext);
+				m_effect->BeginPass(renderContext, 0);
+				m_effect->SetTexture(renderContext, "g_scene", Engine().GetMainRenderTarget().GetTexture());
+				m_effect->SetValue(renderContext, "g_sceneTexSize", texSize, sizeof(texSize));
+				m_effect->SetValue(renderContext, "g_blendRate", &m_blendRate, sizeof(m_blendRate));
+				m_effect->SetValue(renderContext, "mRot", &Mat, sizeof(Mat));
+				m_effect->CommitChanges(renderContext);
+				Engine().ToggleMainRenderTarget();
+				renderContext.SetRenderTarget(0, &Engine().GetMainRenderTarget());
+				postEffect->RenderFullScreen(renderContext);
+				m_effect->EndPass(renderContext);
+				m_effect->End(renderContext);
+			}
+			//1フレーム前の絵と合成。
+			{
+
+				m_effect->SetTechnique(renderContext, "Combine");
+				m_effect->Begin(renderContext);
+				m_effect->BeginPass(renderContext, 0);
+				m_effect->SetTexture(renderContext, "g_scene", Engine().GetMainRenderTarget().GetTexture());
+				m_effect->SetTexture(renderContext, "g_lastScene", m_lastFlameRenderTarget[currentBuffer].GetTexture());
+				m_effect->SetValue(renderContext, "g_combineRate", &combineRate, sizeof(combineRate));
+				m_effect->CommitChanges(renderContext);
+				Engine().ToggleMainRenderTarget();
+				renderContext.SetRenderTarget(0, &Engine().GetMainRenderTarget());
+				currentBuffer ^= 1;
+				renderContext.SetRenderTarget(1, &m_lastFlameRenderTarget[currentBuffer]);
+				postEffect->RenderFullScreen(renderContext);
+				m_effect->EndPass(renderContext);
+				m_effect->End(renderContext);
+				renderContext.SetRenderTarget(1, nullptr);
+				combineRate = 0.05f;
+			}
 			renderContext.SetRenderState(D3DRS_ZFUNC, D3DCMP_LESSEQUAL);
-			m_effect->EndPass(renderContext);
-			m_effect->End(renderContext);
+			renderContext.SetRenderState(D3DRS_ZENABLE, TRUE);
+			
+
+			
 		}
 	}
 	void CFeedbackblur::Create(const SGraphicsConfig& config)
 	{
 		m_effect = EffectManager().LoadEffect("Assets/presetShader/Feedbackblur.fx");
+		m_lastFlameRenderTarget[0].Create(
+			Engine().GetFrameBufferWidth(),
+			Engine().GetFrameBufferHeight(),
+			1,
+			D3DFMT_A16B16G16R16F,
+			D3DFMT_UNKNOWN,
+			D3DMULTISAMPLE_NONE,
+			0
+		);
+		m_lastFlameRenderTarget[1].Create(
+			Engine().GetFrameBufferWidth(),
+			Engine().GetFrameBufferHeight(),
+			1,
+			D3DFMT_A16B16G16R16F,
+			D3DFMT_UNKNOWN,
+			D3DMULTISAMPLE_NONE,
+			0
+		);
 	}
 }

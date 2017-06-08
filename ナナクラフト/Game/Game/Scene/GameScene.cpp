@@ -58,8 +58,6 @@ bool GameScene::Start()
 	
 	//if (g_gameCamera->IsStart() && g_player->IsStart() && g_Hud->IsStart() && g_map->IsStart()) {
 
-		
-
 		g_fade->StartFadeIn();
 		return true;
 
@@ -83,7 +81,6 @@ void GameScene::Update()
 		if (m_timer > 3.0f)
 		{
 			
-			//CEngine::Instance().SetcrearEnable(true);
 			scenes = Battle;
 			m_timer = 0.0f;
 		}
@@ -95,9 +92,12 @@ void GameScene::Update()
 		if (Bato == true)
 		{
 			
-			//CEngine::Instance().SetcrearEnable(false);
+
+			CEngine::Instance().SetcrearEnable(false);
+			CEngine::Instance().GetFeedbackblur().SetEnalbe(true);
+
 			scenes = BattleWait;
-				
+			
 
 		}
 		
@@ -138,20 +138,31 @@ void GameScene::Update()
 				g_Enemy = NewGO<Enemy>(0);
 				g_Enemy->Init(modelName);
 				g_Enemy->setPos({ -3.0f, 0.0f, -20.0f });
+				g_Enemy->Setexp(20);
+				g_Enemy->SetEATK(20);
+				g_Enemy->SetHP(50);
+				g_Enemy->SetGold(20);
 
-
-				modelName = "Assets/modelData/usagi.X";
+				modelName = "Assets/modelData/ghost.X";
 				g_Enemy2 = NewGO<Enemy>(0);
 				g_Enemy2->Init(modelName);
 				g_Enemy2->setPos({ -3.0f, 0.0f, -40.0f });
+				g_Enemy2->Setexp(20);
+				g_Enemy2->SetEATK(60);
+				g_Enemy2->SetHP(40);
+				g_Enemy2->SetGold(20);
 
-				modelName = "Assets/modelData/Bossusagi.X";
+
+				modelName = "Assets/modelData/Bossghost.X";
 				g_Enemy3 = NewGO<Enemy>(0);
 				g_Enemy3->Init(modelName);
 				g_Enemy3->setPos({ 20.0f, 0.0f, -15.0f });
-				g_map2 = NewGO<Map2>(0);
 				g_fade->StartFadeIn();
-				
+				g_Enemy3->Setexp(20);
+				g_Enemy3->SetEATK(80);
+				g_Enemy3->SetHP(90);
+				g_Enemy3->SetGold(20);
+				g_map2 = NewGO<Map2>(0);
 			}
 
 			
@@ -183,13 +194,9 @@ void GameScene::Update()
 				g_map = NewGO<Map>(0);
 				
 			}
-
 			else
 			{
 				g_fade->StartFadeIn();
-				
-
-
 				scenes = STOP;
 				mapscene = MACHI;
 				break;
@@ -207,7 +214,8 @@ void GameScene::Update()
 			g_sound->StopSound();
 			g_battleScene = NewGO<BattleScene>(0);
 			g_gameCamera->BattleCamera();
-			g_gameCamera->ChangeStop();    //カメラの更新を止める
+			g_gameCamera->ChangeStop();	//カメラの更新を止める
+			
 			
 			Bato = false;
 		}
@@ -233,7 +241,7 @@ void GameScene::Update()
 */
 void GameScene::Render(CRenderContext& renderContext)
 {
-	
+
 }
 
 void GameScene::DeteScene()
@@ -259,7 +267,7 @@ void GameScene::DeteScene()
 
 	else if (mapscene == DOUKUTU)
 	{
-		
+
 			DeleteGO(g_map2);
 			DeleteGO(g_Enemy);
 			DeleteGO(g_Enemy2);

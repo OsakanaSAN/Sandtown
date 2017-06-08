@@ -2,7 +2,6 @@
 
 #include "tkEngine/Sound/tkSoundSource.h"
 #include "tkEngine/character/tkCharacterController.h"
-
 #include "tkEngine/graphics/postEffect/tkFeedbackblur.h"
 
 /*!
@@ -47,15 +46,15 @@ public:
 
 
 private:
-	
+
 	char* modelName;
 
 	enum set 
 	{
 		in,
 		out,
-
 	};
+
 	set sets = in;
 
 	CCamera camera;								//!<カメラ。
@@ -84,8 +83,6 @@ private:
 
 	bool Bato = false; //バトル画面遷移判定
 	
-
-
 	float m_timer = 0.0f;
 	CVector3 up = CVector3::One;
 	CVector3 target = CVector3::One;

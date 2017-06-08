@@ -13,7 +13,7 @@ public:
 	void Update();
 	void Render(CRenderContext&renderContext);
 	void AnimationSet();
-	void Particle();
+	void Particle(CVector3 target);
 	void ParticleDelete();
 
 	CVector3 Getpos()
@@ -69,7 +69,12 @@ private:
 
 	};
 
+	enum Particle {
+		ATTACK,
+		HEAL
+	};
 
+	int currentParticle = ATTACK;
 	CSkinModel				skinModel;
 	CSkinModelDataHandle	skinModelData;
 	CCharacterController	characterController;
