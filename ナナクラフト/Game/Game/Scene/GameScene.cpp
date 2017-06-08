@@ -13,6 +13,7 @@
 #include "Enemy.h"
 #include "Npc.h"
 #include "tkEngine/graphics/tkCamera.h"
+#include "Dungeon.h"
 
 
 GameScene* g_gameScene = NULL;
@@ -26,21 +27,21 @@ Menu*   g_menu = nullptr;
 Enemy*  g_Enemy = nullptr;
 Enemy*  g_Enemy2 = nullptr;
 Enemy*  g_Enemy3 = nullptr;
+Dungeon* g_Dungeon = nullptr;
 
 GameScene::GameScene()
 {
 	g_gameCamera = NewGO<Camera>(0);
 	g_player = NewGO<Player>(0);
 	g_Hud = NewGO<HUD>(0);
-	g_map = NewGO<Map>(0);
+	//g_map = NewGO<Map>(0);
+	g_Dungeon = NewGO<Dungeon>(0);
+
 	g_menu = NewGO<Menu>(0);
 	NewGO<Npc>(0);
 
-
 	mapscene = MACHI;
 	scenes = STOP;
-
-
 }
 
 
@@ -55,14 +56,14 @@ bool GameScene::Start()
 {
 	
 	
-	if (g_gameCamera->IsStart() && g_player->IsStart() && g_Hud->IsStart() && g_map->IsStart()) {
+	//if (g_gameCamera->IsStart() && g_player->IsStart() && g_Hud->IsStart() && g_map->IsStart()) {
 
 		
 
 		g_fade->StartFadeIn();
 		return true;
 
-	}
+	//}
 	
 	
 	
@@ -81,8 +82,8 @@ void GameScene::Update()
 		
 		if (m_timer > 3.0f)
 		{
-			feedbackblur.SetEnalbe(false);
-			CEngine::Instance().SetcrearEnable(true);
+			
+			//CEngine::Instance().SetcrearEnable(true);
 			scenes = Battle;
 			m_timer = 0.0f;
 		}
@@ -93,8 +94,8 @@ void GameScene::Update()
 
 		if (Bato == true)
 		{
-			feedbackblur.SetEnalbe(true);
-			CEngine::Instance().SetcrearEnable(false);
+			
+			//CEngine::Instance().SetcrearEnable(false);
 			scenes = BattleWait;
 				
 

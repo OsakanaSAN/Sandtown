@@ -48,7 +48,6 @@ public:
 
 private:
 	
-	CFeedbackblur		feedbackblur;
 	char* modelName;
 
 	enum set 

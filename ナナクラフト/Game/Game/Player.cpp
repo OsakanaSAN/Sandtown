@@ -38,17 +38,7 @@ Player::Player()
 	runsound->Init("Assets/sound/Runsound.wav");
 	runsound->SetVolume(0.3);
 
-	/*
-	ifstream fin("Assets/DATA/tst.txt");
-	if (!fin)
-	{
-		exit(0);
-	}
 
-	fin.precision(3);
-	fin >> position.x >> position.y >> position.z;
-	fin.close();
-	*/
 	
 }
 
@@ -200,7 +190,8 @@ void Player::AngleSet()
 	{
 		moveSpeed.x = moveDir.x * MOVESPEED * 1.3;
 		moveSpeed.z = moveDir.z * MOVESPEED * 1.3;
-		Animation.SetAnimationSpeedRate(2.3f);
+		Animation.SetAnimationSpeedRate(6.8);
+		Animation.SetAnimationEndTime(Run_anim, 2.0f);
 	}
 
 	if (moveDir.LengthSq() > 0.0001f) {
@@ -233,7 +224,7 @@ void Player::AnimetionSet()
 
 			/*runsound->Play(true);*/
 
-			runsound->Play(true);
+			//runsound->Play(true);
 
 
 			Animation.SetAnimationSpeedRate(6.5);
