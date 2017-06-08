@@ -136,13 +136,7 @@ void Camera::EnemyBattleCamera()
 void Camera::PlayerBatlleCamera()
 {
 	
-	CVector3 Pintpos = g_battleplayer->Getpos();
-	CVector3 Cpos = g_gameCamera->BGetPos();
-
-	Pintpos.Subtract(Cpos);
-
-	Dof().SetPint(Pintpos.Length() * 1000);
-	Dof().SetFocalLength(30.0f);
+	
 	//‰ñ“]
 	float rStick_x = 0.05f;
 

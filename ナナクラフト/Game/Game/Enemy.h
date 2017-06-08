@@ -44,6 +44,48 @@ public :
 	{
 		ste = state;
 	}
+
+	int GetEHp()const
+	{
+		return HP;
+	}
+
+	void SetHP(int hp)
+	{
+		HP = hp;
+	}
+
+
+	int GetEATK()const
+	{
+		return EATK;
+	}
+
+	void SetEATK(int atk )
+	{
+		EATK = atk;
+	}
+
+	int GetExp()const
+	{
+		return Exp;
+	}
+
+	void Setexp(int exp)
+	{
+		Exp = exp;
+	}
+
+	int GetEGold()const
+	{
+		return EGold;
+	}
+
+	void SetGold(int gold)
+	{
+		EGold = gold;
+	}
+
 private:
 
 	enum ANIME {
@@ -62,6 +104,7 @@ private:
 		HIT,
 		NO
 	};
+
 	int hit = NO;
 	int ste = Alive;
 
@@ -91,6 +134,12 @@ private:
 	bool enemyHit=false;
 
 	CVector3 direction = CVector3::AxisZ;
+
+	//ÉXÉe
+	int HP;
+	int EATK;
+	int Exp;
+	int EGold;
 
 };
 extern Enemy* g_Enemy;

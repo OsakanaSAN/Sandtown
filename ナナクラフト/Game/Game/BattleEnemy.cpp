@@ -38,7 +38,6 @@ BattleEnemy::BattleEnemy()
 	currentAnimSetNo = Stand_anim;
 
 
-
 }
 
 
@@ -77,16 +76,33 @@ bool BattleEnemy::Start()
 	if (g_Enemy->Getenemyhit() && g_Enemy->GetEnemyState() == Alive)
 	{
 		skinModelData.LoadModelData(g_Enemy->GetenemyName(), &Animation);
+		
+		ATK = g_Enemy->GetEATK();
+		HP = g_Enemy->GetEHp();
+		Exp = g_Enemy->GetExp();
+		EGold = g_Enemy->GetEGold();
+
 		g_Enemy->SetEnemyState(Dead);
 	}
 	else if (g_Enemy2->Getenemyhit() && g_Enemy2->GetEnemyState() == Alive)
 	{
 		skinModelData.LoadModelData(g_Enemy2->GetenemyName(), &Animation);
+		
+		ATK = g_Enemy2->GetEATK();
+		HP = g_Enemy2->GetEHp();
+		Exp = g_Enemy2->GetExp();
+		EGold = g_Enemy2->GetEGold();
 		g_Enemy2->SetEnemyState(Dead);
 	}
 	else if (g_Enemy3->Getenemyhit() && g_Enemy3->GetEnemyState() == Alive)
 	{
 		skinModelData.LoadModelData(g_Enemy3->GetenemyName(), &Animation);
+		
+		ATK = g_Enemy3->GetEATK();
+		HP = g_Enemy3->GetEHp();
+		Exp = g_Enemy3->GetExp();
+		EGold = g_Enemy3->GetEGold();
+
 		g_Enemy3->SetEnemyState(Dead);
 	}
 
@@ -143,7 +159,7 @@ void BattleEnemy::AnimationSet()
 			Animation.PlayAnimation(Attack_anim, 0.5);
 
 			IsStand = true;
-			g_Hud->Damage(50);
+			g_Hud->Damage(ATK);
 
 		}
 		else if (IsDamage)

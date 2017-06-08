@@ -22,10 +22,8 @@ BattleScene::BattleScene()
 	g_battleplayer = NewGO<BattlePlayer>(0);
 	g_battleenemy = NewGO<BattleEnemy>(0);
 	g_battlemenu = NewGO<BattleMenu>(0);
-	g_battlemenu->SetHp(g_Hud->GetHP());
-	g_battlemenu->SetEnemyHp(g_battleenemy->GetHP());
-	g_battlemenu->SetEnemyMexHp(g_battleenemy->GetHP());
-	/*g_battleplayer->SetATK(g_Hud->GetATK());*/
+
+	
 	
 }
 
@@ -74,17 +72,12 @@ bool BattleScene::Start()
 
 	Winflg = false;
 	Loseflg = false;
-
-
 	PAttack = false;
 	EAttack = false;
 	PDamage = false;
 	EDamage = false;
-	
-
 	SelectQ = false;
 
-	
 
 	m_ComandBGTexture1.Load("Assets/sprite/comand.png");
 	m_ComandBGSprite1.Init(&m_ComandBGTexture1);
@@ -129,6 +122,10 @@ bool BattleScene::Start()
 
 	CEngine::Instance().GetFeedbackblur().SetEnalbe(false);
 	CEngine::Instance().SetcrearEnable(true);
+
+	g_battlemenu->SetHp(g_Hud->GetHP());
+	g_battlemenu->SetEnemyHp(g_battleenemy->GetHP());
+	g_battlemenu->SetEnemyMexHp(g_battleenemy->GetHP());
 	return true;
 }
 
@@ -434,18 +431,22 @@ void BattleScene::EnemyTurn()
 		m_DamageBGSprite.Init(&m_DamageBGTexture);
 		m_DamageBGSprite.SetPosition({ 150,100 });
 		m_DamageBGSprite.SetSize({ 200,80 });
+		
 
 		g_battleplayer->Particle(g_battleplayer->Getpos());//攻撃パーティクル呼び出し
+		
 		g_battleplayer->SetDamage(g_battleenemy->GetATK(), true);//ダメージ計算とダメージアニメーション再生
 		
 		g_battlemenu->SetHp(g_Hud->GetHP());
 
 		PDamage = true;
+
+		
 	}
-	else if (EAttack &&PDamage/*&& g_battleenemy->GetAnimend()*/ /*&& g_battleplayer->GetAnimend()*/)
+	else if (EAttack &&PDamage&& g_battleenemy->GetAnimend() && g_battleplayer->GetAnimend())
 	{
 		g_battleplayer->ParticleDelete();//パーティクル消去
-		/*m_sound_Attack->Stop();*/
+		m_sound_Attack->Stop();
 		EAttack = false;
 		PDamage = false;
 

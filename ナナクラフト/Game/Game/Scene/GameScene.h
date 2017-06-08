@@ -46,8 +46,7 @@ public:
 
 
 private:
-	
-	
+
 	char* modelName;
 
 	enum set 
@@ -84,8 +83,6 @@ private:
 
 	bool Bato = false; //ƒoƒgƒ‹‰æ–Ê‘JˆÚ”»’è
 	
-
-
 	float m_timer = 0.0f;
 	CVector3 up = CVector3::One;
 	CVector3 target = CVector3::One;

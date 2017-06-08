@@ -36,8 +36,6 @@ public:
 		ItemNuber[Number] = SetItem;
 		Number++;
 	}
-
-	
 	
 	void MenuScene()
 	{
