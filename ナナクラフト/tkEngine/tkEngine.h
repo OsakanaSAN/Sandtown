@@ -199,6 +199,11 @@ namespace tkEngine{
 		{
 			return m_postEffect.GetSepiaFilter();
 		}
+		CFeedbackblur& GetFeedbackblur()
+		{
+			return m_postEffect.GetFeedbackblur();
+		}
+		
 		/*!
 		* @brief	DOFを取得。
 		*/
@@ -251,6 +256,14 @@ namespace tkEngine{
 		CSky& GetSky()
 		{
 			return m_sky;
+		}
+		bool GetcrearEnable()
+		{
+			return m_framebuffercrearEnable;
+		}
+		void SetcrearEnable(bool frame)
+		{
+			m_framebuffercrearEnable = frame;
 		}
 	private:
 		/*!
@@ -305,6 +318,8 @@ namespace tkEngine{
 		CSoundEngine							m_soundEngine;				//!<サウンドエンジン。
 		CPhysicsWorld							m_physicsWorld;				//!<物理ワールド。
 		CSky									m_sky;						//!<空。
+		bool									m_framebuffercrearEnable=true;
+		
 	};
 	static inline CEngine& Engine()
 	{
@@ -373,6 +388,10 @@ namespace tkEngine{
 	static inline CSepiaFilter& SepiaFilter()
 	{
 		return CEngine::Instance().GetSepiaFilter();
+	}
+	static inline CFeedbackblur& Feedbackblur()
+	{
+		return CEngine::Instance().GetFeedbackblur();
 	}
 	static inline CSky& Sky()
 	{

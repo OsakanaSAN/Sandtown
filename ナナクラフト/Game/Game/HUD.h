@@ -54,12 +54,25 @@ public:
 		
 	}
 
+	void Shiharai(int gold)
+	{
+		Gold -= gold;
+	}
 	//お金ゲット
 	int GetGold()
 	{
 		return Gold;
 	}
 
+	int GetATK()
+	{
+		return ATK;
+	}
+
+	void SetATK(int atk)
+	{
+		ATK = atk;
+	}
 
 	void LVUp();
 
@@ -75,9 +88,9 @@ private:
 	int           pExp = 0;     //経験値
 	int           NextExp = 20; 
 	
-	int           Gold = 0;
+	int           Gold = 300;
 	
-
+	int			  ATK = 20;//武器ごとに変化？
 };
 extern HUD*    g_Hud;
 

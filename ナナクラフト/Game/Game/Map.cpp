@@ -4,7 +4,7 @@
 #include "SceneChange.h"
 #include "HUD.h"
 #include "GameSky.h"
-
+#include "shop.h"
 
 
 struct SMapInfo {
@@ -16,6 +16,7 @@ struct SMapInfo {
 Mapchip* mapchip[255];
 SceneChange* g_SC;
 GameSky*     g_Sky;
+shop*		g_shop;
 
 //マップの配置情報。
 SMapInfo mapLocInfo[] = {
@@ -41,7 +42,7 @@ Map::~Map()
 
 	DeleteGO(g_SC);
 	DeleteGO(g_Sky);
-
+	DeleteGO(g_shop);
 
 }
 
@@ -71,6 +72,15 @@ bool Map::Start()
 			g_SC = NewGO<SceneChange>(0);
 			g_SC->Init(mapLocInfo[i].modelName, mapLocInfo[i].position, mapLocInfo[i].rotation);
 			g_SC->setpos(mapLocInfo[i].position);
+			ChangeObject++;
+
+		}
+		else if (strcmp(mapLocInfo[i].modelName, "ken") == 0)
+		{
+
+			g_shop = NewGO<shop>(0);
+			g_shop->Init(mapLocInfo[i].modelName, mapLocInfo[i].position, mapLocInfo[i].rotation);
+			
 			ChangeObject++;
 
 

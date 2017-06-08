@@ -252,7 +252,7 @@ namespace tkEngine{
 
 				CGameObjectManager& goMgr = CGameObjectManager::Instance();
 				goMgr.Execute(
-					m_renderContextArray.get(), 
+					m_renderContextArray.get(),
 					m_numRenderContext, 
 					m_renderContextMap.get(),
 					m_preRender,
@@ -263,7 +263,9 @@ namespace tkEngine{
 				lastRenderContext.SetRenderTarget(0, &m_backBufferRT);
 				lastRenderContext.Clear(0, nullptr, D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER,
 					D3DCOLOR_RGBA(0, 0, 0, 0), 1.0f, 0
-					);
+				);
+				
+				
 				CopyMainRenderTargetToBackBuffer(lastRenderContext);
 
 				m_pD3DDevice->BeginScene();

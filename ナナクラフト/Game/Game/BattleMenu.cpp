@@ -121,7 +121,7 @@ void BattleMenu::Update()
 
 }
 
-void BattleMenu::Render(CRenderContext& renderContext)
+void BattleMenu::PostRender(CRenderContext& renderContext)
 {
 	//if (!IsBattle) { return; }
 	if (!EnemyZoom)

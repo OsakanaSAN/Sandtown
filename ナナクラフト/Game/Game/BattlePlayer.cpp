@@ -3,9 +3,10 @@
 #include "BattleEnemy.h"
 #include "BattleScene.h"
 #include "Camera.h"
-
-extern BattleEnemy* g_battleenemy;
-
+#include "Player.h"
+#include "HUD.h"
+//extern BattleEnemy* g_battleenemy;
+//extern Player* g_player;
 enum {
 
 	Stand_anim,
@@ -33,6 +34,8 @@ BattlePlayer::BattlePlayer()
 	IsStand = true;
 	IsAnimend = true;
 	currentAnimSetNo = Stand_anim;
+	ATK = g_Hud->GetATK();
+	
 }
 
 
@@ -44,7 +47,7 @@ BattlePlayer::~BattlePlayer()
 
 bool BattlePlayer::Start()
 {
-	skinModelData.LoadModelData("Assets/modelData/Unity.X", &Animation);
+	skinModelData.LoadModelData("Assets/modelData/kano.X", &Animation);
 	skinModel.Init(skinModelData.GetBody());
 	skinModel.SetLight(&All);
 
@@ -62,15 +65,15 @@ bool BattlePlayer::Start()
 
 	skinModel.SetShadowCasterFlag(true);
 	skinModel.SetShadowReceiverFlag(true);
-
+	scale.Scale(0.4);
 	return true;
 }
 
 
 void BattlePlayer::Update()
 {
-	/*CVector3 scale = CVector3::One;
-	scale.Scale(0.4);*/
+	
+	
 	if (IsSetPoint == false)
 	{
 		CVector3 diff = BakPositon;
@@ -82,7 +85,8 @@ void BattlePlayer::Update()
 		{
 
 			BakPositon.z += 0.1f;
-			Animation.SetAnimationSpeedRate(2);
+			Animation.SetAnimationSpeedRate(6.5);
+			Animation.SetAnimationEndTime(Run_anim, 2.0f);
 			g_gameCamera->BattleCamera();
 
 		}
@@ -92,6 +96,7 @@ void BattlePlayer::Update()
 			IsSetPoint = true;
 			Animation.SetAnimationLoopFlag(Run_anim, false);
 
+
 			Animation.PlayAnimation(Stand_anim, 0.1f);
 			Animation.SetAnimationLoopFlag(Stand_anim, true); //スタンドアニメーションをループさせる
 
@@ -100,7 +105,7 @@ void BattlePlayer::Update()
 			
 		}
 
-		skinModel.Update(BakPositon, m_rotation, CVector3::One);
+		skinModel.Update(BakPositon, m_rotation,scale);
 
 		//アニメーションの更新
 		Animation.Update(1.0f / 60.0f);
@@ -125,7 +130,7 @@ void BattlePlayer::Update()
 
 		characterController.Execute(0.03f);
 		AnimationSet();
-		skinModel.Update(BakPositon, m_rotation, CVector3::One);
+		skinModel.Update(BakPositon, m_rotation, scale);
 		//アニメーションの更新
 		Animation.Update(1.0f / 60.0f);
 	}
@@ -136,7 +141,7 @@ void BattlePlayer::Update()
 		Time += GameTime().GetFrameDeltaTime();
 		//アニメーションの更新
 		Animation.Update(1.0f / 60.0f);
-		skinModel.Update(BakPositon, m_rotation, CVector3::One);
+		skinModel.Update(BakPositon, m_rotation, scale);
 
 	}
 		
@@ -160,7 +165,8 @@ void BattlePlayer::AnimationSet()
 		//攻撃時
 		if (IsAttack) {
 			IsAnimend = false;
-			Animation.PlayAnimation(Run_anim, 0.05f);
+			Animation.PlayAnimation(Jump_anim, 0.05f);
+			Animation.SetAnimationLoopFlag(Jump_anim,false);
 			Animation.SetAnimationSpeedRate(2);
 
 			IsStand = true;
@@ -190,7 +196,7 @@ void BattlePlayer::AnimationSet()
 	{
 		Animation.PlayAnimation(Stand_anim, 0.1f);
 		Animation.SetAnimationLoopFlag(Stand_anim, true);
-
+		Animation.SetAnimationSpeedRate(1);
 		IsAttack = false;
 		IsDamage = false;
 		IsAnimend = true;
@@ -237,9 +243,6 @@ void BattlePlayer::Particle()
 		{ 1.0f, 1.0f, 1.0f },							//!<乗算カラー。
 	},
 		g_battleenemy->Getpos());//パーティクルを生成する座標　CVector3型？
-
-
-
 
 }
 

@@ -93,15 +93,17 @@ void Camera::TpsCamera()
 	if (cameraCollisionSolver.Execute(newPos, camera.GetPosition(), camera.GetTarget()))
 	{
 		camera.SetPosition(newPos);
-		//camera.ClearSpringParame();
+		
 
 	}
 
 
 }
 
+//戦闘に入る前のカメラ
 void Camera::BattleCamera()
 {
+
 	CVector3 bpos;
 	bpos = g_battleplayer->Getpos2();
 	Battletag.z = bpos.z + 7;
@@ -110,9 +112,11 @@ void Camera::BattleCamera()
 
 }
 
+
+//敵に注目したカメラ
 void Camera::EnemyBattleCamera()
 {
-
+	BattlePlayerCameraPos = { -1.5f,0.0f,1.0f };
 
 	if (g_battleplayer != nullptr) {
 		V = g_battleenemy->Getpos();
@@ -128,12 +132,19 @@ void Camera::EnemyBattleCamera()
 }
 
 
+//プレイヤーの周りをまわるカメラ
 void Camera::PlayerBatlleCamera()
 {
 	
-	
+	CVector3 Pintpos = g_battleplayer->Getpos();
+	CVector3 Cpos = g_gameCamera->BGetPos();
+
+	Pintpos.Subtract(Cpos);
+
+	Dof().SetPint(Pintpos.Length() * 1000);
+	Dof().SetFocalLength(30.0f);
 	//回転
-	float rStick_x = 0.1f;
+	float rStick_x = 0.05f;
 
 
 	if (fabs(rStick_x) > 0.0f)
@@ -157,3 +168,4 @@ void Camera::PlayerBatlleCamera()
 	camera.Update();
 
 }
+

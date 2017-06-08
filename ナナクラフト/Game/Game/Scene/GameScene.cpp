@@ -12,12 +12,8 @@
 #include "Menu.h"
 #include "Enemy.h"
 #include "Npc.h"
+#include "tkEngine/graphics/tkCamera.h"
 
-
-
-#define   Y_UP 150
-#define   X_POS -650
-#define   X2_POS -950
 
 GameScene* g_gameScene = NULL;
 Player* g_player = nullptr;
@@ -28,8 +24,8 @@ BattleScene* g_battleScene = nullptr;
 HUD*    g_Hud = nullptr;
 Menu*   g_menu = nullptr;
 Enemy*  g_Enemy = nullptr;
-
-
+Enemy*  g_Enemy2 = nullptr;
+Enemy*  g_Enemy3 = nullptr;
 
 GameScene::GameScene()
 {
@@ -39,9 +35,12 @@ GameScene::GameScene()
 	g_map = NewGO<Map>(0);
 	g_menu = NewGO<Menu>(0);
 	NewGO<Npc>(0);
+
+
 	mapscene = MACHI;
 	scenes = STOP;
-	
+
+
 }
 
 
@@ -57,6 +56,9 @@ bool GameScene::Start()
 	
 	
 	if (g_gameCamera->IsStart() && g_player->IsStart() && g_Hud->IsStart() && g_map->IsStart()) {
+
+		
+
 		g_fade->StartFadeIn();
 		return true;
 
@@ -69,29 +71,32 @@ bool GameScene::Start()
 void GameScene::Update()
 {
 	
-	
-
 
 	switch (scenes)
 	{
+	case BattleWait:
+		
+		g_player->IsMoveSTOP();
+		m_timer += GameTime().GetFrameDeltaTime();
+		
+		if (m_timer > 3.0f)
+		{
+			feedbackblur.SetEnalbe(false);
+			CEngine::Instance().SetcrearEnable(true);
+			scenes = Battle;
+			m_timer = 0.0f;
+		}
+		break;
 
 	case STOP:
-	
 
-		
 
-		if (/*Pad(0).IsPress(enButtonX) && mapscene == DOUKUTU*/ Bato == true)
+		if (Bato == true)
 		{
+			feedbackblur.SetEnalbe(true);
+			CEngine::Instance().SetcrearEnable(false);
+			scenes = BattleWait;
 				
-				DeleteGO(g_player);
-				g_player = nullptr;
-				g_Enemy = nullptr;
-				g_sound->StopSound();
-				g_battleScene = NewGO<BattleScene>(0);
-				g_gameCamera->BattleCamera();
-				g_gameCamera->ChangeStop();    //カメラの更新を止める
-				scenes = Battle;
-				Bato = false;
 
 		}
 		
@@ -114,8 +119,6 @@ void GameScene::Update()
 			exit(0);
 		}
 
-
-
 		break;
 
 
@@ -127,14 +130,33 @@ void GameScene::Update()
 
 			if (g_map2 == nullptr)
 			{
+				g_gameCamera->ChangeStart();
+
 				g_player = NewGO<Player>(0);
+				modelName = "Assets/modelData/ghost.X";
 				g_Enemy = NewGO<Enemy>(0);
+				g_Enemy->Init(modelName);
+				g_Enemy->setPos({ -3.0f, 0.0f, -20.0f });
+
+
+				modelName = "Assets/modelData/usagi.X";
+				g_Enemy2 = NewGO<Enemy>(0);
+				g_Enemy2->Init(modelName);
+				g_Enemy2->setPos({ -3.0f, 0.0f, -40.0f });
+
+				modelName = "Assets/modelData/Bossusagi.X";
+				g_Enemy3 = NewGO<Enemy>(0);
+				g_Enemy3->Init(modelName);
+				g_Enemy3->setPos({ 20.0f, 0.0f, -15.0f });
 				g_map2 = NewGO<Map2>(0);
+				g_fade->StartFadeIn();
 				
 			}
 
+			
 			else 
 			{
+				
 				g_fade->StartFadeIn();
 				scenes = STOP;
 				mapscene = DOUKUTU;
@@ -145,7 +167,7 @@ void GameScene::Update()
 
 
 		}
-
+		break;
 
 	case MACHI:
 
@@ -154,6 +176,8 @@ void GameScene::Update()
 		{
 			if (g_map == nullptr)
 			{
+				g_gameCamera->ChangeStart();
+				if (g_fade->IsExecute() == true) { return; }
 				g_player = NewGO<Player>(0);
 				g_map = NewGO<Map>(0);
 				
@@ -162,16 +186,30 @@ void GameScene::Update()
 			else
 			{
 				g_fade->StartFadeIn();
+				
+
+
 				scenes = STOP;
 				mapscene = MACHI;
 				break;
 			}
 
 		}
-
+		break;
 	case Battle:
-
-
+		if (Bato == true)
+		{
+			
+			DeleteGO(g_player);
+			g_player = nullptr;
+			//g_Enemy = nullptr;
+			g_sound->StopSound();
+			g_battleScene = NewGO<BattleScene>(0);
+			g_gameCamera->BattleCamera();
+			g_gameCamera->ChangeStop();    //カメラの更新を止める
+			
+			Bato = false;
+		}
 		break;
 
 
@@ -179,6 +217,13 @@ void GameScene::Update()
 
 
 		break;
+
+	case Change:
+
+
+		DeteScene();
+		break;
+
 	}
 	
 }
@@ -187,12 +232,18 @@ void GameScene::Update()
 */
 void GameScene::Render(CRenderContext& renderContext)
 {
-
+	
 }
 
 void GameScene::DeteScene()
 {
 
+	if (g_fade->IsExecute() == true)
+	{
+		g_player->IsMoveSTOP();
+		g_player->StopSound();
+		g_gameCamera->ChangeStop();
+		return; }
 
 	if(mapscene == MACHI)
 	{
@@ -210,6 +261,8 @@ void GameScene::DeteScene()
 		
 			DeleteGO(g_map2);
 			DeleteGO(g_Enemy);
+			DeleteGO(g_Enemy2);
+			DeleteGO(g_Enemy3);
 			if (g_player != nullptr) {
 				DeleteGO(g_player);
 			}
@@ -224,31 +277,12 @@ void GameScene::DeteScene()
 }
 void GameScene::MapChange()
 {
-	while (Chang == true) {
+	g_fade->StartFadeOut();
+	g_sound->StopSound();
+	scenes = Change;
+	
+	
 
-		switch (sets)
-		{
-		case in:
-			
-				//g_fade->StartFadeOut();
-				sets = out;
-				g_sound->StopSound();
-
-			break;
-
-		case out:
-
-				DeteScene();
-				sets = in;
-				Chang = false;
-
-			
-			break;
-
-		}
-	}
-
-	Chang = true;
 }
 
 

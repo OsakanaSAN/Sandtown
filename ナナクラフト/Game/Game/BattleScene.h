@@ -16,7 +16,7 @@ public:
 
 	void Update() override;
 
-	void Render(CRenderContext&renderContext);
+	void PostRender(CRenderContext&renderContext);
 
 
 	
@@ -40,6 +40,7 @@ public:
 	void BattleKeep();
 
 private:
+
 
 	CSoundSource*	m_sound_bgm_battle;
 	CSoundSource*	m_sound_bgm_battle2;
@@ -86,8 +87,6 @@ private:
 
 	CSprite		m_CasolBGSprite5;		//!<戦闘画面の選択のスプライト。
 	CTexture	m_CasolBGTexture5;		//!<戦闘画面の選択のテクスチャ。
-
-
 
 
 	bool		Winflg;

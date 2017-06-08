@@ -227,17 +227,20 @@ void Menu::HpChangTex()
 
 	NextHP[0] = ChangHP / 100;
 	sprintf(HpTexName, "Assets/UI/%d.png", NextHP[0]);
+	HpSeatTexture[1].Release();
 	HpSeatTexture[1].Load(HpTexName);
 
 	ChangHP %= 100;
 
 	NextHP[1] = ChangHP / 10;
 	sprintf(HpTexName, "Assets/UI/%d.png", NextHP[1]);
+	HpSeatTexture[2].Release();
 	HpSeatTexture[2].Load(HpTexName);
 
 	ChangHP %= 10;
 	NextHP[2] = ChangHP;
 	sprintf(HpTexName, "Assets/UI/%d.png", NextHP[2]);
+	HpSeatTexture[3].Release();
 	HpSeatTexture[3].Load(HpTexName);
 
 
@@ -283,17 +286,20 @@ void Menu::GoldChangTex()
 
 	NextGold[0] = NextGoldChang / 100;
 	sprintf(GoldName, "Assets/UI/%d.png", NextGold[0]);
+	GoldSeatTexture[1].Release();
 	GoldSeatTexture[1].Load(GoldName);
 
 	NextGoldChang %= 100;
 
 	NextGold[1] = NextGoldChang / 10;
 	sprintf(GoldName, "Assets/UI/%d.png", NextGold[1]);
+	GoldSeatTexture[2].Release();
 	GoldSeatTexture[2].Load(GoldName);
 
 	NextGoldChang %= 10;
 	NextGold[2] = NextGoldChang;
 	sprintf(GoldName, "Assets/UI/%d.png", NextGold[2]);
+	GoldSeatTexture[3].Release();
 	GoldSeatTexture[3].Load(GoldName);
 
 
@@ -305,6 +311,7 @@ void Menu::InventoryChangTex(int Item)
 
 	if (InventoryY < 5) {
 		sprintf(InvebtoryName, "Assets/Item/Item%d.png", Item);
+		InventorySeatTexture[InventoryY][InventoryX].Release();
 		InventorySeatTexture[InventoryY][InventoryX].Load(InvebtoryName);
 		InventorySeatSprite[InventoryY][InventoryX].Init(&InventorySeatTexture[InventoryY][InventoryX]);
 		InventorySeatSprite[InventoryY][InventoryX].SetSize({ 100.0f, 100.0f });

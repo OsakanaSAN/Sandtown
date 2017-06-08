@@ -28,12 +28,22 @@ void Fade::Update()
 			if (m_timer < FADE_TIME) {
 				float t = m_timer / FADE_TIME;
 				m_sprite.SetAlpha(min(t, 1.0f));
+				OutTimer += GameTime().GetFrameDeltaTime();
 			}
-			else {
-				m_isExecute = false;
+			else if (OutTimer < 2)
+			{
 				m_sprite.SetAlpha(1.0f);
+				OutTimer += GameTime().GetFrameDeltaTime();
+			}
+
+			else {
+				m_sprite.SetAlpha(1.0f);
+				m_isExecute = false;
+				OutTimer = 0;
+				
 			}
 		}break;
+
 		case eFadeIn:
 			m_timer += GameTime().GetFrameDeltaTime();
 			if (m_timer < FADE_TIME) {

@@ -9,14 +9,15 @@
 namespace tkEngine{
 	CMonochromeFilter::CMonochromeFilter()
 	{
-		
+		/*m_isEnable = true;
+		m_blendRate = 1.0f;*/
 	}
 	CMonochromeFilter::~CMonochromeFilter()
 	{
 	}
 	void CMonochromeFilter::Create(const SGraphicsConfig& config)
 	{
-		m_effect = EffectManager().LoadEffect("Assets/presetShader/monochromeFilter.fx");
+		/*m_effect = EffectManager().LoadEffect("Assets/presetShader/monochromeFilter.fx");*/
 	}
 
 }

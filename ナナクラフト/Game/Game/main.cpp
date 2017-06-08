@@ -55,7 +55,7 @@ void InitTkEngine( HINSTANCE hInst )
 	
 
 	//DOF
-	initParam.graphicsConfig.dofConfig.isEnable = false;
+	initParam.graphicsConfig.dofConfig.isEnable = true;
 	//AA
 	initParam.graphicsConfig.aaConfig.isEnable = true;
 	//MotionBlur
@@ -121,3 +121,6 @@ int WINAPI wWinMain(
 
 	return 0;
 }
+
+//タイマーの使い方
+//GameTime().GetFrameDeltaTime();

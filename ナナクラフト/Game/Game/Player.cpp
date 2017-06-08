@@ -2,7 +2,7 @@
 #include "Player.h"
 #include <iostream>
 #include <fstream>
-#define  MOVESPEED  7.0
+#define  MOVESPEED  6.0
 using  namespace std;
 
 
@@ -74,27 +74,15 @@ Player::~Player()
 
 bool Player::Start()
 {
-	//All.SetPointLightColor({ 1.0f,1.0f,1.5f,4.0f });
 	
 
-	skinModelData.LoadModelData("Assets/modelData/Unity.X", &Animation);
+	skinModelData.LoadModelData("Assets/modelData/kano.X", &Animation);
 	skinModel.Init(skinModelData.GetBody());
 	skinModel.SetLight(&All);//デフォルトライトを設定。
-	/*skinModel.SetHasNormalMap(true);
-	skinModel.SetHasSpeculerMap(true)*/;
 	skinModel.SetShadowCasterFlag(true);
-	/*skinModel.SetShadowReceiverFlag(true);*/
-	/*skinModel.SetFresnelFlag(true);
-	skinModel.SetReflectionCasterFlag(true);
-	skinModel.SetWriteVelocityMap(false);*/
-	/*skinModel.SetFresnelFlag(true);*/
-
 
 
 	m_rotion.SetRotation(CVector3(0.0f, 1.0f, 0.0f), CMath::DegToRad(0.0f));
-	
-
-
 	//キャラクタコントローラの初期化。
 	characterController.Init(0.5f, 1.0f, position);
 
@@ -104,14 +92,13 @@ bool Player::Start()
 	currentAnimSetNo = Stand_anim;
 	Animation.PlayAnimation(Stand_anim, 0.1f);
 	Animation.SetAnimationLoopFlag(Jump_anim, false);
-	Animation.SetAnimationEndTime(Run_anim, 0.8);
+	Animation.SetAnimationEndTime(Run_anim, 2);
 
 	
 	radius = 0.6f;
 	height = 0.3f;
-	//characterController.Init(radius, height, position);
-	//characterController.SetGravity(-18.8f);
-
+	
+	scale.Scale(0.4);
 	return true;
 
 }
@@ -123,16 +110,17 @@ void Player::Update()
 	{
 
 	case START:
-		//All.SetPointLightPosition(Getpos());
+
 		characterController.SetPosition(position);
 
 		AngleSet();  //キャラクターの向きを変更する
-		Move();      //キャラの移動
 		AnimetionSet();
+		Move();      //キャラの移動
+		
 		
 		skinModel.EntryShadowMap();
 		//ワールド行列の更新。
-		skinModel.Update(position, m_rotion,CVector3::One);
+		skinModel.Update(position, m_rotion,scale);
 
 		break;
 
@@ -159,7 +147,7 @@ void Player::Move()
 	
 
 	
-	if (move.x != 0.0f || move.z != 0.0f)
+	if (move.x  !=  0.0f || move.z != 0.0f)
 	{
 		Ismove = true;
 		
@@ -206,6 +194,15 @@ void Player::AngleSet()
 	moveSpeed.z = moveDir.z * MOVESPEED;
 
 
+
+
+	if (Pad(0).IsPress(enButtonRB1))
+	{
+		moveSpeed.x = moveDir.x * MOVESPEED * 1.3;
+		moveSpeed.z = moveDir.z * MOVESPEED * 1.3;
+		Animation.SetAnimationSpeedRate(2.3f);
+	}
+
 	if (moveDir.LengthSq() > 0.0001f) {
 
 		m_rotion.SetRotation(CVector3::Up, atan2f(moveDir.x, moveDir.z));
@@ -230,12 +227,18 @@ void Player::AnimetionSet()
 	if (!Isrun) {
 		if (Ismove) {
 
-			Animation.PlayAnimation(Run_anim,0.05);
+			Animation.PlayAnimation(Run_anim,0);
 			Isrun = true;		
-			runsound->SetPosition(Getpos());
+			//runsound->SetPosition(Getpos());
+
+			/*runsound->Play(true);*/
+
 			runsound->Play(true);
 
-			Animation.SetAnimationSpeedRate(2);
+
+			Animation.SetAnimationSpeedRate(6.5);
+			Animation.SetAnimationEndTime(Run_anim,2.0f);
+
 
 		}
 	}
@@ -243,7 +246,7 @@ void Player::AnimetionSet()
 	{
 		Animation.PlayAnimation(Stand_anim, 0.3f);
 		Isrun = false;
-		runsound->Stop();
+	//	runsound->Stop();
 		Animation.SetAnimationSpeedRate(1);
 
 	}

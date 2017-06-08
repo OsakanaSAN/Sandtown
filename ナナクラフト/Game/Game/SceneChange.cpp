@@ -75,10 +75,11 @@ void SceneChange::Update()
 		Vpos.z = Ppos.z - SCpos.z;
 		float L = Vpos.Length();
 
-		if (L < 3.0f && Pad(0).IsPress(enButtonA))
+		if (L < 3.0f && Pad(0).IsPress(enButtonA) && Out == false)
 		{
-			g_fade->StartFadeOut();
+			
 			g_gameScene->MapChange();
+			Out = true;
 			
 		}
 	}

@@ -158,9 +158,6 @@
     <ClCompile Include="graphics\postEffect\tkEdgeRender.cpp">
       <Filter>Source Files\graphics\postEffect</Filter>
     </ClCompile>
-    <ClCompile Include="graphics\postEffect\tkBloomRender.cpp">
-      <Filter>Source Files\graphics\postEffect</Filter>
-    </ClCompile>
     <ClCompile Include="graphics\preRender\tkShadowMap.cpp">
       <Filter>Source Files\graphics\prerender</Filter>
     </ClCompile>
@@ -298,6 +295,12 @@
     </ClCompile>
     <ClCompile Include="graphics\material\tkSkinModelMaterial.cpp">
       <Filter>Source Files\graphics\material</Filter>
+    </ClCompile>
+    <ClCompile Include="graphics\postEffect\tkBloomRender.cpp">
+      <Filter>Source Files\graphics\postEffect</Filter>
+    </ClCompile>
+    <ClCompile Include="graphics\postEffect\tkFeedbackblur.cpp">
+      <Filter>Source Files\graphics\postEffect</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -567,6 +570,9 @@
     </ClInclude>
     <ClInclude Include="graphics\material\tkSkinModelMaterial.h">
       <Filter>Source Files\graphics\material</Filter>
+    </ClInclude>
+    <ClInclude Include="graphics\postEffect\tkFeedbackblur.h">
+      <Filter>Source Files\graphics\postEffect</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

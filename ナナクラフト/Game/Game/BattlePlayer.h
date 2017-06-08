@@ -49,6 +49,11 @@ public:
 		return ATK;
 	}
 
+	void SetATK(int atk)
+	{
+		ATK = atk;
+	}
+
 	bool GetAnimend()
 	{
 		return IsAnimend;
@@ -58,7 +63,7 @@ private:
 	enum ANIME {
 		Stand_anim,
 		Walk_anim,
-		Attack_anim,
+		Run_anim,
 		Jump_anim,
 		Dameg_anim,
 
@@ -90,10 +95,12 @@ private:
 	bool                    IsSetPoint = false;
 	bool                    IsStop = true;
 	float                     Time = 0;
-
+	
 	//ゲームシーンから持ってくるステータス？
-	int						ATK = 20;//武器ごとに変化？
+	int						ATK=20;//武器ごとに変化？
 	int						HP = 30;//ゲームシーンと同じ値に後々する
 	int						EXP = 0;//経験値
+
+	CVector3 scale = CVector3::One;
 };
 extern BattlePlayer* g_battleplayer;
