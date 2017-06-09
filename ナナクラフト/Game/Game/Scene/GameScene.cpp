@@ -76,12 +76,12 @@ void GameScene::Update()
 	case BattleWait:
 		
 		g_player->IsMoveSTOP();
-		g_sound->StopSound();
+		
 		m_timer += GameTime().GetFrameDeltaTime();
 		
 		if (m_timer > 3.0f)
 		{
-			
+			g_sound->StopSound();
 			scenes = Battle;
 			m_timer = 0.0f;
 		}
@@ -96,8 +96,10 @@ void GameScene::Update()
 
 			CEngine::Instance().SetcrearEnable(false);
 			CEngine::Instance().GetFeedbackblur().SetEnalbe(true);
+			g_sound->StopSound();
 
 			scenes = BattleWait;
+			g_sound->EnkauntoSound();
 			
 
 		}

@@ -10,6 +10,7 @@ public:
 	void MachiSound();
 	void DoukutuSound();
 	void BattleSound();
+	void EnkauntoSound();
 	void StopSound();
 	void VolumeDown();
 	void VolumeNormal();
