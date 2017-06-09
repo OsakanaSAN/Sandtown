@@ -20,6 +20,7 @@ DungeonMapInfo mapLocInfo2[] =
 };
 
 DungeonMapInfo mapLocInfo3[] =
+
 {
 #include "Map/DungeonF7.h"
 };

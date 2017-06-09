@@ -6,6 +6,7 @@
 #include "GameSound.h"
 #include "HUD.h"
 #include "BattleMenu.h"
+#include "BattlePlayer.h"
 
 extern CRandom g_random;
 
@@ -373,24 +374,46 @@ void Menu::MenuSceneStop()
 
 }
 
-void Menu::UseItem()
+void Menu::MenuSceneexit()
 {
-	if (g_Hud->GetHP() >= 500) { return; }
 
+
+	setMenu = STOP;
+
+}
+
+bool Menu::UseItem()
+{
+	if (g_Hud->GetHP() >= 500) { return false; }
+	if (InventoryPackNumber <= 0) { return false; }
 	g_Hud->RecoveryHP(100);
 	setHP(g_Hud->GetHP());
 	g_battlemenu->SetHp(g_Hud->GetHP());
-	/*for (int count = 0;count < InventoryPackNumber;count++) {
+	if (g_battleplayer != nullptr) {
+		CVector3 Bpos = g_battleplayer->Getpos();
+		Bpos.z = Bpos.z - 0.9f;
+		g_battleplayer->Particle(Bpos, 1);//回復パーティクルの呼び出し
+	}
+	//else if (g_player != nullptr)
+	//{
+	//	g_battleplayer->Particle(g_battleplayer->Getpos(), 1);//回復パーティクルの呼び出し
+	//}
+	for (int count = 0;count < InventoryPackNumber;count++) {
 
-		if (ItemNuber[count] == 0)
+		if (ItemNuber[count] == 1)
 		{
-			int box = ItemNuber[count + 1];
-			ItemNuber[count + 1] = 0;
-			ItemNuber[count] = box;
+			for (count;count < InventoryPackNumber;count++)
+			{
+				int box = ItemNuber[count + 1];
+				ItemNuber[count + 1] = 0;
+				ItemNuber[count] = box;
+			}
 
-			
+			break;
 		}
-	}*/
+	}
+
+	return true;
 
 		
 }

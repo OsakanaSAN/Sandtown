@@ -23,7 +23,7 @@ SMapInfo mapLocInfo2[] = {
 Map2::Map2()
 {
 
-	ChangeObject = 0;0;
+	ChangeObject = 0;
 	NoRenderObjct = 0;
 	NoMoveObject = 0;
 

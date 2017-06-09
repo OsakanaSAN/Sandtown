@@ -13,7 +13,7 @@ public:
 	void Update();
 	void Render(CRenderContext&renderContext);
 	void AnimationSet();
-	void Particle(CVector3 target);
+	void Particle(CVector3 target, int ParticleNumber);
 	void ParticleDelete();
 
 	CVector3 Getpos()
@@ -60,12 +60,20 @@ public:
 	}
 private:
 
-	enum ANIME {
+	/*enum ANIME {
 		Stand_anim,
 		Walk_anim,
 		Run_anim,
 		Jump_anim,
 		Dameg_anim,
+
+	};*/
+	enum ANIME {
+		Stand_anim,
+		Dameg_anim,
+		Run_anim,
+		Attack_anim,
+		
 
 	};
 

@@ -39,8 +39,10 @@ public:
 
 	void BattleKeep();
 
+	void DamageTex();
 private:
 
+	CRandom			m_random;
 
 	CSoundSource*	m_sound_bgm_battle;
 	CSoundSource*	m_sound_bgm_battle2;
@@ -87,8 +89,11 @@ private:
 	CSprite		m_ComandBGSprite4;		//!<戦闘画面の選択のスプライト。
 	CTexture	m_ComandBGTexture4;		//!<戦闘画面の選択のテクスチャ。
 
-	CSprite		m_DamageBGSprite;		//!<戦闘画面の選択のスプライト。
-	CTexture	m_DamageBGTexture;		//!<戦闘画面の選択のテクスチャ。
+	CSprite     m_DamageSeatSprite[4];
+	CTexture    m_DamageSeatTexture[4];
+	CVector2    m_Damageseatpos = { -240,250 };
+	char        m_DamageTexName[255];
+
 
 	CSprite		m_CasolBGSprite;		//!<戦闘画面の選択のスプライト。
 	CTexture	m_CasolBGTexture;		//!<戦闘画面の選択のテクスチャ。
@@ -101,6 +106,7 @@ private:
 	bool		PDamage;
 	bool		EDamage;
 	bool		SelectQ;//
+	bool Itemuse = false;
 
 	int         BattlGold = 0;
 

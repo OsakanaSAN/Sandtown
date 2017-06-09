@@ -56,7 +56,7 @@ BattleScene::~BattleScene()
 		g_gameScene->MapChange();
 	}
 
-	m_DamageBGTexture.Release();
+
 	m_CasolBGTexture.Release();
 	m_ComandBGTexture1.Release();
 	m_ComandBGTexture2.Release();
@@ -99,10 +99,14 @@ bool BattleScene::Start()
 	m_ComandBGSprite4.SetPosition({ -300,-350 });
 	m_ComandBGSprite4.SetSize({ 150.0f,50 });
 
-	m_DamageBGTexture.Load("Assets/sprite/damage1.png");
-	m_DamageBGSprite.Init(&m_DamageBGTexture);
-	m_DamageBGSprite.SetPosition({ -200,300 });
+	for (int i = 1; i < 4;i++) {
 
+			m_DamageSeatTexture[i].Load("Assets/sprite/damagi0.png");
+			m_DamageSeatSprite[i].SetPosition(m_Damageseatpos);
+			m_DamageSeatSprite[i].Init(&m_DamageSeatTexture[i]);
+			m_DamageSeatSprite[i].SetSize({ 50.0f,50.0f });
+			m_Damageseatpos.x += 50;
+	}
 	m_CasolBGTexture.Load("Assets/sprite/casol2.png");
 	m_CasolBGSprite.Init(&m_CasolBGTexture);
 	m_CasolBGSprite.SetPosition({ -500,-250 });
@@ -126,6 +130,8 @@ bool BattleScene::Start()
 	g_battlemenu->SetHp(g_Hud->GetHP());
 	g_battlemenu->SetEnemyHp(g_battleenemy->GetHP());
 	g_battlemenu->SetEnemyMexHp(g_battleenemy->GetHP());
+
+	m_random.Init((unsigned long)time(NULL));
 	return true;
 }
 
@@ -148,6 +154,7 @@ void BattleScene::Update()
 	//Dof().SetFocalLength(40.0f);
 
 	
+
 	if (!IsBattleStart) { return; }
 
 
@@ -161,7 +168,7 @@ void BattleScene::Update()
 			IsBattle = false;
 			EnemyPointCamera = true;
 
-			if (Pad(0).IsPress(enButtonUp) && Comand == Item)
+			if (Pad(0).IsTrigger(enButtonUp) && Comand == Item)
 			{
 				g_battlemenu->EnemyZoomOut();
 				g_battlemenu->PlayerZoomSet();
@@ -188,7 +195,7 @@ void BattleScene::Update()
 			{
 
 			}
-			else if (Pad(0).IsPress(enButtonDown) && Comand ==Keep|| Pad(0).IsPress(enButtonUp) && Comand == Escape)
+			else if (Pad(0).IsTrigger(enButtonDown) && Comand ==Keep|| Pad(0).IsTrigger(enButtonUp) && Comand == Escape)
 			{
 				
 					m_sound_bgm_battle = NewGO<CSoundSource>(0);
@@ -202,7 +209,7 @@ void BattleScene::Update()
 
 				Comand = Item;
 			}
-			else if (Pad(0).IsPress(enButtonDown) && Comand == Item)
+			else if (Pad(0).IsTrigger(enButtonDown) && Comand == Item)
 			{
 				
 					m_sound_bgm_battle = NewGO<CSoundSource>(0);
@@ -229,8 +236,13 @@ void BattleScene::Update()
 			if (turnCheng == true)
 			{
 				PlayerTurn();
+				if (Itemuse)//アイテム使ったターン
+				{
+					g_battleplayer->ParticleDelete();//パーティクル消去
+					Itemuse = false;
+				}
+				
 			}
-
 			else if (turnCheng == false) {
 				EnemyTurn();
 			}
@@ -256,7 +268,11 @@ void BattleScene::PostRender(CRenderContext&renderContext)
 {
 	
 	if (EDamage || PDamage) {//ダメージの表示
-		m_DamageBGSprite.Draw(renderContext);
+		for (int i = 0;i < 4;i++)
+		{
+
+			//m_DamageSeatSprite[i].Draw(renderContext);
+		}
 	}
 
 	if (EnemyZoom) { return; }
@@ -281,6 +297,7 @@ void BattleScene::PlayerTurn()
 
 	switch (Comand)//選択肢
 	{
+		
 	case Keep:
 
 		BattleKeep();
@@ -327,13 +344,18 @@ void BattleScene::PlayerTurn()
 			m_sound_Attack->Play(false);
 			m_sound_Attack->SetVolume(4.0f);
 
+			/*for (int i = 1; i < 4;i++) {
 
-			m_DamageBGTexture.Load("Assets/sprite/damage1.png");
-			m_DamageBGSprite.Init(&m_DamageBGTexture);
-			m_DamageBGSprite.SetPosition({ -240,250 });
-			m_DamageBGSprite.SetSize({ 200,80 });
 
-			g_battleplayer->Particle(g_battleenemy->Getpos());//攻撃パーティクル呼び出し
+				m_DamageSeatTexture[i].Load("Assets/sprite/damage0.png");
+				m_DamageSeatSprite[i].Init(&m_DamageSeatTexture[i]);
+				m_DamageSeatSprite[i].SetPosition({ -240,250 });
+				m_DamageSeatSprite[i].SetSize({ 200,80 });
+			}*/
+			//DamageTex();
+		
+
+			g_battleplayer->Particle(g_battleenemy->Getpos(),0);//攻撃パーティクル呼び出し
 			g_battleenemy->SetDamage(g_battleplayer->GetATK(), true);//ダメージ処理
 			g_battlemenu->SetEnemyHp(g_battleenemy->GetHP());//敵の体力DOWN
 			EDamage = true;
@@ -347,7 +369,7 @@ void BattleScene::PlayerTurn()
 			EDamage = false;
 			if (g_battleenemy->GetHP() <= 0)
 			{
-				
+
 				g_Hud->SetGold(g_battleenemy->GetEGold());
 				g_Hud->SetExp(g_battleenemy->GetExp());
 				Winflg = true;//バトルに勝利した
@@ -386,8 +408,8 @@ void BattleScene::PlayerTurn()
 		break;
 
 	case Item:
-
-		if (Pad(0).IsPress(enButtonA))
+		
+		if (Pad(0).IsTrigger(enButtonA))
 		{
 
 			Comand = INVENTORY;
@@ -396,11 +418,19 @@ void BattleScene::PlayerTurn()
 		break;
 	case INVENTORY:
 
+
 		g_menu->MenuSceneItem();
+		if (Pad(0).IsTrigger(enButtonA))//アイテムの使用
+		{
+			Itemuse = g_menu->UseItem();
+			g_menu->MenuSceneexit();
+			Comand = Item;
+			
+		}
 		if (Pad(0).IsPress(enButtonB))
 		{
 
-			g_menu->MenuSceneStop();
+			g_menu->MenuSceneexit();
 			Comand = Item;
 		}
 		break;
@@ -426,14 +456,17 @@ void BattleScene::EnemyTurn()
 		//m_sound_Attack->Init("Assets/sound/Attack.wav");
 		m_sound_Attack->Play(false);
 		m_sound_Attack->SetVolume(4.0f);
-		
-		m_DamageBGTexture.Load("Assets/sprite/damage1.png");
-		m_DamageBGSprite.Init(&m_DamageBGTexture);
-		m_DamageBGSprite.SetPosition({ 150,100 });
-		m_DamageBGSprite.SetSize({ 200,80 });
-		
+		//for (int i = 1; i < 4;i++) {
 
-		g_battleplayer->Particle(g_battleplayer->Getpos());//攻撃パーティクル呼び出し
+
+		//	m_DamageSeatTexture[i].Load("Assets/sprite/damage0.png");
+		//	m_DamageSeatSprite[i].Init(&m_DamageBGTexture[i]);
+		//	m_DamageSeatSprite[i].SetPosition({ 150,100 });
+		//	m_DamageSeatSprite[i].SetSize({ 200,80 });
+		//}
+		//DamageTex();
+
+		g_battleplayer->Particle(g_battleplayer->Getpos(),0);//攻撃パーティクル呼び出し
 		
 		g_battleplayer->SetDamage(g_battleenemy->GetATK(), true);//ダメージ計算とダメージアニメーション再生
 		
@@ -489,4 +522,31 @@ void BattleScene::BattleKeep()
 
 	}
 
+}
+
+void BattleScene::DamageTex()
+{
+	int NextDamage[3];
+	int Damage=g_battleenemy->GetATK();
+
+
+	NextDamage[0] = Damage / 100;
+	sprintf(m_DamageTexName, "Assets/sprite/damagi%d.png", NextDamage[0]);
+	m_DamageSeatTexture[1].Release();
+	m_DamageSeatTexture[1].Load(m_DamageTexName);
+
+	Damage %= 100;
+
+	NextDamage[1] = Damage / 10;
+	sprintf(m_DamageTexName, "Assets/sprite/damagi%d.png", NextDamage[1]);
+	m_DamageSeatTexture[2].Release();
+	m_DamageSeatTexture[2].Load(m_DamageTexName);
+
+	Damage %= 10;
+	NextDamage[2] = Damage;
+	sprintf(m_DamageTexName, "Assets/sprite/damagi%d.png", NextDamage[2]);
+	m_DamageSeatTexture[3].Release();
+	m_DamageSeatTexture[3].Load(m_DamageTexName);
+
+	
 }

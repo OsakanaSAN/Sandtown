@@ -20,7 +20,7 @@ shop*		g_shop;
 
 //マップの配置情報。
 SMapInfo mapLocInfo[] = {
-#include "Map/MACHI.h"
+#include "Map/test.h"
 };
 
 

@@ -66,7 +66,7 @@ bool Player::Start()
 {
 	
 
-	skinModelData.LoadModelData("Assets/modelData/kano.X", &Animation);
+	skinModelData.LoadModelData("Assets/modelData/Knight.X", &Animation);
 	skinModel.Init(skinModelData.GetBody());
 	skinModel.SetLight(&All);//デフォルトライトを設定。
 	skinModel.SetShadowCasterFlag(true);
@@ -82,7 +82,7 @@ bool Player::Start()
 	currentAnimSetNo = Stand_anim;
 	Animation.PlayAnimation(Stand_anim, 0.1f);
 	Animation.SetAnimationLoopFlag(Jump_anim, false);
-	Animation.SetAnimationEndTime(Run_anim, 2);
+	Animation.SetAnimationEndTime(Run_anim, 0);
 
 	
 	radius = 0.6f;
@@ -110,7 +110,7 @@ void Player::Update()
 		
 		skinModel.EntryShadowMap();
 		//ワールド行列の更新。
-		skinModel.Update(position, m_rotion,scale);
+		skinModel.Update(position, m_rotion, /*CVector3::One*/scale);
 
 		break;
 
@@ -119,6 +119,7 @@ void Player::Update()
 		break;
 
 	}
+	//skinModel.Update(position, m_rotion, /*CVector3::One*/scale);
 }
 
 void Player::Move()
@@ -218,8 +219,9 @@ void Player::AnimetionSet()
 	if (!Isrun) {
 		if (Ismove) {
 
-			Animation.PlayAnimation(Run_anim,0);
-			Isrun = true;		
+			Animation.PlayAnimation(Run_anim,1.0);
+			Isrun = true;
+
 			//runsound->SetPosition(Getpos());
 
 			/*runsound->Play(true);*/
@@ -227,7 +229,7 @@ void Player::AnimetionSet()
 			//runsound->Play(true);
 
 
-			Animation.SetAnimationSpeedRate(6.5);
+			Animation.SetAnimationSpeedRate(4.5);
 			Animation.SetAnimationEndTime(Run_anim,2.0f);
 
 
@@ -235,6 +237,7 @@ void Player::AnimetionSet()
 	}
 	else if (!Ismove)
 	{
+		Animation.SetAnimationSpeedRate(0.3);
 		Animation.PlayAnimation(Stand_anim, 0.3f);
 		Isrun = false;
 	//	runsound->Stop();
@@ -244,7 +247,7 @@ void Player::AnimetionSet()
 
 	
 	
-	//アニメーションの更新aa
+	//アニメーションの更新
 	Animation.Update(1.0f / 60.0f);
 
 }
