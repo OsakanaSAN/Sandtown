@@ -1,4 +1,8 @@
 sceneSetups:
+<<<<<<< HEAD
 - path: Assets/scene/honoo1.unity
+=======
+- path: Assets/scene/ice.unity
+>>>>>>> 74d9ffd1ee73bb22f72c3b5922a29eb11acfee2a
   isLoaded: 1
   isActive: 1

@@ -132,6 +132,9 @@ bool BattleScene::Start()
 	g_battlemenu->SetEnemyMexHp(g_battleenemy->GetHP());
 
 	m_random.Init((unsigned long)time(NULL));
+
+	m_sound_Attack = NewGO<CSoundSource>(0);
+	m_sound_Attack->Init("Assets/sound/Attack.wav");
 	return true;
 }
 
@@ -358,8 +361,8 @@ void BattleScene::PlayerTurn()
 
 		else if (PAttack && !EDamage &&g_battleenemy->GetAnimend() && g_battleplayer->GetAnimend())
 		{
-			m_sound_Attack = NewGO<CSoundSource>(0);
-			m_sound_Attack->Init("Assets/sound/Attack.wav");
+			//m_sound_Attack = NewGO<CSoundSource>(0);
+			//m_sound_Attack->Init("Assets/sound/Attack.wav");
 			m_sound_Attack->Play(false);
 			m_sound_Attack->SetVolume(4.0f);
 
@@ -421,11 +424,23 @@ void BattleScene::PlayerTurn()
 		//if (SelectQ)return;
 		if (Pad(0).IsPress(enButtonA))
 		{
-			
-			//確率で逃げれるようにする？乱数とかで？
-			DeleteGO(this);
-			//Result();
-			return;
+			int escape =  g_random.GetRandInt() % 10 + 1;
+			if(escape %2==0)
+			{
+				result = true;
+				turnCheng = false;
+				g_gameCamera->BattleCamera();
+				IsBattle = true; //コマンド不可視化
+				return;
+
+			}
+			else
+			{
+				//確率で逃げれるようにする？乱数とかで？
+				DeleteGO(this);
+				//Result();
+				return;
+			}
 		}
 
 		break;
@@ -472,7 +487,7 @@ void BattleScene::EnemyTurn()
 	if (EDamage)return;
 	if (g_battleenemy->GetAnimend() == false)return;
 
-
+		//g_battleenemy->SetAttack(true);//攻撃のアニメーション再生
 
 	if (!EAttack&&g_battleenemy->GetAnimend() && g_battleplayer->GetAnimend()) {
 		
