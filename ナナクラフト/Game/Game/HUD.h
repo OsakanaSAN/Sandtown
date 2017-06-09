@@ -28,6 +28,9 @@ public:
 		pExp += Setexp;
 		
 	}
+	int GetEXP() {
+		return pExp;
+	}
 
 	//¡‚ÌHP‚ğæ“¾
 	float GetHP()const
@@ -74,6 +77,12 @@ public:
 		ATK = atk;
 	}
 
+	
+
+	int GetNextExp()
+	{
+		return NextExp;
+	}
 	void LVUp();
 
 

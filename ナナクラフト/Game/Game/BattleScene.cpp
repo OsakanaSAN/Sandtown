@@ -32,31 +32,31 @@ BattleScene::BattleScene()
 BattleScene::~BattleScene()
 {
 	
-	if (Victory == true) {
-		g_sound->StopSound();
-		DeleteGO(g_battlemenu);
-		DeleteGO(g_battleplayer);
-		DeleteGO(g_battleenemy);
-		g_player = NewGO<Player>(0);
-		g_player->Loadpos();           //座標を読み込む
-		g_gameScene->SceneStop();
-		g_gameCamera->ChangeStart();   //カメラの更新を再開するを
-		g_sound->DoukutuSound();
-		g_menu->GoldChangTex();
-		g_menu->HpChangTex();
-		g_menu->LvChangTex();
-		
-	}
+		if (Victory == true) {
 
-	else
-	{
-		g_Hud->SetMaxHP(500.0f);
-		DeleteGO(g_battleenemy);
-		g_gameScene->SceneStop();
-		g_gameCamera->ChangeStart();   //カメラの更新を再開するを
-		g_gameScene->MapChange();
-	}
+			g_sound->StopSound();
+			DeleteGO(g_battlemenu);
+			DeleteGO(g_battleplayer);
+			DeleteGO(g_battleenemy);
+			g_player = NewGO<Player>(0);
+			g_player->Loadpos();           //座標を読み込む
+			g_gameScene->SceneStop();
+			g_gameCamera->ChangeStart();   //カメラの更新を再開するを
+			g_sound->DoukutuSound();
+			g_menu->GoldChangTex();
+			g_menu->HpChangTex();
+			g_menu->LvChangTex();
+		}
 
+		else
+		{
+			g_Hud->SetMaxHP(500.0f);
+			DeleteGO(g_battleenemy);
+			g_gameScene->SceneStop();
+			g_gameCamera->ChangeStart();   //カメラの更新を再開するを
+			g_gameScene->MapChange();
+		}
+	
 	m_DamageBGTexture4.Release();
 	m_CasolBGTexture5.Release();
 	m_ComandBGTexture1.Release();
@@ -82,9 +82,7 @@ bool BattleScene::Start()
 
 	SelectQ = false;
 
-	m_DamageBGTexture4.Load("Assets/sprite/damage1.png");
-	m_DamageBGSprite4.Init(&m_DamageBGTexture4);
-	m_DamageBGSprite4.SetPosition({ -200,300 });
+	
 
 	m_ComandBGTexture1.Load("Assets/sprite/comand.png");
 	m_ComandBGSprite1.Init(&m_ComandBGTexture1);
@@ -101,12 +99,26 @@ bool BattleScene::Start()
 	m_ComandBGSprite3.SetPosition({ -300,-300 });
 	m_ComandBGSprite3.SetSize({ 150.0f,50 });
 
+	m_DamageBGTexture4.Load("Assets/sprite/damage1.png");
+	m_DamageBGSprite4.Init(&m_DamageBGTexture4);
+	m_DamageBGSprite4.SetPosition({ -200,300 });
+
+
 	m_CasolBGTexture5.Load("Assets/sprite/casol2.png");
 	m_CasolBGSprite5.Init(&m_CasolBGTexture5);
 	m_CasolBGSprite5.SetPosition({ -500,-200 });
 	m_CasolBGSprite5.SetSize({ 200,200 });
 
+	m_ResultBGTexture6.Load("Assets/sprite/Result.png");
+	m_ResultBGSprite6.Init(&m_ResultBGTexture6);
+
+
+	m_ResultBGTexture7.Load("Assets/sprite/lvup.png");
+	m_ResultBGSprite7.Init(&m_ResultBGTexture7);
+
+
 	
+
 
 	g_sound->BattleSound();
 
@@ -125,6 +137,7 @@ bool BattleScene::Start()
 
 void BattleScene::Update()
 {
+	
 	
 	//CVector3 Pintpos = g_battleplayer->Getpos();
 	///*CVector3 Epos = g_battleenemy->Getpos();
@@ -238,7 +251,15 @@ void BattleScene::Update()
 void BattleScene::PostRender(CRenderContext&renderContext)
 {
 
+
+	if (Comand == Result) {
+		m_ComandBGSprite1.Draw(renderContext);
+		/*m_ResultBGSprite8.Draw(renderContext);*/
+		m_ResultBGSprite7.Draw(renderContext);
+		m_ResultBGSprite6.Draw(renderContext);
+		/*m_ResultBGSprite9.Draw(renderContext);*/
 	
+	}
 
 	if (EDamage || PDamage) {//ダメージの表示
 		m_DamageBGSprite4.Draw(renderContext);
@@ -252,7 +273,7 @@ void BattleScene::PostRender(CRenderContext&renderContext)
 	m_ComandBGSprite2.Draw(renderContext);
 	m_ComandBGSprite3.Draw(renderContext);
 	m_CasolBGSprite5.Draw(renderContext);
-
+	
 }
 
 
@@ -261,7 +282,7 @@ void BattleScene::PlayerTurn()
 
 	if (EAttack)return;
 	if (PDamage)return;
-
+	
 	switch (Comand)//選択肢
 	{
 	case Keep:
@@ -331,25 +352,31 @@ void BattleScene::PlayerTurn()
 			EDamage = false;
 			if (g_battleenemy->GetHP() <= 0)
 			{
+
+				
+				Comand = Result;
 				
 				g_Hud->SetGold(g_battleenemy->GetEGold());
 				g_Hud->SetExp(g_battleenemy->GetExp());
 				Winflg = true;//バトルに勝利した
 
 				/*g_gameScene->BattleDate();*/
-				DeleteGO(this);
+				
 
 				g_menu->InventoryChangTex(3);
 
 				return;
-
+				
 				/*g_battleenemy->Delete();*/
 				//レベルアップ判定
 				//リザルト画面を出す処理その後シーン遷移？
 			}
-			//Turn = Eturn;//敵のターン
-			turnCheng = false;
-			Comand = Keep;
+			else
+			{
+				//Turn = Eturn;//敵のターン
+				turnCheng = false;
+				Comand = Keep;
+			}
 
 		}
 
@@ -372,6 +399,19 @@ void BattleScene::PlayerTurn()
 		}
 
 		break;
+	case Result:
+
+		m_timer += GameTime().GetFrameDeltaTime();
+		BattleResult();
+		if (m_timer > 4.0||Pad(0).IsTrigger(enButtonA))
+		{
+
+			Comand = Keep;
+			DeleteGO(this);
+
+		};
+			
+		break;
 	}
 
 
@@ -388,15 +428,12 @@ void BattleScene::EnemyTurn()
 
 		g_battleenemy->SetAttack(true);//攻撃のアニメーション再生
 
-		
-		
 
 		EAttack = true;
 	}
 	else if (EAttack && !PDamage && g_battleplayer->GetAnimend() && g_battleenemy->GetAnimend())
 	{
-		//m_sound_Attack = NewGO<CSoundSource>(0);
-		//m_sound_Attack->Init("Assets/sound/Attack.wav");
+		
 		m_sound_Attack->Play(false);
 		m_sound_Attack->SetVolume(4.0f);
 		
@@ -413,7 +450,7 @@ void BattleScene::EnemyTurn()
 	}
 	else if (EAttack &&PDamage&& g_battleenemy->GetAnimend() && g_battleplayer->GetAnimend())
 	{
-		/*m_sound_Attack->Stop();*/
+		
 		EAttack = false;
 		PDamage = false;
 
@@ -422,7 +459,7 @@ void BattleScene::EnemyTurn()
 
 			Loseflg = true;//戦闘に負けた
 
-			/*g_gameScene->BattleDate();*/
+			
 
 			Victory = false;
 			DeleteGO(g_battleScene);
@@ -431,13 +468,38 @@ void BattleScene::EnemyTurn()
 		}
 		SelectQ = false;
 		result = false;
-		//Turn = Pturn;//プレイヤーのターン
+		
 		turnCheng = true;
 
 	}
 }
 
+void BattleScene::BattleResult()
+{
+	
+	
+	if (g_Hud->GetEXP() >= g_Hud->GetNextExp()) {
+		m_ResultBGTexture7.Load("Assets/sprite/lvup.png");
+		m_ResultBGSprite7.Init(&m_ResultBGTexture7);
+		m_ResultBGSprite7.SetPosition({ 0,100 });
+		m_ResultBGSprite7.SetSize({ 100.0f,100.0f });
 
+	}
+	m_ComandBGTexture1.Load("Assets/sprite/comand.png");
+	m_ComandBGSprite1.Init(&m_ComandBGTexture1);
+	m_ComandBGSprite1.SetPosition({ 0,0 });
+	m_ComandBGSprite1.SetSize({ 700.0f,900.0f });
+
+
+	m_ResultBGTexture6.Load("Assets/sprite/Result.png");
+	m_ResultBGSprite6.Init(&m_ResultBGTexture6);
+	m_ResultBGSprite6.SetPosition({ 0,250 });
+	m_ResultBGSprite6.SetSize({ 300.0f,200.0f });
+
+
+
+
+}
 
 void BattleScene::BattleKeep()
 {

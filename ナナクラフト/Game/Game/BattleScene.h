@@ -18,7 +18,7 @@ public:
 
 	void PostRender(CRenderContext&renderContext);
 
-
+	void BattleResult();
 	
 
 	void PlayerTurn();
@@ -59,6 +59,7 @@ private:
 		Keep,
 		Attack,
 		Escape,
+		Result
 	};
 	BattleComand Comand = Keep;
 
@@ -88,6 +89,18 @@ private:
 	CSprite		m_CasolBGSprite5;		//!<戦闘画面の選択のスプライト。
 	CTexture	m_CasolBGTexture5;		//!<戦闘画面の選択のテクスチャ。
 
+	CSprite		m_ResultBGSprite6;		//!<リザルト画面のスプライト。
+	CTexture	m_ResultBGTexture6;		//!<リザルト画面のテクスチャ。
+
+	CSprite		m_ResultBGSprite7;		//!<リザルト画面のスプライト。
+	CTexture	m_ResultBGTexture7;		//!<リザルト画面のテクスチャ。
+
+	CSprite		m_ResultBGSprite8;		//!<リザルト画面のスプライト。
+	CTexture	m_ResultBGTexture8;		//!<リザルト画面のテクスチャ。
+
+	CSprite		m_ResultBGSprite9;		//!<リザルト画面のスプライト。
+	CTexture	m_ResultBGTexture9;		//!<リザルト画面のテクスチャ。
+
 
 	bool		Winflg;
 	bool		Loseflg;
@@ -99,14 +112,15 @@ private:
 
 	int         BattlGold = 0;
 
-
+	float			m_timer = 0;
 	bool        IsBattle = false; //コマンド画面を表示するかの判定
 	bool        IsBattleStart = false; //プレイヤーが配置についたかの判定
 	bool        result = false; //result画面遷移用
 	bool        Victory = true; //勝敗判定用
 	bool        EnemyPointCamera = true; //敵選択カメラの判定
 	bool        EnemyZoom = false;
-	
+	bool		Resultflg = false;
+
 };
 
 extern BattleScene* g_battleScene;
