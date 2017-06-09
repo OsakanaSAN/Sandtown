@@ -75,11 +75,13 @@ void GameScene::Update()
 	case BattleWait:
 		
 		g_player->IsMoveSTOP();
-		g_sound->StopSound();
+		
 		m_timer += GameTime().GetFrameDeltaTime();
 		
 		if (m_timer > 2.5f)
 		{
+			g_sound->StopSound();
+
 			scenes = Battle;
 			m_timer = 0.0f;
 		}
@@ -94,8 +96,10 @@ void GameScene::Update()
 
 			CEngine::Instance().SetcrearEnable(false);
 			CEngine::Instance().GetFeedbackblur().SetEnalbe(true);
+			g_sound->StopSound();
 
 			scenes = BattleWait;
+			g_sound->EnkauntoSound();
 			
 
 		}
@@ -161,6 +165,7 @@ void GameScene::Update()
 				g_Enemy3->SetEATK(80);
 				g_Enemy3->SetHP(90);
 				g_Enemy3->SetGold(20);
+
 				//g_map2 = NewGO<Map2>(0);
 				g_Dungeon = NewGO<Dungeon>(0);
 			}
