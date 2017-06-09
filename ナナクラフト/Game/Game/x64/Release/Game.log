@@ -1,7 +1,10 @@
-﻿  BattleScene.cpp
-c:\users\kbc16b03\desktop\sandtown\ナナクラフト\game\game\HUD.h(16): warning C4244: 'return': 'float' から 'int' への変換です。データが失われる可能性があります。
-BattleScene.cpp(126): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
-BattleScene.cpp(459): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+﻿  Dungeon.cpp
+  GameScene.cpp
+C:\Users\kbc16b03\Desktop\Sandtown\ナナクラフト\Game\Game\HUD.h(16): warning C4244: 'return': 'float' から 'int' への変換です。データが失われる可能性があります。
+Scene\GameScene.cpp(108): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+  コードを生成中...
+c:\users\kbc16b03\desktop\sandtown\ナナクラフト\game\game\scene\gamescene.cpp(68): warning C4715: 'GameScene::Start': 値を返さないコントロール パスがあります。
+c:\users\kbc16b03\desktop\sandtown\ナナクラフト\game\game\dungeon.cpp(217): warning C4715: 'Dungeon::Start': 値を返さないコントロール パスがあります。
 LINK : warning LNK4075: /INCREMENTAL は /LTCG の指定によって無視されます。
   LINK : /LTCG が指定されましたが、コードの生成は必要ありません。リンク コマンド ラインから /LTCG を削除し、リンカーの性能を改善してください。
   Game.vcxproj -> C:\Users\kbc16b03\Desktop\Sandtown\ナナクラフト\Game\x64\Release\Game.exe

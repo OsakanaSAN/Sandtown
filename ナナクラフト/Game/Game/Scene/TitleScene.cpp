@@ -56,10 +56,11 @@ void TitleScene::Update()
 {
 
 	float rStick_y = Pad(0).GetRStickYF();
+	
 
 	if (Pad(0).IsPress(enButtonUp) && GAME == NO)
 	{
-	
+		
 		m_titleBGTexture2.Release();
 		m_titleBGTexture2.Load("Assets/sprite/casol2.png");
 		m_titleBGSprite2.Init(&m_titleBGTexture2);

@@ -70,7 +70,7 @@ void Enemy::Update() {
 	
 	// アニメーションの更新
 	Animation.Update(1.0f / 60.0f);
-	characterController.Execute(0.03f);
+	//characterController.Execute(0.03f);
 	skinModel.Update(position, m_rotation, CVector3::One);
 	
 }

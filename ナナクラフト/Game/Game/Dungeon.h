@@ -13,6 +13,9 @@ private:
 	int numObject;
 	int ChangeObject;
 	int NoMoveObject;
+	int NoRenderObjct;
+	int EnemyObjct;
+
 	int mapCount;
 	
 

@@ -56,12 +56,12 @@ bool GameScene::Start()
 {
 	
 	
-	//if (g_gameCamera->IsStart() && g_player->IsStart() && g_Hud->IsStart() && g_map->IsStart()) {
+	if (g_gameCamera->IsStart() && g_player->IsStart() && g_Hud->IsStart()/* && g_map->IsStart()*/) {
 
 		g_fade->StartFadeIn();
 		return true;
 
-	//}
+	}
 	
 	
 	
@@ -69,13 +69,14 @@ bool GameScene::Start()
 
 void GameScene::Update()
 {
-	
+
 
 	switch (scenes)
 	{
 	case BattleWait:
 		
 		g_player->IsMoveSTOP();
+		g_sound->StopSound();
 		m_timer += GameTime().GetFrameDeltaTime();
 		
 		if (m_timer > 3.0f)
@@ -129,7 +130,7 @@ void GameScene::Update()
 		while (scenes != STOP)
 		{
 
-			if (g_map2 == nullptr)
+			if (/*g_map2 == nullptr*/ g_Dungeon == nullptr)
 			{
 				g_gameCamera->ChangeStart();
 
@@ -162,7 +163,8 @@ void GameScene::Update()
 				g_Enemy3->SetEATK(80);
 				g_Enemy3->SetHP(90);
 				g_Enemy3->SetGold(20);
-				g_map2 = NewGO<Map2>(0);
+				//g_map2 = NewGO<Map2>(0);
+				g_Dungeon = NewGO<Dungeon>(0);
 			}
 
 			
@@ -269,7 +271,8 @@ void GameScene::DeteScene()
 	else if (mapscene == DOUKUTU)
 	{
 
-			DeleteGO(g_map2);
+			//DeleteGO(g_map2);
+			DeleteGO(g_Dungeon);
 			DeleteGO(g_Enemy);
 			DeleteGO(g_Enemy2);
 			DeleteGO(g_Enemy3);
@@ -277,7 +280,8 @@ void GameScene::DeteScene()
 				DeleteGO(g_player);
 			}
 			scenes = MACHI;
-			g_map2 = nullptr;
+			//g_map2 = nullptr;
+			g_Dungeon = nullptr;
 		
 	}
 
