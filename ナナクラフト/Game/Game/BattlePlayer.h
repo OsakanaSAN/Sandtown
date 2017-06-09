@@ -31,6 +31,7 @@ public:
 	void SetAttack(bool Attack)
 	{
 		IsAttack = Attack;
+		
 	}
 
 	void SetDamage(int ATK, bool Damage)
@@ -79,7 +80,8 @@ private:
 
 	enum Particle {
 		ATTACK,
-		HEAL
+		HEAL,
+		STOP,
 	};
 
 	int currentParticle = ATTACK;
@@ -102,7 +104,7 @@ private:
 	int						currentAnimSetNo;
 	bool					IsAttack;
 	bool					IsStand;
-	bool					IsDamage;
+	bool					IsDamage = false;
 	bool					IsAnimend;
 
 	bool                    IsSetPoint = false;

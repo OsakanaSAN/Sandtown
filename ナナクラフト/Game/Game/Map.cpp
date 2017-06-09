@@ -20,7 +20,7 @@ shop*		g_shop;
 
 //マップの配置情報。
 SMapInfo mapLocInfo[] = {
-#include "Map/test.h"
+#include "Map/MACHI.h"
 };
 
 
@@ -91,7 +91,6 @@ bool Map::Start()
 			g_Sky = NewGO<GameSky>(0);
 			g_Sky->Init(mapLocInfo[i].modelName, mapLocInfo[i].position, mapLocInfo[i].rotation);
 			ChangeObject++;
-
 
 		}
 

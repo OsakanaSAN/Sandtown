@@ -66,7 +66,9 @@ bool BattlePlayer::Start()
 
 	Animation.PlayAnimation(Run_anim, 0.1f);
 
-	//Animation.SetAnimationEndTime(Stand_anim, 0.2);
+	Animation.SetAnimationEndTime(Stand_anim, 0.8);
+	
+
 
 
 	Animation.SetAnimationLoopFlag(Run_anim, true);
@@ -95,8 +97,11 @@ void BattlePlayer::Update()
 		{
 
 			BakPositon.z += 0.1f;
+
 			Animation.SetAnimationSpeedRate(4.5);
+
 			Animation.SetAnimationEndTime(Run_anim, 2.0f);
+			
 			g_gameCamera->BattleCamera();
 
 		}
@@ -135,10 +140,8 @@ void BattlePlayer::Update()
 
 	else if(IsStop == false)
 	{
-		
-		//All.SetPointLightColor({ 1.0f,1.0f,1.5f,4.0f });
 
-		characterController.Execute(0.03f);
+		//characterController.Execute(0.03f);
 		AnimationSet();
 		skinModel.Update(BakPositon, m_rotation, scale);
 		//アニメーションの更新
@@ -222,7 +225,7 @@ void BattlePlayer::AnimationSet()
 
 void BattlePlayer::Particle(CVector3 target,int ParticleNumber)
 {
-	/*if (m_particle == nullptr) { return;}*/
+	if (m_particle != nullptr) { return;}
 	switch (ParticleNumber)
 	{
 	case ATTACK://攻撃
@@ -295,15 +298,18 @@ void BattlePlayer::Particle(CVector3 target,int ParticleNumber)
 		},
 			target);//パーティクルを生成する座標　CVector3型？
 		break;
+	
 	}
 }
 
 
 void BattlePlayer::ParticleDelete()
 {
-	//if (m_particle != nullptr) { return; }
+	//if (m_particle == nullptr) { return; }
+
 	DeleteGO(m_particle);
 	m_particle = nullptr;
+	
 
 
 }

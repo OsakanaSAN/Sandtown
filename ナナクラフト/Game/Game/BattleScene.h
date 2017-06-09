@@ -39,7 +39,7 @@ public:
 
 	void BattleKeep();
 
-	void DamageTex();
+	void DamageTex(bool chara);
 private:
 
 	CRandom			m_random;

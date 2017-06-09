@@ -132,7 +132,7 @@ void GameScene::Update()
 				g_gameCamera->ChangeStart();
 
 				g_player = NewGO<Player>(0);
-				modelName = "Assets/modelData/ghost.X";
+				modelName = "Assets/modelData/usagi.X";
 				g_Enemy = NewGO<Enemy>(0);
 				g_Enemy->Init(modelName);
 				g_Enemy->setPos({ -3.0f, 0.0f, -20.0f });
@@ -203,6 +203,7 @@ void GameScene::Update()
 		}
 		break;
 	case Battle:
+
 		if (Bato == true)
 		{
 			

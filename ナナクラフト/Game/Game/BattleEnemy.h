@@ -12,6 +12,8 @@ public:
 	void Update();
 	void Render(CRenderContext&renderContext);
 	void AnimationSet();
+	void EnemyParticle(CVector3 target);
+	void EnemyParticleDelete();
 
 	void Delete();
 
@@ -20,10 +22,13 @@ public:
 		return position;
 	}
 
+
 	void SetAttack(bool Acs)
 	{
 		IsAttack = Acs;
+		
 	}
+
 
 	void SetDamage(int ATK, bool Damage)
 	{
@@ -45,16 +50,6 @@ public:
 	{
 		return IsAnimend;
 	}
-
-	/*bool GetAttack()
-	{
-	return IsAttack;
-	}
-
-	bool GetDamage()
-	{
-	return IsDamage;
-	}*/
 
 	int GetEGold()const
 	{
@@ -98,6 +93,11 @@ private:
 	int				HP;
 	int				Exp;
 	int             EGold;
+
+	////////////////////////////////////
+	//パーティクル系
+	CParticleEmitter		*m_particle;
+	CRandom					m_random;
 
 
 };

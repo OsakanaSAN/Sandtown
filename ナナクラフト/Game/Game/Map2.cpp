@@ -17,7 +17,7 @@ Mapchip* mapChip[255];
 
 //マップの配置情報。
 SMapInfo mapLocInfo2[] = {
-#include "Map/DungeonF3.h";
+#include "Map/DOUKUTU.h";
 };
 
 Map2::Map2()
