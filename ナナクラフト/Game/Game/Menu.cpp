@@ -372,6 +372,10 @@ void Menu::MenuSceneStop()
 	setMenu = STOP;
 
 }
+void Menu::BattleMenuStop()
+{
+	setMenu = STOP;
+}
 
 void Menu::UseItem()
 {

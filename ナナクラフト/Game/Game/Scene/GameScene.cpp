@@ -34,8 +34,8 @@ GameScene::GameScene()
 	g_gameCamera = NewGO<Camera>(0);
 	g_player = NewGO<Player>(0);
 	g_Hud = NewGO<HUD>(0);
-	//g_map = NewGO<Map>(0);
-	g_Dungeon = NewGO<Dungeon>(0);
+	g_map = NewGO<Map>(0);
+	//g_Dungeon = NewGO<Dungeon>(0);
 
 	g_menu = NewGO<Menu>(0);
 	NewGO<Npc>(0);
@@ -205,6 +205,7 @@ void GameScene::Update()
 		}
 		break;
 	case Battle:
+
 		if (Bato == true)
 		{
 			

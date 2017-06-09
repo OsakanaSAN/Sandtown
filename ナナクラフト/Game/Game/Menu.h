@@ -47,6 +47,7 @@ public:
 		setMenu = BATTLEINVENTORY;
 	}
 	void MenuSceneStop();
+	void BattleMenuStop();
 
 private:
 	CSprite     BackSeatSprite;  //2”ÔŒã‚ë

@@ -152,6 +152,7 @@ void BattleScene::Update()
 
 
 	if (Victory == true) {
+
 		switch (result) {
 			
 		case false:
@@ -161,7 +162,8 @@ void BattleScene::Update()
 			IsBattle = false;
 			EnemyPointCamera = true;
 
-			if (Pad(0).IsPress(enButtonUp) && Comand == Item)
+			//攻撃
+			if (Pad(0).IsTrigger(enButtonUp) && Comand == Item)
 			{
 				g_battlemenu->EnemyZoomOut();
 				g_battlemenu->PlayerZoomSet();
@@ -184,11 +186,14 @@ void BattleScene::Update()
 				Comand = Keep;
 
 			}
-			else if (Pad(0).IsPress(enButtonDown) && Pad(0).IsPress(enButtonUp))
+
+			else if (Pad(0).IsTrigger(enButtonDown) && Pad(0).IsTrigger(enButtonUp))
 			{
 
 			}
-			else if (Pad(0).IsPress(enButtonDown) && Comand ==Keep|| Pad(0).IsPress(enButtonUp) && Comand == Escape)
+
+			//矢印→アイテム
+			else if (Pad(0).IsTrigger(enButtonDown) && Comand ==Keep|| Pad(0).IsTrigger(enButtonUp) && Comand == Escape)
 			{
 				
 					m_sound_bgm_battle = NewGO<CSoundSource>(0);
@@ -202,7 +207,9 @@ void BattleScene::Update()
 
 				Comand = Item;
 			}
-			else if (Pad(0).IsPress(enButtonDown) && Comand == Item)
+
+			//逃げる
+			else if (Pad(0).IsTrigger(enButtonDown) && Comand == Item)
 			{
 				
 					m_sound_bgm_battle = NewGO<CSoundSource>(0);
@@ -216,6 +223,7 @@ void BattleScene::Update()
 
 				Comand = Escape;
 			}
+
 
 			if (turnCheng)
 			{
@@ -231,7 +239,8 @@ void BattleScene::Update()
 				PlayerTurn();
 			}
 
-			else if (turnCheng == false) {
+
+			if (turnCheng == false) {
 				EnemyTurn();
 			}
 
@@ -273,6 +282,9 @@ void BattleScene::PostRender(CRenderContext&renderContext)
 }
 
 
+
+/////////////////////////////////////////////////////////////////////
+//プレイヤーのターン
 void BattleScene::PlayerTurn()
 {
 
@@ -320,7 +332,8 @@ void BattleScene::PlayerTurn()
 			
 
 		}
-		else if (PAttack && !EDamage&&g_battleenemy->GetAnimend() && g_battleplayer->GetAnimend())
+
+		else if (PAttack && !EDamage &&g_battleenemy->GetAnimend() && g_battleplayer->GetAnimend())
 		{
 			m_sound_Attack = NewGO<CSoundSource>(0);
 			m_sound_Attack->Init("Assets/sound/Attack.wav");
@@ -333,8 +346,11 @@ void BattleScene::PlayerTurn()
 			m_DamageBGSprite.SetPosition({ -240,250 });
 			m_DamageBGSprite.SetSize({ 200,80 });
 
+
 			g_battleplayer->Particle(g_battleenemy->Getpos());//攻撃パーティクル呼び出し
 			g_battleenemy->SetDamage(g_battleplayer->GetATK(), true);//ダメージ処理
+
+
 			g_battlemenu->SetEnemyHp(g_battleenemy->GetHP());//敵の体力DOWN
 			EDamage = true;
 		
@@ -343,8 +359,10 @@ void BattleScene::PlayerTurn()
 		{
 			g_battleplayer->ParticleDelete();//パーティクル消去
 			m_sound_Attack->Stop();
+
 			PAttack = false;
 			EDamage = false;
+
 			if (g_battleenemy->GetHP() <= 0)
 			{
 				
@@ -352,14 +370,12 @@ void BattleScene::PlayerTurn()
 				g_Hud->SetExp(g_battleenemy->GetExp());
 				Winflg = true;//バトルに勝利した
 
-				/*g_gameScene->BattleDate();*/
 				DeleteGO(this);
 
 				g_menu->InventoryChangTex(3);
 
 				return;
 
-				/*g_battleenemy->Delete();*/
 				//レベルアップ判定
 				//リザルト画面を出す処理その後シーン遷移？
 			}
@@ -400,7 +416,7 @@ void BattleScene::PlayerTurn()
 		if (Pad(0).IsPress(enButtonB))
 		{
 
-			g_menu->MenuSceneStop();
+			g_menu->BattleMenuStop();
 			Comand = Item;
 		}
 		break;
@@ -408,11 +424,15 @@ void BattleScene::PlayerTurn()
 
 }
 
+
+///////////////////////////////////////////////////////////////////////////////////////////
+//敵のターン
 void BattleScene::EnemyTurn()
 {
 
 	if (PAttack)return;
 	if (EDamage)return;
+	if (g_battleenemy->GetAnimend() == false)return;
 
 	if (!EAttack&&g_battleenemy->GetAnimend() && g_battleplayer->GetAnimend()) {
 
@@ -420,32 +440,41 @@ void BattleScene::EnemyTurn()
 
 		EAttack = true;
 	}
+
+
 	else if (EAttack && !PDamage && g_battleplayer->GetAnimend() && g_battleenemy->GetAnimend())
 	{
-		//m_sound_Attack = NewGO<CSoundSource>(0);
-		//m_sound_Attack->Init("Assets/sound/Attack.wav");
+		
 		m_sound_Attack->Play(false);
 		m_sound_Attack->SetVolume(4.0f);
+
+		
+		g_battleenemy->EnemyParticle(g_battleplayer->Getpos());
 		
 		m_DamageBGTexture.Load("Assets/sprite/damage1.png");
 		m_DamageBGSprite.Init(&m_DamageBGTexture);
 		m_DamageBGSprite.SetPosition({ 150,100 });
 		m_DamageBGSprite.SetSize({ 200,80 });
-		
 
-		g_battleplayer->Particle(g_battleplayer->Getpos());//攻撃パーティクル呼び出し
-		
-		g_battleplayer->SetDamage(g_battleenemy->GetATK(), true);//ダメージ計算とダメージアニメーション再生
-		
 		g_battlemenu->SetHp(g_Hud->GetHP());
 
+		
+		
+		g_battleplayer->SetDamage(g_battleenemy->GetATK(), true);//ダメージ計算とダメージアニメーション再生
+
 		PDamage = true;
+		EAttack = false;
 
 		
 	}
-	else if (EAttack &&PDamage&& g_battleenemy->GetAnimend() && g_battleplayer->GetAnimend())
+
+	else if (EAttack && PDamage && g_battleenemy->GetAnimend() && g_battleplayer->GetAnimend())
 	{
-		g_battleplayer->ParticleDelete();//パーティクル消去
+		
+	
+		
+
+		g_battleenemy->EnemyParticleDelete();//パーティクル消去
 		m_sound_Attack->Stop();
 		EAttack = false;
 		PDamage = false;
@@ -462,10 +491,11 @@ void BattleScene::EnemyTurn()
 
 			//リザルト画面を出す処理かシーン遷移？
 		}
+
 		SelectQ = false;
 		result = false;
-		//Turn = Pturn;//プレイヤーのターン
 		turnCheng = true;
+		return;
 
 	}
 }
@@ -474,6 +504,8 @@ void BattleScene::EnemyTurn()
 
 void BattleScene::BattleKeep()
 {
+	////////////////////////////////
+	//敵に注目
 	if (Pad(0).IsPress(enButtonA))
 	{
 
