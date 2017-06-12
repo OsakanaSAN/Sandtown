@@ -361,8 +361,7 @@ void BattleScene::PlayerTurn()
 
 		else if (PAttack && !EDamage &&g_battleenemy->GetAnimend() && g_battleplayer->GetAnimend())
 		{
-			//m_sound_Attack = NewGO<CSoundSource>(0);
-			//m_sound_Attack->Init("Assets/sound/Attack.wav");
+
 			m_sound_Attack->Play(false);
 			m_sound_Attack->SetVolume(4.0f);
 
@@ -487,8 +486,6 @@ void BattleScene::EnemyTurn()
 	if (EDamage)return;
 	if (g_battleenemy->GetAnimend() == false)return;
 
-		//g_battleenemy->SetAttack(true);//攻撃のアニメーション再生
-
 	if (!EAttack&&g_battleenemy->GetAnimend() && g_battleplayer->GetAnimend()) {
 		
 		g_battleenemy->SetAttack(true);//攻撃のアニメーション再生
@@ -512,9 +509,6 @@ void BattleScene::EnemyTurn()
 		
 
 		g_battleplayer->Particle(g_battleplayer->Getpos(),0);//攻撃パーティクル呼び出し
-
-		
-		//g_battleenemy->EnemyParticle(g_battleplayer->Getpos());
 		
 
 		g_battlemenu->SetHp(g_Hud->GetHP());
@@ -524,7 +518,6 @@ void BattleScene::EnemyTurn()
 		g_battleplayer->SetDamage(g_battleenemy->GetATK(), true);//ダメージ計算とダメージアニメーション再生
 
 		PDamage = true;
-		EAttack = false;
 
 		
 	}
