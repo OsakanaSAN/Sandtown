@@ -137,7 +137,7 @@ void GameScene::Update()
 				g_gameCamera->ChangeStart();
 
 				g_player = NewGO<Player>(0);
-				modelName = "Assets/modelData/usagi.X";
+				modelName = "Assets/modelData/ghost.X";
 				g_Enemy = NewGO<Enemy>(0);
 				g_Enemy->Init(modelName);
 				g_Enemy->setPos({ -3.0f, 0.0f, -20.0f });

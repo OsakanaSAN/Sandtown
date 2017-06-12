@@ -248,6 +248,7 @@ void BattleScene::Update()
 
 			if (turnCheng == true)
 			{
+				
 				PlayerTurn();
 				if (Itemuse)//アイテム使ったターン
 				{
@@ -262,6 +263,7 @@ void BattleScene::Update()
 				if (turnCheng == false) {
 
 					EnemyTurn();
+					
 				}
 
 				break;
@@ -453,6 +455,7 @@ void BattleScene::PlayerTurn()
 			Comand = INVENTORY;
 	
 		}
+		
 		break;
 	case INVENTORY:
 
@@ -464,8 +467,10 @@ void BattleScene::PlayerTurn()
 			g_menu->MenuSceneexit();
 			Comand = Item;
 			
+			
+			
 		}
-		if (Pad(0).IsPress(enButtonB))
+		if (Pad(0).IsPress(enButtonB))//インベントリをとじる
 		{
 		
 			g_menu->MenuSceneexit();
@@ -487,12 +492,10 @@ void BattleScene::EnemyTurn()
 	if (EDamage)return;
 	if (g_battleenemy->GetAnimend() == false)return;
 
-		//g_battleenemy->SetAttack(true);//攻撃のアニメーション再生
 
 	if (!EAttack&&g_battleenemy->GetAnimend() && g_battleplayer->GetAnimend()) {
-		
-		g_battleenemy->SetAttack(true);//攻撃のアニメーション再生
-		
+			g_battleenemy->SetAttack(true);//攻撃のアニメーション再生
+
 		EAttack = true;
 	}
 	else if (EAttack && !PDamage && g_battleplayer->GetAnimend() && g_battleenemy->GetAnimend())
@@ -524,7 +527,6 @@ void BattleScene::EnemyTurn()
 		g_battleplayer->SetDamage(g_battleenemy->GetATK(), true);//ダメージ計算とダメージアニメーション再生
 
 		PDamage = true;
-		EAttack = false;
 
 		
 	}
