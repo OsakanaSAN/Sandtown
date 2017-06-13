@@ -80,19 +80,19 @@ private:
 
 	CLight			All;
 
+
 	bool			IsAttack;
 	bool			IsStand;
-	
 	bool			IsDamage;
 	bool			IsAnimend;
 
 	int				currentAnimSetNo;
 
 	////エネミーごとのステータス?
-	int				ATK;
-	int				HP;
-	int				Exp;
-	int             EGold;
+	int				ATK=20;
+	int				HP=50;
+	int				Exp=20;
+	int             EGold=20;
 
 	////////////////////////////////////
 	//パーティクル系

@@ -14,6 +14,7 @@
 #include "Npc.h"
 #include "tkEngine/graphics/tkCamera.h"
 #include "Dungeon.h"
+#include "BattlePlayer.h"
 
 
 GameScene* g_gameScene = NULL;
@@ -36,7 +37,6 @@ GameScene::GameScene()
 	g_Hud = NewGO<HUD>(0);
 	g_map = NewGO<Map>(0);
 	//g_Dungeon = NewGO<Dungeon>(0);
-
 	g_menu = NewGO<Menu>(0);
 	NewGO<Npc>(0);
 
@@ -56,12 +56,12 @@ bool GameScene::Start()
 {
 	
 	
-	//if (g_gameCamera->IsStart() && g_player->IsStart() && g_Hud->IsStart() && g_map->IsStart()) {
+	if (g_gameCamera->IsStart() && g_player->IsStart() && g_Hud->IsStart()/* && g_map->IsStart()*/) {
 
 		g_fade->StartFadeIn();
 		return true;
 
-	//}
+	}
 	
 	
 	
@@ -69,18 +69,20 @@ bool GameScene::Start()
 
 void GameScene::Update()
 {
-	
+
 
 	switch (scenes)
 	{
 	case BattleWait:
 		
 		g_player->IsMoveSTOP();
+		
 		m_timer += GameTime().GetFrameDeltaTime();
 		
-		if (m_timer > 3.0f)
+		if (m_timer > 2.5f)
 		{
-			
+			g_sound->StopSound();
+
 			scenes = Battle;
 			m_timer = 0.0f;
 		}
@@ -95,8 +97,10 @@ void GameScene::Update()
 
 			CEngine::Instance().SetcrearEnable(false);
 			CEngine::Instance().GetFeedbackblur().SetEnalbe(true);
+			g_sound->StopSound();
 
 			scenes = BattleWait;
+			g_sound->EnkauntoSound();
 			
 
 		}
@@ -129,7 +133,7 @@ void GameScene::Update()
 		while (scenes != STOP)
 		{
 
-			if (g_map2 == nullptr)
+			if (/*g_map2 == nullptr*/ g_Dungeon == nullptr)
 			{
 				g_gameCamera->ChangeStart();
 
@@ -139,7 +143,7 @@ void GameScene::Update()
 				g_Enemy->Init(modelName);
 				g_Enemy->setPos({ -3.0f, 0.0f, -20.0f });
 				g_Enemy->Setexp(20);
-				g_Enemy->SetEATK(20);
+				g_Enemy->SetEATK(100);
 				g_Enemy->SetHP(50);
 				g_Enemy->SetGold(20);
 
@@ -162,7 +166,9 @@ void GameScene::Update()
 				g_Enemy3->SetEATK(80);
 				g_Enemy3->SetHP(90);
 				g_Enemy3->SetGold(20);
-				g_map2 = NewGO<Map2>(0);
+
+				//g_map2 = NewGO<Map2>(0);
+				g_Dungeon = NewGO<Dungeon>(0);
 			}
 
 			
@@ -269,7 +275,8 @@ void GameScene::DeteScene()
 	else if (mapscene == DOUKUTU)
 	{
 
-			DeleteGO(g_map2);
+			//DeleteGO(g_map2);
+			DeleteGO(g_Dungeon);
 			DeleteGO(g_Enemy);
 			DeleteGO(g_Enemy2);
 			DeleteGO(g_Enemy3);
@@ -277,7 +284,8 @@ void GameScene::DeteScene()
 				DeleteGO(g_player);
 			}
 			scenes = MACHI;
-			g_map2 = nullptr;
+			//g_map2 = nullptr;
+			g_Dungeon = nullptr;
 		
 	}
 

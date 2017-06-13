@@ -7,13 +7,22 @@
 #include "HUD.h"
 extern BattleEnemy* g_battleenemy;
 extern Player* g_player;
-enum {
+//enum {
+//
+//	Stand_anim,
+//	Walk_anim,  //歩く
+//	Run_anim,  //走る
+//	Jump,
+//	Dameg,
+//
+//};
 
+enum ANIME {
 	Stand_anim,
-	Walk_anim,  //歩く
-	Run_anim,  //走る
-	Jump,
-	Dameg,
+	Dameg_anim,
+	Run_anim,
+	Attack_anim,
+
 
 };
 
@@ -47,7 +56,7 @@ BattlePlayer::~BattlePlayer()
 
 bool BattlePlayer::Start()
 {
-	skinModelData.LoadModelData("Assets/modelData/kano.X", &Animation);
+	skinModelData.LoadModelData("Assets/modelData/Knight.X", &Animation);
 	skinModel.Init(skinModelData.GetBody());
 	skinModel.SetLight(&All);
 
@@ -59,6 +68,7 @@ bool BattlePlayer::Start()
 
 	Animation.SetAnimationEndTime(Stand_anim, 0.8);
 	
+
 
 
 	Animation.SetAnimationLoopFlag(Run_anim, true);
@@ -87,7 +97,9 @@ void BattlePlayer::Update()
 		{
 
 			BakPositon.z += 0.1f;
-			Animation.SetAnimationSpeedRate(2);
+
+			Animation.SetAnimationSpeedRate(4.5);
+
 			Animation.SetAnimationEndTime(Run_anim, 2.0f);
 			
 			g_gameCamera->BattleCamera();
@@ -99,7 +111,7 @@ void BattlePlayer::Update()
 			IsSetPoint = true;
 			Animation.SetAnimationLoopFlag(Run_anim, false);
 
-
+			Animation.SetAnimationSpeedRate(0.3);
 			Animation.PlayAnimation(Stand_anim, 0.1f);
 			Animation.SetAnimationLoopFlag(Stand_anim, true); //スタンドアニメーションをループさせる
 
@@ -166,9 +178,9 @@ void BattlePlayer::AnimationSet()
 		//攻撃時
 		if (IsAttack) {
 			IsAnimend = false;
-			Animation.PlayAnimation(Jump_anim, 0.05f);
-			Animation.SetAnimationLoopFlag(Jump_anim,false);
-			Animation.SetAnimationSpeedRate(2);
+			Animation.PlayAnimation(Attack_anim, 0.05f);
+			Animation.SetAnimationLoopFlag(Attack_anim,false);
+			Animation.SetAnimationSpeedRate(1);
 
 			IsStand = true;
 
@@ -179,7 +191,7 @@ void BattlePlayer::AnimationSet()
 			IsAnimend = false;
 			Animation.PlayAnimation(Dameg_anim, 0.1f);
 			Animation.SetAnimationLoopFlag(Dameg_anim, false);
-			Animation.SetAnimationSpeedRate(1);
+			Animation.SetAnimationSpeedRate(0.7);
 
 			IsStand = true;
 		}
@@ -195,9 +207,11 @@ void BattlePlayer::AnimationSet()
 
 	if (!Animation.IsPlay())
 	{
+		
 		Animation.PlayAnimation(Stand_anim, 0.1f);
+		
 		Animation.SetAnimationLoopFlag(Stand_anim, true);
-		Animation.SetAnimationSpeedRate(1);
+		Animation.SetAnimationSpeedRate(0.3);
 		IsAttack = false;
 		IsDamage = false;
 		IsAnimend = true;
@@ -209,10 +223,10 @@ void BattlePlayer::AnimationSet()
 
 }
 
-void BattlePlayer::Particle(CVector3 target)
+void BattlePlayer::Particle(CVector3 target,int ParticleNumber)
 {
 	if (m_particle != nullptr) { return;}
-	switch (currentParticle)
+	switch (ParticleNumber)
 	{
 	case ATTACK://攻撃
 
@@ -222,7 +236,7 @@ void BattlePlayer::Particle(CVector3 target)
 		
 		m_particle->Init(m_random, g_gameCamera->GetCamera(),
 		{
-			"Assets/Particle/burn.png",		//!<テクスチャのファイルパス。
+			"Assets/Particle/burn.png",						//!<テクスチャのファイルパス。
 			{ 0.0f, 0.0f, 0.0f },							//!<初速度。
 			0.3f,											//!<寿命。単位は秒。
 			0.5f,											//!<発生時間。単位は秒。
@@ -258,22 +272,22 @@ void BattlePlayer::Particle(CVector3 target)
 		m_particle->Init(m_random, g_gameCamera->GetCamera(),
 		{
 			"Assets/Particle/Heal.tga",		//!<テクスチャのファイルパス。
-			{ 0.0f, 0.0f, 0.0f },							//!<初速度。
-			0.3f,											//!<寿命。単位は秒。
-			0.5f,											//!<発生時間。単位は秒。
-			0.5f,											//!<パーティクルの幅。
-			0.5f,											//!<パーティクルの高さ。
-			{ 0.0f, 0.0f, 0.0f },							//!<初期位置のランダム幅。
-			{ 0.0f, 0.0f,0.0f },							//!<初速度のランダム幅。
+			{ 0.0f, 1.4f, 0.0f },							//!<初速度。
+			0.5f,											//!<寿命。単位は秒。
+			0.1f,											//!<発生時間。単位は秒。
+			0.25f,											//!<パーティクルの幅。
+			0.25f,											//!<パーティクルの高さ。
+			{ 0.2f, 0.2f, 0.2f },							//!<初期位置のランダム幅。
+			{ 0.0f, 2.0f, 0.0f },							//!<初速度のランダム幅。
 			{ 1.0f, 1.0f, 1.0f },							//!<速度の積分のときのランダム幅。
 			{
-				{ 0.0f, 0.0f,0.25f, 0.25f },//0.25,0.5,0.75,1UとVの位置
+				{ 0.0f, 0.0f, 1.0f, 1.0f },//0.25,0.5,0.75,1UとVの位置
 				{ 0.0f, 0.0f, 0.0f, 0.0f }, //X,Y,X,Y
 				{ 0.0f, 0.0f, 0.0f, 0.0f },
 				{ 0.0f, 0.0f, 0.0f, 0.0f }
 			},//!<UVテーブル。最大4まで保持できる。xが左上のu、yが左上のv、zが右下のu、wが右下のvになる。
 			1,												//!<UVテーブルのサイズ。
-			{ 0.0f, 1.0f, 0.0f },							//!<重力。
+			{ 0.0f, 0.0f, 0.0f },							//!<重力。
 			true,											//!<死ぬときにフェードアウトする？
 			0.3f,											//!<フェードする時間。
 			2.0f,											//!<初期アルファ値。
@@ -291,7 +305,8 @@ void BattlePlayer::Particle(CVector3 target)
 
 void BattlePlayer::ParticleDelete()
 {
-	
+	//if (m_particle == nullptr) { return; }
+
 	DeleteGO(m_particle);
 	m_particle = nullptr;
 	

@@ -56,7 +56,7 @@ private:
 	EState      m_state = eStateRun;
 
 	CSoundSource* PushSE = NULL;
-;
+	int count = 0;
 
 	
 	

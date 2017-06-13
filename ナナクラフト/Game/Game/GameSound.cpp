@@ -69,6 +69,13 @@ void GameSound::BattleSound()
 	bgmsound->Play(1);
 
 }
+void GameSound::EnkauntoSound()
+{
+	bgmsound = NewGO<CSoundSource>(0);
+	bgmsound->Init("Assets/sound/ENKAUNTO.wav");
+	bgmsound->SetVolume(1.0);
+	bgmsound->Play(false);
+}
 void GameSound::VolumeDown()
 {
 	bgmsound->SetVolume(0.5f);

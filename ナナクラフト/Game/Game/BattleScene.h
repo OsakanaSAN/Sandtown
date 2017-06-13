@@ -39,8 +39,10 @@ public:
 
 	void BattleKeep();
 
+	void DamageTex(bool chara);
 private:
 
+	CRandom			m_random;
 
 	CSoundSource*	m_sound_bgm_battle;
 	CSoundSource*	m_sound_bgm_battle2;
@@ -48,11 +50,11 @@ private:
 
 	enum set
 	{
-		in,
+		damage,
 		out,
 
 	};
-	set sets = in;
+	set sets = damage;
 
 	enum BattleComand
 	{
@@ -88,8 +90,11 @@ private:
 	CSprite		m_ComandBGSprite4;		//!<戦闘画面の選択のスプライト。
 	CTexture	m_ComandBGTexture4;		//!<戦闘画面の選択のテクスチャ。
 
-	CSprite		m_DamageBGSprite;		//!<戦闘画面の選択のスプライト。
-	CTexture	m_DamageBGTexture;		//!<戦闘画面の選択のテクスチャ。
+	CSprite     m_DamageSeatSprite[3];
+	CTexture    m_DamageSeatTexture[3];
+	CVector2    m_Damageseatpos = { -240,250 };
+	char        m_DamageTexName[255];
+
 
 	CSprite		m_CasolBGSprite;		//!<戦闘画面の選択のスプライト。
 	CTexture	m_CasolBGTexture;		//!<戦闘画面の選択のテクスチャ。
@@ -114,6 +119,7 @@ private:
 	bool		PDamage;
 	bool		EDamage;
 	bool		SelectQ;//
+	bool Itemuse = false;
 
 	int         BattlGold = 0;
 
@@ -124,7 +130,11 @@ private:
 	bool        Victory = true; //勝敗判定用
 	bool        EnemyPointCamera = true; //敵選択カメラの判定
 	bool        EnemyZoom = false;
+
 	bool		Resultflg = false;
+
+
+	int NextDamage[3];
 
 };
 

@@ -12,7 +12,8 @@ public:
 	void LvChangTex();
 	void GoldChangTex();
 	void InventoryChangTex(int Item);
-	void UseItem();
+	void MenuSceneexit();
+	bool UseItem();
 
 	void setHP(int setHp)
 	{

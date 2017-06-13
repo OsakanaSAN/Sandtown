@@ -92,7 +92,6 @@ bool Map::Start()
 			g_Sky->Init(mapLocInfo[i].modelName, mapLocInfo[i].position, mapLocInfo[i].rotation);
 			ChangeObject++;
 
-
 		}
 
 		else

@@ -33,7 +33,7 @@ BattleEnemy::BattleEnemy()
 
 	IsAttack = false;
 	IsDamage = false;
-	IsStand = false;
+	IsStand = true;
 	IsAnimend = true;
 	currentAnimSetNo = Stand_anim;
 
@@ -176,13 +176,20 @@ void BattleEnemy::AnimationSet()
 		}
 
 	}
+	else if (!IsAttack && !IsDamage)
+	{
+		Animation.PlayAnimation(Stand_anim, 0.3f);
+
+		IsStand = false;
+
+	}
 
 
 
 	if (!Animation.IsPlay())
 	{
 		Animation.PlayAnimation(Stand_anim, 0.3f);
-		IsStand = false;
+		//IsStand = false;
 		IsAttack = false;
 		IsDamage = false;
 		IsAnimend = true;
@@ -191,6 +198,7 @@ void BattleEnemy::AnimationSet()
 
 	//アニメーションの更新
 	Animation.Update(1.0f / 60.0f);
+
 }
 
 
@@ -210,7 +218,7 @@ void BattleEnemy::EnemyParticle(CVector3 target)
 		"Assets/Particle/burn.png",		//!<テクスチャのファイルパス。
 		{ 0.0f, 0.0f, 0.0f },							//!<初速度。
 		0.3f,											//!<寿命。単位は秒。
-		2.5f,											//!<発生時間。単位は秒。
+		0.5f,											//!<発生時間。単位は秒。
 		3.5f,											//!<パーティクルの幅。
 		3.5f,											//!<パーティクルの高さ。
 		{ 0.0f, 0.0f,0.0f },							//!<初期位置のランダム幅。
