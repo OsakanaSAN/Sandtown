@@ -1,14 +1,4 @@
 ﻿  tkPathFinding.cpp
-  tkSpringCamera.cpp
-  tkObjectFrustumCulling.cpp
-  tkGameObject.cpp
-  tkgameobjectmanager.cpp
-  tkSkinModelMaterial.cpp
-  tkFeedbackblur.cpp
-  tkFxaa.cpp
-  tkIPostEffectFilter.cpp
-  tkMonochromeFilter.cpp
-  tkMotionBlur.cpp
   tkPostEffect.cpp
 graphics\postEffect\tkPostEffect.cpp(38): error C2065: 'm_feedbackblur': 定義されていない識別子です。
 graphics\postEffect\tkPostEffect.cpp(38): error C2228: '.Create' の左側はクラス、構造体、共用体でなければなりません
@@ -17,52 +7,5 @@ graphics\postEffect\tkPostEffect.cpp(86): error C2065: 'm_feedbackblur': 定義�
 graphics\postEffect\tkPostEffect.cpp(86): error C2228: '.Render' の左側はクラス、構造体、共用体でなければなりません
   graphics\postEffect\tkPostEffect.cpp(86): note: 型は 'unknown-type' です。
   tkSepiaFilter.cpp
-  tkTonemap.cpp
-  tkIDMap.cpp
-  tkPreRender.cpp
-  tkReflectionMap.cpp
-  tkShadowCaster.cpp
-  tkShadowMap.cpp
-  tkSprite.cpp
-  コードを生成中...
-  コンパイル中...
   tkFont.cpp
-  tkGaussianBlur.cpp
-  tkIndexBuffer.cpp
-  tkPrimitive.cpp
-  tkRenderCommandBuffer.cpp
-  tkRenderContext.cpp
-  tkRenderTarget.cpp
-  tkSkinModel.cpp
-  tkSkinModelData.cpp
-  tkTexture.cpp
-  tkVertexBuffer.cpp
-  tkKeyInput.cpp
-  tkPad.cpp
-  tkMath.cpp
-  tkMatrix.cpp
-  tkVector.cpp
-  tkSky.cpp
-  tkTerrain.cpp
-  tkParticle.cpp
-  tkParticleEmitter.cpp
-  コードを生成中...
-  コンパイル中...
-  tkParticleResources.cpp
-  tkMeshCollider.cpp
-  tkPhysics.cpp
-  tkRigidBody.cpp
-  tkSphereCollider.cpp
-  tkRandom.cpp
-  tkSkinModelDataHandle.cpp
-  tkSkinModelDataResources.cpp
-  tkTextureResources.cpp
-  tkShapeBase.cpp
-  tkSphereShape.cpp
-shape\tkSphereShape.cpp(41): warning C4267: '引数': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
-shape\tkSphereShape.cpp(61): warning C4267: '引数': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
-  tkSoundEngine.cpp
-  tkSoundSource.cpp
-  tkWaveFile.cpp
-  tkWaveFileBank.cpp
   コードを生成中...

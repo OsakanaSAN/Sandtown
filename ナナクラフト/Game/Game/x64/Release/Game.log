@@ -1,52 +1,10 @@
-﻿  BattlePlayer.cpp
-c:\users\kbc16b10\documents\github\sandtown\ナナクラフト\game\game\HUD.h(16): warning C4244: 'return': 'float' から 'int' への変換です。データが失われる可能性があります。
-BattlePlayer.cpp(79): warning C4305: '引数': 'double' から 'float' へ切り詰めます。
-BattlePlayer.cpp(114): warning C4305: '引数': 'double' から 'float' へ切り詰めます。
-BattlePlayer.cpp(194): warning C4305: '引数': 'double' から 'float' へ切り詰めます。
-BattlePlayer.cpp(214): warning C4305: '引数': 'double' から 'float' へ切り詰めます。
-  BattleScene.cpp
+﻿  BattleScene.cpp
 c:\users\kbc16b10\documents\github\sandtown\ナナクラフト\game\game\HUD.h(16): warning C4244: 'return': 'float' から 'int' への変換です。データが失われる可能性があります。
 BattleScene.cpp(138): error C2039: 'GetFeedbackblur': 'tkEngine::CEngine' のメンバーではありません。
   C:\Users\kbc16b10\Documents\github\Sandtown\ナナクラフト\tkEngine/tkEngine.h(62): note: 'tkEngine::CEngine' の宣言を確認してください
 BattleScene.cpp(138): error C2228: '.SetEnalbe' の左側はクラス、構造体、共用体でなければなりません
 BattleScene.cpp(141): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
 BattleScene.cpp(593): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
-  Dungeon.cpp
-  GameSound.cpp
-  HUD.cpp
-c:\users\kbc16b10\documents\github\sandtown\ナナクラフト\game\game\HUD.h(16): warning C4244: 'return': 'float' から 'int' への変換です。データが失われる可能性があります。
-  main.cpp
-  Map.cpp
-c:\users\kbc16b10\documents\github\sandtown\ナナクラフト\game\game\HUD.h(16): warning C4244: 'return': 'float' から 'int' への変換です。データが失われる可能性があります。
-  Map2.cpp
-Map2.cpp(20): warning C4067: プリプロセッサ ディレクティブの後に余分な文字がありました - 改行が必要です
-  Mapchip.cpp
-  Menu.cpp
-c:\users\kbc16b10\documents\github\sandtown\ナナクラフト\game\game\HUD.h(16): warning C4244: 'return': 'float' から 'int' への変換です。データが失われる可能性があります。
-Menu.cpp(394): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
-Menu.cpp(395): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
-  Npc.cpp
-  Player.cpp
-Player.cpp(39): warning C4305: '引数': 'double' から 'float' へ切り詰めます。
-Player.cpp(91): warning C4305: '引数': 'double' から 'float' へ切り詰めます。
-Player.cpp(184): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
-Player.cpp(185): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
-Player.cpp(192): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
-Player.cpp(193): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
-Player.cpp(194): warning C4305: '引数': 'double' から 'float' へ切り詰めます。
-Player.cpp(240): warning C4305: '引数': 'double' から 'float' へ切り詰めます。
-  SceneChange.cpp
   GameScene.cpp
-C:\Users\kbc16b10\Documents\github\Sandtown\ナナクラフト\Game\Game\HUD.h(16): warning C4244: 'return': 'float' から 'int' への変換です。データが失われる可能性があります。
-Scene\GameScene.cpp(99): error C2039: 'GetFeedbackblur': 'tkEngine::CEngine' のメンバーではありません。
-  C:\Users\kbc16b10\Documents\github\Sandtown\ナナクラフト\tkEngine/tkEngine.h(62): note: 'tkEngine::CEngine' の宣言を確認してください
-Scene\GameScene.cpp(99): error C2228: '.SetEnalbe' の左側はクラス、構造体、共用体でなければなりません
-Scene\GameScene.cpp(111): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
-  TitleScene.cpp
-  GameSky.cpp
-  shop.cpp
-c:\users\kbc16b10\documents\github\sandtown\ナナクラフト\game\game\HUD.h(16): warning C4244: 'return': 'float' から 'int' への変換です。データが失われる可能性があります。
-  Mining.cpp
-c:\users\kbc16b10\documents\github\sandtown\ナナクラフト\game\game\HUD.h(16): warning C4244: 'return': 'float' から 'int' への変換です。データが失われる可能性があります。
+Scene\GameScene.cpp(1): fatal error C1041: プログラム データベース 'C:\Users\kbc16b10\Documents\github\Sandtown\ナナクラフト\Game\Game\x64\Release\vc140.pdb' を開けません。複数の CL.EXE が同じ .PDB ファイルに書き込む場合、/FS を使用してください。
   コードを生成中...
-c:\users\kbc16b10\documents\github\sandtown\ナナクラフト\game\game\dungeon.cpp(218): warning C4715: 'Dungeon::Start': 値を返さないコントロール パスがあります。
