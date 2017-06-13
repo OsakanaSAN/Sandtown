@@ -35,6 +35,8 @@ namespace tkEngine{
 		m_motionBlur.Create(config);
 		m_monochromeFilter.Create(config);
 		m_sepiaFilter.Create(config);
+		m_feedbackblur.Create(config);
+		
 		static SShapeVertex_PT vertex[]{
 			{
 				-1.0f, 1.0f, 0.0f, 1.0f,
@@ -81,6 +83,7 @@ namespace tkEngine{
 		m_fxaa.Render(renderContext, this);
 		m_monochromeFilter.Render(renderContext, this);
 		m_sepiaFilter.Render(renderContext, this);
+		m_feedbackblur.Render(renderContext, this);
 	}
 	/*!
 	* @brief	フルスクリーン描画。

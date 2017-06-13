@@ -134,7 +134,7 @@ void shop::Update()
 		switch (state)
 		{
 		case C:
-			if (g_Hud->GetGold() < 100) { return; };
+			if (g_Hud->GetGold() < 100) { return; }
 			if (Pad(0).IsPress(enButtonA))
 			{
 				
@@ -144,7 +144,7 @@ void shop::Update()
 			}
 			break;
 		case D:
-			if (g_Hud->GetGold() < 300) { return; };
+			if (g_Hud->GetGold() < 300) { return; }
 			if (Pad(0).IsPress(enButtonA))
 			{
 				

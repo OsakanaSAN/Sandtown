@@ -32,7 +32,7 @@ void GameSound::StopSound()
 {
 	if (bgmsound != NULL) {
 		//NULL でなければサウンドソースのインスタンスが生成されているので削除する。 
-		/*DeleteGO(bgmsound);*/
+		DeleteGO(bgmsound);
 	}
 
 }

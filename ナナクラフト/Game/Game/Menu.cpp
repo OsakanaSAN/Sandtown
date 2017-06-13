@@ -5,6 +5,7 @@
 #include "Player.h"
 #include "GameSound.h"
 #include "HUD.h"
+#include "BattleMenu.h"
 
 extern CRandom g_random;
 
@@ -171,6 +172,20 @@ void Menu::Update()
 			setMenu = MENU;
 		}
 
+		if (Pad(0).IsPress(enButtonA) && setMenu == INVENTORY)
+		{
+			UseItem();
+
+		}
+
+		break;
+		case BATTLEINVENTORY:
+
+			if (Pad(0).IsPress(enButtonA) && setMenu == INVENTORY)
+			{
+				UseItem();
+
+			}
 		break;
 	}
 
@@ -213,6 +228,21 @@ void Menu::Render(CRenderContext& renderContext)
 
 		}
 
+		break;
+
+	case BATTLEINVENTORY:
+
+		BackSeatSprite.Draw(renderContext);
+		for (int J = 0;J < 5;J++)
+		{
+			for (int I = 0;I < 6;I++)
+			{
+				InventorySeatSprite[J][I].Draw(renderContext);
+
+
+			}
+
+		}
 		break;
 
 	}
@@ -327,14 +357,44 @@ void Menu::InventoryChangTex(int Item)
 
 
 }
+
 void Menu::MenuSceneStop()
 {
 
 	g_gameCamera->ChangeStart();
 	g_gameScene->SceneStop();
-	g_player->IsMoveSTART();
+	if (g_player != nullptr)
+	{
+		g_player->IsMoveSTART();
+	}
 	g_sound->VolumeNormal();
 
 	setMenu = STOP;
 
+}
+void Menu::BattleMenuStop()
+{
+	setMenu = STOP;
+}
+
+void Menu::UseItem()
+{
+	if (g_Hud->GetHP() >= 500) { return; }
+
+	g_Hud->RecoveryHP(100);
+	setHP(g_Hud->GetHP());
+	g_battlemenu->SetHp(g_Hud->GetHP());
+	/*for (int count = 0;count < InventoryPackNumber;count++) {
+
+		if (ItemNuber[count] == 0)
+		{
+			int box = ItemNuber[count + 1];
+			ItemNuber[count + 1] = 0;
+			ItemNuber[count] = box;
+
+			
+		}
+	}*/
+
+		
 }

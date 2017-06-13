@@ -12,11 +12,14 @@ public:
 	void LvChangTex();
 	void GoldChangTex();
 	void InventoryChangTex(int Item);
+	void UseItem();
 
 	void setHP(int setHp)
 	{
 		HP = setHp;
+		
 		HpChangTex();
+		
 	}
 	void setLV(int setLv)
 	{
@@ -33,11 +36,18 @@ public:
 		ItemNuber[Number] = SetItem;
 		Number++;
 	}
+	
 	void MenuScene()
 	{
 		setMenu = MENU;
 	}
+
+	void MenuSceneItem()
+	{
+		setMenu = BATTLEINVENTORY;
+	}
 	void MenuSceneStop();
+	void BattleMenuStop();
 
 private:
 	CSprite     BackSeatSprite;  //2”ÔŒã‚ë
@@ -102,6 +112,7 @@ private:
 		STOP,
 		MENU,
 		INVENTORY,
+		BATTLEINVENTORY,
 
 	};
 	

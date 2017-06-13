@@ -13,7 +13,7 @@ public:
 	void Update();
 	void Render(CRenderContext&renderContext);
 	void AnimationSet();
-	void Particle();
+	void Particle(CVector3 target);
 	void ParticleDelete();
 
 	CVector3 Getpos()
@@ -31,6 +31,7 @@ public:
 	void SetAttack(bool Attack)
 	{
 		IsAttack = Attack;
+		
 	}
 
 	void SetDamage(int ATK, bool Damage)
@@ -69,7 +70,13 @@ private:
 
 	};
 
+	enum Particle {
+		ATTACK,
+		HEAL,
+		STOP,
+	};
 
+	int currentParticle = ATTACK;
 	CSkinModel				skinModel;
 	CSkinModelDataHandle	skinModelData;
 	CCharacterController	characterController;
@@ -89,7 +96,7 @@ private:
 	int						currentAnimSetNo;
 	bool					IsAttack;
 	bool					IsStand;
-	bool					IsDamage;
+	bool					IsDamage = false;
 	bool					IsAnimend;
 
 	bool                    IsSetPoint = false;
