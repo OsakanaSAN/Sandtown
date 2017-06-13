@@ -14,6 +14,7 @@
 #include "Npc.h"
 #include "tkEngine/graphics/tkCamera.h"
 #include "Dungeon.h"
+#include "BattlePlayer.h"
 
 
 GameScene* g_gameScene = NULL;
@@ -142,7 +143,7 @@ void GameScene::Update()
 				g_Enemy->Init(modelName);
 				g_Enemy->setPos({ -3.0f, 0.0f, -20.0f });
 				g_Enemy->Setexp(20);
-				g_Enemy->SetEATK(20);
+				g_Enemy->SetEATK(100);
 				g_Enemy->SetHP(50);
 				g_Enemy->SetGold(20);
 
