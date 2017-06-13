@@ -10,8 +10,6 @@ Mapchip::Mapchip()
 {
 	Maplight.SetAmbinetLight({ 0.5f, 0.5f, 0.5f }); //ƒ‰ƒCƒg‚ÌÝ’è
 	Lightpos = g_player->Getpos();
-	Maplight.SetPointLightPosition(Lightpos);
-	Maplight.SetPointLightColor({ 1.0f,1.0f,1.0f,1.0f });
 
 	li = g_player->Getpos();
 	li.y += 30.0f;

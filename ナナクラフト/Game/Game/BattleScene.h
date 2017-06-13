@@ -50,11 +50,11 @@ private:
 
 	enum set
 	{
-		in,
+		damage,
 		out,
 
 	};
-	set sets = in;
+	set sets = damage;
 
 	enum BattleComand
 	{
@@ -89,8 +89,8 @@ private:
 	CSprite		m_ComandBGSprite4;		//!<戦闘画面の選択のスプライト。
 	CTexture	m_ComandBGTexture4;		//!<戦闘画面の選択のテクスチャ。
 
-	CSprite     m_DamageSeatSprite[4];
-	CTexture    m_DamageSeatTexture[4];
+	CSprite     m_DamageSeatSprite[3];
+	CTexture    m_DamageSeatTexture[3];
 	CVector2    m_Damageseatpos = { -240,250 };
 	char        m_DamageTexName[255];
 
@@ -117,7 +117,7 @@ private:
 	bool        Victory = true; //勝敗判定用
 	bool        EnemyPointCamera = true; //敵選択カメラの判定
 	bool        EnemyZoom = false;
-	
+	int NextDamage[3];
 };
 
 extern BattleScene* g_battleScene;
