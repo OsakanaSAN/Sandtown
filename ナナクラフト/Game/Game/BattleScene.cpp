@@ -291,19 +291,18 @@ void BattleScene::PostRender(CRenderContext&renderContext)
 	
 	if (EDamage || PDamage) {//ダメージの表示
 	
-		for (int i = 0;i < 3;i++)
-		{
+	
 			if (NextDamage[0] != 0)
 			{
 				m_DamageSeatSprite[0].Draw(renderContext);
 			}
-			if (NextDamage[1] != 0)
+			if (NextDamage[1] != 0|| NextDamage[0] != 0)
 			{
 				m_DamageSeatSprite[1].Draw(renderContext);
 			}
 			
 			m_DamageSeatSprite[2].Draw(renderContext);
-		}
+		
 	}
 
 	if (EnemyZoom) { return; }
@@ -527,7 +526,7 @@ void BattleScene::EnemyTurn()
 			m_DamageSeatSprite[i].SetPosition(EDamagepos);
 			m_DamageSeatSprite[i].SetSize({ 100,80 });
 
-			EDamagepos.x +=80.0f;
+			EDamagepos.x +=100.0f;
 		}
 		
 		
