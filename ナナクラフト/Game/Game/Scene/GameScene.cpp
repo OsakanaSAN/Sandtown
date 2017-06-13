@@ -299,8 +299,6 @@ void GameScene::MapChange()
 	g_sound->StopSound();
 	scenes = Change;
 	
-	
-
 }
 
 

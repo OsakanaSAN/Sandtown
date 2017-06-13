@@ -1,11 +1,3 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-﻿  BulletSoftBody.vcxproj -> C:\Users\kbc16b10\Documents\github\Sandtown\ナナクラフト\Game\x64\Release\BulletSoftBody.lib
-=======
-﻿  BulletSoftBody.vcxproj -> C:\Users\kbc16b03\Desktop\Sandtown\ナナクラフト\Game\x64\Release\BulletSoftBody.lib
->>>>>>> 107d11f21009c43be53fede452480e195bdf888d
-=======
 ﻿cl : コマンド ライン warning D9002: 不明なオプション '/arch:SSE' を無視します
   btDefaultSoftBodySolver.cpp
   btSoftBody.cpp
@@ -23,8 +15,4 @@ btSoftBodyHelpers.cpp(573): warning C4244: '=': '__int64' から 'int' への変
   btSoftRigidDynamicsWorld.cpp
   btSoftSoftCollisionAlgorithm.cpp
   コードを生成中...
-  BulletSoftBody.vcxproj -> C:\Users\kbc16b15\Desktop\github\Sandtown\ナナクラフト\Game\x64\Release\BulletSoftBody.lib
->>>>>>> 8d19726bedfdf47553285064f67b319c6432a040
-=======
-﻿  BulletSoftBody.vcxproj -> C:\Users\kbc16b03\Desktop\Sandtown\ナナクラフト\Game\x64\Release\BulletSoftBody.lib
->>>>>>> a89d7504c4925fffd32aec63b4bd3d14f4e1074a
+  BulletSoftBody.vcxproj -> C:\Users\kbc16b10\Documents\github\Sandtown\ナナクラフト\Game\x64\Release\BulletSoftBody.lib

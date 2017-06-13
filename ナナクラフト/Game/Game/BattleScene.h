@@ -19,10 +19,11 @@ public:
 	void PostRender(CRenderContext&renderContext);
 
 	void BattleResult();
-	
-
 	void PlayerTurn();
 	void EnemyTurn();
+	void BattleKeep();
+	void DamageTex(bool chara);
+	
 	bool Winresult()//ゲームシーンに渡すやつ？
 	{
 		return Winflg;
@@ -37,9 +38,7 @@ public:
 		IsBattleStart = true;
 	}
 
-	void BattleKeep();
-
-	void DamageTex(bool chara);
+	
 private:
 
 	CRandom			m_random;

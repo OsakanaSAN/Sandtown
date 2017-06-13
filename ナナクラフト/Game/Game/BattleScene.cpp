@@ -445,7 +445,7 @@ void BattleScene::PlayerTurn()
 				/*g_gameScene->BattleDate();*/
 
 
-				DeleteGO(this);
+				//DeleteGO(this);
 				g_menu->InventoryChangTex(3);
 
 				return;

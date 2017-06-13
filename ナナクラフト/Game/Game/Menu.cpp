@@ -12,7 +12,7 @@ extern CRandom g_random;
 
 Menu::Menu()
 {
-	
+
 	BackSeatTexture2.Load("Assets/UI/ui1.png");
 	BackSeatSprite2.SetPivot({ 0.0f,1.0f });
 	BackSeatSprite2.Init(&BackSeatTexture2);
@@ -25,8 +25,6 @@ Menu::Menu()
 	GoldSeatSprite[0].Init(&GoldSeatTexture[0]);
 	GoldSeatSprite[0].SetPosition({-50.0f,-90.0f});
 	GoldSeatSprite[0].SetSize({ 100.0f,50.0f });
-
-
 
 	//HPのテキスト文字
 	HpSeatTexture[0].Load("Assets/UI/HP.png");
@@ -48,7 +46,6 @@ Menu::Menu()
 	LvSeatSprite2.Init(&LvSeatTexture2);
 	LvSeatSprite2.SetPosition(LvSeatpos2);
 	LvSeatSprite2.SetSize({ 50.0f,80.0f });
-
 
 	//斜線
 	MaxHpSeatTexture[0].Load("Assets/UI/syasen.png");
@@ -388,6 +385,7 @@ void Menu::MenuSceneexit()
 
 bool Menu::UseItem()
 {
+
 	if (g_Hud->GetHP() >= 500) { return false; }
 	if (InventoryPackNumber <= 0) { return false; }
 	g_Hud->RecoveryHP(100);
