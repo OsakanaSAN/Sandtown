@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿  tkPathFinding.cpp
   tkPostEffect.cpp
 graphics\postEffect\tkPostEffect.cpp(38): error C2065: 'm_feedbackblur': 定義されていない識別子です。
@@ -9,3 +10,6 @@ graphics\postEffect\tkPostEffect.cpp(86): error C2228: '.Render' の左側はク
   tkSepiaFilter.cpp
   tkFont.cpp
   コードを生成中...
+=======
+﻿  tkEngine.vcxproj -> C:\Users\kbc16b03\Desktop\Sandtown\ナナクラフト\Game\x64\Release\tkEngine.lib
+>>>>>>> a89d7504c4925fffd32aec63b4bd3d14f4e1074a
