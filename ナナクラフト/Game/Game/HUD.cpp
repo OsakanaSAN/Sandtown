@@ -44,7 +44,7 @@ void HUD::LVUp()
 {
 	if (pExp >= NextExp)
 	{
-		LV++;
+		++LV;
 		NextExp = NextExp * 2;
 	}
 

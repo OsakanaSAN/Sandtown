@@ -1,8 +1,9 @@
 ﻿  BattleScene.cpp
-c:\users\kbc16b10\documents\github\sandtown\ナナクラフト\game\game\HUD.h(16): warning C4244: 'return': 'float' から 'int' への変換です。データが失われる可能性があります。
-BattleScene.cpp(141): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
-BattleScene.cpp(593): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+c:\users\kbc16b03\desktop\sandtown\ナナクラフト\game\game\HUD.h(16): warning C4244: 'return': 'float' から 'int' への変換です。データが失われる可能性があります。
+BattleScene.cpp(142): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+BattleScene.cpp(584): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+BattleScene.cpp(635): warning C4244: '+=': 'float' から 'int' への変換です。データが失われる可能性があります。
 LINK : warning LNK4075: /INCREMENTAL は /LTCG の指定によって無視されます。
   LINK : /LTCG が指定されましたが、コードの生成は必要ありません。リンク コマンド ラインから /LTCG を削除し、リンカーの性能を改善してください。
-  Game.vcxproj -> C:\Users\kbc16b10\Documents\github\Sandtown\ナナクラフト\Game\x64\Release\Game.exe
-  Game.vcxproj -> C:\Users\kbc16b10\Documents\github\Sandtown\ナナクラフト\Game\x64\Release\Game.pdb (Full PDB)
+  Game.vcxproj -> C:\Users\kbc16b03\Desktop\Sandtown\ナナクラフト\Game\x64\Release\Game.exe
+  Game.vcxproj -> C:\Users\kbc16b03\Desktop\Sandtown\ナナクラフト\Game\x64\Release\Game.pdb (Full PDB)

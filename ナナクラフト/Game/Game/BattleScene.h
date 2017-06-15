@@ -23,6 +23,7 @@ public:
 	void EnemyTurn();
 	void BattleKeep();
 	void DamageTex(bool chara);
+	void Defeat();
 	
 	bool Winresult()//ゲームシーンに渡すやつ？
 	{
@@ -134,6 +135,9 @@ private:
 
 
 	int NextDamage[3];
+	int DefTime = 0;
+
+	int GetEXP[2] = { 0,0 };
 
 };
 

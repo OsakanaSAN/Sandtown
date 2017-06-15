@@ -26,8 +26,10 @@ public:
 	void SetExp(int Setexp)
 	{
 		pExp += Setexp;
+		LVUp();
 		
 	}
+
 	int GetEXP() {
 		return pExp;
 	}

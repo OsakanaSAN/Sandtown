@@ -77,6 +77,7 @@ BattleScene::~BattleScene()
 bool BattleScene::Start()
 {
 	BattlGold = g_battleenemy->GetEGold();
+	GetEXP[0] = g_Hud->GetLV();
 
 	Winflg = false;
 	Loseflg = false;
@@ -287,11 +288,13 @@ void BattleScene::Update()
 	}
 	else if (Victory == false)
 	{
+		
 
-		if (Pad(0).IsPress(enButtonRB1))
+		Defeat();
+		/*if (Pad(0).IsPress(enButtonRB1))
 		{
 			DeleteGO(g_battleScene);
-		}
+		}*/
 	}
 		
 
@@ -303,10 +306,10 @@ void BattleScene::PostRender(CRenderContext&renderContext)
 
 	if (Comand == Result) {
 		m_ComandBGSprite1.Draw(renderContext);
-		/*m_ResultBGSprite8.Draw(renderContext);*/
-		m_ResultBGSprite7.Draw(renderContext);
+		if (GetEXP[0] < GetEXP[1]) {
+			m_ResultBGSprite7.Draw(renderContext);
+		}
 		m_ResultBGSprite6.Draw(renderContext);
-		/*m_ResultBGSprite9.Draw(renderContext);*/
 	
 	}
 
@@ -440,22 +443,14 @@ void BattleScene::PlayerTurn()
 				g_Hud->SetGold(g_battleenemy->GetEGold());
 				g_Hud->SetExp(g_battleenemy->GetExp());
 				Winflg = true;//バトルに勝利した
-
-
-				/*g_gameScene->BattleDate();*/
-
-
-				//DeleteGO(this);
 				g_menu->InventoryChangTex(3);
-
+				BattleResult();
 				return;
 
 
 				/*g_battleenemy->Delete();*/
-
-				//レベルアップ判定
-				//リザルト画面を出す処理その後シーン遷移？
 			}
+
 			else
 			{
 				//Turn = Eturn;//敵のターン
@@ -499,8 +494,6 @@ void BattleScene::PlayerTurn()
 		break;
 	case Result:
 
-		m_timer += GameTime().GetFrameDeltaTime();
-		BattleResult();
 		if (m_timer > 4.0 || Pad(0).IsTrigger(enButtonA))
 		{
 
@@ -622,7 +615,9 @@ void BattleScene::EnemyTurn()
 			
 
 			Victory = false;
-			DeleteGO(g_battleScene);
+			Comand = Result;
+			
+			//DeleteGO(g_battleScene);
 
 			//リザルト画面を出す処理かシーン遷移？
 		}
@@ -636,17 +631,31 @@ void BattleScene::EnemyTurn()
 	}
 }
 
+void BattleScene::Defeat()
+{
+
+	DefTime += GameTime().GetFrameDeltaTime();
+	if (DefTime < 3) { return; }
+	if (Pad(0).IsTrigger(enButtonA))
+	{
+		DeleteGO(g_battleScene);
+	}
+
+}
+
 void BattleScene::BattleResult()
 {
 	
-	
-	if (g_Hud->GetEXP() >= g_Hud->GetNextExp()) {
+	GetEXP[1] = g_Hud->GetLV();
+
+	if (GetEXP[0] < GetEXP[1]) {
 		m_ResultBGTexture7.Load("Assets/sprite/lvup.png");
 		m_ResultBGSprite7.Init(&m_ResultBGTexture7);
 		m_ResultBGSprite7.SetPosition({ 0,100 });
-		m_ResultBGSprite7.SetSize({ 100.0f,100.0f });
+		//m_ResultBGSprite7.SetSize({ 100.0f,100.0f });
 
 	}
+
 	m_ComandBGTexture1.Load("Assets/sprite/comand.png");
 	m_ComandBGSprite1.Init(&m_ComandBGTexture1);
 	m_ComandBGSprite1.SetPosition({ 0,0 });
