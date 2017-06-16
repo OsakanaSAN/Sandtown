@@ -23,21 +23,19 @@ TitleScene::~TitleScene()
 	
 	g_gameScene = NewGO<GameScene>(0);
 	
-	
-	
-	
+
 }
 
 bool TitleScene::Start()
 {
 
-	m_titleBGTexture.Load("Assets/sprite/title2.png");
+	m_titleBGTexture.Load("Assets/sprite/title4.png");
 	m_titleBGSprite.Init(&m_titleBGTexture);
-	m_titleBGSprite.SetSize({ 1920,1080 });
+	m_titleBGSprite.SetSize({ 1980,1080 });
 
 	m_titleBGTexture2.Load("Assets/sprite/casol2.png");
 	m_titleBGSprite2.Init(&m_titleBGTexture2);
-	m_titleBGSprite2.SetPosition({ -500,-350 });
+	m_titleBGSprite2.SetPosition({ -300,-250 });
 	m_titleBGSprite2.SetSize({ 200,200 });
 
 	/*m_titleBGTexture3.Load("Assets/sprite/START.png");
@@ -59,7 +57,7 @@ void TitleScene::Update()
 	float rStick_y = Pad(0).GetRStickYF();
 	
 
-	if (Pad(0).IsPress(enButtonUp) && GAME == NO)
+	/*if (Pad(0).IsPress(enButtonUp) && GAME == NO)
 	{
 		
 		m_titleBGTexture2.Release();
@@ -81,7 +79,7 @@ void TitleScene::Update()
 		GAME = NO;
 
 
-	}
+	}*/
 
 	switch (GAME) {
 	case START:

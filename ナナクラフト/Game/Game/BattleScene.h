@@ -23,6 +23,8 @@ public:
 	void EnemyTurn();
 	void BattleKeep();
 	void DamageTex(bool chara);
+	void GetGoldTex(int GetGold);
+	void GetExpTex(int GetExp);
 	void Defeat();
 	
 	bool Winresult()//ゲームシーンに渡すやつ？
@@ -90,26 +92,37 @@ private:
 	CSprite		m_ComandBGSprite4;		//!<戦闘画面の選択のスプライト。
 	CTexture	m_ComandBGTexture4;		//!<戦闘画面の選択のテクスチャ。
 
+
+	CSprite		m_CasolBGSprite;		//!<戦闘画面の選択のスプライト。
+	CTexture	m_CasolBGTexture;		//!<戦闘画面の選択のテクスチャ。
+
+	CSprite		m_ResultBGSprite1;		//!<リザルト画面のスプライト。
+	CTexture	m_ResultBGTexture1;		//!<リザルト画面のテクスチャ。
+
+	CSprite		m_ResultBGSprite2;		//!<リザルト画面のスプライト。
+	CTexture	m_ResultBGTexture2;		//!<リザルト画面のテクスチャ。
+
+	CSprite		m_ResultBGSprite3;		//!<リザルト画面のスプライト。
+	CTexture	m_ResultBGTexture3;		//!<リザルト画面のテクスチャ。
+
+	CSprite		m_ResultBGSprite4;		//!<リザルト画面のスプライト。
+	CTexture	m_ResultBGTexture4;		//!<リザルト画面のテクスチャ。
+
+
 	CSprite     m_DamageSeatSprite[3];
 	CTexture    m_DamageSeatTexture[3];
 	CVector2    m_Damageseatpos = { -240,250 };
 	char        m_DamageTexName[255];
 
+	CSprite     m_GoldSeatSprite[3];
+	CTexture    m_GoldSeatTexture[3];
+	CVector2    m_Goldseatpos = { -250,0 };
+	char        m_GoldTexName[255];
 
-	CSprite		m_CasolBGSprite;		//!<戦闘画面の選択のスプライト。
-	CTexture	m_CasolBGTexture;		//!<戦闘画面の選択のテクスチャ。
-
-	CSprite		m_ResultBGSprite6;		//!<リザルト画面のスプライト。
-	CTexture	m_ResultBGTexture6;		//!<リザルト画面のテクスチャ。
-
-	CSprite		m_ResultBGSprite7;		//!<リザルト画面のスプライト。
-	CTexture	m_ResultBGTexture7;		//!<リザルト画面のテクスチャ。
-
-	CSprite		m_ResultBGSprite8;		//!<リザルト画面のスプライト。
-	CTexture	m_ResultBGTexture8;		//!<リザルト画面のテクスチャ。
-
-	CSprite		m_ResultBGSprite9;		//!<リザルト画面のスプライト。
-	CTexture	m_ResultBGTexture9;		//!<リザルト画面のテクスチャ。
+	CSprite     m_ExpSeatSprite[3];
+	CTexture    m_ExpSeatTexture[3];
+	CVector2    m_Expseatpos = { -250,-200 };
+	char        m_ExpTexName[255];
 
 
 	bool		Winflg;
@@ -119,11 +132,11 @@ private:
 	bool		PDamage;
 	bool		EDamage;
 	bool		SelectQ;//
-	bool Itemuse = false;
+	bool		Itemuse = false;
 
 	int         BattlGold = 0;
 
-	float			m_timer = 0;
+	float		m_timer = 0;
 	bool        IsBattle = false; //コマンド画面を表示するかの判定
 	bool        IsBattleStart = false; //プレイヤーが配置についたかの判定
 	bool        result = false; //result画面遷移用
@@ -139,6 +152,7 @@ private:
 
 	int GetEXP[2] = { 0,0 };
 
+	bool Resultflg2 = true;
 };
 
 extern BattleScene* g_battleScene;

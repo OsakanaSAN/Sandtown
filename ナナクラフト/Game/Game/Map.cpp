@@ -20,7 +20,7 @@ shop*		g_shop;
 
 //マップの配置情報。
 SMapInfo mapLocInfo[] = {
-#include "Map/MACHI.h"
+#include "Map/test2.h"
 };
 
 
@@ -62,7 +62,6 @@ bool Map::Start()
 
 			g_player->Setpos2(pos);
 			g_player->SetRot(rot);
-			
 			ChangeObject++;
 
 		}
@@ -72,17 +71,17 @@ bool Map::Start()
 			g_SC = NewGO<SceneChange>(0);
 			g_SC->Init(mapLocInfo[i].modelName, mapLocInfo[i].position, mapLocInfo[i].rotation);
 			g_SC->setpos(mapLocInfo[i].position);
+			g_SC->Norender();
 			ChangeObject++;
 
 		}
-		else if (strcmp(mapLocInfo[i].modelName, "ken") == 0)
+		else if (strcmp(mapLocInfo[i].modelName, "Sign_a") == 0)
 		{
 
 			g_shop = NewGO<shop>(0);
-			g_shop->Init(mapLocInfo[i].modelName, mapLocInfo[i].position, mapLocInfo[i].rotation);
-			
-			ChangeObject++;
+			g_shop->Init(mapLocInfo[i].modelName,mapLocInfo[i].position, mapLocInfo[i].rotation);
 
+			ChangeObject++;
 
 		}
 		else if (strcmp(mapLocInfo[i].modelName, "maru") == 0)
