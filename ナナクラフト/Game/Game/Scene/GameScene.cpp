@@ -256,7 +256,9 @@ void GameScene::DeteScene()
 
 	if (g_fade->IsExecute() == true)
 	{
-		g_player->IsMoveSTOP();
+		if (g_player != nullptr) {
+			g_player->IsMoveSTOP();
+		}
 		g_player->StopSound();
 		g_gameCamera->ChangeStop();
 		return; }

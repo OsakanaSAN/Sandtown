@@ -30,6 +30,7 @@ private:
 	CRigidBody			rigidBody;		//„‘ÌB
 	int                 asnumber;
 	int                 minigexp = 5;
+	int                 minigcount = 0; //ÌŒ@‚Å‚«‚éãŒÀ
 
 
 };

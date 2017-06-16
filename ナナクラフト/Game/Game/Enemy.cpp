@@ -70,14 +70,13 @@ void Enemy::Update() {
 	
 	// アニメーションの更新
 	Animation.Update(1.0f / 60.0f);
-	//characterController.Execute(0.03f);
 	skinModel.Update(position, m_rotation, CVector3::One);
 	
 }
 
 void Enemy::Render(CRenderContext&renderContext) {
 
-	
+	if (g_player == nullptr) { return; }
 	skinModel.Draw(renderContext, g_gameCamera->GetViewMatrix(), g_gameCamera->GetProjectionMatrix());
 }
 
