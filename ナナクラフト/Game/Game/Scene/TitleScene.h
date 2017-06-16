@@ -38,7 +38,7 @@ private:
 		START,
 		BREAK,
 	};
-	Select GAME = NO;
+	Select GAME = START;
 
 	CSoundSource* bgmSource = NULL;
 

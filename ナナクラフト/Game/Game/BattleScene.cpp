@@ -30,6 +30,22 @@ BattleScene::BattleScene()
 		m_DamageSeatSprite[i].SetPosition(m_Damageseatpos);
 		m_DamageSeatSprite[i].Init(&m_DamageSeatTexture[i]);
 		m_DamageSeatSprite[i].SetSize({ 100.0f,80.0f });
+		
+
+		m_GoldSeatTexture[i].Load("Assets/UI/0.png");
+		m_GoldSeatSprite[i].SetPosition(m_Goldseatpos);
+		m_GoldSeatSprite[i].Init(&m_GoldSeatTexture[i]);
+		//m_GoldSeatSprite[i].SetSize({ 100.0f,80.0f });
+		m_GoldSeatSprite[i].SetAlpha(0.0);
+
+		m_ExpSeatTexture[i].Load("Assets/UI/0.png");
+		m_ExpSeatSprite[i].SetPosition(m_Expseatpos);
+		m_ExpSeatSprite[i].Init(&m_ExpSeatTexture[i]);
+		//m_ExpSeatSprite[i].SetSize({ 100.0f,80.0f });
+		m_ExpSeatSprite[i].SetAlpha(0.0);
+
+		m_Expseatpos.x += 50;
+		m_Goldseatpos.x += 50;
 		m_Damageseatpos.x += 50;
 	}
 }
@@ -114,16 +130,26 @@ bool BattleScene::Start()
 	m_CasolBGSprite.SetPosition({ -500,-250 });
 	m_CasolBGSprite.SetSize({ 200,200 });
 
-	m_ResultBGTexture6.Load("Assets/sprite/Result.png");
-	m_ResultBGSprite6.Init(&m_ResultBGTexture6);
+	m_ResultBGTexture1.Load("Assets/sprite/Result.png");
+	m_ResultBGSprite1.Init(&m_ResultBGTexture1);
+	m_ResultBGSprite1.SetPosition({ 0,280 });
+	m_ResultBGSprite1.SetSize({ 300.0f,200.0f });
+	m_ResultBGSprite1.SetAlpha(0.0);
 
+	m_ResultBGTexture2.Load("Assets/sprite/lvup.png");
+	m_ResultBGSprite2.Init(&m_ResultBGTexture2);
+	//m_ResultBGSprite2.SetPosition({ 0,100 });
+	m_ResultBGSprite2.SetAlpha(0.0);
 
-	m_ResultBGTexture7.Load("Assets/sprite/lvup.png");
-	m_ResultBGSprite7.Init(&m_ResultBGTexture7);
+	m_ResultBGTexture3.Load("Assets/sprite/	result_1.png");
+	m_ResultBGSprite3.Init(&m_ResultBGTexture3);
+	//m_ResultBGSprite3.SetPosition({ 0,-200 });
+	m_ResultBGSprite3.SetAlpha(0.0);
 
-
-	
-
+	m_ResultBGTexture4.Load("Assets/sprite/	result_2.png");
+	m_ResultBGSprite4.Init(&m_ResultBGTexture4);
+	//m_ResultBGSprite4.SetPosition({ 0,-50 });
+	m_ResultBGSprite4.SetAlpha(0.0);
 
 	g_sound->BattleSound();
 
@@ -293,7 +319,7 @@ void BattleScene::Update()
 			DeleteGO(g_battleScene);
 		}
 	}
-		
+	
 
 	
 }
@@ -302,27 +328,35 @@ void BattleScene::PostRender(CRenderContext&renderContext)
 {
 
 	if (Comand == Result) {
+		m_ComandBGSprite1.SetPosition({ 0,0 });
+		m_ComandBGSprite1.SetSize({ 700.0f,900.0f });
+
 		m_ComandBGSprite1.Draw(renderContext);
-		/*m_ResultBGSprite8.Draw(renderContext);*/
-		m_ResultBGSprite7.Draw(renderContext);
-		m_ResultBGSprite6.Draw(renderContext);
-		/*m_ResultBGSprite9.Draw(renderContext);*/
-	
+		m_ResultBGSprite1.Draw(renderContext);
+		if (g_Hud->GetEXP() >= g_Hud->GetNextExp()) {
+			m_ResultBGSprite2.Draw(renderContext);
+		}
+		m_ResultBGSprite3.Draw(renderContext);
+		m_ResultBGSprite4.Draw(renderContext);
+		for (int i = 0;i < 3;i++) {
+			m_GoldSeatSprite[i].Draw(renderContext);
+			m_ExpSeatSprite[i].Draw(renderContext);
+		}
 	}
 
 	if (EDamage || PDamage) {//ダメージの表示
 	
 	
-			if (NextDamage[0] != 0)
-			{
-				m_DamageSeatSprite[0].Draw(renderContext);
-			}
-			if (NextDamage[1] != 0|| NextDamage[0] != 0)
-			{
-				m_DamageSeatSprite[1].Draw(renderContext);
-			}
+		if (NextDamage[0] != 0)
+		{
+			m_DamageSeatSprite[0].Draw(renderContext);
+		}
+		if (NextDamage[1] != 0|| NextDamage[0] != 0)
+		{
+			m_DamageSeatSprite[1].Draw(renderContext);
+		}
 			
-			m_DamageSeatSprite[2].Draw(renderContext);
+		m_DamageSeatSprite[2].Draw(renderContext);
 		
 	}
 
@@ -334,7 +368,6 @@ void BattleScene::PostRender(CRenderContext&renderContext)
 	m_ComandBGSprite1.Draw(renderContext);
 	m_ComandBGSprite2.Draw(renderContext);
 	m_ComandBGSprite3.Draw(renderContext);
-
 	m_ComandBGSprite4.Draw(renderContext);
 	m_CasolBGSprite.Draw(renderContext);
 	
@@ -349,7 +382,8 @@ void BattleScene::PlayerTurn()
 	
 	if (EAttack)return;
 	if (PDamage)return;
-
+	if (g_battleplayer->GetAnimend() == false)return;
+	if (g_battleenemy->GetAnimend() == false)return;
 
 	DamageTex(false);
 	switch (Comand)//選択肢
@@ -368,7 +402,7 @@ void BattleScene::PlayerTurn()
 
 		}
 
-		if (Pad(0).IsTrigger(enButtonA) && g_battleenemy->GetAnimend() && g_battleplayer->GetAnimend())
+		if (!PAttack&&Pad(0).IsTrigger(enButtonA))
 		{
 			g_battlemenu->EnemyZoomOut();
 			g_battlemenu->PlayerZoomSet();
@@ -395,7 +429,7 @@ void BattleScene::PlayerTurn()
 
 		}
 
-		else if (PAttack && !EDamage &&g_battleenemy->GetAnimend() && g_battleplayer->GetAnimend())
+		else if (PAttack && !EDamage)
 		{
 
 			m_sound_Attack->Play(false);
@@ -422,7 +456,7 @@ void BattleScene::PlayerTurn()
 			EDamage = true;
 
 		}
-		else if (PAttack &&EDamage&& g_battleenemy->GetAnimend() && g_battleplayer->GetAnimend())
+		else if (PAttack &&EDamage)
 		{
 			g_battleplayer->ParticleDelete();//パーティクル消去
 			m_sound_Attack->Stop();
@@ -435,7 +469,6 @@ void BattleScene::PlayerTurn()
 
 
 				Comand = Result;
-
 
 				g_Hud->SetGold(g_battleenemy->GetEGold());
 				g_Hud->SetExp(g_battleenemy->GetExp());
@@ -473,10 +506,6 @@ void BattleScene::PlayerTurn()
 		if (Pad(0).IsPress(enButtonA))
 		{
 
-			//確率で逃げれるようにする？乱数とかで？
-			DeleteGO(this);
-			//Result();
-			return;
 			int escape =  g_random.GetRandInt() % 10 + 1;
 			if(escape %2==0)
 			{
@@ -501,7 +530,8 @@ void BattleScene::PlayerTurn()
 
 		m_timer += GameTime().GetFrameDeltaTime();
 		BattleResult();
-		if (m_timer > 4.0 || Pad(0).IsTrigger(enButtonA))
+	
+		if (/*m_timer > 6.0 ||*/ Pad(0).IsTrigger(enButtonA))
 		{
 
 			Comand = Keep;
@@ -556,18 +586,17 @@ void BattleScene::EnemyTurn()
 	
 	if (PAttack)return;
 	if (EDamage)return;
+	if (g_battleplayer->GetAnimend() == false)return;
+	if (g_battleenemy->GetAnimend() == false)return;
 	DamageTex(true);
 
-	if (g_battleenemy->GetAnimend() == false)return;
-
-
-	if (!EAttack&&g_battleenemy->GetAnimend() && g_battleplayer->GetAnimend()) {
+	if (!EAttack) {
 			g_battleenemy->SetAttack(true);//攻撃のアニメーション再生
 
 
 		EAttack = true;
 	}
-	else if (EAttack && !PDamage && g_battleplayer->GetAnimend() && g_battleenemy->GetAnimend())
+	else if (EAttack && !PDamage)
 	{
 		
 		m_sound_Attack->Play(false);
@@ -602,12 +631,11 @@ void BattleScene::EnemyTurn()
 		
 	}
 
-	else if (EAttack && PDamage && g_battleenemy->GetAnimend() && g_battleplayer->GetAnimend())
+	else if (EAttack && PDamage )
 	{
 
-		g_battleenemy->EnemyParticleDelete();//パーティクル消去
 		g_battleplayer->ParticleDelete();//パーティクル消去
-		//g_battleenemy->EnemyParticleDelete();//パーティクル消去
+
 
 		m_sound_Attack->Stop();
 
@@ -619,7 +647,6 @@ void BattleScene::EnemyTurn()
 
 			Loseflg = true;//戦闘に負けた
 
-			
 
 			Victory = false;
 			DeleteGO(g_battleScene);
@@ -629,7 +656,6 @@ void BattleScene::EnemyTurn()
 
 		SelectQ = false;
 		result = false;
-
 		turnCheng = true;
 		return;
 
@@ -638,27 +664,54 @@ void BattleScene::EnemyTurn()
 
 void BattleScene::BattleResult()
 {
-	
-	
-	if (g_Hud->GetEXP() >= g_Hud->GetNextExp()) {
-		m_ResultBGTexture7.Load("Assets/sprite/lvup.png");
-		m_ResultBGSprite7.Init(&m_ResultBGTexture7);
-		m_ResultBGSprite7.SetPosition({ 0,100 });
-		m_ResultBGSprite7.SetSize({ 100.0f,100.0f });
 
-	}
 	m_ComandBGTexture1.Load("Assets/sprite/comand.png");
 	m_ComandBGSprite1.Init(&m_ComandBGTexture1);
 	m_ComandBGSprite1.SetPosition({ 0,0 });
 	m_ComandBGSprite1.SetSize({ 700.0f,900.0f });
 
 
-	m_ResultBGTexture6.Load("Assets/sprite/Result.png");
-	m_ResultBGSprite6.Init(&m_ResultBGTexture6);
-	m_ResultBGSprite6.SetPosition({ 0,250 });
-	m_ResultBGSprite6.SetSize({ 300.0f,200.0f });
+	m_ResultBGTexture1.Load("Assets/sprite/Result.png");
+	m_ResultBGSprite1.Init(&m_ResultBGTexture1);
+	m_ResultBGSprite1.SetPosition({ 0,280 });
+	m_ResultBGSprite1.SetSize({ 300.0f,180.0f });
+	m_ResultBGSprite1.SetAlpha(1.0);
 
+	m_ResultBGTexture3.Load("Assets/sprite/result_1.png");
+	m_ResultBGSprite3.Init(&m_ResultBGTexture3);
+	m_ResultBGSprite3.SetPosition({ 0,100 });
+	m_ResultBGSprite3.SetAlpha(1.0);
 
+	m_ResultBGTexture4.Load("Assets/sprite/result_2.png");
+	m_ResultBGSprite4.Init(&m_ResultBGTexture4);
+	m_ResultBGSprite4.SetPosition({ 0,-120 });
+	m_ResultBGSprite4.SetSize({ 300,80 });
+	m_ResultBGSprite4.SetAlpha(1.0);
+	if (Resultflg2) {
+		GetGoldTex(g_battleenemy->GetEGold());
+		GetExpTex(g_battleenemy->GetExp());
+		for (int i = 0; i < 3;i++) {
+
+			m_GoldSeatSprite[i].SetPosition(m_Goldseatpos);
+			m_GoldSeatSprite[i].Init(&m_GoldSeatTexture[i]);
+			m_GoldSeatSprite[i].SetSize({ 80.0f,60.0f });
+			m_GoldSeatSprite[i].SetAlpha(1.0);
+
+			m_ExpSeatSprite[i].SetPosition(m_Expseatpos);
+			m_ExpSeatSprite[i].Init(&m_ExpSeatTexture[i]);
+			m_ExpSeatSprite[i].SetSize({ 80.0f,60.0f });
+			m_ExpSeatSprite[i].SetAlpha(1.0);
+
+			m_Expseatpos.x += 90;
+			m_Goldseatpos.x += 90;
+		}
+		Resultflg2 = false;
+	}
+		m_ResultBGTexture2.Load("Assets/sprite/lvup.png");
+		m_ResultBGSprite2.Init(&m_ResultBGTexture2);
+		m_ResultBGSprite2.SetPosition({ 0.0f,100.0f });
+		m_ResultBGSprite2.SetAlpha(1.0);
+	
 
 
 }
@@ -696,12 +749,11 @@ void BattleScene::DamageTex(bool chara)
 	{
 		Damage = g_battleplayer->GetATK();
 	}
-
 	
 	NextDamage[0] = Damage / 100;
 	
 	sprintf(m_DamageTexName, "Assets/sprite/damagi%d.png", NextDamage[0]);
-	//m_DamageSeatTexture[1].Release();
+	m_DamageSeatTexture[0].Release();
 	m_DamageSeatTexture[0].Load(m_DamageTexName);
 
 	Damage %= 100;
@@ -709,16 +761,71 @@ void BattleScene::DamageTex(bool chara)
 	NextDamage[1] = Damage / 10;
 	
 	sprintf(m_DamageTexName, "Assets/sprite/damagi%d.png", NextDamage[1]);
-	//m_DamageSeatTexture[2].Release();
+	m_DamageSeatTexture[1].Release();
 	m_DamageSeatTexture[1].Load(m_DamageTexName);
 
 	Damage %= 10;
 	NextDamage[2] = Damage;
 	
 	sprintf(m_DamageTexName, "Assets/sprite/damagi%d.png", NextDamage[2]);
-	//m_DamageSeatTexture[2].Release();
+	m_DamageSeatTexture[2].Release();
 	m_DamageSeatTexture[2].Load(m_DamageTexName);
 	
 
 	
+}
+
+
+void BattleScene::GetGoldTex(int GetGold)
+{
+	int NextGold[3];
+	
+	NextGold[0] = GetGold / 100;
+	
+	sprintf(m_GoldTexName, "Assets/sprite/%d.png", NextGold[0]);
+	m_GoldSeatTexture[0].Release();
+	m_GoldSeatTexture[0].Load(m_GoldTexName);
+
+	GetGold %= 100;
+
+	NextGold[1] = GetGold / 10;
+	
+	sprintf(m_GoldTexName, "Assets/sprite/%d.png", NextGold[1]);
+	m_GoldSeatTexture[1].Release();
+	m_GoldSeatTexture[1].Load(m_GoldTexName);
+
+	GetGold %= 10;
+	NextGold[2] = GetGold;
+	
+	sprintf(m_GoldTexName, "Assets/sprite/%d.png", NextGold[2]);
+	m_GoldSeatTexture[2].Release();
+	m_GoldSeatTexture[2].Load(m_GoldTexName);
+	
+}
+
+void BattleScene::GetExpTex(int GetExp)
+{
+	int NextExp[3];
+
+	NextExp[0] = GetExp / 100;
+
+	sprintf(m_ExpTexName, "Assets/sprite/%d.png", NextExp[0]);
+	m_ExpSeatTexture[0].Release();
+	m_ExpSeatTexture[0].Load(m_ExpTexName);
+
+	GetExp %= 100;
+
+	NextExp[1] = GetExp / 10;
+
+	sprintf(m_ExpTexName, "Assets/sprite/%d.png", NextExp[1]);
+	m_ExpSeatTexture[1].Release();
+	m_ExpSeatTexture[1].Load(m_ExpTexName);
+
+	GetExp %= 10;
+	NextExp[2] = GetExp;
+
+	sprintf(m_ExpTexName, "Assets/sprite/%d.png", NextExp[2]);
+	m_ExpSeatTexture[2].Release();
+	m_ExpSeatTexture[2].Load(m_ExpTexName);
+
 }
