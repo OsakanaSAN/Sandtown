@@ -25,6 +25,8 @@ public:
 	void DamageTex(bool chara);
 	void GetGoldTex(int GetGold);
 	void GetExpTex(int GetExp);
+	void Defeat();
+	
 	bool Winresult()//ゲームシーンに渡すやつ？
 	{
 		return Winflg;
@@ -146,6 +148,9 @@ private:
 
 
 	int NextDamage[3];
+	int DefTime = 0;
+
+	int GetEXP[2] = { 0,0 };
 
 	bool Resultflg2 = true;
 };

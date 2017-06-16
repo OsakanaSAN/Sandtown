@@ -13,7 +13,8 @@ enum {
 	Stand_anim,
 	Walk_anim,
 	Run_anim,
-	Jump_anim,
+	Attack_anim,
+	Dame_anim,
 
 };
 
@@ -81,7 +82,7 @@ bool Player::Start()
 
 	currentAnimSetNo = Stand_anim;
 	Animation.PlayAnimation(Stand_anim, 0.1f);
-	Animation.SetAnimationLoopFlag(Jump_anim, false);
+	Animation.SetAnimationLoopFlag(Attack_anim, false);
 	Animation.SetAnimationEndTime(Run_anim, 0);
 
 	
@@ -103,10 +104,9 @@ void Player::Update()
 
 		characterController.SetPosition(position);
 
-		AngleSet();  //キャラクターの向きを変更する
-		AnimetionSet();
 		Move();      //キャラの移動
-		
+		AnimetionSet();
+		AngleSet();  //キャラクターの向きを変更する
 		
 		skinModel.EntryShadowMap();
 		//ワールド行列の更新。
@@ -119,11 +119,11 @@ void Player::Update()
 		break;
 
 	}
-	//skinModel.Update(position, m_rotion, /*CVector3::One*/scale);
 }
 
 void Player::Move()
 {
+	
 	CVector3 move = characterController.GetMoveSpeed();
 	move.x = -Pad(0).GetLStickXF() * 5.0f;
 	move.z = -Pad(0).GetLStickYF() * 5.0f;
@@ -136,14 +136,17 @@ void Player::Move()
 	moveXZ.y = 0.0f;
 
 	
-
+	 if (Pad(0).IsTrigger(enButtonX) && Animation.GetPlayAnimNo() != Attack_anim)
+	{
+		IsAttak = true;
+	}
 	
-	if (move.x  !=  0.0f || move.z != 0.0f)
+	 else if (move.x  !=  0.0f || move.z != 0.0f )
 	{
 		Ismove = true;
 		
-		
 	}
+	
 
 	else
 	{
@@ -156,6 +159,8 @@ void Player::Move()
 
 void Player::AngleSet()
 {
+	if (Animation.GetPlayAnimNo() == Attack_anim|| Animation.GetPlayAnimNo() == Stand_anim){return;}
+
 	CVector3 moveSpeed = characterController.GetMoveSpeed();
 
 	CVector3 moveDirLocal;
@@ -216,35 +221,45 @@ void Player::AngleSet()
 void Player::AnimetionSet()
 {
 	//キャラの移動
+	//攻撃アニメーション再生
+	if (IsAttak)
+	{
+		Animation.PlayAnimation(Attack_anim, 0.3f);
+		Animation.SetAnimationLoopFlag(Attack_anim, false);
+		Animation.SetAnimationSpeedRate(1.5);
+		Isrun = true;
+		IsAttak = false;
+	}
+
 	if (!Isrun) {
-		if (Ismove) {
+	   if (Ismove) {
 
-			Animation.PlayAnimation(Run_anim,1.0);
+			Animation.PlayAnimation(Run_anim,0.5);
 			Isrun = true;
-
-			//runsound->SetPosition(Getpos());
-
-			/*runsound->Play(true);*/
-
-			//runsound->Play(true);
-
 
 			Animation.SetAnimationSpeedRate(4.5);
 			Animation.SetAnimationEndTime(Run_anim,2.0f);
 
 
 		}
+
 	}
-	else if (!Ismove)
+
+	else if (!Ismove && Animation.GetPlayAnimNo() != Attack_anim)
 	{
-		Animation.SetAnimationSpeedRate(0.3);
-		Animation.PlayAnimation(Stand_anim, 0.3f);
+		
 		Isrun = false;
-	//	runsound->Stop();
+		Animation.PlayAnimation(Stand_anim, 0.3f);
 		Animation.SetAnimationSpeedRate(1);
 
 	}
 
+	else if (!Animation.IsPlay())
+	{
+		Isrun = false;
+		Animation.PlayAnimation(Stand_anim, 0.3f);
+		Animation.SetAnimationSpeedRate(1);
+	}
 	
 	
 	//アニメーションの更新

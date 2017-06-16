@@ -93,6 +93,7 @@ BattleScene::~BattleScene()
 bool BattleScene::Start()
 {
 	BattlGold = g_battleenemy->GetEGold();
+	GetEXP[0] = g_Hud->GetLV();
 
 	Winflg = false;
 	Loseflg = false;
@@ -313,11 +314,13 @@ void BattleScene::Update()
 	}
 	else if (Victory == false)
 	{
+		
 
-		if (Pad(0).IsPress(enButtonRB1))
+		Defeat();
+		/*if (Pad(0).IsPress(enButtonRB1))
 		{
 			DeleteGO(g_battleScene);
-		}
+		}*/
 	}
 	
 
@@ -333,15 +336,17 @@ void BattleScene::PostRender(CRenderContext&renderContext)
 
 		m_ComandBGSprite1.Draw(renderContext);
 		m_ResultBGSprite1.Draw(renderContext);
-		if (g_Hud->GetEXP() >= g_Hud->GetNextExp()) {
-			m_ResultBGSprite2.Draw(renderContext);
-		}
 		m_ResultBGSprite3.Draw(renderContext);
 		m_ResultBGSprite4.Draw(renderContext);
 		for (int i = 0;i < 3;i++) {
 			m_GoldSeatSprite[i].Draw(renderContext);
 			m_ExpSeatSprite[i].Draw(renderContext);
 		}
+
+		if (GetEXP[0] < GetEXP[1]) {
+			m_ResultBGSprite2.Draw(renderContext);
+		}
+	
 	}
 
 	if (EDamage || PDamage) {//ダメージの表示
@@ -473,22 +478,14 @@ void BattleScene::PlayerTurn()
 				g_Hud->SetGold(g_battleenemy->GetEGold());
 				g_Hud->SetExp(g_battleenemy->GetExp());
 				Winflg = true;//バトルに勝利した
-
-
-				/*g_gameScene->BattleDate();*/
-
-
-				//DeleteGO(this);
 				g_menu->InventoryChangTex(3);
-
+				BattleResult();
 				return;
 
 
 				/*g_battleenemy->Delete();*/
-
-				//レベルアップ判定
-				//リザルト画面を出す処理その後シーン遷移？
 			}
+
 			else
 			{
 				//Turn = Eturn;//敵のターン
@@ -531,7 +528,7 @@ void BattleScene::PlayerTurn()
 		m_timer += GameTime().GetFrameDeltaTime();
 		BattleResult();
 	
-		if (/*m_timer > 6.0 ||*/ Pad(0).IsTrigger(enButtonA))
+		if (m_timer > 4.0 || Pad(0).IsTrigger(enButtonA))
 		{
 
 			Comand = Keep;
@@ -649,7 +646,9 @@ void BattleScene::EnemyTurn()
 
 
 			Victory = false;
-			DeleteGO(g_battleScene);
+			Comand = Result;
+			
+			//DeleteGO(g_battleScene);
 
 			//リザルト画面を出す処理かシーン遷移？
 		}
@@ -662,8 +661,31 @@ void BattleScene::EnemyTurn()
 	}
 }
 
+void BattleScene::Defeat()
+{
+
+	DefTime += GameTime().GetFrameDeltaTime();
+	if (DefTime < 3) { return; }
+	if (Pad(0).IsTrigger(enButtonA))
+	{
+		DeleteGO(g_battleScene);
+	}
+
+}
+
 void BattleScene::BattleResult()
 {
+
+	
+	GetEXP[1] = g_Hud->GetLV();
+
+	if (GetEXP[0] < GetEXP[1]) {
+		m_ResultBGTexture2.Load("Assets/sprite/lvup.png");
+		m_ResultBGSprite2.Init(&m_ResultBGTexture2);
+		m_ResultBGSprite2.SetPosition({ 0,-300 });
+		m_ResultBGSprite2.SetSize({ 300.0f,100.0f });
+		m_ResultBGSprite2.SetAlpha(1.0);
+	}
 
 	m_ComandBGTexture1.Load("Assets/sprite/comand.png");
 	m_ComandBGSprite1.Init(&m_ComandBGTexture1);
@@ -707,11 +729,6 @@ void BattleScene::BattleResult()
 		}
 		Resultflg2 = false;
 	}
-		m_ResultBGTexture2.Load("Assets/sprite/lvup.png");
-		m_ResultBGSprite2.Init(&m_ResultBGTexture2);
-		m_ResultBGSprite2.SetPosition({ 0.0f,100.0f });
-		m_ResultBGSprite2.SetAlpha(1.0);
-	
 
 
 }
@@ -782,7 +799,7 @@ void BattleScene::GetGoldTex(int GetGold)
 	
 	NextGold[0] = GetGold / 100;
 	
-	sprintf(m_GoldTexName, "Assets/sprite/%d.png", NextGold[0]);
+	sprintf(m_GoldTexName, "Assets/UI/%d.png", NextGold[0]);
 	m_GoldSeatTexture[0].Release();
 	m_GoldSeatTexture[0].Load(m_GoldTexName);
 
@@ -790,14 +807,14 @@ void BattleScene::GetGoldTex(int GetGold)
 
 	NextGold[1] = GetGold / 10;
 	
-	sprintf(m_GoldTexName, "Assets/sprite/%d.png", NextGold[1]);
+	sprintf(m_GoldTexName, "Assets/UI/%d.png", NextGold[1]);
 	m_GoldSeatTexture[1].Release();
 	m_GoldSeatTexture[1].Load(m_GoldTexName);
 
 	GetGold %= 10;
 	NextGold[2] = GetGold;
 	
-	sprintf(m_GoldTexName, "Assets/sprite/%d.png", NextGold[2]);
+	sprintf(m_GoldTexName, "Assets/UI/%d.png", NextGold[2]);
 	m_GoldSeatTexture[2].Release();
 	m_GoldSeatTexture[2].Load(m_GoldTexName);
 	
@@ -809,7 +826,7 @@ void BattleScene::GetExpTex(int GetExp)
 
 	NextExp[0] = GetExp / 100;
 
-	sprintf(m_ExpTexName, "Assets/sprite/%d.png", NextExp[0]);
+	sprintf(m_ExpTexName, "Assets/UI/%d.png", NextExp[0]);
 	m_ExpSeatTexture[0].Release();
 	m_ExpSeatTexture[0].Load(m_ExpTexName);
 
@@ -817,14 +834,14 @@ void BattleScene::GetExpTex(int GetExp)
 
 	NextExp[1] = GetExp / 10;
 
-	sprintf(m_ExpTexName, "Assets/sprite/%d.png", NextExp[1]);
+	sprintf(m_ExpTexName, "Assets/UI/%d.png", NextExp[1]);
 	m_ExpSeatTexture[1].Release();
 	m_ExpSeatTexture[1].Load(m_ExpTexName);
 
 	GetExp %= 10;
 	NextExp[2] = GetExp;
 
-	sprintf(m_ExpTexName, "Assets/sprite/%d.png", NextExp[2]);
+	sprintf(m_ExpTexName, "Assets/UI/%d.png", NextExp[2]);
 	m_ExpSeatTexture[2].Release();
 	m_ExpSeatTexture[2].Load(m_ExpTexName);
 
