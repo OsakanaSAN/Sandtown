@@ -14,4 +14,8 @@ btVector3.cpp(564): warning C4267: '=': 'size_t' から 'long' に変換しま�
 btVector3.cpp(569): warning C4267: '-=': 'size_t' から 'unsigned long' に変換しました。データが失われているかもしれません。
 btVector3.cpp(815): warning C4267: '=': 'size_t' から 'long' に変換しました。データが失われているかもしれません。
   コードを生成中...
+<<<<<<< HEAD
   LinearMath.vcxproj -> C:\Users\kbc16b03\Desktop\Sandtown\ナナクラフト\Game\x64\Release\LinearMath.lib
+=======
+  LinearMath.vcxproj -> C:\Users\kbc16b15\Desktop\github\新しいフォルダー\Sandtown\ナナクラフト\Game\x64\Release\LinearMath.lib
+>>>>>>> 6ec5036544da125746a9c842683e051820866976

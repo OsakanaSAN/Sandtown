@@ -83,7 +83,10 @@ public:
 	{
 		ATK = atk;
 	}
-
+	void ATKUp(int Atk)
+	{
+		ATK += Atk;
+	}
 	
 
 	int GetNextExp()
@@ -104,7 +107,7 @@ private:
 	int           pExp = 0;     //åoå±íl
 	int           NextExp = 20; 
 	
-	int           Gold = 300;
+	int           Gold = 0;
 	
 	int			  ATK = 20;//ïêäÌÇ≤Ç∆Ç…ïœâªÅH
 };

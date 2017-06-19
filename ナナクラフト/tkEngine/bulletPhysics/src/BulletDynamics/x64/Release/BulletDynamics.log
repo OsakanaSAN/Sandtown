@@ -43,4 +43,8 @@ Featherstone\btMultiBodyJointLimitConstraint.cpp(114): warning C4244: '初期化
 C:\Users\kbc16b03\Desktop\Sandtown\ナナクラフト\tkEngine\bulletPhysics\src\BulletDynamics\../BulletDynamics/ConstraintSolver/btContactConstraint.h(25): warning C4359: 'btContactConstraint': アライメント指定子は実際のアラインメント (128) より小さいため、無視されます。
   btWheelInfo.cpp
   コードを生成中...
+<<<<<<< HEAD
   BulletDynamics.vcxproj -> C:\Users\kbc16b03\Desktop\Sandtown\ナナクラフト\Game\x64\Release\BulletDynamics.lib
+=======
+  BulletDynamics.vcxproj -> C:\Users\kbc16b15\Desktop\github\新しいフォルダー\Sandtown\ナナクラフト\Game\x64\Release\BulletDynamics.lib
+>>>>>>> 6ec5036544da125746a9c842683e051820866976

@@ -146,6 +146,7 @@ void GameScene::Update()
 				g_Enemy->SetHP(10);
 				g_Enemy->SetGold(20);
 
+
 				modelName = "Assets/modelData/ghost.X";
 				g_Enemy2 = NewGO<Enemy>(0);
 				g_Enemy2->Init(modelName);
