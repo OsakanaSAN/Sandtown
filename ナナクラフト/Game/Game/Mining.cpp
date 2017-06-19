@@ -79,12 +79,13 @@ void Mining::Update()
 		float L = Vpos.Length();
 
 		int LV = g_Hud->GetLV();
-		if (L < 2.0f && Pad(0).IsPress(enButtonA) && LV < 10)
+		if (minigcount < 3 && L < 2.0f && Pad(0).IsTrigger(enButtonX) && LV < 10)
 		{
 
 			//int num = g_random.GetRandInt() % 4 + 1;
-			g_menu->InventoryChangTex(5);
+			g_menu->InventoryChangTex(4);
 			g_map2->AsDete(asnumber);
+			minigcount++;
 		}
 	}
 

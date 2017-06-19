@@ -59,7 +59,10 @@ BattleScene::~BattleScene()
 			g_sound->StopSound();
 			DeleteGO(g_battlemenu);
 			DeleteGO(g_battleplayer);
-			DeleteGO(g_battleenemy);
+			if (g_battlemenu != nullptr)
+			{
+				DeleteGO(g_battleenemy);
+			}
 			g_player = NewGO<Player>(0);
 			g_player->Loadpos();           //À•W‚ð“Ç‚Ýž‚Þ
 			g_gameScene->SceneStop();
@@ -478,6 +481,8 @@ void BattleScene::PlayerTurn()
 				g_Hud->SetGold(g_battleenemy->GetEGold());
 				g_Hud->SetExp(g_battleenemy->GetExp());
 				Winflg = true;//ƒoƒgƒ‹‚ÉŸ—˜‚µ‚½
+				DeleteGO(g_battleenemy);
+				g_battleenemy = nullptr;
 				g_menu->InventoryChangTex(3);
 				BattleResult();
 				return;
@@ -525,10 +530,9 @@ void BattleScene::PlayerTurn()
 		break;
 	case Result:
 
-		m_timer += GameTime().GetFrameDeltaTime();
-		BattleResult();
 	
 		if (m_timer > 4.0 || Pad(0).IsTrigger(enButtonA))
+
 		{
 
 			Comand = Keep;
@@ -664,8 +668,6 @@ void BattleScene::EnemyTurn()
 void BattleScene::Defeat()
 {
 
-	DefTime += GameTime().GetFrameDeltaTime();
-	if (DefTime < 3) { return; }
 	if (Pad(0).IsTrigger(enButtonA))
 	{
 		DeleteGO(g_battleScene);

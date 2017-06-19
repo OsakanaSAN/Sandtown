@@ -386,31 +386,34 @@ void Menu::MenuSceneexit()
 bool Menu::UseItem()
 {
 
-	if (g_Hud->GetHP() >= 500) { return false; }
-	if (InventoryPackNumber <= 0) { return false; }
-	g_Hud->RecoveryHP(100);
-	setHP(g_Hud->GetHP());
-	g_battlemenu->SetHp(g_Hud->GetHP());
-	if (g_battleplayer != nullptr) {
-		CVector3 Bpos = g_battleplayer->Getpos();
-		Bpos.z = Bpos.z - 0.9f;
-		g_battleplayer->Particle(Bpos, 1);//回復パーティクルの呼び出し
-	}
-	//else if (g_player != nullptr)
-	//{
-	//	g_battleplayer->Particle(g_battleplayer->Getpos(), 1);//回復パーティクルの呼び出し
-	//}
+	if (g_Hud->GetHP() >= 500) { return false; } //HPの上限に達していたら帰る
+	if (InventoryPackNumber <= 0) { return false; } //使うことができるアイテムが無ければ帰る
+
+
+
 	for (int count = 0;count < InventoryPackNumber;count++) {
 
-		if (ItemNuber[count] == 1)
+		if (InventoryPack[count] == 3)
 		{
 			for (count;count < InventoryPackNumber;count++)
 			{
-				int box = ItemNuber[count + 1];
-				ItemNuber[count + 1] = 0;
-				ItemNuber[count] = box;
+				int box = InventoryPack[count + 1];
+				InventoryPack[count + 1] = 0;
+				InventoryPack[count] = box;
+
+
 			}
 
+			g_Hud->RecoveryHP(100); //100回復
+			setHP(g_Hud->GetHP());
+			g_battlemenu->SetHp(g_Hud->GetHP());
+
+
+			if (g_battleplayer != nullptr) {
+				CVector3 Bpos = g_battleplayer->Getpos();
+				Bpos.z = Bpos.z - 0.9f;
+				g_battleplayer->Particle(Bpos, 1);//回復パーティクルの呼び出し
+			}
 			break;
 		}
 	}
