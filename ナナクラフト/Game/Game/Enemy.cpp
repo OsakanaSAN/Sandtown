@@ -2,6 +2,7 @@
 #include "Enemy.h"
 #include "Camera.h"
 #include "Player.h"
+#include "GameSound.h"
 #include "Scene/GameScene.h"
 
 

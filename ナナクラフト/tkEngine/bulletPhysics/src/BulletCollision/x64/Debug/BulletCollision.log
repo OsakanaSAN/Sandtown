@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿cl : コマンド ライン warning D9002: 不明なオプション '/arch:SSE' を無視します
   btAxisSweep3.cpp
   btBroadphaseProxy.cpp
@@ -105,3 +106,6 @@
   コードを生成中...
 btBroadphaseProxy.obj : warning LNK4221: このオブジェクト ファイルは、以前に未定義であったパブリック シンボルを定義していないため、このライブラリを使用するリンク操作では使用されません
   BulletCollision.vcxproj -> C:\Users\kbc16b15\Desktop\github\新しいフォルダー\Sandtown\ナナクラフト\Game\x64\Debug\BulletCollision_Debug.lib
+=======
+﻿  BulletCollision.vcxproj -> C:\Users\kbc16b03\Desktop\Sandtown\ナナクラフト\Game\x64\Debug\BulletCollision_Debug.lib
+>>>>>>> 4f302b5fbfd2902fe2bd1b3780d556ac7cb21070

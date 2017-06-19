@@ -709,6 +709,7 @@ void BattleScene::BattleResult()
 	m_ResultBGSprite4.SetPosition({ 0,-120 });
 	m_ResultBGSprite4.SetSize({ 300,80 });
 	m_ResultBGSprite4.SetAlpha(1.0);
+
 	if (Resultflg2) {
 		GetGoldTex(g_battleenemy->GetEGold());
 		GetExpTex(g_battleenemy->GetExp());

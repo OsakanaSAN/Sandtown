@@ -1,4 +1,5 @@
 ﻿  GameScene.cpp
+<<<<<<< HEAD
 c:\users\kbc16b15\desktop\github\新しいフォルダー\sandtown\ナナクラフト\game\game\hud.h(16): warning C4244: 'return': 'float' から 'int' への変換です。データが失われる可能性があります。
 c:\users\kbc16b15\desktop\github\新しいフォルダー\sandtown\ナナクラフト\game\game\scene\gamescene.cpp(111): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
   BattleScene.cpp
@@ -9,3 +10,10 @@ c:\users\kbc16b15\desktop\github\新しいフォルダー\sandtown\ナナクラ�
 c:\users\kbc16b15\desktop\github\新しいフォルダー\sandtown\ナナクラフト\game\game\scene\gamescene.cpp(68): warning C4715: 'GameScene::Start': 値を返さないコントロール パスがあります。
   Game.vcxproj -> C:\Users\kbc16b15\Desktop\github\新しいフォルダー\Sandtown\ナナクラフト\Game\x64\Debug\Game.exe
   Game.vcxproj -> C:\Users\kbc16b15\Desktop\github\新しいフォルダー\Sandtown\ナナクラフト\Game\x64\Debug\Game.pdb (Full PDB)
+=======
+c:\users\kbc16b03\desktop\sandtown\ナナクラフト\game\game\hud.h(16): warning C4244: 'return': 'float' から 'int' への変換です。データが失われる可能性があります。
+c:\users\kbc16b03\desktop\sandtown\ナナクラフト\game\game\scene\gamescene.cpp(111): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+c:\users\kbc16b03\desktop\sandtown\ナナクラフト\game\game\scene\gamescene.cpp(68): warning C4715: 'GameScene::Start': 値を返さないコントロール パスがあります。
+  Game.vcxproj -> C:\Users\kbc16b03\Desktop\Sandtown\ナナクラフト\Game\x64\Debug\Game.exe
+  Game.vcxproj -> C:\Users\kbc16b03\Desktop\Sandtown\ナナクラフト\Game\x64\Debug\Game.pdb (Full PDB)
+>>>>>>> 4f302b5fbfd2902fe2bd1b3780d556ac7cb21070

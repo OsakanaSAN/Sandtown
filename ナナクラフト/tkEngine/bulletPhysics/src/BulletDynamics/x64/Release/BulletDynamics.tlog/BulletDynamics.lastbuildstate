@@ -1,2 +1,6 @@
 #TargetFrameworkVersion=v4.0:PlatformToolSet=v140:EnableManagedIncrementalBuild=false:VCToolArchitecture=Native32Bit:WindowsTargetPlatformVersion=8.1
+<<<<<<< HEAD
+Release|x64|C:\Users\kbc16b03\Desktop\Sandtown\ナナクラフト\Game\|
+=======
 Release|x64|C:\Users\kbc16b15\Desktop\github\新しいフォルダー\Sandtown\ナナクラフト\Game\|
+>>>>>>> 6ec5036544da125746a9c842683e051820866976
