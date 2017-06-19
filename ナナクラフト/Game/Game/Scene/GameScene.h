@@ -49,7 +49,7 @@ private:
 
 	char* modelName;
 
-	enum set 
+	enum set
 	{
 		in,
 		out,

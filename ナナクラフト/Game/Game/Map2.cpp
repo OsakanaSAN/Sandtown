@@ -102,8 +102,8 @@ bool Map2::Start()
 
 void Map2::Update()
 {
-
 }
+
 void Map2::AsDete(int Dete)
 {
 	DeleteGO(mining[Dete]);

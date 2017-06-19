@@ -14,6 +14,32 @@ shop::shop()
 {
 	Maplight.SetAmbinetLight({ 0.6f,0.6f,0.6f });
 	
+	for (int i = 0; i < 3;i++) {
+
+		m_GoldSeatTexture[i].Load("Assets/UI/0.png");
+		m_GoldSeatSprite[i].SetPosition(m_Goldseatpos);
+		m_GoldSeatSprite[i].Init(&m_GoldSeatTexture[i]);
+		m_GoldSeatSprite[i].SetSize({ 80.0f,60.0f });
+
+		m_GoldSeatTexture2[i].Load("Assets/UI/0.png");
+		m_GoldSeatSprite2[i].SetPosition(m_Goldseatpos2);
+		m_GoldSeatSprite2[i].Init(&m_GoldSeatTexture2[i]);
+		m_GoldSeatSprite2[i].SetSize({ 80.0f,60.0f });
+		m_Goldseatpos2.x += 80;
+		m_Goldseatpos.x += 80;
+
+	}
+
+	for (int i = 0; i < 2;i++) {
+
+
+		m_GoldSeatTexture3[i].Load("Assets/UI/riru.png");
+		m_GoldSeatSprite3[i].SetPosition(m_Goldseatpos3);
+		m_GoldSeatSprite3[i].Init(&m_GoldSeatTexture3[i]);
+		m_GoldSeatSprite3[i].SetSize({ 120.0f,100.0f });
+		m_Goldseatpos3.y -= 120;
+	}
+	
 }
 
 shop::~shop()
@@ -23,7 +49,7 @@ shop::~shop()
 	m_ComandBGTexture1.Release();
 	m_ComandBGTexture2.Release();
 	m_ComandBGTexture3.Release();
-	m_CasolBGTexture5.Release();
+	m_CasolBGTexture.Release();
 }
 
 
@@ -66,23 +92,27 @@ void shop::Init(const char* modelName, CVector3 position, CQuaternion rotation)
 	
 	m_ComandBGTexture1.Load("Assets/sprite/comand.png");
 	m_ComandBGSprite1.Init(&m_ComandBGTexture1);
-	m_ComandBGSprite1.SetPosition({ -500,130 });
-	m_ComandBGSprite1.SetSize({ 800.0f,800.0f });
+	m_ComandBGSprite1.SetPosition({ -400,130 });
+	m_ComandBGSprite1.SetSize({ 1000.0f,800.0f });
 	
-	m_ComandBGTexture2.Load("Assets/sprite/kougeki.png");
+	m_ComandBGTexture2.Load("Assets/sprite/パワー.png");
 	m_ComandBGSprite2.Init(&m_ComandBGTexture2);
-	m_ComandBGSprite2.SetPosition({ -600,300 });
-	m_ComandBGSprite2.SetSize({ 150.0f,50 });
+	m_ComandBGSprite2.SetPosition({ -550,300 });
+	m_ComandBGSprite2.SetSize({ 300.0f,80 });
 
-	m_ComandBGTexture3.Load("Assets/sprite/nigeru.png");
+	m_ComandBGTexture3.Load("Assets/sprite/パワー2.png");
 	m_ComandBGSprite3.Init(&m_ComandBGTexture3);
-	m_ComandBGSprite3.SetPosition({ -600,200 });
-	m_ComandBGSprite3.SetSize({ 150.0f,50 });
+	m_ComandBGSprite3.SetPosition({ -550,180 });
+	m_ComandBGSprite3.SetSize({ 300.0f,100 });
 
-	m_CasolBGTexture5.Load("Assets/sprite/casol2.png");
-	m_CasolBGSprite5.Init(&m_CasolBGTexture5);
-	m_CasolBGSprite5.SetPosition({ -800,200 });
-	m_CasolBGSprite5.SetSize({ 200,200 });
+	m_CasolBGTexture.Load("Assets/sprite/casol2.png");
+	m_CasolBGSprite.Init(&m_CasolBGTexture);
+	m_CasolBGSprite.SetPosition({ -800,300 });
+	m_CasolBGSprite.SetSize({ 200,200 });
+
+	GetGoldTex(nedan1);
+
+	GetGoldTex2(nedan2);
 }
 
 void shop::Update()
@@ -101,72 +131,154 @@ void shop::Update()
 		if (Pad(0).IsPress(enButtonB))
 		{
 			g_player->IsMoveSTART();
-			state = A;
-			shopflg = false;
+			weaponState = -1;
 		}
 		if (L < 7.0f && Pad(0).IsPress(enButtonA))
 		{
-			state = C;
+			weaponState = Weapon1;
 			g_player->IsMoveSTOP();
-			shopflg = true;
 
 		}
 	}
-	if (shopflg) {
+
+	
+	switch(weaponState)
+	{
+		case Weapon1:
+		m_CasolBGSprite.SetPosition({ -800,300 });
+		m_CasolBGSprite.SetSize({ 200,200 });
+
+		weaponState = Weapon1;
+
 		if (Pad(0).IsPress(enButtonUp))
 		{
-			
-			m_CasolBGSprite5.SetPosition({ -800,200 });
-			m_CasolBGSprite5.SetSize({ 200,200 });
-			
-			state = C;
+			weaponState = Weapon1;
 		}
 		else if (Pad(0).IsPress(enButtonDown))
 		{
-			
-			m_CasolBGSprite5.SetPosition({ -800,300 });
-			m_CasolBGSprite5.SetSize({ 200,200 });
-			
-			state = D;
-		}
-	}
 
-		switch (state)
+			weaponState = Weapon2;
+		}
+
+		if (g_Hud->GetGold() < nedan1) { break; }
+		
+		if (Pad(0).IsPress(enButtonA))
 		{
-		case C:
-			if (g_Hud->GetGold() < 100) { return; }
-			if (Pad(0).IsPress(enButtonA))
-			{
-				
-				g_Hud->SetATK(g_Hud->GetATK() + 20);
-				g_Hud->Shiharai(100);
-				g_menu->GoldChangTex();
-			}
-			break;
-		case D:
-			if (g_Hud->GetGold() < 300) { return; }
-			if (Pad(0).IsPress(enButtonA))
-			{
-				
-				g_Hud->SetATK(g_Hud->GetATK() + 50);
-				g_Hud->Shiharai(300);
-				g_menu->GoldChangTex();
-			}
-			break;
-
+			g_Hud->ATKUp(20);
+			g_Hud->Shiharai(nedan1);
+			g_menu->GoldChangTex();
 		}
-	
-	
+
+		break;
+		case Weapon2:
+
+		m_CasolBGSprite.SetPosition({ -800,200 });
+		m_CasolBGSprite.SetSize({ 200,200 });
+		weaponState = Weapon2;
+
+		if (Pad(0).IsPress(enButtonUp))
+		{
+
+			weaponState = Weapon1;
+		}
+		else if (Pad(0).IsPress(enButtonDown))
+		{
+
+			weaponState = Weapon2;
+		}
+
+		if (g_Hud->GetGold()<nedan2) { break; }
+				
+		if (Pad(0).IsPress(enButtonA))
+		{
+
+			g_Hud->ATKUp(50);
+			g_Hud->Shiharai(nedan2);
+			g_menu->GoldChangTex();
+		}
+				
+		break;
+		default:
+		break;
+	}
 }
+
 
 void shop::Render(CRenderContext& renderContext)
 {
-	if(state == C|| state == D)
+	if(weaponState >= Weapon1)
 	{
 		m_ComandBGSprite1.Draw(renderContext);
 		m_ComandBGSprite2.Draw(renderContext);
 		m_ComandBGSprite3.Draw(renderContext);
-		m_CasolBGSprite5.Draw(renderContext);
+		m_CasolBGSprite.Draw(renderContext);
+		for (int i = 0;i < 3;i++) {
+			m_GoldSeatSprite[i].Draw(renderContext);
+			m_GoldSeatSprite2[i].Draw(renderContext);
+			
+		}
+
+		for (int i = 0;i < 2;i++)
+		{
+			m_GoldSeatSprite3[i].Draw(renderContext);
+		}
 	}
 	skinModel.Draw(renderContext, g_gameCamera->GetViewMatrix(), g_gameCamera->GetProjectionMatrix());
+}
+
+
+void shop::GetGoldTex(int GetGold)
+{
+	int NextGold[3];
+
+	NextGold[0] = GetGold / 100;
+
+	sprintf(m_GoldTexName, "Assets/UI/%d.png", NextGold[0]);
+	m_GoldSeatTexture[0].Release();
+	m_GoldSeatTexture[0].Load(m_GoldTexName);
+
+	GetGold %= 100;
+
+	NextGold[1] = GetGold / 10;
+
+	sprintf(m_GoldTexName, "Assets/UI/%d.png", NextGold[1]);
+	m_GoldSeatTexture[1].Release();
+	m_GoldSeatTexture[1].Load(m_GoldTexName);
+
+	GetGold %= 10;
+	NextGold[2] = GetGold;
+
+	sprintf(m_GoldTexName, "Assets/UI/%d.png",NextGold[2]);
+	m_GoldSeatTexture[2].Release();
+	m_GoldSeatTexture[2].Load(m_GoldTexName);
+
+}
+
+
+void shop::GetGoldTex2(int GetGold)
+{
+
+	int NextGold[3];
+
+	NextGold[0] = GetGold / 100;
+
+	sprintf(m_GoldTexName2, "Assets/UI/%d.png", NextGold[0]);
+	m_GoldSeatTexture2[0].Release();
+	m_GoldSeatTexture2[0].Load(m_GoldTexName2);
+
+	GetGold %= 100;
+
+	NextGold[1] = GetGold / 10;
+
+	sprintf(m_GoldTexName2, "Assets/UI/%d.png", NextGold[1]);
+	m_GoldSeatTexture2[1].Release();
+	m_GoldSeatTexture2[1].Load(m_GoldTexName2);
+
+	GetGold %= 10;
+	NextGold[2] = GetGold;
+
+	sprintf(m_GoldTexName2, "Assets/UI/%d.png", NextGold[2]);
+	m_GoldSeatTexture2[2].Release();
+	m_GoldSeatTexture2[2].Load(m_GoldTexName2);
+
 }
