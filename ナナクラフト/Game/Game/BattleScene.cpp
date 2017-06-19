@@ -50,7 +50,6 @@ BattleScene::BattleScene()
 	}
 }
 
-
 BattleScene::~BattleScene()
 {
 	
@@ -475,17 +474,17 @@ void BattleScene::PlayerTurn()
 			if (g_battleenemy->GetHP() <= 0)
 			{
 
-
 				Comand = Result;
 
 				g_Hud->SetGold(g_battleenemy->GetEGold());
 				g_Hud->SetExp(g_battleenemy->GetExp());
 				Winflg = true;//バトルに勝利した
-				DeleteGO(g_battleenemy);
-				g_battleenemy = nullptr;
+				BattleResult();//
+				//DeleteGO(g_battleenemy);
+				//g_battleenemy = nullptr;
 				g_menu->InventoryChangTex(3);
-				BattleResult();
-				return;
+				
+				//return;
 
 
 				/*g_battleenemy->Delete();*/
@@ -621,7 +620,6 @@ void BattleScene::EnemyTurn()
 		
 
 		g_battlemenu->SetHp(g_Hud->GetHP());
-
 
 		
 		g_battleplayer->SetDamage(g_battleenemy->GetATK(), true);//ダメージ計算とダメージアニメーション再生

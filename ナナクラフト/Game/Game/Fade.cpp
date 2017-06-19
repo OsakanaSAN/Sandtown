@@ -11,7 +11,7 @@ Fade::~Fade()
 }
 bool Fade::Start()
 {
-	m_texture.Load("Assets/sprite/asd.png");
+	m_texture.Load("Assets/sprite/Load.png");
 	m_sprite.Init(&m_texture);
 	m_sprite.SetSize({
 	static_cast<float>(Engine().GetFrameBufferWidth()),
@@ -21,6 +21,7 @@ bool Fade::Start()
 }
 void Fade::Update()
 {
+	m_sprite.SetPosition({ 0.0f,0.0f });
 	if (m_isExecute) {
 		switch (m_state) {
 		case eFadeOut: {
