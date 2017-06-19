@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 ﻿cl : コマンド ライン warning D9002: 不明なオプション '/arch:SSE' を無視します
   btAxisSweep3.cpp
   btBroadphaseProxy.cpp
@@ -104,7 +103,4 @@
   btSubSimplexConvexCast.cpp
   btVoronoiSimplexSolver.cpp
   コードを生成中...
-  BulletCollision.vcxproj -> C:\Users\kbc16b15\Desktop\github\新しいフォルダー\Sandtown\ナナクラフト\Game\x64\Release\BulletCollision.lib
-=======
-﻿  BulletCollision.vcxproj -> C:\Users\kbc16b03\Desktop\Sandtown\ナナクラフト\Game\x64\Release\BulletCollision.lib
->>>>>>> 2f1e50d5771d36940d10b9e73eb67720af20d6e5
+  BulletCollision.vcxproj -> C:\Users\kbc16b03\Desktop\Sandtown\ナナクラフト\Game\x64\Release\BulletCollision.lib
