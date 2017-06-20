@@ -36,9 +36,7 @@ GameScene::GameScene()
 	g_player = NewGO<Player>(0);
 	g_Hud = NewGO<HUD>(0);
 	g_map = NewGO<Map>(0);
-	//g_Dungeon = NewGO<Dungeon>(0);
-	g_menu = NewGO<Menu>(0);
-	NewGO<Npc>(0);
+	g_menu = NewGO<Menu>(0);;
 
 	mapscene = MACHI;
 	scenes = STOP;
@@ -56,7 +54,7 @@ bool GameScene::Start()
 {
 	
 	
-	if (g_gameCamera->IsStart() && g_player->IsStart() && g_Hud->IsStart()/* && g_map->IsStart()*/) {
+	if (g_gameCamera->IsActive() && g_player->IsActive() && g_Hud->IsActive()&& g_map->IsActive()) {
 
 		g_fade->StartFadeIn();
 		return true;
@@ -81,7 +79,7 @@ void GameScene::Update()
 		
 		if (m_timer > 2.5f)
 		{
-			g_sound->StopSound();
+			//g_sound->StopSound();
 
 			scenes = Battle;
 			m_timer = 0.0f;
@@ -136,6 +134,8 @@ void GameScene::Update()
 			{
 				g_gameCamera->ChangeStart();
 
+				g_Dungeon = NewGO<Dungeon>(0);
+
 				g_player = NewGO<Player>(0);
 				modelName = "Assets/modelData/ghost.X";
 				g_Enemy = NewGO<Enemy>(0);
@@ -166,20 +166,20 @@ void GameScene::Update()
 				g_Enemy3->SetHP(900);
 				g_Enemy3->SetGold(60);
 
-				g_fade->StartFadeIn();
-				
 
 				//g_map2 = NewGO<Map2>(0);
-				g_Dungeon = NewGO<Dungeon>(0);
+				
 			}
 
 			
 			else 
 			{
-				
-				g_fade->StartFadeIn();
-				scenes = STOP;
-				mapscene = DOUKUTU;
+				if (g_Dungeon->IsActive() && g_Enemy->IsActive() && g_Enemy2->IsActive() && g_Enemy3->IsActive() && g_player->IsActive()) {
+
+					g_fade->StartFadeIn();
+					scenes = STOP;
+					mapscene = DOUKUTU;
+				}
 				break;
 
 			}

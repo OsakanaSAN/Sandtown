@@ -46,17 +46,25 @@ void Fade::Update()
 		}break;
 
 		case eFadeIn:
-			m_timer += GameTime().GetFrameDeltaTime();
+			//ブルスクが映り込まないようにするための処理
+			OutTimer += GameTime().GetFrameDeltaTime();
+			if (OutTimer < 1.5) { return; }
+
+			//ここからロード画面を消す
+			m_timer += GameTime().GetFrameDeltaTime();	
 			if (m_timer < FADE_TIME) {
 				float t = m_timer / FADE_TIME;
 				m_sprite.SetAlpha(max(1.0f - t, 0.0f));
 			}
+
+			
 			else {
 				//透明になったので非アクティブにする。
 				m_sprite.SetAlpha(0.0f);
 				SetActiveFlag(false);
 				m_timer = FADE_TIME;
 				m_isExecute = false;
+				OutTimer = 0;
 			}
 			break;
 		}

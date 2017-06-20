@@ -1,4 +1,23 @@
+<<<<<<< HEAD
 ﻿  GameSound.cpp
 cl : コマンド ライン warning D9028: 簡易リビルド時のエラーです、通常のビルドに戻します
   Game.vcxproj -> C:\Users\kbc16b15\Desktop\github\新しいフォルダー\Sandtown\ナナクラフト\Game\x64\Debug\Game.exe
   Game.vcxproj -> C:\Users\kbc16b15\Desktop\github\新しいフォルダー\Sandtown\ナナクラフト\Game\x64\Debug\Game.pdb (Full PDB)
+=======
+﻿  GameScene.cpp
+c:\users\kbc16b03\desktop\sandtown\ナナクラフト\game\game\hud.h(16): warning C4244: 'return': 'float' から 'int' への変換です。データが失われる可能性があります。
+c:\users\kbc16b03\desktop\sandtown\ナナクラフト\game\game\scene\gamescene.cpp(108): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+  GameSound.cpp
+  コードを生成中...
+c:\users\kbc16b03\desktop\sandtown\ナナクラフト\game\game\scene\gamescene.cpp(66): warning C4715: 'GameScene::Start': 値を返さないコントロール パスがあります。
+  コンパイル中...
+  TitleScene.cpp
+  コードを生成中...
+  スキップ中... (関連する変更は検出されませんでした)
+  Menu.cpp
+  Mapchip.cpp
+  Enemy.cpp
+  BattleScene.cpp
+  Game.vcxproj -> C:\Users\kbc16b03\Desktop\Sandtown\ナナクラフト\Game\x64\Debug\Game.exe
+  Game.vcxproj -> C:\Users\kbc16b03\Desktop\Sandtown\ナナクラフト\Game\x64\Debug\Game.pdb (Full PDB)
+>>>>>>> 87f17376ec4fc3297de75a4e06430214589d54c1
