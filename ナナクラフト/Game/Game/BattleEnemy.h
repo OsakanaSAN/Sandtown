@@ -75,7 +75,7 @@ private:
 	CSkinModel				skinModel;
 	CSkinModelDataHandle	skinModelData;
 	CAnimation		Animation;
-	CVector3		position = { -2.0f,0.0f,-38.0f };
+	CVector3		position = { -2.0f,0.0f,0.0f };
 	CQuaternion		m_rotation;
 
 	CLight			All;

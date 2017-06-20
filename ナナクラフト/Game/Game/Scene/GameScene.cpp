@@ -92,7 +92,7 @@ void GameScene::Update()
 		if (Bato == true)
 		{
 			
-			//g_sound->StopSound();
+			g_sound->StopSound();
 
 			CEngine::Instance().SetcrearEnable(false);
 			CEngine::Instance().GetFeedbackblur().SetEnalbe(true);

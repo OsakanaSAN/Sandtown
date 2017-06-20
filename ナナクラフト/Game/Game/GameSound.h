@@ -18,5 +18,6 @@ public:
 private:
 
 	CSoundSource*      bgmsound;
+	CSoundSource*      EncSound;
 };
 extern GameSound* g_sound;

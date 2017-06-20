@@ -23,7 +23,7 @@ SMapInfo mapLocInfo[] = {
 #include "Map/test3.h"
 };
 SMapInfo mapLoc2[] = {
-#include "Map/test4.h"
+#include "Map/test.h"
 };
 int      MapCount = 0;
 
@@ -32,6 +32,11 @@ Map::Map()
 	ChangeObject = 0;
 	numObject = 0;
 	NoMoveObject = 0;
+
+	if (g_Hud->GetGold() > 500)
+	{
+		MapCount = 1;
+	}
 }
 
 
@@ -43,7 +48,6 @@ Map::~Map()
 		DeleteGO(mapchip[i]);
 	}
 
-	MapCount = 1;
 
 	DeleteGO(g_SC);
 	DeleteGO(g_Sky);
