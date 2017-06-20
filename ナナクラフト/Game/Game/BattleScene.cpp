@@ -14,6 +14,7 @@
 
 BattlePlayer* g_battleplayer = nullptr;
 BattleEnemy* g_battleenemy = nullptr;
+
 BattleMenu* g_battlemenu;
 
 BattleScene::BattleScene()
@@ -23,7 +24,6 @@ BattleScene::BattleScene()
 	g_battleenemy = NewGO<BattleEnemy>(0);
 	g_battlemenu = NewGO<BattleMenu>(0);
 
-	
 	for (int i = 0; i < 3;i++) {
 
 		m_DamageSeatTexture[i].Load("Assets/sprite/damagi0.png");
@@ -376,8 +376,7 @@ void BattleScene::PostRender(CRenderContext&renderContext)
 	if (!IsBattleStart) { return; }
 	if (Comand == INVENTORY) { return; }
 	
-		m_ComandBGSprite1.Draw(renderContext);
-	
+	m_ComandBGSprite1.Draw(renderContext);
 	m_ComandBGSprite2.Draw(renderContext);
 	m_ComandBGSprite3.Draw(renderContext);
 	m_ComandBGSprite4.Draw(renderContext);
@@ -631,9 +630,6 @@ void BattleScene::EnemyTurn()
 		
 		g_battleplayer->Particle(g_battleplayer->Getpos(),0);//攻撃パーティクル呼び出し
 		
-
-		
-
 		
 		g_battleplayer->SetDamage(g_battleenemy->GetATK()+Erandom, true);//ダメージ計算とダメージアニメーション再生
 
@@ -649,7 +645,6 @@ void BattleScene::EnemyTurn()
 	{
 
 		g_battleplayer->ParticleDelete();//パーティクル消去
-
 
 		m_sound_Attack->Stop();
 
@@ -690,7 +685,6 @@ void BattleScene::Defeat()
 
 void BattleScene::BattleResult()
 {
-
 	
 	GetEXP[1] = g_Hud->GetLV();
 
@@ -745,7 +739,6 @@ void BattleScene::BattleResult()
 		}
 		Resultflg2 = false;
 	}
-
 
 }
 

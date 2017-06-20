@@ -17,6 +17,10 @@ public:
 
 	void Delete();
 
+	void Setpos(CVector3 pos)
+	{
+		position = pos;
+	}
 	CVector3 Getpos()
 	{
 		return position;

@@ -56,10 +56,10 @@ void Npc::Update()
 	if (!IsStand)
 	{
 		
-
 		Animation.PlayAnimation(Stand_anim, 0.05f);
 		Animation.SetAnimationSpeedRate(1);
 		IsStand = true;
+
 	}
 
 

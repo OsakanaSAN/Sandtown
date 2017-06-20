@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 ﻿cl : コマンド ライン warning D9002: 不明なオプション '/arch:SSE' を無視します
   btKinematicCharacterController.cpp
   btConeTwistConstraint.cpp
@@ -48,6 +47,3 @@ C:\Users\kbc16b15\Desktop\github\新しいフォルダー\Sandtown\ナナクラ�
   btWheelInfo.cpp
   コードを生成中...
   BulletDynamics.vcxproj -> C:\Users\kbc16b15\Desktop\github\新しいフォルダー\Sandtown\ナナクラフト\Game\x64\Debug\BulletDynamics_Debug.lib
-=======
-﻿  BulletDynamics.vcxproj -> C:\Users\kbc16b03\Desktop\Sandtown\ナナクラフト\Game\x64\Debug\BulletDynamics_Debug.lib
->>>>>>> 4f302b5fbfd2902fe2bd1b3780d556ac7cb21070
