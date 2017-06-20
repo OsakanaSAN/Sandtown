@@ -113,7 +113,7 @@ private:
 	
 	//ゲームシーンから持ってくるステータス？
 	int						ATK=20;//武器ごとに変化？
-	int						HP = 30;//ゲームシーンと同じ値に後々する
+	int						HP = 500;//ゲームシーンと同じ値に後々する
 	int						EXP = 0;//経験値
 
 	CVector3 scale = CVector3::One;

@@ -105,6 +105,7 @@ private:
 		NO
 	};
 
+
 	int hit = NO;
 	int ste = Alive;
 

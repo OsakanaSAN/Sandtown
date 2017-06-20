@@ -10,36 +10,6 @@
 	CVector3(-3.91f, 0.03f, -4.71f),             //平行移動
 	CQuaternion(0.00f, 1.00f, 0.00f, 0.00f ),  //回転
 },
-//torch
-{
-	"torch",
-	CVector3(0.07f, 1.80f, -0.53f),             //平行移動
-	CQuaternion(-0.69f, -0.16f, 0.16f, 0.69f ),  //回転
-},
-//torch
-{
-	"torch",
-	CVector3(-6.90f, 1.80f, -0.27f),             //平行移動
-	CQuaternion(0.16f, 0.69f, 0.69f, 0.16f ),  //回転
-},
-//torch
-{
-	"torch",
-	CVector3(-12.83f, 1.80f, -13.45f),             //平行移動
-	CQuaternion(0.16f, 0.69f, 0.69f, 0.16f ),  //回転
-},
-//torch
-{
-	"torch",
-	CVector3(-7.04f, 1.80f, -27.48f),             //平行移動
-	CQuaternion(0.16f, 0.69f, 0.69f, 0.16f ),  //回転
-},
-//torch
-{
-	"torch",
-	CVector3(30.57f, 1.80f, -13.39f),             //平行移動
-	CQuaternion(-0.69f, -0.16f, 0.16f, 0.69f ),  //回転
-},
 //stone
 {
 	"stone",
@@ -57,6 +27,18 @@
 	"stone",
 	CVector3(-8.32f, -0.30f, -45.15f),             //平行移動
 	CQuaternion(-0.70f, 0.10f, 0.10f, 0.70f ),  //回転
+},
+//ghost
+{
+	"ghost",
+	CVector3(21.00f, 0.00f, -14.90f),             //平行移動
+	CQuaternion(0.00f, 0.00f, 0.00f, 1.00f ),  //回転
+},
+//ghost
+{
+	"ghost",
+	CVector3(-2.90f, -0.10f, -39.70f),             //平行移動
+	CQuaternion(0.00f, 0.00f, 0.00f, 1.00f ),  //回転
 },
 //danmati
 {

@@ -24,13 +24,13 @@ DungeonMapInfo mapLocInfo[] =
 };
 DungeonMapInfo mapLocInfo2[] =
 {
-#include "Map/DungeonF4.h"
+#include "Map/DungeonF2.h"
 };
 
 DungeonMapInfo mapLocInfo3[] =
 
 {
-#include "Map/DungeonF6.h"
+#include "Map/DungeonF3.h"
 };
 
 int count = 0;

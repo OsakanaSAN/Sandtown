@@ -20,10 +20,10 @@ shop*		g_shop;
 
 //マップの配置情報。
 SMapInfo mapLocInfo[] = {
-#include "Map/test2.h"
+#include "Map/test3.h"
 };
 SMapInfo mapLoc2[] = {
-#include "Map/test.h"
+#include "Map/test4.h"
 };
 int      MapCount = 0;
 

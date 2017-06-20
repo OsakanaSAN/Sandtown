@@ -44,8 +44,16 @@ public:
 	
 private:
 
-	CRandom			m_random;
+	void SetPrandom(int rand)
+	{
+		Prandom = rand;
+	}
 
+	void SetErandom(int rand)
+	{
+		Erandom = rand;
+	}
+	CRandom			m_random;
 	CSoundSource*	m_sound_bgm_battle;
 	CSoundSource*	m_sound_bgm_battle2;
 	CSoundSource*	m_sound_Attack;
@@ -153,6 +161,8 @@ private:
 	int GetEXP[2] = { 0,0 };
 
 	bool Resultflg2 = true;
+	int Prandom = 0;
+	int Erandom = 0;
 };
 
 extern BattleScene* g_battleScene;

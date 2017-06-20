@@ -142,8 +142,8 @@ void GameScene::Update()
 				g_Enemy->Init(modelName);
 				g_Enemy->setPos({ -3.0f, 0.0f, -20.0f });
 				g_Enemy->Setexp(20);
-				g_Enemy->SetEATK(20);
-				g_Enemy->SetHP(30);
+				g_Enemy->SetEATK(60);
+				g_Enemy->SetHP(1130);
 				g_Enemy->SetGold(20);
 
 
@@ -152,8 +152,8 @@ void GameScene::Update()
 				g_Enemy2->Init(modelName);
 				g_Enemy2->setPos({ -3.0f, 0.0f, -40.0f });
 				g_Enemy2->Setexp(20);
-				g_Enemy2->SetEATK(60);
-				g_Enemy2->SetHP(40);
+				g_Enemy2->SetEATK(80);
+				g_Enemy2->SetHP(1040);
 				g_Enemy2->SetGold(40);
 
 
@@ -162,8 +162,8 @@ void GameScene::Update()
 				g_Enemy3->Init(modelName);
 				g_Enemy3->setPos({ 20.0f, 0.0f, -15.0f });
 				g_Enemy3->Setexp(30);
-				g_Enemy3->SetEATK(50);
-				g_Enemy3->SetHP(100);
+				g_Enemy3->SetEATK(100);
+				g_Enemy3->SetHP(1100);
 				g_Enemy3->SetGold(60);
 
 				g_fade->StartFadeIn();
@@ -260,10 +260,13 @@ void GameScene::DeteScene()
 	{
 		if (g_player != nullptr) {
 			g_player->IsMoveSTOP();
+			g_gameCamera->ChangeStop();
 		}
-		g_player->StopSound();
-		g_gameCamera->ChangeStop();
-		return; }
+		
+		//g_player->StopSound();
+		
+		return; 
+	}
 
 	if(mapscene == MACHI)
 	{

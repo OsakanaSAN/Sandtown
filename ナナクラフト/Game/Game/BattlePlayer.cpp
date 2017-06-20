@@ -44,6 +44,7 @@ BattlePlayer::BattlePlayer()
 	IsAnimend = true;
 	currentAnimSetNo = Stand_anim;
 	ATK = g_Hud->GetATK();
+	HP = g_Hud->GetHP();
 	
 }
 

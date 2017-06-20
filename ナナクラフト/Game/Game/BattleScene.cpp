@@ -29,7 +29,7 @@ BattleScene::BattleScene()
 		m_DamageSeatTexture[i].Load("Assets/sprite/damagi0.png");
 		m_DamageSeatSprite[i].SetPosition(m_Damageseatpos);
 		m_DamageSeatSprite[i].Init(&m_DamageSeatTexture[i]);
-		m_DamageSeatSprite[i].SetSize({ 100.0f,80.0f });
+		m_DamageSeatSprite[i].SetSize({ 80.0f,60.0f });
 		
 
 		m_GoldSeatTexture[i].Load("Assets/UI/0.png");
@@ -68,12 +68,15 @@ BattleScene::~BattleScene()
 			g_gameCamera->ChangeStart();   //カメラの更新を再開するを
 			g_sound->DoukutuSound();
 			g_menu->GoldChangTex();
+			g_Hud->SetMaxHP(g_battleplayer->GetHP());
 			g_menu->HpChangTex();
 			g_menu->LvChangTex();
 		}
 
 		else
 		{
+			DeleteGO(g_battlemenu);
+			DeleteGO(g_battleplayer);
 			g_Hud->SetMaxHP(500.0f);
 			DeleteGO(g_battleenemy);
 			g_gameScene->SceneStop();
@@ -335,8 +338,9 @@ void BattleScene::PostRender(CRenderContext&renderContext)
 	if (Comand == Result) {
 		m_ComandBGSprite1.SetPosition({ 0,0 });
 		m_ComandBGSprite1.SetSize({ 700.0f,900.0f });
-
-		m_ComandBGSprite1.Draw(renderContext);
+		if (Victory) {
+			m_ComandBGSprite1.Draw(renderContext);
+		}
 		m_ResultBGSprite1.Draw(renderContext);
 		m_ResultBGSprite3.Draw(renderContext);
 		m_ResultBGSprite4.Draw(renderContext);
@@ -371,8 +375,9 @@ void BattleScene::PostRender(CRenderContext&renderContext)
 	if (IsBattle) { return; }
 	if (!IsBattleStart) { return; }
 	if (Comand == INVENTORY) { return; }
-
-	m_ComandBGSprite1.Draw(renderContext);
+	
+		m_ComandBGSprite1.Draw(renderContext);
+	
 	m_ComandBGSprite2.Draw(renderContext);
 	m_ComandBGSprite3.Draw(renderContext);
 	m_ComandBGSprite4.Draw(renderContext);
@@ -392,6 +397,8 @@ void BattleScene::PlayerTurn()
 	if (g_battleplayer->GetAnimend() == false)return;
 	if (g_battleenemy->GetAnimend() == false)return;
 
+	 Prandom = g_random.GetRandInt() % 5;
+	 SetPrandom(Prandom);
 	DamageTex(false);
 	switch (Comand)//選択肢
 	{
@@ -448,7 +455,7 @@ void BattleScene::PlayerTurn()
 				//m_DamageSeatTexture[i].Load("Assets/sprite/damage0.png");
 				m_DamageSeatSprite[i].Init(&m_DamageSeatTexture[i]);
 				m_DamageSeatSprite[i].SetPosition(PDamagepos);
-				m_DamageSeatSprite[i].SetSize({100,80 });
+				m_DamageSeatSprite[i].SetSize({80,60 });
 				PDamagepos.x +=80;
 			}
 			
@@ -456,7 +463,7 @@ void BattleScene::PlayerTurn()
 			g_battleplayer->Particle(g_battleenemy->Getpos(),0);//攻撃パーティクル呼び出し
 
 
-			g_battleenemy->SetDamage(g_battleplayer->GetATK(), true);//ダメージ処理
+			g_battleenemy->SetDamage(g_battleplayer->GetATK()+Prandom, true);//ダメージ処理
 
 
 			g_battlemenu->SetEnemyHp(g_battleenemy->GetHP());//敵の体力DOWN
@@ -529,9 +536,12 @@ void BattleScene::PlayerTurn()
 		break;
 	case Result:
 
-	
-		if (m_timer > 4.0 || Pad(0).IsTrigger(enButtonA))
-
+		if (Itemuse)//アイテム使ったターン
+		{
+			g_battleplayer->ParticleDelete();//パーティクル消去
+			Itemuse = false;
+		}
+		if (/*m_timer > 4.0 ||*/ Pad(0).IsTrigger(enButtonA))
 		{
 
 			Comand = Keep;
@@ -588,6 +598,9 @@ void BattleScene::EnemyTurn()
 	if (EDamage)return;
 	if (g_battleplayer->GetAnimend() == false)return;
 	if (g_battleenemy->GetAnimend() == false)return;
+
+	Erandom = g_random.GetRandInt() % 8;
+	SetErandom(Erandom);
 	DamageTex(true);
 
 	if (!EAttack) {
@@ -610,7 +623,7 @@ void BattleScene::EnemyTurn()
 			//m_DamageSeatTexture[i].Load("Assets/sprite/damage0.png");
 			m_DamageSeatSprite[i].Init(&m_DamageSeatTexture[i]);
 			m_DamageSeatSprite[i].SetPosition(EDamagepos);
-			m_DamageSeatSprite[i].SetSize({ 100,80 });
+			m_DamageSeatSprite[i].SetSize({ 80,60 });
 
 			EDamagepos.x +=100.0f;
 		}
@@ -619,11 +632,13 @@ void BattleScene::EnemyTurn()
 		g_battleplayer->Particle(g_battleplayer->Getpos(),0);//攻撃パーティクル呼び出し
 		
 
-		g_battlemenu->SetHp(g_Hud->GetHP());
+		
 
 		
-		g_battleplayer->SetDamage(g_battleenemy->GetATK(), true);//ダメージ計算とダメージアニメーション再生
+		g_battleplayer->SetDamage(g_battleenemy->GetATK()+Erandom, true);//ダメージ計算とダメージアニメーション再生
 
+		//g_battlemenu->SetHp(g_Hud->GetHP());
+		g_battlemenu->SetHp(g_battleplayer->GetHP());
 		PDamage = true;
 
 
@@ -641,7 +656,7 @@ void BattleScene::EnemyTurn()
 		EAttack = false;
 		PDamage = false;
 
-		if (g_Hud->GetHP() <= 0)
+		if (g_battleplayer->GetHP() <= 0/*g_Hud->GetHP() <= 0*/)
 		{
 
 			Loseflg = true;//戦闘に負けた
@@ -758,14 +773,14 @@ void BattleScene::BattleKeep()
 void BattleScene::DamageTex(bool chara)
 {
 	
-	int Damage = g_battleenemy->GetATK();
+	int Damage = g_battleplayer->GetATK() + Prandom;
 	if (chara)
 	{
-		Damage = g_battleenemy->GetATK();
+		Damage = g_battleenemy->GetATK()+Erandom;
 	}
 	else if(!chara)
 	{
-		Damage = g_battleplayer->GetATK();
+		Damage = g_battleplayer->GetATK()+Prandom;
 	}
 	
 	NextDamage[0] = Damage / 100;
