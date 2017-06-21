@@ -99,7 +99,6 @@ Menu::~Menu()
 {
 	
 	
-
 }
 
 
@@ -172,7 +171,7 @@ void Menu::Update()
 
 		if (Pad(0).IsPress(enButtonA) && setMenu == INVENTORY)
 		{
-			UseItem();
+			//UseItem();
 
 		}
 
@@ -298,6 +297,7 @@ void Menu::MaxHpChangTex()
 
 
 }
+
 void Menu::LvChangTex()
 {
 
@@ -370,6 +370,7 @@ void Menu::MenuSceneStop()
 	setMenu = STOP;
 
 }
+
 void Menu::BattleMenuStop()
 {
 	setMenu = STOP;
@@ -387,22 +388,22 @@ bool Menu::UseItem()
 {
 
 	if (g_Hud->GetHP() >= 500) { return false; } //HPの上限に達していたら帰る
-	if (InventoryPackNumber <= 0) { return false; } //使うことができるアイテムが無ければ帰る
+	if (InventoryPackNumber <0) { return false; } //使うことができるアイテムが無ければ帰る
 
 
 
 	for (int count = 0;count < InventoryPackNumber;count++) {
 
-		if (InventoryPack[count] == 3)
+		if (InventoryPack[count] == 3)//使用したアイテムを消費する処理
 		{
 			for (count;count < InventoryPackNumber;count++)
 			{
 				int box = InventoryPack[count + 1];
 				InventoryPack[count + 1] = 0;
 				InventoryPack[count] = box;
-
-
+				
 			}
+			//InventoryPack[count] = 0;
 
 			g_Hud->RecoveryHP(100); //100回復
 			setHP(g_Hud->GetHP());

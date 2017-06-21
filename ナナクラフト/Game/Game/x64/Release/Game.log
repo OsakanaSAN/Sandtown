@@ -1,58 +1,8 @@
-<<<<<<< HEAD
-﻿
-=======
-﻿  BattleEnemy.cpp
-c:\users\kbc16b03\desktop\sandtown\ナナクラフト\game\game\HUD.h(16): warning C4244: 'return': 'float' から 'int' への変換です。データが失われる可能性があります。
-  BattlePlayer.cpp
-c:\users\kbc16b03\desktop\sandtown\ナナクラフト\game\game\HUD.h(16): warning C4244: 'return': 'float' から 'int' への変換です。データが失われる可能性があります。
-BattlePlayer.cpp(47): warning C4244: '=': 'float' から 'int' への変換です。データが失われる可能性があります。
-BattlePlayer.cpp(80): warning C4305: '引数': 'double' から 'float' へ切り詰めます。
-BattlePlayer.cpp(115): warning C4305: '引数': 'double' から 'float' へ切り詰めます。
-BattlePlayer.cpp(195): warning C4305: '引数': 'double' から 'float' へ切り詰めます。
-BattlePlayer.cpp(215): warning C4305: '引数': 'double' から 'float' へ切り詰めます。
-  BattleScene.cpp
-c:\users\kbc16b03\desktop\sandtown\ナナクラフト\game\game\HUD.h(16): warning C4244: 'return': 'float' から 'int' への変換です。データが失われる可能性があります。
-BattleScene.cpp(71): warning C4244: '引数': 'int' から 'float' への変換です。データが失われる可能性があります。
-BattleScene.cpp(173): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
-  Camera.cpp
-  Dungeon.cpp
-  Enemy.cpp
-  GameSky.cpp
-  HUD.cpp
-c:\users\kbc16b03\desktop\sandtown\ナナクラフト\game\game\HUD.h(16): warning C4244: 'return': 'float' から 'int' への変換です。データが失われる可能性があります。
-  Map.cpp
-c:\users\kbc16b03\desktop\sandtown\ナナクラフト\game\game\HUD.h(16): warning C4244: 'return': 'float' から 'int' への変換です。データが失われる可能性があります。
-  Map2.cpp
-Map2.cpp(20): warning C4067: プリプロセッサ ディレクティブの後に余分な文字がありました - 改行が必要です
-  Mapchip.cpp
-  Menu.cpp
-c:\users\kbc16b03\desktop\sandtown\ナナクラフト\game\game\HUD.h(16): warning C4244: 'return': 'float' から 'int' への変換です。データが失われる可能性があります。
-Menu.cpp(408): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+﻿  Menu.cpp
+c:\users\kbc16b15\desktop\github\新しいフォルダー\sandtown\ナナクラフト\game\game\HUD.h(16): warning C4244: 'return': 'float' から 'int' への変換です。データが失われる可能性があります。
 Menu.cpp(409): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
-  Mining.cpp
-c:\users\kbc16b03\desktop\sandtown\ナナクラフト\game\game\HUD.h(16): warning C4244: 'return': 'float' から 'int' への変換です。データが失われる可能性があります。
-  Npc.cpp
-  Player.cpp
-Player.cpp(40): warning C4305: '引数': 'double' から 'float' へ切り詰めます。
-Player.cpp(92): warning C4305: '引数': 'double' から 'float' へ切り詰めます。
-Player.cpp(189): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
-Player.cpp(190): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
-Player.cpp(197): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
-Player.cpp(198): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
-Player.cpp(199): warning C4305: '引数': 'double' から 'float' へ切り詰めます。
-  SceneChange.cpp
-  GameScene.cpp
-C:\Users\kbc16b03\Desktop\Sandtown\ナナクラフト\Game\Game\HUD.h(16): warning C4244: 'return': 'float' から 'int' への変換です。データが失われる可能性があります。
-Scene\GameScene.cpp(108): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
-  main.cpp
-  shop.cpp
-c:\users\kbc16b03\desktop\sandtown\ナナクラフト\game\game\HUD.h(16): warning C4244: 'return': 'float' から 'int' への変換です。データが失われる可能性があります。
-  コードを生成中...
-c:\users\kbc16b03\desktop\sandtown\ナナクラフト\game\game\scene\gamescene.cpp(66): warning C4715: 'GameScene::Start': 値を返さないコントロール パスがあります。
-c:\users\kbc16b03\desktop\sandtown\ナナクラフト\game\game\map.cpp(181): warning C4715: 'Map::Start': 値を返さないコントロール パスがあります。
-c:\users\kbc16b03\desktop\sandtown\ナナクラフト\game\game\dungeon.cpp(218): warning C4715: 'Dungeon::Start': 値を返さないコントロール パスがあります。
+Menu.cpp(410): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
 LINK : warning LNK4075: /INCREMENTAL は /LTCG の指定によって無視されます。
   LINK : /LTCG が指定されましたが、コードの生成は必要ありません。リンク コマンド ラインから /LTCG を削除し、リンカーの性能を改善してください。
-  Game.vcxproj -> C:\Users\kbc16b03\Desktop\Sandtown\ナナクラフト\Game\x64\Release\Game.exe
-  Game.vcxproj -> C:\Users\kbc16b03\Desktop\Sandtown\ナナクラフト\Game\x64\Release\Game.pdb (Full PDB)
->>>>>>> 87f17376ec4fc3297de75a4e06430214589d54c1
+  Game.vcxproj -> C:\Users\kbc16b15\Desktop\github\新しいフォルダー\Sandtown\ナナクラフト\Game\x64\Release\Game.exe
+  Game.vcxproj -> C:\Users\kbc16b15\Desktop\github\新しいフォルダー\Sandtown\ナナクラフト\Game\x64\Release\Game.pdb (Full PDB)

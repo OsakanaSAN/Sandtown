@@ -135,15 +135,15 @@ void GameScene::Update()
 				g_gameCamera->ChangeStart();
 
 				g_Dungeon = NewGO<Dungeon>(0);
-
+				
 				g_player = NewGO<Player>(0);
 				modelName = "Assets/modelData/ghost.X";
 				g_Enemy = NewGO<Enemy>(0);
 				g_Enemy->Init(modelName);
 				g_Enemy->setPos({ -3.0f, 0.0f, -20.0f });
 				g_Enemy->Setexp(20);
-				g_Enemy->SetEATK(10);
-				g_Enemy->SetHP(230);
+				g_Enemy->SetEATK(20);
+				g_Enemy->SetHP(30);
 				g_Enemy->SetGold(20);
 
 
@@ -153,7 +153,7 @@ void GameScene::Update()
 				g_Enemy2->setPos({ -3.0f, 0.0f, -40.0f });
 				g_Enemy2->Setexp(20);
 				g_Enemy2->SetEATK(20);
-				g_Enemy2->SetHP(540);
+				g_Enemy2->SetHP(40);
 				g_Enemy2->SetGold(40);
 
 
@@ -162,8 +162,8 @@ void GameScene::Update()
 				g_Enemy3->Init(modelName);
 				g_Enemy3->setPos({ 20.0f, 0.0f, -15.0f });
 				g_Enemy3->Setexp(30);
-				g_Enemy3->SetEATK(80);
-				g_Enemy3->SetHP(900);
+				g_Enemy3->SetEATK(50);
+				g_Enemy3->SetHP(90);
 				g_Enemy3->SetGold(60);
 
 
@@ -174,7 +174,7 @@ void GameScene::Update()
 			
 			else 
 			{
-				if (g_Dungeon->IsActive() && g_Enemy->IsActive() && g_Enemy2->IsActive() && g_Enemy3->IsActive() && g_player->IsActive()) {
+				if (g_Dungeon->IsActive()/*g_map2->IsActive()*/ && g_Enemy->IsActive() && g_Enemy2->IsActive() && g_Enemy3->IsActive() && g_player->IsActive()) {
 
 					g_fade->StartFadeIn();
 					scenes = STOP;
@@ -183,8 +183,6 @@ void GameScene::Update()
 				break;
 
 			}
-
-
 
 		}
 		break;
@@ -197,7 +195,7 @@ void GameScene::Update()
 			if (g_map == nullptr)
 			{
 				g_gameCamera->ChangeStart();
-				if (g_fade->IsExecute() == true) { return; }
+				if (g_fade->IsExecute() == true){ return; }
 				g_player = NewGO<Player>(0);
 				g_map = NewGO<Map>(0);
 				
@@ -214,7 +212,7 @@ void GameScene::Update()
 		break;
 	case Battle:
 
-		if (Bato == true)
+		if(Bato == true)
 		{
 			
 			DeleteGO(g_player);

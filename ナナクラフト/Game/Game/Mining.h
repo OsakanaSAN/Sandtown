@@ -20,6 +20,19 @@ public:
 	}
 
 private:
+	enum ItemRender
+	{
+		Get,
+		NoGet,
+	};
+	int				ItemRender = NoGet;
+
+	CSprite     IconSeatSprite;
+	CTexture    IconSeatTexture;
+	CVector2    Iconseatpos = { 0.0f,0.0f };
+
+	CSoundSource* m_sound_bgm_battle;
+
 	CLight              Maplight;
 	CVector3            LightPos2;
 	CVector3            Pointpos;
@@ -32,6 +45,7 @@ private:
 	int                 minigexp = 5;
 	int                 minigcount = 0; //çÃå@Ç≈Ç´ÇÈè„å¿
 
-
+	float m_timer = 0.0f;
+	
 };
 

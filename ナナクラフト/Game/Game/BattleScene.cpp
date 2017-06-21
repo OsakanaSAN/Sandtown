@@ -243,18 +243,15 @@ void BattleScene::Update()
 				Comand = Keep;
 
 			}
-
 			else if (Pad(0).IsTrigger(enButtonDown) && Pad(0).IsTrigger(enButtonUp))
 			{
-
 			}
-
 			//矢印→アイテム
 
 			else if (Pad(0).IsTrigger(enButtonDown) && Comand == Keep || Pad(0).IsTrigger(enButtonUp) && Comand == Escape)
 			{
 
-				m_sound_bgm_battle = NewGO<CSoundSource>(0);
+				CSoundSource* m_sound_bgm_battle = NewGO<CSoundSource>(0);
 				m_sound_bgm_battle->Init("Assets/sound/select.wav");
 				m_sound_bgm_battle->Play(false);
 				m_sound_bgm_battle->SetVolume(7.0f);
@@ -329,58 +326,6 @@ void BattleScene::Update()
 	}
 	
 
-	
-}
-
-void BattleScene::PostRender(CRenderContext&renderContext)
-{
-
-	if (Comand == Result) {
-		m_ComandBGSprite1.SetPosition({ 0,0 });
-		m_ComandBGSprite1.SetSize({ 700.0f,900.0f });
-		if (Victory) {
-			m_ComandBGSprite1.Draw(renderContext);
-		}
-		m_ResultBGSprite1.Draw(renderContext);
-		m_ResultBGSprite3.Draw(renderContext);
-		m_ResultBGSprite4.Draw(renderContext);
-		for (int i = 0;i < 3;i++) {
-			m_GoldSeatSprite[i].Draw(renderContext);
-			m_ExpSeatSprite[i].Draw(renderContext);
-		}
-
-		if (GetEXP[0] < GetEXP[1]) {
-			m_ResultBGSprite2.Draw(renderContext);
-		}
-	
-	}
-
-	if (EDamage || PDamage) {//ダメージの表示
-	
-	
-		if (NextDamage[0] != 0)
-		{
-			m_DamageSeatSprite[0].Draw(renderContext);
-		}
-		if (NextDamage[1] != 0|| NextDamage[0] != 0)
-		{
-			m_DamageSeatSprite[1].Draw(renderContext);
-		}
-			
-		m_DamageSeatSprite[2].Draw(renderContext);
-		
-	}
-
-	if (EnemyZoom) { return; }
-	if (IsBattle) { return; }
-	if (!IsBattleStart) { return; }
-	if (Comand == INVENTORY) { return; }
-	
-	m_ComandBGSprite1.Draw(renderContext);
-	m_ComandBGSprite2.Draw(renderContext);
-	m_ComandBGSprite3.Draw(renderContext);
-	m_ComandBGSprite4.Draw(renderContext);
-	m_CasolBGSprite.Draw(renderContext);
 	
 }
 
@@ -466,6 +411,8 @@ void BattleScene::PlayerTurn()
 
 
 			g_battlemenu->SetEnemyHp(g_battleenemy->GetHP());//敵の体力DOWN
+
+
 			EDamage = true;
 
 		}
@@ -656,7 +603,6 @@ void BattleScene::EnemyTurn()
 
 			Loseflg = true;//戦闘に負けた
 
-
 			Victory = false;
 			Comand = Result;
 			
@@ -804,6 +750,7 @@ void BattleScene::DamageTex(bool chara)
 
 void BattleScene::GetGoldTex(int GetGold)
 {
+
 	int NextGold[3];
 	
 	NextGold[0] = GetGold / 100;
@@ -816,7 +763,7 @@ void BattleScene::GetGoldTex(int GetGold)
 
 	NextGold[1] = GetGold / 10;
 	
-	sprintf(m_GoldTexName, "Assets/UI/%d.png", NextGold[1]);
+	sprintf(m_GoldTexName, "Assets/UI/%d.png",NextGold[1]);
 	m_GoldSeatTexture[1].Release();
 	m_GoldSeatTexture[1].Load(m_GoldTexName);
 
@@ -826,11 +773,12 @@ void BattleScene::GetGoldTex(int GetGold)
 	sprintf(m_GoldTexName, "Assets/UI/%d.png", NextGold[2]);
 	m_GoldSeatTexture[2].Release();
 	m_GoldSeatTexture[2].Load(m_GoldTexName);
-	
+
 }
 
 void BattleScene::GetExpTex(int GetExp)
 {
+
 	int NextExp[3];
 
 	NextExp[0] = GetExp / 100;
@@ -853,5 +801,58 @@ void BattleScene::GetExpTex(int GetExp)
 	sprintf(m_ExpTexName, "Assets/UI/%d.png", NextExp[2]);
 	m_ExpSeatTexture[2].Release();
 	m_ExpSeatTexture[2].Load(m_ExpTexName);
+
+}
+
+
+void BattleScene::PostRender(CRenderContext&renderContext)
+{
+
+	if (Comand == Result) {
+		m_ComandBGSprite1.SetPosition({ 0,0 });
+		m_ComandBGSprite1.SetSize({ 700.0f,900.0f });
+		if (Victory) {
+			m_ComandBGSprite1.Draw(renderContext);
+		}
+		m_ResultBGSprite1.Draw(renderContext);
+		m_ResultBGSprite3.Draw(renderContext);
+		m_ResultBGSprite4.Draw(renderContext);
+		for (int i = 0;i < 3;i++) {
+			m_GoldSeatSprite[i].Draw(renderContext);
+			m_ExpSeatSprite[i].Draw(renderContext);
+		}
+
+		if (GetEXP[0] < GetEXP[1]) {
+			m_ResultBGSprite2.Draw(renderContext);
+		}
+
+	}
+
+	if (EDamage || PDamage) {//ダメージの表示
+
+
+		if (NextDamage[0] != 0)
+		{
+			m_DamageSeatSprite[0].Draw(renderContext);
+		}
+		if (NextDamage[1] != 0 || NextDamage[0] != 0)
+		{
+			m_DamageSeatSprite[1].Draw(renderContext);
+		}
+
+		m_DamageSeatSprite[2].Draw(renderContext);
+
+	}
+
+	if (EnemyZoom) { return; }
+	if (IsBattle) { return; }
+	if (!IsBattleStart) { return; }
+	if (Comand == INVENTORY) { return; }
+
+	m_ComandBGSprite1.Draw(renderContext);
+	m_ComandBGSprite2.Draw(renderContext);
+	m_ComandBGSprite3.Draw(renderContext);
+	m_ComandBGSprite4.Draw(renderContext);
+	m_CasolBGSprite.Draw(renderContext);
 
 }

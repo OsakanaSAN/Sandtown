@@ -22,7 +22,8 @@ Mining::~Mining()
 	
 	PhysicsWorld().RemoveRigidBody(&rigidBody);
 	rigidBody.Release();
-
+	
+	//IconSeatTexture.Release();
 }
 
 void Mining::Init(const char* modelName, CVector3 position, CQuaternion rotation)
@@ -30,7 +31,6 @@ void Mining::Init(const char* modelName, CVector3 position, CQuaternion rotation
 	Setpos(position);
 	Pointpos = position;
 	Maplight.SetPointLightPosition(LightPos2);
-
 
 
 	//ファイルパスを作成する。
@@ -64,10 +64,17 @@ void Mining::Init(const char* modelName, CVector3 position, CQuaternion rotation
 	//作成した剛体を物理ワールドに追加する。
 	PhysicsWorld().AddRigidBody(&rigidBody);
 
+
+	//IconSeatTexture.Load("Assets/Item/Item4.png");
+	////IconSeatSprite.SetPivot({ 0.5f,0.5f });
+	//IconSeatSprite.Init(&IconSeatTexture);
+	//IconSeatSprite.SetPosition(Iconseatpos);
+	//IconSeatSprite.SetSize({ 100.0f,100.0f });
 }
 
 void Mining::Update()
 {
+	
 	if (g_player != nullptr) {
 
 		CVector3 Ppos = g_player->Getpos();
@@ -79,13 +86,40 @@ void Mining::Update()
 		float L = Vpos.Length();
 
 		int LV = g_Hud->GetLV();
-		if (minigcount < 3 && L < 2.0f && Pad(0).IsTrigger(enButtonX) && LV < 10)
+		if (minigcount < 3 && L < 2.0f && Pad(0).IsTrigger(enButtonA) && LV < 10)
 		{
+			if (ItemRender == NoGet) {
+				m_sound_bgm_battle = NewGO<CSoundSource>(0);
+				m_sound_bgm_battle->Init("Assets/sound/select.wav");
+				m_sound_bgm_battle->Play(false);
+				m_sound_bgm_battle->SetVolume(7.0f);
+
+				IconSeatTexture.Load("Assets/Item/Item4.png");
+				IconSeatSprite.Init(&IconSeatTexture);
+				IconSeatSprite.SetPosition(Iconseatpos);
+				IconSeatSprite.SetSize({ 100.0f,100.0f });
+
+				ItemRender = Get;
+			}
+
+			
+		}
+		if(ItemRender==Get){
+
+
+			m_timer += GameTime().GetFrameDeltaTime();
 
 			//int num = g_random.GetRandInt() % 4 + 1;
-			g_menu->InventoryChangTex(4);
-			g_map2->AsDete(asnumber);
-			minigcount++;
+
+			if (m_timer > 1.0f) {
+				g_menu->InventoryChangTex(4);
+				//g_map2->AsDete(asnumber);
+				minigcount++;
+				m_timer = 0.0f;
+				ItemRender = NoGet;
+				
+				
+			}
 		}
 	}
 
@@ -93,5 +127,12 @@ void Mining::Update()
 
 void Mining::Render(CRenderContext& renderContext)
 {
+
+	if (ItemRender == Get)
+	{
+		IconSeatSprite.Draw(renderContext);
+	}
+	
 	skinModel.Draw(renderContext, g_gameCamera->GetViewMatrix(), g_gameCamera->GetProjectionMatrix());
+
 }
