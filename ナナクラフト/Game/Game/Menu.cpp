@@ -55,7 +55,7 @@ Menu::Menu()
 	MaxHpSeatSprite[0].SetSize({ 50.0f,50.0f });
 	
 	//ÉAÉCÉRÉì
-	IconSeatTexture.Load("Assets/UI/unity.png");
+	IconSeatTexture.Load("Assets/UI/knight.png");
 	IconSeatSprite.SetPivot({ 0.5f,0.5f });
 	IconSeatSprite.Init(&IconSeatTexture);
 	IconSeatSprite.SetPosition(Iconseatpos);

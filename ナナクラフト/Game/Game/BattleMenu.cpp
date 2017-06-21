@@ -16,7 +16,7 @@ BattleMenu::BattleMenu()
 	EnemyBakeTexSprite.SetSize({ 400.0f,150.0f });
 
 	//プレイヤーアイコン
-	PlayerIconTex.Load("Assets/UI/unity.png");
+	PlayerIconTex.Load("Assets/UI/knight.png");
 	PlayerIconSprite.Init(&PlayerIconTex);
 	PlayerIconSprite.SetPosition({450.0f,-450.0f});
 	PlayerIconSprite.SetSize({ 80.0f,80.0f });

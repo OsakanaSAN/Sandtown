@@ -102,7 +102,7 @@ void Mining::Update()
 				ItemRender = Get;
 			}
 
-			
+		
 		}
 		if(ItemRender==Get){
 
