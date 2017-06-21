@@ -46,3 +46,12 @@
 	CVector3(0.00f, 0.00f, 0.00f),             //平行移動
 	CQuaternion(-0.71f, 0.00f, 0.00f, 0.71f ),  //回転
 },
+//BattleMap1
+{
+	"BattleMap1",
+
+
+	CVector3(0.00f, 50.00f, 0.00f),             //平行移動
+	CQuaternion(-0.71f, 0.00f, 0.00f, 0.71f),  //回転
+
+},

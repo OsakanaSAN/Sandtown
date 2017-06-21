@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/scene/danmati.unity
+- path: Assets/scene/danmati2.unity
   isLoaded: 1
   isActive: 1

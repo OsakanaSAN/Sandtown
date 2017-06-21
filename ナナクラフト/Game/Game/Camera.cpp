@@ -120,10 +120,10 @@ void Camera::EnemyBattleCamera()
 
 	if (g_battleplayer != nullptr) {
 		V = g_battleenemy->Getpos();
-		V.y = 1.0f;
+		V.y += 1.0f;
 		camera.SetTarget(V);
-		V.Add(BattleEnemyCameraPos);
-		camera.SetPosition(V);
+		//V.Add(BattleEnemyCameraPos);
+		camera.SetPosition(BattleEnemyCameraPos);
 	}
 
 	camera.Update();
