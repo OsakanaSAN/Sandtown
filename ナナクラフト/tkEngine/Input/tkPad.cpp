@@ -131,7 +131,7 @@ namespace tkEngine{
 				if (m_state.state.Gamepad.sThumbLY > 0) {
 					m_lStickY = s_cast<float>(m_state.state.Gamepad.sThumbLY) / SHRT_MAX;
 				}
-				else {
+				else{
 					m_lStickY = s_cast<float>(m_state.state.Gamepad.sThumbLY) / -SHRT_MIN;
 				}
 			}
@@ -191,7 +191,6 @@ namespace tkEngine{
 				m_rStickX /= t;
 				m_rStickY /= t;
 			}
-
 			if (GetAsyncKeyState('A')) {
 				m_lStickX = -1.0f;
 			}

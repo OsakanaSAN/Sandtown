@@ -68,7 +68,6 @@ bool GameScene::Start()
 void GameScene::Update()
 {
 
-
 	switch (scenes)
 	{
 	case BattleWait:
@@ -135,39 +134,42 @@ void GameScene::Update()
 				g_gameCamera->ChangeStart();
 
 				g_Dungeon = NewGO<Dungeon>(0);
-				
+				//g_map2 = NewGO<Map2>(0);
 				g_player = NewGO<Player>(0);
 				modelName = "Assets/modelData/ghost.X";
 				g_Enemy = NewGO<Enemy>(0);
 				g_Enemy->Init(modelName);
 				g_Enemy->setPos({ -3.0f, 0.0f, -20.0f });
-				g_Enemy->Setexp(20);
+				g_Enemy->LevelSet(1);
+				/*g_Enemy->Setexp(20);
 				g_Enemy->SetEATK(20);
 				g_Enemy->SetHP(30);
-				g_Enemy->SetGold(20);
+				g_Enemy->SetGold(20);*/
 
 
 				modelName = "Assets/modelData/ghost.X";
 				g_Enemy2 = NewGO<Enemy>(0);
 				g_Enemy2->Init(modelName);
 				g_Enemy2->setPos({ -3.0f, 0.0f, -40.0f });
-				g_Enemy2->Setexp(20);
+				g_Enemy2->LevelSet(1);
+				/*g_Enemy2->Setexp(20);
 				g_Enemy2->SetEATK(20);
 				g_Enemy2->SetHP(40);
-				g_Enemy2->SetGold(40);
+				g_Enemy2->SetGold(40);*/
 
 
 				modelName = "Assets/modelData/Bossghost.X";
 				g_Enemy3 = NewGO<Enemy>(0);
 				g_Enemy3->Init(modelName);
 				g_Enemy3->setPos({ 20.0f, 0.0f, -15.0f });
-				g_Enemy3->Setexp(30);
+				g_Enemy3->LevelSet(2);
+				/*g_Enemy3->Setexp(30);
 				g_Enemy3->SetEATK(50);
 				g_Enemy3->SetHP(90);
-				g_Enemy3->SetGold(60);
+				g_Enemy3->SetGold(60);*/
 
 
-				//g_map2 = NewGO<Map2>(0);
+				
 				
 			}
 

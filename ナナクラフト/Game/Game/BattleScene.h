@@ -21,6 +21,9 @@ public:
 	void BattleResult();
 	void PlayerTurn();
 	void EnemyTurn();
+	void EnemyTurn1();
+	void EnemyTurn2();
+	void EnemyTurn3();
 	void BattleKeep();
 	void DamageTex(bool chara);
 	void GetGoldTex(int GetGold);
@@ -163,6 +166,12 @@ private:
 	bool Resultflg2 = true;
 	int Prandom = 0;
 	int Erandom = 0;
+
+	bool Eneturn = false;
+	bool Eneturn1 = false;
+	bool Eneturn2 = false;
+	bool Eneturn3 = false;
+	int count = 1;
 };
 
 extern BattleScene* g_battleScene;

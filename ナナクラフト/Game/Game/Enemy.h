@@ -20,6 +20,34 @@ public :
 	}
 	void Tracking();
 
+	void LevelSet(int Level)
+	{
+		switch (Level)
+		{
+		case 1:
+			Setexp(20);
+			SetEATK(40);
+			SetHP(50);
+			SetGold(530);
+			break;
+		case 2:
+			Setexp(50);
+			SetEATK(60);
+			SetHP(100);
+			SetGold(80);
+			break;
+		case 3:
+			Setexp(80);
+			SetEATK(80);
+			SetHP(120);
+			SetGold(150);
+		case 4:
+			Setexp(100);
+			SetEATK(100);
+			SetHP(200);
+			SetGold(200);
+		}
+	}
 	char* GetenemyName()
 	{
 		return enemy;

@@ -4,6 +4,7 @@
 #include "HUD.h"
 #include "EnemyHUD.h"
 #include "Enemy.h"
+#include "BattlePlayer.h"
 extern Enemy* g_Enemy;
 extern Enemy* g_Enemy2;
 extern Enemy* g_Enemy3;
@@ -30,6 +31,24 @@ BattleEnemy::BattleEnemy()
 	All.SetDiffuseLightColor(2, { 0.3f, 0.3f, 0.3f, 1.0f });
 	All.SetDiffuseLightDirection(3, { 0.0f, 0.707f, -0.707f });
 	All.SetDiffuseLightColor(3, { 0.1f, 0.1f, 0.1f, 1.0f });
+
+	CVector3 Wpos =g_battleplayer->Getpos();
+	Wpos.z += 6.5f;
+	position[0] = Wpos;
+	Wpos = g_battleplayer->Getpos();
+	Wpos.x += 6.5f;
+	position[1] = Wpos;
+	Wpos = g_battleplayer->Getpos();
+	Wpos.x -= 6.5f;
+	position[2] = Wpos;
+	Wpos = g_battleplayer->Getpos();
+	Wpos.z -= 5.5f;
+	position[3] = Wpos;
+	/*for (int i = 0;i < eneNo;i++) {
+
+		position[i] = Wpos;
+		Wpos.x -= 2.0f;
+	}*/
 
 	IsAttack = false;
 	IsDamage = false;
@@ -75,8 +94,9 @@ bool BattleEnemy::Start()
 
 	if (g_Enemy->Getenemyhit() && g_Enemy->GetEnemyState() == Alive)
 	{
-		skinModelData.LoadModelData(g_Enemy->GetenemyName(), &Animation);
-		
+		for (int i = 0;i < eneNo;i++) {
+			skinModelData[i].LoadModelData(g_Enemy->GetenemyName(), &Animation[i]);
+		}
 		ATK = g_Enemy->GetEATK();
 		HP = g_Enemy->GetEHp();
 		Exp = g_Enemy->GetExp();
@@ -86,8 +106,9 @@ bool BattleEnemy::Start()
 	}
 	else if (g_Enemy2->Getenemyhit() && g_Enemy2->GetEnemyState() == Alive)
 	{
-		skinModelData.LoadModelData(g_Enemy2->GetenemyName(), &Animation);
-		
+		for (int i = 0;i < eneNo;i++) {
+			skinModelData[i].LoadModelData(g_Enemy2->GetenemyName(), &Animation[i]);
+		}
 		ATK = g_Enemy2->GetEATK();
 		HP = g_Enemy2->GetEHp();
 		Exp = g_Enemy2->GetExp();
@@ -96,8 +117,9 @@ bool BattleEnemy::Start()
 	}
 	else if (g_Enemy3->Getenemyhit() && g_Enemy3->GetEnemyState() == Alive)
 	{
-		skinModelData.LoadModelData(g_Enemy3->GetenemyName(), &Animation);
-		
+		for (int i = 0;i < eneNo;i++) {
+			skinModelData[i].LoadModelData(g_Enemy3->GetenemyName(), &Animation[i]);
+		}
 		ATK = g_Enemy3->GetEATK();
 		HP = g_Enemy3->GetEHp();
 		Exp = g_Enemy3->GetExp();
@@ -110,22 +132,28 @@ bool BattleEnemy::Start()
 	g_Enemy->SetActiveFlag(false);
 	g_Enemy2->SetActiveFlag(false);
 	g_Enemy3->SetActiveFlag(false);
-	skinModel.Init(skinModelData.GetBody());
-	skinModel.SetLight(&All);	//デフォルトライトを設定。
+	
+	for (int i = 0;i < eneNo;i++) {
+		skinModel[i].Init(skinModelData[i].GetBody());
+		skinModel[i].SetLight(&All);					//デフォルトライトを設定。
+		skinModel[i].SetShadowCasterFlag(true);
+		skinModel[i].SetShadowReceiverFlag(true);
+		Animation[i].PlayAnimation(Stand_anim, 0.1f);
+		Animation[i].SetAnimationEndTime(Attack_anim, 0.5);
+		Animation[i].SetAnimationLoopFlag(Attack_anim, false);
+		Animation[i].SetAnimationEndTime(Damage_anim, 0.5);
+		Animation[i].SetAnimationLoopFlag(Damage_anim, false);
+
+		//m_rotation[i].SetRotation(CVector3(0.0f, -1.0f, 0.0f), CMath::DegToRad(170.0f));
+
+	}
+	m_rotation[0].SetRotation(CVector3(0.0f, -1.0f, 0.0f), CMath::DegToRad(170.0f));
+	m_rotation[1].SetRotation(CVector3(0.0f, -1.0f, 0.0f), CMath::DegToRad(80.0f));
+	m_rotation[2].SetRotation(CVector3(0.0f, -1.0f, 0.0f), CMath::DegToRad(-80.0f));
+	m_rotation[3].SetRotation(CVector3(0.0f, -1.0f, 0.0f), CMath::DegToRad(350.0f));
+	
 
 
-
-	Animation.PlayAnimation(Stand_anim, 0.1f);
-
-	Animation.SetAnimationEndTime(Attack_anim, 0.5);
-	Animation.SetAnimationLoopFlag(Attack_anim, false);
-	Animation.SetAnimationEndTime(Damage_anim, 0.5);
-	Animation.SetAnimationLoopFlag(Damage_anim, false);
-
-	m_rotation.SetRotation(CVector3(0.0f, -1.0f, 0.0f), CMath::DegToRad(170.0f));
-
-	skinModel.SetShadowCasterFlag(true);
-	skinModel.SetShadowReceiverFlag(true);
 	return true;
 }
 
@@ -136,16 +164,20 @@ void BattleEnemy::Update()
 	All.SetPointLightColor({ 1.0f,1.0f,1.5f,4.0f });
 
 	AnimationSet();
-	Animation.Update(1.0f / 60.0f);
 
-	skinModel.Update(position, m_rotation, CVector3::One);
+	for (int i = 0;i < eneNo;i++) {
+		Animation[i].Update(1.0f / 60.0f);
+		skinModel[i].Update(position[i], m_rotation[i], CVector3::One);
+	}
 }
 
 
 
 void BattleEnemy::Render(CRenderContext&renderContext)
 {
-	skinModel.Draw(renderContext, g_gameCamera->GetViewMatrix(), g_gameCamera->GetProjectionMatrix());
+	for (int i = 0;i < eneNo;i++) {
+		skinModel[i].Draw(renderContext, g_gameCamera->GetViewMatrix(), g_gameCamera->GetProjectionMatrix());
+	}
 }
 
 
@@ -159,7 +191,7 @@ void BattleEnemy::AnimationSet()
 		if (IsAttack) {
 
 			IsAnimend = false;
-			Animation.PlayAnimation(Attack_anim, 0.5);
+			Animation[EnemyNo].PlayAnimation(Attack_anim, 0.5);
 
 			IsStand = true;
 			g_Hud->Damage(ATK);
@@ -170,7 +202,7 @@ void BattleEnemy::AnimationSet()
 		else if (IsDamage)
 		{
 			IsAnimend = false;
-			Animation.PlayAnimation(Damage_anim, 0.5);
+			Animation[EnemyNo].PlayAnimation(Damage_anim, 0.5);
 
 			IsStand = true;
 		}
@@ -178,7 +210,7 @@ void BattleEnemy::AnimationSet()
 	}
 	else if (!IsAttack && !IsDamage)
 	{
-		Animation.PlayAnimation(Stand_anim, 0.3f);
+		Animation[EnemyNo].PlayAnimation(Stand_anim, 0.3f);
 
 		IsStand = false;
 
@@ -186,9 +218,9 @@ void BattleEnemy::AnimationSet()
 
 
 
-	if (!Animation.IsPlay())
+	if (!Animation[EnemyNo].IsPlay())
 	{
-		Animation.PlayAnimation(Stand_anim, 0.3f);
+		Animation[EnemyNo].PlayAnimation(Stand_anim, 0.3f);
 		//IsStand = false;
 		IsAttack = false;
 		IsDamage = false;
@@ -197,7 +229,7 @@ void BattleEnemy::AnimationSet()
 
 
 	//アニメーションの更新
-	Animation.Update(1.0f / 60.0f);
+	Animation[EnemyNo].Update(1.0f / 60.0f);
 
 }
 

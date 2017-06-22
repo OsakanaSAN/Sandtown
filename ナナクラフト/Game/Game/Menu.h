@@ -14,6 +14,7 @@ public:
 	void InventoryChangTex(int Item);
 	void MenuSceneexit();
 	bool UseItem();
+	void Itemerase();
 
 	void setHP(int setHp)
 	{

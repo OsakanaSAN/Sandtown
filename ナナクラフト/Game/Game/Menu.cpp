@@ -356,6 +356,32 @@ void Menu::InventoryChangTex(int Item)
 
 }
 
+void Menu::Itemerase()
+{
+	for (int j = 0;j <= 30;j++)
+	{
+		InventoryPackNumber++;
+		if (InventoryPack[j]!=0) { continue; }
+		InventoryPack[j] = 0;
+		
+
+		if (InventoryY < 5) {
+			sprintf(InvebtoryName, "Assets/Item/Item%d.png", 0);
+			InventorySeatTexture[InventoryY][InventoryX].Release();
+			InventorySeatTexture[InventoryY][InventoryX].Load(InvebtoryName);
+			InventorySeatSprite[InventoryY][InventoryX].Init(&InventorySeatTexture[InventoryY][InventoryX]);
+			InventorySeatSprite[InventoryY][InventoryX].SetSize({ 100.0f, 100.0f });
+
+			InventoryX++;
+			if (InventoryX >= 6)
+			{
+				InventoryX = 0;
+				InventoryY++;
+			}
+		}
+	}
+}
+
 void Menu::MenuSceneStop()
 {
 

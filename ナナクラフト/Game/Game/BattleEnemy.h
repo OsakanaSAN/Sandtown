@@ -19,11 +19,11 @@ public:
 
 	void Setpos(CVector3 pos)
 	{
-		position = pos;
+		position[0] = pos;
 	}
-	CVector3 Getpos()
+	CVector3* Getpos(int EnemyNo)
 	{
-		return position;
+		return &position[EnemyNo];
 	}
 
 
@@ -64,6 +64,15 @@ public:
 		return Exp;
 	}
 
+	void SetEnemyNo(int No)
+	{
+		EnemyNo = No;
+	}
+
+	int GetEnemyNo()
+	{
+		return EnemyNo;
+	}
 private:
 
 	enum ANIME {
@@ -76,11 +85,12 @@ private:
 		Alive,
 		Dead
 	};
-	CSkinModel				skinModel;
-	CSkinModelDataHandle	skinModelData;
-	CAnimation		Animation;
-	CVector3		position = { -2.0f,50.0f,0.0f };
-	CQuaternion		m_rotation;
+	static const int eneNo = 4;
+	CSkinModel				skinModel[eneNo];
+	CSkinModelDataHandle	skinModelData[eneNo];
+	CAnimation				Animation[eneNo];
+	CVector3				position[eneNo];
+	CQuaternion				m_rotation[eneNo];
 
 	CLight			All;
 
@@ -92,6 +102,7 @@ private:
 
 	int				currentAnimSetNo;
 
+	int EnemyNo = 0;
 	////エネミーごとのステータス?
 	int				ATK=20;
 	int				HP=50;
