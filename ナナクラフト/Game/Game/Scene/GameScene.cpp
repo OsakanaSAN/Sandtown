@@ -77,7 +77,7 @@ void GameScene::Update()
 		
 		m_timer += GameTime().GetFrameDeltaTime();
 		
-		if (m_timer > 2.5f)
+		if (m_timer > 2.0f)
 		{
 			//g_sound->StopSound();
 

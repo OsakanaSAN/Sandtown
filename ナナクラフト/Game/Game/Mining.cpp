@@ -39,6 +39,7 @@ void Mining::Init(const char* modelName, CVector3 position, CQuaternion rotation
 
 	//モデルデータをロード。
 	skinModelData.LoadModelData(filePath, NULL);
+
 	//CSkinModelを初期化。
 	skinModel.Init(skinModelData.GetBody());
 	//デフォルトライトを設定して。
@@ -65,16 +66,12 @@ void Mining::Init(const char* modelName, CVector3 position, CQuaternion rotation
 	PhysicsWorld().AddRigidBody(&rigidBody);
 
 
-	//IconSeatTexture.Load("Assets/Item/Item4.png");
-	////IconSeatSprite.SetPivot({ 0.5f,0.5f });
-	//IconSeatSprite.Init(&IconSeatTexture);
-	//IconSeatSprite.SetPosition(Iconseatpos);
-	//IconSeatSprite.SetSize({ 100.0f,100.0f });
 }
+
 
 void Mining::Update()
 {
-	
+
 	if (g_player != nullptr) {
 
 		CVector3 Ppos = g_player->Getpos();
@@ -85,10 +82,11 @@ void Mining::Update()
 		Vpos.z = Ppos.z - Pointpos.z;
 		float L = Vpos.Length();
 
-		int LV = g_Hud->GetLV();
-		if (minigcount < 3 && L < 2.0f && Pad(0).IsTrigger(enButtonA) && LV < 10)
+		if (minigcount < 3 && L < 2.0f && Pad(0).IsTrigger(enButtonX) && S_timer == 0 && m_timer == 0)
 		{
+			
 			if (ItemRender == NoGet) {
+
 				m_sound_bgm_battle = NewGO<CSoundSource>(0);
 				m_sound_bgm_battle->Init("Assets/sound/select.wav");
 				m_sound_bgm_battle->Play(false);
@@ -97,27 +95,39 @@ void Mining::Update()
 				IconSeatTexture.Load("Assets/Item/Item4.png");
 				IconSeatSprite.Init(&IconSeatTexture);
 				IconSeatSprite.SetPosition(Iconseatpos);
-				IconSeatSprite.SetSize({ 100.0f,100.0f });
+				IconSeatSprite.SetSize({ 100.f,100.0f });
+				IconSeatSprite.SetAlpha(1.0f);
 
 				ItemRender = Get;
 			}
 
 			
 		}
-		if(ItemRender==Get){
+
+		else if (ItemRender == Get) {
+
+			S_timer += GameTime().GetFrameDeltaTime();
+
+		}
 
 
+
+		if(S_timer > 0.5)
+		{
 			m_timer += GameTime().GetFrameDeltaTime();
 
-			//int num = g_random.GetRandInt() % 4 + 1;
+			if (m_timer < FADE_TIME_ITEM)
+			{
+				float t = m_timer / FADE_TIME_ITEM;
+				IconSeatSprite.SetAlpha(max(1.0f - t, 0.0f));
+			}
 
-			if (m_timer > 1.0f) {
+			else if (m_timer > 0.5f) {
 				g_menu->InventoryChangTex(4);
-				//g_map2->AsDete(asnumber);
 				minigcount++;
 				m_timer = 0.0f;
+				S_timer = 0;
 				ItemRender = NoGet;
-				
 				
 			}
 		}
