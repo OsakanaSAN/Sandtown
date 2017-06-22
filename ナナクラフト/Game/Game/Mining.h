@@ -44,8 +44,9 @@ private:
 	int                 asnumber;
 	int                 minigexp = 5;
 	int                 minigcount = 0; //採掘できる上限
-
+	const float FADE_TIME_ITEM = 0.5f;		//!<フェードアウトの時間。(単位：秒)
 	float m_timer = 0.0f;
+	float S_timer = 0.0f; //ちょっとだけしっかり表示させる
 	
 };
 

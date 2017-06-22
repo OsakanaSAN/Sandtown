@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿  BattleScene.cpp
 c:\users\kbc16b15\desktop\github\新しいフォルダー\sandtown\ナナクラフト\game\game\HUD.h(16): warning C4244: 'return': 'float' から 'int' への変換です。データが失われる可能性があります。
 BattleScene.cpp(71): warning C4244: '引数': 'int' から 'float' への変換です。データが失われる可能性があります。
@@ -20,6 +21,9 @@ c:\users\kbc16b15\desktop\github\新しいフォルダー\sandtown\ナナクラ�
   コードを生成中...
 c:\users\kbc16b15\desktop\github\新しいフォルダー\sandtown\ナナクラフト\game\game\scene\gamescene.cpp(66): warning C4715: 'GameScene::Start': 値を返さないコントロール パスがあります。
 LINK : warning LNK4075: /INCREMENTAL は /LTCG の指定によって無視されます。
+=======
+﻿LINK : warning LNK4075: /INCREMENTAL は /LTCG の指定によって無視されます。
+>>>>>>> a48e6cf0f9a1e0c33efc361fc075722aa0a75c72
   LINK : /LTCG が指定されましたが、コードの生成は必要ありません。リンク コマンド ラインから /LTCG を削除し、リンカーの性能を改善してください。
   Game.vcxproj -> C:\Users\kbc16b15\Desktop\github\新しいフォルダー\Sandtown\ナナクラフト\Game\x64\Release\Game.exe
   Game.vcxproj -> C:\Users\kbc16b15\Desktop\github\新しいフォルダー\Sandtown\ナナクラフト\Game\x64\Release\Game.pdb (Full PDB)
