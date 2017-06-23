@@ -610,7 +610,7 @@ void BattleScene::EnemyTurn()
 			g_Hud->SubtractGold(g_Hud->GetGold()/2);
 
 			EnemyturnEnd = true;
-			//DeleteGO(g_battleScene);
+			DeleteGO(g_battleScene);
 
 
 			//リザルト画面を出す処理かシーン遷移？

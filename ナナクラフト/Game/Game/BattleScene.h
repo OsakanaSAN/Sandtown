@@ -175,9 +175,6 @@ private:
 	int		Bcase;//敵の配置状態の種類
 	
 	CVector3 BCamerapos = { 2.0f, 50.2f, -3.5f };//敵の配置ごとのカメラの位置
-	bool Resultflg2 = true;
-	int Prandom = 0;
-	int Erandom = 0;
 	float ResultTime = 0; //result画面が終わる時間
 
 };
