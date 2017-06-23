@@ -267,7 +267,6 @@ void Player::AnimetionSet()
 
 }
 
-
 void Player::Render(CRenderContext& renderContext)
 {
 

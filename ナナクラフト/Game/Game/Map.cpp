@@ -16,7 +16,7 @@ struct SMapInfo {
 Mapchip* mapchip[255];
 SceneChange* g_SC;
 GameSky*     g_Sky;
-shop*		g_shop;
+shop*		g_shop=nullptr;
 
 //マップの配置情報。
 SMapInfo mapLocInfo[] = {
@@ -40,20 +40,19 @@ Map::Map()
 	ChangeObject = 0;
 	numObject = 0;
 	NoMoveObject = 0;
-
-	if (g_Hud->GetGold() > 500)
-	{
-		MapCount = 1;
-	}
-	else if(g_Hud->GetGold()>2000)
-	{
-		MapCount = 2;
-	}
-	else if (g_Hud->GetGold()>4000)
+	
+	if (g_Hud->GetGold()>=4000)
 	{
 		MapCount = 3;
 	}
-	
+	else if (g_Hud->GetGold()>=2000)
+	{
+		MapCount = 2;
+	}
+	else if (g_Hud->GetGold()>=500)
+	{
+		MapCount = 1;
+	}
 
 }
 
@@ -70,7 +69,7 @@ Map::~Map()
 	DeleteGO(g_SC);
 	DeleteGO(g_Sky);
 	DeleteGO(g_shop);
-
+	g_shop = nullptr;
 }
 
 bool Map::Start()
@@ -242,7 +241,7 @@ bool Map::Start()
 			{
 				mapchip[NoMoveObject] = NewGO<Mapchip>(0);
 				//モデル名、座標、回転を与えてマップチップを初期化する。
-				mapchip[NoMoveObject]->Init(mapLoc3[i].modelName, mapLoc2[i].position, mapLoc2[i].rotation);
+				mapchip[NoMoveObject]->Init(mapLoc3[i].modelName, mapLoc3[i].position, mapLoc3[i].rotation);
 				NoMoveObject++;
 			}
 

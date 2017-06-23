@@ -168,12 +168,9 @@ void GameScene::Update()
 				g_Enemy3->SetHP(90);
 				g_Enemy3->SetGold(60);*/
 
-
-				
-				
 			}
 
-			
+
 			else 
 			{
 				if (g_Dungeon->IsActive()/*g_map2->IsActive()*/ && g_Enemy->IsActive() && g_Enemy2->IsActive() && g_Enemy3->IsActive() && g_player->IsActive()) {

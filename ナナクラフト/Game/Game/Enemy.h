@@ -26,20 +26,20 @@ public :
 		{
 		case 1:
 			Setexp(20);
-			SetEATK(40);
+			SetEATK(50);
 			SetHP(50);
-			SetGold(530);
+			SetGold(930);
 			break;
 		case 2:
 			Setexp(50);
 			SetEATK(60);
-			SetHP(100);
+			SetHP(70);
 			SetGold(80);
 			break;
 		case 3:
 			Setexp(80);
 			SetEATK(80);
-			SetHP(120);
+			SetHP(100);
 			SetGold(150);
 		case 4:
 			Setexp(100);
@@ -133,7 +133,6 @@ private:
 		NO
 	};
 
-
 	int hit = NO;
 	int ste = Alive;
 
@@ -165,10 +164,10 @@ private:
 	CVector3 direction = CVector3::AxisZ;
 
 	//ÉXÉe
-	int HP;
-	int EATK;
-	int Exp;
-	int EGold;
+	int HP=50;
+	int EATK=0;
+	int Exp=20;
+	int EGold=30;
 
 };
 extern Enemy* g_Enemy;

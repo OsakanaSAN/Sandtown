@@ -31,19 +31,55 @@ BattleEnemy::BattleEnemy()
 	All.SetDiffuseLightColor(2, { 0.3f, 0.3f, 0.3f, 1.0f });
 	All.SetDiffuseLightDirection(3, { 0.0f, 0.707f, -0.707f });
 	All.SetDiffuseLightColor(3, { 0.1f, 0.1f, 0.1f, 1.0f });
-
-	CVector3 Wpos =g_battleplayer->Getpos();
-	Wpos.z += 6.5f;
-	position[0] = Wpos;
-	Wpos = g_battleplayer->Getpos();
-	Wpos.x += 6.5f;
-	position[1] = Wpos;
-	Wpos = g_battleplayer->Getpos();
-	Wpos.x -= 6.5f;
-	position[2] = Wpos;
-	Wpos = g_battleplayer->Getpos();
-	Wpos.z -= 5.5f;
-	position[3] = Wpos;
+	CVector3 Wpos = g_battleplayer->Getpos();
+	switch (Battlecase)
+	{
+	case Single:
+		Wpos.z += 6.5f;
+		position[0] = Wpos;
+		break;
+	case Double:
+		Wpos.z += 4.5f;
+		Wpos.x -= 4.5f;
+		position[0] = Wpos;
+		Wpos = g_battleplayer->Getpos();
+		Wpos.x += 4.5f;
+		Wpos.z += 4.5f;
+		position[1] = Wpos;
+		break;
+	case Cross:
+		Wpos.z += 6.5f;
+		position[0] = Wpos;
+		Wpos = g_battleplayer->Getpos();
+		Wpos.x += 6.5f;
+		position[1] = Wpos;
+		Wpos = g_battleplayer->Getpos();
+		Wpos.x -= 6.5f;
+		position[2] = Wpos;
+		Wpos = g_battleplayer->Getpos();
+		Wpos.z -= 5.5f;
+		position[3] = Wpos;
+		break;
+	case Cross2:
+		Wpos.z += 4.5f;
+		Wpos.x -= 4.5f;
+		position[0] = Wpos;
+		Wpos = g_battleplayer->Getpos();
+		Wpos.x += 4.5f;
+		Wpos.z += 4.5f;
+		position[1] = Wpos;
+		Wpos = g_battleplayer->Getpos();
+		Wpos.x += 4.5f;
+		Wpos.z -= 4.5f;
+		position[2] = Wpos;
+		Wpos = g_battleplayer->Getpos();
+		Wpos.x -= 4.5f;
+		Wpos.z -= 4.5f;
+		position[3] = Wpos;
+		break;
+	default:
+		break;
+	}
 	/*for (int i = 0;i < eneNo;i++) {
 
 		position[i] = Wpos;
@@ -56,7 +92,19 @@ BattleEnemy::BattleEnemy()
 	IsAnimend = true;
 	currentAnimSetNo = Stand_anim;
 
+	/*switch (Battlecase)
+	{
+	case 0:
 
+		break;
+	case 1:
+		break;
+	case 2:
+		break;
+	case 3:
+		break;
+	}*/
+	
 }
 
 
@@ -94,9 +142,33 @@ bool BattleEnemy::Start()
 
 	if (g_Enemy->Getenemyhit() && g_Enemy->GetEnemyState() == Alive)
 	{
-		for (int i = 0;i < eneNo;i++) {
-			skinModelData[i].LoadModelData(g_Enemy->GetenemyName(), &Animation[i]);
+		switch (Battlecase)
+		{
+		case Single:
+			for (int i = 0;i < eneNo;i++) {
+				skinModelData[i].LoadModelData(g_Enemy->GetenemyName(), &Animation[i]);
+			}
+			break;
+		case Double:
+			for (int i = 0;i < eneNo;i++) {
+				skinModelData[i].LoadModelData(g_Enemy->GetenemyName(), &Animation[i]);
+			}
+			break;
+		case Cross:
+			for (int i = 0;i < eneNo;i++) {
+				skinModelData[i].LoadModelData(g_Enemy->GetenemyName(), &Animation[i]);
+			}
+			break;
+		case Cross2:
+			for (int i = 0;i < eneNo;i++) {
+				skinModelData[i].LoadModelData(g_Enemy->GetenemyName(), &Animation[i]);
+			}
+			break;
+		default:
+			break;
 		}
+		
+		
 		ATK = g_Enemy->GetEATK();
 		HP = g_Enemy->GetEHp();
 		Exp = g_Enemy->GetExp();
@@ -106,9 +178,32 @@ bool BattleEnemy::Start()
 	}
 	else if (g_Enemy2->Getenemyhit() && g_Enemy2->GetEnemyState() == Alive)
 	{
-		for (int i = 0;i < eneNo;i++) {
-			skinModelData[i].LoadModelData(g_Enemy2->GetenemyName(), &Animation[i]);
+		switch (Battlecase)
+		{
+		case Single:
+			for (int i = 0;i < eneNo;i++) {
+				skinModelData[i].LoadModelData(g_Enemy2->GetenemyName(), &Animation[i]);
+			}
+			break;
+		case Double:
+			for (int i = 0;i < eneNo;i++) {
+				skinModelData[i].LoadModelData(g_Enemy2->GetenemyName(), &Animation[i]);
+			}
+			break;
+		case Cross:
+			for (int i = 0;i < eneNo;i++) {
+				skinModelData[i].LoadModelData(g_Enemy2->GetenemyName(), &Animation[i]);
+			}
+			break;
+		case Cross2:
+			for (int i = 0;i < eneNo;i++) {
+				skinModelData[i].LoadModelData(g_Enemy2->GetenemyName(), &Animation[i]);
+			}
+			break;
+		default:
+			break;
 		}
+
 		ATK = g_Enemy2->GetEATK();
 		HP = g_Enemy2->GetEHp();
 		Exp = g_Enemy2->GetExp();
@@ -117,9 +212,32 @@ bool BattleEnemy::Start()
 	}
 	else if (g_Enemy3->Getenemyhit() && g_Enemy3->GetEnemyState() == Alive)
 	{
-		for (int i = 0;i < eneNo;i++) {
-			skinModelData[i].LoadModelData(g_Enemy3->GetenemyName(), &Animation[i]);
+		switch (Battlecase)
+		{
+		case Single:
+			for (int i = 0;i < eneNo;i++) {
+				skinModelData[i].LoadModelData(g_Enemy3->GetenemyName(), &Animation[i]);
+			}
+			break;
+		case Double:
+			for (int i = 0;i < eneNo;i++) {
+				skinModelData[i].LoadModelData(g_Enemy3->GetenemyName(), &Animation[i]);
+			}
+			break;
+		case Cross:
+			for (int i = 0;i < eneNo;i++) {
+				skinModelData[i].LoadModelData(g_Enemy3->GetenemyName(), &Animation[i]);
+			}
+			break;
+		case Cross2:
+			for (int i = 0;i < eneNo;i++) {
+				skinModelData[i].LoadModelData(g_Enemy3->GetenemyName(), &Animation[i]);
+			}
+			break;
+		default:
+			break;
 		}
+
 		ATK = g_Enemy3->GetEATK();
 		HP = g_Enemy3->GetEHp();
 		Exp = g_Enemy3->GetExp();
@@ -147,11 +265,40 @@ bool BattleEnemy::Start()
 		//m_rotation[i].SetRotation(CVector3(0.0f, -1.0f, 0.0f), CMath::DegToRad(170.0f));
 
 	}
-	m_rotation[0].SetRotation(CVector3(0.0f, -1.0f, 0.0f), CMath::DegToRad(170.0f));
-	m_rotation[1].SetRotation(CVector3(0.0f, -1.0f, 0.0f), CMath::DegToRad(80.0f));
-	m_rotation[2].SetRotation(CVector3(0.0f, -1.0f, 0.0f), CMath::DegToRad(-80.0f));
-	m_rotation[3].SetRotation(CVector3(0.0f, -1.0f, 0.0f), CMath::DegToRad(350.0f));
-	
+
+
+
+	switch (Battlecase)
+	{
+	case Single:
+		m_rotation[0].SetRotation(CVector3(0.0f, -1.0f, 0.0f), CMath::DegToRad(170.0f));
+	/*	m_rotation[1].SetRotation(CVector3(0.0f, -1.0f, 0.0f), CMath::DegToRad(80.0f));
+		m_rotation[2].SetRotation(CVector3(0.0f, -1.0f, 0.0f), CMath::DegToRad(-80.0f));
+		m_rotation[3].SetRotation(CVector3(0.0f, -1.0f, 0.0f), CMath::DegToRad(350.0f));*/
+		break;
+	case Double:
+		m_rotation[0].SetRotation(CVector3(0.0f, -1.0f, 0.0f), CMath::DegToRad(220.0f));
+		m_rotation[1].SetRotation(CVector3(0.0f, -1.0f, 0.0f), CMath::DegToRad(130.0f));
+		/*m_rotation[2].SetRotation(CVector3(0.0f, -1.0f, 0.0f), CMath::DegToRad(-80.0f));
+		m_rotation[3].SetRotation(CVector3(0.0f, -1.0f, 0.0f), CMath::DegToRad(350.0f));*/
+		break;
+	case Cross:
+		m_rotation[0].SetRotation(CVector3(0.0f, -1.0f, 0.0f), CMath::DegToRad(170.0f));
+		m_rotation[1].SetRotation(CVector3(0.0f, -1.0f, 0.0f), CMath::DegToRad(80.0f));
+		m_rotation[2].SetRotation(CVector3(0.0f, -1.0f, 0.0f), CMath::DegToRad(-80.0f));
+		m_rotation[3].SetRotation(CVector3(0.0f, -1.0f, 0.0f), CMath::DegToRad(350.0f));
+		break;
+	case Cross2:
+		m_rotation[0].SetRotation(CVector3(0.0f, -1.0f, 0.0f), CMath::DegToRad(200.0f));
+		m_rotation[1].SetRotation(CVector3(0.0f, -1.0f, 0.0f), CMath::DegToRad(150.0f));
+		m_rotation[2].SetRotation(CVector3(0.0f, -1.0f, 0.0f), CMath::DegToRad(65.0f));
+		m_rotation[3].SetRotation(CVector3(0.0f, -1.0f, 0.0f), CMath::DegToRad(-65.0f));
+		break;
+	default:
+		break;
+	}
+
+	m_random.Init((unsigned long)time(NULL));
 
 
 	return true;
@@ -175,9 +322,33 @@ void BattleEnemy::Update()
 
 void BattleEnemy::Render(CRenderContext&renderContext)
 {
-	for (int i = 0;i < eneNo;i++) {
-		skinModel[i].Draw(renderContext, g_gameCamera->GetViewMatrix(), g_gameCamera->GetProjectionMatrix());
+	switch (Battlecase)
+	{
+	case Single:
+		
+			skinModel[0].Draw(renderContext, g_gameCamera->GetViewMatrix(), g_gameCamera->GetProjectionMatrix());
+		
+		break;
+	case Double:
+		
+			skinModel[0].Draw(renderContext, g_gameCamera->GetViewMatrix(), g_gameCamera->GetProjectionMatrix());
+			skinModel[1].Draw(renderContext, g_gameCamera->GetViewMatrix(), g_gameCamera->GetProjectionMatrix());
+
+		break;
+	case Cross:
+		for (int i = 0;i < eneNo;i++) {
+			skinModel[i].Draw(renderContext, g_gameCamera->GetViewMatrix(), g_gameCamera->GetProjectionMatrix());
+		}
+		break;
+	case Cross2:
+		for (int i = 0;i < eneNo;i++) {
+			skinModel[i].Draw(renderContext, g_gameCamera->GetViewMatrix(), g_gameCamera->GetProjectionMatrix());
+		}
+		break;
+	default:
+		break;
 	}
+	
 }
 
 

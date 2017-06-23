@@ -1,6 +1,8 @@
 #pragma once
 #include "BattleCamera.h"
 
+
+
 class BattleEnemy :
 	public IGameObject
 {
@@ -73,6 +75,16 @@ public:
 	{
 		return EnemyNo;
 	}
+
+	void SetBattlecase(int Bcase)
+	{
+		Battlecase = Bcase;
+	}
+
+	int GetBattlecase()
+	{
+		return Battlecase;
+	}
 private:
 
 	enum ANIME {
@@ -85,7 +97,15 @@ private:
 		Alive,
 		Dead
 	};
-	static const int eneNo = 4;
+
+	enum Battlecase
+	{
+		Single,
+		Double,
+		Cross,
+		Cross2,
+	};
+	const static int eneNo = 4;
 	CSkinModel				skinModel[eneNo];
 	CSkinModelDataHandle	skinModelData[eneNo];
 	CAnimation				Animation[eneNo];
@@ -114,6 +134,6 @@ private:
 	CParticleEmitter		*m_particle;
 	CRandom					m_random;
 
-
+	int Battlecase = g_random.GetRandInt() % 4;
 };
 extern BattleEnemy* g_battleenemy;

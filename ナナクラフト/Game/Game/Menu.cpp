@@ -7,6 +7,7 @@
 #include "HUD.h"
 #include "BattleMenu.h"
 #include "BattlePlayer.h"
+#include "shop.h"
 
 extern CRandom g_random;
 
@@ -23,7 +24,7 @@ Menu::Menu()
 	GoldSeatTexture[0].Load("Assets/UI/riru.png");
 	GoldSeatSprite[0].SetPivot({ 0.0f,1.0f });
 	GoldSeatSprite[0].Init(&GoldSeatTexture[0]);
-	GoldSeatSprite[0].SetPosition({-50.0f,-90.0f});
+	GoldSeatSprite[0].SetPosition({0.0f,-90.0f});
 	GoldSeatSprite[0].SetSize({ 100.0f,50.0f });
 
 	//HPのテキスト文字
@@ -76,22 +77,26 @@ Menu::Menu()
 		MaxHpSeatSprite[i].Init(&MaxHpSeatTexture[i]);
 		MaxHpSeatSprite[i].SetSize({ 50.0f,50.0f });
 
+		////Gold
+		//GoldSeatTexture[i].Load("Assets/UI/0.png");
+		//GoldSeatSprite[i].SetPosition(GoldSeatpos);
+		//GoldSeatSprite[i].Init(&GoldSeatTexture[i]);
+		//GoldSeatSprite[i].SetSize({ 50.0f,50.0f });
+
+
+		Hpseatpos.x += 50;
+		MaxHpseatpos.x += 50;
+		
+	}
+
+	for (int i = 1; i < 5;i++) {
 		//Gold
 		GoldSeatTexture[i].Load("Assets/UI/0.png");
 		GoldSeatSprite[i].SetPosition(GoldSeatpos);
 		GoldSeatSprite[i].Init(&GoldSeatTexture[i]);
 		GoldSeatSprite[i].SetSize({ 50.0f,50.0f });
-
-
-		Hpseatpos.x += 50;
-		MaxHpseatpos.x += 50;
 		GoldSeatpos.x += 50;
 	}
-
-
-	
-
-
 }
 
 
@@ -109,16 +114,12 @@ bool Menu::Start()
 	BackSeatSprite.Init(&BackSeatTexture);
 	BackSeatSprite.SetSize({ 1920.0f,1080.0f });
 
-	
-
 	for (int J = 0;J < 5;J++)
 	{
 		for (int I = 0;I < 6;I++)
 		{
 			//インベントリ
-
 			InventorySeatTexture[J][I].Load("Assets/UI/ui1.png");
-
 			InventorySeatSprite[J][I].SetPosition(InventoryPos);
 			InventorySeatSprite[J][I].Init(&InventorySeatTexture[J][I]);
 			InventorySeatSprite[J][I].SetSize({ 100.0f,100.0f });
@@ -141,6 +142,13 @@ bool Menu::Start()
 
 void Menu::Update()
 {
+	if (g_shop != nullptr)
+	{
+		if (g_shop->GetShop())
+		{
+			return;
+		}
+	}
 	switch (setMenu) {
 	case STOP:
 		break;
@@ -169,7 +177,7 @@ void Menu::Update()
 			setMenu = MENU;
 		}
 
-		if (Pad(0).IsPress(enButtonA) && setMenu == INVENTORY)
+		if (Pad(0).IsTrigger(enButtonA) && setMenu == INVENTORY)
 		{
 			//UseItem();
 
@@ -178,7 +186,7 @@ void Menu::Update()
 		break;
 		case BATTLEINVENTORY:
 
-			if (Pad(0).IsPress(enButtonA) && setMenu == INVENTORY)
+			if (Pad(0).IsTrigger(enButtonA) && setMenu == INVENTORY)
 			{
 				UseItem();
 
@@ -190,7 +198,13 @@ void Menu::Update()
 
 void Menu::Render(CRenderContext& renderContext)
 {
-	
+	if (g_shop != nullptr)
+	{
+		if (g_shop->GetShop())
+		{
+			return;
+		}
+	}
 	switch (setMenu) {
 
 	case STOP:
@@ -208,6 +222,10 @@ void Menu::Render(CRenderContext& renderContext)
 		{
 			HpSeatSprite[i].Draw(renderContext);
 			MaxHpSeatSprite[i].Draw(renderContext);
+			//GoldSeatSprite[i].Draw(renderContext);
+		}
+		for (int i = 0;i < 5;i++)
+		{
 			GoldSeatSprite[i].Draw(renderContext);
 		}
 		break;
@@ -309,27 +327,33 @@ void Menu::LvChangTex()
 void Menu::GoldChangTex()
 {
 
-	int NextGold[3];
+	int NextGold[4];
 	int NextGoldChang = GoldChang;
 
-	NextGold[0] = NextGoldChang / 100;
+	NextGold[0] = NextGoldChang / 1000;
 	sprintf(GoldName, "Assets/UI/%d.png", NextGold[0]);
 	GoldSeatTexture[1].Release();
 	GoldSeatTexture[1].Load(GoldName);
 
-	NextGoldChang %= 100;
+	NextGoldChang %= 1000;
 
-	NextGold[1] = NextGoldChang / 10;
+	NextGold[1] = NextGoldChang / 100;
 	sprintf(GoldName, "Assets/UI/%d.png", NextGold[1]);
 	GoldSeatTexture[2].Release();
 	GoldSeatTexture[2].Load(GoldName);
 
-	NextGoldChang %= 10;
-	NextGold[2] = NextGoldChang;
+	NextGoldChang %= 100;
+	NextGold[2] = NextGoldChang/10;
 	sprintf(GoldName, "Assets/UI/%d.png", NextGold[2]);
 	GoldSeatTexture[3].Release();
 	GoldSeatTexture[3].Load(GoldName);
 
+	NextGoldChang %= 10;
+
+	NextGold[3] = NextGoldChang;
+	sprintf(GoldName, "Assets/UI/%d.png", NextGold[3]);
+	GoldSeatTexture[4].Release();
+	GoldSeatTexture[4].Load(GoldName);
 
 }
 void Menu::InventoryChangTex(int Item)
@@ -358,15 +382,16 @@ void Menu::InventoryChangTex(int Item)
 
 void Menu::Itemerase()
 {
+	if (InventoryPackNumber <0) { return; }
 	for (int j = 0;j <= 30;j++)
 	{
 		InventoryPackNumber++;
-		if (InventoryPack[j]!=0) { continue; }
+		if (InventoryPack[j]!=3){ continue; }
 		InventoryPack[j] = 0;
 		
 
 		if (InventoryY < 5) {
-			sprintf(InvebtoryName, "Assets/Item/Item%d.png", 0);
+			sprintf(InvebtoryName, "Assets/Item/Item%d.png",0);
 			InventorySeatTexture[InventoryY][InventoryX].Release();
 			InventorySeatTexture[InventoryY][InventoryX].Load(InvebtoryName);
 			InventorySeatSprite[InventoryY][InventoryX].Init(&InventorySeatTexture[InventoryY][InventoryX]);
@@ -379,6 +404,7 @@ void Menu::Itemerase()
 				InventoryY++;
 			}
 		}
+		//return;
 	}
 }
 
@@ -404,8 +430,6 @@ void Menu::BattleMenuStop()
 
 void Menu::MenuSceneexit()
 {
-
-
 	setMenu = STOP;
 
 }
@@ -435,10 +459,11 @@ bool Menu::UseItem()
 			setHP(g_Hud->GetHP());
 			g_battlemenu->SetHp(g_Hud->GetHP());
 
+			Itemerase();
 
 			if (g_battleplayer != nullptr) {
 				CVector3 Bpos = g_battleplayer->Getpos();
-				Bpos.z = Bpos.z - 0.9f;
+				//Bpos.z = Bpos.z - 0.9f;
 				g_battleplayer->Particle(Bpos, 1);//回復パーティクルの呼び出し
 			}
 			break;

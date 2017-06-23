@@ -117,34 +117,15 @@ void shop::Init(const char* modelName, CVector3 position, CQuaternion rotation)
 
 void shop::Update()
 {
-	if (g_player != nullptr) {
 
-		CVector3 Ppos = g_player->Getpos();
-		CVector3 Vpos;
-
-		Vpos.x = Ppos.x - Pointpos.x;
-		Vpos.y = Ppos.y - Pointpos.y;
-		Vpos.z = Ppos.z - Pointpos.z;
-		float L = Vpos.Length();
-
-
-		if (Pad(0).IsPress(enButtonB))
-		{
-			g_player->IsMoveSTART();
-			weaponState = -1;
-		}
-		if (L < 7.0f && Pad(0).IsPress(enButtonA))
-		{
-			weaponState = Weapon1;
-			g_player->IsMoveSTOP();
-
-		}
-	}
 
 	
 	switch(weaponState)
 	{
+		
 		case Weapon1:
+		
+		g_menu->MenuSceneStop();
 		m_CasolBGSprite.SetPosition({ -800,300 });
 		m_CasolBGSprite.SetSize({ 200,200 });
 
@@ -161,45 +142,80 @@ void shop::Update()
 		}
 
 		if (g_Hud->GetGold() < nedan1) { break; }
+
+		if (Pad(0).IsTrigger(enButtonA))
+		{
+			g_Hud->ATKUp(10);
+			g_Hud->SubtractGold(nedan1);
+			g_menu->GoldChangTex();
+		}
+
+		break;
 		
-		if (Pad(0).IsPress(enButtonA))
-		{
-			g_Hud->ATKUp(20);
-			g_Hud->Shiharai(nedan1);
-			g_menu->GoldChangTex();
-		}
-
-		break;
 		case Weapon2:
-
-		m_CasolBGSprite.SetPosition({ -800,200 });
-		m_CasolBGSprite.SetSize({ 200,200 });
-		weaponState = Weapon2;
-
-		if (Pad(0).IsPress(enButtonUp))
-		{
-
-			weaponState = Weapon1;
-		}
-		else if (Pad(0).IsPress(enButtonDown))
-		{
-
+		
+			g_menu->MenuSceneStop();
+			m_CasolBGSprite.SetPosition({ -800,200 });
+			m_CasolBGSprite.SetSize({ 200,200 });
 			weaponState = Weapon2;
-		}
 
-		if (g_Hud->GetGold()<nedan2) { break; }
-				
-		if (Pad(0).IsPress(enButtonA))
-		{
+			if (Pad(0).IsTrigger(enButtonUp))
+			{
 
-			g_Hud->ATKUp(50);
-			g_Hud->Shiharai(nedan2);
-			g_menu->GoldChangTex();
-		}
-				
-		break;
+				weaponState = Weapon1;
+			}
+			else if (Pad(0).IsTrigger(enButtonDown))
+			{
+
+				weaponState = Weapon2;
+			}
+
+			if (g_Hud->GetGold() < nedan2) { break; }
+
+			if (Pad(0).IsTrigger(enButtonA))
+			{
+
+				g_Hud->ATKUp(30);
+				g_Hud->SubtractGold(nedan2);
+				g_menu->GoldChangTex();
+			}
+
+			break;
+		
 		default:
 		break;
+	}
+
+
+
+	if (g_player != nullptr) {
+
+		CVector3 Ppos = g_player->Getpos();
+		CVector3 Vpos;
+
+		Vpos.x = Ppos.x - Pointpos.x;
+		Vpos.y = Ppos.y - Pointpos.y;
+		Vpos.z = Ppos.z - Pointpos.z;
+		float L = Vpos.Length();
+
+		/*if (g_menu->GetSceneState()!=0)
+		{
+		return;
+		}*/
+		if (Pad(0).IsTrigger(enButtonB))
+		{
+			g_player->IsMoveSTART();
+			weaponState = -1;
+			//g_menu->MenuSceneItem();
+			Shopflg = false;
+		}
+		if (L < 7.0f && Pad(0).IsTrigger(enButtonA))
+		{
+			Shopflg = true;
+			weaponState = Weapon1;
+			g_player->IsMoveSTOP();
+
+		}
 	}
 }
 

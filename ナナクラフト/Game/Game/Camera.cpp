@@ -2,7 +2,7 @@
 #include "Camera.h"
 #include "BattlePlayer.h"
 #include "BattleEnemy.h"
-
+#include "BattleScene.h"
 
 
 Camera::Camera()
@@ -103,12 +103,24 @@ void Camera::TpsCamera()
 //í“¬‚É“ü‚é‘O‚ÌƒJƒƒ‰
 void Camera::BattleCamera()
 {
-
+	int Bc=g_battleScene->GetBcase();
+	if (Bc== 0 || Bc == 1)
+	{
+		Battlepos = { -4.0f,52.0f,-8.0f };
+	}
+	else if (Bc == 2)
+	{
+		Battlepos = { -6.0f,52.0f,-11.5f };
+	}
+	else if(Bc==3)
+	{
+		Battlepos = { -4.0f,52.0f,-12.0f };
+	}
 	CVector3 bpos;
 	bpos = g_battleplayer->Getpos2();
 	Battletag.z = bpos.z + 7;
 	camera.SetPosition(Battlepos); 
-	camera.SetTarget(Battletag);   
+	camera.SetTarget(Battletag);
 
 }
 

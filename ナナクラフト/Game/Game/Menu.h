@@ -48,6 +48,11 @@ public:
 	{
 		setMenu = BATTLEINVENTORY;
 	}
+
+	int GetSceneState()
+	{
+		return setMenu;
+	}
 	void MenuSceneStop();
 	void BattleMenuStop();
 
@@ -99,8 +104,10 @@ private:
 
 	//ÉSÅ[ÉãÉh
 
-	CSprite     GoldSeatSprite[4];
-	CTexture    GoldSeatTexture[4];
+	/*CSprite     GoldSeatSprite[4];
+	CTexture    GoldSeatTexture[4];*/
+	CSprite     GoldSeatSprite[5];
+	CTexture    GoldSeatTexture[5];
 	CVector2    GoldSeatpos = {-180.0f,-100.0f};
 	int         GoldChang = 0;
 
