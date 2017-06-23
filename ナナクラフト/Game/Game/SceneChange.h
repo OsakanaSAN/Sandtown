@@ -33,6 +33,13 @@ private:
 	CRigidBody			 rigidBody;		//çÑëÃÅB
 	bool                 Norend = false;
 	bool                 Out = false;
+
+
+
+	CSprite			ButtonSprite;
+	CTexture        ButtonTexture;
+	CVector2        ButtonPos = { 0.0f,100.0f };
+	bool            Cahange = false;
 };
 
 extern SceneChange* g_SC;

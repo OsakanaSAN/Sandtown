@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿  tkEnginePreCompile.cpp
   tkPathFinding.cpp
   tkCameraCollisionSolver.cpp
@@ -79,6 +80,10 @@ shape\tkSphereShape.cpp(61): warning C4267: '引数': 'size_t' から 'int' に�
   tkEngine.cpp
 tkEngine.cpp(291): warning C4244: '初期化中': 'double' から 'DWORD' への変換です。データが失われる可能性があります。
   コードを生成中...
+=======
+﻿  tkEngine.cpp
+tkEngine.cpp(291): warning C4244: '初期化中': 'double' から 'DWORD' への変換です。データが失われる可能性があります。
+>>>>>>> 11ab15097f93f708632e6a1ca7c11fa392f0d8ea
 d3d9.lib(d3d9.dll) : warning LNK4006: __NULL_IMPORT_DESCRIPTOR は d3dx9.lib(d3dx9_43.dll) で定義されています。2 つ目以降の定義は無視されます。
 XInput.lib(XINPUT1_3.dll) : warning LNK4006: __NULL_IMPORT_DESCRIPTOR は d3dx9.lib(d3dx9_43.dll) で定義されています。2 つ目以降の定義は無視されます。
   tkEngine.vcxproj -> C:\Users\kbc16b15\Desktop\github\新しいフォルダー\Sandtown\ナナクラフト\Game\x64\Release\tkEngine.lib

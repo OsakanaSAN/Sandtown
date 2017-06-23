@@ -169,6 +169,7 @@ bool BattleScene::Start()
 
 void BattleScene::Update()
 {
+
 	//CVector3 Pintpos = g_battleplayer->Getpos();
 	///*CVector3 Epos = g_battleenemy->Getpos();
 	//CVector3 Ppos = g_battleplayer->Getpos();
@@ -177,13 +178,6 @@ void BattleScene::Update()
 	//Pintpos.Scale(0.5f);*/
 
 	//CVector3 Cpos = g_gameCamera->BGetPos();
-
-	//Pintpos.Subtract(Cpos);
-	//
-	//Dof().SetPint(Pintpos.Length()*1000);
-	//Dof().SetFocalLength(40.0f);
-
-	//DamageTex(true);
 
 	if (!IsBattleStart) { return; }
 
@@ -316,7 +310,7 @@ void BattleScene::Update()
 	}
 	else if (Victory == false)
 	{
-		
+		ResultTime += GameTime().GetFrameDeltaTime();
 
 		Defeat();
 		/*if (Pad(0).IsPress(enButtonRB1))
@@ -612,12 +606,12 @@ void BattleScene::EnemyTurn()
 			Loseflg = true;//戦闘に負けた
 
 			Victory = false;
-			Comand = Result;
-			
+			//Comand = Result;
 			g_Hud->SubtractGold(g_Hud->GetGold()/2);
 
 			EnemyturnEnd = true;
 			//DeleteGO(g_battleScene);
+
 
 			//リザルト画面を出す処理かシーン遷移？
 		}
@@ -825,8 +819,10 @@ void BattleScene::EnemyTurn3()
 void BattleScene::Defeat()
 {
 
+	if (ResultTime < 2) { return ;}
 	if (Pad(0).IsTrigger(enButtonA))
 	{
+		Victory = true;
 		DeleteGO(g_battleScene);
 	}
 
@@ -836,6 +832,7 @@ void BattleScene::BattleResult()
 {
 	
 	GetEXP[1] = g_Hud->GetLV();
+	Victory = false;
 
 	if (GetEXP[0] < GetEXP[1]) {
 		m_ResultBGTexture2.Load("Assets/sprite/lvup.png");
@@ -1009,9 +1006,9 @@ void BattleScene::PostRender(CRenderContext&renderContext)
 	if (Comand == Result) {
 		m_ComandBGSprite1.SetPosition({ 0,0 });
 		m_ComandBGSprite1.SetSize({ 700.0f,900.0f });
-		if (Victory) {
+		//if (Victory) {
 			m_ComandBGSprite1.Draw(renderContext);
-		}
+		//}
 		m_ResultBGSprite1.Draw(renderContext);
 		m_ResultBGSprite3.Draw(renderContext);
 		m_ResultBGSprite4.Draw(renderContext);

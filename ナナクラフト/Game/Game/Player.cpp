@@ -116,6 +116,7 @@ void Player::Update()
 
 	case STOP:
 
+		
 		break;
 
 	}

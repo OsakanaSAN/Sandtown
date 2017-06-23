@@ -21,7 +21,6 @@ GameScene* g_gameScene = NULL;
 Player* g_player = nullptr;
 Camera* g_gameCamera = nullptr;
 Map*    g_map = nullptr;
-Map2*   g_map2 = nullptr;
 BattleScene* g_battleScene = nullptr;
 HUD*    g_Hud = nullptr;
 Menu*   g_menu = nullptr;
@@ -129,13 +128,13 @@ void GameScene::Update()
 		while (scenes != STOP)
 		{
 
-			if (/*g_map2 == nullptr*/ g_Dungeon == nullptr)
+			if ( g_Dungeon == nullptr)
 			{
-				g_gameCamera->ChangeStart();
 
 				g_Dungeon = NewGO<Dungeon>(0);
 				//g_map2 = NewGO<Map2>(0);
 				g_player = NewGO<Player>(0);
+				
 				modelName = "Assets/modelData/ghost.X";
 				g_Enemy = NewGO<Enemy>(0);
 				g_Enemy->Init(modelName);
@@ -163,17 +162,18 @@ void GameScene::Update()
 				g_Enemy3->Init(modelName);
 				g_Enemy3->setPos({ 20.0f, 0.0f, -15.0f });
 				g_Enemy3->LevelSet(2);
-				/*g_Enemy3->Setexp(30);
-				g_Enemy3->SetEATK(50);
-				g_Enemy3->SetHP(90);
-				g_Enemy3->SetGold(60);*/
+				g_Enemy3->SetGold(60);
+
+				g_Dungeon = NewGO<Dungeon>(0);
+
+				g_gameCamera->ChangeStart();
 
 			}
 
 
 			else 
 			{
-				if (g_Dungeon->IsActive()/*g_map2->IsActive()*/ && g_Enemy->IsActive() && g_Enemy2->IsActive() && g_Enemy3->IsActive() && g_player->IsActive()) {
+				if (g_Dungeon->IsActive() && g_Enemy->IsActive() && g_Enemy2->IsActive() && g_Enemy3->IsActive() && g_player->IsActive()) {
 
 					g_fade->StartFadeIn();
 					scenes = STOP;
@@ -193,10 +193,11 @@ void GameScene::Update()
 		{
 			if (g_map == nullptr)
 			{
-				g_gameCamera->ChangeStart();
+			
 				if (g_fade->IsExecute() == true){ return; }
 				g_player = NewGO<Player>(0);
 				g_map = NewGO<Map>(0);
+				g_gameCamera->ChangeStart();
 				
 			}
 			else
@@ -279,7 +280,6 @@ void GameScene::DeteScene()
 	else if (mapscene == DOUKUTU)
 	{
 
-			//DeleteGO(g_map2);
 			DeleteGO(g_Dungeon);
 			DeleteGO(g_Enemy);
 			DeleteGO(g_Enemy2);
@@ -288,7 +288,7 @@ void GameScene::DeteScene()
 				DeleteGO(g_player);
 			}
 			scenes = MACHI;
-			//g_map2 = nullptr;
+			
 			g_Dungeon = nullptr;
 		
 	}

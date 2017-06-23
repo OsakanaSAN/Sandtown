@@ -358,6 +358,18 @@ void Menu::GoldChangTex()
 }
 void Menu::InventoryChangTex(int Item)
 {
+	while (InventoryPack[InventoryPackNumber] != 0)
+	{
+		InventoryPackNumber++;
+		InventoryX++;
+		if (InventoryX >= 6)
+		{
+			InventoryX = 0;
+			InventoryY++;
+		}
+
+	}
+
 	InventoryPack[InventoryPackNumber] = Item;
 	InventoryPackNumber++;
 
@@ -438,22 +450,18 @@ bool Menu::UseItem()
 {
 
 	if (g_Hud->GetHP() >= 500) { return false; } //HPの上限に達していたら帰る
-	if (InventoryPackNumber <0) { return false; } //使うことができるアイテムが無ければ帰る
+	//if (InventoryPackNumber <0) { return false; } //使うことができるアイテムが無ければ帰る
 
 
 
-	for (int count = 0;count < InventoryPackNumber;count++) {
+	for (int count = 0;count < 30;count++) {
 
 		if (InventoryPack[count] == 3)//使用したアイテムを消費する処理
 		{
-			for (count;count < InventoryPackNumber;count++)
-			{
-				int box = InventoryPack[count + 1];
-				InventoryPack[count + 1] = 0;
-				InventoryPack[count] = box;
-				
-			}
-			//InventoryPack[count] = 0;
+			InventoryPackNumber = count;
+			NoItem(count);  //使用したアイテムのテクスチャの置き換え
+
+			InventoryPack[count] = 0;
 
 			g_Hud->RecoveryHP(100); //100回復
 			setHP(g_Hud->GetHP());
@@ -473,4 +481,25 @@ bool Menu::UseItem()
 	return true;
 
 		
+}
+void Menu::NoItem(int Nonumber)
+{
+
+	if (Nonumber > 5)
+	{
+		NoInventY = Nonumber / 6;
+		Nonumber %= 6;
+	}
+
+	NoInventX = Nonumber;
+
+	sprintf(InvebtoryName, "Assets/Item/Item0.png");
+	InventorySeatTexture[NoInventY][NoInventX].Release();
+	InventorySeatTexture[NoInventY][NoInventX].Load(InvebtoryName);
+	InventorySeatSprite[NoInventY][NoInventX].Init(&InventorySeatTexture[InventoryY][InventoryX]);
+	InventorySeatSprite[NoInventY][NoInventX].SetSize({ 100.0f, 100.0f });
+
+	InventoryX = NoInventX;
+	InventoryY = NoInventY;
+
 }

@@ -13,6 +13,7 @@ public:
 	void GoldChangTex();
 	void InventoryChangTex(int Item);
 	void MenuSceneexit();
+	void NoItem(int Nonumber);
 	bool UseItem();
 	void Itemerase();
 
@@ -132,6 +133,8 @@ private:
 	char             InvebtoryName[255];
 	int              InventoryX = 0;
 	int              InventoryY = 0;
+	int              NoInventX = 0;
+	int              NoInventY = 0;
 	int              ItemNuber[30];
 	int              Number = 0;
 	int              InventoryPack[30];
