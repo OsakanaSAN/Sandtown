@@ -1,23 +1,17 @@
-<<<<<<< HEAD
-﻿  GameSound.cpp
-cl : コマンド ライン warning D9028: 簡易リビルド時のエラーです、通常のビルドに戻します
-  Game.vcxproj -> C:\Users\kbc16b15\Desktop\github\新しいフォルダー\Sandtown\ナナクラフト\Game\x64\Debug\Game.exe
-  Game.vcxproj -> C:\Users\kbc16b15\Desktop\github\新しいフォルダー\Sandtown\ナナクラフト\Game\x64\Debug\Game.pdb (Full PDB)
-=======
 ﻿  GameScene.cpp
 c:\users\kbc16b03\desktop\sandtown\ナナクラフト\game\game\hud.h(16): warning C4244: 'return': 'float' から 'int' への変換です。データが失われる可能性があります。
 c:\users\kbc16b03\desktop\sandtown\ナナクラフト\game\game\scene\gamescene.cpp(108): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
-  GameSound.cpp
+  Mining.cpp
+c:\users\kbc16b03\desktop\sandtown\ナナクラフト\game\game\hud.h(16): warning C4244: 'return': 'float' から 'int' への変換です。データが失われる可能性があります。
   コードを生成中...
 c:\users\kbc16b03\desktop\sandtown\ナナクラフト\game\game\scene\gamescene.cpp(66): warning C4715: 'GameScene::Start': 値を返さないコントロール パスがあります。
   コンパイル中...
-  TitleScene.cpp
+  shop.cpp
+c:\users\kbc16b03\desktop\sandtown\ナナクラフト\game\game\hud.h(16): warning C4244: 'return': 'float' から 'int' への変換です。データが失われる可能性があります。
+  Map2.cpp
+c:\users\kbc16b03\desktop\sandtown\ナナクラフト\game\game\map2.cpp(20): warning C4067: プリプロセッサ ディレクティブの後に余分な文字がありました - 改行が必要です
+  Dungeon.cpp
   コードを生成中...
-  スキップ中... (関連する変更は検出されませんでした)
-  Menu.cpp
-  Mapchip.cpp
-  Enemy.cpp
-  BattleScene.cpp
+c:\users\kbc16b03\desktop\sandtown\ナナクラフト\game\game\dungeon.cpp(217): warning C4715: 'Dungeon::Start': 値を返さないコントロール パスがあります。
   Game.vcxproj -> C:\Users\kbc16b03\Desktop\Sandtown\ナナクラフト\Game\x64\Debug\Game.exe
   Game.vcxproj -> C:\Users\kbc16b03\Desktop\Sandtown\ナナクラフト\Game\x64\Debug\Game.pdb (Full PDB)
->>>>>>> 87f17376ec4fc3297de75a4e06430214589d54c1

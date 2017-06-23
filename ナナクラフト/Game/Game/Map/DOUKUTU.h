@@ -10,18 +10,6 @@
 	CVector3(-3.91f, 0.03f, -4.71f),             //平行移動
 	CQuaternion(0.00f, 1.00f, 0.00f, 0.00f ),  //回転
 },
-//ghost
-{
-	"ghost",
-	CVector3(21.00f, 0.00f, -14.90f),             //平行移動
-	CQuaternion(0.00f, 0.00f, 0.00f, 1.00f ),  //回転
-},
-//ghost
-{
-	"ghost",
-	CVector3(-2.90f, -0.10f, -39.70f),             //平行移動
-	CQuaternion(0.00f, 0.00f, 0.00f, 1.00f ),  //回転
-},
 //danmati
 {
 	"danmati",

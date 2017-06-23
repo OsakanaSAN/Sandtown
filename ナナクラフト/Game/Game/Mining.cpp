@@ -65,6 +65,11 @@ void Mining::Init(const char* modelName, CVector3 position, CQuaternion rotation
 	//çÏê¨ÇµÇΩçÑëÃÇï®óùÉèÅ[ÉãÉhÇ…í«â¡Ç∑ÇÈÅB
 	PhysicsWorld().AddRigidBody(&rigidBody);
 
+	ButtonTexture.Load("Assets/UI/Xbutton.png");
+	ButtonSprite.Init(&ButtonTexture);
+	ButtonSprite.SetPosition(ButtonPos);
+	ButtonSprite.SetSize({ 70.0, 70.0 });
+
 
 }
 
@@ -82,55 +87,71 @@ void Mining::Update()
 		Vpos.z = Ppos.z - Pointpos.z;
 		float L = Vpos.Length();
 
-		if (minigcount < 3 && L < 2.0f && Pad(0).IsTrigger(enButtonX) && S_timer == 0 && m_timer == 0)
-		{
-			
-			if (ItemRender == NoGet) {
+		if (L < 2.0f && minigcount < 3) {
+			minigs = true;
 
-				m_sound_bgm_battle = NewGO<CSoundSource>(0);
-				m_sound_bgm_battle->Init("Assets/sound/select.wav");
-				m_sound_bgm_battle->Play(false);
-				m_sound_bgm_battle->SetVolume(7.0f);
+			if (Pad(0).IsTrigger(enButtonX) && S_timer == 0 && m_timer == 0)
+			{
+				minigs = false;
+				if (ItemRender == NoGet) {
 
-				IconSeatTexture.Load("Assets/Item/Item4.png");
-				IconSeatSprite.Init(&IconSeatTexture);
-				IconSeatSprite.SetPosition(Iconseatpos);
-				IconSeatSprite.SetSize({ 100.f,100.0f });
-				IconSeatSprite.SetAlpha(1.0f);
+					m_sound_bgm_battle = NewGO<CSoundSource>(0);
+					m_sound_bgm_battle->Init("Assets/sound/select.wav");
+					m_sound_bgm_battle->Play(false);
+					m_sound_bgm_battle->SetVolume(7.0f);
 
-				ItemRender = Get;
+					IconSeatTexture.Load("Assets/Item/Item4.png");
+					IconSeatSprite.Init(&IconSeatTexture);
+					IconSeatSprite.SetPosition(Iconseatpos);
+					IconSeatSprite.SetSize({ 100.f,100.0f });
+					IconSeatSprite.SetAlpha(1.0f);
+
+					ItemRender = Get;
+				}
+
+
 			}
 
-			
+		}
+		else
+		{
+			minigs = false;
 		}
 
-		else if (ItemRender == Get) {
 
+		if (ItemRender == Get)
+		{
+			minigs = false;
 			S_timer += GameTime().GetFrameDeltaTime();
 
 		}
 
-
-
-		if(S_timer > 0.5)
+		if (S_timer > 0.5)
 		{
 			m_timer += GameTime().GetFrameDeltaTime();
 
 			if (m_timer < FADE_TIME_ITEM)
 			{
+				minigs = false;
 				float t = m_timer / FADE_TIME_ITEM;
 				IconSeatSprite.SetAlpha(max(1.0f - t, 0.0f));
 			}
 
 			else if (m_timer > 0.5f) {
+				minigs = false;
 				g_menu->InventoryChangTex(4);
 				minigcount++;
 				m_timer = 0.0f;
 				S_timer = 0;
 				ItemRender = NoGet;
-				
+
 			}
 		}
+
+		
+
+
+
 	}
 
 }
@@ -138,11 +159,16 @@ void Mining::Update()
 void Mining::Render(CRenderContext& renderContext)
 {
 
+	
+	skinModel.Draw(renderContext, g_gameCamera->GetViewMatrix(), g_gameCamera->GetProjectionMatrix());
+	
+	if (minigs)
+	{
+		ButtonSprite.Draw(renderContext);
+	}
+
 	if (ItemRender == Get)
 	{
 		IconSeatSprite.Draw(renderContext);
 	}
-	
-	skinModel.Draw(renderContext, g_gameCamera->GetViewMatrix(), g_gameCamera->GetProjectionMatrix());
-
 }

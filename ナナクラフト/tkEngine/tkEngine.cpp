@@ -49,7 +49,7 @@ namespace tkEngine{
 		};
 		RegisterClassEx(&wc);
 		// Create the application's window
-		m_hWnd = CreateWindow(TEXT("D3D Tutorial"), TEXT("D3D Tutorial 06: Meshes"),
+		m_hWnd = CreateWindow(TEXT("D3D Tutorial"), TEXT("Dungeon_Craft"),
 			WS_OVERLAPPEDWINDOW, 0, 0, m_screenWidth, m_screenHeight,
 			nullptr, nullptr, wc.hInstance, nullptr);
 

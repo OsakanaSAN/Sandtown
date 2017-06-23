@@ -31,6 +31,11 @@ private:
 	CTexture    IconSeatTexture;
 	CVector2    Iconseatpos = { 0.0f,0.0f };
 
+	CSprite			ButtonSprite;
+	CTexture        ButtonTexture;
+	CVector2        ButtonPos = { 0.0f,100.0f };
+	bool            minigs = false;
+
 	CSoundSource* m_sound_bgm_battle;
 
 	CLight              Maplight;

@@ -118,7 +118,6 @@ private:
 	bool            over = false;
 
 	CSkinModel		skinModel;
-	CSkinModel      ASD;
 	CSkinModelData	skinModelData;
 
 	CAnimation		Animation;

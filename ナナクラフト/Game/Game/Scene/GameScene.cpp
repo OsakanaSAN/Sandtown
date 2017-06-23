@@ -134,9 +134,10 @@ void GameScene::Update()
 			{
 				g_gameCamera->ChangeStart();
 
-				g_Dungeon = NewGO<Dungeon>(0);
+				
 				
 				g_player = NewGO<Player>(0);
+				
 				modelName = "Assets/modelData/ghost.X";
 				g_Enemy = NewGO<Enemy>(0);
 				g_Enemy->Init(modelName);
@@ -166,7 +167,7 @@ void GameScene::Update()
 				g_Enemy3->SetHP(90);
 				g_Enemy3->SetGold(60);
 
-
+				g_Dungeon = NewGO<Dungeon>(0);
 				//g_map2 = NewGO<Map2>(0);
 				
 			}
