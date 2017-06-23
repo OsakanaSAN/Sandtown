@@ -163,6 +163,7 @@ private:
 	bool Resultflg2 = true;
 	int Prandom = 0;
 	int Erandom = 0;
+	float ResultTime = 0; //result‰æ–Ê‚ªI‚í‚éŠÔ
 };
 
 extern BattleScene* g_battleScene;

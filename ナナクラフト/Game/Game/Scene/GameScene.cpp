@@ -21,7 +21,6 @@ GameScene* g_gameScene = NULL;
 Player* g_player = nullptr;
 Camera* g_gameCamera = nullptr;
 Map*    g_map = nullptr;
-Map2*   g_map2 = nullptr;
 BattleScene* g_battleScene = nullptr;
 HUD*    g_Hud = nullptr;
 Menu*   g_menu = nullptr;
@@ -130,7 +129,7 @@ void GameScene::Update()
 		while (scenes != STOP)
 		{
 
-			if (/*g_map2 == nullptr*/ g_Dungeon == nullptr)
+			if ( g_Dungeon == nullptr)
 			{
 				g_gameCamera->ChangeStart();
 
@@ -168,14 +167,14 @@ void GameScene::Update()
 				g_Enemy3->SetGold(60);
 
 				g_Dungeon = NewGO<Dungeon>(0);
-				//g_map2 = NewGO<Map2>(0);
+				
 				
 			}
 
 			
 			else 
 			{
-				if (g_Dungeon->IsActive()/*g_map2->IsActive()*/ && g_Enemy->IsActive() && g_Enemy2->IsActive() && g_Enemy3->IsActive() && g_player->IsActive()) {
+				if (g_Dungeon->IsActive() && g_Enemy->IsActive() && g_Enemy2->IsActive() && g_Enemy3->IsActive() && g_player->IsActive()) {
 
 					g_fade->StartFadeIn();
 					scenes = STOP;
@@ -281,7 +280,6 @@ void GameScene::DeteScene()
 	else if (mapscene == DOUKUTU)
 	{
 
-			//DeleteGO(g_map2);
 			DeleteGO(g_Dungeon);
 			DeleteGO(g_Enemy);
 			DeleteGO(g_Enemy2);
@@ -290,7 +288,7 @@ void GameScene::DeteScene()
 				DeleteGO(g_player);
 			}
 			scenes = MACHI;
-			//g_map2 = nullptr;
+			
 			g_Dungeon = nullptr;
 		
 	}

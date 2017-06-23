@@ -23,7 +23,11 @@ SceneChange::~SceneChange()
 
 bool SceneChange::Start()
 {
-	
+	ButtonTexture.Load("Assets/UI/Abutton.png");
+	ButtonSprite.Init(&ButtonTexture);
+	ButtonSprite.SetPosition(ButtonPos);
+	ButtonSprite.SetSize({ 70.0, 70.0 });
+
 	
 	return true;
 }
@@ -75,12 +79,25 @@ void SceneChange::Update()
 		Vpos.z = Ppos.z - SCpos.z;
 		float L = Vpos.Length();
 
-		if (L < 3.0f && Pad(0).IsPress(enButtonA) && Out == false)
+		if(g_player->Stop())
 		{
-			
-			g_gameScene->MapChange();
-			Out = true;
-			
+			Cahange = false;
+			return;
+		}
+		if (L < 3.0f)
+		{
+			Cahange = true;
+			if (Pad(0).IsPress(enButtonA) && Out == false)
+			{
+				
+				g_gameScene->MapChange();
+				Out = true;
+
+			}
+		}
+		else
+		{
+			Cahange = false;
 		}
 	}
 
@@ -91,5 +108,10 @@ void SceneChange::Render(CRenderContext& renderContext)
 	if (Norend == false) {
 		skinModel.Draw(renderContext, g_gameCamera->GetViewMatrix(), g_gameCamera->GetProjectionMatrix());
 	}
+	if (Cahange)
+	{
+		ButtonSprite.Draw(renderContext);
+	}
+
 }
 

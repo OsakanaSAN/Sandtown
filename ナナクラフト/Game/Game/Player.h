@@ -14,6 +14,11 @@ public:
 	void Update();
 	void Render(CRenderContext& renderContext);
 	void Move();
+	bool Stop() const
+	{
+		return STOp;
+	}
+
 	//ƒ|ƒWƒVƒ‡ƒ“‚ð“n‚·
 	CVector3 Getpos()
 	{
@@ -59,10 +64,12 @@ public:
 	void IsMoveSTOP()
 	{
 		IsMove = STOP;
+		STOp = true;
 	}
 	void IsMoveSTART()
 	{
 		IsMove = START;
+		STOp = false;
 	}
 
 
@@ -126,6 +133,7 @@ private:
 
 	float					radius = 0.0f;
 	float					height = 0.0f;
+	bool                    STOp = false;
 
 
 	CVector3 scale = CVector3::One;

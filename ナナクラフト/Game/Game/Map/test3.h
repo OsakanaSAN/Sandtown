@@ -4,12 +4,6 @@
 	CVector3(0.00f, 0.00f, 0.00f),             //平行移動
 	CQuaternion(-0.71f, 0.00f, 0.00f, 0.71f ),  //回転
 },
-//doa
-{
-	"doa",
-	CVector3(-12.29f, 0.00f, 19.80f),             //平行移動
-	CQuaternion(-0.71f, 0.00f, 0.00f, 0.71f ),  //回転
-},
 //Unity
 {
 	"Unity",
@@ -423,4 +417,10 @@
 	"maru",
 	CVector3(0.00f, 0.00f, 1.60f),             //平行移動
 	CQuaternion(-0.71f, 0.00f, 0.00f, 0.71f ),  //回転
+},
+//doa
+{
+	"doa",
+	CVector3(-12.29f, 0.00f, 19.80f),             //平行移動
+	CQuaternion(-0.71f, 0.00f, 0.00f, 0.71f),  //回転
 },

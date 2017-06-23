@@ -144,17 +144,14 @@ bool BattleScene::Start()
 
 	m_ResultBGTexture2.Load("Assets/sprite/lvup.png");
 	m_ResultBGSprite2.Init(&m_ResultBGTexture2);
-	//m_ResultBGSprite2.SetPosition({ 0,100 });
 	m_ResultBGSprite2.SetAlpha(0.0);
 
 	m_ResultBGTexture3.Load("Assets/sprite/	result_1.png");
-	m_ResultBGSprite3.Init(&m_ResultBGTexture3);
-	//m_ResultBGSprite3.SetPosition({ 0,-200 });
+	m_ResultBGSprite3.Init(&m_ResultBGTexture3);;
 	m_ResultBGSprite3.SetAlpha(0.0);
 
 	m_ResultBGTexture4.Load("Assets/sprite/	result_2.png");
 	m_ResultBGSprite4.Init(&m_ResultBGTexture4);
-	//m_ResultBGSprite4.SetPosition({ 0,-50 });
 	m_ResultBGSprite4.SetAlpha(0.0);
 
 	g_sound->BattleSound();
@@ -187,22 +184,7 @@ bool BattleScene::Start()
 void BattleScene::Update()
 {
 	
-	
-	//CVector3 Pintpos = g_battleplayer->Getpos();
-	///*CVector3 Epos = g_battleenemy->Getpos();
-	//CVector3 Ppos = g_battleplayer->Getpos();
 
-	//Pintpos.Add(Ppos, Epos);
-	//Pintpos.Scale(0.5f);*/
-
-	//CVector3 Cpos = g_gameCamera->BGetPos();
-
-	//Pintpos.Subtract(Cpos);
-	//
-	//Dof().SetPint(Pintpos.Length()*1000);
-	//Dof().SetFocalLength(40.0f);
-
-	//DamageTex(true);
 
 	if (!IsBattleStart) { return; }
 
@@ -316,7 +298,7 @@ void BattleScene::Update()
 	}
 	else if (Victory == false)
 	{
-		
+		ResultTime += GameTime().GetFrameDeltaTime();
 
 		Defeat();
 		/*if (Pad(0).IsPress(enButtonRB1))
@@ -604,9 +586,9 @@ void BattleScene::EnemyTurn()
 			Loseflg = true;//戦闘に負けた
 
 			Victory = false;
-			Comand = Result;
+			//Comand = Result;
 			
-			//DeleteGO(g_battleScene);
+			DeleteGO(g_battleScene);
 
 			//リザルト画面を出す処理かシーン遷移？
 		}
@@ -622,8 +604,10 @@ void BattleScene::EnemyTurn()
 void BattleScene::Defeat()
 {
 
+	if (ResultTime < 2) { return ;}
 	if (Pad(0).IsTrigger(enButtonA))
 	{
+		Victory = true;
 		DeleteGO(g_battleScene);
 	}
 
@@ -633,6 +617,7 @@ void BattleScene::BattleResult()
 {
 	
 	GetEXP[1] = g_Hud->GetLV();
+	Victory = false;
 
 	if (GetEXP[0] < GetEXP[1]) {
 		m_ResultBGTexture2.Load("Assets/sprite/lvup.png");
@@ -811,9 +796,9 @@ void BattleScene::PostRender(CRenderContext&renderContext)
 	if (Comand == Result) {
 		m_ComandBGSprite1.SetPosition({ 0,0 });
 		m_ComandBGSprite1.SetSize({ 700.0f,900.0f });
-		if (Victory) {
+		//if (Victory) {
 			m_ComandBGSprite1.Draw(renderContext);
-		}
+		//}
 		m_ResultBGSprite1.Draw(renderContext);
 		m_ResultBGSprite3.Draw(renderContext);
 		m_ResultBGSprite4.Draw(renderContext);

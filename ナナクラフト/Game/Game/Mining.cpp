@@ -86,7 +86,11 @@ void Mining::Update()
 		Vpos.y = Ppos.y - Pointpos.y;
 		Vpos.z = Ppos.z - Pointpos.z;
 		float L = Vpos.Length();
-
+		if (g_player->Stop())
+		{
+			minigs = false;
+			return;
+		}
 		if (L < 2.0f && minigcount < 3) {
 			minigs = true;
 
@@ -94,7 +98,7 @@ void Mining::Update()
 			{
 				minigs = false;
 				if (ItemRender == NoGet) {
-
+					ItemRender = Get;
 					m_sound_bgm_battle = NewGO<CSoundSource>(0);
 					m_sound_bgm_battle->Init("Assets/sound/select.wav");
 					m_sound_bgm_battle->Play(false);
@@ -106,7 +110,7 @@ void Mining::Update()
 					IconSeatSprite.SetSize({ 100.f,100.0f });
 					IconSeatSprite.SetAlpha(1.0f);
 
-					ItemRender = Get;
+					
 				}
 
 
