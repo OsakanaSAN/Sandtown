@@ -22,8 +22,6 @@ Enemy::Enemy()
 	Enemylight.SetDiffuseLightDirection(3, { 0.0f, 0.707f, -0.707f });
 	Enemylight.SetDiffuseLightColor(3, { 0.1f, 0.1f, 0.1f, 1.0f });
 	BakPosition = position;
-
-
 }
 
 
