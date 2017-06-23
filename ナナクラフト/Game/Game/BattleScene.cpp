@@ -58,10 +58,10 @@ BattleScene::~BattleScene()
 			g_sound->StopSound();
 			DeleteGO(g_battlemenu);
 			DeleteGO(g_battleplayer);
-			/*if (g_battlemenu != nullptr)
+			if (g_battlemenu != nullptr)
 			{
 				DeleteGO(g_battleenemy);
-			}*/
+			}
 			g_player = NewGO<Player>(0);
 			g_player->Loadpos();           //À•W‚ð“Ç‚Ýž‚Þ
 			g_gameScene->SceneStop();
@@ -415,7 +415,7 @@ void BattleScene::PlayerTurn()
 				g_Hud->SetExp(g_battleenemy->GetExp());
 				Winflg = true;//ƒoƒgƒ‹‚ÉŸ—˜‚µ‚½
 				BattleResult();//
-				DeleteGO(g_battleenemy);
+				//DeleteGO(g_battleenemy);
 				//g_battleenemy = nullptr;
 				g_menu->InventoryChangTex(3);
 				

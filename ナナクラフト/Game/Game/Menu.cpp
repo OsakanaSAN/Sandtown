@@ -400,11 +400,11 @@ bool Menu::UseItem()
 {
 
 	if (g_Hud->GetHP() >= 500) { return false; } //HPの上限に達していたら帰る
-	if (InventoryPackNumber <0) { return false; } //使うことができるアイテムが無ければ帰る
+	//if (InventoryPackNumber <0) { return false; } //使うことができるアイテムが無ければ帰る
 
 
 
-	for (int count = 0;count < InventoryPackNumber;count++) {
+	for (int count = 0;count < 30;count++) {
 
 		if (InventoryPack[count] == 3)//使用したアイテムを消費する処理
 		{
