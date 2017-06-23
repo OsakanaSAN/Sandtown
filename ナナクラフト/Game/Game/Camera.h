@@ -59,7 +59,7 @@ private:
 	CVector3 pos = { 0.0f,  2.0f,  3.0f };
 	CVector3 tag = { 1.0,1.0,1.0 };
 	CVector3 BattlePlayerCameraPos = { -1.5f,0.0f,1.0f };
-	CVector3 BattleEnemyCameraPos = { -0.0f,52.0f,-3.0f };
+	CVector3 BattleEnemyCameraPos = { -3.0f,51.0f,-3.0f };
 
 	CVector3	Battlepos = { -4.0f,51.5f,-9.5f };
 	CVector3	Battletag = {  2.0f,51.0f,-5.0f };

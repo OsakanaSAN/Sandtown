@@ -163,9 +163,8 @@ void Mining::Update()
 void Mining::Render(CRenderContext& renderContext)
 {
 
-	
+	\
 	skinModel.Draw(renderContext, g_gameCamera->GetViewMatrix(), g_gameCamera->GetProjectionMatrix());
-	
 	if (minigs)
 	{
 		ButtonSprite.Draw(renderContext);

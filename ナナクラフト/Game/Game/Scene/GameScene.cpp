@@ -131,7 +131,7 @@ void GameScene::Update()
 
 			if ( g_Dungeon == nullptr)
 			{
-				g_gameCamera->ChangeStart();
+				
 
 				
 				
@@ -167,7 +167,8 @@ void GameScene::Update()
 				g_Enemy3->SetGold(60);
 
 				g_Dungeon = NewGO<Dungeon>(0);
-				
+
+				g_gameCamera->ChangeStart();
 				
 			}
 
@@ -194,10 +195,11 @@ void GameScene::Update()
 		{
 			if (g_map == nullptr)
 			{
-				g_gameCamera->ChangeStart();
+			
 				if (g_fade->IsExecute() == true){ return; }
 				g_player = NewGO<Player>(0);
 				g_map = NewGO<Map>(0);
+				g_gameCamera->ChangeStart();
 				
 			}
 			else
