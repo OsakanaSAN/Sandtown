@@ -424,11 +424,9 @@ void BattleScene::PlayerTurn()
 			{
 
 				Comand = Result;
-
 				g_Hud->SetGold(g_battleenemy->GetEGold());
 				g_Hud->SetExp(g_battleenemy->GetExp());
 				Winflg = true;//ƒoƒgƒ‹‚ÉŸ—˜‚µ‚½
-				
 
 				BattleResult();//
 
