@@ -89,7 +89,7 @@ void SceneChange::Update()
 			Cahange = true;
 			if (Pad(0).IsPress(enButtonA) && Out == false)
 			{
-				
+
 				g_gameScene->MapChange();
 				Out = true;
 
@@ -100,8 +100,6 @@ void SceneChange::Update()
 			Cahange = false;
 		}
 	}
-
-
 }
 void SceneChange::Render(CRenderContext& renderContext)
 {
