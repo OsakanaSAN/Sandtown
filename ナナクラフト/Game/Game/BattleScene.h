@@ -177,6 +177,8 @@ private:
 	CVector3 BCamerapos = { 2.0f, 50.2f, -3.5f };//敵の配置ごとのカメラの位置
 	float ResultTime = 0; //result画面が終わる時間
 
+
+
 };
 
 extern BattleScene* g_battleScene;

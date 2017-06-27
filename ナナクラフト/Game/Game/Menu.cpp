@@ -97,6 +97,11 @@ Menu::Menu()
 		GoldSeatSprite[i].SetSize({ 50.0f,50.0f });
 		GoldSeatpos.x += 50;
 	}
+
+	m_CasolBGTexture.Load("Assets/sprite/casol2.png");
+	m_CasolBGSprite.Init(&m_CasolBGTexture);
+	m_CasolBGSprite.SetPosition({ casolXpos,casolYpos });
+	m_CasolBGSprite.SetSize({ 200,200 });
 }
 
 
@@ -171,7 +176,6 @@ void Menu::Update()
 		break;
 
 	case INVENTORY:
-
 		if (Pad(0).IsPress(enButtonUp) && setMenu == INVENTORY)
 		{
 			setMenu = MENU;
@@ -184,13 +188,13 @@ void Menu::Update()
 		}
 
 		break;
-		case BATTLEINVENTORY:
+	case BATTLEINVENTORY:
+		ItemSelect();
+		if (Pad(0).IsTrigger(enButtonA) && setMenu == INVENTORY)
+		{
+			UseItem();
 
-			if (Pad(0).IsTrigger(enButtonA) && setMenu == INVENTORY)
-			{
-				UseItem();
-
-			}
+		}
 		break;
 	}
 
@@ -230,7 +234,7 @@ void Menu::Render(CRenderContext& renderContext)
 		}
 		break;
 	case INVENTORY:
-
+		
 		BackSeatSprite.Draw(renderContext);
 		for (int J = 0;J < 5;J++)
 		{
@@ -242,7 +246,7 @@ void Menu::Render(CRenderContext& renderContext)
 			}
 
 		}
-
+		m_CasolBGSprite.Draw(renderContext);
 		break;
 
 	case BATTLEINVENTORY:
@@ -254,13 +258,14 @@ void Menu::Render(CRenderContext& renderContext)
 			{
 				InventorySeatSprite[J][I].Draw(renderContext);
 
-
 			}
 
 		}
+		m_CasolBGSprite.Draw(renderContext);
 		break;
-
+		
 	}
+	
 }
 
 void Menu::HpChangTex()
@@ -312,7 +317,6 @@ void Menu::MaxHpChangTex()
 	MaxNextHP[2] = MaxChangHP;
 	sprintf(HpTexName, "Assets/UI/%d.png", MaxNextHP[2]);
 	MaxHpSeatTexture[3].Load(HpTexName);
-
 
 }
 
@@ -388,8 +392,6 @@ void Menu::InventoryChangTex(int Item)
 		}
 	}
 
-
-
 }
 
 void Menu::Itemerase()
@@ -452,35 +454,35 @@ bool Menu::UseItem()
 	if (g_Hud->GetHP() >= 500) { return false; } //HPの上限に達していたら帰る
 	//if (InventoryPackNumber <0) { return false; } //使うことができるアイテムが無ければ帰る
 
+	if (InventoryPack[UseItemNo] == -1|| InventoryPack[UseItemNo] == 0) { return false; }
 
+	//if (InventoryPack[UseItemNo] == 3)//使用したアイテムを消費する処理
+	//{
+		InventoryPackNumber = UseItemNo;
+		NoItem(UseItemNo);			//使用したアイテムのテクスチャの置き換え
 
-	for (int count = 0;count < 30;count++) {
+		InventoryPack[UseItemNo] = 0;
 
-		if (InventoryPack[count] == 3)//使用したアイテムを消費する処理
-		{
-			InventoryPackNumber = count;
-			NoItem(count);  //使用したアイテムのテクスチャの置き換え
+		g_Hud->RecoveryHP(100); //100回復
+		setHP(g_Hud->GetHP());
+		g_battlemenu->SetHp(g_Hud->GetHP());
 
-			InventoryPack[count] = 0;
+		Itemerase();
 
-			g_Hud->RecoveryHP(100); //100回復
-			setHP(g_Hud->GetHP());
-			g_battlemenu->SetHp(g_Hud->GetHP());
-
-			Itemerase();
-
-			if (g_battleplayer != nullptr) {
-				CVector3 Bpos = g_battleplayer->Getpos();
-				//Bpos.z = Bpos.z - 0.9f;
-				g_battleplayer->Particle(Bpos, 1);//回復パーティクルの呼び出し
-			}
-			break;
+		if (g_battleplayer != nullptr) {
+			CVector3 Bpos = g_battleplayer->Getpos();
+			//Bpos.z = Bpos.z - 0.9f;
+			g_battleplayer->Particle(Bpos, 1);//回復パーティクルの呼び出し
 		}
-	}
+		/*return true;*/
+	//}
+		UseItemNomberR = 0;
+		UseItemNomberL = 1;
+		casolXpos = -400.0f;
+		casolYpos = 250.0f;
+		UseItemNo = -1;
 
 	return true;
-
-		
 }
 void Menu::NoItem(int Nonumber)
 {
@@ -502,4 +504,73 @@ void Menu::NoItem(int Nonumber)
 	InventoryX = NoInventX;
 	InventoryY = NoInventY;
 
+}
+
+void Menu::ItemSelect()
+{
+	m_CasolBGTexture.Load("Assets/sprite/casol2.png");
+	m_CasolBGSprite.Init(&m_CasolBGTexture);
+	m_CasolBGSprite.SetPosition({ casolXpos,casolYpos });
+	m_CasolBGSprite.SetSize({ 200,200 });
+
+	if (Pad(0).IsTrigger(enButtonUp))//アイテム選択のカーソルの位置
+	{
+		if (UseItemNomberR > 5){
+			UseItemNomberR -= 6;
+			UseItemNomberL-=6;
+			casolYpos += 100.0f;
+		}
+		
+		m_CasolBGSprite.SetPosition({ casolXpos,casolYpos });
+	}
+	else if (Pad(0).IsTrigger(enButtonRight))
+	{
+		if (UseItemNomberR < 29)
+		{
+			UseItemNomberR++;
+			UseItemNomberL++;
+			casolXpos += 100.0f;
+		}
+
+		if (UseItemNomberR % 6 == 0 && UseItemNomberR < 29) {
+
+			//UseItemNomber++;
+			casolXpos -= 600.0f;
+			casolYpos -= 100.0f;
+		}
+
+		m_CasolBGSprite.SetPosition({ casolXpos,casolYpos });
+	}
+	else if (Pad(0).IsTrigger(enButtonLeft))
+	{
+		if (UseItemNomberL > 1)
+		{
+			UseItemNomberL--;
+			UseItemNomberR--;
+			casolXpos -= 100.0f;
+		}
+		if (UseItemNomberL >1 && UseItemNomberL % 6 == 0) {
+			//UseItemNomber--;
+			casolXpos += 600.0f;
+			casolYpos += 100.0f;
+		}
+		
+		m_CasolBGSprite.SetPosition({ casolXpos,casolYpos });
+	}
+	else if (Pad(0).IsTrigger(enButtonDown))
+	{
+		if (UseItemNomberR < 24){
+			UseItemNomberR += 6;
+			UseItemNomberL += 6;
+			casolYpos -= 100.0f;
+		}
+		
+		m_CasolBGSprite.SetPosition({ casolXpos,casolYpos });
+	}
+
+	if (Pad(0).IsTrigger(enButtonA))//アイテムの使用
+	{
+
+		UseItemNo = UseItemNomberR;
+	}
 }

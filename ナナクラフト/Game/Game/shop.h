@@ -24,6 +24,8 @@ public:
 	
 private:
 
+	CSoundSource*	m_sound_select;
+
 	CLight              Maplight;
 	CVector3            LightPos2;
 	CVector3            Pointpos;

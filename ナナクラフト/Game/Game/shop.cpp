@@ -145,6 +145,11 @@ void shop::Update()
 
 		if (Pad(0).IsTrigger(enButtonA))
 		{
+			m_sound_select = NewGO<CSoundSource>(0);
+			m_sound_select->Init("Assets/sound/select3.wav");
+			m_sound_select->Play(false);
+			m_sound_select->SetVolume(4.0f);
+
 			g_Hud->ATKUp(10);
 			g_Hud->SubtractGold(nedan1);
 			g_menu->GoldChangTex();
@@ -174,6 +179,10 @@ void shop::Update()
 
 			if (Pad(0).IsTrigger(enButtonA))
 			{
+				m_sound_select = NewGO<CSoundSource>(0);
+				m_sound_select->Init("Assets/sound/select3.wav");
+				m_sound_select->Play(false);
+				m_sound_select->SetVolume(4.0f);
 
 				g_Hud->ATKUp(30);
 				g_Hud->SubtractGold(nedan2);
@@ -206,7 +215,6 @@ void shop::Update()
 		{
 			g_player->IsMoveSTART();
 			weaponState = -1;
-			//g_menu->MenuSceneItem();
 			Shopflg = false;
 		}
 		if (L < 7.0f && Pad(0).IsTrigger(enButtonA))
