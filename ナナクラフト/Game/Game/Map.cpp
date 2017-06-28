@@ -70,6 +70,8 @@ Map::~Map()
 	DeleteGO(g_SC);
 	DeleteGO(g_Sky);
 	DeleteGO(g_shop);
+	DeleteGO(g_Inn);
+	g_Inn = nullptr;
 	g_shop = nullptr;
 }
 

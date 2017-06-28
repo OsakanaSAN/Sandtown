@@ -9,7 +9,6 @@
 #include "Menu.h"
 
 
-
 shop::shop()
 {
 	Maplight.SetAmbinetLight({ 0.6f,0.6f,0.6f });
@@ -31,7 +30,6 @@ shop::shop()
 	}
 
 	for (int i = 0; i < 2;i++) {
-
 
 		m_GoldSeatTexture3[i].Load("Assets/UI/riru.png");
 		m_GoldSeatSprite3[i].SetPosition(m_Goldseatpos3);
@@ -117,22 +115,58 @@ void shop::Init(const char* modelName, CVector3 position, CQuaternion rotation)
 
 void shop::Update()
 {
-	switch(weaponState)
+
+	if (g_player != nullptr) {
+
+		ShopSelect();
+
+		CVector3 Ppos = g_player->Getpos();
+		CVector3 Vpos;
+
+		Vpos.x = Ppos.x - Pointpos.x;
+		Vpos.y = Ppos.y - Pointpos.y;
+		Vpos.z = Ppos.z - Pointpos.z;
+		float L = Vpos.Length();
+
+		/*if (g_menu->GetSceneState()!=0)
+		{
+		return;
+		}*/
+		if (Pad(0).IsTrigger(enButtonB) &&Shopflg)
+		{
+			g_menu->MenuSceneStop();
+			weaponState = Weapon;
+			Shopflg = false;
+		}
+		if (L < 7.0f && Pad(0).IsTrigger(enButtonA)&&!Shopflg)
+		{
+			Shopflg = true;
+			weaponState = Weapon1;
+			g_player->IsMoveSTOP();
+
+		}
+	}
+
+	if (g_player != nullptr&&Shopflg)
 	{
-		
-		case Weapon1:
-		
+		g_player->IsMoveSTOP();
+	}
+}
+
+void shop::ShopSelect()
+{
+	switch (weaponState)
+	{
 		g_menu->MenuSceneexit();
+	case Weapon1:
 		m_CasolBGSprite.SetPosition({ -800,300 });
 		m_CasolBGSprite.SetSize({ 200,200 });
 
-		weaponState = Weapon1;
-
-		if (Pad(0).IsPress(enButtonUp))
+		if (Pad(0).IsTrigger(enButtonUp))
 		{
 			weaponState = Weapon1;
 		}
-		else if (Pad(0).IsPress(enButtonDown))
+		else if (Pad(0).IsTrigger(enButtonDown))
 		{
 
 			weaponState = Weapon2;
@@ -151,83 +185,41 @@ void shop::Update()
 			g_Hud->SubtractGold(nedan1);
 			g_menu->GoldChangTex();
 		}
-
 		break;
-		
-		case Weapon2:
-		
-			g_menu->MenuSceneexit();
-			m_CasolBGSprite.SetPosition({ -800,200 });
-			m_CasolBGSprite.SetSize({ 200,200 });
-			weaponState = Weapon2;
 
-			if (Pad(0).IsTrigger(enButtonUp))
-			{
+	case Weapon2:
+		m_CasolBGSprite.SetPosition({ -800,200 });
+		m_CasolBGSprite.SetSize({ 200,200 });
 
-				weaponState = Weapon1;
-			}
-			else if (Pad(0).IsTrigger(enButtonDown))
-			{
-
-				weaponState = Weapon2;
-			}
-
-			if (g_Hud->GetGold() < nedan2) { break; }
-
-			if (Pad(0).IsTrigger(enButtonA))
-			{
-				m_sound_select = NewGO<CSoundSource>(0);
-				m_sound_select->Init("Assets/sound/select3.wav");
-				m_sound_select->Play(false);
-				m_sound_select->SetVolume(4.0f);
-
-				g_Hud->ATKUp(30);
-				g_Hud->SubtractGold(nedan2);
-				g_menu->GoldChangTex();
-			}
-
-			break;
-		
-		default:
-		break;
-	}
-
-
-	if (g_player != nullptr) {
-
-		CVector3 Ppos = g_player->Getpos();
-		CVector3 Vpos;
-
-		Vpos.x = Ppos.x - Pointpos.x;
-		Vpos.y = Ppos.y - Pointpos.y;
-		Vpos.z = Ppos.z - Pointpos.z;
-		float L = Vpos.Length();
-
-		/*if (g_menu->GetSceneState()!=0)
+		if (Pad(0).IsTrigger(enButtonUp))
 		{
-		return;
-		}*/
-		if (Pad(0).IsTrigger(enButtonB))
-		{
-			g_menu->MenuSceneStop();
-			weaponState = Weapon;
-			Shopflg = false;
-		}
-		if (L < 7.0f && Pad(0).IsTrigger(enButtonA))
-		{
-			Shopflg = true;
 			weaponState = Weapon1;
-			g_player->IsMoveSTOP();
-
 		}
-	}
+		else if (Pad(0).IsTrigger(enButtonDown))
+		{
+			weaponState = Weapon2;
+		}
 
-	if (g_player != nullptr&&Shopflg)
-	{
-		g_player->IsMoveSTOP();
+		if (g_Hud->GetGold() < nedan2) { break; }
+
+		if (Pad(0).IsTrigger(enButtonA))
+		{
+			m_sound_select = NewGO<CSoundSource>(0);
+			m_sound_select->Init("Assets/sound/select3.wav");
+			m_sound_select->Play(false);
+			m_sound_select->SetVolume(4.0f);
+
+			g_Hud->ATKUp(30);
+			g_Hud->SubtractGold(nedan2);
+			g_menu->GoldChangTex();
+		}
+
+		break;
+
+	default:
+		break;
 	}
 }
-
 
 void shop::Render(CRenderContext& renderContext)
 {

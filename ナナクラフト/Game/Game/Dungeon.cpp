@@ -41,8 +41,6 @@ Dungeon::Dungeon()
 	//count = (g_random.GetRandInt() % 3 + 1);
 	mapCount = g_SC->GetMapNo();
 	
-
-	
 }
 
 Dungeon::~Dungeon()

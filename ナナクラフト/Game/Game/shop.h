@@ -12,6 +12,7 @@ public:
 	void Render(CRenderContext& renderContext);
 	void GetGoldTex(int GetGold);
 	void GetGoldTex2(int GetGold);
+	void ShopSelect();
 	void Setpos(CVector3 a)
 	{
 		LightPos2 = a;

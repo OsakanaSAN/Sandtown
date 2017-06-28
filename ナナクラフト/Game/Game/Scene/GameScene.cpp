@@ -124,8 +124,9 @@ void GameScene::Update()
 
 		while (scenes != STOP)
 		{
-			if (g_SC->GetMapNo() == 0){//g_SCクラッシュしたとこ不定の値?nullptr初期化で直せる？
-				
+
+			if (Maptype == 0) {
+
 				if (g_Dungeon == nullptr)
 				{
 					//g_map2 = NewGO<Map2>(0);
@@ -166,7 +167,7 @@ void GameScene::Update()
 
 				}
 			}
-			else if (g_SC->GetMapNo() == 1)
+			else if (Maptype == 1)
 			{
 				if (g_Dungeon == nullptr)
 				{
@@ -191,7 +192,7 @@ void GameScene::Update()
 					g_Enemy3->Init(modelName);
 					g_Enemy3->setPos({ 20.0f, 0.0f, -15.0f });
 					g_Enemy3->LevelSet(2);
-					
+
 					g_gameCamera->ChangeStart();
 				}
 				else
@@ -206,7 +207,7 @@ void GameScene::Update()
 					break;
 				}
 			}
-			else if (g_SC->GetMapNo() == 2)
+			else if (Maptype == 2)
 			{
 				if (g_Dungeon == nullptr)
 				{
@@ -246,7 +247,8 @@ void GameScene::Update()
 				}
 			}
 		}
-
+		
+		
 		break;
 
 	case MACHI:
@@ -341,7 +343,7 @@ void GameScene::DeteScene()
 
 	else if (mapscene == DOUKUTU)
 	{
-		if (g_SC->GetMapNo() == 0)
+		if (Maptype == 0)
 		{
 			DeleteGO(g_Dungeon);
 			DeleteGO(g_Enemy);
@@ -354,7 +356,7 @@ void GameScene::DeteScene()
 
 			g_Dungeon = nullptr;
 		}
-		else if (g_SC->GetMapNo() == 1)
+		else if (Maptype == 1)
 		{
 			DeleteGO(g_Dungeon);
 			DeleteGO(g_Enemy);
@@ -367,7 +369,7 @@ void GameScene::DeteScene()
 
 			g_Dungeon = nullptr;
 		}
-		else if (g_SC->GetMapNo() == 2)
+		else if (Maptype == 2)
 		{
 			DeleteGO(g_Dungeon);
 			DeleteGO(g_Enemy);

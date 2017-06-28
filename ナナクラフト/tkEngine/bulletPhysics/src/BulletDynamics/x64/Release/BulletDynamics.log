@@ -26,7 +26,6 @@ ConstraintSolver\btGeneric6DofSpring2Constraint.cpp(786): warning C4244: '初期
 C:\Users\kbc16b15\Desktop\github\新しいフォルダー\Sandtown\ナナクラフト\tkEngine\bulletPhysics\src\BulletDynamics\../BulletDynamics/ConstraintSolver/btContactConstraint.h(25): warning C4359: 'btContactConstraint': アライメント指定子は実際のアラインメント (128) より小さいため、無視されます。
   btRigidBody.cpp
   btSimpleDynamicsWorld.cpp
-  C/C++ のコード分析を実行しています...
   コードを生成中...
   コンパイル中...
   btMultiBody.cpp
@@ -43,11 +42,5 @@ Featherstone\btMultiBodyJointLimitConstraint.cpp(114): warning C4244: '初期化
   btRaycastVehicle.cpp
 C:\Users\kbc16b15\Desktop\github\新しいフォルダー\Sandtown\ナナクラフト\tkEngine\bulletPhysics\src\BulletDynamics\../BulletDynamics/ConstraintSolver/btContactConstraint.h(25): warning C4359: 'btContactConstraint': アライメント指定子は実際のアラインメント (128) より小さいため、無視されます。
   btWheelInfo.cpp
-  C/C++ のコード分析を実行しています...
   コードを生成中...
   BulletDynamics.vcxproj -> C:\Users\kbc16b15\Desktop\github\新しいフォルダー\Sandtown\ナナクラフト\Game\x64\Release\BulletDynamics.lib
-c:\users\kbc16b15\desktop\github\新しいフォルダー\sandtown\ナナクラフト\tkengine\bulletphysics\src\bulletdynamics\featherstone\btmultibody.cpp(910): warning C6011: NULL ポインター 'invD' を逆参照しています。
-c:\users\kbc16b15\desktop\github\新しいフォルダー\sandtown\ナナクラフト\tkengine\bulletphysics\src\bulletdynamics\featherstone\btmultibody.cpp(1367): warning C6011: NULL ポインター 'invD' を逆参照しています。
-c:\users\kbc16b15\desktop\github\新しいフォルダー\sandtown\ナナクラフト\tkengine\bulletphysics\src\bulletdynamics\featherstone\btmultibody.cpp(1423): warning C6011: NULL ポインター 'h' を逆参照しています。
-c:\users\kbc16b15\desktop\github\新しいフォルダー\sandtown\ナナクラフト\tkengine\bulletphysics\src\bulletdynamics\featherstone\btmultibody.cpp(1425): warning C6011: NULL ポインター 'Y' を逆参照しています。
-c:\users\kbc16b15\desktop\github\新しいフォルダー\sandtown\ナナクラフト\tkengine\bulletphysics\src\bulletdynamics\featherstone\btmultibody.cpp(1670): warning C6011: NULL ポインター 'results' を逆参照しています。

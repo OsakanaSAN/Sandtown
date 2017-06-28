@@ -14,16 +14,5 @@ btSoftBodyHelpers.cpp(573): warning C4244: '=': '__int64' から 'int' への変
   btSoftRigidCollisionAlgorithm.cpp
   btSoftRigidDynamicsWorld.cpp
   btSoftSoftCollisionAlgorithm.cpp
-  C/C++ のコード分析を実行しています...
   コードを生成中...
   BulletSoftBody.vcxproj -> C:\Users\kbc16b15\Desktop\github\新しいフォルダー\Sandtown\ナナクラフト\Game\x64\Release\BulletSoftBody.lib
-c:\users\kbc16b15\desktop\github\新しいフォルダー\sandtown\ナナクラフト\tkengine\bulletphysics\src\bulletsoftbody\btsoftbody.cpp(1108): warning C6385: 'adj' から無効なデータを読み取っています: 読み取り可能なサイズは 'n*n*4' バイトですが、'8' バイトを読み取る可能性があります。
-c:\users\kbc16b15\desktop\github\新しいフォルダー\sandtown\ナナクラフト\tkengine\bulletphysics\src\bulletsoftbody\btsoftbody.cpp(1110): warning C6386: 'adj' への書き込み中にバッファー オーバーランが発生しました: 書き込み可能なサイズは 'n*n*4' バイトですが、'8' バイトを書き込む可能性があります。
-c:\users\kbc16b15\desktop\github\新しいフォルダー\sandtown\ナナクラフト\tkengine\bulletphysics\src\bulletsoftbody\btsoftbody.cpp(2135): warning C6011: NULL ポインター 'base' を逆参照しています。
-c:\users\kbc16b15\desktop\github\新しいフォルダー\sandtown\ナナクラフト\tkengine\bulletphysics\src\bulletsoftbody\btsoftbody.cpp(3223): warning C28182: NULL ポインターを逆参照しています。'docollide.psb[1]' には、'psb' と同じ NULL 値が含まれます。これが行われる可能性のある以前の行 3196 を参照してください
-c:\users\kbc16b15\desktop\github\新しいフォルダー\sandtown\ナナクラフト\tkengine\bulletphysics\src\bulletsoftbody\btsoftbodyconcavecollisionalgorithm.cpp(169): warning C6011: NULL ポインター 'm_dispatchInfoPtr' を逆参照しています。
-c:\users\kbc16b15\desktop\github\新しいフォルダー\sandtown\ナナクラフト\tkengine\bulletphysics\src\bulletsoftbody\btsoftbodyhelpers.cpp(730): warning C6386: 'm' への書き込み中にバッファー オーバーランが発生しました: 書き込み可能なサイズは 'tot*4' バイトですが、'8' バイトを書き込む可能性があります。
-c:\users\kbc16b15\desktop\github\新しいフォルダー\sandtown\ナナクラフト\tkengine\bulletphysics\src\bulletsoftbody\btsoftbodyhelpers.cpp(878): warning C6386: 'm' への書き込み中にバッファー オーバーランが発生しました: 書き込み可能なサイズは 'tot*4' バイトですが、'8' バイトを書き込む可能性があります。
-c:\users\kbc16b15\desktop\github\新しいフォルダー\sandtown\ナナクラフト\tkengine\bulletphysics\src\bulletsoftbody\btsoftbodyhelpers.cpp(1138): warning C6031: 戻り値が無視されました: 'sscanf'
-c:\users\kbc16b15\desktop\github\新しいフォルダー\sandtown\ナナクラフト\tkengine\bulletphysics\src\bulletsoftbody\btsoftbodyhelpers.cpp(1184): warning C6031: 戻り値が無視されました: 'sscanf'
-c:\users\kbc16b15\desktop\github\新しいフォルダー\sandtown\ナナクラフト\tkengine\bulletphysics\src\bulletsoftbody\btsoftbodyhelpers.cpp(1195): warning C6031: 戻り値が無視されました: 'sscanf'

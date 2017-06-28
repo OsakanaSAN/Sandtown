@@ -20,6 +20,11 @@ SceneChange::~SceneChange()
 	PhysicsWorld().RemoveRigidBody(&rigidBody);
 	rigidBody.Release();
 
+	m_ComandBGTexture1.Release();
+	m_ComandBGTexture2.Release();
+	m_ComandBGTexture3.Release();
+	m_ComandBGTexture4.Release();
+	m_CasolBGTexture.Release();
 }
 
 bool SceneChange::Start()
@@ -124,19 +129,20 @@ void SceneChange::Update()
 		Vpos.z = Ppos.z - SCpos.z;
 		float L = Vpos.Length();
 
-		if(g_player->Stop())
+		/*if(g_player->Stop())
 		{
 			Cahange = false;
 			return;
-		}
+		}*/
 		if (L < 3.0f)
 		{
-			Cahange = true;
+			//Cahange = true;
 			if (Pad(0).IsTrigger(enButtonA))
 			{
-				if (Out)
+				if (Out && !Cahange)
 				{
 					g_gameScene->MapChange();
+					Cahange = true;
 				}
 				MapSelectflg = true;
 
@@ -197,16 +203,17 @@ void SceneChange::MapSelect()
 		}
 
 		
-		if (Pad(0).IsTrigger(enButtonA))
+		if (Pad(0).IsTrigger(enButtonA)&&!Cahange)
 		{
 			m_sound_select = NewGO<CSoundSource>(0);
 			m_sound_select->Init("Assets/sound/select3.wav");
 			m_sound_select->Play(false);
 			m_sound_select->SetVolume(4.0f);
 
+			g_gameScene->SetMaptype(DungeonNo);//ゲームシーンにマップ番号を渡す
 			g_gameScene->MapChange();
 			MapSelectflg = false;
-
+			Cahange = true;
 		}
 		break;
 
@@ -226,16 +233,17 @@ void SceneChange::MapSelect()
 			DungeonNo = DungeonF3;
 		}
 
-		if (Pad(0).IsTrigger(enButtonA))
+		if (Pad(0).IsTrigger(enButtonA) && !Cahange)
 		{
 			m_sound_select = NewGO<CSoundSource>(0);
 			m_sound_select->Init("Assets/sound/select3.wav");
 			m_sound_select->Play(false);
 			m_sound_select->SetVolume(4.0f);
 
+			g_gameScene->SetMaptype(DungeonNo);//ゲームシーンにマップ番号を渡す
 			g_gameScene->MapChange();
 			MapSelectflg = false;
-
+			Cahange = true;
 		}
 		break;
 	case DungeonF3:
@@ -252,7 +260,7 @@ void SceneChange::MapSelect()
 			DungeonNo = Dungeon;
 		}
 
-		if (Pad(0).IsTrigger(enButtonA))
+		if (Pad(0).IsTrigger(enButtonA) && !Cahange)
 		{
 
 			m_sound_select = NewGO<CSoundSource>(0);
@@ -260,8 +268,10 @@ void SceneChange::MapSelect()
 			m_sound_select->Play(false);
 			m_sound_select->SetVolume(4.0f);
 
+			g_gameScene->SetMaptype(DungeonNo);//ゲームシーンにマップ番号を渡す
 			g_gameScene->MapChange();
 			MapSelectflg = false;
+			Cahange = true;
 		}
 		break;
 	default:

@@ -28,6 +28,10 @@ public:
 		return DungeonNo;
 	}
 
+	bool GetMapSelectflg()
+	{
+		return MapSelectflg;
+	}
 	void Setflg(bool flg)
 	{
 		Out = flg;

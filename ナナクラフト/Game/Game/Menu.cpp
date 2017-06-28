@@ -8,6 +8,8 @@
 #include "BattleMenu.h"
 #include "BattlePlayer.h"
 #include "shop.h"
+#include "SceneChange.h"
+#include "Inn.h"
 
 extern CRandom g_random;
 
@@ -145,13 +147,9 @@ bool Menu::Start()
 
 void Menu::Update()
 {
-	if (g_shop != nullptr)
-	{
-		if (g_shop->GetShop())
-		{
-			return;
-		}
-	}
+	if (g_shop != nullptr) { if (g_shop->GetShop())return;}
+	if (g_SC != nullptr) { if (g_SC->GetMapSelectflg())return;}
+	if (g_Inn != nullptr) { if (g_Inn->GetInnflg())return;}
 	switch (setMenu) {
 	case STOP:
 		break;
@@ -200,13 +198,9 @@ void Menu::Update()
 
 void Menu::Render(CRenderContext& renderContext)
 {
-	if (g_shop != nullptr)
-	{
-		if (g_shop->GetShop())
-		{
-			return;
-		}
-	}
+	if (g_shop != nullptr) { if (g_shop->GetShop())return; }
+	if (g_SC != nullptr) { if (g_SC->GetMapSelectflg())return; }
+	if (g_Inn != nullptr) { if (g_Inn->GetInnflg())return; }
 	switch (setMenu) {
 
 	case STOP:
@@ -420,12 +414,12 @@ bool Menu::UseItem()
 {
 
 	if (g_Hud->GetHP() >= g_Hud->GetMaxHP()) { return false; } //HPの上限に達していたら帰る
-	//if (InventoryPackNumber <0) { return false; } //使うことができるアイテムが無ければ帰る
 
 	if ( InventoryPack[UseItemNo] <= 0) { return false; }
 
 	//if (InventoryPack[UseItemNo] == 3)//使用したアイテムを消費する処理
 	//{
+	//if (InventoryPackNumber <0) { return false; } //使うことができるアイテムが無ければ帰る
 
 
 	InventoryPackNumber = UseItemNo;
