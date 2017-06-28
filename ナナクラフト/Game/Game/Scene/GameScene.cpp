@@ -15,6 +15,7 @@
 #include "tkEngine/graphics/tkCamera.h"
 #include "Dungeon.h"
 #include "BattlePlayer.h"
+#include "SceneChange.h"
 
 
 GameScene* g_gameScene = NULL;
@@ -51,17 +52,14 @@ GameScene::~GameScene()
 
 bool GameScene::Start()
 {
-	
-	
+
 	if (g_gameCamera->IsActive() && g_player->IsActive() && g_Hud->IsActive()&& g_map->IsActive()) {
 
 		g_fade->StartFadeIn();
 		return true;
 
 	}
-	
-	
-	
+	return true;
 }
 
 void GameScene::Update()
@@ -121,67 +119,134 @@ void GameScene::Update()
 
 		break;
 
-
-		//ì¥åAÇ…ëJà⁄
+	//ì¥åAÇ…ëJà⁄
 	case DOUKUTU:
 
 		while (scenes != STOP)
 		{
+			if (g_SC->GetMapNo() == 0){//g_SCÉNÉâÉbÉVÉÖÇµÇΩÇ∆Ç±ïsíËÇÃíl?nullptrèâä˙âªÇ≈íºÇπÇÈÅH
+				
+				if (g_Dungeon == nullptr)
+				{
+					//g_map2 = NewGO<Map2>(0);
+					g_Dungeon = NewGO<Dungeon>(0);
+					g_player = NewGO<Player>(0);
 
-			if ( g_Dungeon == nullptr)
-			{
+					modelName = "Assets/modelData/ghost.X";
+					g_Enemy = NewGO<Enemy>(0);
+					g_Enemy->Init(modelName);
+					g_Enemy->setPos({ -3.0f, 0.0f, -20.0f });
+					g_Enemy->LevelSet(1);
 
-				g_Dungeon = NewGO<Dungeon>(0);
-				//g_map2 = NewGO<Map2>(0);
-				g_player = NewGO<Player>(0);
-				//g_Dungeon = NewGO<Dungeon>(0);
-				modelName = "Assets/modelData/ghost.X";
-				g_Enemy = NewGO<Enemy>(0);
-				g_Enemy->Init(modelName);
-				g_Enemy->setPos({ -3.0f, 0.0f, -20.0f });
-				g_Enemy->LevelSet(1);
-				/*g_Enemy->Setexp(20);
-				g_Enemy->SetEATK(20);
-				g_Enemy->SetHP(30);
-				g_Enemy->SetGold(20);*/
+					modelName = "Assets/modelData/ghost.X";
+					g_Enemy2 = NewGO<Enemy>(0);
+					g_Enemy2->Init(modelName);
+					g_Enemy2->setPos({ -3.0f, 0.0f, -40.0f });
+					g_Enemy2->LevelSet(1);
 
+					modelName = "Assets/modelData/Bossghost.X";
+					g_Enemy3 = NewGO<Enemy>(0);
+					g_Enemy3->Init(modelName);
+					g_Enemy3->setPos({ 20.0f, 0.0f, -15.0f });
+					g_Enemy3->LevelSet(2);
 
-				modelName = "Assets/modelData/ghost.X";
-				g_Enemy2 = NewGO<Enemy>(0);
-				g_Enemy2->Init(modelName);
-				g_Enemy2->setPos({ -3.0f, 0.0f, -40.0f });
-				g_Enemy2->LevelSet(1);
-				/*g_Enemy2->Setexp(20);
-				g_Enemy2->SetEATK(20);
-				g_Enemy2->SetHP(40);
-				g_Enemy2->SetGold(40);*/
+					g_gameCamera->ChangeStart();
 
-
-				modelName = "Assets/modelData/Bossghost.X";
-				g_Enemy3 = NewGO<Enemy>(0);
-				g_Enemy3->Init(modelName);
-				g_Enemy3->setPos({ 20.0f, 0.0f, -15.0f });
-				g_Enemy3->LevelSet(2);
-				g_Enemy3->SetGold(60);
-
-				g_gameCamera->ChangeStart();
-
-			}
-
-
-			else 
-			{
-				if (g_Dungeon->IsActive() && g_Enemy->IsActive() && g_Enemy2->IsActive() && g_Enemy3->IsActive() && g_player->IsActive()) {
-
-					g_fade->StartFadeIn();
-					scenes = STOP;
-					mapscene = DOUKUTU;
 				}
-				break;
 
+				else
+				{
+					if (g_Dungeon->IsActive() && g_Enemy->IsActive() && g_Enemy2->IsActive() && g_Enemy3->IsActive() && g_player->IsActive()) {
+
+						g_fade->StartFadeIn();
+						scenes = STOP;
+						mapscene = DOUKUTU;
+					}
+					break;
+
+				}
 			}
+			else if (g_SC->GetMapNo() == 1)
+			{
+				if (g_Dungeon == nullptr)
+				{
 
+					g_Dungeon = NewGO<Dungeon>(0);
+					g_player = NewGO<Player>(0);
+
+					modelName = "Assets/modelData/Bossghost.X";
+					g_Enemy = NewGO<Enemy>(0);
+					g_Enemy->Init(modelName);
+					g_Enemy->setPos({ -3.0f, 0.0f, -20.0f });
+					g_Enemy->LevelSet(2);
+
+					modelName = "Assets/modelData/Bossghost.X";
+					g_Enemy2 = NewGO<Enemy>(0);
+					g_Enemy2->Init(modelName);
+					g_Enemy2->setPos({ -3.0f, 0.0f, -40.0f });
+					g_Enemy2->LevelSet(2);
+
+					modelName = "Assets/modelData/Bossghost.X";
+					g_Enemy3 = NewGO<Enemy>(0);
+					g_Enemy3->Init(modelName);
+					g_Enemy3->setPos({ 20.0f, 0.0f, -15.0f });
+					g_Enemy3->LevelSet(2);
+					
+					g_gameCamera->ChangeStart();
+				}
+				else
+				{
+					if (g_Dungeon->IsActive() && g_Enemy->IsActive() && g_Enemy2->IsActive() && g_Enemy3->IsActive() && g_player->IsActive())
+					{
+						g_fade->StartFadeIn();
+						scenes = STOP;
+						mapscene = DOUKUTU;
+
+					}
+					break;
+				}
+			}
+			else if (g_SC->GetMapNo() == 2)
+			{
+				if (g_Dungeon == nullptr)
+				{
+
+					g_Dungeon = NewGO<Dungeon>(0);
+					g_player = NewGO<Player>(0);
+
+					modelName = "Assets/modelData/Bossghost.X";
+					g_Enemy = NewGO<Enemy>(0);
+					g_Enemy->Init(modelName);
+					g_Enemy->setPos({ -3.0f, 0.0f, -20.0f });
+					g_Enemy->LevelSet(3);
+
+					modelName = "Assets/modelData/Bossghost.X";
+					g_Enemy2 = NewGO<Enemy>(0);
+					g_Enemy2->Init(modelName);
+					g_Enemy2->setPos({ -3.0f, 0.0f, -40.0f });
+					g_Enemy2->LevelSet(3);
+
+					modelName = "Assets/modelData/Bossghost.X";
+					g_Enemy3 = NewGO<Enemy>(0);
+					g_Enemy3->Init(modelName);
+					g_Enemy3->setPos({ 20.0f, 0.0f, -15.0f });
+					g_Enemy3->LevelSet(3);
+
+					g_gameCamera->ChangeStart();
+				}
+				else
+				{
+					if (g_Dungeon->IsActive() && g_Enemy->IsActive() && g_Enemy2->IsActive() && g_Enemy3->IsActive() && g_player->IsActive())
+					{
+						g_fade->StartFadeIn();
+						scenes = STOP;
+						mapscene = DOUKUTU;
+					}
+					break;
+				}
+			}
 		}
+
 		break;
 
 	case MACHI:
@@ -272,12 +337,12 @@ void GameScene::DeteScene()
 		scenes = DOUKUTU;
 		g_map = nullptr;
 
-
 	}
 
 	else if (mapscene == DOUKUTU)
 	{
-
+		if (g_SC->GetMapNo() == 0)
+		{
 			DeleteGO(g_Dungeon);
 			DeleteGO(g_Enemy);
 			DeleteGO(g_Enemy2);
@@ -286,8 +351,35 @@ void GameScene::DeteScene()
 				DeleteGO(g_player);
 			}
 			scenes = MACHI;
-			
+
 			g_Dungeon = nullptr;
+		}
+		else if (g_SC->GetMapNo() == 1)
+		{
+			DeleteGO(g_Dungeon);
+			DeleteGO(g_Enemy);
+			DeleteGO(g_Enemy2);
+			DeleteGO(g_Enemy3);
+			if (g_player != nullptr) {
+				DeleteGO(g_player);
+			}
+			scenes = MACHI;
+
+			g_Dungeon = nullptr;
+		}
+		else if (g_SC->GetMapNo() == 2)
+		{
+			DeleteGO(g_Dungeon);
+			DeleteGO(g_Enemy);
+			DeleteGO(g_Enemy2);
+			DeleteGO(g_Enemy3);
+			if (g_player != nullptr) {
+				DeleteGO(g_player);
+			}
+			scenes = MACHI;
+
+			g_Dungeon = nullptr;
+		}
 		
 	}
 

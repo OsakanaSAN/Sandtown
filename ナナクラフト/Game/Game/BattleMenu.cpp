@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "BattleMenu.h"
-
+#include "HUD.h"
 
 BattleMenu::BattleMenu()
 {
@@ -183,7 +183,7 @@ void BattleMenu::PlayerHp()
 ////////////////////////////////////////////////////////
 void BattleMenu::MaxPlayerHp()
 {
-	int MaxHP = 500 ;
+	int MaxHP = g_Hud->GetMaxHP();
 	int MaxNextHP[3];
 	int MaxChangHP = MaxHP;
 	char HpTexName[255];

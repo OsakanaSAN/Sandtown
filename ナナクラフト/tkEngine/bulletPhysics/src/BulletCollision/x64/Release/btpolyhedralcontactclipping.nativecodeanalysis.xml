@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DEFECTS>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\kbc16b15\desktop\github\新しいフォルダー\sandtown\ナナクラフト\tkengine\bulletphysics\src\bulletcollision\narrowphasecollision\</FILEPATH>
+      <FILENAME>btpolyhedralcontactclipping.cpp</FILENAME>
+      <LINE>501</LINE>
+      <COLUMN>14</COLUMN>
+    </SFA>
+    <DEFECTCODE>6246</DEFECTCODE>
+    <DESCRIPTION>'point' のローカル宣言は、外部スコープの同じ名前の宣言を隠します。追加情報については、行 '480' ('c:\users\kbc16b15\desktop\github\新しいフォルダー\sandtown\ナナクラフト\tkengine\bulletphysics\src\bulletcollision\narrowphasecollision\btpolyhedralcontactclipping.cpp') の以前の宣言を参照してください。</DESCRIPTION>
+    <FUNCTION>btPolyhedralContactClipping::clipFaceAgainstHull</FUNCTION>
+    <DECORATED>?clipFaceAgainstHull@btPolyhedralContactClipping@@SAXAEBVbtVector3@@AEBVbtConvexPolyhedron@@AEBVbtTransform@@AEAV?$btAlignedObjectArray@VbtVector3@@@@MMAEAUResult@btDiscreteCollisionDetectorInterface@@@Z</DECORATED>
+    <FUNCLINE>414</FUNCLINE>
+    <PATH>
+      <SFA>
+        <FILEPATH>c:\users\kbc16b15\desktop\github\新しいフォルダー\sandtown\ナナクラフト\tkengine\bulletphysics\src\bulletcollision\narrowphasecollision\</FILEPATH>
+        <FILENAME>btpolyhedralcontactclipping.cpp</FILENAME>
+        <LINE>480</LINE>
+        <COLUMN>16</COLUMN>
+      </SFA>
+    </PATH>
+  </DEFECT>
+</DEFECTS>

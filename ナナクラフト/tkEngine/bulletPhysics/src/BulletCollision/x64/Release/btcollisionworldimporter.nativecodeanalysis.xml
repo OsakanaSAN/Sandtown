@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DEFECTS>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\kbc16b15\desktop\github\新しいフォルダー\sandtown\ナナクラフト\tkengine\bulletphysics\src\bulletcollision\collisiondispatch\</FILEPATH>
+      <FILENAME>btcollisionworldimporter.cpp</FILENAME>
+      <LINE>508</LINE>
+      <COLUMN>15</COLUMN>
+    </SFA>
+    <DEFECTCODE>6246</DEFECTCODE>
+    <DESCRIPTION>'localScaling' のローカル宣言は、外部スコープの同じ名前の宣言を隠します。追加情報については、行 '362' ('c:\users\kbc16b15\desktop\github\新しいフォルダー\sandtown\ナナクラフト\tkengine\bulletphysics\src\bulletcollision\collisiondispatch\btcollisionworldimporter.cpp') の以前の宣言を参照してください。</DESCRIPTION>
+    <FUNCTION>btCollisionWorldImporter::convertCollisionShape</FUNCTION>
+    <DECORATED>?convertCollisionShape@btCollisionWorldImporter@@IEAAPEAVbtCollisionShape@@PEAUbtCollisionShapeData@@@Z</DECORATED>
+    <FUNCLINE>260</FUNCLINE>
+    <PATH>
+      <SFA>
+        <FILEPATH>c:\users\kbc16b15\desktop\github\新しいフォルダー\sandtown\ナナクラフト\tkengine\bulletphysics\src\bulletcollision\collisiondispatch\</FILEPATH>
+        <FILENAME>btcollisionworldimporter.cpp</FILENAME>
+        <LINE>362</LINE>
+        <COLUMN>26</COLUMN>
+      </SFA>
+    </PATH>
+  </DEFECT>
+</DEFECTS>

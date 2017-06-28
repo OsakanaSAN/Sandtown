@@ -139,8 +139,6 @@ bool Menu::Start()
 	HpChangTex();
 	MaxHpChangTex();
 	GoldChangTex();
-	
-	
 
 	return true;
 }
@@ -242,7 +240,6 @@ void Menu::Render(CRenderContext& renderContext)
 			{
 				InventorySeatSprite[J][I].Draw(renderContext);
 
-
 			}
 
 		}
@@ -273,7 +270,7 @@ void Menu::HpChangTex()
 	
 	int NextHP[3];
 	int ChangHP = HP;
-	
+
 
 	NextHP[0] = ChangHP / 100;
 	sprintf(HpTexName, "Assets/UI/%d.png", NextHP[0]);
@@ -301,7 +298,6 @@ void Menu::MaxHpChangTex()
 
 	int MaxNextHP[3];
 	int MaxChangHP = MaxHP;
-
 
 	MaxNextHP[0] = MaxChangHP / 100;
 	sprintf(HpTexName, "Assets/UI/%d.png", MaxNextHP[0]);
@@ -394,34 +390,6 @@ void Menu::InventoryChangTex(int Item)
 
 }
 
-void Menu::Itemerase()
-{
-	if (InventoryPackNumber <0) { return; }
-	for (int j = 0;j <= 30;j++)
-	{
-		InventoryPackNumber++;
-		if (InventoryPack[j]!=3){ continue; }
-		InventoryPack[j] = 0;
-		
-
-		if (InventoryY < 5) {
-			sprintf(InvebtoryName, "Assets/Item/Item%d.png",0);
-			InventorySeatTexture[InventoryY][InventoryX].Release();
-			InventorySeatTexture[InventoryY][InventoryX].Load(InvebtoryName);
-			InventorySeatSprite[InventoryY][InventoryX].Init(&InventorySeatTexture[InventoryY][InventoryX]);
-			InventorySeatSprite[InventoryY][InventoryX].SetSize({ 100.0f, 100.0f });
-
-			InventoryX++;
-			if (InventoryX >= 6)
-			{
-				InventoryX = 0;
-				InventoryY++;
-			}
-		}
-		//return;
-	}
-}
-
 void Menu::MenuSceneStop()
 {
 
@@ -451,36 +419,34 @@ void Menu::MenuSceneexit()
 bool Menu::UseItem()
 {
 
-	if (g_Hud->GetHP() >= 500) { return false; } //HPの上限に達していたら帰る
+	if (g_Hud->GetHP() >= g_Hud->GetMaxHP()) { return false; } //HPの上限に達していたら帰る
 	//if (InventoryPackNumber <0) { return false; } //使うことができるアイテムが無ければ帰る
 
-	if (InventoryPack[UseItemNo] == -1|| InventoryPack[UseItemNo] == 0) { return false; }
+	if ( InventoryPack[UseItemNo] <= 0) { return false; }
 
 	//if (InventoryPack[UseItemNo] == 3)//使用したアイテムを消費する処理
 	//{
-		InventoryPackNumber = UseItemNo;
-		NoItem(UseItemNo);			//使用したアイテムのテクスチャの置き換え
 
-		InventoryPack[UseItemNo] = 0;
 
-		g_Hud->RecoveryHP(100); //100回復
-		setHP(g_Hud->GetHP());
-		g_battlemenu->SetHp(g_Hud->GetHP());
+	InventoryPackNumber = UseItemNo;
+	NoItem(UseItemNo);			//使用したアイテムのテクスチャの置き換え
 
-		Itemerase();
+	InventoryPack[UseItemNo] = 0;
 
-		if (g_battleplayer != nullptr) {
-			CVector3 Bpos = g_battleplayer->Getpos();
-			//Bpos.z = Bpos.z - 0.9f;
-			g_battleplayer->Particle(Bpos, 1);//回復パーティクルの呼び出し
-		}
-		/*return true;*/
+	g_Hud->RecoveryHP(100); //100回復
+	setHP(g_Hud->GetHP());
+	g_battlemenu->SetHp(g_Hud->GetHP());
+
+	if (g_battleplayer != nullptr) {
+		g_battleplayer->SetHP(g_Hud->GetHP());
+		CVector3 Bpos = g_battleplayer->Getpos();
+		Bpos.x = Bpos.x - 0.5f;
+		g_battleplayer->Particle(Bpos, 1);//回復パーティクルの呼び出し
+	}
+	/*return true;*/
 	//}
-		UseItemNomberR = 0;
-		UseItemNomberL = 1;
-		casolXpos = -400.0f;
-		casolYpos = 250.0f;
-		UseItemNo = -1;
+	
+	UseItemNo = -1;
 
 	return true;
 }
@@ -572,5 +538,10 @@ void Menu::ItemSelect()
 	{
 
 		UseItemNo = UseItemNomberR;
+
+		UseItemNomberR = 0;
+		UseItemNomberL = 1;
+		casolXpos = -400.0f;
+		casolYpos = 250.0f;
 	}
 }

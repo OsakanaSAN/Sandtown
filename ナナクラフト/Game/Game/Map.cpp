@@ -5,7 +5,7 @@
 #include "HUD.h"
 #include "GameSky.h"
 #include "shop.h"
-
+#include "Inn.h"
 
 struct SMapInfo {
 	const char* modelName;
@@ -17,6 +17,7 @@ Mapchip* mapchip[255];
 SceneChange* g_SC;
 GameSky*     g_Sky;
 shop*		g_shop=nullptr;
+Inn*		g_Inn = nullptr;
 
 //マップの配置情報。
 SMapInfo mapLocInfo[] = {
@@ -228,6 +229,16 @@ bool Map::Start()
 				ChangeObject++;
 
 			}
+			else if (strcmp(mapLoc3[i].modelName, "Sign_d") == 0)
+			{
+
+				g_Inn = NewGO<Inn>(0);
+				g_Inn->Init(mapLoc3[i].modelName, mapLoc3[i].position, mapLoc3[i].rotation);
+
+				ChangeObject++;
+
+			}
+
 			else if (strcmp(mapLoc3[i].modelName, "maru") == 0)
 			{
 
@@ -286,6 +297,15 @@ bool Map::Start()
 				ChangeObject++;
 
 			}
+			else if (strcmp(mapLoc4[i].modelName, "Sign_d") == 0)
+			{
+
+				g_Inn = NewGO<Inn>(0);
+				g_Inn->Init(mapLoc4[i].modelName, mapLoc4[i].position, mapLoc4[i].rotation);
+
+				ChangeObject++;
+
+			}
 			else if (strcmp(mapLoc4[i].modelName, "maru") == 0)
 			{
 
@@ -307,9 +327,8 @@ bool Map::Start()
 		mapchip[0]->SoundOnMachi();
 		return true; //一回だけ呼ばれる
 		break;
-	
 	}
-
+	return true;
 
 }
 

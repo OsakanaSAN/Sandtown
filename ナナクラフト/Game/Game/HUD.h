@@ -10,7 +10,6 @@ public:
 	void Render(CRenderContext& renderContext);
 	void Damage(int Attak);
 
-
 	int GetNextHp()
 	{
 		return nextHP;
@@ -44,9 +43,9 @@ public:
 	void RecoveryHP(float RecvHP)
 	{
 		MaxpHP += RecvHP;
-		if (MaxpHP > 500)
+		if (MaxpHP > MaxHP)
 		{
-			MaxpHP = 500;
+			MaxpHP = MaxHP;
 		}
 	}
 
@@ -57,6 +56,11 @@ public:
 		
 	}
 
+	int GetMaxHP()
+	{
+		return MaxHP;
+
+	}
 	//お金セット
 	void SetGold(int gold)
 	{
@@ -87,7 +91,6 @@ public:
 	{
 		ATK += Atk;
 	}
-	
 
 	int GetNextExp()
 	{
@@ -95,13 +98,10 @@ public:
 	}
 	void LVUp();
 
-
 private:
-
 
 	int           LV = 1;
 	char          iName[256];
-	float         nextHP = 10;
 	float         nextexp = 0;
 	float         MaxpHP = 500.0f;
 	int           pExp = 0;     //経験値
@@ -109,7 +109,11 @@ private:
 	
 	int           Gold = 2000;
 	
-	int			  ATK = 20;//武器ごとに変化？
+	int			ATK = 20;//武器ごとに変化？
+	int			nextATK = g_random.GetRandInt() % 5+2;
+	
+	int			MaxHP = 500;
+	int			nextHP = g_random.GetRandInt() % 10+2;
 };
 extern HUD*    g_Hud;
 

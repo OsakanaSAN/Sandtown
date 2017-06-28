@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DEFECTS>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\kbc16b15\desktop\github\新しいフォルダー\sandtown\ナナクラフト\tkengine\graphics\</FILEPATH>
+      <FILENAME>tkindexbuffer.cpp</FILENAME>
+      <LINE>33</LINE>
+      <COLUMN>10</COLUMN>
+    </SFA>
+    <DEFECTCODE>6001</DEFECTCODE>
+    <DESCRIPTION>初期化されていないメモリ 'd3dFormat' を使用しています。</DESCRIPTION>
+    <FUNCTION>tkEngine::CIndexBuffer::Create</FUNCTION>
+    <DECORATED>?Create@CIndexBuffer@tkEngine@@QEAAXHW4EIndexFormat@2@PEBX@Z</DECORATED>
+    <FUNCLINE>19</FUNCLINE>
+    <PROBABILITY>1</PROBABILITY>
+    <RANK>3</RANK>
+    <CATEGORY>
+      <RULECATEGORY>mspft</RULECATEGORY>
+    </CATEGORY>
+    <PATH>
+      <SFA>
+        <FILEPATH>c:\users\kbc16b15\desktop\github\新しいフォルダー\sandtown\ナナクラフト\tkengine\graphics\</FILEPATH>
+        <FILENAME>tkindexbuffer.cpp</FILENAME>
+        <LINE>21</LINE>
+        <COLUMN>9</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\kbc16b15\desktop\github\新しいフォルダー\sandtown\ナナクラフト\tkengine\graphics\</FILEPATH>
+        <FILENAME>tkindexbuffer.cpp</FILENAME>
+        <LINE>22</LINE>
+        <COLUMN>6</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\kbc16b15\desktop\github\新しいフォルダー\sandtown\ナナクラフト\tkengine\graphics\</FILEPATH>
+        <FILENAME>tkindexbuffer.cpp</FILENAME>
+        <LINE>23</LINE>
+        <COLUMN>12</COLUMN>
+        <KEYEVENT>
+          <ID>1</ID>
+          <KIND>宣言</KIND>
+          <IMPORTANCE>Essential</IMPORTANCE>
+          <MESSAGE>'d3dFormat' が初期化されていません</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\kbc16b15\desktop\github\新しいフォルダー\sandtown\ナナクラフト\tkengine\graphics\</FILEPATH>
+        <FILENAME>tkindexbuffer.cpp</FILENAME>
+        <LINE>24</LINE>
+        <COLUMN>13</COLUMN>
+        <KEYEVENT>
+          <ID>2</ID>
+          <KIND>分岐</KIND>
+          <IMPORTANCE>Full</IMPORTANCE>
+          <MESSAGE>この分岐をスキップする ('format==eIndexFormat16' が false と仮定)</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\kbc16b15\desktop\github\新しいフォルダー\sandtown\ナナクラフト\tkengine\graphics\</FILEPATH>
+        <FILENAME>tkindexbuffer.cpp</FILENAME>
+        <LINE>28</LINE>
+        <COLUMN>18</COLUMN>
+        <KEYEVENT>
+          <ID>3</ID>
+          <KIND>分岐</KIND>
+          <IMPORTANCE>Full</IMPORTANCE>
+          <MESSAGE>この分岐をスキップする ('format==eIndexFormat32' が false と仮定)</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\kbc16b15\desktop\github\新しいフォルダー\sandtown\ナナクラフト\tkengine\graphics\</FILEPATH>
+        <FILENAME>tkindexbuffer.cpp</FILENAME>
+        <LINE>32</LINE>
+        <COLUMN>20</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\kbc16b15\desktop\github\新しいフォルダー\sandtown\ナナクラフト\tkengine\graphics\</FILEPATH>
+        <FILENAME>tkindexbuffer.cpp</FILENAME>
+        <LINE>33</LINE>
+        <COLUMN>10</COLUMN>
+        <KEYEVENT>
+          <ID>4</ID>
+          <KIND>宣言</KIND>
+          <IMPORTANCE>Full</IMPORTANCE>
+          <MESSAGE>'d3dFormat' は 'IDirect3DDevice9::CreateIndexBuffer' への入力/出力引数です (c:\program files (x86)\microsoft directx sdk (june 2010)\include\d3d9.h:458 で宣言)</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\kbc16b15\desktop\github\新しいフォルダー\sandtown\ナナクラフト\tkengine\graphics\</FILEPATH>
+        <FILENAME>tkindexbuffer.cpp</FILENAME>
+        <LINE>33</LINE>
+        <COLUMN>10</COLUMN>
+        <KEYEVENT>
+          <ID>5</ID>
+          <KIND>使用法</KIND>
+          <IMPORTANCE>Essential</IMPORTANCE>
+          <MESSAGE>'d3dFormat' が使用されますが、初期化されていない可能性があります</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+    </PATH>
+  </DEFECT>
+</DEFECTS>

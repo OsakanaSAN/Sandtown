@@ -19,6 +19,7 @@
   tkSepiaFilter.cpp
   tkTonemap.cpp
   tkIDMap.cpp
+  C/C++ のコード分析を実行しています...
   コードを生成中...
   コンパイル中...
   tkPreRender.cpp
@@ -41,6 +42,7 @@
   tkSkinModel.cpp
   tkSkinModelData.cpp
   tkTexture.cpp
+  C/C++ のコード分析を実行しています...
   コードを生成中...
   コンパイル中...
   tkVertexBuffer.cpp
@@ -63,6 +65,7 @@
   tkSphereCollider.cpp
   tkRandom.cpp
   tkSkinModelDataHandle.cpp
+  C/C++ のコード分析を実行しています...
   コードを生成中...
   コンパイル中...
   tkSkinModelDataResources.cpp
@@ -78,7 +81,12 @@ shape\tkSphereShape.cpp(61): warning C4267: '引数': 'size_t' から 'int' に�
   tkWaveFileBank.cpp
   tkEngine.cpp
 tkEngine.cpp(291): warning C4244: '初期化中': 'double' から 'DWORD' への変換です。データが失われる可能性があります。
+  C/C++ のコード分析を実行しています...
   コードを生成中...
 d3d9.lib(d3d9.dll) : warning LNK4006: __NULL_IMPORT_DESCRIPTOR は d3dx9.lib(d3dx9_43.dll) で定義されています。2 つ目以降の定義は無視されます。
 XInput.lib(XINPUT1_3.dll) : warning LNK4006: __NULL_IMPORT_DESCRIPTOR は d3dx9.lib(d3dx9_43.dll) で定義されています。2 つ目以降の定義は無視されます。
   tkEngine.vcxproj -> C:\Users\kbc16b15\Desktop\github\新しいフォルダー\Sandtown\ナナクラフト\Game\x64\Release\tkEngine.lib
+c:\users\kbc16b15\desktop\github\新しいフォルダー\sandtown\ナナクラフト\tkengine\graphics\tkindexbuffer.cpp(33): warning C6001: 初期化されていないメモリ 'd3dFormat' を使用しています。
+c:\users\kbc16b15\desktop\github\新しいフォルダー\sandtown\ナナクラフト\tkengine\random\tkrandom.h(52): warning C6201: インデックス '4294967069' は、有効なインデックスの範囲 '0' から '623' (スタックが割り当てられた可能性のあるバッファー 'this->mt') を超えています。
+c:\users\kbc16b15\desktop\github\新しいフォルダー\sandtown\ナナクラフト\tkengine\sound\tksoundengine.cpp(87): warning C6031: 戻り値が無視されました: 'CoInitializeEx'
+c:\users\kbc16b15\desktop\github\新しいフォルダー\sandtown\ナナクラフト\tkengine\graphics\tktexture.h(82): warning C6001: 初期化されていないメモリ 'desc' を使用しています。

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DEFECTS>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\kbc16b15\desktop\github\新しいフォルダー\sandtown\ナナクラフト\tkengine\character\</FILEPATH>
+      <FILENAME>tkcharactercontroller.cpp</FILENAME>
+      <LINE>140</LINE>
+      <COLUMN>13</COLUMN>
+    </SFA>
+    <DEFECTCODE>6246</DEFECTCODE>
+    <DESCRIPTION>'addPos' のローカル宣言は、外部スコープの同じ名前の宣言を隠します。追加情報については、行 '129' ('c:\users\kbc16b15\desktop\github\新しいフォルダー\sandtown\ナナクラフト\tkengine\character\tkcharactercontroller.cpp') の以前の宣言を参照してください。</DESCRIPTION>
+    <FUNCTION>tkEngine::CCharacterController::Execute</FUNCTION>
+    <DECORATED>?Execute@CCharacterController@tkEngine@@QEAAXM@Z</DECORATED>
+    <FUNCLINE>122</FUNCLINE>
+    <PATH>
+      <SFA>
+        <FILEPATH>c:\users\kbc16b15\desktop\github\新しいフォルダー\sandtown\ナナクラフト\tkengine\character\</FILEPATH>
+        <FILENAME>tkcharactercontroller.cpp</FILENAME>
+        <LINE>129</LINE>
+        <COLUMN>18</COLUMN>
+      </SFA>
+    </PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\kbc16b15\desktop\github\新しいフォルダー\sandtown\ナナクラフト\tkengine\character\</FILEPATH>
+      <FILENAME>tkcharactercontroller.cpp</FILENAME>
+      <LINE>217</LINE>
+      <COLUMN>12</COLUMN>
+    </SFA>
+    <DEFECTCODE>6246</DEFECTCODE>
+    <DESCRIPTION>'addPos' のローカル宣言は、外部スコープの同じ名前の宣言を隠します。追加情報については、行 '129' ('c:\users\kbc16b15\desktop\github\新しいフォルダー\sandtown\ナナクラフト\tkengine\character\tkcharactercontroller.cpp') の以前の宣言を参照してください。</DESCRIPTION>
+    <FUNCTION>tkEngine::CCharacterController::Execute</FUNCTION>
+    <DECORATED>?Execute@CCharacterController@tkEngine@@QEAAXM@Z</DECORATED>
+    <FUNCLINE>122</FUNCLINE>
+    <PATH>
+      <SFA>
+        <FILEPATH>c:\users\kbc16b15\desktop\github\新しいフォルダー\sandtown\ナナクラフト\tkengine\character\</FILEPATH>
+        <FILENAME>tkcharactercontroller.cpp</FILENAME>
+        <LINE>129</LINE>
+        <COLUMN>18</COLUMN>
+      </SFA>
+    </PATH>
+  </DEFECT>
+</DEFECTS>

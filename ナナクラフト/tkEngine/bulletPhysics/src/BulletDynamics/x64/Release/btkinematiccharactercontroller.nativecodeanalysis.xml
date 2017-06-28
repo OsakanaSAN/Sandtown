@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DEFECTS>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\kbc16b15\desktop\github\新しいフォルダー\sandtown\ナナクラフト\tkengine\bulletphysics\src\bulletdynamics\character\</FILEPATH>
+      <FILENAME>btkinematiccharactercontroller.cpp</FILENAME>
+      <LINE>497</LINE>
+      <COLUMN>14</COLUMN>
+    </SFA>
+    <DEFECTCODE>6246</DEFECTCODE>
+    <DESCRIPTION>'step_drop' のローカル宣言は、外部スコープの同じ名前の宣言を隠します。追加情報については、行 '437' ('c:\users\kbc16b15\desktop\github\新しいフォルダー\sandtown\ナナクラフト\tkengine\bulletphysics\src\bulletdynamics\character\btkinematiccharactercontroller.cpp') の以前の宣言を参照してください。</DESCRIPTION>
+    <FUNCTION>btKinematicCharacterController::stepDown</FUNCTION>
+    <DECORATED>?stepDown@btKinematicCharacterController@@IEAAXPEAVbtCollisionWorld@@M@Z</DECORATED>
+    <FUNCLINE>417</FUNCLINE>
+    <PATH>
+      <SFA>
+        <FILEPATH>c:\users\kbc16b15\desktop\github\新しいフォルダー\sandtown\ナナクラフト\tkengine\bulletphysics\src\bulletdynamics\character\</FILEPATH>
+        <FILENAME>btkinematiccharactercontroller.cpp</FILENAME>
+        <LINE>437</LINE>
+        <COLUMN>21</COLUMN>
+      </SFA>
+    </PATH>
+  </DEFECT>
+</DEFECTS>

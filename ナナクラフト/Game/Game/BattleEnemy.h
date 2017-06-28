@@ -122,7 +122,7 @@ private:
 
 	int				currentAnimSetNo;
 
-	int EnemyNo = 0;
+	int				EnemyNo = 0;
 	////エネミーごとのステータス?
 	int				ATK=20;
 	int				HP=50;

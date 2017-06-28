@@ -19,6 +19,7 @@
   btCollisionWorldImporter.cpp
   btCompoundCollisionAlgorithm.cpp
   btCompoundCompoundCollisionAlgorithm.cpp
+  C/C++ のコード分析を実行しています...
   コードを生成中...
   コンパイル中...
   btConvex2dConvex2dAlgorithm.cpp
@@ -41,6 +42,7 @@
   btBoxShape.cpp
   btBvhTriangleMeshShape.cpp
   btCapsuleShape.cpp
+  C/C++ のコード分析を実行しています...
   コードを生成中...
   コンパイル中...
   btCollisionShape.cpp
@@ -63,6 +65,7 @@
   btOptimizedBvh.cpp
   btPolyhedralConvexShape.cpp
   btScaledBvhTriangleMeshShape.cpp
+  C/C++ のコード分析を実行しています...
   コードを生成中...
   コンパイル中...
   btShapeHull.cpp
@@ -85,6 +88,7 @@
   btGImpactShape.cpp
   btTriangleShapeEx.cpp
   gim_box_set.cpp
+  C/C++ のコード分析を実行しています...
   コードを生成中...
   コンパイル中...
   gim_contact.cpp
@@ -102,5 +106,14 @@
   btRaycastCallback.cpp
   btSubSimplexConvexCast.cpp
   btVoronoiSimplexSolver.cpp
+  C/C++ のコード分析を実行しています...
   コードを生成中...
   BulletCollision.vcxproj -> C:\Users\kbc16b15\Desktop\github\新しいフォルダー\Sandtown\ナナクラフト\Game\x64\Release\BulletCollision.lib
+c:\users\kbc16b15\desktop\github\新しいフォルダー\sandtown\ナナクラフト\tkengine\bulletphysics\src\bulletcollision\broadphasecollision\btaxissweep3.h(424): warning C6386: 'this->m_pEdges[axis]' への書き込み中にバッファー オーバーランが発生しました: 書き込み可能なサイズは 'maxHandles*2*4' バイトですが、'8' バイトを書き込む可能性があります。
+c:\users\kbc16b15\desktop\github\新しいフォルダー\sandtown\ナナクラフト\tkengine\bulletphysics\src\bulletcollision\broadphasecollision\btdbvtbroadphase.cpp(455): warning C6011: NULL ポインター 'pb' を逆参照しています。
+c:\users\kbc16b15\desktop\github\新しいフォルダー\sandtown\ナナクラフト\tkengine\bulletphysics\src\bulletcollision\collisiondispatch\btboxboxdetector.cpp(231): warning C6001: 初期化されていないメモリ 'A' を使用しています。
+c:\users\kbc16b15\desktop\github\新しいフォルダー\sandtown\ナナクラフト\tkengine\bulletphysics\src\bulletcollision\collisiondispatch\btsimulationislandmanager.cpp(331): warning C6011: NULL ポインター 'colObj0' を逆参照しています。
+c:\users\kbc16b15\desktop\github\新しいフォルダー\sandtown\ナナクラフト\tkengine\bulletphysics\src\bulletcollision\collisionshapes\btoptimizedbvh.cpp(322): warning C6011: NULL ポインター 'gfxbase' を逆参照しています。
+c:\users\kbc16b15\desktop\github\新しいフォルダー\sandtown\ナナクラフト\tkengine\bulletphysics\src\bulletcollision\collisionshapes\btoptimizedbvh.cpp(334): warning C6011: NULL ポインター 'graphicsbase' を逆参照しています。
+c:\users\kbc16b15\desktop\github\新しいフォルダー\sandtown\ナナクラフト\tkengine\bulletphysics\src\bulletcollision\gimpact\gim_radixsort.h(146): warning C6262: 関数はスタックの '24640' バイトを使用します: /analyze:stacksize '16384' を超えています。 データの一部をヒープに移動することを考慮してください。
+c:\users\kbc16b15\desktop\github\新しいフォルダー\sandtown\ナナクラフト\tkengine\bulletphysics\src\bulletcollision\narrowphasecollision\btgjkepa2.cpp(226): warning C6385: 'cs.c' から無効なデータを読み取っています: 読み取り可能なサイズは '32' バイトですが、'-8' バイトを読み取る可能性があります。

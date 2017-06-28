@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DEFECTS>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\kbc16b15\desktop\github\新しいフォルダー\sandtown\ナナクラフト\tkengine\bulletphysics\src\bulletdynamics\mlcpsolvers\</FILEPATH>
+      <FILENAME>btsolveprojectedgaussseidel.h</FILENAME>
+      <LINE>50</LINE>
+      <COLUMN>10</COLUMN>
+    </SFA>
+    <DEFECTCODE>6246</DEFECTCODE>
+    <DESCRIPTION>'j' のローカル宣言は、外部スコープの同じ名前の宣言を隠します。追加情報については、行 '37' ('c:\users\kbc16b15\desktop\github\新しいフォルダー\sandtown\ナナクラフト\tkengine\bulletphysics\src\bulletdynamics\mlcpsolvers\btsolveprojectedgaussseidel.h') の以前の宣言を参照してください。</DESCRIPTION>
+    <FUNCTION>btSolveProjectedGaussSeidel::solveMLCP</FUNCTION>
+    <DECORATED>?solveMLCP@btSolveProjectedGaussSeidel@@UEAA_NAEBU?$btMatrixX@M@@AEBU?$btVectorX@M@@AEAU3@11AEBV?$btAlignedObjectArray@H@@H_N@Z</DECORATED>
+    <FUNCLINE>27</FUNCLINE>
+    <PATH>
+      <SFA>
+        <FILEPATH>c:\users\kbc16b15\desktop\github\新しいフォルダー\sandtown\ナナクラフト\tkengine\bulletphysics\src\bulletdynamics\mlcpsolvers\</FILEPATH>
+        <FILENAME>btsolveprojectedgaussseidel.h</FILENAME>
+        <LINE>37</LINE>
+        <COLUMN>1</COLUMN>
+      </SFA>
+    </PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\kbc16b15\desktop\github\新しいフォルダー\sandtown\ナナクラフト\tkengine\bulletphysics\src\bulletdynamics\mlcpsolvers\</FILEPATH>
+      <FILENAME>btmlcpsolver.cpp</FILENAME>
+      <LINE>403</LINE>
+      <COLUMN>3</COLUMN>
+    </SFA>
+    <DEFECTCODE>6246</DEFECTCODE>
+    <DESCRIPTION>'__profile' のローカル宣言は、外部スコープの同じ名前の宣言を隠します。追加情報については、行 '351' ('c:\users\kbc16b15\desktop\github\新しいフォルダー\sandtown\ナナクラフト\tkengine\bulletphysics\src\bulletdynamics\mlcpsolvers\btmlcpsolver.cpp') の以前の宣言を参照してください。</DESCRIPTION>
+    <FUNCTION>btMLCPSolver::createMLCPFast</FUNCTION>
+    <DECORATED>?createMLCPFast@btMLCPSolver@@MEAAXAEBUbtContactSolverInfo@@@Z</DECORATED>
+    <FUNCLINE>155</FUNCLINE>
+    <PATH>
+      <SFA>
+        <FILEPATH>c:\users\kbc16b15\desktop\github\新しいフォルダー\sandtown\ナナクラフト\tkengine\bulletphysics\src\bulletdynamics\mlcpsolvers\</FILEPATH>
+        <FILENAME>btmlcpsolver.cpp</FILENAME>
+        <LINE>351</LINE>
+        <COLUMN>2</COLUMN>
+      </SFA>
+    </PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\kbc16b15\desktop\github\新しいフォルダー\sandtown\ナナクラフト\tkengine\bulletphysics\src\bulletdynamics\mlcpsolvers\</FILEPATH>
+      <FILENAME>btmlcpsolver.cpp</FILENAME>
+      <LINE>458</LINE>
+      <COLUMN>28</COLUMN>
+    </SFA>
+    <DEFECTCODE>6246</DEFECTCODE>
+    <DESCRIPTION>'c' のローカル宣言は、外部スコープの同じ名前の宣言を隠します。追加情報については、行 '348' ('c:\users\kbc16b15\desktop\github\新しいフォルダー\sandtown\ナナクラフト\tkengine\bulletphysics\src\bulletdynamics\mlcpsolvers\btmlcpsolver.cpp') の以前の宣言を参照してください。</DESCRIPTION>
+    <FUNCTION>btMLCPSolver::createMLCPFast</FUNCTION>
+    <DECORATED>?createMLCPFast@btMLCPSolver@@MEAAXAEBUbtContactSolverInfo@@@Z</DECORATED>
+    <FUNCLINE>155</FUNCLINE>
+    <PATH>
+      <SFA>
+        <FILEPATH>c:\users\kbc16b15\desktop\github\新しいフォルダー\sandtown\ナナクラフト\tkengine\bulletphysics\src\bulletdynamics\mlcpsolvers\</FILEPATH>
+        <FILENAME>btmlcpsolver.cpp</FILENAME>
+        <LINE>348</LINE>
+        <COLUMN>6</COLUMN>
+      </SFA>
+    </PATH>
+  </DEFECT>
+</DEFECTS>

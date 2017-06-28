@@ -132,11 +132,11 @@ bool BattleScene::Start()
 	m_ResultBGSprite2.Init(&m_ResultBGTexture2);
 	m_ResultBGSprite2.SetAlpha(0.0);
 
-	m_ResultBGTexture3.Load("Assets/sprite/	result_1.png");
+	m_ResultBGTexture3.Load("Assets/sprite/result_1.png");
 	m_ResultBGSprite3.Init(&m_ResultBGTexture3);
 	m_ResultBGSprite3.SetAlpha(0.0);
 
-	m_ResultBGTexture4.Load("Assets/sprite/	result_2.png");
+	m_ResultBGTexture4.Load("Assets/sprite/result_2.png");
 	m_ResultBGSprite4.Init(&m_ResultBGTexture4);
 	m_ResultBGSprite4.SetAlpha(0.0);
 
@@ -583,6 +583,7 @@ void BattleScene::EnemyTurn()
 		
 		g_battleplayer->SetDamage(g_battleenemy->GetATK()+Erandom, true);//ダメージ計算とダメージアニメーション再生
 
+
 		//g_battlemenu->SetHp(g_Hud->GetHP());
 		g_battlemenu->SetHp(g_battleplayer->GetHP());
 		PDamage = true;
@@ -669,6 +670,7 @@ void BattleScene::EnemyTurn1()
 		g_battleplayer->SetDamage(g_battleenemy->GetATK()+ Erandom, true);//ダメージ計算とダメージアニメーション再生
 
 		g_battlemenu->SetHp(g_battleplayer->GetHP());
+
 		PDamage = true;
 	}
 	else if (EAttack && PDamage)
@@ -843,7 +845,6 @@ void BattleScene::BattleResult()
 	m_ComandBGSprite1.Init(&m_ComandBGTexture1);
 	m_ComandBGSprite1.SetPosition({ 0,0 });
 	m_ComandBGSprite1.SetSize({ 700.0f,900.0f });
-
 
 	m_ResultBGTexture1.Load("Assets/sprite/Result.png");
 	m_ResultBGSprite1.Init(&m_ResultBGTexture1);

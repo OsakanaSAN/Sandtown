@@ -15,16 +15,19 @@ public:
 	void MenuSceneexit();
 	void NoItem(int Nonumber);
 	bool UseItem();
-	void Itemerase();
-
+	//void Itemerase();
 	void ItemSelect();
 
 	void setHP(int setHp)
 	{
 		HP = setHp;
-		
 		HpChangTex();
 		
+	}
+	void setMaxHP(int maxHP)
+	{
+		MaxHP = maxHP;
+		MaxHpChangTex();
 	}
 	void setLV(int setLv)
 	{

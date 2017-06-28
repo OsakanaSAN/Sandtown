@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DEFECTS>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\kbc16b15\desktop\github\新しいフォルダー\sandtown\ナナクラフト\tkengine\graphics\</FILEPATH>
+      <FILENAME>tktexture.h</FILENAME>
+      <LINE>82</LINE>
+      <COLUMN>10</COLUMN>
+    </SFA>
+    <DEFECTCODE>6001</DEFECTCODE>
+    <DESCRIPTION>初期化されていないメモリ 'desc' を使用しています。</DESCRIPTION>
+    <FUNCTION>tkEngine::CTexture::ComputeTexSize</FUNCTION>
+    <DECORATED>?ComputeTexSize@CTexture@tkEngine@@AEAAXXZ</DECORATED>
+    <FUNCLINE>73</FUNCLINE>
+    <PROBABILITY>1</PROBABILITY>
+    <RANK>3</RANK>
+    <CATEGORY>
+      <RULECATEGORY>mspft</RULECATEGORY>
+    </CATEGORY>
+    <PATH>
+      <SFA>
+        <FILEPATH>c:\users\kbc16b15\desktop\github\新しいフォルダー\sandtown\ナナクラフト\tkengine\graphics\</FILEPATH>
+        <FILENAME>tktexture.h</FILENAME>
+        <LINE>75</LINE>
+        <COLUMN>19</COLUMN>
+        <KEYEVENT>
+          <ID>1</ID>
+          <KIND>宣言</KIND>
+          <IMPORTANCE>Essential</IMPORTANCE>
+          <MESSAGE>'desc' が初期化されていません</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\kbc16b15\desktop\github\新しいフォルダー\sandtown\ナナクラフト\tkengine\graphics\</FILEPATH>
+        <FILENAME>tktexture.h</FILENAME>
+        <LINE>76</LINE>
+        <COLUMN>7</COLUMN>
+        <KEYEVENT>
+          <ID>2</ID>
+          <KIND>分岐</KIND>
+          <IMPORTANCE>Full</IMPORTANCE>
+          <MESSAGE>この分岐をスキップする ('m_tex' が false と仮定)</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\kbc16b15\desktop\github\新しいフォルダー\sandtown\ナナクラフト\tkengine\graphics\</FILEPATH>
+        <FILENAME>tktexture.h</FILENAME>
+        <LINE>79</LINE>
+        <COLUMN>12</COLUMN>
+        <KEYEVENT>
+          <ID>3</ID>
+          <KIND>分岐</KIND>
+          <IMPORTANCE>Full</IMPORTANCE>
+          <MESSAGE>この分岐をスキップする ('m_cubeTex' が false と仮定)</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\kbc16b15\desktop\github\新しいフォルダー\sandtown\ナナクラフト\tkengine\graphics\</FILEPATH>
+        <FILENAME>tktexture.h</FILENAME>
+        <LINE>82</LINE>
+        <COLUMN>10</COLUMN>
+        <KEYEVENT>
+          <ID>4</ID>
+          <KIND>使用法</KIND>
+          <IMPORTANCE>Essential</IMPORTANCE>
+          <MESSAGE>'desc' が使用されますが、初期化されていない可能性があります</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+    </PATH>
+  </DEFECT>
+</DEFECTS>

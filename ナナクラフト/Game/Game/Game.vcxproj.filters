@@ -15,13 +15,13 @@
       <Filter>Map</Filter>
     </ClCompile>
     <ClCompile Include="BattlePlayer.cpp">
-      <Filter>Map\Player</Filter>
+      <Filter>Player</Filter>
     </ClCompile>
     <ClCompile Include="Npc.cpp">
-      <Filter>Map\Player</Filter>
+      <Filter>Player</Filter>
     </ClCompile>
     <ClCompile Include="Player.cpp">
-      <Filter>Map\Player</Filter>
+      <Filter>Player</Filter>
     </ClCompile>
     <ClCompile Include="HUD.cpp">
       <Filter>HUD</Filter>
@@ -68,6 +68,9 @@
     <ClCompile Include="Dungeon.cpp">
       <Filter>Map</Filter>
     </ClCompile>
+    <ClCompile Include="Inn.cpp">
+      <Filter>Map</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Camera.h" />
@@ -83,13 +86,13 @@
       <Filter>Map</Filter>
     </ClInclude>
     <ClInclude Include="BattlePlayer.h">
-      <Filter>Map\Player</Filter>
+      <Filter>Player</Filter>
     </ClInclude>
     <ClInclude Include="Npc.h">
-      <Filter>Map\Player</Filter>
+      <Filter>Player</Filter>
     </ClInclude>
     <ClInclude Include="Player.h">
-      <Filter>Map\Player</Filter>
+      <Filter>Player</Filter>
     </ClInclude>
     <ClInclude Include="HUD.h">
       <Filter>HUD</Filter>
@@ -136,6 +139,9 @@
     <ClInclude Include="Dungeon.h">
       <Filter>Map</Filter>
     </ClInclude>
+    <ClInclude Include="Inn.h">
+      <Filter>Map</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Map">
@@ -150,7 +156,7 @@
     <Filter Include="Enemy">
       <UniqueIdentifier>{3b94df71-8176-4c32-9f4c-82f2c1fa20e6}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Map\Player">
+    <Filter Include="Player">
       <UniqueIdentifier>{ddfdf7e2-6739-4226-91b3-24ddf2948c75}</UniqueIdentifier>
     </Filter>
   </ItemGroup>

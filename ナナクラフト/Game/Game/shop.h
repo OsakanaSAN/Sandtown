@@ -31,10 +31,11 @@ private:
 	CVector3            Pointpos;
 	enum WeaponState
 	{
+		Weapon,
 		Weapon1,
 		Weapon2,
 	};
-	int weaponState = -1;
+	WeaponState weaponState = Weapon;
 
 	CSprite		m_ComandBGSprite1;		//!<戦闘画面の選択のスプライト。
 	CTexture	m_ComandBGTexture1;		//!<戦闘画面の選択のテクスチャ。

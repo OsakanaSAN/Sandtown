@@ -117,15 +117,12 @@ void shop::Init(const char* modelName, CVector3 position, CQuaternion rotation)
 
 void shop::Update()
 {
-
-
-	
 	switch(weaponState)
 	{
 		
 		case Weapon1:
 		
-		g_menu->MenuSceneStop();
+		g_menu->MenuSceneexit();
 		m_CasolBGSprite.SetPosition({ -800,300 });
 		m_CasolBGSprite.SetSize({ 200,200 });
 
@@ -159,7 +156,7 @@ void shop::Update()
 		
 		case Weapon2:
 		
-			g_menu->MenuSceneStop();
+			g_menu->MenuSceneexit();
 			m_CasolBGSprite.SetPosition({ -800,200 });
 			m_CasolBGSprite.SetSize({ 200,200 });
 			weaponState = Weapon2;
@@ -196,7 +193,6 @@ void shop::Update()
 	}
 
 
-
 	if (g_player != nullptr) {
 
 		CVector3 Ppos = g_player->Getpos();
@@ -213,8 +209,8 @@ void shop::Update()
 		}*/
 		if (Pad(0).IsTrigger(enButtonB))
 		{
-			g_player->IsMoveSTART();
-			weaponState = -1;
+			g_menu->MenuSceneStop();
+			weaponState = Weapon;
 			Shopflg = false;
 		}
 		if (L < 7.0f && Pad(0).IsTrigger(enButtonA))
@@ -224,6 +220,11 @@ void shop::Update()
 			g_player->IsMoveSTOP();
 
 		}
+	}
+
+	if (g_player != nullptr&&Shopflg)
+	{
+		g_player->IsMoveSTOP();
 	}
 }
 

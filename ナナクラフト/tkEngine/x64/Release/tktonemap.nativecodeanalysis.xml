@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DEFECTS>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\kbc16b15\desktop\github\新しいフォルダー\sandtown\ナナクラフト\tkengine\graphics\posteffect\</FILEPATH>
+      <FILENAME>tktonemap.cpp</FILENAME>
+      <LINE>110</LINE>
+      <COLUMN>16</COLUMN>
+    </SFA>
+    <DEFECTCODE>6246</DEFECTCODE>
+    <DESCRIPTION>'tag' のローカル宣言は、外部スコープの同じ名前の宣言を隠します。追加情報については、行 '86' ('c:\users\kbc16b15\desktop\github\新しいフォルダー\sandtown\ナナクラフト\tkengine\graphics\posteffect\tktonemap.cpp') の以前の宣言を参照してください。</DESCRIPTION>
+    <FUNCTION>tkEngine::CTonemap::CalcLuminanceAvarage</FUNCTION>
+    <DECORATED>?CalcLuminanceAvarage@CTonemap@tkEngine@@QEAAXAEAVCRenderContext@2@PEAVCPostEffect@2@@Z</DECORATED>
+    <FUNCLINE>84</FUNCLINE>
+    <PATH>
+      <SFA>
+        <FILEPATH>c:\users\kbc16b15\desktop\github\新しいフォルダー\sandtown\ナナクラフト\tkengine\graphics\posteffect\</FILEPATH>
+        <FILENAME>tktonemap.cpp</FILENAME>
+        <LINE>86</LINE>
+        <COLUMN>17</COLUMN>
+      </SFA>
+    </PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\kbc16b15\desktop\github\新しいフォルダー\sandtown\ナナクラフト\tkengine\graphics\posteffect\</FILEPATH>
+      <FILENAME>tktonemap.cpp</FILENAME>
+      <LINE>125</LINE>
+      <COLUMN>16</COLUMN>
+    </SFA>
+    <DEFECTCODE>6246</DEFECTCODE>
+    <DESCRIPTION>'tag' のローカル宣言は、外部スコープの同じ名前の宣言を隠します。追加情報については、行 '86' ('c:\users\kbc16b15\desktop\github\新しいフォルダー\sandtown\ナナクラフト\tkengine\graphics\posteffect\tktonemap.cpp') の以前の宣言を参照してください。</DESCRIPTION>
+    <FUNCTION>tkEngine::CTonemap::CalcLuminanceAvarage</FUNCTION>
+    <DECORATED>?CalcLuminanceAvarage@CTonemap@tkEngine@@QEAAXAEAVCRenderContext@2@PEAVCPostEffect@2@@Z</DECORATED>
+    <FUNCLINE>84</FUNCLINE>
+    <PATH>
+      <SFA>
+        <FILEPATH>c:\users\kbc16b15\desktop\github\新しいフォルダー\sandtown\ナナクラフト\tkengine\graphics\posteffect\</FILEPATH>
+        <FILENAME>tktonemap.cpp</FILENAME>
+        <LINE>86</LINE>
+        <COLUMN>17</COLUMN>
+      </SFA>
+    </PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\kbc16b15\desktop\github\新しいフォルダー\sandtown\ナナクラフト\tkengine\graphics\posteffect\</FILEPATH>
+      <FILENAME>tktonemap.cpp</FILENAME>
+      <LINE>146</LINE>
+      <COLUMN>16</COLUMN>
+    </SFA>
+    <DEFECTCODE>6246</DEFECTCODE>
+    <DESCRIPTION>'tag' のローカル宣言は、外部スコープの同じ名前の宣言を隠します。追加情報については、行 '86' ('c:\users\kbc16b15\desktop\github\新しいフォルダー\sandtown\ナナクラフト\tkengine\graphics\posteffect\tktonemap.cpp') の以前の宣言を参照してください。</DESCRIPTION>
+    <FUNCTION>tkEngine::CTonemap::CalcLuminanceAvarage</FUNCTION>
+    <DECORATED>?CalcLuminanceAvarage@CTonemap@tkEngine@@QEAAXAEAVCRenderContext@2@PEAVCPostEffect@2@@Z</DECORATED>
+    <FUNCLINE>84</FUNCLINE>
+    <PATH>
+      <SFA>
+        <FILEPATH>c:\users\kbc16b15\desktop\github\新しいフォルダー\sandtown\ナナクラフト\tkengine\graphics\posteffect\</FILEPATH>
+        <FILENAME>tktonemap.cpp</FILENAME>
+        <LINE>86</LINE>
+        <COLUMN>17</COLUMN>
+      </SFA>
+    </PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\kbc16b15\desktop\github\新しいフォルダー\sandtown\ナナクラフト\tkengine\graphics\posteffect\</FILEPATH>
+      <FILENAME>tktonemap.cpp</FILENAME>
+      <LINE>160</LINE>
+      <COLUMN>16</COLUMN>
+    </SFA>
+    <DEFECTCODE>6246</DEFECTCODE>
+    <DESCRIPTION>'tag' のローカル宣言は、外部スコープの同じ名前の宣言を隠します。追加情報については、行 '86' ('c:\users\kbc16b15\desktop\github\新しいフォルダー\sandtown\ナナクラフト\tkengine\graphics\posteffect\tktonemap.cpp') の以前の宣言を参照してください。</DESCRIPTION>
+    <FUNCTION>tkEngine::CTonemap::CalcLuminanceAvarage</FUNCTION>
+    <DECORATED>?CalcLuminanceAvarage@CTonemap@tkEngine@@QEAAXAEAVCRenderContext@2@PEAVCPostEffect@2@@Z</DECORATED>
+    <FUNCLINE>84</FUNCLINE>
+    <PATH>
+      <SFA>
+        <FILEPATH>c:\users\kbc16b15\desktop\github\新しいフォルダー\sandtown\ナナクラフト\tkengine\graphics\posteffect\</FILEPATH>
+        <FILENAME>tktonemap.cpp</FILENAME>
+        <LINE>86</LINE>
+        <COLUMN>17</COLUMN>
+      </SFA>
+    </PATH>
+  </DEFECT>
+</DEFECTS>
