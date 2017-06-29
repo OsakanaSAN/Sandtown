@@ -45,6 +45,7 @@ private:
 	{
 		SREEP,
 		NOSREEP,
+		SREEPING,
 	};
 	InnState			innstate = SREEP;
 	bool				Innflg = false;

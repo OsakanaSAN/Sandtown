@@ -14,12 +14,11 @@ bool Fade::Start()
 	m_texture.Load("Assets/sprite/Load2.png");
 	m_texture2.Load("Assets/UI/cabe.png");
 	m_sprite.Init(&m_texture);
+	m_sprite2.Init(&m_texture2);
+	m_sprite2.SetPosition(cabepos);
 	m_sprite.SetSize({
 	static_cast<float>(Engine().GetFrameBufferWidth()),
 	static_cast<float>(Engine().GetFrameBufferHeight()) });
-	
-	m_sprite2.Init(&m_texture2);
-	m_sprite2.SetPosition(cabepos);
 	m_sprite2.SetSize({350,350 });
 	SetActiveFlag(false);
 	return true;
@@ -46,7 +45,7 @@ void Fade::Update()
 		break;
 	}
 	
-	m_sprite2.SetPosition(cabepos);
+	
 	m_sprite.SetPosition({ 0.0f,0.0f });
 	if (m_isExecute) {
 		switch (m_state) {
@@ -54,20 +53,22 @@ void Fade::Update()
 			m_timer += GameTime().GetFrameDeltaTime();
 			if (m_timer < FADE_TIME) {
 				float t = m_timer / FADE_TIME;
-				m_sprite.SetAlpha(min(t, 1.0f));
 				m_sprite2.SetAlpha(min(t, 1.0f));
+				m_sprite.SetAlpha(min(t, 1.0f));
+				
 				OutTimer += GameTime().GetFrameDeltaTime();
 			}
 			else if (OutTimer < 2)
 			{
-				m_sprite.SetAlpha(1.0f);
 				m_sprite2.SetAlpha(1.0f);
+				m_sprite.SetAlpha(1.0f);
+				
 				OutTimer += GameTime().GetFrameDeltaTime();
 			}
 
 			else {
-				m_sprite.SetAlpha(1.0f);
 				m_sprite2.SetAlpha(1.0f);
+				m_sprite.SetAlpha(1.0f);
 				m_isExecute = false;
 				OutTimer = 0;
 				
@@ -83,8 +84,9 @@ void Fade::Update()
 			m_timer += GameTime().GetFrameDeltaTime();	
 			if (m_timer < FADE_TIME) {
 				float t = m_timer / FADE_TIME;
-				m_sprite.SetAlpha(max(1.0f - t, 0.0f));
 				m_sprite2.SetAlpha(max(1.0f - t, 0.0f));
+				m_sprite.SetAlpha(max(1.0f - t, 0.0f));
+				
 			}
 
 			
@@ -99,10 +101,12 @@ void Fade::Update()
 			}
 			break;
 		}
+		m_sprite2.SetPosition(cabepos);
 	}
 }
 void Fade::PostRender(CRenderContext& renderContext)
 {
+	
 	m_sprite.Draw(renderContext);
 	m_sprite2.Draw(renderContext);
 }
