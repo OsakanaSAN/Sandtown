@@ -36,23 +36,23 @@ bool SceneChange::Start()
 
 	m_ComandBGTexture1.Load("Assets/sprite/comand.png");
 	m_ComandBGSprite1.Init(&m_ComandBGTexture1);
-	m_ComandBGSprite1.SetPosition({ -500,150 });
-	m_ComandBGSprite1.SetSize({ 800.0f,650.0f });
+	m_ComandBGSprite1.SetPosition({ -500,200 });
+	m_ComandBGSprite1.SetSize({ 750.0f,500.0f });
 
-	m_ComandBGTexture2.Load("Assets/sprite/パワー2.png");
+	m_ComandBGTexture2.Load("Assets/sprite/dungeon1.png");
 	m_ComandBGSprite2.Init(&m_ComandBGTexture2);
 	m_ComandBGSprite2.SetPosition({ -550,350 });
-	m_ComandBGSprite2.SetSize({ 250.0f,80 });
+	m_ComandBGSprite2.SetSize({ 280.0f,80 });
 
-	m_ComandBGTexture3.Load("Assets/sprite/パワー2.png");
+	m_ComandBGTexture3.Load("Assets/sprite/dungeon2.png");
 	m_ComandBGSprite3.Init(&m_ComandBGTexture3);
 	m_ComandBGSprite3.SetPosition({ -550,230 });
-	m_ComandBGSprite3.SetSize({ 250.0f,80 });
+	m_ComandBGSprite3.SetSize({ 280.0f,80 });
 
-	m_ComandBGTexture4.Load("Assets/sprite/パワー2.png");
+	m_ComandBGTexture4.Load("Assets/sprite/dungeon3.png");
 	m_ComandBGSprite4.Init(&m_ComandBGTexture4);
 	m_ComandBGSprite4.SetPosition({ -550,100 });
-	m_ComandBGSprite4.SetSize({ 250.0f,80 });
+	m_ComandBGSprite4.SetSize({ 280.0f,80 });
 
 	//m_ComandBGTexture5.Load("Assets/sprite/パワー2.png");
 	//m_ComandBGSprite5.Init(&m_ComandBGTexture5);
@@ -137,7 +137,7 @@ void SceneChange::Update()
 		if (L < 3.0f)
 		{
 			//Cahange = true;
-			if (Pad(0).IsTrigger(enButtonA))
+			if (Pad(0).IsTrigger(enButtonA) && !Cahange)
 			{
 				if (Out && !Cahange)
 				{

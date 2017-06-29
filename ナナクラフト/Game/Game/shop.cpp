@@ -18,14 +18,14 @@ shop::shop()
 		m_GoldSeatTexture[i].Load("Assets/UI/0.png");
 		m_GoldSeatSprite[i].SetPosition(m_Goldseatpos);
 		m_GoldSeatSprite[i].Init(&m_GoldSeatTexture[i]);
-		m_GoldSeatSprite[i].SetSize({ 80.0f,60.0f });
+		m_GoldSeatSprite[i].SetSize({ 60.0f,40.0f });
 
 		m_GoldSeatTexture2[i].Load("Assets/UI/0.png");
 		m_GoldSeatSprite2[i].SetPosition(m_Goldseatpos2);
 		m_GoldSeatSprite2[i].Init(&m_GoldSeatTexture2[i]);
-		m_GoldSeatSprite2[i].SetSize({ 80.0f,60.0f });
-		m_Goldseatpos2.x += 80;
-		m_Goldseatpos.x += 80;
+		m_GoldSeatSprite2[i].SetSize({ 60.0f,40.0f });
+		m_Goldseatpos2.x += 60;
+		m_Goldseatpos.x += 60;
 
 	}
 
@@ -34,7 +34,7 @@ shop::shop()
 		m_GoldSeatTexture3[i].Load("Assets/UI/riru.png");
 		m_GoldSeatSprite3[i].SetPosition(m_Goldseatpos3);
 		m_GoldSeatSprite3[i].Init(&m_GoldSeatTexture3[i]);
-		m_GoldSeatSprite3[i].SetSize({ 120.0f,100.0f });
+		m_GoldSeatSprite3[i].SetSize({ 100.0f,80.0f });
 		m_Goldseatpos3.y -= 120;
 	}
 	
@@ -90,23 +90,23 @@ void shop::Init(const char* modelName, CVector3 position, CQuaternion rotation)
 	
 	m_ComandBGTexture1.Load("Assets/sprite/comand.png");
 	m_ComandBGSprite1.Init(&m_ComandBGTexture1);
-	m_ComandBGSprite1.SetPosition({ -400,130 });
-	m_ComandBGSprite1.SetSize({ 1000.0f,800.0f });
+	m_ComandBGSprite1.SetPosition({ -420,130 });
+	m_ComandBGSprite1.SetSize({ 850.0f,600.0f });
 	
 	m_ComandBGTexture2.Load("Assets/sprite/パワー.png");
 	m_ComandBGSprite2.Init(&m_ComandBGTexture2);
 	m_ComandBGSprite2.SetPosition({ -550,300 });
-	m_ComandBGSprite2.SetSize({ 300.0f,80 });
+	m_ComandBGSprite2.SetSize({ 250.0f,60 });
 
 	m_ComandBGTexture3.Load("Assets/sprite/パワー2.png");
 	m_ComandBGSprite3.Init(&m_ComandBGTexture3);
 	m_ComandBGSprite3.SetPosition({ -550,180 });
-	m_ComandBGSprite3.SetSize({ 300.0f,100 });
+	m_ComandBGSprite3.SetSize({ 250.0f,80 });
 
 	m_CasolBGTexture.Load("Assets/sprite/casol2.png");
 	m_CasolBGSprite.Init(&m_CasolBGTexture);
-	m_CasolBGSprite.SetPosition({ -800,300 });
-	m_CasolBGSprite.SetSize({ 200,200 });
+	m_CasolBGSprite.SetPosition({ -750,300 });
+	m_CasolBGSprite.SetSize({ 150,150 });
 
 	GetGoldTex(nedan1);
 
@@ -143,7 +143,6 @@ void shop::Update()
 			Shopflg = true;
 			weaponState = Weapon1;
 			g_player->IsMoveSTOP();
-
 		}
 	}
 
@@ -159,8 +158,8 @@ void shop::ShopSelect()
 	{
 		g_menu->MenuSceneexit();
 	case Weapon1:
-		m_CasolBGSprite.SetPosition({ -800,300 });
-		m_CasolBGSprite.SetSize({ 200,200 });
+		m_CasolBGSprite.SetPosition({ -750,300 });
+		m_CasolBGSprite.SetSize({ 150,150 });
 
 		if (Pad(0).IsTrigger(enButtonUp))
 		{
@@ -168,7 +167,6 @@ void shop::ShopSelect()
 		}
 		else if (Pad(0).IsTrigger(enButtonDown))
 		{
-
 			weaponState = Weapon2;
 		}
 
@@ -188,8 +186,8 @@ void shop::ShopSelect()
 		break;
 
 	case Weapon2:
-		m_CasolBGSprite.SetPosition({ -800,200 });
-		m_CasolBGSprite.SetSize({ 200,200 });
+		m_CasolBGSprite.SetPosition({ -750,200 });
+		m_CasolBGSprite.SetSize({ 150,150 });
 
 		if (Pad(0).IsTrigger(enButtonUp))
 		{

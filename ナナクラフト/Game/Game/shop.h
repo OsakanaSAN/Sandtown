@@ -53,17 +53,17 @@ private:
 
 	CSprite     m_GoldSeatSprite[3];
 	CTexture    m_GoldSeatTexture[3];
-	CVector2    m_Goldseatpos = { -300,300 };
+	CVector2    m_Goldseatpos = { -350,300 };
 	char        m_GoldTexName[255];
 
 	CSprite     m_GoldSeatSprite2[3];
 	CTexture    m_GoldSeatTexture2[3];
-	CVector2    m_Goldseatpos2 = { -300,180};
+	CVector2    m_Goldseatpos2 = { -350,180};
 	char        m_GoldTexName2[255];
 
 	CSprite     m_GoldSeatSprite3[2];
 	CTexture    m_GoldSeatTexture3[2];
-	CVector2    m_Goldseatpos3 = { -30,280 };
+	CVector2    m_Goldseatpos3 = { -140,290 };
 	char        m_GoldTexName3[255];
 
 	CSkinModel				skinModel;		//スキンモデル。

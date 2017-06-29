@@ -10,6 +10,7 @@
 #include "shop.h"
 #include "SceneChange.h"
 #include "Inn.h"
+#include "particle.h"
 
 extern CRandom g_random;
 
@@ -435,7 +436,7 @@ bool Menu::UseItem()
 		g_battleplayer->SetHP(g_Hud->GetHP());
 		CVector3 Bpos = g_battleplayer->Getpos();
 		Bpos.x = Bpos.x - 0.5f;
-		g_battleplayer->Particle(Bpos, 1);//回復パーティクルの呼び出し
+		g_particle->Particle(Bpos, 1);//回復パーティクルの呼び出し
 	}
 	/*return true;*/
 	//}

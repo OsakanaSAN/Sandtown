@@ -11,6 +11,7 @@
 #include "GameSound.h"
 #include "Menu.h"
 #include "BattleMenu.h"
+#include "particle.h"
 
 BattlePlayer* g_battleplayer = nullptr;
 BattleEnemy* g_battleenemy = nullptr;
@@ -18,7 +19,7 @@ BattleMenu* g_battlemenu;
 
 BattleScene::BattleScene()
 {
-
+	g_particle = NewGO<particle>(0);
 	g_battleplayer = NewGO<BattlePlayer>(0);
 	g_battleenemy = NewGO<BattleEnemy>(0);
 	g_battlemenu = NewGO<BattleMenu>(0);
@@ -268,7 +269,7 @@ void BattleScene::Update()
 				PlayerTurn();
 				if (Itemuse)//アイテム使ったターン
 				{
-					g_battleplayer->ParticleDelete();//パーティクル消去
+					g_particle->ParticleDelete();//パーティクル消去
 					Itemuse = false;
 				}
 
@@ -406,14 +407,14 @@ void BattleScene::PlayerTurn()
 				m_DamageSeatSprite[i].SetSize({80,60 });
 				PDamagepos.x +=80;
 			}
-			g_battleplayer->Particle(*g_battleenemy->Getpos(0),0);//攻撃パーティクル呼び出し
+			g_particle->Particle(*g_battleenemy->Getpos(0),0);//攻撃パーティクル呼び出し
 			g_battleenemy->SetDamage(g_battleplayer->GetATK()+Prandom, true);//ダメージ処理
 			g_battlemenu->SetEnemyHp(g_battleenemy->GetHP());//敵の体力DOWN
 			EDamage = true;
 		}
 		else if (PAttack &&EDamage)
 		{
-			g_battleplayer->ParticleDelete();//パーティクル消去
+			g_particle->ParticleDelete();//パーティクル消去
 			m_sound_Attack->Stop();
 
 			PAttack = false;
@@ -476,7 +477,7 @@ void BattleScene::PlayerTurn()
 
 		if (Itemuse)//アイテム使ったターン
 		{
-			g_battleplayer->ParticleDelete();//パーティクル消去
+			g_particle->ParticleDelete();//パーティクル消去
 			Itemuse = false;
 		}
 		
@@ -579,7 +580,7 @@ void BattleScene::EnemyTurn()
 			EDamagepos.x +=100.0f;
 		}
 		
-		g_battleplayer->Particle(g_battleplayer->Getpos(),0);//攻撃パーティクル呼び出し
+		g_particle->Particle(g_battleplayer->Getpos(),0);//攻撃パーティクル呼び出し
 		
 		g_battleplayer->SetDamage(g_battleenemy->GetATK()+Erandom, true);//ダメージ計算とダメージアニメーション再生
 
@@ -591,7 +592,7 @@ void BattleScene::EnemyTurn()
 	else if (EAttack && PDamage )
 	{
 
-		g_battleplayer->ParticleDelete();//パーティクル消去
+		g_particle->ParticleDelete();//パーティクル消去
 
 		m_sound_Attack->Stop();
 
@@ -665,7 +666,7 @@ void BattleScene::EnemyTurn1()
 			EDamagepos.x += 100.0f;
 		}
 
-		g_battleplayer->Particle(g_battleplayer->Getpos(), 0);//攻撃パーティクル呼び出し
+		g_particle->Particle(g_battleplayer->Getpos(), 0);//攻撃パーティクル呼び出し
 
 		g_battleplayer->SetDamage(g_battleenemy->GetATK()+ Erandom, true);//ダメージ計算とダメージアニメーション再生
 
@@ -676,7 +677,7 @@ void BattleScene::EnemyTurn1()
 	else if (EAttack && PDamage)
 	{
 
-		g_battleplayer->ParticleDelete();//パーティクル消去
+		g_particle->ParticleDelete();//パーティクル消去
 		m_sound_Attack->Stop();
 		EAttack = false;
 		PDamage = false;
@@ -735,7 +736,7 @@ void BattleScene::EnemyTurn2()
 
 			EDamagepos.x += 100.0f;
 		}
-		g_battleplayer->Particle(g_battleplayer->Getpos(), 0);//攻撃パーティクル呼び出し
+		g_particle->Particle(g_battleplayer->Getpos(), 0);//攻撃パーティクル呼び出し
 
 		g_battleplayer->SetDamage(g_battleenemy->GetATK()+ Erandom, true);//ダメージ計算とダメージアニメーション再生
 
@@ -745,7 +746,7 @@ void BattleScene::EnemyTurn2()
 	}
 	else if (EAttack && PDamage)
 	{
-		g_battleplayer->ParticleDelete();//パーティクル消去
+		g_particle->ParticleDelete();//パーティクル消去
 		m_sound_Attack->Stop();
 		EAttack = false;
 		PDamage = false;
@@ -791,14 +792,14 @@ void BattleScene::EnemyTurn3()
 			m_DamageSeatSprite[i].SetSize({ 100,80 });
 			EDamagepos.x += 100.0f;
 		}
-		g_battleplayer->Particle(g_battleplayer->Getpos(), 0);//攻撃パーティクル呼び出し
+		g_particle->Particle(g_battleplayer->Getpos(), 0);//攻撃パーティクル呼び出し
 		g_battleplayer->SetDamage(g_battleenemy->GetATK()+ Erandom, true);//ダメージ計算とダメージアニメーション再生
 		g_battlemenu->SetHp(g_battleplayer->GetHP());
 		PDamage = true;
 	}
 	else if (EAttack && PDamage)
 	{
-		g_battleplayer->ParticleDelete();//パーティクル消去
+		g_particle->ParticleDelete();//パーティクル消去
 		m_sound_Attack->Stop();
 		EAttack = false;
 		PDamage = false;

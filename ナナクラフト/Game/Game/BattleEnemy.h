@@ -1,6 +1,4 @@
 #pragma once
-#include "BattleCamera.h"
-
 
 
 class BattleEnemy :
@@ -14,10 +12,6 @@ public:
 	void Update();
 	void Render(CRenderContext&renderContext);
 	void AnimationSet();
-	void EnemyParticle(CVector3 target);
-	void EnemyParticleDelete();
-
-	void Delete();
 
 	void Setpos(CVector3 pos)
 	{
@@ -28,13 +22,11 @@ public:
 		return &position[EnemyNo];
 	}
 
-
 	void SetAttack(bool Acs)
 	{
 		IsAttack = Acs;
 		
 	}
-
 
 	void SetDamage(int ATK, bool Damage)
 	{
@@ -130,9 +122,6 @@ private:
 	int             EGold=20;
 
 	////////////////////////////////////
-	//パーティクル系
-	CParticleEmitter		*m_particle;
-	CRandom					m_random;
 
 	int Battlecase = g_random.GetRandInt() % 4;
 };

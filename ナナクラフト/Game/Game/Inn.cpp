@@ -116,7 +116,7 @@ void Inn::Update()
 			g_menu->MenuSceneStop();
 			Innflg = false;
 		}
-		else if (L < 7.0f && Pad(0).IsTrigger(enButtonA)&&!Innflg)
+		else if (L < 7.0f && Pad(0).IsTrigger(enButtonA))
 		{
 			Innflg = true;
 			innstate = NOSREEP;

@@ -16,7 +16,7 @@
 #include "Dungeon.h"
 #include "BattlePlayer.h"
 #include "SceneChange.h"
-
+#include "particle.h"
 
 GameScene* g_gameScene = NULL;
 Player* g_player = nullptr;
@@ -29,6 +29,8 @@ Enemy*  g_Enemy = nullptr;
 Enemy*  g_Enemy2 = nullptr;
 Enemy*  g_Enemy3 = nullptr;
 Dungeon* g_Dungeon = nullptr;
+particle* g_particle = nullptr;
+
 
 GameScene::GameScene()
 {
