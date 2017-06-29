@@ -48,6 +48,7 @@ private:
 		SREEPING,
 	};
 	InnState			innstate = SREEP;
+	bool				InnRenderflg= false;
 	bool				Innflg = false;
 
 	bool				Fadeflg = false;

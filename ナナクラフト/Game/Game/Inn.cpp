@@ -102,7 +102,8 @@ void Inn::Update()
 
 	if (g_player != nullptr) {
 
-		
+		if (Innflg) { InnSelect(); }
+
 		CVector3 Ppos = g_player->Getpos();
 		CVector3 Vpos;
 
@@ -121,11 +122,8 @@ void Inn::Update()
 			Innflg = true;
 			innstate = NOSREEP;
 			g_player->IsMoveSTOP();
-			return;
 
 		}
-
-		if (Innflg) { InnSelect(); }
 
 	}
 
@@ -144,8 +142,8 @@ void Inn::Render(CRenderContext& renderContext)
 	m_ComandBGSprite1.Draw(renderContext);
 	m_ComandBGSprite2.Draw(renderContext);
 	m_ComandBGSprite3.Draw(renderContext);
-	m_TextSprite.Draw(renderContext);
 	m_CasolBGSprite.Draw(renderContext);
+	m_TextSprite.Draw(renderContext);
 }
 
 void Inn::InnSelect()
