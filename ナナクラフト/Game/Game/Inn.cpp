@@ -116,7 +116,7 @@ void Inn::Update()
 			g_menu->MenuSceneStop();
 			Innflg = false;
 		}
-		else if (L < 7.0f && Pad(0).IsTrigger(enButtonA))
+		else if (L < 7.0f && Pad(0).IsTrigger(enButtonA)&&!Innflg)
 		{
 			Innflg = true;
 			innstate = NOSREEP;
@@ -165,7 +165,7 @@ void Inn::InnSelect()
 		{
 			innstate = NOSREEP;
 		}
-		if (Pad(0).IsTrigger(enButtonA)&&!Fadeflg)
+		else if (Pad(0).IsTrigger(enButtonA))
 		{
 			innstate = SREEPING;
 			g_player->IsMoveSTOP();
@@ -213,6 +213,7 @@ void Inn::InnSelect()
 		if (!g_fade->IsExecute())
 		{
 			g_player->IsMoveSTART();
+			innstate = NOSREEP;
 		}
 		break;
 	}

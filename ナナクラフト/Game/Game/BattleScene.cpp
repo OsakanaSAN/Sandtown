@@ -416,7 +416,7 @@ void BattleScene::PlayerTurn()
 		else if (PAttack &&EDamage)
 		{
 
-			g_battleplayer->ParticleDelete();//パーティクル消去
+			 g_particle->ParticleDelete();//パーティクル消去
 			//m_sound_Attack->Stop();
 
 
@@ -684,7 +684,7 @@ void BattleScene::EnemyTurn1()
 	{
 
 
-		g_battleplayer->ParticleDelete();//パーティクル消去
+		g_particle->ParticleDelete();//パーティクル消去
 		//m_sound_Attack->Stop();
 
 		EAttack = false;
@@ -756,7 +756,7 @@ void BattleScene::EnemyTurn2()
 	else if (EAttack && PDamage)
 	{
 
-		g_battleplayer->ParticleDelete();//パーティクル消去
+		g_particle->ParticleDelete();//パーティクル消去
 		//m_sound_Attack->Stop();
 
 		EAttack = false;
@@ -812,7 +812,7 @@ void BattleScene::EnemyTurn3()
 	else if (EAttack && PDamage)
 	{
 
-		g_battleplayer->ParticleDelete();//パーティクル消去
+		g_particle->ParticleDelete();//パーティクル消去
 		//m_sound_Attack->Stop();
 
 		EAttack = false;
