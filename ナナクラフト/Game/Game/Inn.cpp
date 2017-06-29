@@ -117,7 +117,7 @@ void Inn::Update()
 			g_menu->MenuSceneStop();
 			Innflg = false;
 		}
-		else if (L < 7.0f && Pad(0).IsTrigger(enButtonA))
+		else if (L < 7.0f && Pad(0).IsTrigger(enButtonA)&&!Innflg)
 		{
 			Innflg = true;
 			innstate = NOSREEP;
@@ -163,8 +163,10 @@ void Inn::InnSelect()
 		{
 			innstate = NOSREEP;
 		}
-		if (Pad(0).IsTrigger(enButtonA)&&!Fadeflg)
+		else if (Pad(0).IsTrigger(enButtonA))
 		{
+			innstate = SREEPING;
+			g_player->IsMoveSTOP();
 			m_sound_select = NewGO<CSoundSource>(0);
 			m_sound_select->Init("Assets/sound/select3.wav");
 			m_sound_select->Play(false);
@@ -174,7 +176,7 @@ void Inn::InnSelect()
 			g_menu->setHP(g_Hud->GetHP());
 			Fadeflg = true;
 			g_fade->StartFadeOut();
-			innstate = NOSREEP;
+			
 		}
 
 		break;
@@ -204,8 +206,13 @@ void Inn::InnSelect()
 		}
 
 		break;
+	case SREEPING:
 
-	default:
+		if (!g_fade->IsExecute())
+		{
+			g_player->IsMoveSTART();
+			innstate = NOSREEP;
+		}
 		break;
 	}
 }

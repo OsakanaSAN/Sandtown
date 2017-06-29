@@ -192,7 +192,7 @@ void BattleScene::Update()
 
 			IsBattle = false;
 			EnemyPointCamera = true;
-
+			m_sound_Attack->Stop();
 			//攻撃
 
 			if (Pad(0).IsTrigger(enButtonUp) && Comand == Item)
@@ -379,7 +379,8 @@ void BattleScene::PlayerTurn()
 		else if (PAttack && !EDamage)
 		{
 
-			m_sound_Attack->Play(false);
+
+			m_sound_Attack->Play(true);
 			m_sound_Attack->SetVolume(4.0f);
 			CVector2 PDamagepos = { -300,180 };
 			if (Bcase == 0  )
@@ -414,8 +415,10 @@ void BattleScene::PlayerTurn()
 		}
 		else if (PAttack &&EDamage)
 		{
-			g_particle->ParticleDelete();//パーティクル消去
-			m_sound_Attack->Stop();
+
+			 g_particle->ParticleDelete();//パーティクル消去
+			//m_sound_Attack->Stop();
+
 
 			PAttack = false;
 			EDamage = false;
@@ -424,6 +427,7 @@ void BattleScene::PlayerTurn()
 			{
 
 				Comand = Result;
+				m_sound_Attack->Stop();
 				g_battleenemy->SetActiveFlag(false);
 				g_Hud->SetGold(g_battleenemy->GetEGold());
 				g_Hud->SetExp(g_battleenemy->GetExp());
@@ -553,7 +557,8 @@ void BattleScene::EnemyTurn()
 	}
 	else if (EAttack && !PDamage)
 	{
-		m_sound_Attack->Play(false);
+		m_sound_Attack->Stop();
+		m_sound_Attack->Play(true);
 		m_sound_Attack->SetVolume(4.0f);
 		
 		CVector2 EDamagepos= { -100,-20 };
@@ -594,7 +599,7 @@ void BattleScene::EnemyTurn()
 
 		g_particle->ParticleDelete();//パーティクル消去
 
-		m_sound_Attack->Stop();
+		//m_sound_Attack->Stop();
 
 		EAttack = false;
 		PDamage = false;
@@ -652,7 +657,8 @@ void BattleScene::EnemyTurn1()
 	}
 	else if (EAttack && !PDamage)
 	{
-		m_sound_Attack->Play(false);
+		m_sound_Attack->Stop();
+		m_sound_Attack->Play(true);
 		m_sound_Attack->SetVolume(4.0f);
 
 		DamageTex(true);
@@ -677,8 +683,10 @@ void BattleScene::EnemyTurn1()
 	else if (EAttack && PDamage)
 	{
 
+
 		g_particle->ParticleDelete();//パーティクル消去
-		m_sound_Attack->Stop();
+		//m_sound_Attack->Stop();
+
 		EAttack = false;
 		PDamage = false;
 
@@ -723,6 +731,7 @@ void BattleScene::EnemyTurn2()
 	}
 	else if (EAttack && !PDamage)
 	{
+		m_sound_Attack->Stop();
 		m_sound_Attack->Play(false);
 		m_sound_Attack->SetVolume(4.0f);
 
@@ -746,8 +755,10 @@ void BattleScene::EnemyTurn2()
 	}
 	else if (EAttack && PDamage)
 	{
+
 		g_particle->ParticleDelete();//パーティクル消去
-		m_sound_Attack->Stop();
+		//m_sound_Attack->Stop();
+
 		EAttack = false;
 		PDamage = false;
 		if (g_battleplayer->GetHP() <= 0)
@@ -782,6 +793,7 @@ void BattleScene::EnemyTurn3()
 	}
 	else if (EAttack && !PDamage)
 	{
+		m_sound_Attack->Stop();
 		m_sound_Attack->Play(false);
 		m_sound_Attack->SetVolume(4.0f);
 		DamageTex(true);
@@ -799,8 +811,10 @@ void BattleScene::EnemyTurn3()
 	}
 	else if (EAttack && PDamage)
 	{
+
 		g_particle->ParticleDelete();//パーティクル消去
-		m_sound_Attack->Stop();
+		//m_sound_Attack->Stop();
+
 		EAttack = false;
 		PDamage = false;
 		if (g_battleplayer->GetHP() <= 0)

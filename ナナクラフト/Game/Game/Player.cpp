@@ -48,7 +48,7 @@ Player::~Player()
 {
 	runsound->Release();
 	//ƒtƒ@ƒCƒ‹‚Ì‘‚«‚İ
-	ofstream fout("Assets/DATA/tst.txt");
+	ofstream fout("Assets/DATA/tst.dat");
 	if (!fout)
 	{
 		exit(0);
@@ -278,7 +278,7 @@ void Player::Render(CRenderContext& renderContext)
 
 void Player::Loadpos()
 {
-	ifstream fin("Assets/DATA/tst.txt");
+	ifstream fin("Assets/DATA/tst.dat");
 	if (!fin)
 	{
 		exit(0);
