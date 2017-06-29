@@ -1,7 +1,5 @@
 #pragma once
 #include "tkEngine/character/tkCharacterController.h"
-#include "BattleCamera.h"
-
 
 class BattlePlayer :
 	public IGameObject
@@ -13,8 +11,6 @@ public:
 	void Update();
 	void Render(CRenderContext&renderContext);
 	void AnimationSet();
-	void Particle(CVector3 target, int ParticleNumber);
-	void ParticleDelete();
 
 	CVector3 Getpos()
 	{
@@ -81,20 +77,12 @@ private:
 
 	};
 
-	enum Particle {
-		ATTACK,
-		HEAL,
-		STOP,
-	};
-
-	int currentParticle = ATTACK;
+	
 	CSkinModel				skinModel;
 	CSkinModelDataHandle	skinModelData;
 	CCharacterController	characterController;
 
 	CAnimation				Animation;
-	CParticleEmitter		*m_particle;
-	CRandom					m_random;
 
 	CVector3				position = { -1.0f,50.0f,-4.5f };
 

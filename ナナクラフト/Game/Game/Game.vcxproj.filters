@@ -71,6 +71,7 @@
     <ClCompile Include="Inn.cpp">
       <Filter>Map</Filter>
     </ClCompile>
+    <ClCompile Include="particle.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Camera.h" />
@@ -142,6 +143,7 @@
     <ClInclude Include="Inn.h">
       <Filter>Map</Filter>
     </ClInclude>
+    <ClInclude Include="particle.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Map">

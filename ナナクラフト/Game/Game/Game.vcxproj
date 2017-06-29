@@ -180,6 +180,7 @@
     <ClCompile Include="Mapchip.cpp" />
     <ClCompile Include="Menu.cpp" />
     <ClCompile Include="Npc.cpp" />
+    <ClCompile Include="particle.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="SceneChange.cpp" />
     <ClCompile Include="Scene\GameScene.cpp" />
@@ -212,6 +213,7 @@
     <ClInclude Include="Mapchip.h" />
     <ClInclude Include="Menu.h" />
     <ClInclude Include="Npc.h" />
+    <ClInclude Include="particle.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="SceneChange.h" />
     <ClInclude Include="Scene\GameScene.h" />
