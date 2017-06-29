@@ -172,9 +172,8 @@ void Inn::InnSelect()
 			m_sound_select->Play(false);
 			m_sound_select->SetVolume(4.0f);
 
-			g_Hud->RecoveryHP(g_Hud->GetMaxHP()); //‘S‰ñ•œ
+			g_Hud->RecoveryHP(g_Hud->GetMaxHP());//‘S‰ñ•œ
 			g_menu->setHP(g_Hud->GetHP());
-			
 			Fadeflg = true;
 			g_fade->StartFadeOut();
 			innstate = NOSREEP;
