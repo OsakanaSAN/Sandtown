@@ -152,8 +152,8 @@ private:
 	int		UseItemNomberR = 0;
 	int		UseItemNomberL = 1;
 	int		UseItemNo =0;
-	float	casolXpos = -400.0f;
-	float	casolYpos = 250.0f;
+	float	casolXpos = -360.0f;
+	float	casolYpos = 200.0f;
 };
 
 extern Menu* g_menu;
