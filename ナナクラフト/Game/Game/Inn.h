@@ -47,6 +47,7 @@ private:
 		NOSREEP,
 	};
 	InnState			innstate = SREEP;
+	bool				InnRenderflg= false;
 	bool				Innflg = false;
 
 	bool				Fadeflg = false;

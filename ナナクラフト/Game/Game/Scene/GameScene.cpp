@@ -38,12 +38,12 @@ GameScene::GameScene()
 	g_player = NewGO<Player>(0);
 	g_Hud = NewGO<HUD>(0);
 	g_map = NewGO<Map>(0);
-	g_menu = NewGO<Menu>(0);;
+	g_menu = NewGO<Menu>(0);
+
 
 	mapscene = MACHI;
 	scenes = STOP;
 }
-
 
 
 GameScene::~GameScene()
