@@ -7,7 +7,7 @@
 //Unity
 {
 	"Unity",
-	CVector3(0.00f, 0.00f, 0.00f),             //平行移動
+	CVector3(-7.91f, 0.00f, 7.22f),             //平行移動
 	CQuaternion(0.00f, 0.00f, 0.00f, 1.00f ),  //回転
 },
 //Fence_a
@@ -394,23 +394,47 @@
 	CVector3(-33.28f, 0.00f, 19.69f),             //平行移動
 	CQuaternion(-0.71f, 0.00f, 0.00f, 0.71f ),  //回転
 },
-//Building_f
+//Sign_a
 {
-	"Building_f",
-	CVector3(9.69f, 0.00f, -16.85f),             //平行移動
+	"Sign_a",
+	CVector3(-26.70f, 3.52f, 5.10f),             //平行移動
+	CQuaternion(-0.50f, 0.50f, 0.50f, 0.50f ),  //回転
+},
+//Sign_c
+{
+	"Sign_c",
+	CVector3(4.24f, 3.23f, -3.82f),             //平行移動
+	CQuaternion(0.71f, 0.00f, 0.00f, -0.71f ),  //回転
+},
+//Sign_b
+{
+	"Sign_b",
+	CVector3(4.50f, 3.36f, 14.80f),             //平行移動
 	CQuaternion(-0.71f, 0.00f, 0.00f, 0.71f ),  //回転
 },
-//Building_d
+//Building_e
 {
-	"Building_d",
-	CVector3(-27.12f, 0.00f, -11.53f),             //平行移動
+	"Building_e",
+	CVector3(-7.30f, 0.00f, -9.10f),             //平行移動
+	CQuaternion(-0.71f, 0.00f, 0.00f, 0.71f ),  //回転
+},
+//Building_c
+{
+	"Building_c",
+	CVector3(-26.70f, 0.00f, 4.10f),             //平行移動
 	CQuaternion(-0.71f, 0.00f, 0.00f, 0.71f ),  //回転
 },
 //Building_b
 {
 	"Building_b",
-	CVector3(-8.93f, 0.00f, -9.46f),             //平行移動
-	CQuaternion(-0.71f, 0.00f, 0.00f, 0.71f ),  //回転
+	CVector3(5.40f, 0.00f, -3.85f),             //平行移動
+	CQuaternion(0.50f, 0.50f, 0.50f, -0.50f ),  //回転
+},
+//Building_a
+{
+	"Building_a",
+	CVector3(5.50f, 0.00f, 14.70f),             //平行移動
+	CQuaternion(-0.50f, -0.50f, -0.50f, 0.50f ),  //回転
 },
 //maru
 {

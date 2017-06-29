@@ -89,26 +89,25 @@ void Enemy::Tracking()
 
 	diff.Subtract(position);
 
-	/*CVector3 directions;
-	CMatrix matrix=skinModel.GetWorldMatrix();
+	//CVector3 directions;
+	//CMatrix matrix=skinModel.GetWorldMatrix();
+	//
+	//direction.x = matrix.m[2][0];
+	//direction.y = matrix.m[2][1];
+	//direction.z = matrix.m[2][2];
+	//directions.Normalize();
+	//CVector3 toPos;
+	//toPos.Subtract(g_player->Getpos(), position);
+	//toPos.Normalize();
+	//float angles = 0.0f;
+	//angles = toPos.Dot(directions);
+	//angles = acos(angles);
 	
-	direction.x = matrix.m[2][0];
-	direction.y = matrix.m[2][1];
-	direction.z = matrix.m[2][2];
-	directions.Normalize();
-	CVector3 toPos;
-	toPos.Subtract(g_player->Getpos(), position);
-	toPos.Normalize();
-	float angles = 0.0f;
-	angles = toPos.Dot(directions);
-	angles = acos(angles);*/
-
 	if (diff.Length() < SearchRaeng && diff.Length() > 1.5f)
 	{
 		if (diff.Length() < 2)
 		{
-			
-			
+
 			g_gameScene->Batoset(true);
 			enemyHit = true;
 			

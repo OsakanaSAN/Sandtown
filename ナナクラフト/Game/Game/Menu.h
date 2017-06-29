@@ -15,6 +15,7 @@ public:
 	void MenuSceneexit();
 	void NoItem(int Nonumber);
 	bool UseItem();
+	void Itemerase();
 
 	void setHP(int setHp)
 	{
@@ -47,6 +48,11 @@ public:
 	void MenuSceneItem()
 	{
 		setMenu = BATTLEINVENTORY;
+	}
+
+	int GetSceneState()
+	{
+		return setMenu;
 	}
 	void MenuSceneStop();
 	void BattleMenuStop();
@@ -99,8 +105,10 @@ private:
 
 	//ÉSÅ[ÉãÉh
 
-	CSprite     GoldSeatSprite[4];
-	CTexture    GoldSeatTexture[4];
+	/*CSprite     GoldSeatSprite[4];
+	CTexture    GoldSeatTexture[4];*/
+	CSprite     GoldSeatSprite[5];
+	CTexture    GoldSeatTexture[5];
 	CVector2    GoldSeatpos = {-180.0f,-100.0f};
 	int         GoldChang = 0;
 

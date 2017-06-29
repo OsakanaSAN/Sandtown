@@ -16,14 +16,22 @@ struct SMapInfo {
 Mapchip* mapchip[255];
 SceneChange* g_SC;
 GameSky*     g_Sky;
-shop*		g_shop;
+shop*		g_shop=nullptr;
 
 //マップの配置情報。
 SMapInfo mapLocInfo[] = {
-#include "Map/test3.h"
+#include "Map/test.h"
 };
 SMapInfo mapLoc2[] = {
-#include "Map/test.h"
+#include "Map/test2.h"
+};
+
+SMapInfo mapLoc3[] = {
+#include "Map/test3.h"
+};
+
+SMapInfo mapLoc4[] = {
+#include "Map/test4.h"
 };
 int      MapCount = 0;
 
@@ -32,11 +40,20 @@ Map::Map()
 	ChangeObject = 0;
 	numObject = 0;
 	NoMoveObject = 0;
-
-	if (g_Hud->GetGold() > 500)
+	
+	if (g_Hud->GetGold()>=4000)
+	{
+		MapCount = 3;
+	}
+	else if (g_Hud->GetGold()>=2000)
+	{
+		MapCount = 2;
+	}
+	else if (g_Hud->GetGold()>=500)
 	{
 		MapCount = 1;
 	}
+
 }
 
 
@@ -52,7 +69,7 @@ Map::~Map()
 	DeleteGO(g_SC);
 	DeleteGO(g_Sky);
 	DeleteGO(g_shop);
-
+	g_shop = nullptr;
 }
 
 bool Map::Start()
@@ -174,7 +191,123 @@ bool Map::Start()
 		mapchip[0]->SoundOnMachi();
 		return true; //一回だけ呼ばれる
 		break;
+	case 2:
 
+		//マップにいくつのオブジェクトが配置されているか調べる。
+		numObject = sizeof(mapLoc3) / sizeof(mapLoc3[0]);
+		//置かれているオブジェクトの数だけマップチップを生成する。
+		for (int i = 0; i < numObject; i++) {
+
+
+			if (strcmp(mapLoc3[i].modelName, "Unity") == 0)
+			{
+				pos = mapLoc3[i].position;
+				rot = mapLoc3[i].rotation;
+
+				g_player->Setpos2(pos);
+				g_player->SetRot(rot);
+				ChangeObject++;
+
+			}
+			else if (strcmp(mapLoc3[i].modelName, "doa") == 0)
+			{
+
+				g_SC = NewGO<SceneChange>(0);
+				g_SC->Init(mapLoc3[i].modelName, mapLoc3[i].position, mapLoc3[i].rotation);
+				g_SC->setpos(mapLoc3[i].position);
+				g_SC->Norender();
+				ChangeObject++;
+
+			}
+			else if (strcmp(mapLoc3[i].modelName, "Sign_a") == 0)
+			{
+
+				g_shop = NewGO<shop>(0);
+				g_shop->Init(mapLoc3[i].modelName, mapLoc3[i].position, mapLoc3[i].rotation);
+
+				ChangeObject++;
+
+			}
+			else if (strcmp(mapLoc3[i].modelName, "maru") == 0)
+			{
+
+				g_Sky = NewGO<GameSky>(0);
+				g_Sky->Init(mapLoc3[i].modelName, mapLoc3[i].position, mapLoc3[i].rotation);
+				ChangeObject++;
+
+			}
+
+			else
+			{
+				mapchip[NoMoveObject] = NewGO<Mapchip>(0);
+				//モデル名、座標、回転を与えてマップチップを初期化する。
+				mapchip[NoMoveObject]->Init(mapLoc3[i].modelName, mapLoc3[i].position, mapLoc3[i].rotation);
+				NoMoveObject++;
+			}
+
+		}
+		mapchip[0]->SoundOnMachi();
+		return true; //一回だけ呼ばれる
+		break;
+	case 3:
+
+		//マップにいくつのオブジェクトが配置されているか調べる。
+		numObject = sizeof(mapLoc4) / sizeof(mapLoc4[0]);
+		//置かれているオブジェクトの数だけマップチップを生成する。
+		for (int i = 0; i < numObject; i++) {
+
+
+			if (strcmp(mapLoc4[i].modelName, "Unity") == 0)
+			{
+				pos = mapLoc4[i].position;
+				rot = mapLoc4[i].rotation;
+
+				g_player->Setpos2(pos);
+				g_player->SetRot(rot);
+				ChangeObject++;
+
+			}
+			else if (strcmp(mapLoc4[i].modelName, "doa") == 0)
+			{
+
+				g_SC = NewGO<SceneChange>(0);
+				g_SC->Init(mapLoc4[i].modelName, mapLoc4[i].position, mapLoc4[i].rotation);
+				g_SC->setpos(mapLoc4[i].position);
+				g_SC->Norender();
+				ChangeObject++;
+
+			}
+			else if (strcmp(mapLoc4[i].modelName, "Sign_a") == 0)
+			{
+
+				g_shop = NewGO<shop>(0);
+				g_shop->Init(mapLoc4[i].modelName, mapLoc4[i].position, mapLoc4[i].rotation);
+
+				ChangeObject++;
+
+			}
+			else if (strcmp(mapLoc4[i].modelName, "maru") == 0)
+			{
+
+				g_Sky = NewGO<GameSky>(0);
+				g_Sky->Init(mapLoc4[i].modelName, mapLoc4[i].position, mapLoc4[i].rotation);
+				ChangeObject++;
+
+			}
+
+			else
+			{
+				mapchip[NoMoveObject] = NewGO<Mapchip>(0);
+				//モデル名、座標、回転を与えてマップチップを初期化する。
+				mapchip[NoMoveObject]->Init(mapLoc4[i].modelName, mapLoc4[i].position, mapLoc4[i].rotation);
+				NoMoveObject++;
+			}
+
+		}
+		mapchip[0]->SoundOnMachi();
+		return true; //一回だけ呼ばれる
+		break;
+	
 	}
 
 

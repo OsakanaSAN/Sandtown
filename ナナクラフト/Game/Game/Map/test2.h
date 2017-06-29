@@ -424,12 +424,6 @@
 	CVector3(9.69f, 0.00f, -16.85f),             //平行移動
 	CQuaternion(-0.71f, 0.00f, 0.00f, 0.71f ),  //回転
 },
-//Building_e
-{
-	"Building_e",
-	CVector3(-7.80f, 0.00f, -8.70f),             //平行移動
-	CQuaternion(-0.71f, 0.00f, 0.00f, 0.71f ),  //回転
-},
 //Building_d
 {
 	"Building_d",

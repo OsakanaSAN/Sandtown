@@ -16,6 +16,11 @@ public:
 	{
 		LightPos2 = a;
 	}
+
+	bool GetShop()
+	{
+		return Shopflg;
+	}
 	
 private:
 
@@ -63,5 +68,8 @@ private:
 	CRigidBody				rigidBody;		//çÑëÃÅB
 	int nedan1 = 100;
 	int nedan2 = 300;
+
+	bool Shopflg = false;
 };
 
+extern shop* g_shop;

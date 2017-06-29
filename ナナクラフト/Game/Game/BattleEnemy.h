@@ -1,6 +1,8 @@
 #pragma once
 #include "BattleCamera.h"
 
+
+
 class BattleEnemy :
 	public IGameObject
 {
@@ -19,11 +21,11 @@ public:
 
 	void Setpos(CVector3 pos)
 	{
-		position = pos;
+		position[0] = pos;
 	}
-	CVector3 Getpos()
+	CVector3* Getpos(int EnemyNo)
 	{
-		return position;
+		return &position[EnemyNo];
 	}
 
 
@@ -64,6 +66,25 @@ public:
 		return Exp;
 	}
 
+	void SetEnemyNo(int No)
+	{
+		EnemyNo = No;
+	}
+
+	int GetEnemyNo()
+	{
+		return EnemyNo;
+	}
+
+	void SetBattlecase(int Bcase)
+	{
+		Battlecase = Bcase;
+	}
+
+	int GetBattlecase()
+	{
+		return Battlecase;
+	}
 private:
 
 	enum ANIME {
@@ -76,11 +97,20 @@ private:
 		Alive,
 		Dead
 	};
-	CSkinModel				skinModel;
-	CSkinModelDataHandle	skinModelData;
-	CAnimation		Animation;
-	CVector3		position = { -2.0f,50.0f,0.0f };
-	CQuaternion		m_rotation;
+
+	enum Battlecase
+	{
+		Single,
+		Double,
+		Cross,
+		Cross2,
+	};
+	const static int eneNo = 4;
+	CSkinModel				skinModel[eneNo];
+	CSkinModelDataHandle	skinModelData[eneNo];
+	CAnimation				Animation[eneNo];
+	CVector3				position[eneNo];
+	CQuaternion				m_rotation[eneNo];
 
 	CLight			All;
 
@@ -92,6 +122,7 @@ private:
 
 	int				currentAnimSetNo;
 
+	int EnemyNo = 0;
 	////エネミーごとのステータス?
 	int				ATK=20;
 	int				HP=50;
@@ -103,6 +134,6 @@ private:
 	CParticleEmitter		*m_particle;
 	CRandom					m_random;
 
-
+	int Battlecase = g_random.GetRandInt() % 4;
 };
 extern BattleEnemy* g_battleenemy;

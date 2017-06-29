@@ -67,7 +67,7 @@ bool BattlePlayer::Start()
 
 	Animation.PlayAnimation(Run_anim, 0.1f);
 
-	Animation.SetAnimationEndTime(Stand_anim, 0.8);
+	//Animation.SetAnimationEndTime(Stand_anim, 0.8);
 	
 
 

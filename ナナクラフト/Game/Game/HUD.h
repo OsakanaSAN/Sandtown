@@ -64,7 +64,7 @@ public:
 		
 	}
 
-	void Shiharai(int gold)
+	void SubtractGold(int gold)
 	{
 		Gold -= gold;
 	}
@@ -107,7 +107,7 @@ private:
 	int           pExp = 0;     //ŒoŒ±’l
 	int           NextExp = 20; 
 	
-	int           Gold = 0;
+	int           Gold = 2000;
 	
 	int			  ATK = 20;//•Ší‚²‚Æ‚É•Ï‰»H
 };
