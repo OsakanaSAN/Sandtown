@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/scene/matia.unity
+- path: Assets/scene/matid.unity
   isLoaded: 1
   isActive: 1

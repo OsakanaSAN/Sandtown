@@ -17,7 +17,6 @@ SceneChange* SceneChan;
 Mining* minings[255];
 //Enemy* enemy[5];
 
-
 DungeonMapInfo mapLocInfo[] =
 {
 #include "Map/DOUKUTU.h"
@@ -26,7 +25,6 @@ DungeonMapInfo mapLocInfo2[] =
 {
 #include "Map/DungeonF2.h"
 };
-
 DungeonMapInfo mapLocInfo3[] =
 {
 #include "Map/DungeonF3.h"
@@ -40,8 +38,8 @@ Dungeon::Dungeon()
 	numObject = 0;
 	NoMoveObject = 0;
 	EnemyObjct = 0;
-	count = (g_random.GetRandInt() % 3 + 1);
-	mapCount = count;
+	//count = (g_random.GetRandInt() % 3 + 1);
+	mapCount = g_SC->GetMapNo();
 	
 }
 
@@ -51,20 +49,18 @@ Dungeon::~Dungeon()
 	{
 		DeleteGO(minings[mn]);
 	}
-
 	for (int map = 0;map < NoMoveObject;map++)
 	{
 		DeleteGO(DungeonMap[map]);
 	}
 
 	DeleteGO(SceneChan);
-
 }
 
 bool Dungeon::Start()
 {
 	switch (mapCount) {
-	case 1:
+	case 0:
 		//マップにいくつのオブジェクトが配置されているか調べる。
 		numObject = sizeof(mapLocInfo) / sizeof(mapLocInfo[0]);
 		//置かれているオブジェクトの数だけマップチップを生成する。
@@ -95,8 +91,7 @@ bool Dungeon::Start()
 				SceneChan->setpos(mapLocInfo[i].position);
 				SceneChan->Norender();
 				NoRenderObjct++;
-
-
+				SceneChan->Setflg(true);
 			}
 
 			else
@@ -114,7 +109,7 @@ bool Dungeon::Start()
 		return true; //一回だけ呼ばれる
 		break;
 
-	case 2:
+	case 1:
 		//マップにいくつのオブジェクトが配置されているか調べる。
 		numObject = sizeof(mapLocInfo2) / sizeof(mapLocInfo2[0]);
 		//置かれているオブジェクトの数だけマップチップを生成する。
@@ -146,10 +141,8 @@ bool Dungeon::Start()
 				SceneChan->setpos(mapLocInfo2[i].position);
 				SceneChan->Norender();
 				NoRenderObjct++;
-
-
+				SceneChan->Setflg(true);
 			}
-
 			else
 			{
 				DungeonMap[NoMoveObject] = NewGO<Mapchip>(0);
@@ -159,12 +152,11 @@ bool Dungeon::Start()
 			}
 
 		}
-
 		
 		DungeonMap[0]->SoundOnDoukutu();
 		return true; //一回だけ呼ばれる
 		break;
-	case 3:
+	case 2:
 		//マップにいくつのオブジェクトが配置されているか調べる。
 		numObject = sizeof(mapLocInfo3) / sizeof(mapLocInfo3[0]);
 		//置かれているオブジェクトの数だけマップチップを生成する。
@@ -195,8 +187,7 @@ bool Dungeon::Start()
 				SceneChan->setpos(mapLocInfo3[i].position);
 				SceneChan->Norender();
 				NoRenderObjct++;
-
-
+				SceneChan->Setflg(true);
 			}
 
 			else
@@ -209,7 +200,7 @@ bool Dungeon::Start()
 
 		}
 		DungeonMap[0]->SoundOnDoukutu();
-		return true; //一回だけ呼ばれる
+		return true;//一回だけ呼ばれる
 		break;
 
 

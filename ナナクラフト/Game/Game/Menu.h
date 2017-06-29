@@ -15,14 +15,19 @@ public:
 	void MenuSceneexit();
 	void NoItem(int Nonumber);
 	bool UseItem();
-	void Itemerase();
+	//void Itemerase();
+	void ItemSelect();
 
 	void setHP(int setHp)
 	{
 		HP = setHp;
-		
 		HpChangTex();
 		
+	}
+	void setMaxHP(int maxHP)
+	{
+		MaxHP = maxHP;
+		MaxHpChangTex();
 	}
 	void setLV(int setLv)
 	{
@@ -63,6 +68,9 @@ private:
 
 	CSprite     BackSeatSprite2;  //2番後ろ
 	CTexture    BackSeatTexture2;
+
+	CSprite		m_CasolBGSprite;	//!<選択のスプライト。
+	CTexture	m_CasolBGTexture;	//!<選択のテクスチャ。
 
 	/////////////////////////////////////////////
 
@@ -141,7 +149,11 @@ private:
     int              InventoryPackNumber = 0;
 
 	/////////////////////////////////////////////////////
-
+	int		UseItemNomberR = 0;
+	int		UseItemNomberL = 1;
+	int		UseItemNo =0;
+	float	casolXpos = -400.0f;
+	float	casolYpos = 250.0f;
 };
 
 extern Menu* g_menu;

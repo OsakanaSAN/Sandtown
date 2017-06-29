@@ -44,7 +44,10 @@ public:
 		return modelName;
 	}
 
-
+	void SetMaptype(int type)
+	{
+		Maptype = type;
+	}
 private:
 
 	char* modelName;
@@ -77,7 +80,7 @@ private:
 	MapScene      mapscene; //Œ»İ‚Ìƒ}ƒbƒv‚ª‚Ç‚±‚©”»’è
 	MapScene         scenes; //‘JˆÚ‚³‚ê‚½‚©‚Ì”»’è
 	
-
+	int				Maptype = 0;
 
 	int        I, J;
 

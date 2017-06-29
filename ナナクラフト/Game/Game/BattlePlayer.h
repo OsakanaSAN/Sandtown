@@ -26,8 +26,6 @@ public:
 		return BakPositon;
 	}
 
-
-
 	void SetAttack(bool Attack)
 	{
 		IsAttack = Attack;
@@ -53,6 +51,11 @@ public:
 	void SetATK(int atk)
 	{
 		ATK = atk;
+	}
+
+	void SetHP(int hp)
+	{
+		HP = hp;
 	}
 
 	bool GetAnimend()
@@ -110,7 +113,7 @@ private:
 
 	bool                    IsSetPoint = false;
 	bool                    IsStop = true;
-	float                     Time = 0;
+	float                   Time = 0;
 	
 	//ゲームシーンから持ってくるステータス？
 	int						ATK=20;//武器ごとに変化？

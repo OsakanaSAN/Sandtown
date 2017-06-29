@@ -33,10 +33,10 @@ bool TitleScene::Start()
 	m_titleBGSprite.Init(&m_titleBGTexture);
 	m_titleBGSprite.SetSize({ 1980,1080 });
 
-	m_titleBGTexture2.Load("Assets/sprite/casol2.png");
-	m_titleBGSprite2.Init(&m_titleBGTexture2);
-	m_titleBGSprite2.SetPosition({ -300,-250 });
-	m_titleBGSprite2.SetSize({ 200,200 });
+	//m_titleBGTexture2.Load("Assets/sprite/casol2.png");
+	//m_titleBGSprite2.Init(&m_titleBGTexture2);
+	//m_titleBGSprite2.SetPosition({ -300,-250 });
+	//m_titleBGSprite2.SetSize({ 200,200 });
 
 	/*m_titleBGTexture3.Load("Assets/sprite/START.png");
 	m_titleBGSprite3.Init(&m_titleBGTexture3);
@@ -120,7 +120,7 @@ void TitleScene::PostRender(CRenderContext& renderContext)
 {
 	
 		m_titleBGSprite.Draw(renderContext);
-		m_titleBGSprite2.Draw(renderContext);
+		//m_titleBGSprite2.Draw(renderContext);
 		/*m_titleBGSprite3.Draw(renderContext);*/
 	
 }

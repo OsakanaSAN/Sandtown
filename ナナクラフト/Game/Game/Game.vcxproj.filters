@@ -68,6 +68,9 @@
     <ClCompile Include="Dungeon.cpp">
       <Filter>Map</Filter>
     </ClCompile>
+    <ClCompile Include="Inn.cpp">
+      <Filter>Map</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Camera.h" />
@@ -136,13 +139,13 @@
     <ClInclude Include="Dungeon.h">
       <Filter>Map</Filter>
     </ClInclude>
+    <ClInclude Include="Inn.h">
+      <Filter>Map</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Map">
       <UniqueIdentifier>{5e798d6a-29d1-4e7e-a5f1-226b3af8ca7a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Player">
-      <UniqueIdentifier>{ddfdf7e2-6739-4226-91b3-24ddf2948c75}</UniqueIdentifier>
     </Filter>
     <Filter Include="HUD">
       <UniqueIdentifier>{e2201492-f72e-440d-80a5-2b0385534201}</UniqueIdentifier>
@@ -152,6 +155,9 @@
     </Filter>
     <Filter Include="Enemy">
       <UniqueIdentifier>{3b94df71-8176-4c32-9f4c-82f2c1fa20e6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Player">
+      <UniqueIdentifier>{ddfdf7e2-6739-4226-91b3-24ddf2948c75}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

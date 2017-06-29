@@ -25,26 +25,26 @@ public :
 		switch (Level)
 		{
 		case 1:
-			Setexp(20);
-			SetEATK(50);
 			SetHP(50);
-			SetGold(930);
+			SetEATK(10);
+			Setexp(20);
+			SetGold(30);
 			break;
 		case 2:
-			Setexp(50);
-			SetEATK(60);
 			SetHP(70);
+			SetEATK(30);
+			Setexp(50);
 			SetGold(80);
 			break;
 		case 3:
-			Setexp(80);
-			SetEATK(80);
 			SetHP(100);
+			SetEATK(50);
+			Setexp(80);
 			SetGold(150);
 		case 4:
-			Setexp(100);
-			SetEATK(100);
 			SetHP(200);
+			SetEATK(80);
+			Setexp(100);
 			SetGold(200);
 		}
 	}

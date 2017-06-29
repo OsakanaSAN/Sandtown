@@ -132,11 +132,11 @@ bool BattleScene::Start()
 	m_ResultBGSprite2.Init(&m_ResultBGTexture2);
 	m_ResultBGSprite2.SetAlpha(0.0);
 
-	m_ResultBGTexture3.Load("Assets/sprite/	result_1.png");
+	m_ResultBGTexture3.Load("Assets/sprite/result_1.png");
 	m_ResultBGSprite3.Init(&m_ResultBGTexture3);
 	m_ResultBGSprite3.SetAlpha(0.0);
 
-	m_ResultBGTexture4.Load("Assets/sprite/	result_2.png");
+	m_ResultBGTexture4.Load("Assets/sprite/result_2.png");
 	m_ResultBGSprite4.Init(&m_ResultBGTexture4);
 	m_ResultBGSprite4.SetAlpha(0.0);
 
@@ -283,7 +283,6 @@ void BattleScene::Update()
 					
 				}
 
-
 				if (Eneturn)
 				{
 					EnemyTurn();
@@ -424,6 +423,7 @@ void BattleScene::PlayerTurn()
 			{
 
 				Comand = Result;
+				g_battleenemy->SetActiveFlag(false);
 				g_Hud->SetGold(g_battleenemy->GetEGold());
 				g_Hud->SetExp(g_battleenemy->GetExp());
 				Winflg = true;//バトルに勝利した
@@ -479,7 +479,7 @@ void BattleScene::PlayerTurn()
 			g_battleplayer->ParticleDelete();//パーティクル消去
 			Itemuse = false;
 		}
-		g_battleenemy->SetActiveFlag(false);
+		
 		if (/*m_timer > 4.0 ||*/ Pad(0).IsTrigger(enButtonA))
 		{
 
@@ -503,19 +503,24 @@ void BattleScene::PlayerTurn()
 		break;
 	case INVENTORY:
 
-
 		g_menu->MenuSceneItem();
+
 		if (Pad(0).IsTrigger(enButtonA))//アイテムの使用
 		{
+			m_sound_bgm_battle = NewGO<CSoundSource>(0);
+			m_sound_bgm_battle->Init("Assets/sound/select3.wav");
+			m_sound_bgm_battle->Play(false);
+			m_sound_bgm_battle->SetVolume(4.0f);
+
 			Itemuse = g_menu->UseItem();
 			
 			g_menu->MenuSceneexit();
 			Comand = Item;
 			
 		}
+
 		if (Pad(0).IsPress(enButtonB))//インベントリをとじる
 		{
-		
 			g_menu->MenuSceneexit();
 
 			Comand = Item;
@@ -542,17 +547,13 @@ void BattleScene::EnemyTurn()
 
 	g_battleenemy->SetEnemyNo(0);
 	if (!EAttack) {
-			g_battleenemy->SetAttack(true);//攻撃のアニメーション再生
-
-
+		g_battleenemy->SetAttack(true);//攻撃のアニメーション再生
 		EAttack = true;
 	}
 	else if (EAttack && !PDamage)
 	{
-		
 		m_sound_Attack->Play(false);
 		m_sound_Attack->SetVolume(4.0f);
-		
 		
 		CVector2 EDamagepos= { -100,-20 };
 		if (Bcase == 0 || Bcase == 2)
@@ -578,11 +579,10 @@ void BattleScene::EnemyTurn()
 			EDamagepos.x +=100.0f;
 		}
 		
-		
 		g_battleplayer->Particle(g_battleplayer->Getpos(),0);//攻撃パーティクル呼び出し
 		
-		
 		g_battleplayer->SetDamage(g_battleenemy->GetATK()+Erandom, true);//ダメージ計算とダメージアニメーション再生
+
 
 		//g_battlemenu->SetHp(g_Hud->GetHP());
 		g_battlemenu->SetHp(g_battleplayer->GetHP());
@@ -670,6 +670,7 @@ void BattleScene::EnemyTurn1()
 		g_battleplayer->SetDamage(g_battleenemy->GetATK()+ Erandom, true);//ダメージ計算とダメージアニメーション再生
 
 		g_battlemenu->SetHp(g_battleplayer->GetHP());
+
 		PDamage = true;
 	}
 	else if (EAttack && PDamage)
@@ -680,7 +681,7 @@ void BattleScene::EnemyTurn1()
 		EAttack = false;
 		PDamage = false;
 
-		if (g_Hud->GetHP() <= 0)
+		if (g_battleplayer->GetHP() <= 0)
 		{
 
 			Loseflg = true;//戦闘に負けた
@@ -748,7 +749,7 @@ void BattleScene::EnemyTurn2()
 		m_sound_Attack->Stop();
 		EAttack = false;
 		PDamage = false;
-		if (g_Hud->GetHP() <= 0)
+		if (g_battleplayer->GetHP() <= 0)
 		{
 			Loseflg = true;//戦闘に負けた
 			Victory = false;
@@ -801,7 +802,7 @@ void BattleScene::EnemyTurn3()
 		m_sound_Attack->Stop();
 		EAttack = false;
 		PDamage = false;
-		if (g_Hud->GetHP() <= 0)
+		if (g_battleplayer->GetHP() <= 0)
 		{
 			Loseflg = true;//戦闘に負けた
 			Victory = false;
@@ -844,7 +845,6 @@ void BattleScene::BattleResult()
 	m_ComandBGSprite1.Init(&m_ComandBGTexture1);
 	m_ComandBGSprite1.SetPosition({ 0,0 });
 	m_ComandBGSprite1.SetSize({ 700.0f,900.0f });
-
 
 	m_ResultBGTexture1.Load("Assets/sprite/Result.png");
 	m_ResultBGSprite1.Init(&m_ResultBGTexture1);
@@ -967,7 +967,6 @@ void BattleScene::GetGoldTex(int GetGold)
 	sprintf(m_GoldTexName, "Assets/UI/%d.png", NextGold[2]);
 	m_GoldSeatTexture[2].Release();
 	m_GoldSeatTexture[2].Load(m_GoldTexName);
-
 
 }
 

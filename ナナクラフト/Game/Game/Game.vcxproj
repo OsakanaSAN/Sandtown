@@ -173,6 +173,7 @@
     <ClCompile Include="Fade.cpp" />
     <ClCompile Include="GameSound.cpp" />
     <ClCompile Include="HUD.cpp" />
+    <ClCompile Include="Inn.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="Map2.cpp" />
@@ -205,6 +206,7 @@
     <ClInclude Include="Fade.h" />
     <ClInclude Include="GameSound.h" />
     <ClInclude Include="HUD.h" />
+    <ClInclude Include="Inn.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="Map2.h" />
     <ClInclude Include="Mapchip.h" />
