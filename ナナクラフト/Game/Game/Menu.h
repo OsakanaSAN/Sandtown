@@ -59,6 +59,18 @@ public:
 	{
 		return setMenu;
 	}
+
+	void LoadInventory();
+
+	////////////////////////////
+	//アイテムをセーブするときに呼び出す関数
+	int(&GetInvenntPack())[30]
+	{
+
+		return InventoryPack;
+	}
+
+
 	void MenuSceneStop();
 	void BattleMenuStop();
 
