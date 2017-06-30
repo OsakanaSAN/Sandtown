@@ -33,13 +33,13 @@ Player::Player()
 	All.SetDiffuseLightColor(3, { 0.1f, 0.1f, 0.1f, 1.0f });
 	
 
-	position = { -5.0f,0.0f,0.0f };
+	position = { -6.66f, 0.00f, 0.00f };
 
 	runsound = NewGO<CSoundSource>(0);
 	runsound->Init("Assets/sound/Runsound.wav");
 	runsound->SetVolume(0.3);
 
-	Loadpos();
+	Loadpos(); //セーブデータロード
 	
 }
 

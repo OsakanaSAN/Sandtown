@@ -42,6 +42,7 @@ void GameSky::Init(const char* modelName, CVector3 position, CQuaternion rotatio
 void GameSky::Update()
 {
 
+	//‚ä‚Á‚­‚è‰ñ“]‚·‚é
 	rot_y += 0.02f;
 	if (rot_y == 360)
 	{

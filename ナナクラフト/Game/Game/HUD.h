@@ -1,4 +1,7 @@
 #pragma once
+#include <iostream>
+#include <fstream>
+using namespace std;
 
 class HUD : public IGameObject
 {
@@ -9,6 +12,7 @@ public:
 	void Update();
 	void Render(CRenderContext& renderContext);
 	void Damage(int Attak);
+	void HudLoad();
 
 	int GetNextHp()
 	{
@@ -21,7 +25,7 @@ public:
 		return LV;
 	}
 
-	//経験値の取得
+	//経験値UP
 	void SetExp(int Setexp)
 	{
 		pExp += Setexp;
@@ -29,6 +33,8 @@ public:
 		
 	}
 
+
+	//経験値取得
 	int GetEXP() {
 		return pExp;
 	}

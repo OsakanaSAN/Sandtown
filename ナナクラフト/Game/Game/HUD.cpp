@@ -9,16 +9,31 @@
 
 HUD::HUD()
 {
-	
+
 
 }
 
 HUD::~HUD()
 {
 }
+void HUD::HudLoad()
+{
+
+	ifstream fin("Assets/DATA/Hud.dat");
+	if (!fin)
+	{
+		exit(0);
+	}
+
+	fin.precision(3);
+	fin >> ATK >> pExp >> Gold >> MaxpHP >> LV >> MaxHP >> NextExp >> nextHP;
+	fin.close();
+}
+
 
 bool HUD::Start()
 {
+	HudLoad(); //セーブデータロード
 	return true;
 }
 

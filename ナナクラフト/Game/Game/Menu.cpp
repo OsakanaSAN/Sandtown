@@ -105,6 +105,55 @@ Menu::Menu()
 	m_CasolBGSprite.Init(&m_CasolBGTexture);
 	m_CasolBGSprite.SetPosition({ casolXpos,casolYpos });
 	m_CasolBGSprite.SetSize({ 50,50 });
+	for (int count = 0;count < 30;count++)
+	{
+		InventoryPack[count] = 0;
+	}
+}
+
+
+void Menu::LoadInventory()
+{
+	ifstream fin("Assets/DATA/Invent.dat");
+	if (!fin)
+	{
+		exit(0);
+	}
+
+	fin.precision(3);
+	for (int loadcount = 0;loadcount < 30;loadcount++)
+	{
+		fin >> InventoryPack[loadcount];
+	}
+	fin.close();
+
+
+	////////////////////////////////////////////////////////////////////////////////////////////
+	//二度と書きたくない
+	//楽な方法があれば書き換えとく(覚えてたら)
+	int posX = 0;
+	int posY = 0;
+
+	for (int count = 0;count <30;count++)
+	{
+
+		if (posY < 5) {
+			sprintf(InvebtoryName, "Assets/Item/Item%d.png", InventoryPack[count]);
+			InventorySeatTexture[posY][posX].Release();
+			InventorySeatTexture[posY][posX].Load(InvebtoryName);
+			InventorySeatSprite[posY][posX].Init(&InventorySeatTexture[posY][posX]);
+			InventorySeatSprite[posY][posX].SetSize({ 100.0f, 100.0f });
+
+			posX++;
+			if (posX >= 6)
+			{
+				posX = 0;
+				posY++;
+			}
+		}
+	}
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 }
 
 
@@ -142,6 +191,10 @@ bool Menu::Start()
 	HpChangTex();
 	MaxHpChangTex();
 	GoldChangTex();
+
+	///////////////////
+	//セーブデータ
+	LoadInventory();
 
 	return true;
 }

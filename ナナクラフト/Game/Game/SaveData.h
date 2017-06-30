@@ -14,7 +14,7 @@ public:
 	void Update();
 
 
-	float SaveTime = 0;
+	float SaveTime = 0;  //そのための,タイマー
 
 };
 

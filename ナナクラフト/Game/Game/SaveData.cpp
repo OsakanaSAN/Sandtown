@@ -23,6 +23,7 @@ void SaveData::Update()
 	if (g_map == nullptr) { return; }
 	SaveTime += GameTime().GetFrameDeltaTime();
 
+	//定期的にセーブしますよ。
 	if (SaveTime > 60 && g_player != nullptr)
 	{
 		SaveDatas();
@@ -34,8 +35,7 @@ void SaveData::Update()
 void SaveData::LoadDatas()
 {
 
-	
-
+	//各自でやってもらったほうがええわ
 
 }
 
@@ -90,5 +90,21 @@ void SaveData::SaveDatas()
 	CameraData << g_gameCamera->GetPos().y << endl;
 	CameraData << g_gameCamera->GetPos().z << endl;
 	CameraData.close();
+
+
+	ofstream InventData("Assets/DATA/Invent.dat");
+	if (!InventData)
+	{
+		exit(0);
+	}
+
+	
+
+	for (int count = 0;count < 30;count++)
+	{
+		InventData << g_menu->GetInvenntPack()[count] << endl;
+	}
+	InventData.close();
+
 
 }
