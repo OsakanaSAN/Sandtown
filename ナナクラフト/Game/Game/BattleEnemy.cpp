@@ -22,7 +22,7 @@ BattleEnemy::BattleEnemy()
 {
 	
 
-	All.SetAmbinetLight({ 0.2f,0.2f,0.2f });
+	All.SetAmbinetLight({ 0.4f,0.4f,0.4f });
 	All.SetDiffuseLightDirection(0, { 0.0f, -0.707f, 0.707f });
 	All.SetDiffuseLightColor(0, { 0.3f, 0.3f, 0.3f, 1.0f });
 	All.SetDiffuseLightDirection(1, { 0.0f, 0.707f, 0.707f });

@@ -250,6 +250,163 @@ void GameScene::Update()
 					break;
 				}
 			}
+
+			else if (Maptype == 3)
+			{
+				if (g_Dungeon == nullptr)
+				{
+
+					g_Dungeon = NewGO<Dungeon>(0);
+					g_player = NewGO<Player>(0);
+
+					modelName = "Assets/modelData/cabetu.X";
+					g_Enemy = NewGO<Enemy>(0);
+					g_Enemy->Init(modelName);
+					g_Enemy->setPos({ -3.0f, 0.0f, -20.0f });
+					g_Enemy->LevelSet(3);
+
+					modelName = "Assets/modelData/cabetu.X";
+					g_Enemy2 = NewGO<Enemy>(0);
+					g_Enemy2->Init(modelName);
+					g_Enemy2->setPos({ -3.0f, 0.0f, -40.0f });
+					g_Enemy2->LevelSet(3);
+
+					modelName = "Assets/modelData/cabetu.X";
+					g_Enemy3 = NewGO<Enemy>(0);
+					g_Enemy3->Init(modelName);
+					g_Enemy3->setPos({ 20.0f, 0.0f, -15.0f });
+					g_Enemy3->LevelSet(3);
+
+					g_gameCamera->ChangeStart();
+				}
+				else
+				{
+					if (g_Dungeon->IsActive() && g_Enemy->IsActive() && g_Enemy2->IsActive() && g_Enemy3->IsActive() && g_player->IsActive())
+					{
+						g_fade->StartFadeIn();
+						scenes = STOP;
+						mapscene = DOUKUTU;
+					}
+					break;
+				}
+			}
+			else if (Maptype == 4)
+			{
+				if (g_Dungeon == nullptr)
+				{
+
+					g_Dungeon = NewGO<Dungeon>(0);
+					g_player = NewGO<Player>(0);
+
+					modelName = "Assets/modelData/EnemyKnight.X";
+					g_Enemy = NewGO<Enemy>(0);
+					g_Enemy->Init(modelName);
+					g_Enemy->setPos({ -3.0f, 0.0f, -20.0f });
+					g_Enemy->LevelSet(4);
+
+					modelName = "Assets/modelData/EnemyKnight.X";
+					g_Enemy2 = NewGO<Enemy>(0);
+					g_Enemy2->Init(modelName);
+					g_Enemy2->setPos({ -3.0f, 0.0f, -40.0f });
+					g_Enemy2->LevelSet(4);
+
+					modelName = "Assets/modelData/EnemyKnight.X";
+					g_Enemy3 = NewGO<Enemy>(0);
+					g_Enemy3->Init(modelName);
+					g_Enemy3->setPos({ 20.0f, 0.0f, -15.0f });
+					g_Enemy3->LevelSet(4);
+
+					g_gameCamera->ChangeStart();
+				}
+				else
+				{
+					if (g_Dungeon->IsActive() && g_Enemy->IsActive() && g_Enemy2->IsActive() && g_Enemy3->IsActive() && g_player->IsActive())
+					{
+						g_fade->StartFadeIn();
+						scenes = STOP;
+						mapscene = DOUKUTU;
+					}
+					break;
+				}
+			}
+			else if (Maptype == 5)
+			{
+				if (g_Dungeon == nullptr)
+				{
+
+					g_Dungeon = NewGO<Dungeon>(0);
+					g_player = NewGO<Player>(0);
+
+					modelName = "Assets/modelData/usagi.X";
+					g_Enemy = NewGO<Enemy>(0);
+					g_Enemy->Init(modelName);
+					g_Enemy->setPos({ -3.0f, 0.0f, -20.0f });
+					g_Enemy->LevelSet(3);
+
+					modelName = "Assets/modelData/usagi.X";
+					g_Enemy2 = NewGO<Enemy>(0);
+					g_Enemy2->Init(modelName);
+					g_Enemy2->setPos({ -3.0f, 0.0f, -40.0f });
+					g_Enemy2->LevelSet(3);
+
+					modelName = "Assets/modelData/Bossusagi.X";
+					g_Enemy3 = NewGO<Enemy>(0);
+					g_Enemy3->Init(modelName);
+					g_Enemy3->setPos({ 20.0f, 0.0f, -15.0f });
+					g_Enemy3->LevelSet(4);
+
+					g_gameCamera->ChangeStart();
+				}
+				else
+				{
+					if (g_Dungeon->IsActive() && g_Enemy->IsActive() && g_Enemy2->IsActive() && g_Enemy3->IsActive() && g_player->IsActive())
+					{
+						g_fade->StartFadeIn();
+						scenes = STOP;
+						mapscene = DOUKUTU;
+					}
+					break;
+				}
+			}
+			else if (Maptype == 6)
+			{
+				if (g_Dungeon == nullptr)
+				{
+
+					g_Dungeon = NewGO<Dungeon>(0);
+					g_player = NewGO<Player>(0);
+
+					modelName = "Assets/modelData/Bossusagi.X";
+					g_Enemy = NewGO<Enemy>(0);
+					g_Enemy->Init(modelName);
+					g_Enemy->setPos({ -3.0f, 0.0f, -20.0f });
+					g_Enemy->LevelSet(4);
+
+					modelName = "Assets/modelData/Bossusagi.X";
+					g_Enemy2 = NewGO<Enemy>(0);
+					g_Enemy2->Init(modelName);
+					g_Enemy2->setPos({ -3.0f, 0.0f, -40.0f });
+					g_Enemy2->LevelSet(4);
+
+					modelName = "Assets/modelData/Bossusagi.X";
+					g_Enemy3 = NewGO<Enemy>(0);
+					g_Enemy3->Init(modelName);
+					g_Enemy3->setPos({ 20.0f, 0.0f, -15.0f });
+					g_Enemy3->LevelSet(4);
+
+					g_gameCamera->ChangeStart();
+				}
+				else
+				{
+					if (g_Dungeon->IsActive() && g_Enemy->IsActive() && g_Enemy2->IsActive() && g_Enemy3->IsActive() && g_player->IsActive())
+					{
+						g_fade->StartFadeIn();
+						scenes = STOP;
+						mapscene = DOUKUTU;
+					}
+					break;
+				}
+			}
 		}
 		
 		
@@ -386,7 +543,58 @@ void GameScene::DeteScene()
 
 			g_Dungeon = nullptr;
 		}
-		
+		else if (Maptype == 3)
+		{
+			DeleteGO(g_Dungeon);
+			DeleteGO(g_Enemy);
+			DeleteGO(g_Enemy2);
+			DeleteGO(g_Enemy3);
+			if (g_player != nullptr) {
+				DeleteGO(g_player);
+			}
+			scenes = MACHI;
+
+			g_Dungeon = nullptr;
+		}
+		else if (Maptype == 4)
+		{
+			DeleteGO(g_Dungeon);
+			DeleteGO(g_Enemy);
+			DeleteGO(g_Enemy2);
+			DeleteGO(g_Enemy3);
+			if (g_player != nullptr) {
+				DeleteGO(g_player);
+			}
+			scenes = MACHI;
+
+			g_Dungeon = nullptr;
+		}
+		else if (Maptype == 5)
+		{
+			DeleteGO(g_Dungeon);
+			DeleteGO(g_Enemy);
+			DeleteGO(g_Enemy2);
+			DeleteGO(g_Enemy3);
+			if (g_player != nullptr) {
+				DeleteGO(g_player);
+			}
+			scenes = MACHI;
+
+			g_Dungeon = nullptr;
+		}
+		else if (Maptype == 6)
+		{
+			DeleteGO(g_Dungeon);
+			DeleteGO(g_Enemy);
+			DeleteGO(g_Enemy2);
+			DeleteGO(g_Enemy3);
+			if (g_player != nullptr) {
+				DeleteGO(g_player);
+			}
+			scenes = MACHI;
+
+			g_Dungeon = nullptr;
+		}
 	}
 
 

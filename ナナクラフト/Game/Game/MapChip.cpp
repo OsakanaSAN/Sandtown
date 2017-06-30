@@ -8,7 +8,7 @@
 
 Mapchip::Mapchip()
 {
-	Maplight.SetAmbinetLight({ 0.5f, 0.5f, 0.5f }); //ライトの設定
+	Maplight.SetAmbinetLight({ 0.8f, 0.8f, 0.8f }); //ライトの設定
 	Lightpos = g_player->Getpos();
 
 	li = g_player->Getpos();

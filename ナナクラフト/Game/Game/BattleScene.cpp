@@ -383,30 +383,30 @@ void BattleScene::PlayerTurn()
 			m_sound_Attack->Play(true);
 			m_sound_Attack->SetVolume(4.0f);
 			CVector2 PDamagepos = { -300,180 };
-			if (Bcase == 0  )
+			if (Bcase == 0)
 			{
 				PDamagepos = { -300,180 };
 			}
 			else if (Bcase == 1)
 			{
-				PDamagepos = { -750,180 };
+				PDamagepos = { -820,180 };
 			}
 			else if (Bcase == 2)
 			{
-				PDamagepos = { -290,170 };
+				PDamagepos = { -270,160 };
 			}
-			else if ( Bcase == 3)
+			else if (Bcase == 3)
 			{
 				PDamagepos = { -610,160 };
 			}
-			
+
 			for (int i = 0; i < 3;i++) {
 
 				//m_DamageSeatTexture[i].Load("Assets/sprite/damage0.png");
 				m_DamageSeatSprite[i].Init(&m_DamageSeatTexture[i]);
 				m_DamageSeatSprite[i].SetPosition(PDamagepos);
-				m_DamageSeatSprite[i].SetSize({80,60 });
-				PDamagepos.x +=80;
+				m_DamageSeatSprite[i].SetSize({ 60,50 });
+				PDamagepos.x += 80;
 			}
 			g_particle->Particle(*g_battleenemy->Getpos(0),0);//攻撃パーティクル呼び出し
 			g_battleenemy->SetDamage(g_battleplayer->GetATK()+Prandom, true);//ダメージ処理
@@ -561,16 +561,22 @@ void BattleScene::EnemyTurn()
 		m_sound_Attack->Play(true);
 		m_sound_Attack->SetVolume(4.0f);
 		
-		CVector2 EDamagepos= { -100,-20 };
-		if (Bcase == 0 || Bcase == 2)
+		CVector2 EDamagepos = { -120,-20 };
+		if (Bcase == 0)
 		{
-			EDamagepos = { -100,-20 };
+			EDamagepos = { -120,-20 };
+		}
+
+		else if (Bcase == 2)
+		{
+			EDamagepos = { -120,20 };
 		}
 		else if (Bcase == 1)
 		{
-			EDamagepos = { -300,20 };
+			EDamagepos = { -150,0 };
 		}
-		else if ( Bcase == 3)
+
+		else if (Bcase == 3)
 		{
 			EDamagepos = { -250,20 };
 		}
@@ -580,9 +586,9 @@ void BattleScene::EnemyTurn()
 			//m_DamageSeatTexture[i].Load("Assets/sprite/damage0.png");
 			m_DamageSeatSprite[i].Init(&m_DamageSeatTexture[i]);
 			m_DamageSeatSprite[i].SetPosition(EDamagepos);
-			m_DamageSeatSprite[i].SetSize({ 80,60 });
+			m_DamageSeatSprite[i].SetSize({ 60,50 });
 
-			EDamagepos.x +=100.0f;
+			EDamagepos.x += 80.0f;
 		}
 		
 		g_particle->Particle(g_battleplayer->Getpos(),0);//攻撃パーティクル呼び出し
@@ -663,13 +669,34 @@ void BattleScene::EnemyTurn1()
 
 		DamageTex(true);
 
-		CVector2 EDamagepos = { 50,0 };
-		for (int i = 0; i < 3;i++) {
+		CVector2 EDamagepos = { -120,-20 };
+		if (Bcase == 0)
+		{
+			EDamagepos = { -120,-20 };
+		}
+
+		else if (Bcase == 2)
+		{
+			EDamagepos = { -120,20 };
+		}
+		else if (Bcase == 1)
+		{
+			EDamagepos = { -150,0 };
+		}
+
+		else if (Bcase == 3)
+		{
+			EDamagepos = { -250,20 };
+		}
+		for (int i = 0; i < 3;i++)
+		{
+
+			//m_DamageSeatTexture[i].Load("Assets/sprite/damage0.png");
 			m_DamageSeatSprite[i].Init(&m_DamageSeatTexture[i]);
 			m_DamageSeatSprite[i].SetPosition(EDamagepos);
-			m_DamageSeatSprite[i].SetSize({ 100,80 });
+			m_DamageSeatSprite[i].SetSize({ 60,50 });
 
-			EDamagepos.x += 100.0f;
+			EDamagepos.x += 80.0f;
 		}
 
 		g_particle->Particle(g_battleplayer->Getpos(), 0);//攻撃パーティクル呼び出し
@@ -694,8 +721,13 @@ void BattleScene::EnemyTurn1()
 		{
 
 			Loseflg = true;//戦闘に負けた
+
 			Victory = false;
+			//Comand = Result;
 			g_Hud->SubtractGold(g_Hud->GetGold() / 2);
+
+			EnemyturnEnd = true;
+			DeleteGO(g_battleScene);
 		}
 		Eneturn1 = false;
 		Eneturn2 = true;
@@ -737,13 +769,34 @@ void BattleScene::EnemyTurn2()
 
 		DamageTex(true);
 
-		CVector2 EDamagepos = { 50,0 };
-		for (int i = 0; i < 3;i++) {
+		CVector2 EDamagepos = { -120,-20 };
+		if (Bcase == 0)
+		{
+			EDamagepos = { -120,-20 };
+		}
+
+		else if (Bcase == 2)
+		{
+			EDamagepos = { -120,20 };
+		}
+		else if (Bcase == 1)
+		{
+			EDamagepos = { -150,0 };
+		}
+
+		else if (Bcase == 3)
+		{
+			EDamagepos = { -250,20 };
+		}
+		for (int i = 0; i < 3;i++)
+		{
+
+			//m_DamageSeatTexture[i].Load("Assets/sprite/damage0.png");
 			m_DamageSeatSprite[i].Init(&m_DamageSeatTexture[i]);
 			m_DamageSeatSprite[i].SetPosition(EDamagepos);
-			m_DamageSeatSprite[i].SetSize({ 100,80 });
+			m_DamageSeatSprite[i].SetSize({ 60,50 });
 
-			EDamagepos.x += 100.0f;
+			EDamagepos.x += 80.0f;
 		}
 		g_particle->Particle(g_battleplayer->Getpos(), 0);//攻撃パーティクル呼び出し
 
@@ -764,8 +817,13 @@ void BattleScene::EnemyTurn2()
 		if (g_battleplayer->GetHP() <= 0)
 		{
 			Loseflg = true;//戦闘に負けた
+
 			Victory = false;
+			//Comand = Result;
 			g_Hud->SubtractGold(g_Hud->GetGold() / 2);
+
+			EnemyturnEnd = true;
+			DeleteGO(g_battleScene);
 		}
 		Eneturn2 = false;
 		Eneturn3 = true;
@@ -797,12 +855,34 @@ void BattleScene::EnemyTurn3()
 		m_sound_Attack->Play(false);
 		m_sound_Attack->SetVolume(4.0f);
 		DamageTex(true);
-		CVector2 EDamagepos = { 50,0 };
-		for (int i = 0; i < 3;i++) {
+		CVector2 EDamagepos = { -120,-20 };
+		if (Bcase == 0)
+		{
+			EDamagepos = { -120,-20 };
+		}
+
+		else if (Bcase == 2)
+		{
+			EDamagepos = { -120,20 };
+		}
+		else if (Bcase == 1)
+		{
+			EDamagepos = { -150,0 };
+		}
+
+		else if (Bcase == 3)
+		{
+			EDamagepos = { -250,20 };
+		}
+		for (int i = 0; i < 3;i++)
+		{
+
+			//m_DamageSeatTexture[i].Load("Assets/sprite/damage0.png");
 			m_DamageSeatSprite[i].Init(&m_DamageSeatTexture[i]);
 			m_DamageSeatSprite[i].SetPosition(EDamagepos);
-			m_DamageSeatSprite[i].SetSize({ 100,80 });
-			EDamagepos.x += 100.0f;
+			m_DamageSeatSprite[i].SetSize({ 60,50 });
+
+			EDamagepos.x += 80.0f;
 		}
 		g_particle->Particle(g_battleplayer->Getpos(), 0);//攻撃パーティクル呼び出し
 		g_battleplayer->SetDamage(g_battleenemy->GetATK()+ Erandom, true);//ダメージ計算とダメージアニメーション再生
@@ -820,8 +900,13 @@ void BattleScene::EnemyTurn3()
 		if (g_battleplayer->GetHP() <= 0)
 		{
 			Loseflg = true;//戦闘に負けた
+
 			Victory = false;
+			//Comand = Result;
 			g_Hud->SubtractGold(g_Hud->GetGold() / 2);
+
+			EnemyturnEnd = true;
+			DeleteGO(g_battleScene);
 		}
 		SelectQ = false;
 		result = false;

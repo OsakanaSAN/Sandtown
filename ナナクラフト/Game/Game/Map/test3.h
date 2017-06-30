@@ -4,11 +4,16 @@
 	CVector3(0.00f, 0.00f, 0.00f),             //平行移動
 	CQuaternion(-0.71f, 0.00f, 0.00f, 0.71f ),  //回転
 },
-
+//doa
+{
+	"doa",
+	CVector3(-12.29f, 0.00f, 19.80f),             //平行移動
+	CQuaternion(-0.71f, 0.00f, 0.00f, 0.71f ),  //回転
+},
 //Unity
 {
 	"Unity",
-	CVector3(-6.66f, 0.00f, 0.00f),             //平行移動
+	CVector3(-3.60f, 0.00f, 5.90f),             //平行移動
 	CQuaternion(0.00f, 0.00f, 0.00f, 1.00f ),  //回転
 },
 //Fence_a
@@ -460,10 +465,4 @@
 	"Sign_d",
 	CVector3(-6.55f, 3.60f, -9.57f),             //平行移動
 	CQuaternion(-0.50f, 0.50f, 0.50f, 0.50f ),  //回転
-},
-//doa
-{
-	"doa",
-	CVector3(-12.29f, 0.00f, 19.80f),             //平行移動
-	CQuaternion(-0.71f, 0.00f, 0.00f, 0.71f),  //回転
 },

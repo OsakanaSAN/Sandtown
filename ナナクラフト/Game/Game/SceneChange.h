@@ -44,6 +44,10 @@ private:
 		Dungeon,
 		DungeonF2,
 		DungeonF3,
+		DungeonF4,
+		DungeonF5,
+		DungeonF6,
+		DungeonF7,
 	};
 
 	DungeonState DungeonNo = Dungeon;
@@ -59,14 +63,17 @@ private:
 	CSprite		m_ComandBGSprite4;		//!<戦闘画面の選択のスプライト。
 	CTexture	m_ComandBGTexture4;		//!<戦闘画面の選択のテクスチャ。
 
-	//CSprite	m_ComandBGSprite5;		//!<戦闘画面の選択のスプライト。
-	//CTexture	m_ComandBGTexture5;		//!<戦闘画面の選択のテクスチャ。
+	CSprite		m_ComandBGSprite5;		//!<戦闘画面の選択のスプライト。
+	CTexture	m_ComandBGTexture5;		//!<戦闘画面の選択のテクスチャ。
 
-	//CSprite		m_ComandBGSprite6;	//!<戦闘画面の選択のスプライト。
-	//CTexture	m_ComandBGTexture6;		//!<戦闘画面の選択のテクスチャ。
+	CSprite		m_ComandBGSprite6;		//!<戦闘画面の選択のスプライト。
+	CTexture	m_ComandBGTexture6;		//!<戦闘画面の選択のテクスチャ。
 
-	//CSprite		m_ComandBGSprite7;		//!<戦闘画面の選択のスプライト。
-	//CTexture	m_ComandBGTexture7;		//!<戦闘画面の選択のテクスチャ。
+	CSprite		m_ComandBGSprite7;		//!<戦闘画面の選択のスプライト。
+	CTexture	m_ComandBGTexture7;		//!<戦闘画面の選択のテクスチャ。
+
+	CSprite		m_ComandBGSprite8;		//!<戦闘画面の選択のスプライト。
+	CTexture	m_ComandBGTexture8;		//!<戦闘画面の選択のテクスチャ。
 
 	CSprite		m_CasolBGSprite;		//!<戦闘画面の選択のスプライト。
 	CTexture	m_CasolBGTexture;		//!<戦闘画面の選択のテクスチャ。

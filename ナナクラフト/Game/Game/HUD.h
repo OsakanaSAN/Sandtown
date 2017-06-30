@@ -107,7 +107,7 @@ private:
 	int           pExp = 0;     //ŒoŒ±’l
 	int           NextExp = 20; 
 	
-	int           Gold = 2000;
+	int           Gold = 0;
 	
 	int			ATK = 20;//•Ší‚²‚Æ‚É•Ï‰»H
 	int			nextATK = g_random.GetRandInt() % 5+2;

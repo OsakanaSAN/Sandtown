@@ -12,7 +12,7 @@
 
 Enemy::Enemy()
 {
-	Enemylight.SetAmbinetLight({ 0.2f,0.2f,0.2f });
+	Enemylight.SetAmbinetLight({ 0.4f,0.4f,0.4f });
 	Enemylight.SetDiffuseLightDirection(0, { 0.0f, -0.707f, 0.707f });
 	Enemylight.SetDiffuseLightColor(0, { 0.3f, 0.3f, 0.3f, 1.0f });
 	Enemylight.SetDiffuseLightDirection(1, { 0.0f, 0.707f, 0.707f });

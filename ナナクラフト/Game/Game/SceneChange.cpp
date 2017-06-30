@@ -34,10 +34,10 @@ bool SceneChange::Start()
 	ButtonSprite.SetPosition(ButtonPos);
 	ButtonSprite.SetSize({ 70.0, 70.0 });
 
-	m_ComandBGTexture1.Load("Assets/sprite/comand.png");
+	m_ComandBGTexture1.Load("Assets/UI/ui1.png");
 	m_ComandBGSprite1.Init(&m_ComandBGTexture1);
-	m_ComandBGSprite1.SetPosition({ -500,200 });
-	m_ComandBGSprite1.SetSize({ 750.0f,500.0f });
+	m_ComandBGSprite1.SetPosition({ -500,0 });
+	m_ComandBGSprite1.SetSize({ 750.0f,1000.0f });
 
 	m_ComandBGTexture2.Load("Assets/sprite/dungeon1.png");
 	m_ComandBGSprite2.Init(&m_ComandBGTexture2);
@@ -46,28 +46,33 @@ bool SceneChange::Start()
 
 	m_ComandBGTexture3.Load("Assets/sprite/dungeon2.png");
 	m_ComandBGSprite3.Init(&m_ComandBGTexture3);
-	m_ComandBGSprite3.SetPosition({ -550,230 });
+	m_ComandBGSprite3.SetPosition({ -550,250 });
 	m_ComandBGSprite3.SetSize({ 280.0f,80 });
 
 	m_ComandBGTexture4.Load("Assets/sprite/dungeon3.png");
 	m_ComandBGSprite4.Init(&m_ComandBGTexture4);
-	m_ComandBGSprite4.SetPosition({ -550,100 });
+	m_ComandBGSprite4.SetPosition({ -550,150 });
 	m_ComandBGSprite4.SetSize({ 280.0f,80 });
 
-	//m_ComandBGTexture5.Load("Assets/sprite/パワー2.png");
-	//m_ComandBGSprite5.Init(&m_ComandBGTexture5);
-	//m_ComandBGSprite5.SetPosition({ -550,0 });
-	//m_ComandBGSprite5.SetSize({ 250.0f,80 });
+	m_ComandBGTexture5.Load("Assets/sprite/dungeon1.png");
+	m_ComandBGSprite5.Init(&m_ComandBGTexture5);
+	m_ComandBGSprite5.SetPosition({ -550,50 });
+	m_ComandBGSprite5.SetSize({ 280.0f,80 });
 
-	//m_ComandBGTexture6.Load("Assets/sprite/パワー2.png");
-	//m_ComandBGSprite6.Init(&m_ComandBGTexture5);
-	//m_ComandBGSprite6.SetPosition({ -550,-100 });
-	//m_ComandBGSprite6.SetSize({ 250.0f,80 });
+	m_ComandBGTexture6.Load("Assets/sprite/dungeon1.png");
+	m_ComandBGSprite6.Init(&m_ComandBGTexture6);
+	m_ComandBGSprite6.SetPosition({ -550,-50 });
+	m_ComandBGSprite6.SetSize({ 280.0f,80 });
 
-	//m_ComandBGTexture7.Load("Assets/sprite/パワー2.png");
-	//m_ComandBGSprite7.Init(&m_ComandBGTexture5);
-	//m_ComandBGSprite7.SetPosition({ -550,-200 });
-	//m_ComandBGSprite7.SetSize({ 250.0f,80 });
+	m_ComandBGTexture7.Load("Assets/sprite/dungeon1.png");
+	m_ComandBGSprite7.Init(&m_ComandBGTexture7);
+	m_ComandBGSprite7.SetPosition({ -550,-150 });
+	m_ComandBGSprite7.SetSize({ 280.0f,80 });
+
+	m_ComandBGTexture8.Load("Assets/sprite/dungeon1.png");
+	m_ComandBGSprite8.Init(&m_ComandBGTexture8);
+	m_ComandBGSprite8.SetPosition({ -550,-250 });
+	m_ComandBGSprite8.SetSize({ 280.0f,80 });
 
 	m_CasolBGTexture.Load("Assets/sprite/casol2.png");
 	m_CasolBGSprite.Init(&m_CasolBGTexture);
@@ -190,6 +195,10 @@ void SceneChange::Render(CRenderContext& renderContext)
 	m_ComandBGSprite2.Draw(renderContext);
 	m_ComandBGSprite3.Draw(renderContext);
 	m_ComandBGSprite4.Draw(renderContext);
+	m_ComandBGSprite5.Draw(renderContext);
+	m_ComandBGSprite6.Draw(renderContext);
+	m_ComandBGSprite7.Draw(renderContext);
+	m_ComandBGSprite8.Draw(renderContext);
 	m_CasolBGSprite.Draw(renderContext);
 }
 
@@ -208,15 +217,15 @@ void SceneChange::MapSelect()
 
 		if (Pad(0).IsTrigger(enButtonUp))
 		{
-			DungeonNo = DungeonF3;
+			DungeonNo = DungeonF7;
 		}
 		else if (Pad(0).IsTrigger(enButtonDown))
 		{
 			DungeonNo = DungeonF2;
 		}
 
-		
-		if (Pad(0).IsTrigger(enButtonA)&&!Cahange)
+
+		if (Pad(0).IsTrigger(enButtonA) && !Cahange)
 		{
 			m_sound_select = NewGO<CSoundSource>(0);
 			m_sound_select->Init("Assets/sound/select3.wav");
@@ -232,7 +241,7 @@ void SceneChange::MapSelect()
 
 	case DungeonF2:
 
-		m_CasolBGSprite.SetPosition({ -800,230 });
+		m_CasolBGSprite.SetPosition({ -800,250 });
 		m_CasolBGSprite.SetSize({ 150,150 });
 
 		if (Pad(0).IsTrigger(enButtonUp))
@@ -261,12 +270,124 @@ void SceneChange::MapSelect()
 		break;
 	case DungeonF3:
 
-		m_CasolBGSprite.SetPosition({ -800,100 });
+		m_CasolBGSprite.SetPosition({ -800,150 });
 		m_CasolBGSprite.SetSize({ 150,150 });
 
 		if (Pad(0).IsTrigger(enButtonUp))
 		{
 			DungeonNo = DungeonF2;
+		}
+		else if (Pad(0).IsTrigger(enButtonDown))
+		{
+			DungeonNo = DungeonF4;
+		}
+
+		if (Pad(0).IsTrigger(enButtonA) && !Cahange)
+		{
+
+			m_sound_select = NewGO<CSoundSource>(0);
+			m_sound_select->Init("Assets/sound/select3.wav");
+			m_sound_select->Play(false);
+			m_sound_select->SetVolume(4.0f);
+
+			g_gameScene->SetMaptype(DungeonNo);//ゲームシーンにマップ番号を渡す
+			g_gameScene->MapChange();
+			MapSelectflg = false;
+			Cahange = true;
+		}
+		break;
+	case DungeonF4:
+
+		m_CasolBGSprite.SetPosition({ -800,50 });
+		m_CasolBGSprite.SetSize({ 150,150 });
+
+		if (Pad(0).IsTrigger(enButtonUp))
+		{
+			DungeonNo = DungeonF3;
+		}
+		else if (Pad(0).IsTrigger(enButtonDown))
+		{
+			DungeonNo = DungeonF5;
+		}
+
+		if (Pad(0).IsTrigger(enButtonA) && !Cahange)
+		{
+
+			m_sound_select = NewGO<CSoundSource>(0);
+			m_sound_select->Init("Assets/sound/select3.wav");
+			m_sound_select->Play(false);
+			m_sound_select->SetVolume(4.0f);
+
+			g_gameScene->SetMaptype(DungeonNo);//ゲームシーンにマップ番号を渡す
+			g_gameScene->MapChange();
+			MapSelectflg = false;
+			Cahange = true;
+		}
+		break;
+	case DungeonF5:
+
+		m_CasolBGSprite.SetPosition({ -800,-50 });
+		m_CasolBGSprite.SetSize({ 150,150 });
+
+		if (Pad(0).IsTrigger(enButtonUp))
+		{
+			DungeonNo = DungeonF4;
+		}
+		else if (Pad(0).IsTrigger(enButtonDown))
+		{
+			DungeonNo = DungeonF6;
+		}
+
+		if (Pad(0).IsTrigger(enButtonA) && !Cahange)
+		{
+
+			m_sound_select = NewGO<CSoundSource>(0);
+			m_sound_select->Init("Assets/sound/select3.wav");
+			m_sound_select->Play(false);
+			m_sound_select->SetVolume(4.0f);
+
+			g_gameScene->SetMaptype(DungeonNo);//ゲームシーンにマップ番号を渡す
+			g_gameScene->MapChange();
+			MapSelectflg = false;
+			Cahange = true;
+		}
+		break;
+	case DungeonF6:
+
+		m_CasolBGSprite.SetPosition({ -800,-150 });
+		m_CasolBGSprite.SetSize({ 150,150 });
+
+		if (Pad(0).IsTrigger(enButtonUp))
+		{
+			DungeonNo = DungeonF5;
+		}
+		else if (Pad(0).IsTrigger(enButtonDown))
+		{
+			DungeonNo = DungeonF7;
+		}
+
+		if (Pad(0).IsTrigger(enButtonA) && !Cahange)
+		{
+
+			m_sound_select = NewGO<CSoundSource>(0);
+			m_sound_select->Init("Assets/sound/select3.wav");
+			m_sound_select->Play(false);
+			m_sound_select->SetVolume(4.0f);
+
+			g_gameScene->SetMaptype(DungeonNo);//ゲームシーンにマップ番号を渡す
+			g_gameScene->MapChange();
+			MapSelectflg = false;
+			Cahange = true;
+		}
+		break;
+	case DungeonF7:
+
+		m_CasolBGSprite.SetPosition({ -800,-250 });
+		m_CasolBGSprite.SetSize({ 150,150 });
+
+		if (Pad(0).IsTrigger(enButtonUp))
+		{
+			DungeonNo = DungeonF6;
 		}
 		else if (Pad(0).IsTrigger(enButtonDown))
 		{

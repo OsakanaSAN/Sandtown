@@ -88,7 +88,7 @@ void shop::Init(const char* modelName, CVector3 position, CQuaternion rotation)
 	//ì¬‚µ‚½„‘Ì‚ğ•¨—ƒ[ƒ‹ƒh‚É’Ç‰Á‚·‚éB
 	PhysicsWorld().AddRigidBody(&rigidBody);
 	
-	m_ComandBGTexture1.Load("Assets/sprite/comand.png");
+	m_ComandBGTexture1.Load("Assets/UI/ui1.png");
 	m_ComandBGSprite1.Init(&m_ComandBGTexture1);
 	m_ComandBGSprite1.SetPosition({ -420,130 });
 	m_ComandBGSprite1.SetSize({ 850.0f,600.0f });
@@ -186,7 +186,7 @@ void shop::ShopSelect()
 		break;
 
 	case Weapon2:
-		m_CasolBGSprite.SetPosition({ -750,200 });
+		m_CasolBGSprite.SetPosition({ -750,180 });
 		m_CasolBGSprite.SetSize({ 150,150 });
 
 		if (Pad(0).IsTrigger(enButtonUp))

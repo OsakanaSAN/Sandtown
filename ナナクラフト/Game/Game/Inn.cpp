@@ -61,7 +61,7 @@ void Inn::Init(const char* modelName, CVector3 position, CQuaternion rotation)
 	//ì¬‚µ‚½„‘Ì‚ğ•¨—ƒ[ƒ‹ƒh‚É’Ç‰Á‚·‚éB
 	PhysicsWorld().AddRigidBody(&rigidBody);
 
-	m_ComandBGTexture1.Load("Assets/sprite/comand.png");
+	m_ComandBGTexture1.Load("Assets/UI/ui1.png");
 	m_ComandBGSprite1.Init(&m_ComandBGTexture1);
 	m_ComandBGSprite1.SetPosition({ -400,-260 });
 	m_ComandBGSprite1.SetSize({ 600.0f,350.0f });
