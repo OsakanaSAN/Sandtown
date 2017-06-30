@@ -27,6 +27,7 @@ private:
 	float       RecvHPJ = 0;
 
 };
+extern Map* g_map;
 
 
 

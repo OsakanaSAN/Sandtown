@@ -207,7 +207,7 @@ bool Map::Start()
 				pos = mapLoc3[i].position;
 				rot = mapLoc3[i].rotation;
 
-				g_player->Setpos2(pos);
+				//g_player->Setpos2(pos);
 				g_player->SetRot(rot);
 				ChangeObject++;
 

@@ -127,7 +127,7 @@ bool Menu::Start()
 		for (int I = 0;I < 6;I++)
 		{
 			//インベントリ
-			InventorySeatTexture[J][I].Load("Assets/UI/ui1.png");
+			InventorySeatTexture[J][I].Load("Assets/Item/Item0.png");
 			InventorySeatSprite[J][I].SetPosition(InventoryPos);
 			InventorySeatSprite[J][I].Init(&InventorySeatTexture[J][I]);
 			InventorySeatSprite[J][I].SetSize({ 100.0f,100.0f });
@@ -445,14 +445,17 @@ bool Menu::UseItem()
 
 	return true;
 }
+
 void Menu::NoItem(int Nonumber)
 {
-
+	////////////////////////////////
+	//位置情報取得処理
 	if (Nonumber > 5)
 	{
 		NoInventY = Nonumber / 6;
 		Nonumber %= 6;
 	}
+	/////////////////////////////////
 
 	NoInventX = Nonumber;
 
@@ -474,6 +477,8 @@ void Menu::ItemSelect()
 	m_CasolBGSprite.SetPosition({ casolXpos,casolYpos });
 	m_CasolBGSprite.SetSize({ 50,50 });
 
+	
+
 	if (Pad(0).IsPress(enButtonUp))//アイテム選択のカーソルの位置
 	{
 		if (UseItemNomberR > 5){
@@ -484,7 +489,7 @@ void Menu::ItemSelect()
 		
 		m_CasolBGSprite.SetPosition({ casolXpos,casolYpos });
 	}
-	else if (Pad(0).IsPress(enButtonRight))
+	else if (Pad(0).IsTrigger(enButtonRight))
 	{
 		if (UseItemNomberR < 29)
 		{
@@ -502,7 +507,7 @@ void Menu::ItemSelect()
 
 		m_CasolBGSprite.SetPosition({ casolXpos,casolYpos });
 	}
-	else if (Pad(0).IsPress(enButtonLeft))
+	else if (Pad(0).IsTrigger(enButtonLeft))
 	{
 		if (UseItemNomberL > 1)
 		{

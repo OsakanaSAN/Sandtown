@@ -76,21 +76,7 @@ void InitTkEngine( HINSTANCE hInst )
 	ShadowMap().SetFar(40.0f);
 	
 }
-//class CMemoryLeakTest : public IGameObject{
-//public:
-//	bool Start()
-//	{
-//		return true;
-//	}
-//	void Update() {
-//		CSkinModelDataHandle modelData;
-//		CSkinModel model;
-//		modelData.LoadModelData("Assets/modelData/Unity.X", NULL);
-//		model.Init(modelData.GetBody());
-//		SkinModelDataResources().Release();
-//	}
-//	
-//};
+
 
 int WINAPI wWinMain(
 	HINSTANCE hInst,

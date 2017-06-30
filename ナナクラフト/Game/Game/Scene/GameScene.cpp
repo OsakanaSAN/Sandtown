@@ -17,6 +17,7 @@
 #include "BattlePlayer.h"
 #include "SceneChange.h"
 #include "particle.h"
+#include "SaveData.h"
 
 GameScene* g_gameScene = NULL;
 Player* g_player = nullptr;
@@ -39,6 +40,7 @@ GameScene::GameScene()
 	g_Hud = NewGO<HUD>(0);
 	g_map = NewGO<Map>(0);
 	g_menu = NewGO<Menu>(0);
+	NewGO<SaveData>(0);
 
 
 	mapscene = MACHI;

@@ -136,6 +136,11 @@ void SceneChange::Update()
 		}*/
 		if (L < 3.0f)
 		{
+			if (!
+				
+				Cahange) {
+				RendButton = true;
+			}
 			//Cahange = true;
 			if (Pad(0).IsTrigger(enButtonA) && !Cahange)
 			{
@@ -157,20 +162,25 @@ void SceneChange::Update()
 		{
 			MapSelectflg = false;
 			Cahange = false;
+			RendButton = false;
 		}
 	}
+	
 
 	if (g_player != nullptr&&MapSelectflg)
 	{
 		g_player->IsMoveSTOP();
 	}
 }
+
+///////////////////////////////////
+//•`‰æ
 void SceneChange::Render(CRenderContext& renderContext)
 {
 	if (Norend == false){
 		skinModel.Draw(renderContext, g_gameCamera->GetViewMatrix(), g_gameCamera->GetProjectionMatrix());
 	}
-	if (Cahange)
+	if (RendButton)
 	{
 		ButtonSprite.Draw(renderContext);
 	}
@@ -183,6 +193,9 @@ void SceneChange::Render(CRenderContext& renderContext)
 	m_CasolBGSprite.Draw(renderContext);
 }
 
+
+//////////////////////////////////////
+//ƒ}ƒbƒv‚Ì•ªŠòˆ—
 void SceneChange::MapSelect()
 {
 	g_menu->MenuSceneexit();

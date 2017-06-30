@@ -72,6 +72,9 @@
       <Filter>Map</Filter>
     </ClCompile>
     <ClCompile Include="particle.cpp" />
+    <ClCompile Include="SaveData.cpp">
+      <Filter>HUD</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Camera.h" />
@@ -144,6 +147,9 @@
       <Filter>Map</Filter>
     </ClInclude>
     <ClInclude Include="particle.h" />
+    <ClInclude Include="SaveData.h">
+      <Filter>HUD</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Map">

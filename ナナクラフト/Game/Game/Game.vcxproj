@@ -182,6 +182,7 @@
     <ClCompile Include="Npc.cpp" />
     <ClCompile Include="particle.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="SaveData.cpp" />
     <ClCompile Include="SceneChange.cpp" />
     <ClCompile Include="Scene\GameScene.cpp" />
     <ClCompile Include="Scene\TitleScene.cpp" />
@@ -215,6 +216,7 @@
     <ClInclude Include="Npc.h" />
     <ClInclude Include="particle.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="SaveData.h" />
     <ClInclude Include="SceneChange.h" />
     <ClInclude Include="Scene\GameScene.h" />
     <ClInclude Include="Scene\TitleScene.h" />

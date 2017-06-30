@@ -39,7 +39,7 @@ Player::Player()
 	runsound->Init("Assets/sound/Runsound.wav");
 	runsound->SetVolume(0.3);
 
-
+	Loadpos();
 	
 }
 
@@ -48,7 +48,7 @@ Player::~Player()
 {
 	runsound->Release();
 	//ƒtƒ@ƒCƒ‹‚Ì‘‚«‚İ
-	ofstream fout("Assets/DATA/tst.dat");
+	ofstream fout("Assets/DATA/Player.dat");
 	if (!fout)
 	{
 		exit(0);
@@ -278,7 +278,7 @@ void Player::Render(CRenderContext& renderContext)
 
 void Player::Loadpos()
 {
-	ifstream fin("Assets/DATA/tst.dat");
+	ifstream fin("Assets/DATA/Player.dat");
 	if (!fin)
 	{
 		exit(0);

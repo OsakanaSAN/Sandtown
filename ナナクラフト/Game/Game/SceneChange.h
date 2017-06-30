@@ -89,6 +89,8 @@ private:
 	bool				Cahange = false;
 	bool				MapSelectflg = false;
 
+	bool                RendButton = false;
+
 };
 
 extern SceneChange* g_SC;
