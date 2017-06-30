@@ -101,10 +101,10 @@ Menu::Menu()
 		GoldSeatpos.x += 50;
 	}
 
-	m_CasolBGTexture.Load("Assets/sprite/casol2.png");
+	m_CasolBGTexture.Load("Assets/sprite/miniCasol.png");
 	m_CasolBGSprite.Init(&m_CasolBGTexture);
 	m_CasolBGSprite.SetPosition({ casolXpos,casolYpos });
-	m_CasolBGSprite.SetSize({ 200,200 });
+	m_CasolBGSprite.SetSize({ 50,50 });
 }
 
 
@@ -238,7 +238,7 @@ void Menu::Render(CRenderContext& renderContext)
 			}
 
 		}
-		m_CasolBGSprite.Draw(renderContext);
+		//m_CasolBGSprite.Draw(renderContext);
 		break;
 
 	case BATTLEINVENTORY:
@@ -469,12 +469,12 @@ void Menu::NoItem(int Nonumber)
 
 void Menu::ItemSelect()
 {
-	m_CasolBGTexture.Load("Assets/sprite/casol2.png");
+	//m_CasolBGTexture.Load("Assets/sprite/casol2.png");
 	m_CasolBGSprite.Init(&m_CasolBGTexture);
 	m_CasolBGSprite.SetPosition({ casolXpos,casolYpos });
-	m_CasolBGSprite.SetSize({ 200,200 });
+	m_CasolBGSprite.SetSize({ 50,50 });
 
-	if (Pad(0).IsTrigger(enButtonUp))//アイテム選択のカーソルの位置
+	if (Pad(0).IsPress(enButtonUp))//アイテム選択のカーソルの位置
 	{
 		if (UseItemNomberR > 5){
 			UseItemNomberR -= 6;
@@ -484,7 +484,7 @@ void Menu::ItemSelect()
 		
 		m_CasolBGSprite.SetPosition({ casolXpos,casolYpos });
 	}
-	else if (Pad(0).IsTrigger(enButtonRight))
+	else if (Pad(0).IsPress(enButtonRight))
 	{
 		if (UseItemNomberR < 29)
 		{
@@ -502,7 +502,7 @@ void Menu::ItemSelect()
 
 		m_CasolBGSprite.SetPosition({ casolXpos,casolYpos });
 	}
-	else if (Pad(0).IsTrigger(enButtonLeft))
+	else if (Pad(0).IsPress(enButtonLeft))
 	{
 		if (UseItemNomberL > 1)
 		{
@@ -518,7 +518,7 @@ void Menu::ItemSelect()
 		
 		m_CasolBGSprite.SetPosition({ casolXpos,casolYpos });
 	}
-	else if (Pad(0).IsTrigger(enButtonDown))
+	else if (Pad(0).IsPress(enButtonDown))
 	{
 		if (UseItemNomberR < 24){
 			UseItemNomberR += 6;

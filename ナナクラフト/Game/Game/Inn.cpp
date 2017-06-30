@@ -95,14 +95,9 @@ void Inn::Update()
 		
 		Fadeflg = false;
 	}
-	//else if (!Fadeflg&&Innflg)
-	//{
-	//	g_fade->StartFadeIn();
-	//}
 
 	if (g_player != nullptr) {
 
-		if (Innflg) { InnSelect(); }
 
 		CVector3 Ppos = g_player->Getpos();
 		CVector3 Vpos;
@@ -112,12 +107,16 @@ void Inn::Update()
 		Vpos.z = Ppos.z - Pointpos.z;
 		float L = Vpos.Length();
 
-		if (Pad(0).IsTrigger(enButtonB)&&Innflg)
+		if (Pad(0).IsTrigger(enButtonB))
 		{
 			g_menu->MenuSceneStop();
 			Innflg = false;
 		}
-		else if (L < 7.0f && Pad(0).IsTrigger(enButtonA)&&!Innflg)
+		else if (L < 7.0f &&Innflg)
+		{
+			InnSelect();
+		}
+		else if (L < 7.0f && Pad(0).IsTrigger(enButtonA))
 		{
 			Innflg = true;
 			innstate = NOSREEP;
