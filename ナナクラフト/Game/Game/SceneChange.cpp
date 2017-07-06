@@ -174,6 +174,7 @@ void SceneChange::Update()
 
 	if (g_player != nullptr&&MapSelectflg)
 	{
+		g_gameCamera->ChangeStop();
 		g_player->IsMoveSTOP();
 	}
 }

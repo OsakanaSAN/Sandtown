@@ -4,7 +4,6 @@
 #include "Camera.h"
 #include "HUD.h"
 #include "Player.h"
-#include "Map2.h"
 #include "Menu.h"
 
 extern CRandom g_random;

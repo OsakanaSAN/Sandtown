@@ -33,7 +33,7 @@ void HUD::HudLoad()
 
 bool HUD::Start()
 {
-	HudLoad(); //セーブデータロード
+	//HudLoad(); //セーブデータロード
 	return true;
 }
 

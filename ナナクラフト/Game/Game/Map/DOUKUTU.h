@@ -1,9 +1,4 @@
-﻿//doa
-{
-	"doa",
-	CVector3(-3.51f, 0.15f, 2.59f),             //平行移動
-	CQuaternion(-0.71f, 0.00f, 0.00f, 0.71f ),  //回転
-},
+﻿
 //Unity
 {
 	"Unity",
@@ -34,21 +29,15 @@
 	CVector3(0.00f, 0.00f, 0.00f),             //平行移動
 	CQuaternion(-0.71f, 0.00f, 0.00f, 0.71f ),  //回転
 },
-//ghost
-{
-	"ghost",
-	CVector3(21.00f, 0.00f, -14.90f),             //平行移動
-	CQuaternion(0.00f, 0.00f, 0.00f, 1.00f ),  //回転
-},
-//ghost
-{
-	"ghost",
-	CVector3(-2.90f, -0.10f, -39.70f),             //平行移動
-	CQuaternion(0.00f, 0.00f, 0.00f, 1.00f ),  //回転
-},
 //BattleMap1
 {
 	"BattleMap1",
 	CVector3(-1.00f, 50.00f, -4.50f),             //平行移動
 	CQuaternion(-0.71f, 0.00f, 0.00f, 0.71f ),  //回転
+},
+//doa
+{
+	"doa",
+	CVector3(-3.51f, 0.15f, 2.59f),             //平行移動
+	CQuaternion(-0.71f, 0.00f, 0.00f, 0.71f),  //回転
 },

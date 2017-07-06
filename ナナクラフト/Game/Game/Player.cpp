@@ -39,7 +39,7 @@ Player::Player()
 	runsound->Init("Assets/sound/Runsound.wav");
 	runsound->SetVolume(0.3);
 
-	Loadpos(); //セーブデータロード
+	//Loadpos(); //セーブデータロード
 	
 }
 

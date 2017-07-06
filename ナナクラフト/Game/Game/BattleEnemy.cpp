@@ -104,12 +104,14 @@ BattleEnemy::BattleEnemy()
 	case 3:
 		break;
 	}*/
+	ECP = position[0];
 	
 }
 
 
 BattleEnemy::~BattleEnemy()
 {
+	
 
 	if (g_Enemy->GetEnemyState() == Alive)
 	{
@@ -293,7 +295,7 @@ bool BattleEnemy::Start()
 	default:
 		break;
 	}
-
+	EnemyCameraChange = 0;
 	return true;
 }
 
@@ -304,6 +306,82 @@ void BattleEnemy::Update()
 	All.SetPointLightColor({ 1.0f,1.0f,1.5f,4.0f });
 
 	AnimationSet();
+
+	switch (Battlecase)
+	{
+		case Single:
+			break;
+
+		case Double:
+			
+			if (Pad(0).IsTrigger(enButtonRight))
+			{
+				++EnemyCameraChange;
+				if (EnemyCameraChange >= 2)
+				{
+					EnemyCameraChange = 0;
+				}
+				EnemyCameraSetpos(position[EnemyCameraChange]);
+			}
+			else if (Pad(0).IsTrigger(enButtonLeft))
+			{
+				--EnemyCameraChange;
+				if (EnemyCameraChange <= -1)
+				{
+					EnemyCameraChange = 1;
+				}
+				EnemyCameraSetpos(position[EnemyCameraChange]);
+			}
+
+			break;
+
+		case Cross:
+			if (Pad(0).IsTrigger(enButtonRight))
+			{
+				++EnemyCameraChange;
+				if (EnemyCameraChange >= 3)
+				{
+					EnemyCameraChange = 0;
+				}
+				EnemyCameraSetpos(position[EnemyCameraChange]);
+			}
+			else if (Pad(0).IsTrigger(enButtonLeft))
+			{
+				--EnemyCameraChange;
+				if (EnemyCameraChange <= -1)
+				{
+					EnemyCameraChange = 2;
+				}
+				EnemyCameraSetpos(position[EnemyCameraChange]);
+			}
+
+			break;
+		case Cross2:
+
+			
+			if (Pad(0).IsTrigger(enButtonRight))
+			{
+				++EnemyCameraChange;
+				if (EnemyCameraChange >= 4)
+				{
+					EnemyCameraChange = 0;
+				}
+				EnemyCameraSetpos(position[EnemyCameraChange]);
+			}
+			else if (Pad(0).IsTrigger(enButtonLeft))
+			{
+				--EnemyCameraChange;
+				if (EnemyCameraChange <= -1)
+				{
+					EnemyCameraChange = 3;
+				}
+				EnemyCameraSetpos(position[EnemyCameraChange]);
+			}
+
+			break;
+		default:
+			break;
+	}
 
 	for (int i = 0;i < eneNo;i++) {
 		Animation[i].Update(1.0f / 60.0f);

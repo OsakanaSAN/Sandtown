@@ -217,9 +217,9 @@ void BattleScene::Update()
 				Comand = Keep;
 
 			}
-			else if (Pad(0).IsTrigger(enButtonDown) && Pad(0).IsTrigger(enButtonUp))
+			/*else if (Pad(0).IsTrigger(enButtonDown) && Pad(0).IsTrigger(enButtonUp))
 			{
-			}
+			}*/
 			//矢印→アイテム
 
 			else if (Pad(0).IsTrigger(enButtonDown) && Comand == Keep || Pad(0).IsTrigger(enButtonUp) && Comand == Escape)
@@ -408,7 +408,7 @@ void BattleScene::PlayerTurn()
 				m_DamageSeatSprite[i].SetSize({ 60,50 });
 				PDamagepos.x += 80;
 			}
-			g_particle->Particle(*g_battleenemy->Getpos(0),0);//攻撃パーティクル呼び出し
+			g_particle->Particle(g_battleenemy->GetEnemyCameraPos(),0);//攻撃パーティクル呼び出し
 			g_battleenemy->SetDamage(g_battleplayer->GetATK()+Prandom, true);//ダメージ処理
 			g_battlemenu->SetEnemyHp(g_battleenemy->GetHP());//敵の体力DOWN
 			EDamage = true;

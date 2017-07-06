@@ -5,7 +5,6 @@
 #include "HUD.h"
 #include "Player.h"
 #include "BattlePlayer.h"
-#include "Map2.h"
 #include "Menu.h"
 
 

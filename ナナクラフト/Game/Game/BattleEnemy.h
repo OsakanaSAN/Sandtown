@@ -17,6 +17,17 @@ public:
 	{
 		position[0] = pos;
 	}
+
+	//’–ÚƒLƒƒƒ‰
+	void EnemyCameraSetpos(CVector3 pos)
+	{
+		ECP = pos;
+	}
+	CVector3 GetEnemyCameraPos()
+	{
+		return ECP;
+	}
+
 	CVector3* Getpos(int EnemyNo)
 	{
 		return &position[EnemyNo];
@@ -124,5 +135,11 @@ private:
 	////////////////////////////////////
 
 	int Battlecase = g_random.GetRandInt() % 4;
+
+
+
+	int EnemyCameraChange;
+
+	CVector3 ECP; //’–Ú‚Ì“G
 };
 extern BattleEnemy* g_battleenemy;

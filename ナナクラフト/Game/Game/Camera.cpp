@@ -131,7 +131,7 @@ void Camera::EnemyBattleCamera()
 	BattlePlayerCameraPos = { -1.5f,0.0f,1.0f };
 
 	if (g_battleplayer != nullptr) {
-		V = *g_battleenemy->Getpos(0);
+		V = g_battleenemy->GetEnemyCameraPos();
 		V.y += 1.0f;
 		camera.SetTarget(V);
 		//V.Add(BattleEnemyCameraPos);

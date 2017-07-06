@@ -6,7 +6,6 @@
 #include "Player.h"
 #include "Camera.h"
 #include "Map.h"
-#include "Map2.h"
 #include "HUD.h"
 #include "GameSound.h"
 #include "Menu.h"
@@ -133,7 +132,7 @@ void GameScene::Update()
 
 				if (g_Dungeon == nullptr)
 				{
-					//g_map2 = NewGO<Map2>(0);
+					
 					g_Dungeon = NewGO<Dungeon>(0);
 					g_player = NewGO<Player>(0);
 

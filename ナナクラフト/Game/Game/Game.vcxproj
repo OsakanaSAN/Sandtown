@@ -176,7 +176,6 @@
     <ClCompile Include="Inn.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Map.cpp" />
-    <ClCompile Include="Map2.cpp" />
     <ClCompile Include="Mapchip.cpp" />
     <ClCompile Include="Menu.cpp" />
     <ClCompile Include="Npc.cpp" />
@@ -210,7 +209,6 @@
     <ClInclude Include="HUD.h" />
     <ClInclude Include="Inn.h" />
     <ClInclude Include="Map.h" />
-    <ClInclude Include="Map2.h" />
     <ClInclude Include="Mapchip.h" />
     <ClInclude Include="Menu.h" />
     <ClInclude Include="Npc.h" />

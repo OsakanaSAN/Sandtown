@@ -8,9 +8,6 @@
     <ClCompile Include="Map.cpp">
       <Filter>Map</Filter>
     </ClCompile>
-    <ClCompile Include="Map2.cpp">
-      <Filter>Map</Filter>
-    </ClCompile>
     <ClCompile Include="Mapchip.cpp">
       <Filter>Map</Filter>
     </ClCompile>
@@ -81,9 +78,6 @@
     <ClInclude Include="GameSound.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="Map.h">
-      <Filter>Map</Filter>
-    </ClInclude>
-    <ClInclude Include="Map2.h">
       <Filter>Map</Filter>
     </ClInclude>
     <ClInclude Include="Mapchip.h">

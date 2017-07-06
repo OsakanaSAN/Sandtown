@@ -193,8 +193,8 @@ bool Menu::Start()
 	GoldChangTex();
 
 	///////////////////
-	//セーブデータ
-	LoadInventory();
+	//セーブデータロード
+	//LoadInventory();
 
 	return true;
 }
