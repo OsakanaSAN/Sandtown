@@ -12,6 +12,10 @@ public:
 	void Update();
 	void Render(CRenderContext&renderContext);
 	void AnimationSet();
+	int GetTarget()
+	{
+		return EnemyCameraChange;
+	}
 
 	void Setpos(CVector3 pos)
 	{
@@ -23,6 +27,7 @@ public:
 	{
 		ECP = pos;
 	}
+
 	CVector3 GetEnemyCameraPos()
 	{
 		return ECP;
@@ -88,6 +93,13 @@ public:
 	{
 		return Battlecase;
 	}
+
+	void SetIsStop(bool SIS)
+	{
+		IsStop = SIS;
+	}
+
+	
 private:
 
 	enum ANIME {
@@ -122,6 +134,7 @@ private:
 	bool			IsStand;
 	bool			IsDamage;
 	bool			IsAnimend;
+	
 
 	int				currentAnimSetNo;
 
@@ -140,6 +153,8 @@ private:
 
 	int EnemyCameraChange;
 
-	CVector3 ECP; //’–Ú‚Ì“G
+	CVector3 ECP = { 0,0,0 }; //’–Ú‚Ì“G
+	bool     IsStop = true;
+
 };
 extern BattleEnemy* g_battleenemy;

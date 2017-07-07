@@ -5,17 +5,6 @@
 #include "Camera.h"
 #include "Player.h"
 #include "HUD.h"
-//extern BattleEnemy* g_battleenemy;
-//extern Player* g_player;
-//enum {
-//
-//	Stand_anim,
-//	Walk_anim,  //歩く
-//	Run_anim,  //走る
-//	Jump,
-//	Dameg,
-//
-//};
 
 enum ANIME {
 	Stand_anim,
@@ -27,6 +16,7 @@ enum ANIME {
 };
 
 
+//コンストラクター
 BattlePlayer::BattlePlayer()
 {
 	All.SetAmbinetLight({ 0.8f,0.8f,0.8f });
@@ -48,7 +38,7 @@ BattlePlayer::BattlePlayer()
 	
 }
 
-
+//デストラクター
 BattlePlayer::~BattlePlayer()
 {
 
@@ -121,6 +111,8 @@ void BattlePlayer::Update()
 			
 		}
 
+		
+
 		skinModel.Update(BakPositon, m_rotation,scale);
 
 		//アニメーションの更新
@@ -144,6 +136,14 @@ void BattlePlayer::Update()
 
 		//characterController.Execute(0.03f);
 		AnimationSet();
+////////////////////////////////////////////////////////////////////////////////////////
+		//注目キャラに向く処理
+		//間違ってたら直して
+		CVector3 def;
+		def.Subtract(position, g_battleenemy->GetEnemyCameraPos());
+		m_rotation.SetRotation(CVector3::Up, atan2f(-def.x, -def.z)); 
+
+///////////////////////////////////////////////////////////////////////////////////////////
 		skinModel.Update(BakPositon, m_rotation, scale);
 		//アニメーションの更新
 		Animation.Update(1.0f / 60.0f);

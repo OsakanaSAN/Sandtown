@@ -171,15 +171,6 @@ bool BattleScene::Start()
 void BattleScene::Update()
 {
 
-	//CVector3 Pintpos = g_battleplayer->Getpos();
-	///*CVector3 Epos = g_battleenemy->Getpos();
-	//CVector3 Ppos = g_battleplayer->Getpos();
-
-	//Pintpos.Add(Ppos, Epos);
-	//Pintpos.Scale(0.5f);*/
-
-	//CVector3 Cpos = g_gameCamera->BGetPos();
-
 	if (!IsBattleStart) { return; }
 
 	if (Victory == true) {
@@ -351,8 +342,8 @@ void BattleScene::PlayerTurn()
 		}
 		if (!PAttack&&Pad(0).IsTrigger(enButtonA))
 		{
-
-			g_battleenemy->SetEnemyNo(0);
+			g_battleenemy->SetIsStop(true);
+			g_battleenemy->SetEnemyNo(g_battleenemy->GetTarget());
 			g_battlemenu->EnemyZoomOut();
 			g_battlemenu->PlayerZoomSet();
 
@@ -992,7 +983,7 @@ void BattleScene::BattleKeep()
 	//“G‚É’–Ú
 	if (Pad(0).IsTrigger(enButtonA))
 	{
-
+		g_battleenemy->SetIsStop(false);
 		g_battlemenu->EnemyZoomSet();
 		g_battlemenu->PlayerZoomOut();
 		m_sound_bgm_battle = NewGO<CSoundSource>(0);

@@ -80,30 +80,14 @@ BattleEnemy::BattleEnemy()
 	default:
 		break;
 	}
-	/*for (int i = 0;i < eneNo;i++) {
-
-		position[i] = Wpos;
-		Wpos.x -= 2.0f;
-	}*/
+	
 
 	IsAttack = false;
 	IsDamage = false;
 	IsStand = true;
 	IsAnimend = true;
 	currentAnimSetNo = Stand_anim;
-
-	/*switch (Battlecase)
-	{
-	case 0:
-
-		break;
-	case 1:
-		break;
-	case 2:
-		break;
-	case 3:
-		break;
-	}*/
+	EnemyCameraChange = 0;
 	ECP = position[0];
 	
 }
@@ -295,7 +279,9 @@ bool BattleEnemy::Start()
 	default:
 		break;
 	}
-	EnemyCameraChange = 0;
+	
+	
+
 	return true;
 }
 
@@ -307,13 +293,17 @@ void BattleEnemy::Update()
 
 	AnimationSet();
 
-	switch (Battlecase)
-	{
+	if (!IsStop) {
+		switch (Battlecase)
+		{
+
 		case Single:
 			break;
 
 		case Double:
-			
+			//////////////////////////////////////////////////////////////////////////////////////////////////////////
+						//í“¬‚Ì’–ÚƒLƒƒƒ‰•ÏXˆ—
+						//’Z‚­‘‚¯‚é‚È‚ç’Z‚­‘‚¢‚Ä
 			if (Pad(0).IsTrigger(enButtonRight))
 			{
 				++EnemyCameraChange;
@@ -358,7 +348,7 @@ void BattleEnemy::Update()
 			break;
 		case Cross2:
 
-			
+
 			if (Pad(0).IsTrigger(enButtonRight))
 			{
 				++EnemyCameraChange;
@@ -378,11 +368,13 @@ void BattleEnemy::Update()
 				EnemyCameraSetpos(position[EnemyCameraChange]);
 			}
 
+			///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 			break;
 		default:
 			break;
-	}
+		}
 
+	}
 	for (int i = 0;i < eneNo;i++) {
 		Animation[i].Update(1.0f / 60.0f);
 		skinModel[i].Update(position[i], m_rotation[i], CVector3::One);

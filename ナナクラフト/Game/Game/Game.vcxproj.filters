@@ -2,7 +2,6 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="Camera.cpp" />
-    <ClCompile Include="GameSound.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="stdafx.cpp" />
     <ClCompile Include="Map.cpp">
@@ -68,14 +67,18 @@
     <ClCompile Include="Inn.cpp">
       <Filter>Map</Filter>
     </ClCompile>
-    <ClCompile Include="particle.cpp" />
     <ClCompile Include="SaveData.cpp">
       <Filter>HUD</Filter>
+    </ClCompile>
+    <ClCompile Include="particle.cpp">
+      <Filter>Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="GameSound.cpp">
+      <Filter>Effect</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Camera.h" />
-    <ClInclude Include="GameSound.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="Map.h">
       <Filter>Map</Filter>
@@ -140,9 +143,14 @@
     <ClInclude Include="Inn.h">
       <Filter>Map</Filter>
     </ClInclude>
-    <ClInclude Include="particle.h" />
     <ClInclude Include="SaveData.h">
       <Filter>HUD</Filter>
+    </ClInclude>
+    <ClInclude Include="particle.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="GameSound.h">
+      <Filter>Effect</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -160,6 +168,9 @@
     </Filter>
     <Filter Include="Player">
       <UniqueIdentifier>{ddfdf7e2-6739-4226-91b3-24ddf2948c75}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Effect">
+      <UniqueIdentifier>{2d007151-b60c-4e24-b28c-dea4ae9d213d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
