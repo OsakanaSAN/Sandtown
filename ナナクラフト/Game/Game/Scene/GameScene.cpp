@@ -30,7 +30,7 @@ Enemy*  g_Enemy2 = nullptr;
 Enemy*  g_Enemy3 = nullptr;
 Dungeon* g_Dungeon = nullptr;
 particle* g_particle = nullptr;
-
+SaveData* g_Save = nullptr;
 
 GameScene::GameScene()
 {
@@ -39,7 +39,7 @@ GameScene::GameScene()
 	g_Hud = NewGO<HUD>(0);
 	g_map = NewGO<Map>(0);
 	g_menu = NewGO<Menu>(0);
-	NewGO<SaveData>(0);
+	g_Save = NewGO<SaveData>(0);
 
 
 	mapscene = MACHI;
@@ -430,6 +430,7 @@ void GameScene::Update()
 				g_fade->StartFadeIn();
 				scenes = STOP;
 				mapscene = MACHI;
+				g_Save->SaveDatas();
 				break;
 			}
 
@@ -451,6 +452,7 @@ void GameScene::Update()
 			
 			Bato = false;
 		}
+
 		break;
 
 

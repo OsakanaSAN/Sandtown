@@ -12,7 +12,7 @@ public:
 	bool Start()override;
 	void Init(const char* modelName, CVector3 position, CQuaternion rotation);
 	void Update();
-	void Render(CRenderContext& renderContext);
+	void PostRender(CRenderContext& renderContext);
 	void MapSelect();
 	void setpos(CVector3 pos)
 	{

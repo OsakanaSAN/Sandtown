@@ -594,7 +594,7 @@ void Menu::ItemSelect()
 
 		UseItemNomberR = 0;
 		UseItemNomberL = 1;
-		casolXpos = -400.0f;
-		casolYpos = 250.0f;
+		casolXpos = -360.0f;
+		casolYpos = 200.0f;
 	}
 }

@@ -10,6 +10,7 @@ public:
 	void Init(const char* modelName, CVector3 position, CQuaternion rotation);
 	void Update();
 	void Render(CRenderContext& renderContext);
+	void PostRender(CRenderContext& renderContet);
 	void Setpos(CVector3 a)
 	{
 		LightPos2 = a;
@@ -18,6 +19,7 @@ public:
 	{
 		asnumber = D;
 	}
+
 
 private:
 	enum ItemRender
@@ -34,6 +36,7 @@ private:
 	CSprite			ButtonSprite;
 	CTexture        ButtonTexture;
 	CVector2        ButtonPos = { 0.0f,100.0f };
+
 	bool            minigs = false;
 
 	CSoundSource* m_sound_bgm_battle;
@@ -46,10 +49,13 @@ private:
 	CSkinModelDataHandle		skinModelData;	//スキンモデルデータ。
 	CMeshCollider		meshCollider;	//メッシュコライダー。
 	CRigidBody			rigidBody;		//剛体。
+
 	int                 asnumber;
 	int                 minigexp = 5;
 	int                 minigcount = 0; //採掘できる上限
 	const float FADE_TIME_ITEM = 0.5f;		//!<フェードアウトの時間。(単位：秒)
+
+
 	float m_timer = 0.0f;
 	float S_timer = 0.0f; //ちょっとだけしっかり表示させる
 	

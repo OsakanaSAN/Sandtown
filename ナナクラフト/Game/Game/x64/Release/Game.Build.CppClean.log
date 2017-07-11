@@ -1,12 +1,12 @@
 c:\users\kbc16b03\desktop\sandtown\ナナクラフト\game\game\x64\release\game.pch
 c:\users\kbc16b03\desktop\sandtown\ナナクラフト\game\game\x64\release\vc140.pdb
 c:\users\kbc16b03\desktop\sandtown\ナナクラフト\game\game\x64\release\stdafx.obj
+c:\users\kbc16b03\desktop\sandtown\ナナクラフト\game\game\x64\release\savedata.obj
 c:\users\kbc16b03\desktop\sandtown\ナナクラフト\game\game\x64\release\player.obj
 c:\users\kbc16b03\desktop\sandtown\ナナクラフト\game\game\x64\release\particle.obj
 c:\users\kbc16b03\desktop\sandtown\ナナクラフト\game\game\x64\release\npc.obj
 c:\users\kbc16b03\desktop\sandtown\ナナクラフト\game\game\x64\release\menu.obj
 c:\users\kbc16b03\desktop\sandtown\ナナクラフト\game\game\x64\release\mapchip.obj
-c:\users\kbc16b03\desktop\sandtown\ナナクラフト\game\game\x64\release\map2.obj
 c:\users\kbc16b03\desktop\sandtown\ナナクラフト\game\game\x64\release\map.obj
 c:\users\kbc16b03\desktop\sandtown\ナナクラフト\game\game\x64\release\main.obj
 c:\users\kbc16b03\desktop\sandtown\ナナクラフト\game\game\x64\release\inn.obj
@@ -27,7 +27,6 @@ c:\users\kbc16b03\desktop\sandtown\ナナクラフト\game\game\x64\release\game
 c:\users\kbc16b03\desktop\sandtown\ナナクラフト\game\game\x64\release\titlescene.obj
 c:\users\kbc16b03\desktop\sandtown\ナナクラフト\game\game\x64\release\gamescene.obj
 c:\users\kbc16b03\desktop\sandtown\ナナクラフト\game\game\x64\release\scenechange.obj
-c:\users\kbc16b03\desktop\sandtown\ナナクラフト\game\game\x64\release\savedata.obj
 c:\users\kbc16b03\desktop\sandtown\ナナクラフト\game\x64\release\game.exe
 c:\users\kbc16b03\desktop\sandtown\ナナクラフト\game\x64\release\game.pdb
 c:\users\kbc16b03\desktop\sandtown\ナナクラフト\game\game\x64\release\game.tlog\cl.command.1.tlog

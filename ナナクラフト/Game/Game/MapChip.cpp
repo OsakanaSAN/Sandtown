@@ -88,6 +88,7 @@ void Mapchip::Update()
 }
 void Mapchip::Render(CRenderContext& renderContext)
 {
+	
 	skinModel.Draw(renderContext, g_gameCamera->GetViewMatrix(), g_gameCamera->GetProjectionMatrix());
 }
 void Mapchip::SoundOnMachi()

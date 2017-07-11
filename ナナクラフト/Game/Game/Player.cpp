@@ -46,7 +46,7 @@ Player::Player()
 
 Player::~Player()
 {
-	runsound->Release();
+	//runsound->Release();
 	//ƒtƒ@ƒCƒ‹‚Ì‘‚«ž‚Ý
 	ofstream fout("Assets/DATA/Player.dat");
 	if (!fout)
@@ -271,7 +271,7 @@ void Player::AnimetionSet()
 void Player::Render(CRenderContext& renderContext)
 {
 
-
+	
 	skinModel.Draw(renderContext, g_gameCamera->GetViewMatrix(), g_gameCamera->GetProjectionMatrix());
 	
 }

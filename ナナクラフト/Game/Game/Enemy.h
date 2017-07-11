@@ -114,6 +114,8 @@ public :
 		EGold = gold;
 	}
 
+
+
 private:
 
 	enum ANIME {

@@ -22,6 +22,7 @@ private:
 	int NoRenderObjct;
 	int EnemyObjct;
 	int mapCount;
+	bool TexC = false;
 
 };
 

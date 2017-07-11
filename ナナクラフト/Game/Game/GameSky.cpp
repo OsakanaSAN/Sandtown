@@ -38,6 +38,9 @@ void GameSky::Init(const char* modelName, CVector3 position, CQuaternion rotatio
 	//このオブジェクトは動かないので、初期化で一回だけワールド行列を作成すればおｋ。
 	skinModel.Update(Skypos, SkyRot, CVector3::One);
 
+
+
+
 }
 void GameSky::Update()
 {

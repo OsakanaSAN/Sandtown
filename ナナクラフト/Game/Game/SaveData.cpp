@@ -20,15 +20,15 @@ SaveData::~SaveData()
 
 void SaveData::Update()
 {
-	if (g_map == nullptr) { return; }
-	SaveTime += GameTime().GetFrameDeltaTime();
+	//if (g_map == nullptr) { return; }
+	//SaveTime += GameTime().GetFrameDeltaTime();
 
-	//定期的にセーブしますよ。
-	if (SaveTime > 60 && g_player != nullptr)
-	{
-		SaveDatas();
-		SaveTime = 0;
-	}
+	////定期的にセーブしますよ。
+	//if (SaveTime > 60 && g_player != nullptr)
+	//{
+	//	SaveDatas();
+	//	SaveTime = 0;
+	//}
 
 }
 

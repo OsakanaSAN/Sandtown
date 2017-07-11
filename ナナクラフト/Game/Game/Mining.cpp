@@ -76,6 +76,7 @@ void Mining::Init(const char* modelName, CVector3 position, CQuaternion rotation
 void Mining::Update()
 {
 
+
 	if (g_player != nullptr) {
 
 		CVector3 Ppos = g_player->Getpos();
@@ -160,8 +161,15 @@ void Mining::Render(CRenderContext& renderContext)
 
 	
 	skinModel.Draw(renderContext, g_gameCamera->GetViewMatrix(), g_gameCamera->GetProjectionMatrix());
+}
+void Mining::PostRender(CRenderContext& renderContext)
+{
+
+
+	renderContext.SetRenderState(D3DRS_ZWRITEENABLE, FALSE);
 	if (minigs)
 	{
+
 		ButtonSprite.Draw(renderContext);
 	}
 
@@ -169,4 +177,6 @@ void Mining::Render(CRenderContext& renderContext)
 	{
 		IconSeatSprite.Draw(renderContext);
 	}
+	renderContext.SetRenderState(D3DRS_ZWRITEENABLE, TRUE);
 }
+

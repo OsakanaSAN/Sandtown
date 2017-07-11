@@ -181,7 +181,7 @@ void SceneChange::Update()
 
 ///////////////////////////////////
 //•`‰æ
-void SceneChange::Render(CRenderContext& renderContext)
+void SceneChange::PostRender(CRenderContext& renderContext)
 {
 	if (Norend == false){
 		skinModel.Draw(renderContext, g_gameCamera->GetViewMatrix(), g_gameCamera->GetProjectionMatrix());
@@ -200,7 +200,9 @@ void SceneChange::Render(CRenderContext& renderContext)
 	m_ComandBGSprite6.Draw(renderContext);
 	m_ComandBGSprite7.Draw(renderContext);
 	m_ComandBGSprite8.Draw(renderContext);
+	renderContext.SetRenderState(D3DRS_ZWRITEENABLE, FALSE);
 	m_CasolBGSprite.Draw(renderContext);
+	renderContext.SetRenderState(D3DRS_ZWRITEENABLE, TRUE);
 }
 
 
