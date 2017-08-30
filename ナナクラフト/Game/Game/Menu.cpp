@@ -404,6 +404,9 @@ void Menu::GoldChangTex()
 	GoldSeatTexture[4].Load(GoldName);
 
 }
+
+///////////////////////////////////////////////////////////////////////////////////////////////
+//インベントリにアイテムを追加する関数
 void Menu::InventoryChangTex(int Item)
 {
 	while (InventoryPack[InventoryPackNumber] != 0)
@@ -438,6 +441,7 @@ void Menu::InventoryChangTex(int Item)
 
 }
 
+////////////////////////////////////////////////////////////////////////////////////////////
 void Menu::MenuSceneStop()
 {
 
@@ -464,17 +468,14 @@ void Menu::MenuSceneexit()
 
 }
 
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//アイテムを使用した時に呼び出す関数
 bool Menu::UseItem()
 {
 
-	if (g_Hud->GetHP() >= g_Hud->GetMaxHP()) { return false; } //HPの上限に達していたら帰る
+	if (g_Hud->GetHP() >= g_Hud->GetMaxHP()) { return false; } //HPの上限に達していたらアイテムを使えない
 
-	if ( InventoryPack[UseItemNo] <= 0) { return false; }
-
-	//if (InventoryPack[UseItemNo] == 3)//使用したアイテムを消費する処理
-	//{
-	//if (InventoryPackNumber <0) { return false; } //使うことができるアイテムが無ければ帰る
-
+	if ( InventoryPack[UseItemNo] <= 0) { return false; }//アイテムがない場所の場合も使用できない
 
 	InventoryPackNumber = UseItemNo;
 	NoItem(UseItemNo);			//使用したアイテムのテクスチャの置き換え
@@ -499,8 +500,12 @@ bool Menu::UseItem()
 	return true;
 }
 
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//空のテクスチャに変更するための関数
 void Menu::NoItem(int Nonumber)
 {
+	NoInventX = 0;
+	NoInventY = 0;
 	////////////////////////////////
 	//位置情報取得処理
 	if (Nonumber > 5)
@@ -518,11 +523,14 @@ void Menu::NoItem(int Nonumber)
 	InventorySeatSprite[NoInventY][NoInventX].Init(&InventorySeatTexture[InventoryY][InventoryX]);
 	InventorySeatSprite[NoInventY][NoInventX].SetSize({ 100.0f, 100.0f });
 
-	InventoryX = NoInventX;
-	InventoryY = NoInventY;
+	InventoryPackNumber = 0;
+	InventoryX = 0;
+	InventoryY = 0;
 
 }
 
+///////////////////////////////////////////////////////////////////////////////////////////////////
+//アイテムメニュー（戦闘時）を開いたときにアイテムを選択するための関数
 void Menu::ItemSelect()
 {
 	//m_CasolBGTexture.Load("Assets/sprite/casol2.png");
@@ -532,7 +540,7 @@ void Menu::ItemSelect()
 
 	
 
-	if (Pad(0).IsPress(enButtonUp))//アイテム選択のカーソルの位置
+	if (Pad(0).IsTrigger(enButtonUp))//アイテム選択のカーソルの位置
 	{
 		if (UseItemNomberR > 5){
 			UseItemNomberR -= 6;
@@ -576,7 +584,7 @@ void Menu::ItemSelect()
 		
 		m_CasolBGSprite.SetPosition({ casolXpos,casolYpos });
 	}
-	else if (Pad(0).IsPress(enButtonDown))
+	else if (Pad(0).IsTrigger(enButtonDown))
 	{
 		if (UseItemNomberR < 24){
 			UseItemNomberR += 6;
@@ -590,11 +598,15 @@ void Menu::ItemSelect()
 	if (Pad(0).IsTrigger(enButtonA))//アイテムの使用
 	{
 
-		UseItemNo = UseItemNomberR;
+		UseItemNo = UseItemNomberR; //使うアイテムの配列の要素の番号を格納
 
 		UseItemNomberR = 0;
 		UseItemNomberL = 1;
 		casolXpos = -360.0f;
 		casolYpos = 200.0f;
+	}
+	else if (Pad(0).IsTrigger(enButtonB))
+	{
+		return;
 	}
 }

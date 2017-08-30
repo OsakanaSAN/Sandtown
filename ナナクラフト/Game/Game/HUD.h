@@ -109,7 +109,7 @@ private:
 	int           LV = 1;
 	char          iName[256];
 	float         nextexp = 0;
-	float         MaxpHP = 500.0f;
+	float         MaxpHP = 300.0f;
 	int           pExp = 0;     //åoå±íl
 	int           NextExp = 20; 
 	
@@ -118,7 +118,7 @@ private:
 	int			ATK = 20;//ïêäÌÇ≤Ç∆Ç…ïœâªÅH
 	int			nextATK = g_random.GetRandInt() % 5+2;
 	
-	int			MaxHP = 500;
+	int			MaxHP = 300;
 	int			nextHP = g_random.GetRandInt() % 10+2;
 };
 extern HUD*    g_Hud;

@@ -102,7 +102,6 @@ private:
 		STOP,
 
 	};
-
 	IS         IsMove;
 	//ここからメンバ変数。
 	CSkinModel				skinModel;					//スキンモデル。

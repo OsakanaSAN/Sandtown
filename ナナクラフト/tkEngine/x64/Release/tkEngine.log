@@ -1,5 +1,11 @@
 ﻿  tkEnginePreCompile.cpp
   tkPathFinding.cpp
+  tkKeyInput.cpp
+  tkPad.cpp
+  tkSoundEngine.cpp
+  tkSoundSource.cpp
+  tkWaveFile.cpp
+  tkWaveFileBank.cpp
   tkCameraCollisionSolver.cpp
   tkSpringCamera.cpp
   tkCharacterController.cpp
@@ -13,14 +19,14 @@
   tkFeedbackblur.cpp
   tkFxaa.cpp
   tkIPostEffectFilter.cpp
+  コードを生成中...
+  コンパイル中...
   tkMonochromeFilter.cpp
   tkMotionBlur.cpp
   tkPostEffect.cpp
   tkSepiaFilter.cpp
   tkTonemap.cpp
   tkIDMap.cpp
-  コードを生成中...
-  コンパイル中...
   tkPreRender.cpp
   tkReflectionMap.cpp
   tkShadowCaster.cpp
@@ -35,17 +41,15 @@
   tkGaussianBlur.cpp
   tkIndexBuffer.cpp
   tkPrimitive.cpp
+  コードを生成中...
+  コンパイル中...
   tkRenderCommandBuffer.cpp
   tkRenderContext.cpp
   tkRenderTarget.cpp
   tkSkinModel.cpp
   tkSkinModelData.cpp
   tkTexture.cpp
-  コードを生成中...
-  コンパイル中...
   tkVertexBuffer.cpp
-  tkKeyInput.cpp
-  tkPad.cpp
   tkAabb.cpp
   tkMath.cpp
   tkMatrix.cpp
@@ -59,12 +63,12 @@
   tkCapsuleCollider.cpp
   tkMeshCollider.cpp
   tkPhysics.cpp
+  コードを生成中...
+  コンパイル中...
   tkRigidBody.cpp
   tkSphereCollider.cpp
   tkRandom.cpp
   tkSkinModelDataHandle.cpp
-  コードを生成中...
-  コンパイル中...
   tkSkinModelDataResources.cpp
   tkTextureResources.cpp
   tkBoxShape.cpp
@@ -72,10 +76,6 @@
   tkSphereShape.cpp
 shape\tkSphereShape.cpp(41): warning C4267: '引数': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
 shape\tkSphereShape.cpp(61): warning C4267: '引数': 'size_t' から 'int' に変換しました。データが失われているかもしれません。
-  tkSoundEngine.cpp
-  tkSoundSource.cpp
-  tkWaveFile.cpp
-  tkWaveFileBank.cpp
   tkEngine.cpp
 tkEngine.cpp(291): warning C4244: '初期化中': 'double' から 'DWORD' への変換です。データが失われる可能性があります。
   コードを生成中...

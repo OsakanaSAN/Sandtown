@@ -165,7 +165,6 @@ void Mining::Render(CRenderContext& renderContext)
 void Mining::PostRender(CRenderContext& renderContext)
 {
 
-
 	renderContext.SetRenderState(D3DRS_ZWRITEENABLE, FALSE);
 	if (minigs)
 	{

@@ -8,12 +8,8 @@
 #include "BattleMenu.h"
 
 
-
 Fade*   g_fade = nullptr;
 CRandom g_random;
-
-
-
 /*!
  * @brief	tkEngineの初期化。
  */
@@ -102,8 +98,6 @@ int WINAPI wWinMain(
 	//NewGO<Menu>(0);
 
 	//NewGO<BattleMenu>(0);
-
-
 	
 	Engine().RunGameLoop();		//ゲームループを実行。
 

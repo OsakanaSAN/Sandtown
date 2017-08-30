@@ -90,7 +90,7 @@ private:
 	CSprite     HpSeatSprite[4];
 	CTexture    HpSeatTexture[4];
 	CVector2    Hpseatpos = { -180.0f,0.0f };
-	int         HP = 100;
+	int         HP = 300;
 	char        HpTexName[255];
 	
 	///////////////////////////////////////////////
@@ -99,7 +99,7 @@ private:
 	CSprite     MaxHpSeatSprite[4];
 	CTexture    MaxHpSeatTexture[4];
 	CVector2    MaxHpseatpos = {0.0f,0.0f};
-	int         MaxHP = 500;
+	int         MaxHP = 300;
 
 	////////////////////////////////////////////////
 

@@ -118,7 +118,6 @@ void TitleScene::Update()
 }
 void TitleScene::PostRender(CRenderContext& renderContext)
 {
-	
 		m_titleBGSprite.Draw(renderContext);
 		//m_titleBGSprite2.Draw(renderContext);
 		/*m_titleBGSprite3.Draw(renderContext);*/

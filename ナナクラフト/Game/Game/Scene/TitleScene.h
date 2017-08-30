@@ -55,6 +55,9 @@ private:
 
 	EState      m_state = eStateRun;
 
+	CFont       font;
+	char       text[256];
+
 	CSoundSource* PushSE = NULL;
 	int count = 0;
 
