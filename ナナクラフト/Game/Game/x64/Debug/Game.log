@@ -1,7 +1,0 @@
-﻿  Menu.cpp
-c:\users\kbc16b03\desktop\sandtown\ナナクラフト\game\game\hud.h(54): warning C4244: '=': 'int' から 'float' への変換です。データが失われる可能性があります。
-c:\users\kbc16b03\desktop\sandtown\ナナクラフト\game\game\menu.cpp(488): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
-c:\users\kbc16b03\desktop\sandtown\ナナクラフト\game\game\menu.cpp(489): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
-c:\users\kbc16b03\desktop\sandtown\ナナクラフト\game\game\menu.cpp(492): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
-  Game.vcxproj -> C:\Users\kbc16b03\Desktop\Sandtown\ナナクラフト\Game\x64\Debug\Game.exe
-  Game.vcxproj -> C:\Users\kbc16b03\Desktop\Sandtown\ナナクラフト\Game\x64\Debug\Game.pdb (Full PDB)
